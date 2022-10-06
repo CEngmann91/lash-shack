@@ -1,0 +1,67 @@
+@import './colours.scss';
+
+.app__flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    // height: 100vh;
+}
+
+.head-text {
+    font-size: 2.75rem;
+    font-weight: 800;
+    text-align: center;
+    color: $black-colour;
+    text-transform: capitalize;
+
+    text-shadow: 0 2px 5px rgba($pink-colour, 0.5);
+
+    span {
+        color: $blue-colour;
+    }
+
+    @media screen and (min-width: 2000px) {
+        font-size: 4rem;
+    }
+
+    @media screen and (max-width: 550px) {
+        // @media screen and (max-width: 450px) {
+        font-size: 1.7rem;
+    }
+}
+
+
+.border-button {
+    @media screen and (max-width: 900px) {
+        // display: none;
+    }
+    display: inline-block;
+    padding: 0.3em 1.2em;
+    // margin: 0 0.3em 0.3em 0;
+    box-sizing: border-box;
+    color: #000000;
+    text-align: center;
+    text-decoration: none;
+    border: 0.1em solid $gray-colour;
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+
+    transition: 0.2s ease-in;
+
+    // transform-origin: center;
+    // animation: slide-l-fade-In .3s 0.55s ease-out;
+    // animation-fill-mode: both;
+
+
+    &:active {
+        // box-shadow:
+        //     inset 0px 5px 15px rgba(0, 0, 0, 0.4),
+        //     inset 0px -5px 15px rgba(255, 255, 255, 0.4);
+    }
+
+    &:hover {
+        background: $pink-colour;
+    }
+}
