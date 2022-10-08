@@ -1,7 +1,10 @@
 /// <reference path='../types/index.d.ts' />
 
-import logo from '../assets/Logo.png';
+export const logo = require('../assets/Logo.png');
 
-export default {
-  logo,
-};
+
+// import logo from '../assets/Logo.png';
+
+// export default {
+//   logo,
+// };

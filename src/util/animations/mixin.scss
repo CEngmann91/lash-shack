@@ -1,0 +1,46 @@
+@mixin keyframes($name) {
+    @-webkit-keyframes #{$name} {
+        @content;
+    }
+
+    /* Safari & Chrome */
+    @-moz-keyframes #{$name} {
+        @content;
+    }
+
+    @-ms-keyframes #{$name} {
+        @content;
+    }
+
+    @-o-keyframes #{$name} {
+        @content;
+    }
+
+    @keyframes #{$name} {
+        @content;
+    }
+}
+
+// e.g. "@include animation(animation-name-here)"
+@mixin animation($name) {
+    -webkit-animation: $name;
+    /* Safari & Chrome */
+    -moz-animation: $name;
+    -o-animation: $name;
+    animation: $name;
+}
+
+@mixin background-image-linear-gradient($from, $to) {
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from($from), to($to));
+    background-image: -webkit-linear-gradient($from, $to);
+    background-image: -moz-linear-gradient($from, $to);
+    background-image: -o-linear-gradient($from, $to);
+    background-image: linear-gradient($from, $to);
+}
+
+@mixin rotateZ($degrees) {
+    transform: rotateZ($degrees);
+    -webkit-transform: rotateZ($degrees);
+    -moz-transform: rotateZ($degrees);
+    -o-transform: rotateZ($degrees);
+}

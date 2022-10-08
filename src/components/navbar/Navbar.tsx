@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react'
 import { NAVIGATION } from '../../util/constants';
 import logo from '../../assets/Logo.png';
 import NavbarItem from './NavbarItem/NavbarItem';
-import '../../util/styles.scss';
 
 const Navbar = () => {
     const [scrolledDown, setScrolledDown] = useState(false);
@@ -45,7 +44,7 @@ const Navbar = () => {
 
 
             <div className='navbar-nav--buttons'>
-                <div className="border-button">
+                <div className="border-button book-now">
                     <a href="" target="_blank" rel="noreferrer">Book Now</a>
                     {/* Book Now */}
                 </div>

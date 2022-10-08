@@ -1,5 +1,7 @@
 import './Gallery.scss';
 import React from 'react'
+import PhotoFrame from '../../components/PhotoFrame/PhotoFrame';
+import GalleryPhoto from './GalleryPhoto/GalleryPhoto';
 
 
 interface iImage {
@@ -52,16 +54,24 @@ const Gallery = () => {
     <div className='app__gallery'>
       {/* Gallery */}
       <div className="container">
-        <p>Gallery</p>
+        {/* <p>Gallery</p> */}
+
+
+
+        {/* <PhotoFrame imgSource={images[0].source} onClick={() => alert("touched")} /> */}
+
+
+
 
         <ul className="image-gallery">
           {images.map(({ id, source }) => (
-            <li id={id.toString()}>
-              <img src={source} alt="" />
-              {/* <div className="overlay"><span>Image title</span></div> */}
-            </li>
+            <GalleryPhoto id={id.toString()} imgSource={source} />
+            // <li id={id.toString()}>
+            //   <img src={source} alt="" />
+            // </li>
           ))}
         </ul>
+
       </div>
     </div>
   )
