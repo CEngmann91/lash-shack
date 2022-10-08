@@ -1,4 +1,4 @@
-import { BsTwitter, BsStarFill, BsArrowUpCircle } from 'react-icons/bs';
+import { BsTwitter, BsStarFill, BsFillArrowUpCircleFill } from 'react-icons/bs';
 import { FaFacebookF } from 'react-icons/fa';
 import { AiFillInstagram } from 'react-icons/ai';
 import { MdEmail } from 'react-icons/md';
@@ -9,6 +9,6 @@ export {
     FaFacebookF as Facebook,
     MdEmail as Email,
 
-    BsArrowUpCircle as UpArrow,
+    BsFillArrowUpCircleFill as UpArrow,
     BsStarFill as Star,
 };

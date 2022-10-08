@@ -1,6 +1,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Footer, Navbar } from './components';
+import { UpArrow } from './util/icons';
 import { About, Courses, Gallery, Landing, NotFound, Services, Testimonial } from './pages';
 
 function App() {
@@ -10,6 +11,10 @@ function App() {
       <Navbar />
       {component}
       <Footer />
+
+      <button className='scroll-to-top' onClick={() => window.scrollTo(0, 0)}>
+        <UpArrow />
+      </button>
     </>
   );
 

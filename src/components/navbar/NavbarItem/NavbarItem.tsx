@@ -14,21 +14,10 @@ interface iProps {
 const NavbarItem: React.FC<iProps> = ({id, to, onClick, children, idleClassName = "link-item", activeClassName = "link-item-active", ...props}: iProps) => {
     const handleClick = useCallback(() => onClick(), [])
 
-    if (to === "/")
-    {
-        return (
-            <NavLink
-                key={id}
-                to={to} end onClick={handleClick}
-                className={({ isActive }) => (isActive ? activeClassName : idleClassName)}
-            >{children}</NavLink>
-        )
-    }
-
     return (
         <NavLink
             key={id}
-            to={to} onClick={handleClick}
+            to={to} end onClick={handleClick}
             className={({ isActive }) => (isActive ? activeClassName : idleClassName)}
         >{children}</NavLink>
     )

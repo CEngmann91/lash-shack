@@ -30,19 +30,17 @@ const Footer = () => {
           to={'/'} onClick={() => { }}
           idleClassName="" activeClassName=""
         >{'Home'}</NavbarItem>*/}
-        {/* <a href=''>Home</a> */}
+      {/* <a href=''>Home</a> */}
       {/* </div> */}
 
       <div className="app__footer--socials">
-        <p className='title'>Socials</p>
+        <p className='title'>Find Us On</p>
         <div>
           <Facebook />
           <Twitter />
           <Instagram />
           <Email />
         </div>
-
-        <button className='scroll-to-top'><UpArrow /></button>
       </div>
 
       <div className="app__footer--contact">

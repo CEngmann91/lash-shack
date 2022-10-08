@@ -1,0 +1,68 @@
+@import './util/colours.scss';
+
+:root {
+  --font-base:
+    /* "DM Sans", sans-serif; */
+    Montserrat;
+  /* Menlo; */
+  /* Monaco; */
+  /* 'Courier New'; */
+  /* monospace; */
+}
+
+body {
+  font-family: var(--font-base);
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  scroll-behavior: smooth;
+
+
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+
+
+
+.scroll-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+
+  transition: 0.3s ease-out;
+
+
+  svg {
+    color: $gray-colour;
+    width: 100%;
+    height: 100%;
+  }
+  
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  &:active {
+
+    svg {
+      color: red;
+    }
+  }
+}

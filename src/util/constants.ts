@@ -8,4 +8,4 @@ export const NAVIGATION = {
     ]
 }
 
-export const CONTACT_EMAIL = "info@lashshack.co.uk";
+export const CONTACT_EMAIL = "lashshackuk@hotmail.com";

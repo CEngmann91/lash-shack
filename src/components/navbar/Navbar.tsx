@@ -29,12 +29,6 @@ const Navbar = () => {
                 >
                     <img src={logo} />
                 </NavbarItem>
-
-
-
-                {/* <a href='/'>
-                    <img src={logo} />
-                </a> */}
             </div>
 
             <ul className='navbar-nav--links'>
@@ -52,8 +46,8 @@ const Navbar = () => {
 
             <div className='navbar-nav--buttons'>
                 <div className="border-button">
-                    {/* <a href="" target="_blank" rel="noreferrer">Book Now</a> */}
-                    Book Now
+                    <a href="" target="_blank" rel="noreferrer">Book Now</a>
+                    {/* Book Now */}
                 </div>
 
                 {/* <div className="border-button">
