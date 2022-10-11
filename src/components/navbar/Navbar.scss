@@ -94,5 +94,12 @@
         display: flex;
         justify-content: flex-end;
         align-items: center;
+
+
+        .book-now {
+            @media screen and (max-width: 900px) {
+                display: none;
+            }
+        }
     }
 }

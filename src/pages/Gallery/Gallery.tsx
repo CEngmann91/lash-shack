@@ -52,7 +52,9 @@ const Gallery = () => {
 
         <ul className="image-gallery">
           {files.map((url, index) => (
-            <GalleryPhoto key={index} id={index.toString()} imgSource={url} />
+            <GalleryPhoto key={index} id={index.toString()} imgSource={url} onClick={() => {
+              alert(url)
+            }} />
           ))}
         </ul>
 

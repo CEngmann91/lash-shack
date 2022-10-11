@@ -44,18 +44,7 @@ const Navbar = () => {
 
 
             <div className='navbar-nav--buttons'>
-                <div className="border-button book-now">
-                    <a href="" target="_blank" rel="noreferrer">Book Now</a>
-                    {/* Book Now */}
-                </div>
-
-                {/* <div className="border-button">
-                    Call
-                </div> */}
-
-                {/* <div className="call">
-                    <a href="" target="_blank" rel="noreferrer">Call</a>
-                </div> */}
+                <div className='border-button app__book-now-button book-now'>Book Now</div>
             </div>
 
 

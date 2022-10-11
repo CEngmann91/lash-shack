@@ -6,11 +6,18 @@ import { About, Courses, Gallery, Landing, NotFound, Services, Testimonial } fro
 
 function App() {
 
-  const RenderRoute = (component : React.ReactNode) => (
+  const RenderRoute = (component: React.ReactNode) => (
     <>
       <Navbar />
       {component}
       <Footer />
+
+
+      <div className='border-button app__book-now-button'>Book Now</div>
+
+
+
+
 
       {/* <button className='scroll-to-top' onClick={() => window.scrollTo(0, 0)}>
         <UpArrow />
