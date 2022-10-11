@@ -1,10 +1,11 @@
 import './GalleryPhoto.scss';
-import React, { useCallback } from 'react'
+import React, { MouseEventHandler, useCallback } from 'react'
 
 interface iProps {
   id: string;
   imgSource: string;
-  onClick?: (e: React.MouseEvent<HTMLElement>) => void;
+  // onClick?: (e : React.MouseEventHandler<HTMLButtonElement>) => void;
+  onClick?: () => void,
 }
 
 const GalleryPhoto: React.FC<iProps> = ({ id, imgSource, onClick, ...props }: iProps) => {

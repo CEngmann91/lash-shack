@@ -2,8 +2,11 @@ import { BsTwitter, BsStarFill, BsFillArrowUpCircleFill } from 'react-icons/bs';
 import { FaFacebookF } from 'react-icons/fa';
 import { AiFillInstagram } from 'react-icons/ai';
 import { MdEmail } from 'react-icons/md';
+import { GiHamburgerMenu } from 'react-icons/gi';
 
 export {
+    GiHamburgerMenu as Menu,
+
     AiFillInstagram as Instagram,
     BsTwitter as Twitter,
     FaFacebookF as Facebook,

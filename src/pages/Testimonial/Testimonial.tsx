@@ -67,17 +67,16 @@ const Testimonial = () => {
       <div className="list">
         {reviews.map(({ id, consumer, stars, title, description }) => (
 
-          <article className="card">
+          <article className="card" key={id}>
             <AnimatePresence>
               <motion.div
-                key={id}
                 className="card--wrapper"
                 initial={{ rotateY: 0 }}
                 whileInView={{ rotateY: 180 }}
                 transition={{
                   duration: 1,
-                  delay: id * 0.15,
-                  ease: 'easeIn'
+                  delay: id * 0.1,
+                  ease: 'easeOut'
                 }}
                 viewport={{ once: true }}
                 // whileHover={{
@@ -90,7 +89,7 @@ const Testimonial = () => {
 
                 <div className="back">
                   <div className="back--star">
-                    {Array(stars).fill(1).map((el, i) => <Star />)}
+                    {Array(stars).fill(1).map((el, i) => <Star key={i} />)}
                   </div>
 
                   <div className="back--title">
@@ -111,17 +110,6 @@ const Testimonial = () => {
 
 
           </article>
-
-
-
-
-
-          // <div>
-          //   {Array(stars).fill(1).map((el, i) => <Star /> )}
-          //   <p>{title}</p>
-          //   <p>{description}</p>
-          //   <p>{consumer.displayName}</p>
-          // </div>
         ))}
       </div>
 
