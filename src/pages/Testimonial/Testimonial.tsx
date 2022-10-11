@@ -76,7 +76,7 @@ const Testimonial = () => {
                 whileInView={{ rotateY: 180 }}
                 transition={{
                   duration: 1,
-                  delay: id * 0.2,
+                  delay: id * 0.15,
                   ease: 'easeIn'
                 }}
                 viewport={{ once: true }}

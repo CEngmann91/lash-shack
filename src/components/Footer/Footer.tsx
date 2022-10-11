@@ -2,7 +2,7 @@ import './Footer.scss';
 import React from 'react'
 import NavbarItem from '../navbar/NavbarItem/NavbarItem';
 import { Email, Facebook, Instagram, Twitter, UpArrow } from '../../util/icons';
-import { CONTACT_EMAIL, NAVIGATION } from '../../util/constants';
+import { CONTACT_EMAIL, NAVIGATION } from '../../constants/constants';
 
 const Footer = () => {
   return (

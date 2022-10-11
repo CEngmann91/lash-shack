@@ -1,5 +1,3 @@
-/// <reference path='./types/index.d.ts' />
-
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.scss';

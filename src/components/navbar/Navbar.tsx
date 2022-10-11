@@ -1,7 +1,7 @@
 import './Navbar.scss';
+import { logo } from '../../util/images';
 import React, { useState, useEffect } from 'react'
-import { NAVIGATION } from '../../util/constants';
-import logo from '../../assets/Logo.png';
+import { NAVIGATION } from '../../constants/constants';
 import NavbarItem from './NavbarItem/NavbarItem';
 
 const Navbar = () => {

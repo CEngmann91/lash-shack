@@ -1,74 +1,58 @@
 import './Gallery.scss';
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import PhotoFrame from '../../components/PhotoFrame/PhotoFrame';
 import GalleryPhoto from './GalleryPhoto/GalleryPhoto';
 
+import { getImages, storage } from '../../helpers/firebase/firebase';
+import { getStorage, list, listAll, ref, getDownloadURL } from 'firebase/storage';
+import { FIREBASE_GALLERY_IMAGES } from '../../constants/firebase';
 
-interface iImage {
-  id: number;
-  source: string;
-}
 
-const images: iImage[] = [
-  {
-    id: 0,
-    source: 'https://source.unsplash.com/VWcPlbHglYc',
-  },
-  {
-    id: 1,
-    source: 'https://source.unsplash.com/e6FMMambeO4'
-  },
-  {
-    id: 2,
-    source: 'https://source.unsplash.com/klCiPmzUw0Y'
-  },
-  {
-    id: 3,
-    source: 'https://source.unsplash.com/IdNOTjPeHrE'
-  },
-  {
-    id: 4,
-    source: 'https://source.unsplash.com/O0N9MF--hK4'
-  },
-  {
-    id: 5,
-    source: 'https://source.unsplash.com/FV3GConVSss'
-  },
-  {
-    id: 6,
-    source: 'https://source.unsplash.com/0ESjL-Nw22Y'
-  },
-  {
-    id: 7,
-    source: 'https://source.unsplash.com/KTVn62x6fFw'
-  },
-  {
-    id: 8,
-    source: 'https://source.unsplash.com/VSeVhmW4_JQ'
-  }
-]
 
 const Gallery = () => {
+  const [files, setFiles] = useState<string[]>([]);
+
+
+
+  useEffect(() => {
+    fetchImages();
+  }, [])
+
+
+  const fetchImages = async() => {
+    getImages(FIREBASE_GALLERY_IMAGES)
+    .then(res => {
+      setFiles(res);
+      console.log("all done");
+    });
+
+
+
+    // // Create a reference under which you want to list
+    // const imageListRef = ref(storage, FIREBASE_GALLERY_IMAGES);
+
+    // listAll(imageListRef)
+    //   .then((result) => {
+    //     let promises = result.items.map((item) =>{
+    //       return getDownloadURL(item)
+    //     });
+    //     Promise.all(promises).then(urls => {
+    //       setFiles(urls);
+    //       console.log("all done");
+    //     });
+    //   });
+  }
+
 
   return (
     <div className='app__gallery'>
-      {/* Gallery */}
       <div className="container">
-        {/* <p>Gallery</p> */}
-
-
 
         {/* <PhotoFrame imgSource={images[0].source} onClick={() => alert("touched")} /> */}
 
-
-
-
         <ul className="image-gallery">
-          {images.map(({ id, source }) => (
-            <GalleryPhoto id={id.toString()} imgSource={source} />
-            // <li id={id.toString()}>
-            //   <img src={source} alt="" />
-            // </li>
+          {files.map((url, index) => (
+            <GalleryPhoto key={index} id={index.toString()} imgSource={url} />
           ))}
         </ul>
 

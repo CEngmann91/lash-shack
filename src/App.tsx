@@ -12,14 +12,14 @@ function App() {
       {component}
       <Footer />
 
-      <button className='scroll-to-top' onClick={() => window.scrollTo(0, 0)}>
+      {/* <button className='scroll-to-top' onClick={() => window.scrollTo(0, 0)}>
         <UpArrow />
-      </button>
+      </button> */}
     </>
   );
 
   return (
-    <div className="App">
+    <>
       <Routes>
         {/* Use it in this way, and it should work: */}
         <Route path='*' element={<NotFound />} />
@@ -38,7 +38,7 @@ function App() {
         <Route path="/gallery" element={RenderRoute(<Gallery />)} />
       </Routes>
 
-    </div>
+    </>
   );
 }
 
