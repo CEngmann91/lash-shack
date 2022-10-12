@@ -1,0 +1,19 @@
+@import '../../res/colours.scss';
+
+main {
+    width: 100%;
+
+    header {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        width: 100%;
+        margin-bottom: 20px;
+
+        .title {
+            margin-bottom: 1.5rem;
+            font-family: cursive;
+        }
+    }
+}

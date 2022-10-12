@@ -1,3 +1,4 @@
+import './index.scss';
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Footer, Navbar } from './components';
@@ -13,7 +14,9 @@ function App() {
       <Footer />
 
 
-      <div className='border-button app__book-now-button'>Book Now</div>
+      <div className="app__desktop-hide">
+        <div className='border-button app__book-now-button'>Book Now</div>
+      </div>
 
 
 

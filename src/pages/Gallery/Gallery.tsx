@@ -13,8 +13,9 @@ const Gallery = () => {
   const [files, setFiles] = useState<string[]>([]);
 
 
-
   useEffect(() => {
+    window.scrollTo(0, 0);
+
     fetchImages();
   }, [])
 
