@@ -21,7 +21,7 @@
     // Makes it compatible with all browsers.
     -webkit-backdrop-filter: blur(4px);
     // Ensures the navbar is above the content
-    z-index: 1;
+    z-index: 3;
 
     transition: 0.3s ease-in-out;
 
@@ -29,21 +29,24 @@
 
     &--scroll {
         // Background colour for the navbar.
-        background: rgba(255, 255, 255, 0.85);
+        background: rgba($pink-colour, 0.85);
         box-shadow: 0 0 20px rgba(128, 128, 128, 0.75);
         height: 80px;
 
         border-bottom-left-radius: 20px;
         border-bottom-right-radius: 20px;
 
-        // .navbar-nav {
+        .navbar-nav--links {
+            &-active {
+                border-bottom: solid 3px $white-colour;
+            }
 
-        //     &--logo {
-        //         img {
-        //             width: 80px;
-        //         }
-        //     }
-        // }
+            li {
+                a {
+                    color: $blue-colour;
+                }
+            }
+        }
     }
 
     &--logo {
@@ -64,9 +67,8 @@
         align-items: center;
         margin-left: 3rem;
 
-        /* Specific styles for active links */
         &-active {
-            border-bottom: solid 3px $pink-colour;
+            border-bottom: solid 3px $white-colour;
         }
 
         li {
@@ -75,30 +77,18 @@
             }
 
             // padding: 0px 5px 5px 5px;
-            margin: 0rem 1.5rem;
+            margin: 0rem 1.2rem;
             cursor: pointer;
             // Remove the generic link styles.
             list-style: none;
 
             a {
-                color: $gray-colour;
+                color: $pink-colour;
                 text-transform: capitalize;
                 font-size: 18px;
                 font-weight: bold;
                 text-decoration: none;
-            }
-        }
-    }
-
-    &--buttons {
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-
-
-        .book-now {
-            @media screen and (max-width: 900px) {
-                display: none;
+                font-family: cursive;
             }
         }
     }

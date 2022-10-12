@@ -1,5 +1,6 @@
 import './Services.scss';
 import React, { useEffect } from 'react'
+import { Page } from '../../components';
 
 const Services = () => {
 
@@ -8,7 +9,13 @@ const Services = () => {
   }, [])
 
   return (
-    <div className='app__services'>Services</div>
+    <Page id='services' className='app__services' pageTitle='Services'>
+
+    </Page>
+
+    // <div className='app__services'>
+    //   <h1 className="head-text title"><span>Services</span></h1>
+    // </div>
   )
 }
 

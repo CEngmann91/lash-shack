@@ -45,12 +45,12 @@ const Footer = () => {
 
       <div className="app__footer--contact">
         <p className='title'>Contact</p>
-        <p>Address Line 1</p>
-        <p>Address line 2</p>
-        <p>Town/City</p>
-        <p>County</p>
-        <p>Postcode</p>
-        <p>07435252126</p>
+        {/* <a href=''> */}
+          <p>37 Mawney Road</p>
+          <p>Romford</p>
+          <p>RM7 7HL</p>
+          <p>07435252126</p>
+        {/* </a> */}
         <p>{CONTACT_EMAIL}</p>
       </div>
     </div>

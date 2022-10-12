@@ -9,10 +9,10 @@ interface iProps {
 }
 
 const GalleryPhoto: React.FC<iProps> = ({ id, imgSource, onClick, ...props }: iProps) => {
-  const handleClick = useCallback(() => onClick, [])
+  // const handleClick = useCallback(() => onClick, [])
 
   return (
-    <li id={id.toString()} className='gallery-photo' onClick={handleClick}>
+    <li id={id.toString()} className='gallery-photo' onClick={onClick}>
       <img src={imgSource} alt="" />
     </li>
   )

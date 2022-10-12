@@ -5,7 +5,7 @@
     grid-template-columns: auto auto auto;
     position: relative;
     // width: 100%;
-    height: 250px;
+    height: 190px;
     padding: 20px;
     background: $blue-colour;
 
@@ -33,10 +33,12 @@
             font-size: 18px;
         }
         width: fit-content;
-        font-size: 24px;
         color: $pink-colour;
-        font-weight: bold;
         padding-bottom: 0.8rem;
+        font-size: 24px;
+        font-weight: bold;
+        text-decoration: underline;
+        // font-family: cursive;
     }
 
     &--quick-links {

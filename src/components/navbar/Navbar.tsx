@@ -43,8 +43,8 @@ const Navbar = () => {
             </ul>
 
 
-            <div className='navbar-nav--buttons'>
-                <div className='border-button app__book-now-button book-now'>Book Now</div>
+            <div className='app__book-now-button-container app__mobile-hide'>
+                <div className='border-button app__book-now-button'>Book Now</div>
             </div>
 
 
