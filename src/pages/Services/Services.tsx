@@ -9,13 +9,9 @@ const Services = () => {
   }, [])
 
   return (
-    <Page id='services' className='app__services' pageTitle='Services'>
+    <Page id='services' className='app__services' header='Services'>
 
     </Page>
-
-    // <div className='app__services'>
-    //   <h1 className="head-text title"><span>Services</span></h1>
-    // </div>
   )
 }
 

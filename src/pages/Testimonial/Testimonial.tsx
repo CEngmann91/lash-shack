@@ -1,9 +1,10 @@
 import './Testimonial.scss';
 import React from 'react'
-import { Star } from '../../util/icons';
-import { AnimatePresence, motion } from 'framer-motion';
 import TestimonialCard from './TestimonialCard/TestimonialCard';
 import { Page } from '../../components';
+
+import { Parallax } from 'react-parallax';
+import { photography } from '../../util/images';
 
 interface iConsumer {
   displayName: string;
@@ -53,7 +54,7 @@ const reviews: iReview[] = [
       displayName: "John Snow",
       createdAt: '01/01/2020'
     },
-    starRating: 4,
+    starRating: 1,
     title: 'You Know Nothing!!',
     description: 'Still waiting for this information...'
   }
@@ -62,7 +63,9 @@ const reviews: iReview[] = [
 const Testimonial = () => {
 
   return (
-    <Page id='testimonial' className='app__testimonial' pageTitle='Customer Reviews'>
+    // <Parallax blur={3} bgImage={photography} strength={600}>
+
+    <Page id='testimonial' className='app__testimonial' header='Customer Reviews'>
       <div className="list">
         {reviews.map(({ id, consumer, starRating, title, description }) =>
           <TestimonialCard
@@ -76,6 +79,7 @@ const Testimonial = () => {
         )}
       </div>
     </Page>
+    // </Parallax>
 
     
 

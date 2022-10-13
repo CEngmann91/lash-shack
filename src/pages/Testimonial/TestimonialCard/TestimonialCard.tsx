@@ -3,8 +3,13 @@ import React from 'react'
 import { iReview } from '../Testimonial';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Star } from '../../../util/icons';
+import moment from 'moment';
 
 const TestimonialCard: React.FC<iReview> = ({ id, consumer, starRating, title, description, ...props }: iReview) => {
+
+    const getDate = (date : string) => {
+        return moment(date, 'DD/MM/YYYY').fromNow();
+    }
 
     return (
         <article className="card">
@@ -19,11 +24,11 @@ const TestimonialCard: React.FC<iReview> = ({ id, consumer, starRating, title, d
                         ease: 'easeOut'
                     }}
                     viewport={{ once: true }}
-                    // whileHover={{
-                    // y: '-1em',
-                    // boxShadow: "0 0.5em 0.5em -0.4em gray",
-                    // transition: { duration: 0.1 },
-                    // }}
+                // whileHover={{
+                // y: '-1em',
+                // boxShadow: "0 0.5em 0.5em -0.4em gray",
+                // transition: { duration: 0.1 },
+                // }}
                 >
                     {/* <div className="front" /> */}
 
@@ -40,9 +45,17 @@ const TestimonialCard: React.FC<iReview> = ({ id, consumer, starRating, title, d
                             <label>{description}</label>
                         </div>
 
-                        <div className="back--name">
-                            <label>{consumer.displayName}</label>
+
+                        <label className='back--date'>{getDate(consumer.createdAt)}</label>
+
+                        <div className="back--footer">
+                            <label className="name">~~ {consumer.displayName}</label>
                         </div>
+
+                        {/* <div className="back--name">
+                            <label>~~ {consumer.displayName}</label> */}
+                        {/* <label>{consumer.createdAt}</label> */}
+                        {/* </div> */}
 
                     </div>
                 </motion.div>

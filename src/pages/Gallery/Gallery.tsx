@@ -16,7 +16,8 @@ const Gallery = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
 
-    fetchImages();
+    if (files.length == 0)
+      fetchImages();
   }, [])
 
 
@@ -25,6 +26,9 @@ const Gallery = () => {
     .then(res => {
       setFiles(res);
       console.log("all done");
+    })
+    .catch(error => {
+      alert(error);
     });
 
 
@@ -44,18 +48,18 @@ const Gallery = () => {
     //   });
   }
 
+  const getImage = (url : string) => {
+    alert(url);
+  }
 
   return (
     <div className='app__gallery'>
       <div className="container">
 
-        {/* <PhotoFrame imgSource={images[0].source} onClick={() => alert("touched")} /> */}
-
         <ul className="image-gallery">
           {files.map((url, index) => (
-            <GalleryPhoto key={index} id={index.toString()} imgSource={url} onClick={() => {
-              alert(url)
-            }} />
+            // <PhotoFrame key={index} imgSource={url} onClick={() => getImage(url)} />
+            <GalleryPhoto key={index} id={index.toString()} imgSource={url} onClick={() => getImage(url)} />
           ))}
         </ul>
 
