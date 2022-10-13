@@ -1,5 +1,6 @@
 import './GalleryPhoto.scss';
 import React, { MouseEventHandler, useCallback } from 'react'
+import { motion } from 'framer-motion';
 
 interface iProps {
   id: string;
@@ -12,9 +13,16 @@ const GalleryPhoto: React.FC<iProps> = ({ id, imgSource, onClick, ...props }: iP
   // const handleClick = useCallback(() => onClick, [])
 
   return (
-    <li id={id.toString()} className='gallery-photo' onClick={onClick}>
+    <motion.li id={id.toString()} className='gallery-photo' onClick={onClick}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{
+        duration: 1,
+        delay: (0.2 * Number(id))
+      }}
+    >
       <img src={imgSource} alt="" />
-    </li>
+    </motion.li>
   )
 }
 
