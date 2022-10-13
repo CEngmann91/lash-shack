@@ -1,16 +1,8 @@
 @import '../../res/colours.scss';
 
 .app__courses {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
     min-height: 100vh;
-    margin-top: 70px;
-
-    justify-content: flex-start;
-    align-items: center;
-    // background: green;
-
+    
 
     .title {
         margin-bottom: 1.5rem;

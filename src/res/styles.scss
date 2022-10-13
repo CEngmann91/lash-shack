@@ -25,9 +25,9 @@
         font-size: 4rem;
     }
 
-    @media screen and (max-width: 550px) {
+    @media screen and (max-width: 900px) {
         // @media screen and (max-width: 450px) {
-        font-size: 1.7rem;
+        font-size: 2.0rem;
     }
 }
 
@@ -36,6 +36,7 @@
     @media screen and (max-width: 900px) {
         // display: none;
     }
+
     display: inline-block;
     padding: 0.3em 1.2em;
     // margin: 0 0.3em 0.3em 0;
@@ -63,5 +64,20 @@
 
     &:hover {
         background: $pink-colour;
+    }
+}
+
+
+.app__desktop-hide {
+
+    // Extra large or Desktop devices
+    @media screen and (max-width: 2000px) {
+        display: none;
+    }
+}
+
+.app__mobile-hide {
+    @media screen and (max-width: 900px) {
+        display: none;
     }
 }

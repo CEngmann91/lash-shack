@@ -29,26 +29,23 @@ function App() {
   );
 
   return (
-    <>
-      <Routes>
-        {/* Use it in this way, and it should work: */}
-        <Route path='*' element={<NotFound />} />
+    <Routes>
+      {/* Use it in this way, and it should work: */}
+      <Route path='*' element={<NotFound />} />
 
-        <Route path="/" element={
-          RenderRoute(
-            <>
-              <Landing />
-              <About />
-              <Testimonial />
-            </>
-          )
-        } />
-        <Route path="/services" element={RenderRoute(<Services />)} />
-        <Route path="/courses" element={RenderRoute(<Courses />)} />
-        <Route path="/gallery" element={RenderRoute(<Gallery />)} />
-      </Routes>
-
-    </>
+      <Route path="/" element={
+        RenderRoute(
+          <>
+            <Landing />
+            <About />
+            <Testimonial />
+          </>
+        )
+      } />
+      <Route path="/services" element={RenderRoute(<Services />)} />
+      <Route path="/courses" element={RenderRoute(<Courses />)} />
+      <Route path="/gallery" element={RenderRoute(<Gallery />)} />
+    </Routes>
   );
 }
 

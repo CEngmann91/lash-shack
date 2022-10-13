@@ -22,6 +22,15 @@
     //     }
     // }
 
+
+    &:hover {
+        box-shadow: $dark-shadow;
+
+        -webkit-transform: scale(1.05);
+        transform: scale(1.05);
+    }
+
+
     &--wrapper {
         position: relative;
         // padding: 1.5rem 2rem;
@@ -77,22 +86,32 @@
         font-family: cursive;
     }
 
-    &--name {
+    &--date {
+        position: absolute;
+        bottom: 3rem;
+        right: 2rem;
+        font-size: 12px;
+    }
+
+    &--footer {
         flex: 1;
         display: flex;
         position: absolute;
         bottom: 5px;
         left: 0;
         right: 0;
-        justify-content: center;
+        justify-content: flex-end;
         align-items: center;
         margin: 0 2rem;
         padding: 0.5rem;
         border-top: 2px solid rgba($pink-colour, 0.5);
-        font-family: cursive;
+
+        .name {
+            font-family: cursive;
+        }
     }
 
-    &:hover {
-
+    &--name {
+        font-family: cursive;
     }
 }

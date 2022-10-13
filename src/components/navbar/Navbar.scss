@@ -37,6 +37,8 @@
         border-bottom-right-radius: 20px;
 
         .navbar-nav--links {
+            transition: 0.3s ease-in-out;
+
             &-active {
                 border-bottom: solid 3px $white-colour;
             }
@@ -90,6 +92,78 @@
                 text-decoration: none;
                 font-family: cursive;
             }
+        }
+    }
+}
+
+.app__drawer {
+
+    // Hide this menu when the screen is larger than 900px
+    @media screen and (min-width: 900px) {
+        display: none;
+    }
+
+    display: flex;
+    justify-content: flex-end;
+
+
+    &--panel {
+        position: fixed;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100vh;
+        z-index: 5;
+        // background: rgba(rgba($pink-colour, 0.85), 1);
+        background: linear-gradient(to bottom right, $blue-colour, $pink-colour);
+
+        box-shadow: 0 0 20px rgb(128, 128, 128);
+
+        transition: 0.3s ease-in-out;
+
+        div {
+            flex: 1;
+            height: calc(100% - (4.5rem * 2));
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-top: 4rem;
+            // margin: 4.5rem 1.4rem;
+            gap: 4rem;
+
+            a {
+                color: $blue-colour;
+                text-decoration: none;
+                font-size: 2rem;
+                text-transform: uppercase;
+                font-weight: 500;
+                
+                // transition: 0.3s ease-in-out;
+
+                &:hover {
+                    // color: $pink-colour;
+                    // text-shadow: 2px 2px 8px $pink-colour;
+                }
+            }
+        }
+    }
+
+    &--menuBtn-container {
+        z-index: 10;
+
+        button {
+            display: flex;
+            width: 35px;
+            height: 35px;
+
+            justify-content: center;
+            align-items: center;
+            // border: none;
+            border-radius: 50px;
+            border-width: 2px;
+            cursor: pointer;
         }
     }
 }
