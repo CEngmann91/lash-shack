@@ -4,13 +4,15 @@ import PhotoFrame from '../../components/PhotoFrame/PhotoFrame';
 import GalleryPhoto from './GalleryPhoto/GalleryPhoto';
 
 import { getImages, storage } from '../../helpers/firebase/firebase';
-import { getStorage, list, listAll, ref, getDownloadURL } from 'firebase/storage';
 import { FIREBASE_GALLERY_IMAGES } from '../../constants/firebase';
+import GalleryModal from './GalleryModal/GalleryModal';
 
 
 
 const Gallery = () => {
   const [files, setFiles] = useState<string[]>([]);
+  const [selectedImg, setSelectedImg] = useState<string>("");
+
 
 
   useEffect(() => {
@@ -21,15 +23,15 @@ const Gallery = () => {
   }, [])
 
 
-  const fetchImages = async() => {
+  const fetchImages = async () => {
     getImages(FIREBASE_GALLERY_IMAGES)
-    .then(res => {
-      setFiles(res);
-      console.log("all done");
-    })
-    .catch(error => {
-      alert(error);
-    });
+      .then(res => {
+        setFiles(res);
+        console.log("all done");
+      })
+      .catch(error => {
+        alert(error);
+      });
 
 
 
@@ -48,10 +50,6 @@ const Gallery = () => {
     //   });
   }
 
-  const getImage = (url : string) => {
-    alert(url);
-  }
-
   return (
     <div className='app__gallery'>
       <div className="container">
@@ -59,11 +57,20 @@ const Gallery = () => {
         <ul className="image-gallery">
           {files.map((url, index) => (
             // <PhotoFrame key={index} imgSource={url} onClick={() => getImage(url)} />
-            <GalleryPhoto key={index} id={index.toString()} imgSource={url} onClick={() => getImage(url)} />
+            <GalleryPhoto key={index} id={index.toString()}
+              imgSource={url} onClick={() => setSelectedImg(url)}
+            />
           ))}
         </ul>
 
       </div>
+
+
+
+      {selectedImg.length > 0 && (
+        <GalleryModal selectedPhoto={selectedImg} setSelectedPhoto={setSelectedImg} />
+      )}
+
     </div>
   )
 }
