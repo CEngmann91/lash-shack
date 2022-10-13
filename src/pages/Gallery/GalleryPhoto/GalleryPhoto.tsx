@@ -18,7 +18,7 @@ const GalleryPhoto: React.FC<iProps> = ({ id, imgSource, onClick, ...props }: iP
       animate={{ opacity: 1 }}
       transition={{
         duration: 1,
-        delay: (0.2 * Number(id))
+        delay: (0.1 * Number(id))
       }}
     >
       <img src={imgSource} alt="" />
