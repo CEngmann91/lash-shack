@@ -10,7 +10,6 @@ interface iProps {
     idleClassName?: string;
     activeClassName?: string;
 }
-
 const NavbarItem: React.FC<iProps> = ({id, to, onClick, children, idleClassName = "link-item", activeClassName = "link-item-active", ...props}: iProps) => {
     const handleClick = useCallback(onClick, []);
 

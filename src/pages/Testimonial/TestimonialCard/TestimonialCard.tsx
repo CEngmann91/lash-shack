@@ -17,13 +17,13 @@ const TestimonialCard: React.FC<iReview> = ({ id, consumer, starRating, title, d
                 <motion.div
                     className="card--wrapper"
                     initial={{ rotateY: 0 }}
+                    viewport={{ once: true }}
                     whileInView={{ rotateY: 180 }}
                     transition={{
                         duration: 1,
                         delay: id * 0.1,
                         ease: 'easeOut'
                     }}
-                    viewport={{ once: true }}
                 // whileHover={{
                 // y: '-1em',
                 // boxShadow: "0 0.5em 0.5em -0.4em gray",

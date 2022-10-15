@@ -1,7 +1,7 @@
 import './Navbar.scss';
 import { logo } from '../../util/images';
 import React, { useState, useEffect } from 'react'
-import { NAVIGATION } from '../../constants/constants';
+import { BOOKING_URL, NAVIGATION } from '../../constants/constants';
 import NavbarItem from './NavbarItem/NavbarItem';
 import { Menu } from '../../util/icons';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -77,8 +77,10 @@ const Navbar = () => {
 
 
             <div className='app__book-now-button-container app__mobile-hide'>
-                <div className='border-button app__book-now-button'>Book Now</div>
+                <a href={BOOKING_URL} className='border-button app__book-now-button' target="_blank">Book Now</a>
+                {/* <div className='border-button app__book-now-button'>Book Now</div> */}
             </div>
+
 
 
             <div className='app__drawer'>

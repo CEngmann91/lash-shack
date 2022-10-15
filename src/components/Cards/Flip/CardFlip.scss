@@ -1,0 +1,63 @@
+@import '../../../res/colours.scss';
+
+main {
+    width: 18rem;
+    height: 21rem;
+    border-radius: 10px;
+    perspective: 1000px;
+
+    transition: 0.3s ease-out;
+    // overflow: hidden;
+
+    // background: linear-gradient(to bottom right, $blue-colour, $pink-colour);
+
+
+
+    &:hover {
+        // -webkit-transform: scale(1.05);
+        // transform: scale(1.05);
+
+        .card--wrapper {
+            transform: rotateY(180deg);
+            // box-shadow: 0 0.5em 0.5em -0.4em $pink-colour;
+        }
+    }
+
+
+    &--wrapper {
+        position: relative;
+        // padding: 1.5rem 2rem;
+        width: 100%;
+        height: 100%;
+
+        transform-origin: center;
+        transition: transform 0.6s;
+        transform-style: preserve-3d;
+
+
+        .front, .back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+        
+            padding: 1.5rem 1rem;
+        
+            background: gray;
+        
+            text-align: center;
+        
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+        
+        .front {
+            color: black;
+        }
+        
+        .back {
+            // box-shadow: $dark-shadow;
+            transform: rotateY(180deg);
+        }
+    }
+}
