@@ -16,6 +16,7 @@ const GalleryPhoto: React.FC<iProps> = ({ id, imgSource, onClick, ...props }: iP
     <motion.li id={id.toString()} className='gallery-photo' onClick={onClick}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
+      viewport={{ once: true }}
       transition={{
         duration: 1,
         delay: (0.1 * Number(id))

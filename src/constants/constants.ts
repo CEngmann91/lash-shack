@@ -1,3 +1,7 @@
+export const BOOKING_URL = "https://www.google.co.uk"
+export const CONTACT_EMAIL = "lashshackuk@hotmail.com";
+
+
 export const NAVIGATION = {
 
     ROUTE: [
@@ -7,5 +11,3 @@ export const NAVIGATION = {
         { id: '3', name: 'courses',     to: '/courses'},
     ]
 }
-
-export const CONTACT_EMAIL = "lashshackuk@hotmail.com";
