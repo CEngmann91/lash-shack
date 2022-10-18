@@ -6,7 +6,6 @@ interface iProps {
     imgSource: string;
     onClick?: (e: React.MouseEvent<HTMLElement>) => void;
 }
-
 const PhotoFrame: React.FC<iProps> = ({ imgSource, onClick, ...props }: iProps) => {
     const handleClick = useCallback(() => onClick, [])
 

@@ -8,6 +8,10 @@
     // height: 100vh;
 }
 
+.app__min-height {
+    min-height: 100vh;
+}
+
 .head-text {
     font-size: 2.75rem;
     font-weight: 800;
@@ -60,6 +64,14 @@
         // box-shadow:
         //     inset 0px 5px 15px rgba(0, 0, 0, 0.4),
         //     inset 0px -5px 15px rgba(255, 255, 255, 0.4);
+    }
+
+    &:active {
+        // background: #e5e5e5;
+        -webkit-box-shadow: inset 0px 0px 5px $pink-colour;
+        -moz-box-shadow: inset 0px 0px 5px $pink-colour;
+        box-shadow: inset 0px 0px 5px $pink-colour;
+        outline: none;
     }
 
     &:hover {

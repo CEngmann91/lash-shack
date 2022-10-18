@@ -1,4 +1,5 @@
 @import '../../res/styles.scss';
+@import '../../util/mixin.scss';
 
 .navbar-nav {
     @media screen and (max-width: 900px) {
@@ -17,9 +18,11 @@
     align-items: center;
     padding: 0rem 2rem;
     // Add a blur
-    backdrop-filter: blur(4px);
+    @include blur(4px);
+
+    // backdrop-filter: blur(4px);
     // Makes it compatible with all browsers.
-    -webkit-backdrop-filter: blur(4px);
+    // -webkit-backdrop-filter: blur(4px);
     // Ensures the navbar is above the content
     z-index: 3;
 

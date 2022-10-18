@@ -44,3 +44,9 @@
     -moz-transform: rotateZ($degrees);
     -o-transform: rotateZ($degrees);
 }
+
+@mixin blur($amt) {
+    -webkit-backdrop-filter: blur($amt);
+    // -webkit-filter: blur($amt);
+    backdrop-filter: blur($amt);
+}

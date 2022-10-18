@@ -2,7 +2,7 @@ import './CardFlip.scss';
 import React from 'react'
 
 interface iProps {
-    id: string;
+    id: number;
     frontClassName: string;
     frontChildren: React.ReactNode;
     backClassName: string;
