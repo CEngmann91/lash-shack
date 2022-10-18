@@ -1,7 +1,9 @@
 import './Courses.scss';
-import React, { useEffect } from 'react'
-import { Page } from '../../components';
+import React, { useEffect, useState } from 'react'
+import { ActivityIndicator, Page } from '../../components';
 import { CardFlip } from '../../components/Cards';
+import CourseCard from './CourseCard/CourseCard';
+import { getDocument } from '../../helpers/firebase/firestore';
 
 export interface iCourse {
   id: number;
@@ -10,7 +12,7 @@ export interface iCourse {
   price: number;
   salePrice: number;
 }
-const courses: iCourse[] = [
+/*const courses: iCourse[] = [
   {
     id: 0,
     title: 'Classic',
@@ -39,131 +41,78 @@ const courses: iCourse[] = [
     price: 35.00,
     salePrice: 27.00
   },
-]
+]*/
 
 const Courses = () => {
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [courseList, setCourseList] = useState<iCourse[]>([]);
+
+
 
   useEffect(() => {
     window.scrollTo(0, 0);
+
+    getDocument("courses", "7I2dfy5anxP6v75USrIc")
+      .then(res => {
+        const array : iCourse[] = res['content'];
+        // sort by price
+        let sorted = array.sort((a, b) => b.price - a.price);
+        // sorted = [...sorted].sort((a, b) => b.salePrice - a.salePrice);
+        setCourseList(sorted);
+        
+        setLoading(false);
+      })
+      .catch((error) => {
+        alert(error);
+        setError(error);
+      });
+
   }, [])
 
 
-  function calculateSalePercentage(price: number, salePrice: number): number {
-    if (salePrice > price) return price;
-
-    let value = (salePrice / price);
-    value = 1 - value;
-    value *= 100;
-    value = Math.round(value);
-    return value;
-  }
-
   return (
-    <Page id='services' className='app__courses' header='Be Your Own Boss'>
-      <p>Classic, Classic Xtra, Hybrid, Russian.</p>
-      <p>Live Models</p>
-      <p>In-depth Manuals</p>
-      <p>Ongoing Support</p>
-      <p>Fully Accredited</p>
-      <p>Over 100 Students Qualified.</p>
-
-
-
-      <div className="cards">
-        {courses.map((item) => (
-          <div className="box">
-            <img src='https://images.unsplash.com/photo-1573108724029-4c46571d6490?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=527&q=100' />
-            <label>{item.title}</label>
-            <label>{item.description}</label>
-            <label>{item.price
-              .toLocaleString('en-UK', { style: 'currency', currency: 'GBP' })
-            }</label>
-            <label>{item.salePrice
-              .toLocaleString('en-UK', { style: 'currency', currency: 'GBP' })
-            }</label>
-            <label>{calculateSalePercentage(item.price, item.salePrice)}% off</label>
-          </div>
-        ))}
-
-        {courses.map((item) => (
-          <CardFlip id='0'
-            frontClassName='card-item'
-            frontChildren={
-              <>
-                <img src='https://images.unsplash.com/photo-1511447333015-45b65e60f6d5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=955&q=80' />
-              </>
-            }
-            backClassName='card-item-back'
-            backChildren={
-              <>
-                <label>{item.title}</label>
-                <label>{item.description}</label>
-                <label>{item.price
-                  .toLocaleString('en-UK', { style: 'currency', currency: 'GBP' })
-                }</label>
-                <label>{item.salePrice
-                  .toLocaleString('en-UK', { style: 'currency', currency: 'GBP' })
-                }</label>
-                <label>{calculateSalePercentage(item.price, item.salePrice)}% off</label>
-              </>
-            } />
-        ))}
-
-
-
-        {/* <div className="box">
-          <img src='https://images.unsplash.com/photo-1573108724029-4c46571d6490?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=527&q=100' />
+    <Page id='courses' className='app__courses' header='Be Your Own Boss'>
+      {loading ?
+        <div className='app__flex app__min-height'>
+          <ActivityIndicator borderColour='rgba(239, 179, 183, 1)' borderSpinColour='rgba(16, 40, 121, 1)' />
         </div>
+        :
+        <>
+          <h3>Fully Accredited</h3>
 
-        <div className="box">
-          <img src='https://images.unsplash.com/photo-1511447333015-45b65e60f6d5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=955&q=80' />
-        </div> */}
+          {/* <p>Classic, Classic Xtra, Hybrid, Russian.</p>
+          <p>Live Models</p>
+          <p>In-depth Manuals</p>
+          <p>Ongoing Support</p>
+          <p>Fully Accredited</p>
+          <p>Over 100 Students Qualified.</p> */}
 
+          <br />
+          <p>
+            We offer a range of different courses to help advance your capabilities. We pride ourselves on building relationships and inspiring people to achieve their best.
+            All courses come with in-depth manuals, live models
+          </p>
 
+          <div className="cards">
+            {courseList.map((item, index) => {
+              const { title, description, price, salePrice } = item;
 
-        {/* <CardFlip id='0'
-          frontClassName='card-item'
-          frontChildren={
-            <>
-              <img src='https://images.unsplash.com/photo-1573108724029-4c46571d6490?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=527&q=100' />
-            </>
-          }
-          backClassName=''
-          backChildren={
-            <h1>Back</h1>
-          } />
-
-
-        <CardFlip id='1'
-          frontClassName='card-item'
-          frontChildren={
-            <>
-              <img src='https://images.unsplash.com/photo-1511447333015-45b65e60f6d5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=955&q=80' />
-            </>
-          }
-          backClassName=''
-          backChildren={
-            <h1>Back</h1>
-          } /> */}
-      </div>
-
-
-
-
+              return (
+                <CourseCard
+                  key={title} id={index}
+                  title={title}
+                  frontImg={'https://images.unsplash.com/photo-1511447333015-45b65e60f6d5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=955&q=80'}
+                  description={description}
+                  price={price}
+                  salePrice={salePrice}
+                />
+              )
+            })}
+          </div>
+        </>
+      }
     </Page>
-
-
-    // <div className="app__courses">
-    //   <h1 className="head-text title"><span>Be Your Own Boss</span></h1>
-
-
-    //   <p>Classic, Classic Xtra, Hybrid, Russian.</p>
-    //   <p>Live Models</p>
-    //   <p>In-depth Manuals</p>
-    //   <p>Ongoing Support</p>
-    //   <p>Fully Accredited</p>
-    //   <p>Over 100 Students Qualified.</p>
-    // </div>
   )
 }
 

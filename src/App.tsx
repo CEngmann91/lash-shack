@@ -20,8 +20,6 @@ function App() {
 
 
 
-
-
       {/* <button className='scroll-to-top' onClick={() => window.scrollTo(0, 0)}>
         <UpArrow />
       </button> */}

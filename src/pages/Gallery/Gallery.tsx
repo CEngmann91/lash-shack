@@ -5,11 +5,13 @@ import GalleryPhoto from './GalleryPhoto/GalleryPhoto';
 
 import { getImages, storage } from '../../helpers/firebase/firebase';
 import { FIREBASE_GALLERY_IMAGES } from '../../constants/firebase';
-import GalleryModal from './GalleryModal/GalleryModal';
+import GalleryViewerModal from './GalleryViewerModal/GalleryViewerModal';
+import { ActivityIndicator, Page } from '../../components';
 
 
 
 const Gallery = () => {
+  const [loading, setLoading] = useState(true);
   const [files, setFiles] = useState<string[]>([]);
   const [selectedImg, setSelectedImg] = useState<string>("");
 
@@ -18,8 +20,10 @@ const Gallery = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
 
-    if (files.length == 0)
+    if (files.length == 0) {
+      setLoading(true)
       fetchImages();
+    }
   }, [])
 
 
@@ -27,6 +31,7 @@ const Gallery = () => {
     getImages(FIREBASE_GALLERY_IMAGES)
       .then(res => {
         setFiles(res);
+        setLoading(false);
         console.log("all done");
       })
       .catch(error => {
@@ -51,27 +56,55 @@ const Gallery = () => {
   }
 
   return (
-    <div className='app__gallery'>
-      <div className="container">
+    <Page id='gallery' className='app__gallery' header='Love What You See?'>
+      {loading ?
+        <div className='app__flex app__min-height'>
+          <ActivityIndicator borderColour='rgba(239, 179, 183, 1)' borderSpinColour='rgba(16, 40, 121, 1)' />
+        </div>
+        :
+        <>
+          <div className="container">
+            <ul className="image-gallery">
+              {files.map((url, index) => (
+                // <PhotoFrame key={index} imgSource={url} onClick={() => getImage(url)} />
+                <GalleryPhoto key={index} id={index.toString()}
+                  imgSource={url} onClick={() => setSelectedImg(url)}
+                />
+              ))}
+            </ul>
+          </div>
 
-        <ul className="image-gallery">
-          {files.map((url, index) => (
-            // <PhotoFrame key={index} imgSource={url} onClick={() => getImage(url)} />
-            <GalleryPhoto key={index} id={index.toString()}
-              imgSource={url} onClick={() => setSelectedImg(url)}
-            />
-          ))}
-        </ul>
 
-      </div>
+          {selectedImg.length > 0 && (
+            <GalleryViewerModal selectedPhoto={selectedImg} setSelectedPhoto={setSelectedImg} />
+          )}
+        </>
+      }
+    </Page>
 
 
 
-      {selectedImg.length > 0 && (
-        <GalleryModal selectedPhoto={selectedImg} setSelectedPhoto={setSelectedImg} />
-      )}
+    // <div className='app__gallery'>
+    //   <div className="container">
 
-    </div>
+    //     <ul className="image-gallery">
+    //       {files.map((url, index) => (
+    //         // <PhotoFrame key={index} imgSource={url} onClick={() => getImage(url)} />
+    //         <GalleryPhoto key={index} id={index.toString()}
+    //           imgSource={url} onClick={() => setSelectedImg(url)}
+    //         />
+    //       ))}
+    //     </ul>
+
+    //   </div>
+
+
+
+    //   {selectedImg.length > 0 && (
+    //     <GalleryViewerModal selectedPhoto={selectedImg} setSelectedPhoto={setSelectedImg} />
+    //   )}
+
+    // </div>
   )
 }
 

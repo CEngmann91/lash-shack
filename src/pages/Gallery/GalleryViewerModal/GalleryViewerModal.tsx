@@ -1,4 +1,4 @@
-import './GalleryModal.scss';
+import './GalleryViewerModal.scss';
 import React, { useEffect } from 'react'
 import { motion } from 'framer-motion';
 
@@ -9,7 +9,7 @@ interface iProps {
     // setSelectedPhoto: (value: string | null) => void;
 }
 
-const GalleryModal: React.FC<iProps> = ({ selectedPhoto, setSelectedPhoto, ...props }: iProps) => {
+const GalleryViewerModal: React.FC<iProps> = ({ selectedPhoto, setSelectedPhoto, ...props }: iProps) => {
 
 
     useEffect(() => {
@@ -34,10 +34,8 @@ const GalleryModal: React.FC<iProps> = ({ selectedPhoto, setSelectedPhoto, ...pr
                 initial={{ y: "-100vh" }}
                 animate={{ y: 0 }}
             />
-
-            {/* <img src={selectedPhoto} /> */}
         </motion.div>
     )
 }
 
-export default GalleryModal
+export default GalleryViewerModal
