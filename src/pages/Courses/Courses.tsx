@@ -5,43 +5,18 @@ import { CardFlip } from '../../components/Cards';
 import CourseCard from './CourseCard/CourseCard';
 import { getDocument } from '../../helpers/firebase/firestore';
 
+export enum Popularity {
+  Normal = "Normal",
+  MostPopular = "Most Popular",
+}
 export interface iCourse {
   id: number;
   title: string;
   description: string;
   price: number;
   salePrice: number;
+  popularity: Popularity.Normal;
 }
-/*const courses: iCourse[] = [
-  {
-    id: 0,
-    title: 'Classic',
-    description: 'Classic',
-    price: 10.00,
-    salePrice: 10.00,
-  },
-  {
-    id: 1,
-    title: 'Classic Xtra',
-    description: 'Classic Xtra',
-    price: 20.00,
-    salePrice: 8.00
-  },
-  {
-    id: 2,
-    title: 'Hybrid',
-    description: 'Hybrid',
-    price: 45.00,
-    salePrice: 40.00
-  },
-  {
-    id: 3,
-    title: 'Russian',
-    description: 'Russian',
-    price: 35.00,
-    salePrice: 27.00
-  },
-]*/
 
 const Courses = () => {
   const [loading, setLoading] = useState(true);
@@ -96,7 +71,7 @@ const Courses = () => {
 
           <div className="cards">
             {courseList.map((item, index) => {
-              const { title, description, price, salePrice } = item;
+              const { title, description, price, salePrice, popularity } = item;
 
               return (
                 <CourseCard
@@ -106,6 +81,7 @@ const Courses = () => {
                   description={description}
                   price={price}
                   salePrice={salePrice}
+                  popularity={popularity}
                 />
               )
             })}

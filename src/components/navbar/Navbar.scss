@@ -31,24 +31,43 @@
 
 
     &--scroll {
+        @media screen and (max-width: 900px) {
+            height: 60px;
+        }
+
         // Background colour for the navbar.
         background: rgba($pink-colour, 0.85);
         box-shadow: 0 0 20px rgba(128, 128, 128, 0.75);
         height: 80px;
 
-        border-bottom-left-radius: 20px;
-        border-bottom-right-radius: 20px;
+        // border-bottom-left-radius: 20px;
+        // border-bottom-right-radius: 20px;
 
-        .navbar-nav--links {
-            transition: 0.3s ease-in-out;
 
-            &-active {
-                border-bottom: solid 3px $white-colour;
+        .navbar-nav {
+
+            &--logo {
+        
+                img {
+                    transition: 0.3s ease-in-out;
+
+                    @media screen and (max-width: 900px) {
+                        width: 40px;
+                    }
+                }
             }
 
-            li {
-                a {
-                    color: $blue-colour;
+            &--links {
+                transition: 0.3s ease-in-out;
+    
+                &-active {
+                    border-bottom: solid 3px $white-colour;
+                }
+    
+                li {
+                    a {
+                        color: $blue-colour;
+                    }
                 }
             }
         }
@@ -58,7 +77,6 @@
         display: flex;
         justify-content: flex-start;
         align-items: center;
-
 
         img {
             width: 60px;
