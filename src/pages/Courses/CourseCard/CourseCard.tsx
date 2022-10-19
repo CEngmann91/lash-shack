@@ -2,6 +2,7 @@ import './CourseCard.scss';
 import React from 'react'
 import { CardFlip } from '../../../components/Cards';
 import { photography } from '../../../util/images';
+import { Popularity } from '../Courses';
 
 interface iProps {
     id: number;
@@ -14,8 +15,9 @@ interface iProps {
     description: string;
     price: number;
     salePrice: number;
+    popularity?: Popularity;
 }
-const CourseCard: React.FC<iProps> = ({ id, title, frontImg, description, price, salePrice, ...props }: iProps) => {
+const CourseCard: React.FC<iProps> = ({ id, title, frontImg, description, price, salePrice, popularity, ...props }: iProps) => {
 
 
     function toCurrency(value: number): string {
@@ -35,11 +37,17 @@ const CourseCard: React.FC<iProps> = ({ id, title, frontImg, description, price,
 
     return (
         <CardFlip id={id}
-            frontClassName='card-item'
+            frontClassName={`card-item ${popularity === Popularity.MostPopular ? "most-popular" : ""}`}
             frontChildren={
                 <>
                     {/* <img src={frontImg} /> */}
                     <img src={photography} />
+
+                    {popularity === Popularity.MostPopular &&
+                        <div className='most-popular-banner'>
+                            <p>Most Popular</p>
+                        </div>
+                    }
 
                     <div className="title-container">
                         <label>{title}</label>
@@ -51,12 +59,17 @@ const CourseCard: React.FC<iProps> = ({ id, title, frontImg, description, price,
                 <>
                     <div className="circle" />
                     <label>{title}</label>
+                    {/* <div className='description'></div> */}
                     <label className='description'>{description}</label>
                     <label>{toCurrency(price)}</label>
                     <label>{toCurrency(salePrice)}</label>
-                    { (salePrice < price) &&
-                        <label>{calculateSalePercentage(price, salePrice)}% off</label>
+                    {(salePrice < price) &&
+                        <div className='sale-sticker'>
+                            <label>{calculateSalePercentage(price, salePrice)}% off</label>
+                        </div>
                     }
+
+
 
                     <div className="buttons">
                         <button className="border-button enroll-button">

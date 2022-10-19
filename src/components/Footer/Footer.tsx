@@ -5,6 +5,8 @@ import { Email, Facebook, Instagram, Twitter, UpArrow } from '../../util/icons';
 import { CONTACT_EMAIL, NAVIGATION } from '../../constants/constants';
 
 const Footer = () => {
+
+
   return (
     <div className='app__footer'>
 
@@ -45,11 +47,12 @@ const Footer = () => {
 
       <div className="app__footer--contact">
         <p className='title'>Contact</p>
+        <p className='new-line address'>{"37 Mawney Road\nRomford\nRM7 7HL\n07435252126"}</p>
         {/* <a href=''> */}
-          <p>37 Mawney Road</p>
+          {/* <p>37 Mawney Road</p>
           <p>Romford</p>
           <p>RM7 7HL</p>
-          <p>07435252126</p>
+          <p>07435252126</p> */}
         {/* </a> */}
         <p>{CONTACT_EMAIL}</p>
       </div>

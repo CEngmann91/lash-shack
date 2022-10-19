@@ -2,13 +2,13 @@
 
 :root {
   --font-base:
-  Montserrat;
-    // "DM Sans", sans-serif;
-    // "Lato", sans-serif;
-    // Menlo;
-    // Monaco;
-    // 'Courier New';
-    // monospace;
+    Montserrat;
+  // "DM Sans", sans-serif;
+  // "Lato", sans-serif;
+  // Menlo;
+  // Monaco;
+  // 'Courier New';
+  // monospace;
 }
 
 body {
@@ -37,22 +37,15 @@ a {
 
 
 
-.app__book-now-button-container {
-  display: flex;
-  justify-content: flex-end;
+.app__book-now {
 
+  &-button {
+    
+    &-container {
+      display: flex;
+      justify-content: flex-end;
+    }
 
-  // // Extra large or Desktop devices
-  // @media screen and (max-width: 2000px) {
-  //   display: none;
-  // }
-
-  // // Mobile and tablet
-  // @media screen and (max-width: 1200px) {
-  //   display: none;
-  // }
-
-  .app__book-now-button {
     background: $white-colour;
     border: 3px solid $pink-colour;
 
@@ -92,7 +85,12 @@ a {
   }
 }
 
+.new-line {
+  white-space: pre-line;
+}
+
 .app__desktop-hide {
+
   // Extra large or Desktop devices
   @media screen and (max-width: 2000px) {
     display: none;
