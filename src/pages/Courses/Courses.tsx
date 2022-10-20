@@ -6,8 +6,9 @@ import CourseCard from './CourseCard/CourseCard';
 import { getDocument } from '../../helpers/firebase/firestore';
 
 export enum Popularity {
-  Normal = "Normal",
-  MostPopular = "Most Popular",
+  Normal = 0,
+  MostPopular = 1,
+  GreatDeal = 2,
 }
 export interface iCourse {
   id: number;
@@ -32,7 +33,8 @@ const Courses = () => {
       .then(res => {
         const array : iCourse[] = res['content'];
         // sort by price
-        let sorted = array.sort((a, b) => b.price - a.price);
+        // let sorted = array.sort((a, b) => b.price - a.price);
+        let sorted = array.sort((a, b) => b.popularity - a.popularity);
         // sorted = [...sorted].sort((a, b) => b.salePrice - a.salePrice);
         setCourseList(sorted);
         
