@@ -20,6 +20,10 @@ interface iProps {
 const CourseCard: React.FC<iProps> = ({ id, title, frontImg, description, price, salePrice, popularity, ...props }: iProps) => {
 
 
+    function isOnSale(): boolean {
+        return (salePrice < price);
+    }
+
     function toCurrency(value: number): string {
         return value.toLocaleString('en-UK', { style: 'currency', currency: 'GBP' });
     }
@@ -62,7 +66,7 @@ const CourseCard: React.FC<iProps> = ({ id, title, frontImg, description, price,
             backClassName='card-item-back'
             backChildren={
                 <>
-                    {(salePrice < price) &&
+                    {isOnSale() &&
                         <div className='sale-sticker'>
                             <label className="new-line">{calculateSalePercentage(price, salePrice)}{"%\nOFF"}</label>
                         </div>
@@ -72,6 +76,13 @@ const CourseCard: React.FC<iProps> = ({ id, title, frontImg, description, price,
                     <div className="info">
                         <h1 className="title">{title}</h1>
                         <h3 className='description'>{description}</h3>
+
+                        <div className='price-container'>
+                            <h4 className={`price ${isOnSale() && "is-on-sale"}`}>{toCurrency(price)}</h4>
+                            {isOnSale() &&
+                                <h4 className='sale-price'>{toCurrency(salePrice)}</h4>
+                            }
+                        </div>
                     </div>
 
                     
