@@ -1,7 +1,5 @@
 @import '../../../res/colours.scss';
 
-
-
 .card-item {
     flex: 1;
     display: flex;
@@ -10,8 +8,6 @@
 
     // background: linear-gradient(to bottom right, $blue-colour, $pink-colour);
     filter: drop-shadow(-10px 10px 3px $gray-colour);
-
-
 
 
     img {
@@ -46,7 +42,7 @@
         }
     }
 
-    .title-container {
+    .title-banner {
         position: absolute;
         display: flex;
         justify-content: center;
@@ -86,22 +82,33 @@
     }
 
     .sale-sticker {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         position: absolute;
         top: -0.5rem;
         right: -0.5rem;
 
-        width: 5rem;
-        height: 5rem;
+        width: 4rem;
+        height: 4rem;
         border-radius: 50%;
-        background: green;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        background: $pink-colour;
+        color: $blue-colour;
     }
 
-    .title {}
+    .info {
 
-    .description {}
+        .title {
+            font-size: 2rem;
+        }
+
+        .description {
+            font-size: 1.3rem;
+            padding: 2rem 0rem;
+            color: #585858;
+            font-weight: lighter;
+        }
+    }
 
 
     .buttons {
@@ -110,22 +117,35 @@
         left: 0;
         right: 0;
         width: 100%;
-        height: auto;
+        height: 30px; //auto;
+        padding: 0 3rem;
+        margin: 0.4rem 0;
 
 
         .enroll-button {
-            margin: 0.2rem 0rem;
-            height: 30px;
-            width: 60%;
-            cursor: pointer;
+            // margin: 0.2rem 0rem;
+            // height: 30px;
+            // width: 60%;
+            // cursor: pointer;
 
-            &:active {
-                // background: #e5e5e5;
-                -webkit-box-shadow: inset 0px 0px 5px $pink-colour;
-                -moz-box-shadow: inset 0px 0px 5px $pink-colour;
-                box-shadow: inset 0px 0px 5px $pink-colour;
-                outline: none;
-            }
+            // &:active {
+            //     // background: #e5e5e5;
+            //     -webkit-box-shadow: inset 0px 0px 5px $pink-colour;
+            //     -moz-box-shadow: inset 0px 0px 5px $pink-colour;
+            //     box-shadow: inset 0px 0px 5px $pink-colour;
+            //     outline: none;
+            // }
+
+
+
+            width: 100%;
+            padding: 0.8rem 0rem;
+            background: $blue-colour;
+            border: none;
+            color: white;
+            cursor: pointer;
+            border-radius: 30px;
+            font-weight: bolder;
         }
     }
 }
