@@ -1,5 +1,6 @@
 import './Navbar.scss';
 import { logo } from '../../util/images';
+import { useLocation } from 'react-router-dom';
 import React, { useState, useEffect } from 'react'
 import { BOOKING_URL, NAVIGATION } from '../../constants/constants';
 import NavbarItem from './NavbarItem/NavbarItem';
@@ -13,7 +14,7 @@ const container = {
     open: {
         y: 0,
         transition: {
-            delayChildren: 0.5,
+            // delayChildren: 0.5,
             // staggerChildren: 0.07,
         }
     }
@@ -24,6 +25,7 @@ const item = {
 }
 
 const Navbar = () => {
+    const location = useLocation();
     const [scrolledDown, setScrolledDown] = useState(false);
     const [menuIsOpen, setMenuIsOpen] = useState(false);
 
@@ -63,7 +65,9 @@ const Navbar = () => {
                 </NavbarItem>
             </div>
 
-            <ul className='navbar-nav--links'>
+            <ul className='navbar-nav--links' data-bb-colour={'rgba(255, 255, 255, 1)'}
+            // {location.pathname === "/" ? 'rgba(255, 255, 255, 1)' : 'rgba(239, 179, 183, 1)'}
+            >
                 {NAVIGATION.ROUTE.map(({ id, name, to }) => (
                     <li key={id}>
                         <NavbarItem
@@ -76,14 +80,17 @@ const Navbar = () => {
             </ul>
 
 
-            <div className='app__book-now-button-container app__mobile-hide'>
-                <a href={BOOKING_URL} className='border-button app__book-now-button' target="_blank">Book Now</a>
+            {/* <div className='app__book-now-button-container anim-bouncy app__mobile-hide'>
+                <a href={BOOKING_URL} className='border-button app__book-now-button' target="_blank">Book Now</a> */}
                 {/* <div className='border-button app__book-now-button'>Book Now</div> */}
-            </div>
+            {/* </div> */}
+
+
+            <a href={BOOKING_URL} className={`border-button app__book-now-button anim-bouncy app__mobile-hide`} target="_blank" rel="noreferrer">Book Now</a>
 
 
 
-            <div className='app__drawer'>
+            <div className='app__drawer app__desktop-hide'>
                 <div className="app__drawer--menuBtn-container">
                     <button onClick={toggleMenu}>
                         {!menuIsOpen ? <Menu /> : "X"}
@@ -93,13 +100,14 @@ const Navbar = () => {
                 <AnimatePresence>
                     {menuIsOpen &&
                         <motion.div
-                            className={`app__drawer--panel ${menuIsOpen && 'app__drawer--show'}`}
+                            className={`app__drawer--panel`}
+                            // ${menuIsOpen && 'app__drawer--show'}`}
                             variants={container}
                             initial="closed"
                             animate='open'
                             exit='closed'
                             transition={{
-                                default: { ease: "linear" }
+                                // default: { ease: "linear" }
                             }}
                         >
                             <motion.div variants={item}>

@@ -1,6 +1,7 @@
 import './GalleryPhoto.scss';
 import React, { MouseEventHandler, useCallback } from 'react'
 import { motion } from 'framer-motion';
+import ImageLoad from '../../../components/ImageLoad/ImageLoad';
 
 interface iProps {
   id: string;
@@ -24,6 +25,13 @@ const GalleryPhoto: React.FC<iProps> = ({ id, imgSource, onClick, ...props }: iP
     >
       <img src={imgSource} alt="" />
     </motion.li>
+
+
+
+
+    // <li className='gallery-photo' onClick={onClick}>
+    //   <ImageLoad src={imgSource} placeholder="" alt="" />
+    // </li>
   )
 }
 

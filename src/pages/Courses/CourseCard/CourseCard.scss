@@ -1,4 +1,6 @@
 @import '../../../res/colours.scss';
+@import '../../../util/keyframes.scss';
+
 
 .card-item {
     flex: 1;
@@ -6,7 +8,6 @@
     flex-direction: column;
     overflow: hidden;
 
-    // background: linear-gradient(to bottom right, $blue-colour, $pink-colour);
     filter: drop-shadow(-10px 10px 3px $gray-colour);
 
 
@@ -28,10 +29,11 @@
         right: 0;
         left: 0;
         height: auto;
-        background: $pink-colour;
-        // background-image: linear-gradient(to bottom,
-        //         rgba($pink-colour, 1),
-        //         rgba($pink-colour, 0.3) 90%);
+        // background: $pink-colour;
+        background-image: linear-gradient(to bottom,
+                rgba($pink-colour, 1),
+                rgba($pink-colour, 0.3) 90%,
+            );
         padding: 10px 0px;
 
 
@@ -54,6 +56,8 @@
         padding: 5px 0;
         background: $blue-colour;
 
+        animation: shine-pink 260ms;
+
         label {
             font-size: 20px;
             color: white;
@@ -69,17 +73,19 @@
     align-items: center;
 
 
-    .circle {
-        width: 10rem;
-        height: 10rem;
-        // background: linear-gradient(to bottom right, $blue-colour, $pink-colour);
-        background: linear-gradient(to right,
-                rgba(245, 70, 66, 0.75),
-                rgba(8, 83, 156, 0.75));
-        position: absolute;
-        border-radius: 50%;
-        z-index: 1;
-    }
+
+
+    // .circle {
+    //     width: 10rem;
+    //     height: 10rem;
+    //     // background: linear-gradient(to bottom right, $blue-colour, $pink-colour);
+    //     background: linear-gradient(to right,
+    //             rgba(245, 70, 66, 0.75),
+    //             rgba(8, 83, 156, 0.75));
+    //     position: absolute;
+    //     border-radius: 50%;
+    //     z-index: 1;
+    // }
 
     .sale-sticker {
         display: flex;
@@ -94,6 +100,8 @@
         border-radius: 50%;
         background: $pink-colour;
         color: $blue-colour;
+
+        // animation: shine-pink 260ms infinite;
     }
 
     .info {
@@ -114,18 +122,18 @@
             flex-direction: row;
             justify-content: center;
             align-items: center;
-            
+
+
             .price {
                 font-weight: lighter;
             }
-    
+
             .sale-price {
                 font-weight: bolder;
 
                 &::before {
-                    content: "\00a0 ";
+                    content: '\00a0';
                 }
-    
             }
         }
 
@@ -148,29 +156,26 @@
 
 
         .enroll-button {
-            // margin: 0.2rem 0rem;
-            // height: 30px;
-            // width: 60%;
-            // cursor: pointer;
-
-            // &:active {
-            //     // background: #e5e5e5;
-            //     -webkit-box-shadow: inset 0px 0px 5px $pink-colour;
-            //     -moz-box-shadow: inset 0px 0px 5px $pink-colour;
-            //     box-shadow: inset 0px 0px 5px $pink-colour;
-            //     outline: none;
-            // }
-
-
-
             width: 100%;
             padding: 0.8rem 0rem;
-            background: $blue-colour;
+            background: $pink-colour;
             border: none;
-            color: white;
-            cursor: pointer;
-            border-radius: 30px;
+            color: $blue-colour;
+            border-radius: 10px;
             font-weight: bolder;
+            overflow: hidden;
+
+            transition: 0.3s ease-in-out;
+
+            &:hover {
+                transform: scale(1.05);
+                animation: shine-pink 260ms;
+                cursor: pointer;
+            }
+
+            &:active {
+                transform: scale(0.95);
+            }
         }
     }
 }

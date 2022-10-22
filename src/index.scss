@@ -37,17 +37,21 @@ a {
 
 
 
+
+
 .app__book-now {
 
   &-button {
-    
+    width: 7rem;
+    height: auto;
+
     &-container {
       display: flex;
       justify-content: flex-end;
     }
 
     background: $white-colour;
-    border: 3px solid $pink-colour;
+    border: 3px solid $blue-colour;
 
     @media screen and (max-width: 900px) {
       position: fixed;
@@ -82,23 +86,18 @@ a {
         }
       }
     }
+
+
+    @media screen and (min-width: 1200px) {
+      transition: 0.3s ease-in-out;
+  
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
   }
 }
 
 .new-line {
   white-space: pre-line;
-}
-
-.app__desktop-hide {
-
-  // Extra large or Desktop devices
-  @media screen and (max-width: 2000px) {
-    display: none;
-  }
-}
-
-.app__mobile-hide {
-  @media screen and (max-width: 900px) {
-    display: none;
-  }
 }

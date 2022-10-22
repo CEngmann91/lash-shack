@@ -5,7 +5,7 @@
     grid-template-columns: auto auto auto;
     position: relative;
     // width: 100%;
-    height: 190px;
+    height: auto;
     padding: 20px;
     background: $blue-colour;
 
@@ -27,14 +27,13 @@
     }
 
 
-
     .title {
         @media screen and (max-width: 900px) {
             font-size: 18px;
         }
         width: fit-content;
         color: $pink-colour;
-        padding-bottom: 0.8rem;
+        padding-bottom: 0.5rem;
         font-size: 24px;
         font-weight: bold;
         text-decoration: underline;
@@ -99,12 +98,17 @@
         color: $white-colour;
         // background: green;
 
-        .address {
-            text-align: right;
-
+        p {
             @media screen and (max-width: 900px) {
                 font-size: 12px;
             }
+        }
+
+        .address {
+            text-align: right;
+        }
+
+        .email-address {
         }
     }
 }

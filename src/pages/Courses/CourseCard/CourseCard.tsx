@@ -1,7 +1,6 @@
 import './CourseCard.scss';
 import React from 'react'
 import { CardFlip } from '../../../components/Cards';
-import { aurora, photography } from '../../../util/images';
 import { Popularity } from '../Courses';
 
 interface iProps {
@@ -44,8 +43,7 @@ const CourseCard: React.FC<iProps> = ({ id, title, frontImg, description, price,
             frontClassName={`card-item ${popularity === Popularity.MostPopular ? "most-popular" : ""}`}
             frontChildren={
                 <>
-                    {/* <img src={frontImg} /> */}
-                    <img src={aurora} />
+                    <img src={frontImg} />
 
                     {popularity === Popularity.MostPopular &&
                         <div className='most-popular-banner'>
@@ -84,15 +82,6 @@ const CourseCard: React.FC<iProps> = ({ id, title, frontImg, description, price,
                             }
                         </div>
                     </div>
-
-                    
-                    {/* <label>{title}</label> */}
-                    {/* <div className='description'></div> */}
-                    {/* <label className='description'>{description}</label> */}
-                    {/* <label>{toCurrency(price)}</label> */}
-                    {/* <label>{toCurrency(salePrice)}</label> */}
-
-
 
                     <div className="buttons">
                         <button className="enroll-button">Enroll Now</button>
