@@ -1,24 +1,10 @@
 @mixin keyframes($name) {
-    @-webkit-keyframes #{$name} {
-        @content;
-    }
-
+    @-webkit-keyframes #{$name} { @content; }
     /* Safari & Chrome */
-    @-moz-keyframes #{$name} {
-        @content;
-    }
-
-    @-ms-keyframes #{$name} {
-        @content;
-    }
-
-    @-o-keyframes #{$name} {
-        @content;
-    }
-
-    @keyframes #{$name} {
-        @content;
-    }
+    @-moz-keyframes #{$name} { @content; }
+    @-ms-keyframes #{$name} { @content; }
+    @-o-keyframes #{$name} { @content; }
+    @keyframes #{$name} { @content; }
 }
 
 // e.g. "@include animation(animation-name-here)"
@@ -49,4 +35,10 @@
     -webkit-backdrop-filter: blur($amt);
     // -webkit-filter: blur($amt);
     backdrop-filter: blur($amt);
+}
+
+@mixin box-shadow($colour) {
+    -webkit-box-shadow: inset 0px 0px 5px $colour;
+    -moz-box-shadow: inset 0px 0px 5px $colour;
+    box-shadow: inset 0px 0px 5px $colour;
 }

@@ -45,13 +45,12 @@
     padding: 0.3em 1.2em;
     // margin: 0 0.3em 0.3em 0;
     box-sizing: border-box;
-    color: #000000;
+    color: black;
     text-align: center;
     text-decoration: none;
-    border: 0.1em solid $gray-colour;
+    border: 0.1em solid $blue-colour;
     border-radius: 20px;
     overflow: hidden;
-    cursor: pointer;
 
     transition: 0.2s ease-in;
 
@@ -75,14 +74,18 @@
     }
 
     &:hover {
+        cursor: pointer;
         background: $pink-colour;
+        color: white;
     }
 }
+
+
 
 .app__desktop-hide {
 
     // Extra large or Desktop devices
-    @media screen and (max-width: 2000px) {
+    @media screen and (min-width: 1200px) {
         display: none;
     }
 }
@@ -92,3 +95,12 @@
         display: none;
     }
 }
+
+
+
+
+
+
+////////////// EFFECTS \\\\\\\\\\\\\\
+
+///////////////////\\\\\\\\\\\\\\\\\\

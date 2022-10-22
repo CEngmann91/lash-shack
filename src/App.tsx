@@ -6,6 +6,7 @@ import { UpArrow } from './util/icons';
 import { About, Courses, Gallery, Landing, NotFound, Services, Testimonial } from './pages';
 
 function App() {
+  
 
   const RenderRoute = (component: React.ReactNode) => (
     <>

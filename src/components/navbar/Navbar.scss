@@ -14,7 +14,7 @@
     // Ensures that it stays at the top of the screen.
     position: fixed;
     top: 0;
-    // justify-content: space-between;
+    justify-content: space-between;
     align-items: center;
     padding: 0rem 2rem;
     // Add a blur
@@ -47,7 +47,7 @@
         .navbar-nav {
 
             &--logo {
-        
+
                 img {
                     transition: 0.3s ease-in-out;
 
@@ -59,11 +59,11 @@
 
             &--links {
                 transition: 0.3s ease-in-out;
-    
+
                 &-active {
                     border-bottom: solid 3px $white-colour;
                 }
-    
+
                 li {
                     a {
                         color: $blue-colour;
@@ -91,7 +91,27 @@
         margin-left: 3rem;
 
         &-active {
-            border-bottom: solid 3px $white-colour;
+
+            // &:hover {
+            //     &::after {
+            //         transform: scaleX(1);
+            //         transform-origin: right;
+            //     }
+            // }
+        
+            // &:after {
+            //     display: block;
+            //     content: '';
+            //     transform: scaleX(0);
+            //     transform-origin: left;
+            //     transition: transform 250ms ease-in-out;
+            //     transform: scaleX(1);
+        
+            //     border-bottom: 3px solid $gray-colour;
+            // }
+
+
+            border-bottom: solid 3px $gray-colour; //attr(data-bb-colour);
         }
 
         li {
@@ -160,12 +180,16 @@
                 font-size: 2rem;
                 text-transform: uppercase;
                 font-weight: 500;
-                
+
                 // transition: 0.3s ease-in-out;
 
                 &:hover {
                     // color: $pink-colour;
                     // text-shadow: 2px 2px 8px $pink-colour;
+                }
+
+                &:active {
+                    border-bottom: solid 3px $white-colour;
                 }
             }
         }

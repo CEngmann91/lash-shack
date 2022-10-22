@@ -4,6 +4,7 @@ import { ActivityIndicator, Page } from '../../components';
 import { CardFlip } from '../../components/Cards';
 import CourseCard from './CourseCard/CourseCard';
 import { getDocument } from '../../helpers/firebase/firestore';
+import { aurora, photography } from '../../util/images';
 
 export enum Popularity {
   Normal = 0,
@@ -28,6 +29,7 @@ const Courses = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    
 
     getDocument("courses", "7I2dfy5anxP6v75USrIc")
       .then(res => {
@@ -72,14 +74,17 @@ const Courses = () => {
           </p>
 
           <div className="cards">
-            {courseList.map((item, index) => {
+            {courseList.length != 0 && courseList.map((item, index) => {
               const { title, description, price, salePrice, popularity } = item;
 
               return (
                 <CourseCard
                   key={title} id={index}
                   title={title}
-                  frontImg={'https://images.unsplash.com/photo-1511447333015-45b65e60f6d5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=955&q=80'}
+                  frontImg={
+                    // 'https://images.unsplash.com/photo-1511447333015-45b65e60f6d5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=955&q=80'
+                    photography
+                  }
                   description={description}
                   price={price}
                   salePrice={salePrice}

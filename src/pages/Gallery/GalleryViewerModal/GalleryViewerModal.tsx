@@ -1,40 +1,61 @@
 import './GalleryViewerModal.scss';
-import React, { useEffect } from 'react'
-import { motion } from 'framer-motion';
+import React, { useEffect, useState } from 'react'
+import { AnimatePresence, motion } from 'framer-motion';
 
+
+const container = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 }
+}
+const item = {
+    hidden: { y: "-100vh" },
+    visible: { y: 0 }
+}
 
 interface iProps {
     selectedPhoto: string;
     setSelectedPhoto: React.Dispatch<React.SetStateAction<string>>
     // setSelectedPhoto: (value: string | null) => void;
 }
-
 const GalleryViewerModal: React.FC<iProps> = ({ selectedPhoto, setSelectedPhoto, ...props }: iProps) => {
+    const [visible, setVisible] = useState(true);
 
 
+    
     useEffect(() => {
-        if (selectedPhoto.length > 0)
+        if (selectedPhoto)
+        {
             // Prevents scrolling whilst the menu is visible.
             document.body.style.overflow = "hidden";
+            setVisible(true);
+        }
     }, [])
 
 
     const handleClick = () => {
         document.body.style.overflow = "scroll";
-        setSelectedPhoto("");
+        setVisible(false);
     }
 
     return (
-        <motion.div className='backdrop' onClick={handleClick}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-        >
-
-            <motion.img src={selectedPhoto} alt="enlarged pic"
-                initial={{ y: "-100vh" }}
-                animate={{ y: 0 }}
-            />
-        </motion.div>
+        <AnimatePresence onExitComplete={() => { if (!visible) setSelectedPhoto("") }}>
+            {visible &&
+                <motion.div
+                    className='backdrop'
+                    variants={container}
+                    initial="hidden"
+                    animate='visible'
+                    exit='hidden'
+                    onClick={handleClick}
+                >
+                    <motion.img
+                        src={selectedPhoto}
+                        alt="enlarged pic"
+                        variants={item}
+                    />
+                </motion.div>
+            }
+        </AnimatePresence>
     )
 }
 

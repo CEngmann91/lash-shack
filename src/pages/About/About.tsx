@@ -10,14 +10,9 @@ const About = () => {
     // <div className="app__about">About</div>
 
     <Page id='services' className='app__about' header='About'>
-
-
+      
       {/* <div className="box">Brings back memories...</div> */}
-
       {/* <a className="effect-1" href="#" title="Learn More">Learn More</a> */}
-
-
-
 
     </Page>
   )

@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { Star } from '../../../util/icons';
 import moment from 'moment';
 
-const TestimonialCard: React.FC<iReview> = ({ id, consumer, starRating, title, description, ...props }: iReview) => {
+const TestimonialCard: React.FC<iReview> = ({ id, client, starRating, title, description, ...props }: iReview) => {
 
     const getDate = (date : string) => {
         return moment(date, 'DD/MM/YYYY').fromNow();
@@ -46,10 +46,10 @@ const TestimonialCard: React.FC<iReview> = ({ id, consumer, starRating, title, d
                         </div>
 
 
-                        <label className='back--date'>{getDate(consumer.createdAt)}</label>
+                        <label className='back--date'>{getDate(client.createdAt)}</label>
 
                         <div className="back--footer">
-                            <label className="name">~~ {consumer.displayName}</label>
+                            <label className="name">~~ {client.displayName}</label>
                         </div>
 
                         {/* <div className="back--name">
