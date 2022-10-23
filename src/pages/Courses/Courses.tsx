@@ -11,12 +11,17 @@ export enum Popularity {
   MostPopular = 1,
   GreatDeal = 2,
 }
+export interface iSale {
+  price: number;
+  startDate: string;
+  endDate: string;
+}
 export interface iCourse {
   id: number;
   title: string;
   description: string;
   price: number;
-  salePrice: number;
+  sale: iSale;
   popularity: Popularity.Normal;
 }
 
@@ -29,17 +34,17 @@ const Courses = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    
+
 
     getDocument("courses", "7I2dfy5anxP6v75USrIc")
       .then(res => {
-        const array : iCourse[] = res['content'];
+        const array: iCourse[] = res['content'];
         // sort by price
         // let sorted = array.sort((a, b) => b.price - a.price);
         let sorted = array.sort((a, b) => b.popularity - a.popularity);
         // sorted = [...sorted].sort((a, b) => b.salePrice - a.salePrice);
         setCourseList(sorted);
-        
+
         setLoading(false);
       })
       .catch((error) => {
@@ -75,7 +80,7 @@ const Courses = () => {
 
           <div className="cards">
             {courseList.length != 0 && courseList.map((item, index) => {
-              const { title, description, price, salePrice, popularity } = item;
+              const { title, description, price, sale, popularity } = item;
 
               return (
                 <CourseCard
@@ -87,7 +92,7 @@ const Courses = () => {
                   }
                   description={description}
                   price={price}
-                  salePrice={salePrice}
+                  sale={sale}
                   popularity={popularity}
                 />
               )

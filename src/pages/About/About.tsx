@@ -7,14 +7,22 @@ const About = () => {
 
 
   return (
-    // <div className="app__about">About</div>
+    <>
+      <Page id='about' className='app__about' header='About'>
 
-    <Page id='services' className='app__about' header='About'>
-      
-      {/* <div className="box">Brings back memories...</div> */}
-      {/* <a className="effect-1" href="#" title="Learn More">Learn More</a> */}
+        <div className="box">Brings back memories...</div>
 
-    </Page>
+
+
+
+
+      </Page>
+
+
+      <Page id='meet' className='app__about--banner' header='Meet Our Experts' headerClassName='banner--expert-title'>
+        
+      </Page>
+    </>
   )
 }
 

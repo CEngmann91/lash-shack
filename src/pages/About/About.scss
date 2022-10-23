@@ -1,62 +1,45 @@
 @import '../../res/colours.scss';
 
+$banner-height: 400px;
+
 .app__about {
     min-height: 100vh;
 
 
-
-
-
-
-
-
-
-    // .box {
-    //     display: flex;
-    //     align-items: center;
-    //     justify-content: center;
-    //     width: 200px;
-    //     height: 50px;
-    //     border: 2px solid black;
-    //     box-shadow: 2px 2px gray;
-
-    //     transition: all 0.2s linear 0s;
-
-    //     &:hover {
-    //         box-shadow: 10px 10px gray;
-    //     }
-    // }
-
-
-
-
-    .effect-1 {
-        transition: all 0.2s linear 0s;
-
-        &:before {
-            content: "->";
-            // font-family: FontAwesome;
-            color: red;
-            font-size: 15px;
-            position: absolute;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            right: 0;
-            top: 0;
-            opacity: 1;
-            height: 100%;
-            width: 40px;
-            transition: 0.2s linear 0s;
+    &--banner {
+        padding-top: 1rem;
+        background: rgba($pink-colour, 0.8);
+        width: 100%;
+        @media screen and (min-width: 1200px) {
+            height: $banner-height;
         }
 
-        &:hover {
-            text-indent: -20px;
+        // .list {
+        //     display: flex;
+        //     flex-wrap: wrap;
+        //     justify-content: center;
+        //     align-items: center;
+        // }
+    }
 
-            &:before {
-                opacity: 1;
-                text-indent: 0px;
-            }
+
+
+
+
+
+    .box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 200px;
+        height: 50px;
+        border: 2px solid black;
+        box-shadow: 2px 2px gray;
+
+        transition: all 0.2s linear 0s;
+
+        &:hover {
+            box-shadow: 5px 5px gray;
         }
     }
 
@@ -65,4 +48,11 @@
 
 
 
+
+}
+
+.banner--expert-title {
+    font-size: 26px;
+    border-bottom: 3px solid rgba($blue-colour, 0.4);
+    // background: green;
 }

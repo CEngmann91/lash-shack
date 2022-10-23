@@ -3,6 +3,19 @@
 
 $banner-height: 300px;
 
+.overlay {
+    flex: 1;
+    display: flex;
+    height: calc(100% - $banner-height);
+    width: 100vw;
+    background: rgba($color: #000000, $alpha: 0.3);
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    z-index: 0;
+}
+
 .app__landing {
     min-height: 100vh;
     // margin-top: 70px;
@@ -46,169 +59,127 @@ $banner-height: 300px;
         // font-family: cursive;
         padding-top: 10px;
     }
-}
-
-.overlay {
-    flex: 1;
-    display: flex;
-    height: calc(100% - $banner-height);
-    width: 100vw;
-    background: rgba($color: #000000, $alpha: 0.3);
-    position: absolute;
-    top: 0;
-    left: 0;
-
-    z-index: 0;
-}
 
 
 
 
 
+    &--banner {
+        display: grid;
+        width: 100%;
+        background: rgba($pink-colour, 0.8);
+        justify-content: center;
+        align-items: center;
+        padding: .5rem 2rem;
+        margin-top: 100px;
+        @include blur(7px);
 
-
-.banner {
-    display: grid;
-    grid-gap: 10px;
-
-    @media screen and (min-width: 1200px) {
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: 1fr;
         height: $banner-height;
-
-        // .div1 {
-        //     grid-area: 1 / 1 / 2 / 2;
+        grid-gap: 10px;
+        // @media screen and (min-width: 1200px) {
         // }
-
-        // .div2 {
-        //     grid-area: 1 / 2 / 2 / 3;
-        // }
-
-        // .div3 {
-        //     grid-area: 1 / 3 / 2 / 4;
-        // }
-    }
-
-    width: 100%;
-    background: rgba($pink-colour, 0.8);
-    justify-content: center;
-    align-items: center;
-    padding: .5rem 2rem;
-    margin-top: 100px;
-    @include blur(7px);
-
-    @media screen and (max-width: 900px) {
-        grid-template-columns: 1fr;
-        grid-template-rows: repeat(3, 1fr);
-        height: calc(3 * 25rem + (3 * 10px));
-        // padding: .5rem 5rem;
-    }
-
-
-
-
-
-    // display: grid;
-
-    // @media screen and (max-width: 900px) {
-    //     grid-template-columns: auto;
-    //     grid-template-rows: auto auto auto;
-    //     height: auto;
-    // }
-    // grid-template-columns: auto auto auto;
-    // grid-gap: 10px;
-    // width: 100%;
-    // height: $banner-height;
-    // // justify-content: center;
-    // // align-items: center;
-    // background: rgba($pink-colour, 0.8);
-    // padding: .5rem 2rem;
-    // margin-top: 100px;
-    // @include blur(7px);
-
-
-    .icon {
-        width: auto;
-        height: auto;
-        // padding: 10px;
-        margin-top: 20px;
-    }
-
-    .item {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        width: 25rem;
-        height: 100%;
 
         @media screen and (max-width: 900px) {
-            width: 100%;
-            height: 25rem;
-        }
-        background: transparent;
-        // background: $blue-colour;
-        justify-content: flex-start;
-        align-items: center;
-        padding: 1.1rem;
-        color: $white-colour;
-
-
-        svg {
-            width: 30px;
-            height: 30px;
-            color: $white-colour;
-        }
-
-        .title {
-            margin: 10px 0;
-        }
-
-        .description {
-            text-align: center;
-            height: 70px;
+            height: calc(3 * 20rem + (3 * 10px));
+            grid-template-columns: 1fr;
+            grid-template-rows: repeat(3, 1fr);
         }
 
 
-        button {
-            padding: 0.4rem 1.1rem;
-            border-radius: 10px;
-            border: 0.5px solid $gray-colour;
-            transition: 0.3s ease-in-out;
-
-            &:active {
-                transform: scale(0.95);
-            }
-
-            &:hover {
-                cursor: pointer;
-                border: 2px solid $gray-colour;
-                background: $pink-colour;
-                color: $white-colour;
-
-                transform: scale(1.05);
-                @include shine-effect($pink-colour-HSL);
-            }
+        .icon {
+            width: auto;
+            height: auto;
+            // padding: 10px;
+            margin-top: 20px;
         }
-    }
 
-    div {
+        .item {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            width: 25rem;
+            height: 100%;
 
-        &:nth-child(2) {
-            background: $pink-colour;
-            padding: 1.1rem;
-
-            .border {
+            @media screen and (max-width: 900px) {
                 width: 100%;
-                height: 100%;
-                display: flex;
-                flex-direction: column;
-                justify-content: flex-start;
-                align-items: center;
-                border: 0.6px solid $white-colour;
+                height: 20rem;
+            }
+            background: transparent;    // $blue-colour;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 1.1rem;
+            color: $white-colour;
+
+
+            svg {
+                width: 30px;
+                height: 30px;
+                color: $white-colour;
+            }
+
+            .title {
+                margin: 10px 0;
+            }
+
+            .description {
+                text-align: center;
+                height: 70px;
+            }
+
+
+            button {
+                padding: 0.4rem 1.1rem;
+                border-radius: 10px;
+                border: 0.5px solid $gray-colour;
+                transition: 0.3s ease-in-out;
+
+                &:active {
+                    transform: scale(0.95);
+                }
+
+                &:hover {
+                    cursor: pointer;
+                    border: 2px solid $gray-colour;
+                    background: $pink-colour;
+                    color: $white-colour;
+
+                    transform: scale(1.05);
+                    @include shine-effect($pink-colour-HSL);
+                }
+            }
+        }
+
+        div {
+
+            &:nth-child(2) {
+                background: $pink-colour;
+                padding: 1.1rem;
+
+                .border {
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-start;
+                    align-items: center;
+                    border: 0.6px solid $white-colour;
+                }
             }
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
 
 
 

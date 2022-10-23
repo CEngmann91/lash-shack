@@ -21,8 +21,8 @@ const Landing = () => {
 
 
 
-      <div className="banner">
-        <div className="div1 item">
+      <div className="app__landing--banner">
+        <div className="item">
           <Pencil className="icon" />
           <h1 className='title'>Latest Practises</h1>
           <label className='description'>We follow a strict regime to ensure consistency throughout each of our clients.</label>
@@ -30,7 +30,7 @@ const Landing = () => {
             <button>LEARN MORE</button>
           </div>
         </div>
-        <div className="div2 item">
+        <div className="item">
           <div className='border'>
             <Star className="icon" />
             <h1 className='title'>Certified Institude</h1>
@@ -40,7 +40,7 @@ const Landing = () => {
             </div>
           </div>
         </div>
-        <div className="div3 item">
+        <div className="item">
           <Eye className="icon" />
           <h1 className='title'>Expert Technicians</h1>
           <label className='description'>A team of fully trained techinicians ready to provide an excellent & professional service.</label>
