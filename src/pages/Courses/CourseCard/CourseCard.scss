@@ -1,5 +1,6 @@
 @import '../../../res/colours.scss';
 @import '../../../util/keyframes.scss';
+@import '../../../util/mixin.scss';
 
 
 .card-item {
@@ -56,7 +57,7 @@
         padding: 5px 0;
         background: $blue-colour;
 
-        animation: shine-pink 260ms;
+        // animation: shine-pink 260ms;
 
         label {
             font-size: 20px;
@@ -169,7 +170,8 @@
 
             &:hover {
                 transform: scale(1.05);
-                animation: shine-pink 260ms;
+                // animation: shine-pink 260ms;
+                // @include shine-effect($pink-colour-HSL);
                 cursor: pointer;
             }
 

@@ -86,7 +86,7 @@ const Navbar = () => {
             {/* </div> */}
 
 
-            <a href={BOOKING_URL} className={`border-button app__book-now-button anim-bouncy app__mobile-hide`} target="_blank" rel="noreferrer">Book Now</a>
+            <a href={BOOKING_URL} className={`border-button book-now-button app__mobile-hide`} target="_blank" rel="noreferrer">Book Now</a>
 
 
 

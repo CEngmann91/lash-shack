@@ -6,7 +6,7 @@ import { UpArrow } from './util/icons';
 import { About, Courses, Gallery, Landing, NotFound, Services, Testimonial } from './pages';
 
 function App() {
-  
+
 
   const RenderRoute = (component: React.ReactNode) => (
     <>
@@ -15,9 +15,9 @@ function App() {
       <Footer />
 
 
-      <div className="app__desktop-hide">
+      {/* <div className="app__desktop-hide">
         <div className='border-button app__book-now-button'>Book Now</div>
-      </div>
+      </div> */}
 
 
 

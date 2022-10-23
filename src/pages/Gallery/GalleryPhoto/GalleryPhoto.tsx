@@ -1,7 +1,7 @@
 import './GalleryPhoto.scss';
 import React, { MouseEventHandler, useCallback } from 'react'
 import { motion } from 'framer-motion';
-import ImageLoad from '../../../components/ImageLoad/ImageLoad';
+// import ImageLoad from '../../../components/ImageLoad/ImageLoad';
 
 interface iProps {
   id: string;

@@ -1,6 +1,6 @@
 // https://codeburst.io/how-to-progressively-load-images-in-react-using-hooks-80c50fd447cd
 
-import './ImageLoad.scss';
+/*import './ImageLoad.scss';
 import React, { useState, useEffect } from 'react';
 
 interface iProps {
@@ -37,3 +37,4 @@ const ImageLoad: React.FC<iProps> = ({ src, placeholder, alt, ...props }: iProps
 }
 
 export default ImageLoad
+*/

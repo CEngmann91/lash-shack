@@ -11,11 +11,11 @@ import { ActivityIndicator, Page } from '../../components';
 
 
 const Gallery = () => {
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
-
   const [files, setFiles] = useState<string[]>([]);
   const [selectedImg, setSelectedImg] = useState("");
+
 
   const memoizedList = useMemo(() => {
     return (
@@ -34,12 +34,8 @@ const Gallery = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
 
-
-    if (memoizedList.length == 0)
-    {
-      setLoading(true)
+    if (!files)
       fetchImages();
-    }
 
 
     /*console.log("files.length - ", files.length);
@@ -60,19 +56,22 @@ const Gallery = () => {
 
 
   const fetchImages = async () => {
+    setIsLoading(true)
+
     getImages(FIREBASE_GALLERY_IMAGES)
       .then(res => {
         setFiles(res);
-        setLoading(false);
+        setIsLoading(false);
         // console.log("all done");
       })
       .catch(error => {
+        setIsLoading(false);
         setError(error);
       });
   }
 
 
-  if (loading) {
+  if (isLoading) {
     return (
       <Page id='gallery' className='app__gallery' header='Love What You See?'>
         <div className='app__flex app__min-height'>
