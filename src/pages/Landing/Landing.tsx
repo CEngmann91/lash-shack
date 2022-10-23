@@ -16,12 +16,44 @@ const Landing = () => {
           <h1 className='head-text left'>Lash</h1><h1 className='head-text right'>Shack</h1>
         </div>
 
-        {/* <h1 className='head-text app__landing--name'><span>Lash Shack</span></h1> */}
-        <p className='app__landing--slogan'>New beginnings start here</p>
+        <p className='app__landing--slogan'>New Beginnings Start Here</p>
       </div>
 
 
-      <div className='banner'>
+
+      <div className="banner">
+        <div className="div1 item">
+          <Pencil className="icon" />
+          <h1 className='title'>Latest Practises</h1>
+          <label className='description'>We follow a strict regime to ensure consistency throughout each of our clients.</label>
+          <div className="buttons">
+            <button>LEARN MORE</button>
+          </div>
+        </div>
+        <div className="div2 item">
+          <div className='border'>
+            <Star className="icon" />
+            <h1 className='title'>Certified Institude</h1>
+            <label className='description'>Fully Accredited</label>
+            <div className="buttons">
+              <button>LEARN MORE</button>
+            </div>
+          </div>
+        </div>
+        <div className="div3 item">
+          <Eye className="icon" />
+          <h1 className='title'>Expert Technicians</h1>
+          <label className='description'>A team of fully trained techinicians ready to provide an excellent & professional service.</label>
+          {/* <div className="buttons"> */}
+            <button>LEARN MORE</button>
+          {/* </div> */}
+        </div>
+      </div>
+
+
+
+
+      {/* <div className='banner'>
         <div className="item">
           <Pencil className="icon" />
           <h1 className='title'>Latest Practises</h1>
@@ -50,7 +82,10 @@ const Landing = () => {
             <button>Learn More</button>
           </div>
         </div>
-      </div>
+      </div> */}
+
+
+
     </Parallax>
   );
 }
