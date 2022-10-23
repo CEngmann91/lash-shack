@@ -1,9 +1,15 @@
 @import './res/colours.scss';
 @import './util/mixin.scss';
 
+@font-face {
+  font-family: 'HelveticaNeue';
+  src: local('HelveticaNeue'), url('./assets/fonts/helveticaneue/HelveticaNeue.ttf') format('opentype');
+}
+
 :root {
   --font-base:
-  Montserrat;
+  HelveticaNeue;
+  // Montserrat;
   // "DM Sans", sans-serif;
   // "Lato", sans-serif;
   // Menlo;
@@ -11,6 +17,7 @@
   // 'Courier New';
   // monospace;
 }
+
 
 body {
   font-family: var(--font-base);
