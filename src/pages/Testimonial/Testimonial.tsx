@@ -13,7 +13,11 @@ export interface iReview {
   description: string;
   starRating: number;
   client: iClient;
+
+
   instagramUrl?: string;
+  // createdAt: string;
+
 }
 const reviews: iReview[] = [
   {
@@ -81,7 +85,7 @@ const Testimonial = () => {
     </Page>
     // </Parallax>
 
-    
+
 
     // <div className='app__testimonial'>
     //   <h1 className="head-text title"><span>Customer Reviews</span></h1>
