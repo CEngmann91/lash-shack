@@ -98,7 +98,7 @@
             //         transform-origin: right;
             //     }
             // }
-        
+
             // &:after {
             //     display: block;
             //     content: '';
@@ -106,7 +106,7 @@
             //     transform-origin: left;
             //     transition: transform 250ms ease-in-out;
             //     transform: scaleX(1);
-        
+
             //     border-bottom: 3px solid $gray-colour;
             // }
 
@@ -131,8 +131,30 @@
                 font-size: 18px;
                 font-weight: bold;
                 text-decoration: none;
-                font-family: cursive;
+                // font-family: cursive;
             }
+        }
+    }
+
+    .book-now-button {
+        width: 7.2rem;
+        height: auto;
+        background: $pink-colour;
+        border: 0.5px solid $gray-colour;
+        border-radius: 10px;
+
+        transition: 0.3s ease-in-out;
+
+        
+        &:active {
+            transform: scale(0.95);
+        }
+
+        &:hover {
+            border: 2px solid $gray-colour;
+
+            transform: scale(1.05);
+            @include shine-effect($pink-colour-HSL);
         }
     }
 }

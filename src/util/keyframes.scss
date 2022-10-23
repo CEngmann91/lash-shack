@@ -6,13 +6,12 @@
     from {
         transform: rotate(0deg);
     }
-
     to {
         transform: rotate(360deg);
     }
 }
 
-@include keyframes(shine-pink) {
+/*@include keyframes(shine-pink) {
     0% {
         background: linear-gradient(30deg,
                 hsl(260, 85%, 95%) 0%,
@@ -41,7 +40,7 @@
                 $pink-colour-HSL 0%,
                 hsl(260, 85%, 95%) 100%);
     }
-}
+}*/
 
 // @include keyframes(bouncy) {
 @keyframes bouncy {
