@@ -34,7 +34,7 @@ const Gallery = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
 
-    if (!files)
+    if (memoizedList.length == 0)
       fetchImages();
 
 
