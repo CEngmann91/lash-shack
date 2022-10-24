@@ -36,9 +36,9 @@ function App() {
         RenderRoute(
           <>
             <Landing />
-            <Testimonial />
             <About />
             <MeetExperts />
+            <Testimonial />
             <TrainingReview />
           </>
         )

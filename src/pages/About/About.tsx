@@ -1,17 +1,22 @@
 import './About.scss';
 import React, { useEffect } from 'react';
 import { Page } from '../../components';
+import { Parallax } from 'react-parallax';
+import { photography } from '../../util/images';
 
 const About = () => {
 
   return (
-    <Page id='about' className='app__about' header='About'>
+    <Parallax blur={3} bgImage={photography} strength={300}>
+      <Page id='about' className='app__about' header='About'>
 
-      {/* <div className="box">Brings back memories...</div> */}
+        {/* <div className="box">Brings back memories...</div> */}
 
 
 
-    </Page>
+      </Page>
+    </Parallax>
+
   )
 }
 
