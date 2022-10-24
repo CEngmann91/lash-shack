@@ -1,0 +1,26 @@
+@import '../../res/styles.scss';
+@import '../../constants/constants.scss';
+
+.app__meet-experts-banner {
+    padding-top: 1rem;
+    background: rgba($pink-colour, 0.8);
+    width: 100%;
+
+    @media screen and (min-width: 1200px) {
+        height: $banner-height;
+    }
+
+    &-title {
+        font-size: 26px;
+        border-bottom: 3px solid rgba($blue-colour, 0.4);
+        // background: green;
+    }
+
+
+    .list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+}

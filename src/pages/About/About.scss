@@ -1,47 +1,30 @@
 @import '../../res/colours.scss';
 
-$banner-height: 400px;
 
 .app__about {
     min-height: 100vh;
-
-
-    &--banner {
-        padding-top: 1rem;
-        background: rgba($pink-colour, 0.8);
-        width: 100%;
-        @media screen and (min-width: 1200px) {
-            height: $banner-height;
-        }
-
-        // .list {
-        //     display: flex;
-        //     flex-wrap: wrap;
-        //     justify-content: center;
-        //     align-items: center;
-        // }
-    }
+    background: green;
 
 
 
 
 
 
-    .box {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 200px;
-        height: 50px;
-        border: 2px solid black;
-        box-shadow: 2px 2px gray;
+    // .box {
+    //     display: flex;
+    //     align-items: center;
+    //     justify-content: center;
+    //     width: 200px;
+    //     height: 50px;
+    //     border: 2px solid black;
+    //     box-shadow: 2px 2px gray;
 
-        transition: all 0.2s linear 0s;
+    //     transition: 0.2s linear 0s;
 
-        &:hover {
-            box-shadow: 5px 5px gray;
-        }
-    }
+    //     &:hover {
+    //         box-shadow: 5px 5px gray;
+    //     }
+    // }
 
 
 
@@ -49,10 +32,4 @@ $banner-height: 400px;
 
 
 
-}
-
-.banner--expert-title {
-    font-size: 26px;
-    border-bottom: 3px solid rgba($blue-colour, 0.4);
-    // background: green;
 }

@@ -1,10 +1,11 @@
 import { BsTwitter, BsStarFill, BsFillArrowUpCircleFill, BsFillPencilFill } from 'react-icons/bs';
 import { FaFacebookF, FaRegEye } from 'react-icons/fa';
-import { AiFillInstagram } from 'react-icons/ai';
+import { AiFillCloseCircle, AiFillInstagram } from 'react-icons/ai';
 import { MdEmail } from 'react-icons/md';
 import { GiHamburgerMenu } from 'react-icons/gi';
 
 export {
+    AiFillCloseCircle as Close,
     GiHamburgerMenu as Menu,
 
     AiFillInstagram as Instagram,

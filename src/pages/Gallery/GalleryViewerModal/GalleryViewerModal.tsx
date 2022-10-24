@@ -1,6 +1,7 @@
 import './GalleryViewerModal.scss';
 import React, { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion';
+import { Close } from '../../../util/icons';
 
 
 const container = {
@@ -21,10 +22,9 @@ const GalleryViewerModal: React.FC<iProps> = ({ selectedPhoto, setSelectedPhoto,
     const [visible, setVisible] = useState(true);
 
 
-    
+
     useEffect(() => {
-        if (selectedPhoto)
-        {
+        if (selectedPhoto) {
             // Prevents scrolling whilst the menu is visible.
             document.body.style.overflow = "hidden";
             setVisible(true);
@@ -46,13 +46,11 @@ const GalleryViewerModal: React.FC<iProps> = ({ selectedPhoto, setSelectedPhoto,
                     initial="hidden"
                     animate='visible'
                     exit='hidden'
-                    onClick={handleClick}
                 >
-                    <motion.img
-                        src={selectedPhoto}
-                        alt="enlarged pic"
-                        variants={item}
-                    />
+                    <motion.img src={selectedPhoto} alt="enlarged pic" variants={item} />
+                    <button className="close-button" onClick={handleClick}>
+                        <Close />
+                    </button>
                 </motion.div>
             }
         </AnimatePresence>
