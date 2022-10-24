@@ -26,7 +26,7 @@ export interface iCourse {
 }
 
 const Courses = () => {
-  const [loading, setLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [courseList, setCourseList] = useState<iCourse[]>([]);
 
@@ -45,61 +45,72 @@ const Courses = () => {
         // sorted = [...sorted].sort((a, b) => b.salePrice - a.salePrice);
         setCourseList(sorted);
 
-        setLoading(false);
+        setIsLoading(false);
       })
       .catch((error) => {
-        alert(error);
+        // alert(error);
         setError(error);
+        setIsLoading(false);
       });
 
   }, [])
 
 
-  return (
-    <Page id='courses' className='app__courses' header='Be Your Own Boss'>
-      {loading ?
+
+  if (isLoading) {
+    return (
+      <Page id='courses' className='app__courses' header='Be Your Own Boss'>
         <div className='app__flex app__min-height'>
           <ActivityIndicator borderColour='rgba(239, 179, 183, 1)' borderSpinColour='rgba(16, 40, 121, 1)' />
         </div>
-        :
-        <>
-          <h3>Fully Accredited</h3>
+      </Page>
+    );
+  }
 
-          {/* <p>Classic, Classic Xtra, Hybrid, Russian.</p>
-          <p>Live Models</p>
-          <p>In-depth Manuals</p>
-          <p>Ongoing Support</p>
-          <p>Fully Accredited</p>
-          <p>Over 100 Students Qualified.</p> */}
-
-          <br />
-          <p>
-            We offer a range of different courses to help advance your capabilities. We pride ourselves on building relationships and inspiring people to achieve their best.
-            All courses come with in-depth manuals, live models
-          </p>
-
-          <div className="cards">
-            {courseList.length != 0 && courseList.map((item, index) => {
-              const { title, description, price, sale, popularity } = item;
-
-              return (
-                <CourseCard
-                  key={title} id={index}
-                  title={title}
-                  frontImg={
-                    // 'https://images.unsplash.com/photo-1511447333015-45b65e60f6d5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=955&q=80'
-                    photography
-                  }
-                  description={description}
-                  price={price}
-                  sale={sale}
-                  popularity={popularity}
-                />
-              )
-            })}
-          </div>
-        </>
+  return (
+    <Page id='courses' className='app__courses' header='Be Your Own Boss'>
+      {error && 
+        <div className='app__flex app__min-height'>
+          {error}
+        </div>
       }
+      <>
+        <h3>Fully Accredited</h3>
+
+        {/* <p>Classic, Classic Xtra, Hybrid, Russian.</p>
+        <p>Live Models</p>
+        <p>In-depth Manuals</p>
+        <p>Ongoing Support</p>
+        <p>Fully Accredited</p>
+        <p>Over 100 Students Qualified.</p> */}
+
+        <br />
+        <p>
+          We offer a range of different courses to help advance your capabilities. We pride ourselves on building relationships and inspiring people to achieve their best.
+          All courses come with in-depth manuals, live models
+        </p>
+
+        <div className="cards">
+          {courseList.length != 0 && courseList.map((item, index) => {
+            const { title, description, price, sale, popularity } = item;
+
+            return (
+              <CourseCard
+                key={title} id={index}
+                title={title}
+                frontImg={
+                  // 'https://images.unsplash.com/photo-1511447333015-45b65e60f6d5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=955&q=80'
+                  photography
+                }
+                description={description}
+                price={price}
+                sale={sale}
+                popularity={popularity}
+              />
+            )
+          })}
+        </div>
+      </>
     </Page>
   )
 }

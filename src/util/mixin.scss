@@ -45,6 +45,10 @@
 
 
 @mixin shine-effect($colour-HSL) {
+    @include shine-effect-delayed($colour-HSL, 0);
+}
+
+@mixin shine-effect-delayed($colour-HSL, $delay) {
     @include keyframes(shine-anim) {
         0% {
             background: linear-gradient(30deg,
@@ -76,6 +80,46 @@
         }
     }
     animation: shine-anim 260ms;
+    animation-delay: $delay;
+    // @include animation('shine-anim 260ms');
+    // @include animation(shine-anim);
+}
+
+@mixin shine-effect-delayed-infinite($colour-HSL, $delay) {
+    @include keyframes(shine-anim) {
+        0% {
+            background: linear-gradient(30deg,
+                    hsl(260, 85%, 95%) 0%,
+                    $colour-HSL 25%);
+        }
+        25% {
+            background: linear-gradient(30deg,
+                    $colour-HSL 0%,
+                    hsl(260, 85%, 95%) 25%,
+                    $colour-HSL 50%);
+        }
+        50% {
+            background: linear-gradient(30deg,
+                    $colour-HSL 0%,
+                    hsl(260, 85%, 95%) 50%,
+                    $colour-HSL 75%);
+        }
+        75% {
+            background: linear-gradient(30deg,
+                    $colour-HSL 0%,
+                    hsl(260, 85%, 95%) 75%,
+                    $colour-HSL 100%);
+        }
+        100% {
+            background: linear-gradient(30deg,
+                    $colour-HSL 0%,
+                    hsl(260, 85%, 95%) 100%);
+        }
+    }
+    animation: shine-anim 260ms;
+    animation-delay: $delay;
+    animation-iteration-count: infinite;
+    
     // @include animation('shine-anim 260ms');
     // @include animation(shine-anim);
 }
