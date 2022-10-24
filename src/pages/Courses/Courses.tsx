@@ -1,3 +1,5 @@
+// Masterclass, Classic, Russian Volume, Lash Lift & Tint, Refresher Course.
+
 import './Courses.scss';
 import React, { useEffect, useState } from 'react'
 import { ActivityIndicator, Page } from '../../components';
@@ -36,12 +38,22 @@ const Courses = () => {
     window.scrollTo(0, 0);
 
 
+    fetchCourses();
+
+  }, [])
+
+
+  const fetchCourses = async () => {
+    setIsLoading(true);
+
     getDocument("courses", "7I2dfy5anxP6v75USrIc")
       .then(res => {
         const array: iCourse[] = res['content'];
+        let sorted = array.sort((a, b) => a.id - b.id);
+
         // sort by price
         // let sorted = array.sort((a, b) => b.price - a.price);
-        let sorted = array.sort((a, b) => b.popularity - a.popularity);
+        // let sorted = array.sort((a, b) => b.popularity - a.popularity);
         // sorted = [...sorted].sort((a, b) => b.salePrice - a.salePrice);
         setCourseList(sorted);
 
@@ -52,8 +64,7 @@ const Courses = () => {
         setError(error);
         setIsLoading(false);
       });
-
-  }, [])
+  }
 
 
 
@@ -69,7 +80,7 @@ const Courses = () => {
 
   return (
     <Page id='courses' className='app__courses' header='Be Your Own Boss'>
-      {error && 
+      {error &&
         <div className='app__flex app__min-height'>
           {error}
         </div>

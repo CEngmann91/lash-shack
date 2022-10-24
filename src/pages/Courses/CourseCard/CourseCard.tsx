@@ -37,6 +37,23 @@ const CourseCard: React.FC<iProps> = ({ id, title, frontImg, description, price,
         return value;
     }
 
+    const renderBanner = (popularity: Popularity) => {
+        switch (popularity) {
+            case Popularity.MostPopular:
+                return (
+                    <div className='top-banner'>
+                        <p>Most Popular</p>
+                    </div>
+                );
+            case Popularity.GreatDeal:
+                return (
+                    <div className='top-banner'>
+                        <p>Great Deal</p>
+                    </div>
+                );
+        }
+    }
+
 
     return (
         <div className="course-card">
@@ -46,16 +63,9 @@ const CourseCard: React.FC<iProps> = ({ id, title, frontImg, description, price,
                 
             </div> */}
 
-            {popularity === Popularity.MostPopular &&
-                <div className='most-popular-banner'>
-                    <p>Most Popular</p>
-                </div>
-            }
-            {popularity === Popularity.GreatDeal &&
-                <div className='most-popular-banner'>
-                    <p>Great Deal</p>
-                </div>
-            }
+
+            { renderBanner(popularity as Popularity) }
+
             <div className="title-banner">
                 <label>{title}</label>
             </div>
@@ -65,7 +75,6 @@ const CourseCard: React.FC<iProps> = ({ id, title, frontImg, description, price,
                     <label className="new-line">{"Save\n"}{calculateSalePercentage(price, sale?.price)}%</label>
                 </div>
             }
-
 
             <div className="info">
                 <h1 className="title">{title}</h1>
@@ -84,6 +93,8 @@ const CourseCard: React.FC<iProps> = ({ id, title, frontImg, description, price,
             </div>
 
         </div>
+
+
 
 
         // <CardFlip id={id}

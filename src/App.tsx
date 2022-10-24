@@ -3,7 +3,7 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Footer, Navbar } from './components';
 import { UpArrow } from './util/icons';
-import { About, Courses, Gallery, Landing, NotFound, Services, Testimonial } from './pages';
+import { About, Courses, Gallery, Landing, MeetExperts, NotFound, Services, Testimonial, TrainingReview } from './pages';
 
 function App() {
 
@@ -36,8 +36,10 @@ function App() {
         RenderRoute(
           <>
             <Landing />
-            <About />
             <Testimonial />
+            <About />
+            <MeetExperts />
+            <TrainingReview />
           </>
         )
       } />

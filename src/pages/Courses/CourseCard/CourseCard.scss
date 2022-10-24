@@ -70,7 +70,7 @@
         transition: 0.2s linear 0s;
     }
 
-    .most-popular-banner {
+    .top-banner {
         position: absolute;
         top: 0;
         right: 0;
@@ -112,7 +112,7 @@
 
         label {
             font-size: 20px;
-            color: $white-colour;
+            color: $blue-colour;
         }
     }
 
@@ -159,7 +159,6 @@
         justify-content: space-between;
         align-items: center;
         padding: 4rem 0.5rem;
-
         // background: red;
 
         transition: 0.2s linear 0s;
