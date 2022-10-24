@@ -7,7 +7,7 @@ import moment from 'moment';
 
 const TestimonialCard: React.FC<iReview> = ({ id, client, starRating, title, description, ...props }: iReview) => {
 
-    const getDate = (date : string) => {
+    const getDate = (date: string) => {
         return moment(date, 'DD/MM/YYYY').fromNow();
     }
 
@@ -18,12 +18,27 @@ const TestimonialCard: React.FC<iReview> = ({ id, client, starRating, title, des
                     className="card--wrapper"
                     initial={{ rotateY: 0 }}
                     viewport={{ once: true }}
-                    whileInView={{ rotateY: 180 }}
-                    transition={{
-                        duration: 1,
-                        delay: id * 0.1,
-                        ease: 'easeOut'
+                    whileInView={{
+                        rotateY: 180,
+                        transition: {
+                            duration: 1,
+                            delay: id * 0.1,
+                            ease: 'easeOut'
+                        }
                     }}
+                    whileHover={{
+                        scale: 1.05,
+                        boxShadow: "0 5px 15px rgba(0, 0, 0, 0.2)",
+                        transition: {
+                            duration: 0.01,
+                            // ease: 'linear'
+                        }
+                    }}
+                // transition={{
+                //     duration: 1,
+                //     delay: id * 0.1,
+                //     ease: 'easeOut'
+                // }}
                 // whileHover={{
                 // y: '-1em',
                 // boxShadow: "0 0.5em 0.5em -0.4em gray",
