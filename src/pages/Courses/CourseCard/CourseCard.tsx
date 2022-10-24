@@ -66,6 +66,23 @@ const CourseCard: React.FC<iProps> = ({ id, title, frontImg, description, price,
                 </div>
             }
 
+
+            <div className="info">
+                <h1 className="title">{title}</h1>
+                <h3 className='description'>{description}</h3>
+
+                <div className='price-container'>
+                    <h4 className={`price ${isOnSale() && "is-on-sale"}`}>{toCurrency(price)}</h4>
+                    {isOnSale() &&
+                        <h4 className='sale-price'>{toCurrency(sale?.price)}</h4>
+                    }
+                </div>
+            </div>
+
+            <div className="buttons">
+                <button className="enroll-button">Enroll Now</button>
+            </div>
+
         </div>
 
 
