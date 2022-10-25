@@ -4,15 +4,14 @@ import PhotoFrame from '../../components/PhotoFrame/PhotoFrame';
 import GalleryPhoto from './GalleryPhoto/GalleryPhoto';
 
 import { getImages, storage } from '../../helpers/firebase/firebase';
-import { FIREBASE_GALLERY_IMAGES } from '../../constants/firebase';
+import { REACT_APP_STORAGE_GALLERY_DIRECTORY } from '../../constants/firebase';
 import GalleryViewerModal from './GalleryViewerModal/GalleryViewerModal';
 import { ActivityIndicator, Page } from '../../components';
 
 
-
 const Gallery = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState(null);
   const [files, setFiles] = useState<string[]>([]);
   const [selectedImg, setSelectedImg] = useState("");
 
@@ -30,39 +29,22 @@ const Gallery = () => {
 
 
 
-
   useEffect(() => {
     window.scrollTo(0, 0);
 
     if (memoizedList.length == 0)
       fetchImages();
-
-
-    /*console.log("files.length - ", files.length);
-    if (files.length == 0) {
-      setLoading(true)
-      fetchImages();
-
-
-      // let loadTimer = setTimeout(() => {
-      // }, 5000);
-
-      // return () => {
-      //   clearTimeout(loadTimer);
-      // };
-
-    }*/
   }, [])
 
 
   const fetchImages = async () => {
     setIsLoading(true)
 
-    getImages(FIREBASE_GALLERY_IMAGES)
+    getImages(REACT_APP_STORAGE_GALLERY_DIRECTORY as string)
       .then(res => {
         setFiles(res);
         setIsLoading(false);
-        // console.log("all done");
+        console.log("all done");
       })
       .catch(error => {
         setIsLoading(false);
@@ -86,7 +68,7 @@ const Gallery = () => {
       <>
         {error ?
           <div className='app__flex app__min-height'>
-            <li className="error">{error}</li>
+            <h1 className="error">{error}</h1>
           </div>
           :
           <>

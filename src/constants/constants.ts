@@ -1,6 +1,4 @@
 export const BOOKING_URL = "https://widget.treatwell.co.uk/place/lash-shack/?utm_medium=partner-ecosystem&utm_campaign=partner-instagram&utm_content=book-now"
-export const ADDRESS = "Sunchasers\n37 Mawney Road\nRomford\nRM7 7HL"
-export const CONTACT_EMAIL = "lashshackuk@hotmail.com";
 
 export const CONTACT = {
     FACEBOOK: '',

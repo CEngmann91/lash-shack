@@ -1,81 +1,77 @@
 import './Testimonial.scss';
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import TestimonialCard from './TestimonialCard/TestimonialCard';
 import { Page } from '../../components';
+import { getDocument } from '../../helpers/firebase/firestore';
+import { REACT_APP_FIRESTORE_TESTIMONIAL_COLLECTION, REACT_APP_FIRESTORE_TESTIMONIAL_DOCUMENT } from '../../constants/firebase';
+import { Timestamp } from 'firebase/firestore';
 
-interface iClient {
-  displayName: string;
-  createdAt: string;
-}
+// interface iClient {
+//   displayName: string;
+//   createdAt: string;
+// }
 export interface iReview {
   id: number;
   title: string;
   description: string;
   starRating: number;
-  client: iClient;
-
-
-  instagramUrl?: string;
-  // createdAt: string;
-
+  // client: iClient;
+  createdAt: string;
 }
-const reviews: iReview[] = [
-  {
-    id: 1,
-    title: 'Amazing',
-    description: 'My lashes look fab and Emma did an amazing job. Quick and Professional',
-    starRating: 5,
-    instagramUrl: "",
-    client: {
-      displayName: "John Doe",
-      createdAt: '11/10/2022'
-    },
-  },
-  {
-    id: 2,
-    title: 'Will Be A Regular',
-    description: 'Emma was lovely and I will definitely be booking again.',
-    starRating: 5,
-    instagramUrl: "",
-    client: {
-      displayName: "John Doe",
-      createdAt: '06/10/2022'
-    },
-  },
-  {
-    id: 3,
-    title: 'Welcoming',
-    description: 'Emma was so welcoming, she spoke everything before she did it. Was nice and chatty made me feel at ease. Will be back again. Thank you Emma!',
-    starRating: 5,
-    instagramUrl: "",
-    client: {
-      displayName: "John Doe",
-      createdAt: '30/09/2022'
-    },
-  },
-  {
-    id: 4,
-    title: 'You Know Nothing!!',
-    description: 'Still waiting for this information...',
-    starRating: 1,
-    instagramUrl: "",
-    client: {
-      displayName: "John Snow",
-      createdAt: '01/01/2020'
-    },
-  }
-]
 
 const Testimonial = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
+  const [reviews, setReviews] = useState<iReview[]>([]);
+
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+
+    fetchCourses();
+  }, [])
+
+
+  const fetchCourses = async () => {
+    setIsLoading(true);
+
+    getDocument(REACT_APP_FIRESTORE_TESTIMONIAL_COLLECTION as string,
+      REACT_APP_FIRESTORE_TESTIMONIAL_DOCUMENT as string)
+      .then(res => {
+        const array: iReview[] = res['content'];
+        // Sort by date.
+        let sorted = array.sort(function (a, b) {
+          let aa = a.createdAt.split('/').reverse().join(),
+            bb = b.createdAt.split('/').reverse().join();
+          return aa > bb ? -1 : (aa < bb ? 1 : 0);
+        });
+
+
+        // let sorted = array.sort((a, b) => a.id - b.id);
+        // sort by price
+        // let sorted = array.sort((a, b) => b.price - a.price);
+        // let sorted = array.sort((a, b) => b.popularity - a.popularity);
+        // sorted = [...sorted].sort((a, b) => b.salePrice - a.salePrice);
+        setReviews(sorted);
+
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        // alert(error);
+        setError(error);
+        setIsLoading(false);
+      });
+  }
+
 
   return (
     <Page id='testimonial' className='app__testimonial' header='Customer Reviews'>
       <div className="list">
-        {reviews.map(({ id, client, starRating, title, description }) =>
+        {reviews.map(({ id, createdAt, starRating, title, description }) =>
           <TestimonialCard
             key={id}
             id={id}
-            client={client}
+            createdAt={createdAt}
             starRating={starRating}
             title={title}
             description={description}

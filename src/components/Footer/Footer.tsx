@@ -2,7 +2,7 @@ import './Footer.scss';
 import React from 'react'
 import NavbarItem from '../navbar/NavbarItem/NavbarItem';
 import { Email, Facebook, Instagram, Twitter, UpArrow } from '../../util/icons';
-import { ADDRESS, CONTACT, CONTACT_EMAIL, NAVIGATION } from '../../constants/constants';
+import { CONTACT, NAVIGATION } from '../../constants/constants';
 
 const Footer = () => {
 
@@ -44,8 +44,8 @@ const Footer = () => {
 
       <div className="app__footer--contact">
         <p className='title'>Contact</p>
-        <p className='new-line address'>{ADDRESS}</p>
-        <p className='email-address'>{CONTACT_EMAIL}</p>
+        <p className='new-line address'>{CONTACT.ADDRESS}</p>
+        <p className='email-address'>{CONTACT.EMAIL}</p>
       </div>
 
       {/* <p className=''>Copyright © 2022 Lash Shack</p> */}
