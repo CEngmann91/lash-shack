@@ -9,6 +9,7 @@ const About = () => {
   return (
     <Parallax blur={3} bgImage={photography} strength={300}>
       <Page id='about' className='app__about' header='About'>
+        <div className="overlay" />
 
         {/* <div className="box">Brings back memories...</div> */}
 

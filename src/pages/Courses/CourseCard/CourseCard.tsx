@@ -14,9 +14,10 @@ interface iProps {
     description: string;
     price: number;
     sale: iSale;
+    duration: string;
     popularity?: Popularity;
 }
-const CourseCard: React.FC<iProps> = ({ id, title, frontImg, description, price, sale, popularity, ...props }: iProps) => {
+const CourseCard: React.FC<iProps> = ({ id, title, frontImg, description, price, sale, duration, popularity, ...props }: iProps) => {
 
 
     function isOnSale(): boolean {
@@ -57,7 +58,7 @@ const CourseCard: React.FC<iProps> = ({ id, title, frontImg, description, price,
 
     return (
         <div className="course-card">
-            <img src={frontImg} />
+            {/* <img src={frontImg} /> */}
 
             {/* <div className="circle">
                 
@@ -76,9 +77,10 @@ const CourseCard: React.FC<iProps> = ({ id, title, frontImg, description, price,
                 </div>
             }
 
-            <div className="info">
+            <div className="info" style={{ padding: (popularity === Popularity.Normal ? '1rem 0.5rem' : '4rem 0.5rem') }}>
                 <h1 className="title">{title}</h1>
-                <h3 className='description'>{description}</h3>
+                <h3 className='description new-line'>{description}</h3>
+                <h3 className='duration'>{duration}</h3>
 
                 <div className='price-container'>
                     <h4 className={`price ${isOnSale() && "is-on-sale"}`}>{toCurrency(price)}</h4>

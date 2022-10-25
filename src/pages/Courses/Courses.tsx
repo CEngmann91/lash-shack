@@ -6,7 +6,8 @@ import { ActivityIndicator, Page } from '../../components';
 import { CardFlip } from '../../components/Cards';
 import CourseCard from './CourseCard/CourseCard';
 import { getDocument } from '../../helpers/firebase/firestore';
-import { aurora, photography } from '../../util/images';
+import { photography } from '../../util/images';
+import { REACT_APP_FIRESTORE_COURSES_COLLECTION, REACT_APP_FIRESTORE_COURSES_DOCUMENT } from '../../constants/firebase';
 
 export enum Popularity {
   Normal = 0,
@@ -24,6 +25,7 @@ export interface iCourse {
   description: string;
   price: number;
   sale: iSale;
+  duration: string;
   popularity: Popularity.Normal;
 }
 
@@ -46,7 +48,8 @@ const Courses = () => {
   const fetchCourses = async () => {
     setIsLoading(true);
 
-    getDocument("courses", "7I2dfy5anxP6v75USrIc")
+    getDocument(REACT_APP_FIRESTORE_COURSES_COLLECTION as string,
+      REACT_APP_FIRESTORE_COURSES_DOCUMENT as string)
       .then(res => {
         const array: iCourse[] = res['content'];
         let sorted = array.sort((a, b) => a.id - b.id);
@@ -103,7 +106,7 @@ const Courses = () => {
 
         <div className="cards">
           {courseList.length != 0 && courseList.map((item, index) => {
-            const { title, description, price, sale, popularity } = item;
+            const { title, description, price, sale, duration, popularity } = item;
 
             return (
               <CourseCard
@@ -116,6 +119,7 @@ const Courses = () => {
                 description={description}
                 price={price}
                 sale={sale}
+                duration={duration}
                 popularity={popularity}
               />
             )

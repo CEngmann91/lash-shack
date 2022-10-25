@@ -1,5 +1,5 @@
 import { BsTwitter, BsStarFill, BsFillArrowUpCircleFill, BsFillPencilFill } from 'react-icons/bs';
-import { FaFacebookF, FaRegEye } from 'react-icons/fa';
+import { FaFacebookF, FaRegEye, FaQuoteRight } from 'react-icons/fa';
 import { AiFillCloseCircle, AiFillInstagram } from 'react-icons/ai';
 import { MdEmail } from 'react-icons/md';
 import { GiHamburgerMenu } from 'react-icons/gi';
@@ -18,5 +18,6 @@ export {
 
 
     FaRegEye as Eye,
+    FaQuoteRight as QuoteRight,
     BsFillPencilFill as Pencil,
 };
