@@ -8,7 +8,7 @@ const Landing = () => {
 
 
   return (
-    <Parallax blur={3} bgImage={photography} strength={200}>
+    <Parallax blur={0} bgImage={photography} strength={200}>
       <div className="overlay" />
       <div id='home' className='app__landing app__flex'>
 
@@ -49,43 +49,6 @@ const Landing = () => {
           {/* </div> */}
         </div>
       </div>
-
-
-
-
-      {/* <div className='banner'>
-        <div className="item">
-          <Pencil className="icon" />
-          <h1 className='title'>Latest Practises</h1>
-          <label className='description'>Insert Information here</label>
-          <div className="buttons">
-            <button>Learn More</button>
-          </div>
-        </div>
-
-        <div className="item">
-          <div className='border'>
-            <Star className="icon" />
-            <h1 className='title'>Certified Institude</h1>
-            <label className='description'>Insert Information here</label>
-            <div className="buttons">
-              <button>Learn More</button>
-            </div>
-          </div>
-        </div>
-
-        <div className="item">
-          <Eye className="icon" />
-          <h1 className='title'>Best Technicians</h1>
-          <label className='description'>Insert Information here</label>
-          <div className="buttons">
-            <button>Learn More</button>
-          </div>
-        </div>
-      </div> */}
-
-
-
     </Parallax>
   );
 }

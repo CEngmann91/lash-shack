@@ -4,6 +4,7 @@ import { iReview } from '../Testimonial';
 import { AnimatePresence, motion } from 'framer-motion';
 import { QuoteRight, Star } from '../../../util/icons';
 import moment from 'moment';
+import { ABT } from '../../../util/images';
 
 const TestimonialCard: React.FC<iReview> = ({ id, createdAt, starRating, title, description, ...props }: iReview) => {
 

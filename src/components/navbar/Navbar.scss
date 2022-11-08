@@ -140,7 +140,7 @@
     .book-now-button {
         width: 7.5rem;
         height: auto;
-        background: $pink-colour;
+        background: $white-colour;
         border: 0.5px solid $gray-colour;
         border-radius: 10px;
 
@@ -153,10 +153,12 @@
 
         &:hover {
             border: 2px solid $gray-colour;
+            color: $black-colour;
+            background: $white-colour;
 
             transform-origin: center;
             transform: scale(1.05);
-            @include shine-effect($pink-colour-HSL);
+            // @include shine-effect($pink-colour-HSL);
         }
     }
 }

@@ -2,15 +2,16 @@
 @import '../../constants/constants.scss';
 
 .app__training-review-banner {
-    // min-height: 100vh;
-    padding: 2rem 0;
-    background: rgba($pink-colour, 0.8);
-    width: 100%;
-
     @media screen and (min-width: 1200px) {
         height: $banner-height;
     }
+    // min-height: 100vh;
+    padding: 2rem 0;
+    background: rgba($pink-colour, 1);
+    width: 100%;
+    margin-bottom: calc($footer-height - 10px);
     
+
     &-title {
         font-size: 26px;
         border-bottom: 3px solid rgba($blue-colour, 0.4);

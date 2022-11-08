@@ -3,24 +3,39 @@
 
 .app__meet-experts-banner {
     padding-top: 1rem;
-    background: rgba($pink-colour, 0.8);
+    background: rgba($pink-colour, 1);
     width: 100%;
 
     @media screen and (min-width: 1200px) {
-        height: $banner-height;
+        height: auto;
+        padding: 20px;
     }
 
     &-title {
-        font-size: 26px;
+        font-size: 1.8rem;
         border-bottom: 3px solid rgba($blue-colour, 0.4);
         // background: green;
     }
 
+    // https://codepen.io/fjfalah/pen/jdGNEr
+    @supports (scroll-snap-align: start) {
+        .list {
+            display: flex;
+            position: relative;
+            width: 100%;
+            height: 100%;
+            // justify-content: center;
+            /* Always force (mandatory) scrolling to a snap point on the x-axis */
+            scroll-snap-type: x mandatory;
+            overflow-x: auto;
+            white-space: nowrap;
+            gap: 20px;
+            padding: 0 60px;
 
-    .list {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
+        }
     }
 }

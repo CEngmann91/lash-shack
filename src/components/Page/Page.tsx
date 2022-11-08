@@ -13,7 +13,7 @@ const Page: React.FC<iProps> = ({id, className, header, headerClassName, childre
     return (
         <div id={id} className={`main app__pad-hor ${className}`}>
             <header>
-                <h1 className={`head-text title ${headerClassName}`}><span>{header}</span></h1>
+                <h1 className={`head-text title ${headerClassName}`}>{header}</h1>
             </header>
             {children}
         </div>

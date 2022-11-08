@@ -1,13 +1,18 @@
 @import '../../res/colours.scss';
+@import '../../constants/constants.scss';
 
 .app__footer {
+    position: fixed;
+    bottom: 0;
+    z-index: -1;
     display: grid;
     grid-template-columns: auto auto auto;
-    position: relative;
-    // width: 100%;
-    height: auto;
-    padding: 20px;
+    // position: relative;
     background: $blue-colour;
+    width: 100%;
+    height: $footer-height;
+    /* top | right | bottom | left */
+    padding: 30px 20px 20px 20px;
 
 
     a {
@@ -28,16 +33,25 @@
 
 
     .title {
-        @media screen and (max-width: 900px) {
-            font-size: 18px;
-        }
-        width: fit-content;
-        color: $pink-colour;
-        padding-bottom: 0.5rem;
-        font-size: 24px;
-        font-weight: bold;
-        text-decoration: underline;
-        // font-family: cursive;
+        // @media screen and (max-width: 900px) {
+        //     font-size: 18px;
+        // }
+        // width: fit-content;
+        // color: $pink-colour;
+        // padding-bottom: 0.5rem;
+        // font-size: 24px;
+        // font-weight: bold;
+        // text-decoration: underline;
+        // // font-family: cursive;
+
+
+
+        color: #fff;
+        font-size: 20px;
+        text-transform: uppercase;
+        margin: 0 0 10px 0;
+        letter-spacing: 2px;
+        border-bottom: 3px solid $white-colour;
     }
 
     &--quick-links {
@@ -45,6 +59,7 @@
         flex-direction: column;
         align-items: flex-start;
         // background: blue;
+        gap: 2px;
 
         li {
             // margin: .2rem 0rem;
@@ -109,6 +124,10 @@
         }
 
         .email-address {
+
+            &:hover {
+                cursor: pointer;
+            }
         }
     }
 }
