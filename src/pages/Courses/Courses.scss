@@ -1,7 +1,10 @@
 @import '../../res/colours.scss';
+@import '../../constants/constants.scss';
 
 .app__courses {
     min-height: 50vh;
+    background: $white-colour;
+    margin-bottom: calc($footer-height - 10px);
     padding: 4rem 5rem;
 
     @media screen and (max-width: 900px) {
