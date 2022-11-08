@@ -18,43 +18,22 @@
     border-radius: 10px;
 
     transition: 0.2s linear 0s;
-
     
     &:hover {
         transform: scale(1.05);
         border: 3px solid $pink-colour;
-
-        // border: 5px solid $blue-colour;
         box-shadow: 15px 15px gray;
-
-        // .circle {
-        //     transition: 0.4s linear 0s;
-
-        //     width: 100%;
-        //     height: 100%;
-        //     border-radius: 0%;
-        // }
-
-
-
-        // img {
-        //     filter: brightness(30%);
-        // }
 
         .title-banner {
             transform: translateY(100px);
         }
-
         .sale-sticker {
             @include shine-effect-delayed($pink-colour-HSL, 2s);
         }
-
         .info {
             opacity: 1;
         }
-
         .buttons {
-            // transform: translateY(0px);
             opacity: 1;
         }
     }

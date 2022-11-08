@@ -7,16 +7,16 @@ import { photography } from '../../util/images';
 const About = () => {
 
   return (
-    <Parallax blur={3} bgImage={photography} strength={300}>
-      <Page id='about' className='app__about' header='About'>
-        <div className="overlay" />
+    // <Parallax blur={3} bgImage={photography} strength={200}>
+      <Page id='about' className='app__about' header='About' headerClassName='app__about-title-header'>
+        {/* <div className="overlay" /> */}
 
         {/* <div className="box">Brings back memories...</div> */}
 
-
+        {/* <h1>Test</h1> */}
 
       </Page>
-    </Parallax>
+    // </Parallax>
 
   )
 }

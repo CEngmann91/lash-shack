@@ -6,7 +6,7 @@ import { ActivityIndicator, Page } from '../../components';
 import { CardFlip } from '../../components/Cards';
 import CourseCard from './CourseCard/CourseCard';
 import { getDocument } from '../../helpers/firebase/firestore';
-import { photography } from '../../util/images';
+import { ABT, photography } from '../../util/images';
 import { REACT_APP_FIRESTORE_COURSES_COLLECTION, REACT_APP_FIRESTORE_COURSES_DOCUMENT } from '../../constants/firebase';
 
 export enum Popularity {
@@ -125,6 +125,9 @@ const Courses = () => {
             )
           })}
         </div>
+
+        <img className='abt' src={ABT} alt="" />
+        
       </>
     </Page>
   )

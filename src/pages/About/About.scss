@@ -1,22 +1,35 @@
 @import '../../res/colours.scss';
 
 
-.overlay {
-    flex: 1;
-    display: flex;
-    // height: calc(100% - $banner-height);
-    width: 100vw;
-    height: 100%;
-    background: rgba($color: #000000, $alpha: 0.3);
-    position: absolute;
-    top: 0;
-    left: 0;
+// .overlay {
+//     flex: 1;
+//     display: flex;
+//     // height: calc(100% - $banner-height);
+//     width: 100vw;
+//     height: 100%;
+//     background: rgba($color: #000000, $alpha: 0.3);
+//     position: absolute;
+//     top: 0;
+//     left: 0;
 
-    z-index: 0;
+//     z-index: 0;
+// }
+
+.app__about-title-header {
+    font-size: 30px;
+    color: white;
 }
 
 .app__about {
     min-height: 100vh;
+    background: $white-colour;
+
+    // &-title {
+    //     font-size: 16px;
+    //     // border-bottom: 3px solid rgba($blue-colour, 0.4);
+    //     // background: green;
+    //     color: white;
+    // }
 
 
 
