@@ -128,4 +128,31 @@
         border-bottom: 3px solid $white-colour;
     }
 }
+
+.app__shine-effect {
+    position: relative;
+
+    &::before {
+        content: '';
+        position: absolute;
+        // top: 0;
+        left: -300px;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.3);
+        transform: skewX(-30deg);
+        
+        transition: 0.8s ease-out;
+    }
+
+    &:hover {
+        cursor: pointer;
+        transform: scale(1.05);
+
+        &::before {
+            left: 300px;
+            background: rgba(255, 255, 255, 0.2);
+        }   
+    }
+}
 ///////////////////\\\\\\\\\\\\\\\\\\

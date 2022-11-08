@@ -6,7 +6,7 @@ const ExpertCard: React.FC<iExpert> = (item, { ...props }: iExpert) => {
     return (
         <div className="item" data-index={item.id}>
             <div className='container'>
-                <div className="headshot">
+                <div className="headshot app__shine-effect">
                     <img src={item.imgSrc} alt={"Me"} />
                 </div>
 

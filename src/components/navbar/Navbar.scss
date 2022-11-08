@@ -19,10 +19,6 @@
     padding: 0rem 2rem;
     // Add a blur
     @include blur(4px);
-
-    // backdrop-filter: blur(4px);
-    // Makes it compatible with all browsers.
-    // -webkit-backdrop-filter: blur(4px);
     // Ensures the navbar is above the content
     z-index: 3;
 
@@ -72,13 +68,13 @@
                 }
             }
 
-            .book-now-button {
-                background: $pink-colour;
+            // .book-now-button {
+            //     background: $pink-colour;
         
-                &:hover {
-                    background: $pink-colour;
-                }
-            }
+            //     &:hover {
+            //         background: $pink-colour;
+            //     }
+            // }
         }
     }
 
@@ -146,27 +142,17 @@
     }
 
     .book-now-button {
+        position: relative;
         width: 7.5rem;
         height: auto;
         background: $white-colour;
         border: 0.5px solid $gray-colour;
         border-radius: 10px;
 
-        transition: 0.3s;
-
+        transition: 0.3s ease-in-out;
 
         &:active {
             transform: scale(0.95);
-        }
-
-        &:hover {
-            border: 2px solid $gray-colour;
-            color: $black-colour;
-            background: $white-colour;
-
-            transform-origin: center;
-            transform: scale(1.05);
-            // @include shine-effect($pink-colour-HSL);
         }
     }
 }
@@ -236,13 +222,68 @@
             display: flex;
             width: 35px;
             height: 35px;
-
             justify-content: center;
             align-items: center;
-            // border: none;
+            border: none;
             border-radius: 50px;
-            border-width: 2px;
             cursor: pointer;
+
+            box-shadow: 0 5px 10px rgba(black, 0.5);
+
+
+            i {
+                position: relative;
+                display: inline-block;
+                width: 18px;
+                height: 3px;
+                background: $black-colour;
+                transition: .2s ease-out;
+
+                &::before {
+                    top: -5px;
+                }
+
+                &::after {
+                    bottom: -5px;
+                }
+
+                &::before,
+                &::after {
+                    content: '';
+                    width: 18px;
+                    height: 3px;
+                    background: black;
+                    position: absolute;
+                    left: 0;
+
+                    transition: .2s ease-out;
+                }
+            }
+
+            &[data-menuisopen="true"] {
+                i {
+                    // Hide the center line.
+                    background: transparent;
+
+                    &::before {
+                        top: 0;
+                        -webkit-transform: rotateZ(45deg);
+                        -moz-transform: rotateZ(45deg);
+                        -ms-transform: rotateZ(45deg);
+                        -o-transform: rotateZ(45deg);
+                        transform: rotateZ(45deg);
+                    }
+
+                    &::after {
+                        bottom: 0;
+                        -webkit-transform: rotateZ(-45deg);
+                        -moz-transform: rotateZ(-45deg);
+                        -ms-transform: rotateZ(-45deg);
+                        -o-transform: rotateZ(-45deg);
+                        transform: rotateZ(-45deg);
+                    }
+                }
+            }
         }
     }
 }

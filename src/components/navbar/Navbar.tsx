@@ -25,7 +25,7 @@ const item = {
 }
 
 const Navbar = () => {
-    const location = useLocation();
+    // const location = useLocation();
     const [scrolledDown, setScrolledDown] = useState(false);
     const [menuIsOpen, setMenuIsOpen] = useState(false);
 
@@ -86,13 +86,13 @@ const Navbar = () => {
             {/* </div> */}
 
 
-            <a href={BOOKING_URL} className={`border-button book-now-button app__mobile-hide`} target="_blank" rel="noreferrer">Book Now</a>
+            <a href={BOOKING_URL} className={`border-button book-now-button app__shine-effect app__mobile-hide`} target="_blank" rel="noreferrer">Book Now</a>
 
 
 
             <div className='app__drawer app__desktop-hide'>
                 <div className="app__drawer--menuBtn-container">
-                    <button onClick={toggleMenu}>
+                    <button onClick={toggleMenu} data-menuisopen={menuIsOpen}>
                         {!menuIsOpen ? <Menu /> : "X"}
                     </button>
                 </div>
