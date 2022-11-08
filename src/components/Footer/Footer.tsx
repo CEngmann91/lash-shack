@@ -42,10 +42,10 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="app__footer--contact">
-        <p className='title'>Contact</p>
+      <div className="app__footer--location">
+        <p className='title'>Location</p>
         <p className='new-line address'>{CONTACT.ADDRESS}</p>
-        <p className='email-address app__underline-anim'>{CONTACT.EMAIL}</p>
+        {/* <p className='email-address app__underline-anim'>{CONTACT.EMAIL}</p> */}
       </div>
 
       {/* <p className=''>Copyright © 2022 Lash Shack</p> */}
