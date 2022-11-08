@@ -11,6 +11,7 @@ import { Timestamp } from 'firebase/firestore';
 //   createdAt: string;
 // }
 export interface iReview {
+  key: number;
   id: number;
   title: string;
   description: string;
@@ -79,7 +80,6 @@ const Testimonial = () => {
         )}
       </div>
     </Page>
-    // </Parallax>
 
 
 

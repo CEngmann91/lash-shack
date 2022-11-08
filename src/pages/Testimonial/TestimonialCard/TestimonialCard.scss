@@ -66,14 +66,14 @@
 
 .back {
     transform: rotateY(180deg);
-    padding: 1.5rem 1rem;
+    padding: 1.5rem .8rem;
 
     &--star {
         margin: 1.5rem;
 
         svg {
             margin-right: 3px;
-            color: $blue-colour;
+            color: $pink-colour;
         }
     }
 
@@ -86,14 +86,19 @@
         display: grid;
         place-items: center;
         border-radius: 50%;
+        color: $pink-colour;
         transform: translateY(25%);
         // background: $pink-colour;
-        // color: $blue-colour;
     }
 
     &--title {
         margin: 1rem 0;
-        font-size: 18px;
+        // font-size: 18px;
+
+        // color: $black-colour;
+        font-size: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
         // text-shadow: rgba($pink-colour, 1);
     }
 

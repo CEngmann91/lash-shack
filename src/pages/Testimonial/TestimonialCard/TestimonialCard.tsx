@@ -6,7 +6,7 @@ import { QuoteRight, Star } from '../../../util/icons';
 import moment from 'moment';
 import { ABT } from '../../../util/images';
 
-const TestimonialCard: React.FC<iReview> = ({ id, createdAt, starRating, title, description, ...props }: iReview) => {
+const TestimonialCard: React.FC<iReview> = ({ key, id, createdAt, starRating, title, description, ...props }: iReview) => {
 
     const getDate = (date: string) => {
         return moment(date, 'DD/MM/YYYY').fromNow();
