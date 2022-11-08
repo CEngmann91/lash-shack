@@ -8,7 +8,7 @@
 
     @media screen and (min-width: 1200px) {
         height: auto;
-        padding: 20px;
+        // padding: 20px;
     }
 
     &-title {
@@ -21,8 +21,8 @@
 
     // https://codepen.io/fjfalah/pen/jdGNEr
     @supports (scroll-snap-align: start) {
-        .list[data-isMobile="true"] {
-            // justify-content: center;
+        .list[data-isMobile="false"] {
+            justify-content: center;
         }
 
         .list {

@@ -9,8 +9,18 @@ const container = {
     visible: { opacity: 1 }
 }
 const item = {
-    hidden: { y: "-100vh" },
-    visible: { y: 0 }
+    hidden: {
+        scale: 1.2,
+        transition: {
+            duration: 0.1
+        }
+    },
+    visible: {
+        scale: 1,
+        transition: {
+            duration: 0.2
+        }
+    }
 }
 
 interface iProps {
