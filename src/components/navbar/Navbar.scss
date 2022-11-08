@@ -71,6 +71,14 @@
                     }
                 }
             }
+
+            .book-now-button {
+                background: $pink-colour;
+        
+                &:hover {
+                    background: $pink-colour;
+                }
+            }
         }
     }
 
