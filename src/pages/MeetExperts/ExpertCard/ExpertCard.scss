@@ -5,11 +5,21 @@
 $headshot-scale: 100px;
 
 
-.item[data-index='0'],
-.item[data-index='2']
-{
-    transform: scale(0.9);
-}
+// .item[data-index='0'],
+// .item[data-index='2']
+// {
+//     transform: scale(0.9);
+
+//     // .item {
+//     //     .container {
+//     //         .headshot {
+//     //             img {
+//     //                 transform: scale(0.9);
+//     //             }
+//     //         }
+//     //     }
+//     // }
+// }
 
 .item {
     margin: 10px;
@@ -55,6 +65,10 @@ $headshot-scale: 100px;
                 height: 100%;
                 object-fit: cover;
                 object-position: center center;
+            }
+
+            &:hover {
+                box-shadow: 0 0 8px 8px rgba(0, 0, 0, 0.5);
             }
         }
     }

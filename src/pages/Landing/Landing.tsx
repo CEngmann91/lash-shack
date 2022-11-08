@@ -8,7 +8,7 @@ const Landing = () => {
 
 
   return (
-    <Parallax blur={0} bgImage={photography} strength={200}>
+    <Parallax blur={5} bgImage={photography} strength={200}>
       <div className="overlay" />
       <div id='home' className='app__landing app__flex'>
 
