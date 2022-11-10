@@ -8,7 +8,7 @@ const Landing = () => {
 
 
   return (
-    <Parallax blur={5} bgImage={photography} strength={200}>
+    <Parallax blur={0} bgImage={photography} strength={200}>
       <div className="overlay" />
       <div id='home' className='app__landing app__flex'>
 
@@ -27,7 +27,7 @@ const Landing = () => {
           <h1 className='title'>Latest Practises</h1>
           <label className='description'>We follow a strict regime to ensure consistency throughout each of our clients.</label>
           <div className="buttons">
-            <button>LEARN MORE</button>
+            <button className='border-button app__style-effect__shine'>LEARN MORE</button>
           </div>
         </div>
         <div className="item">

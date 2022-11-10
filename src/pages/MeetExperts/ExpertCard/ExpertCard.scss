@@ -39,10 +39,14 @@ $headshot-scale: 100px;
         justify-content: center;
         align-items: center;
         width: 17rem;
-        height: auto;
+        height: 22rem;
+        // height: auto;
         overflow: hidden;
         // border: 1px solid red;
         // border-radius: 15px;
+
+        background: $white-colour;
+        border-radius: 15px;
 
 
 

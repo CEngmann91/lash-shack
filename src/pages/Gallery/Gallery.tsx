@@ -11,7 +11,7 @@ import { ActivityIndicator, Page } from '../../components';
 
 const Gallery = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState();
   const [files, setFiles] = useState<string[]>([]);
   const [selectedImg, setSelectedImg] = useState("");
 
@@ -40,11 +40,11 @@ const Gallery = () => {
   const fetchImages = async () => {
     setIsLoading(true)
 
-    getImages(REACT_APP_STORAGE_GALLERY_DIRECTORY as string)
+    await getImages(REACT_APP_STORAGE_GALLERY_DIRECTORY as string)
       .then(res => {
         setFiles(res);
         setIsLoading(false);
-        console.log("all done");
+        // console.log("all done");
       })
       .catch(error => {
         setIsLoading(false);
@@ -56,6 +56,7 @@ const Gallery = () => {
   if (isLoading) {
     return (
       <Page id='gallery' className='app__gallery' header='Love What You See?'>
+        {/* <p>Error is: {error}</p> */}
         <div className='app__flex app__min-height'>
           <ActivityIndicator borderColour='rgba(239, 179, 183, 1)' borderSpinColour='rgba(16, 40, 121, 1)' />
         </div>

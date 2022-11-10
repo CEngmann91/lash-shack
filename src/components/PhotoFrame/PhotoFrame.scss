@@ -2,7 +2,7 @@
 
 .photo-frame {
     width: 22rem;
-    height: 30rem;
+    height: 27rem;
     display: inline-block;
     padding: 40px;
     border-width: 20px;
@@ -26,6 +26,7 @@
     }
 
     img {
+        object-fit: cover;
         width: 100%;
         height: 100%;
         border-width: 2px;

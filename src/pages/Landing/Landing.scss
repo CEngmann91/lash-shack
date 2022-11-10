@@ -12,6 +12,7 @@ $banner-height: 300px;
     position: absolute;
     top: 0;
     left: 0;
+    @include blur(4px);
 
     z-index: 0;
 }
@@ -67,7 +68,7 @@ $banner-height: 300px;
     &--banner {
         display: grid;
         width: 100%;
-        background: rgba($pink-colour, 0.8);
+        background: rgba($beige-colour, 0.8);
         justify-content: center;
         align-items: center;
         padding: .5rem 2rem;
@@ -141,12 +142,12 @@ $banner-height: 300px;
 
                 &:hover {
                     cursor: pointer;
-                    border: 2px solid $gray-colour;
+                    // border: 2px solid $gray-colour;
                     background: $pink-colour;
-                    color: $white-colour;
+                    // color: $white-colour;
 
-                    transform: scale(1.05);
-                    @include shine-effect($pink-colour-HSL);
+                    // transform: scale(1.05);
+                    // @include shine-effect($pink-colour-HSL);
                 }
             }
         }
@@ -154,7 +155,7 @@ $banner-height: 300px;
         div {
 
             &:nth-child(2) {
-                background: $pink-colour;
+                background: $beige-dark-colour;
                 padding: 1.1rem;
 
                 .border {
