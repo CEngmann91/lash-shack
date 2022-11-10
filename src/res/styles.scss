@@ -103,7 +103,7 @@
 
 
 ////////////// EFFECTS \\\\\\\\\\\\\\
-.app__underline-anim {
+.app__style-effect__underline {
     // Remove the generic text decoration i.e. underline.
     text-decoration: none;
     flex-direction: column;
@@ -129,7 +129,7 @@
     }
 }
 
-.app__shine-effect {
+.app__style-effect__shine {
     position: relative;
 
     &::before {

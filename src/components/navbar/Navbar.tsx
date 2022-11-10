@@ -79,16 +79,7 @@ const Navbar = () => {
                 ))}
             </ul>
 
-
-            {/* <div className='app__book-now-button-container anim-bouncy app__mobile-hide'>
-                <a href={BOOKING_URL} className='border-button app__book-now-button' target="_blank">Book Now</a> */}
-                {/* <div className='border-button app__book-now-button'>Book Now</div> */}
-            {/* </div> */}
-
-
-            <a href={BOOKING_URL} className={`border-button book-now-button app__shine-effect app__mobile-hide`} target="_blank" rel="noreferrer">Book Now</a>
-
-
+            <a href={BOOKING_URL} className={`border-button book-now-button app__style-effect__shine app__mobile-hide`} target="_blank" rel="noreferrer">Book Now</a>
 
             <div className='app__drawer app__desktop-hide'>
                 <div className="app__drawer--menuBtn-container">
@@ -123,9 +114,6 @@ const Navbar = () => {
                     }
                 </AnimatePresence>
             </div>
-
-
-
         </nav>
     )
 }

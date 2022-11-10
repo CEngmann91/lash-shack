@@ -1,7 +1,7 @@
 import './Testimonial.scss';
 import React, { useEffect, useState } from 'react'
 import TestimonialCard from './TestimonialCard/TestimonialCard';
-import { Page } from '../../components';
+import { ActivityIndicator, Page } from '../../components';
 import { getDocument } from '../../helpers/firebase/firestore';
 import { REACT_APP_FIRESTORE_TESTIMONIAL_COLLECTION, REACT_APP_FIRESTORE_TESTIMONIAL_DOCUMENT } from '../../constants/firebase';
 import { Timestamp } from 'firebase/firestore';
@@ -65,32 +65,39 @@ const Testimonial = () => {
   }
 
 
+
+  if (isLoading) {
+    return (
+      <Page id='testimonial' className='app__testimonial' header='Customer Reviews'>
+        <div className='app__flex app__min-height'>
+          <ActivityIndicator borderColour='rgba(239, 179, 183, 1)' borderSpinColour='rgba(16, 40, 121, 1)' />
+        </div>
+      </Page>
+    );
+  }
+
   return (
     <Page id='testimonial' className='app__testimonial' header='Customer Reviews'>
-      <div className="list">
-        {reviews.map(({ id, createdAt, starRating, title, description }) =>
-          <TestimonialCard
-            key={id}
-            id={id}
-            createdAt={createdAt}
-            starRating={starRating}
-            title={title}
-            description={description}
-          />
-        )}
-      </div>
+      {error ?
+        <>
+          <p>Error is: {error}</p>
+
+        </>
+        :
+        <div className="list">
+          {reviews.map(({ id, createdAt, starRating, title, description }) =>
+            <TestimonialCard
+              key={id}
+              id={id}
+              createdAt={createdAt}
+              starRating={starRating}
+              title={title}
+              description={description}
+            />
+          )}
+        </div>
+      }
     </Page>
-
-
-
-    // <div className='app__testimonial'>
-    //   <h1 className="head-text title"><span>Customer Reviews</span></h1>
-    //   <div className="list">
-    //     {reviews.map(({ id, client, starRating, title, description }) =>
-    //       <TestimonialCard key={id} id={id} client={client} starRating={starRating} title={title} description={description} />
-    //     )}
-    //   </div>
-    // </div>
   )
 }
 

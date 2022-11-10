@@ -5,7 +5,6 @@
     @media screen and (max-width: 900px) {
         padding: 0rem 1rem;
     }
-
     display: grid;
     grid-template-columns: auto auto auto;
     // Full widht of the screen.
@@ -30,9 +29,8 @@
         @media screen and (max-width: 900px) {
             height: 60px;
         }
-
         // Background colour for the navbar.
-        background: rgba($pink-colour, 0.85);
+        background: rgba($beige-colour, 0.85);
         box-shadow: 0 0 20px rgba(128, 128, 128, 0.75);
         height: 80px;
 
@@ -46,7 +44,7 @@
             &--logo {
 
                 img {
-                    transition: 0.3s ease-in-out;
+                    // transition: 0.3s ease-in-out;
 
                     @media screen and (max-width: 900px) {
                         width: 40px;
@@ -69,10 +67,10 @@
             }
 
             // .book-now-button {
-            //     background: $pink-colour;
+            //     background: $beige-colour;
         
             //     &:hover {
-            //         background: $pink-colour;
+            //         background: $beige-colour;
             //     }
             // }
         }
@@ -83,7 +81,7 @@
         justify-content: flex-start;
         align-items: center;
 
-        img {
+        img {            
             width: 60px;
         }
     }
@@ -126,17 +124,20 @@
 
             // padding: 0px 5px 5px 5px;
             margin: 0rem 1.2rem;
-            cursor: pointer;
             // Remove the generic link styles.
             list-style: none;
 
             a {
-                color: $pink-colour;
+                color: $beige-colour;
                 text-transform: capitalize;
                 font-size: 18px;
                 font-weight: bold;
                 text-decoration: none;
                 // font-family: cursive;
+            }
+
+            &:hover {
+                cursor: pointer;
             }
         }
     }
@@ -158,12 +159,10 @@
 }
 
 .app__drawer {
-
     // Hide this menu when the screen is larger than 900px
     @media screen and (min-width: 900px) {
         display: none;
     }
-
     display: flex;
     justify-content: flex-end;
 
@@ -176,8 +175,8 @@
         width: 100%;
         height: 100vh;
         z-index: 5;
-        // background: rgba(rgba($pink-colour, 0.85), 1);
-        background: linear-gradient(to bottom right, $blue-colour, $pink-colour);
+        // background: rgba(rgba($beige-colour, 0.85), 1);
+        background: linear-gradient(to bottom right, $beige-colour, $beige-colour);
 
         box-shadow: 0 0 20px rgb(128, 128, 128);
 
@@ -204,12 +203,12 @@
                 // transition: 0.3s ease-in-out;
 
                 &:hover {
-                    // color: $pink-colour;
-                    // text-shadow: 2px 2px 8px $pink-colour;
+                    // color: $beige-colour;
+                    // text-shadow: 2px 2px 8px $beige-colour;
                 }
 
                 &:active {
-                    border-bottom: solid 3px $white-colour;
+                    border-bottom: solid 3px $blue-colour;
                 }
             }
         }
@@ -226,8 +225,6 @@
             align-items: center;
             border: none;
             border-radius: 50px;
-            cursor: pointer;
-
             box-shadow: 0 5px 10px rgba(black, 0.5);
 
 
@@ -283,6 +280,10 @@
                         transform: rotateZ(-45deg);
                     }
                 }
+            }
+
+            &:hover {
+                cursor: pointer;
             }
         }
     }

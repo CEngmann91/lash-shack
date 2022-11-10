@@ -1,6 +1,6 @@
 import './MeetExperts.scss';
-import React from 'react'
-import { Page } from '../../components';
+import React, { useEffect } from 'react'
+import { Page, PhotoFrame } from '../../components';
 import { Emma, Louisa, Shannon } from '../../util/images';
 import ExpertCard from './ExpertCard/ExpertCard';
 import useIsMobile from '../../helpers/hooks/useIsMobile';
@@ -30,27 +30,35 @@ const experts: iExpert[] = [
         position: "Lash Expert",
         imgSrc: Shannon
     },
-    {
-        id: 3,
-        name: "John Doe",
-        position: "Lash Expert",
-        imgSrc: Emma
-    }
+    // {
+    //     id: 3,
+    //     name: "John Doe",
+    //     position: "Lash Expert",
+    //     imgSrc: Emma
+    // }
 ]
 
 const MeetExperts = () => {
     const isMobile = useIsMobile();
 
-    if (isMobile)
-        // If Mobile, make sure we swap the 2nd element with the first to enusre Emma is first.
-        [experts[0], experts[1]] = [experts[1], experts[0]];
+
+    useEffect(() => {
+        if (isMobile)
+            // If Mobile, make sure we swap the 2nd element with the first to enusre Emma is first.
+            [experts[0], experts[1]] = [experts[1], experts[0]];
+    }, [isMobile])
+
+
 
 
     return (
         <Page id='meet' className='app__meet-experts-banner' header='Meet Our Experts' headerClassName='app__meet-experts-banner-title'>
-            <div className="list" data-isMobile={isMobile}>
+            <div className="list" data-ismobile={isMobile}>
                 {experts.map(({ id, name, position, imgSrc }) =>
-                    <ExpertCard id={id} name={name} position={position} imgSrc={imgSrc} />
+                    <div key={id}>
+                        {/* <ExpertCard id={id} name={name} position={position} imgSrc={imgSrc} /> */}
+                        <PhotoFrame key={id} imgSource={imgSrc} width="17rem" height="22rem" className='frame' />
+                    </div>
                 )}
             </div>
         </Page>
