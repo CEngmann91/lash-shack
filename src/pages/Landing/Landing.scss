@@ -1,7 +1,123 @@
 @import '../../util/mixin.scss';
 @import '../../res/styles.scss';
+@import '../../constants/constants.scss';
 
-$banner-height: 300px;
+.app__landing {
+    @media screen and (max-width: 900px) {
+        /* top | right | bottom | left */
+        padding: $navbar-height/2 5px 20px 5px;
+    }
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    /* top | right | bottom | left */
+    padding: $navbar-height/2 20px 20px 20px;
+    background: $beige-colour;
+    min-height: 100vh;
+    z-index: 1;
+
+
+    
+
+    .text-logo {
+        display: flex;
+        flex-direction: row;
+        border-radius: 10px;
+        overflow: hidden;
+        padding-bottom: 10px;
+
+        z-index: inherit;
+
+        .left {
+            background: $pink-colour;
+            color: $blue-colour;
+            padding: 0.8rem 0 0.8rem 0.8rem;
+        }
+
+        .right {
+            background: $blue-colour;
+            color: $pink-colour;
+            padding: 0.8rem 0.8rem 0.8rem 0;
+        }
+
+        h1 {
+            text-transform: uppercase;
+        }
+    }
+
+    .heading {
+        display: flex;
+        width: 25vw;
+        height: 30rem;
+        font-size: 1.5rem;
+        text-align: right;
+
+        // background: green;
+    }
+
+    .list {
+        display: flex;
+        width: 75vw;
+        height: 30rem;
+        padding: 0 1rem;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 10px;
+
+        // background: red;
+
+
+        li {
+            width: 5rem;
+            height: 100%;
+            padding: 2rem 0;
+            // overflow: hidden;
+            // border-radius: 20px;
+
+            transition: 0.3s ease-in-out;
+
+
+            .item {
+                overflow: hidden;
+                height: 100%;
+                border: 3px solid transparent;
+                border-radius: 20px;
+                box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+
+                img {
+                    object-fit: cover;
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+
+            &:hover {
+
+                .item {
+                    border: 3px solid $pink-colour;
+                    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.8);
+                }
+            }
+
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+/*$banner-height: 300px;
+
 
 .overlay {
     flex: 1;
@@ -47,12 +163,10 @@ $banner-height: 300px;
             text-transform: uppercase;
         }
     }
-
     &--name {
         z-index: inherit;
         font-size: clamp(40px, 8vw, 80px);
     }
-
     &--slogan {
         z-index: inherit;
         font-size: 1.2em;
@@ -63,7 +177,7 @@ $banner-height: 300px;
 
 
 
-
+    
 
     &--banner {
         display: grid;
@@ -169,117 +283,5 @@ $banner-height: 300px;
                 }
             }
         }
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-.banner {
-    display: grid;
-    grid-template-columns: auto auto auto;
-    grid-gap: 10px;
-    width: 100%;
-    height: 350px;
-    justify-content: center;
-    align-items: center;
-    background: rgba($pink-colour, 0.8);
-    padding: .5rem 2rem;
-    margin-top: 100px;
-    @include blur(7px);
-
-
-    .item {
-        display: flex;
-        flex-direction: column;
-        width: 25rem;
-        height: 100%;
-        background: transparent;
-        // background: $blue-colour;
-        justify-content: flex-start;
-        align-items: center;
-        padding: 1.1rem;
-        color: $white-colour;
-        position: relative;
-
-
-        svg {
-            width: 45px;
-            height: 45px;
-            color: $white-colour;
-        }
-
-        .title {
-            margin: 10px 0;
-        }
-
-        .description {
-            
-        }
-
-        .buttons {
-            position: absolute;
-            bottom: 30px;
-
-            button {
-                padding: 0.4rem 1.1rem;
-                border-radius: 10px;
-                border: 0.5px solid $gray-colour;
-                transition: 0.3s ease-in-out;
-
-                &:active {
-                    transform: scale(0.95);
-                }
-
-                &:hover {
-                    cursor: pointer;
-                    border: 2px solid $gray-colour;
-                    background: $pink-colour;
-                    color: $white-colour;
-
-                    transform: scale(1.05);
-                    @include shine-effect($pink-colour-HSL);
-                }
-            }
-        }
-    }
-
-    div {
-
-        &:nth-child(2) {
-            background: $pink-colour;
-            padding: 1.1rem;
-
-            .border {
-                width: 100%;
-                height: 100%;
-                display: flex;
-                flex-direction: column;
-                justify-content: flex-start;
-                align-items: center;
-                border: 0.6px solid $white-colour;
-            }
-        }
-    }
-
-    .icon {
-        width: auto;
-        height: auto;
-        padding: 10px;
     }
 }*/

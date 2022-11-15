@@ -31,6 +31,15 @@
     -o-transform: rotateZ($degrees);
 }
 
+@mixin skewY($degrees) {
+    -webkit-transform: skewY( $degrees);  //calc($degrees * 1deg) );
+    -moz-transform: skewY( $degrees);  //calc($degrees * 1deg) );
+    -ms-transform: skewY( $degrees);  //calc($degrees * 1deg) );
+    -o-transform: skewY( $degrees);  //calc($degrees * 1deg) );
+    transform: skewY( $degrees);  //calc($degrees * 1deg) );
+}
+
+
 @mixin blur($amt) {
     -webkit-backdrop-filter: blur($amt);
     // -webkit-filter: blur($amt);
@@ -42,6 +51,56 @@
     -moz-box-shadow: inset 0px 0px 5px $colour;
     box-shadow: inset 0px 0px 5px $colour;
 }
+
+@mixin scale($amt) {
+    -webkit-transform: scale($amt);
+    -moz-transform: scale($amt);
+    -ms-transform: scale($amt);
+    -o-transform: scale($amt);
+    transform: scale($amt);
+}
+
+@mixin translateX($amt) {
+    -webkit-transform: translate($amt, 0);
+    -moz-transform: translate($amt, 0);
+    -ms-transform: translate($amt, 0);
+    -o-transform: translate($amt, 0);
+    transform: translate($amt, 0);
+}
+
+@mixin transition-delay($amt) {
+    -webkit-transition-delay: $amt;
+    -moz-transition-delay: $amt;
+    -o-transition-delay: $amt;
+    transition-delay: $amt;
+}
+
+@mixin transition($amt) {
+    -webkit-transition: $amt;
+    -moz-transition: $amt;
+    -o-transition: $amt;
+    transition: $amt;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 @mixin shine-effect($colour-HSL) {

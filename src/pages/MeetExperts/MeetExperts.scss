@@ -1,9 +1,70 @@
 @import '../../res/styles.scss';
+@import '../../util/mixin.scss';
 @import '../../constants/constants.scss';
+
+// .main {
+//     background: white;
+//     display: flex;
+//     // flex: 1;
+//     // width: 100%;
+//     // height: 100%;
+// }
+
+// .box {
+//     width: 100%;
+//     background: $pink-colour;
+//     margin-top: 50px;
+//     padding: 5% 20px;
+//     /* Added a percentage value for top/bottom padding to keep the wrapper inside of the parent */
+//     @include skewY(-5deg);
+// }
+
+// .box>.wrapper {
+//     @include skewY(5deg);
+
+//     display: flex;
+//     flex-direction: column;
+//     flex: 1;
+//     justify-content: center;
+//     align-items: center;
+
+
+//     h1 {
+//         margin-bottom: 1.2rem;
+//         width: fit-content;
+
+//         @media screen and (max-width: 900px) {
+//             margin-top: 1.2rem;
+//         }
+
+//         .title {
+//             // margin-bottom: 1.5rem;
+//             // font-family: cursive;
+//             border-bottom: 3px solid rgba($pink-colour, 0.4);
+//         }
+//     }
+
+//     // animation: slide 1s 5s forwards;
+// }
+
+
+// @keyframes slide {
+//     from {
+//         transform: translateX(100%)
+//     }
+
+//     to {
+//         transform: translateX(0%)
+//     }
+// }
+
+
+
+
 
 .app__meet-experts-banner {
     padding-top: 1rem;
-    background: rgba($beige-dark-colour, 1);
+    background-color: $beige-colour;
     width: 100%;
 
     @media screen and (min-width: 1200px) {
@@ -14,45 +75,31 @@
     &-title {
         font-size: 1.8rem;
         border-bottom: 3px solid rgba($blue-colour, 0.4);
-        // background: green;
-    }
-
-
-
-    
-
-    // https://codepen.io/fjfalah/pen/jdGNEr
-    @supports (scroll-snap-align: start) {
-        .list[data-ismobile="false"] {
-            justify-content: center;
-        }
-
-        .list {
-            display: flex;
-            position: relative;
-            width: 100%;
-            height: 100%;
-            /* Always force (mandatory) scrolling to a snap point on the x-axis */
-            scroll-snap-type: x mandatory;
-            overflow-x: auto;
-            white-space: nowrap;
-            gap: 20px;
-            margin: 10px 60px;
-
-
-            &::-webkit-scrollbar {
-                display: none;
-            }
-        }
     }
 }
 
+// https://codepen.io/fjfalah/pen/jdGNEr
+@supports (scroll-snap-align: start) {
+    .list[data-ismobile="false"] {
+        justify-content: center;
+    }
 
-.frame {
-    
-    &:hover {
-        cursor: pointer;
-    //     // width: 35rem;
-    //     // transform: scale(2);
+    .list {
+        display: flex;
+        flex-direction: row;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        /* Always force (mandatory) scrolling to a snap point on the x-axis */
+        scroll-snap-type: x mandatory;
+        overflow-x: auto;
+        white-space: nowrap;
+        gap: 20px;
+        margin: 10px 60px;
+
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
     }
 }

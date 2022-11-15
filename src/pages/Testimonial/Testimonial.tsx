@@ -10,7 +10,7 @@ import { Timestamp } from 'firebase/firestore';
 //   displayName: string;
 //   createdAt: string;
 // }
-export interface iReview {
+export interface iTestimonialReview {
   key: number;
   id: number;
   title: string;
@@ -23,7 +23,7 @@ export interface iReview {
 const Testimonial = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
-  const [reviews, setReviews] = useState<iReview[]>([]);
+  const [reviews, setReviews] = useState<iTestimonialReview[]>([]);
 
 
   useEffect(() => {
@@ -39,7 +39,7 @@ const Testimonial = () => {
     getDocument(REACT_APP_FIRESTORE_TESTIMONIAL_COLLECTION as string,
       REACT_APP_FIRESTORE_TESTIMONIAL_DOCUMENT as string)
       .then(res => {
-        const array: iReview[] = res['content'];
+        const array: iTestimonialReview[] = res['content'];
         // Sort by date.
         let sorted = array.sort(function (a, b) {
           let aa = a.createdAt.split('/').reverse().join(),

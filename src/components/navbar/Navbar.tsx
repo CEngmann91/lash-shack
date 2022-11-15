@@ -1,11 +1,11 @@
 import './Navbar.scss';
-import { logo } from '../../util/images';
+import { logo, logo2 } from '../../util/images';
 import { useLocation } from 'react-router-dom';
 import React, { useState, useEffect } from 'react'
 import { BOOKING_URL, NAVIGATION } from '../../constants/constants';
 import NavbarItem from './NavbarItem/NavbarItem';
 import { Menu } from '../../util/icons';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion, useScroll, useSpring, useViewportScroll } from 'framer-motion';
 
 
 
@@ -28,7 +28,12 @@ const Navbar = () => {
     // const location = useLocation();
     const [scrolledDown, setScrolledDown] = useState(false);
     const [menuIsOpen, setMenuIsOpen] = useState(false);
-
+    const { scrollYProgress } = useScroll();
+    const scaleX = useSpring(scrollYProgress, {
+        stiffness: 100,
+        damping: 30,
+        restDelta: 0.001
+    });
 
 
     useEffect(() => {
@@ -55,17 +60,19 @@ const Navbar = () => {
 
     return (
         <nav className={`navbar-nav ${scrolledDown ? 'navbar-nav--scroll' : ''}`}>
+            <motion.div className="progress-bar" style={{ scaleX }} />
             <div className="navbar-nav--logo">
                 <NavbarItem
                     key={"home"} id={"home"}
                     to={'/'} onClick={() => { }}
                     idleClassName="link-item" activeClassName=""
                 >
-                    <img src={logo} />
+                    <img src={logo2} />
                 </NavbarItem>
             </div>
 
-            <ul className='navbar-nav--links' data-bb-colour={'rgba(255, 255, 255, 1)'}
+            <ul className='navbar-nav--links'
+            //data-bb-colour={'rgba(255, 255, 255, 1)'}
             // {location.pathname === "/" ? 'rgba(255, 255, 255, 1)' : 'rgba(239, 179, 183, 1)'}
             >
                 {NAVIGATION.ROUTE.map(({ id, name, to }) => (
