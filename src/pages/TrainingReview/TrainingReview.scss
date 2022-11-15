@@ -3,7 +3,7 @@
 
 .app__training-review-banner {
     @media screen and (min-width: 1200px) {
-        height: $banner-height;
+        height: $banner-height auto;
     }
     // min-height: 100vh;
     padding: 2rem 0;
@@ -16,5 +16,12 @@
         font-size: 26px;
         border-bottom: 3px solid rgba($blue-colour, 0.4);
         // background: green;
+    }
+
+    .list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
     }
 }

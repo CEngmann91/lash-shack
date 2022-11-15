@@ -1,4 +1,5 @@
-// Masterclass, Classic, Russian Volume, Lash Lift & Tint, Refresher Course.
+// Add potential earnings.
+// Details of the course, when clicked shows 3 images.
 
 import './Courses.scss';
 import React, { useEffect, useState } from 'react'
@@ -21,6 +22,7 @@ export interface iSale {
 }
 export interface iCourse {
   id: number;
+  imgSrc: string;
   title: string;
   description: string;
   price: number;
@@ -89,7 +91,7 @@ const Courses = () => {
         </div>
       }
       <>
-        <h3>Fully Accredited</h3>
+        {/* <h3>Fully Accredited</h3> */}
 
         {/* <p>Classic, Classic Xtra, Hybrid, Russian.</p>
         <p>Live Models</p>
@@ -98,11 +100,11 @@ const Courses = () => {
         <p>Fully Accredited</p>
         <p>Over 100 Students Qualified.</p> */}
 
-        <br />
+        {/* <br />
         <p>
           We offer a range of different courses to help advance your capabilities. We pride ourselves on building relationships and inspiring people to achieve their best.
           All courses come with in-depth manuals, live models
-        </p>
+        </p> */}
 
         <div className="cards">
           {courseList.length != 0 && courseList.map((item, index) => {

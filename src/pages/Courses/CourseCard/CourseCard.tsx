@@ -2,6 +2,7 @@ import './CourseCard.scss';
 import React from 'react'
 import { CardFlip } from '../../../components/Cards';
 import { iSale, Popularity } from '../Courses';
+import { ABT } from '../../../util/images';
 
 interface iProps {
     id: number;
@@ -89,6 +90,9 @@ const CourseCard: React.FC<iProps> = ({ id, title, frontImg, description, price,
                     }
                 </div>
             </div>
+
+            <img src={ABT} className="abt" />
+
 
             <div className="buttons">
                 <button className="enroll-button">Enroll Now</button>

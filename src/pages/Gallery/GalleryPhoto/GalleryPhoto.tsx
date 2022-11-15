@@ -20,7 +20,7 @@ const GalleryPhoto: React.FC<iProps> = ({ id, imgSource, onClick, ...props }: iP
       viewport={{ once: true }}
       transition={{
         duration: 1,
-        delay: (0.1 * Number(id))
+        delay: 1 + 0.1 * Number(id)
       }}
     >
       <img src={imgSource} alt="" />

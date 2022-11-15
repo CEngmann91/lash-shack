@@ -16,6 +16,7 @@ const Gallery = () => {
   const [selectedImg, setSelectedImg] = useState("");
 
 
+
   const memoizedList = useMemo(() => {
     return (
       files.map((url, index) => (
@@ -64,6 +65,7 @@ const Gallery = () => {
     );
   }
 
+
   return (
     <Page id='gallery' className='app__gallery' header='Love What You See?'>
       <>
@@ -73,6 +75,40 @@ const Gallery = () => {
           </div>
           :
           <>
+            {/* <div className="border"> */}
+              {/* <div className="grid">
+                {files.map((url, index) => (
+                  <div key={index}>
+                    <GalleryPhoto id={index.toString()}
+                      imgSource={url} onClick={() => setSelectedImg(url)}
+                    />
+                  </div>
+                ))} */}
+
+                {/* <div>Item 1</div>
+                <div>Item 2</div>
+                <div>Item 3</div>
+                <div>Item 4</div>
+                <div>Item 5</div>
+                <div>Item 6</div>
+                <div>Item 7</div>
+                <div>Item 8</div> */}
+              {/* </div> */}
+
+
+              {/* <div className="grid">
+                <div>Item 1</div>
+                <div>Item 2</div>
+                <div>Item 3</div>
+                <div>Item 4</div>
+                <div>Item 5</div>
+                <div>Item 6</div>
+              </div> */}
+            {/* </div> */}
+
+
+
+
             <div className="container">
               <ul className="image-gallery">
                 {memoizedList}
