@@ -10,12 +10,24 @@ import { AnimatePresence, motion, useScroll, useSpring, useViewportScroll } from
 
 
 const container = {
-    closed: { y: '-100vh' },
+    closed: {
+        y: '-100vh',
+        transition: {
+            delay: 0.5,
+            type: "spring",
+            stiffness: 400,
+            damping: 40
+        }
+    },
     open: {
         y: 0,
         transition: {
             // delayChildren: 0.5,
             // staggerChildren: 0.07,
+
+            type: "spring",
+            stiffness: 200,
+            restDelta: 2
         }
     }
 }
@@ -104,9 +116,6 @@ const Navbar: React.FC<{}> = () => {
                             initial="closed"
                             animate='open'
                             exit='closed'
-                            transition={{
-                                // default: { ease: "linear" }
-                            }}
                         >
                             <motion.div variants={item}>
                                 {NAVIGATION.ROUTE.map(({ id, name, to }) =>

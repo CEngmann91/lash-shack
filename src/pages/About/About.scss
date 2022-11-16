@@ -21,8 +21,11 @@
 }
 
 .app__about {
+    display: flex;
+    flex: 1;
+    width: 100%;
     min-height: 100vh;
-    background: $white-colour;
+    background: $beige-colour;
 
     // &-title {
     //     font-size: 16px;
