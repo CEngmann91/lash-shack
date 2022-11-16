@@ -4,17 +4,12 @@
 
 .progress-bar {
     position: fixed;
-    top: $navbar-height + 5px;
     left: 0;
     right: 0;
+    bottom: 0;
     height: 2px;
     background: $blue-colour;
     transform-origin: center;
-    // z-index: 10;
-
-    @media screen and (max-width: 900px) {
-        top: $navbar-height - 10px;
-    }
 }
 
 .navbar-nav {
@@ -52,6 +47,8 @@
 
         // border-bottom-left-radius: 20px;
         // border-bottom-right-radius: 20px;
+
+
 
 
         .navbar-nav {
