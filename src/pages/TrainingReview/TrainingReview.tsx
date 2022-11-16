@@ -74,8 +74,8 @@ const TrainingReview = () => {
 
 
     return (
-        <SkewedPage id='training-reviews' className='app__training-review-banner' header='Training Reviews' headerClassName='app__training-review-banner-title'>
-        {/* <Page id='training-reviews' className='app__training-review-banner' header='Training Reviews' headerClassName='app__training-review-banner-title'> */}
+        // <SkewedPage id='training-reviews' className='app__training-review-banner' header='Training Reviews' headerClassName='app__training-review-banner-title'>
+        <Page id='training-reviews' className='app__training-review-banner' header='Training Reviews' headerClassName='app__training-review-banner-title'>
             {error ?
                 <>
                     <p>Error is: {error}</p>
@@ -93,8 +93,8 @@ const TrainingReview = () => {
                     )}
                 </div>
             }
-        {/* </Page> */}
-        </SkewedPage>
+        </Page>
+        // </SkewedPage>
     )
 }
 
