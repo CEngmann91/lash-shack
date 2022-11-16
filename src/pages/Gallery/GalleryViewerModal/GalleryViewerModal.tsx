@@ -56,6 +56,7 @@ const GalleryViewerModal: React.FC<iProps> = ({ selectedPhoto, setSelectedPhoto,
                     initial="hidden"
                     animate='visible'
                     exit='hidden'
+                    onClick={handleClick}
                 >
                     <motion.img src={selectedPhoto} alt="enlarged pic" variants={item} />
                     <button className="close-button" onClick={handleClick}>

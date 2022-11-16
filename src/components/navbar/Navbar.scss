@@ -35,7 +35,7 @@
     // Add a blur
     @include blur(4px);
     // Ensures the navbar is above the content
-    z-index: 3;
+    z-index: 5;
 
     transition: 0.3s ease-in-out;
 
