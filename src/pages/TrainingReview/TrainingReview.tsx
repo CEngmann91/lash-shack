@@ -1,9 +1,10 @@
 import './TrainingReview.scss';
 import React, { useEffect, useState } from 'react'
-import { ActivityIndicator, Page } from '../../components';
+import { ActivityIndicator, Page, SkewedPage } from '../../components';
 import TrainingReviewCard from './TrainingReviewCard/TrainingReviewCard';
 import { getDocument } from '../../helpers/firebase/firestore';
 import { REACT_APP_FIRESTORE_TRAINING_COLLECTION, REACT_APP_FIRESTORE_TRAINING_DOCUMENT } from '../../constants/firebase';
+import { useScroll } from 'framer-motion';
 
 export interface iTrainingReview {
     id: number;
@@ -29,6 +30,7 @@ export interface iTrainingReview {
 // ]
 
 const TrainingReview = () => {
+    const { scrollYProgress } = useScroll();
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState('');
     const [reviews, setReviews] = useState<iTrainingReview[]>([]);
@@ -72,7 +74,8 @@ const TrainingReview = () => {
 
 
     return (
-        <Page id='training-reviews' className='app__training-review-banner' header='Training Reviews' headerClassName='app__training-review-banner-title'>
+        <SkewedPage id='training-reviews' className='app__training-review-banner' header='Training Reviews' headerClassName='app__training-review-banner-title'>
+        {/* <Page id='training-reviews' className='app__training-review-banner' header='Training Reviews' headerClassName='app__training-review-banner-title'> */}
             {error ?
                 <>
                     <p>Error is: {error}</p>
@@ -90,7 +93,8 @@ const TrainingReview = () => {
                     )}
                 </div>
             }
-        </Page>
+        {/* </Page> */}
+        </SkewedPage>
     )
 }
 

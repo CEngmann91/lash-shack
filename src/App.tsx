@@ -1,7 +1,7 @@
 import './index.scss';
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { Footer, Navbar } from './components';
+import { Footer, MapView, Navbar } from './components';
 import { UpArrow } from './util/icons';
 import { About, Courses, Gallery, Landing, MeetExperts, NotFound, Services, Testimonial, TrainingReview } from './pages';
 
@@ -40,6 +40,12 @@ function App() {
             <MeetExperts />
             <Testimonial />
             <TrainingReview />
+            <MapView />
+
+            {/* margin ($footer-height value in constants.scss minus 10px) used in
+            order to display the footer once at the bottom seeing as it is behind
+            everything else. */}
+            <div style={{ height: '150px' }} />
           </>
         )
       } />
