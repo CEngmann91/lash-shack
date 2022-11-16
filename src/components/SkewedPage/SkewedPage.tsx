@@ -8,11 +8,12 @@ interface iProps {
     headerClassName?: string;
     children: React.ReactNode;
     customHeader?: React.ReactNode;
+    backgroundColour?: string;
 }
 
-const SkewedPage: React.FC<iProps> = ({ id, className, header, headerClassName, children, customHeader, ...props }: iProps) => {
+const SkewedPage: React.FC<iProps> = ({ id, className, header, headerClassName, children, customHeader, backgroundColour, ...props }: iProps) => {
     return (
-        <div className="main">
+        <div className="main" style={{ background: (backgroundColour ? backgroundColour : "white") }}>
             <div className={`box ${className}`}>
                 <div className="wrapper app__pad-hor">
                     <header>

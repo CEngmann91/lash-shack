@@ -55,7 +55,7 @@ const Landing = () => {
 
       <ul className='list'>
         {images.map(({ id, src }) => (
-          <li key={id} onMouseEnter={() => setHoverChild(id)} onMouseLeave={() => setHoverChild(id)}
+          <li key={id} onMouseEnter={() => setHoverChild(id)}
             style={{ width: (hoverChild === id ? 'calc(100vw / 4.5)' : "4rem") }}
           >
             <div className="item">

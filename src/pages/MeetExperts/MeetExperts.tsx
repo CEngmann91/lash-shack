@@ -56,11 +56,11 @@ const MeetExperts = () => {
     }
 
 
-    // useEffect(() => {
-    //     if (isMobile)
-    //         // If Mobile, make sure we swap the 2nd element with the first to enusre Emma is first.
-    //         [experts[0], experts[1]] = [experts[1], experts[0]];
-    // }, [isMobile])
+    useEffect(() => {
+        if (isMobile)
+            // If Mobile, make sure we swap the 2nd element with the first to enusre Emma is first.
+            [experts[0], experts[1]] = [experts[1], experts[0]];
+    }, [isMobile])
 
 
 

@@ -24,7 +24,7 @@ const item = {
     open: { opacity: 1 }
 }
 
-const Navbar = () => {
+const Navbar: React.FC<{}> = () => {
     // const location = useLocation();
     const [scrolledDown, setScrolledDown] = useState(false);
     const [menuIsOpen, setMenuIsOpen] = useState(false);

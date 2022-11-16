@@ -5,8 +5,7 @@ import { Email, Facebook, Instagram, Twitter, UpArrow } from '../../util/icons';
 import { CONTACT, NAVIGATION } from '../../constants/constants';
 import { logo, logo2 } from '../../util/images';
 
-const Footer = () => {
-
+const Footer: React.FC<{}> = () => {
 
   return (
     <div className='app__footer'>

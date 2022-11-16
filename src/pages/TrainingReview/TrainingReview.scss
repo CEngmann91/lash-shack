@@ -7,9 +7,9 @@
     }
     // min-height: 100vh;
     padding: 2rem 0;
-    background: rgba($beige-dark-colour, 1);
+    background: $beige-colour;
     width: 100%;
-    margin-bottom: calc($footer-height - 10px);
+    margin-bottom: 65px;
     
 
     &-title {
