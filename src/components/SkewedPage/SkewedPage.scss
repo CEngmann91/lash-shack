@@ -12,7 +12,7 @@
         margin-top: 50px;
         padding: 5% 20px;
         /* Added a percentage value for top/bottom padding to keep the wrapper inside of the parent */
-        @include skewY(-5deg);
+        @include skewY(5deg);
     }
 
     .box>.wrapper {
@@ -21,7 +21,7 @@
         flex: 1;
         justify-content: center;
         align-items: center;
-        @include skewY(5deg);
+        @include skewY(-5deg);
 
 
         header {

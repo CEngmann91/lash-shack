@@ -2,66 +2,6 @@
 @import '../../util/mixin.scss';
 @import '../../constants/constants.scss';
 
-// .main {
-//     background: white;
-//     display: flex;
-//     // flex: 1;
-//     // width: 100%;
-//     // height: 100%;
-// }
-
-// .box {
-//     width: 100%;
-//     background: $pink-colour;
-//     margin-top: 50px;
-//     padding: 5% 20px;
-//     /* Added a percentage value for top/bottom padding to keep the wrapper inside of the parent */
-//     @include skewY(-5deg);
-// }
-
-// .box>.wrapper {
-//     @include skewY(5deg);
-
-//     display: flex;
-//     flex-direction: column;
-//     flex: 1;
-//     justify-content: center;
-//     align-items: center;
-
-
-//     h1 {
-//         margin-bottom: 1.2rem;
-//         width: fit-content;
-
-//         @media screen and (max-width: 900px) {
-//             margin-top: 1.2rem;
-//         }
-
-//         .title {
-//             // margin-bottom: 1.5rem;
-//             // font-family: cursive;
-//             border-bottom: 3px solid rgba($pink-colour, 0.4);
-//         }
-//     }
-
-//     // animation: slide 1s 5s forwards;
-// }
-
-
-// @keyframes slide {
-//     from {
-//         transform: translateX(100%)
-//     }
-
-//     to {
-//         transform: translateX(0%)
-//     }
-// }
-
-
-
-
-
 .app__meet-experts-banner {
     padding-top: 1rem;
     background-color: $white-colour;
