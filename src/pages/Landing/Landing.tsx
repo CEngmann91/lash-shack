@@ -53,7 +53,7 @@ const Landing = () => {
         <p>New Beginnings Start Here</p>
       </div>
 
-      <ul className='list'>
+      {/* <ul className='list'>
         {images.map(({ id, src }) => (
           <li key={id} onMouseEnter={() => setHoverChild(id)}
             style={{ width: (hoverChild === id ? 'calc(100vw / 4.5)' : "4rem") }}
@@ -63,7 +63,7 @@ const Landing = () => {
             </div>
           </li>
         ))}
-      </ul>
+      </ul> */}
     </Page>
 
 

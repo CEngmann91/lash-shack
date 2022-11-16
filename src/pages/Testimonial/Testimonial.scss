@@ -1,13 +1,15 @@
 @import '../../res/colours.scss';
 
 .app__testimonial {
-    // margin: 2rem 0;
-    background: $white-colour;
+    padding: 2rem 0;
+    background: $beige-colour;
 
     .list {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
+        overflow-y: hidden;
+        padding-bottom: 10px;
     }
 }
