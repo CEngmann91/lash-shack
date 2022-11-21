@@ -10,8 +10,8 @@
     justify-content: center;
     width: 18rem;
     height: 21rem;
-    background: linear-gradient(to bottom right, $pink-colour, $white-colour);
-    // background:rgba(black, 1);
+    // background: linear-gradient(to bottom right, $pink-colour, $white-colour);
+    // background: rgba(black, 1);
     border: 0px solid transparent;
     box-shadow: 10px 10px gray;
     overflow: hidden;
@@ -19,16 +19,22 @@
 
     transition: 0.2s linear 0s;
     
+    
     &:hover {
-        transform: scale(1.05);
+        transform: scale(1.075);
         border: 3px solid $pink-colour;
-        box-shadow: 15px 15px gray;
+        box-shadow: 10px 10px gray;
 
+
+        .background {
+
+            filter: blur(4px) brightness(50%);
+        }
         .title-banner {
             transform: translateY(100px);
         }
         .sale-sticker {
-            @include shine-effect-delayed($pink-colour-HSL, 2s);
+            // @include shine-effect-delayed($pink-colour-HSL, 2s);
         }
         .info {
             opacity: 1;
@@ -38,19 +44,21 @@
         }
     }
 
-    // img {
-    //     position: absolute;
-    //     display: block;
-    //     margin: 0 auto;
+    .background {
+        position: absolute;
+        display: block;
+        margin: 0 auto;
 
-    //     object-fit: cover;
-    //     object-position: center center;
-    //     width: 100%;
-    //     height: 100%;
+        object-fit: cover;
+        object-position: center center;
+        width: 100%;
+        height: 100%;
 
-    //     filter: brightness(100%);
-    //     transition: 0.2s linear 0s;
-    // }
+        filter: blur(0px) brightness(100%);
+
+        // transition: 0.2s linear 0s;
+    }
+
 
     .top-banner {
         position: absolute;
@@ -59,18 +67,12 @@
         left: 0;
         height: auto;
         background: rgba($pink-colour, 0.5);
-        
+        padding: 10px 0px;
+        z-index: 4;
+
         transform-origin: right;
         transform: rotateZ(40deg) translate(42%, 60px);
-
-        // background-image: linear-gradient(to bottom,
-        //         rgba($pink-colour, 1),
-        //         rgba($pink-colour, 0.3) 90%,
-        //     );
-        padding: 10px 0px;
-        z-index: 1;
-
-
+        
         p {
             text-align: center;
             font-size: 20px;
@@ -80,24 +82,26 @@
     }
 
     .title-banner {
-        position: absolute;
         display: flex;
+        position: absolute;
         justify-content: center;
         align-items: center;
         bottom: 30px;
         right: 0;
         left: 0;
         height: auto;
-        padding: 5px 0;
+        padding: 8px 0;
         background: $pink-colour;
-        z-index: 1;
 
         transition: 0.4s linear 0s;
         transform-origin: center;
         // animation: shine-pink 260ms;
 
+        z-index: 1;
+
+
         label {
-            font-size: 20px;
+            font-size: 1.1em;
             color: $blue-colour;
         }
     }
@@ -118,33 +122,32 @@
 
     .sale-sticker {
         display: flex;
+        position: absolute;
         justify-content: center;
         align-items: center;
-        position: absolute;
         top: 0.3rem;
         right: 0.3rem;
 
         width: 4rem;
         height: 4rem;
-        border-radius: 50%;
         background: $pink-colour;
         color: $blue-colour;
-
+        border-radius: 50%;
         border: 3px solid $blue-colour;
 
         // animation: shine-pink 260ms infinite;
     }
 
     .info {
+        display: flex;
         position: absolute;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
         left: 0;
         top: 0;
         width: 100%;
         height: 85%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
         // padding: 2rem 0.5rem;
         // background: red;
 
@@ -152,11 +155,12 @@
         transform-origin: center;
         opacity: 0;
 
+
         .title {
-            color: $black-colour;
+            color: $white-colour;
             font-weight: bolder;
             // font-size: 1.8rem;
-            font-size: clamp(1rem, 2.5vw, 2rem); 
+            font-size: clamp(1rem, 1.8vw, 2rem); 
             text-align: center;
 
             // text-shadow: 10px 6px 14px #EF7B92;
@@ -165,13 +169,13 @@
         .description {
             font-size: 1rem;
             // padding: 1.5rem 0rem;
-            color: $black-colour;
+            color: $white-colour;
             text-align: center;
             // font-weight: lighter;
         }
 
         .duration {
-            color: $black-colour;
+            color: $white-colour;
         }
 
         .price-container {
@@ -180,13 +184,14 @@
             justify-content: center;
             align-items: center;
 
+
             .price {
-                color: $black-colour;
+                color: $white-colour;
                 font-weight: lighter;
             }
 
             .sale-price {
-                color: $black-colour;
+                color: $white-colour;
                 font-weight: bolder;
                 font-size: 20px;
 
@@ -259,7 +264,7 @@
             object-position: center center;
             width: 100%;
             height: 100%;
-            // filter:sepia(50%)
+            // filter: sepia(50%)
         }
     }
 }

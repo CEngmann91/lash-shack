@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { QuoteRight, Star } from '../../../util/icons';
 import { getDateFormatted } from '../../../constants/funcs';
 
-const TestimonialCard: React.FC<iTestimonialReview> = ({ key, id, createdAt, starRating, title, description, ...props }: iTestimonialReview) => {
+const TestimonialCard: React.FC<iTestimonialReview> = ({ id, createdAt, starRating, title, description, ...props }: iTestimonialReview) => {
     const variants = {
         visible: {
             y: 0,

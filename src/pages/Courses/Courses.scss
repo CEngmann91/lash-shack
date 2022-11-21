@@ -14,11 +14,11 @@
     .cards {
         display: flex;
         flex-wrap: wrap;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: flex-start;
         height: 100%;
         margin: 50px 0;
-        gap: 30px;
+        gap: 40px;
     }
 
     .abt {

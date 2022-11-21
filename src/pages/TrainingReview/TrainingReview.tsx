@@ -1,6 +1,6 @@
 import './TrainingReview.scss';
 import React, { useEffect, useState } from 'react'
-import { ActivityIndicator, Page, SkewedPage } from '../../components';
+import { ActivityIndicator, Page } from '../../components';
 import TrainingReviewCard from './TrainingReviewCard/TrainingReviewCard';
 import { getDocument } from '../../helpers/firebase/firestore';
 import { REACT_APP_FIRESTORE_TRAINING_COLLECTION, REACT_APP_FIRESTORE_TRAINING_DOCUMENT } from '../../constants/firebase';
@@ -74,7 +74,6 @@ const TrainingReview = () => {
 
 
     return (
-        // <SkewedPage id='training-reviews' className='app__training-review-banner' header='Training Reviews' headerClassName='app__training-review-banner-title'>
         <Page id='training-reviews' className='app__training-review-banner' header='Training Reviews' headerClassName='app__training-review-banner-title'>
             {error ?
                 <>
@@ -94,7 +93,6 @@ const TrainingReview = () => {
                 </div>
             }
         </Page>
-        // </SkewedPage>
     )
 }
 

@@ -1,8 +1,9 @@
 import './CourseCard.scss';
-import React from 'react'
+import React, { useEffect } from 'react'
 import { CardFlip } from '../../../components/Cards';
 import { iSale, Popularity } from '../Courses';
 import { ABT } from '../../../util/images';
+import { getImage } from '../../../helpers/firebase/firebase';
 
 interface iProps {
     id: number;
@@ -19,6 +20,13 @@ interface iProps {
     popularity?: Popularity;
 }
 const CourseCard: React.FC<iProps> = ({ id, title, frontImg, description, price, sale, duration, popularity, ...props }: iProps) => {
+
+
+
+    // useEffect(() => {
+      
+    // }, [frontImg])
+    
 
 
     function isOnSale(): boolean {
@@ -59,7 +67,7 @@ const CourseCard: React.FC<iProps> = ({ id, title, frontImg, description, price,
 
     return (
         <div className="course-card">
-            {/* <img src={frontImg} /> */}
+            <img className='background' src={ frontImg } />
 
             {/* <div className="circle">
                 
@@ -67,6 +75,7 @@ const CourseCard: React.FC<iProps> = ({ id, title, frontImg, description, price,
 
 
             { renderBanner(popularity as Popularity) }
+
 
             <div className="title-banner">
                 <label>{title}</label>
@@ -91,7 +100,7 @@ const CourseCard: React.FC<iProps> = ({ id, title, frontImg, description, price,
                 </div>
             </div>
 
-            <img src={ABT} className="abt" />
+            <img className="abt" src={ABT} />
 
 
             <div className="buttons">

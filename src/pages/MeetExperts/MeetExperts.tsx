@@ -1,6 +1,6 @@
 import './MeetExperts.scss';
 import React, { useEffect } from 'react'
-import { SkewedPage } from '../../components';
+import { Page } from '../../components';
 import { Emma, Louisa, Shannon } from '../../util/images';
 import ExpertCard from './ExpertCard/ExpertCard';
 import useIsMobile from '../../helpers/hooks/useIsMobile';
@@ -66,7 +66,8 @@ const MeetExperts = () => {
 
 
     return (
-        <SkewedPage id='meet' className='app__meet-experts-banner' header='Meet Our Experts' headerClassName='app__meet-experts-banner-title' backgroundColour={"#e8ded1"}>
+        <Page id='meet' className='app__meet-experts-banner' header='Meet Our Experts' headerClassName='app__meet-experts-banner-title'>
+        {/* <SkewedPage id='meet' className='app__meet-experts-banner' header='Meet Our Experts' headerClassName='app__meet-experts-banner-title' backgroundColour={"#e8ded1"}> */}
             <div className="list" data-ismobile={isMobile}>
                 {experts.map(({ id, name, position, imgSrc }) =>
                     <motion.div
@@ -88,7 +89,8 @@ const MeetExperts = () => {
                     </motion.div>
                 )}
             </div>
-        </SkewedPage>
+        {/* </SkewedPage> */}
+        </Page>
 
 
         // <div className="main">
