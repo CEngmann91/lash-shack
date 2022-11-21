@@ -21,7 +21,7 @@ const Gallery = () => {
     return (
       files.map((url, index) => (
         // <PhotoFrame key={index} imgSource={url} onClick={() => getImage(url)} />
-        <GalleryPhoto key={index} id={index.toString()}
+        <GalleryPhoto key={index} id={index}
           imgSource={url} onClick={() => setSelectedImg(url)}
         />
       ))

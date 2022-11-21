@@ -42,8 +42,8 @@ const Navbar: React.FC<{}> = () => {
     const [menuIsOpen, setMenuIsOpen] = useState(false);
     const { scrollYProgress } = useScroll();
     const scaleX = useSpring(scrollYProgress, {
-        stiffness: 100,
-        damping: 30,
+        // stiffness: 100,
+        // damping: 30,
         restDelta: 0.001
     });
 

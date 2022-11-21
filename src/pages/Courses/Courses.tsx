@@ -9,6 +9,7 @@ import CourseCard from './CourseCard/CourseCard';
 import { getDocument } from '../../helpers/firebase/firestore';
 import { ABT, photography } from '../../util/images';
 import { REACT_APP_FIRESTORE_COURSES_COLLECTION, REACT_APP_FIRESTORE_COURSES_DOCUMENT } from '../../constants/firebase';
+import { getImage } from '../../helpers/firebase/firebase';
 
 export enum Popularity {
   Normal = 0,
@@ -21,8 +22,9 @@ export interface iSale {
   endDate: string;
 }
 export interface iCourse {
+  active: boolean;
   id: number;
-  imgSrc: string;
+  img: string;
   title: string;
   description: string;
   price: number;
@@ -50,17 +52,65 @@ const Courses = () => {
   const fetchCourses = async () => {
     setIsLoading(true);
 
-    getDocument(REACT_APP_FIRESTORE_COURSES_COLLECTION as string,
+
+    let array: iCourse[] = [];
+    await getDocument(REACT_APP_FIRESTORE_COURSES_COLLECTION as string,
+      REACT_APP_FIRESTORE_COURSES_DOCUMENT as string)
+      .then(res => {
+        const result: iCourse[] = res['content'];
+        // Only get the active items in the array.
+        const filtered = result.filter((item) => item.active);
+        // Sort by ID.
+        array = filtered.sort((a, b) => a.id - b.id);
+      });
+
+    // Load images from Firestore.
+    const mapPromises = array.map((item) =>
+      getImage(item.img).then(res => item.img = res)
+    );
+    const results = await Promise.all(mapPromises);
+    // console.log("results - " + results)
+
+    setCourseList(array);
+    setIsLoading(false);
+
+
+
+
+
+
+
+    /*
+    await getDocument(REACT_APP_FIRESTORE_COURSES_COLLECTION as string,
       REACT_APP_FIRESTORE_COURSES_DOCUMENT as string)
       .then(res => {
         const array: iCourse[] = res['content'];
-        let sorted = array.sort((a, b) => a.id - b.id);
+
+        const unresolvedPromises = array.map(calc);
+        const results = await Promise.all(unresolvedPromises);
+
+        array.map((item) => {
+          getImage(item.img)
+          .then(res => 
+            {
+              // console.log("fetchCourses - " + res)
+              item.img = res
+            }
+            );
+        });
+        // Only get the active items in the array.
+        const filtered = array.filter((item) => item.active);
+        // Sort by ID.
+        const sorted = filtered.sort((a, b) => a.id - b.id);
+
 
         // sort by price
         // let sorted = array.sort((a, b) => b.price - a.price);
+        // sort by popularity
         // let sorted = array.sort((a, b) => b.popularity - a.popularity);
         // sorted = [...sorted].sort((a, b) => b.salePrice - a.salePrice);
         setCourseList(sorted);
+        // console.log(sorted);
 
         setIsLoading(false);
       })
@@ -69,69 +119,59 @@ const Courses = () => {
         setError(error);
         setIsLoading(false);
       });
+    */
   }
 
 
 
-  if (isLoading) {
-    return (
-      <Page id='courses' className='app__courses' header='Be Your Own Boss'>
-        <div className='app__flex app__min-height'>
-          <ActivityIndicator borderColour='rgba(239, 179, 183, 1)' borderSpinColour='rgba(16, 40, 121, 1)' />
-        </div>
-      </Page>
-    );
-  }
+  // if (isLoading) {
+  //   return (
+  //     <Page id='courses' className='app__courses' header='Be Your Own Boss'>
+  //       <div className='app__flex app__min-height'>
+  //         <ActivityIndicator borderColour='rgba(239, 179, 183, 1)' borderSpinColour='rgba(16, 40, 121, 1)' />
+  //       </div>
+  //     </Page>
+  //   );
+  // }
 
   return (
     <Page id='courses' className='app__courses' header='Be Your Own Boss'>
-      {error &&
+      {isLoading
+        ?
         <div className='app__flex app__min-height'>
-          {error}
+          <ActivityIndicator borderColour='rgba(239, 179, 183, 1)' borderSpinColour='rgba(16, 40, 121, 1)' />
         </div>
+        :
+        error
+          ?
+          <div className='app__flex app__min-height'>
+            {error}
+          </div>
+          :
+          <>
+            <div className="cards">
+              {courseList.length != 0 && courseList.map((item, index) => {
+                const { title, description, img, price, sale, duration, popularity } = item;
+
+                return (
+                  <CourseCard
+                    key={title} id={index}
+                    title={title}
+                    frontImg={img}
+                    description={description}
+                    price={price}
+                    sale={sale}
+                    duration={duration}
+                    popularity={popularity}
+                  />
+                )
+              })}
+            </div>
+
+            <img className='abt' src={ABT} alt="" />
+          </>
       }
-      <>
-        {/* <h3>Fully Accredited</h3> */}
-
-        {/* <p>Classic, Classic Xtra, Hybrid, Russian.</p>
-        <p>Live Models</p>
-        <p>In-depth Manuals</p>
-        <p>Ongoing Support</p>
-        <p>Fully Accredited</p>
-        <p>Over 100 Students Qualified.</p> */}
-
-        {/* <br />
-        <p>
-          We offer a range of different courses to help advance your capabilities. We pride ourselves on building relationships and inspiring people to achieve their best.
-          All courses come with in-depth manuals, live models
-        </p> */}
-
-        <div className="cards">
-          {courseList.length != 0 && courseList.map((item, index) => {
-            const { title, description, price, sale, duration, popularity } = item;
-
-            return (
-              <CourseCard
-                key={title} id={index}
-                title={title}
-                frontImg={
-                  // 'https://images.unsplash.com/photo-1511447333015-45b65e60f6d5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=955&q=80'
-                  photography
-                }
-                description={description}
-                price={price}
-                sale={sale}
-                duration={duration}
-                popularity={popularity}
-              />
-            )
-          })}
-        </div>
-
-        <img className='abt' src={ABT} alt="" />
-        
-      </>
-    </Page>
+    </Page >
   )
 }
 

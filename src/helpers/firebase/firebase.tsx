@@ -22,9 +22,25 @@ export const storage = getStorage(firebaseApp);
 
 
 
+export const getImage = async(dir: string) => {
+    let data = "";
+    const storage = getStorage()
+    const pathRef = ref(storage, dir);
 
-export const getImages = async (dir : string) => {
-    let data : string[] = [];
+    await getDownloadURL(pathRef)
+        .then((res) => {
+            data = res;
+            // return res;
+            // console.log("getImage", dir, data);
+        })
+        .catch(function(error) {
+            // Handle any errors
+          });
+    return data;
+}
+
+export const getImages = async (dir: string) => {
+    let data: string[] = [];
     const storage = getStorage()
     const listRef = ref(storage, dir)
     const res = await listAll(listRef)

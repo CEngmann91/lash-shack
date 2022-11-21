@@ -11,7 +11,6 @@ import { Timestamp } from 'firebase/firestore';
 //   createdAt: string;
 // }
 export interface iTestimonialReview {
-  key: number;
   id: number;
   title: string;
   description: string;
@@ -85,15 +84,16 @@ const Testimonial = () => {
         </>
         :
         <div className="list">
-          {reviews.map(({ id, createdAt, starRating, title, description }) =>
-            <TestimonialCard
-              key={id}
-              id={id}
-              createdAt={createdAt}
-              starRating={starRating}
-              title={title}
-              description={description}
-            />
+          {reviews.map(({ id, createdAt, starRating, title, description }, index) =>
+            <div key={index}>
+              <TestimonialCard
+                id={id}
+                createdAt={createdAt}
+                starRating={starRating}
+                title={title}
+                description={description}
+              />
+            </div>
           )}
         </div>
       }

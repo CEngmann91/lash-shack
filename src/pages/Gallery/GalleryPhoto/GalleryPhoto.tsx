@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 // import ImageLoad from '../../../components/ImageLoad/ImageLoad';
 
 interface iProps {
-  id: string;
+  id: number;
   imgSource: string;
   // onClick?: (e : React.MouseEventHandler<HTMLButtonElement>) => void;
   onClick?: () => void,
@@ -20,7 +20,7 @@ const GalleryPhoto: React.FC<iProps> = ({ id, imgSource, onClick, ...props }: iP
       viewport={{ once: true }}
       transition={{
         duration: 1,
-        delay: 1 + 0.1 * Number(id)
+        delay: 0.1 * id
       }}
     >
       <img src={imgSource} alt="" />

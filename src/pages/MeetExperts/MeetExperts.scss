@@ -36,7 +36,9 @@
         overflow-y: hidden;
         white-space: nowrap;
         gap: 20px;
-        margin: 10px 60px;
+        /* top | right | bottom | left */
+        margin: 0rem 1rem 2rem 2rem;
+        
 
 
         &::-webkit-scrollbar {
