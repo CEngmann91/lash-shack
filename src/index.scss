@@ -1,4 +1,5 @@
 @import './res/colours.scss';
+@import './constants/constants.scss';
 @import './util/mixin.scss';
 
 @font-face {
@@ -8,7 +9,7 @@
 
 :root {
   --font-base:
-  HelveticaNeue;
+    HelveticaNeue;
   // Montserrat;
   // "DM Sans", sans-serif;
   // "Lato", sans-serif;
@@ -44,4 +45,8 @@ a {
 
 .new-line {
   white-space: pre-line;
+}
+
+.footer-padding {
+  height: $footer-height;
 }
