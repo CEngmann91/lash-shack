@@ -11,6 +11,7 @@ function App() {
     <>
       <Navbar />
       {component}
+      <div className='footer-padding' />
       <Footer />
 
       <ScrollTopArrow />
@@ -40,7 +41,7 @@ function App() {
             {/* margin ($footer-height value in constants.scss minus 10px) used in
             order to display the footer once at the bottom seeing as it is behind
             everything else. */}
-            <div style={{ height: '150px' }} />
+            {/* <div style={{ height: '150px' }} /> */}
           </>
         )
       } />
