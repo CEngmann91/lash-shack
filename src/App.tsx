@@ -1,8 +1,7 @@
 import './index.scss';
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { Footer, MapView, Navbar } from './components';
-import { UpArrow } from './util/icons';
+import { Footer, MapView, Navbar, ScrollTopArrow } from './components';
 import { About, Courses, Gallery, Landing, MeetExperts, NotFound, Services, Testimonial, TrainingReview } from './pages';
 
 function App() {
@@ -14,16 +13,12 @@ function App() {
       {component}
       <Footer />
 
+      <ScrollTopArrow />
+
 
       {/* <div className="app__desktop-hide">
         <div className='border-button app__book-now-button'>Book Now</div>
       </div> */}
-
-
-
-      {/* <button className='scroll-to-top' onClick={() => window.scrollTo(0, 0)}>
-        <UpArrow />
-      </button> */}
     </>
   );
 
@@ -38,9 +33,9 @@ function App() {
             <Landing />
             <About />
             <MeetExperts />
-            <Testimonial />
+            {/* <Testimonial /> */}
             <TrainingReview />
-            <MapView />
+            {/* <MapView /> */}
 
             {/* margin ($footer-height value in constants.scss minus 10px) used in
             order to display the footer once at the bottom seeing as it is behind

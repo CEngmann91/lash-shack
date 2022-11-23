@@ -3,6 +3,11 @@
 @import '../../../util/mixin.scss';
 
 .course-card {
+    @media screen and (max-width: 900px) {
+        width: 10rem;
+        height: 15rem;
+    }
+
     position: relative;
     display: flex;
     flex-direction: column;

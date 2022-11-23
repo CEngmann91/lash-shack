@@ -80,7 +80,7 @@ const MeetExperts = () => {
                             y: 0,
                             transition: {
                                 duration: 0.5,
-                                delay: 1 + id * 0.2,
+                                // delay: 1 + id * 0.2,
                                 ease: 'easeIn'
                             }
                         }}

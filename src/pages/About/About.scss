@@ -15,50 +15,67 @@
 //     z-index: 0;
 // }
 
-.app__about-title-header {
-    font-size: 30px;
-    color: white;
-}
 
 .app__about {
     display: flex;
     flex: 1;
     width: 100%;
     min-height: 100vh;
-    background: $beige-colour;
-
-    // &-title {
-    //     font-size: 16px;
-    //     // border-bottom: 3px solid rgba($blue-colour, 0.4);
-    //     // background: green;
-    //     color: white;
-    // }
+    // background: $beige-colour;
 
 
+    background: linear-gradient(#ffffff, $beige-colour) 50% 50%/calc(100% - 42px) calc(100% - 42px) no-repeat,
+        linear-gradient(white 0%, $beige-colour 100%);
+    border-radius: 0px;
+    // padding: 21px;
+    // box-sizing: border-box;
 
 
 
-
-    // .box {
-    //     display: flex;
-    //     align-items: center;
-    //     justify-content: center;
-    //     width: 200px;
-    //     height: 50px;
-    //     border: 2px solid black;
-    //     box-shadow: 2px 2px gray;
-
-    //     transition: 0.2s linear 0s;
-
-    //     &:hover {
-    //         box-shadow: 5px 5px gray;
-    //     }
-    // }
+    &-title {
+        font-size: 2.5em;
+        border-bottom: 3px solid rgba($blue-colour, 0.4);
+    }
 
 
+    &--wrapper {
+        display: grid;
+
+        @media screen and (max-width: 800px) {
+            grid-template-columns: 1fr;
+            // grid-template-rows: repeat(2, 1fr);
+            // grid-column-gap: 0px;
+            // grid-row-gap: 0px;
+            padding: 0 1rem;
+        }
+        grid-template-columns: repeat(2, 1fr);
+        width: 100%;
+        padding: 0 4rem;
+        // gap: 10px;
+
+        div {
+            @media screen and (max-width: 900px) {
+                height: 40vh;
+                margin-bottom: 0rem;
+
+
+                &:nth-child(even) {
+                    margin-bottom: 4rem;
+                }
+            }
+
+            height: 60vh;
+            // background: blue;
+            border: 1px solid black;
+            margin-bottom: 4rem;
 
 
 
-
-
+            &:nth-child(odd) {
+                // padding-left: 20px;
+                // border: 0px solid transparent;
+                background: red;
+            }
+        }
+    }
 }

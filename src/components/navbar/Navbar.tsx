@@ -6,35 +6,8 @@ import { BOOKING_URL, NAVIGATION } from '../../constants/constants';
 import NavbarItem from './NavbarItem/NavbarItem';
 import { Menu } from '../../util/icons';
 import { AnimatePresence, motion, useScroll, useSpring, useViewportScroll } from 'framer-motion';
+import Sidebar from '../Sidebar/Sidebar';
 
-
-
-const container = {
-    closed: {
-        y: '-100vh',
-        transition: {
-            delay: 0.5,
-            type: "spring",
-            stiffness: 400,
-            damping: 40
-        }
-    },
-    open: {
-        y: 0,
-        transition: {
-            // delayChildren: 0.5,
-            // staggerChildren: 0.07,
-
-            type: "spring",
-            stiffness: 200,
-            restDelta: 2
-        }
-    }
-}
-const item = {
-    closed: { opacity: 0 },
-    open: { opacity: 1 }
-}
 
 const Navbar: React.FC<{}> = () => {
     // const location = useLocation();
@@ -50,7 +23,9 @@ const Navbar: React.FC<{}> = () => {
 
     useEffect(() => {
         window.addEventListener('scroll', onScroll)
-        return () => window.removeEventListener('scroll', onScroll)
+        return function cleanup() {
+            window.removeEventListener('scroll', onScroll)
+        }
     }, [])
 
     const onScroll = () => setScrolledDown((window.scrollY > 100))
@@ -100,36 +75,7 @@ const Navbar: React.FC<{}> = () => {
 
             <a href={BOOKING_URL} className={`border-button book-now-button app__style-effect__shine app__mobile-hide`} target="_blank" rel="noreferrer">Book Now</a>
 
-            <div className='app__drawer app__desktop-hide'>
-                <div className="app__drawer--menuBtn-container">
-                    <button onClick={toggleMenu} data-menuisopen={menuIsOpen}>
-                        {!menuIsOpen ? <Menu /> : "X"}
-                    </button>
-                </div>
-
-                <AnimatePresence>
-                    {menuIsOpen &&
-                        <motion.div
-                            className={`app__drawer--panel`}
-                            // ${menuIsOpen && 'app__drawer--show'}`}
-                            variants={container}
-                            initial="closed"
-                            animate='open'
-                            exit='closed'
-                        >
-                            <motion.div variants={item}>
-                                {NAVIGATION.ROUTE.map(({ id, name, to }) =>
-                                    <NavbarItem
-                                        key={id} id={id}
-                                        to={to} onClick={hideMenu}
-                                        idleClassName="" activeClassName="navbar-nav--links-active"
-                                    >{name}</NavbarItem>
-                                )}
-                            </motion.div>
-                        </motion.div>
-                    }
-                </AnimatePresence>
-            </div>
+            <Sidebar />
         </nav>
     )
 }

@@ -4,7 +4,6 @@ import TestimonialCard from './TestimonialCard/TestimonialCard';
 import { ActivityIndicator, Page } from '../../components';
 import { getDocument } from '../../helpers/firebase/firestore';
 import { REACT_APP_FIRESTORE_TESTIMONIAL_COLLECTION, REACT_APP_FIRESTORE_TESTIMONIAL_DOCUMENT } from '../../constants/firebase';
-import { Timestamp } from 'firebase/firestore';
 
 // interface iClient {
 //   displayName: string;
