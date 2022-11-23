@@ -8,3 +8,4 @@ export { default as Page } from './Page/Page';
 export { default as ThreeContentButton } from './ThreeContentButton/ThreeContentButton';
 export { default as PhotoFrame } from './PhotoFrame/PhotoFrame';
 export { default as ActivityIndicator } from './ActivityIndicator/ActivityIndicator';
+export { default as ScrollTopArrow } from './ScrollTopArrow/ScrollTopArrow';
