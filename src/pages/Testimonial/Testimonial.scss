@@ -4,12 +4,19 @@
     padding: 2rem 0;
     background: $beige-colour;
 
+    &-title {
+        @media screen and (max-width: 900px) {
+            font-size: 1.9rem;
+            // padding: 0 1.4rem;
+        }
+    }
+
     .list {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
         overflow-y: hidden;
-        // padding-bottom: 10px;
+        padding-bottom: 10px;
     }
 }

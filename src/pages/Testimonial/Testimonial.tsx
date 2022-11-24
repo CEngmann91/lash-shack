@@ -94,7 +94,7 @@ const Testimonial = () => {
   // }
 
   return (
-    <Page id='testimonial' className='app__testimonial' header='We Love Hearing From You'>
+    <Page id='testimonial' className='app__testimonial' header='We Love Hearing From You' headerClassName='app__testimonial-title'>
       {isLoading
         ?
           renderLoadingActivity()

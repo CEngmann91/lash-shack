@@ -4,13 +4,14 @@ import { MapView, Page } from '../../components';
 import { Landing0, Landing1, photography } from '../../util/images';
 
 enum SectionType {
-  Text, Image
+  Text, Image, ReactNode
 }
 interface iSection {
   type: SectionType;
   title?: string;
   description?: string;
   typeImgSrc?: string;
+  component?: React.ReactNode;
 }
 interface iArticle {
   section1: iSection;
@@ -51,6 +52,19 @@ const About = () => {
         type: SectionType.Image,
         typeImgSrc: Landing1
       }
+    },
+    {
+      section1: {
+        type: SectionType.ReactNode,
+        component: (
+          <MapView />
+        )
+      },
+      section2: {
+        type: SectionType.Text,
+        title: "Test Section 2",
+        description: "Test description2"
+      }
     }
   ];
 
@@ -63,31 +77,42 @@ const About = () => {
       <div className="app__about--wrapper">
         {articles.map(({ section1, section2 }) =>
           <div className="card card-shadow">
-            {section1.type === SectionType.Text
-              ?
-              <>
-                <div className="left pad-section--left">
-                  <header>{section1.title}</header>
-                  <p className="description">{section1.description}</p>
-                </div>
-                <div className="right">
-                  <img src={section2.typeImgSrc} alt="" />
-                </div>
-              </>
+            {section1.type === SectionType.ReactNode ?
+              section1.component
               :
-              <>
-                <div className="left">
-                  <img src={section1.typeImgSrc} alt="" />
-                </div>
-                <div className="right pad-section--right">
-                  <header>{section2.title}</header>
-                  <p className="description">{section2.description}</p>
-                </div>
-              </>
+              (section1.type === SectionType.Text
+                ?
+                <>
+                  <div className="left pad-section--left">
+                    <header>{section1.title}</header>
+                    <p className="description">{section1.description}</p>
+                  </div>
+                  <div className="right">
+                    <img src={section2.typeImgSrc} alt="" />
+                  </div>
+                </>
+                :
+                (section2.type === SectionType.ReactNode ?
+                  section2.component
+                  :
+                  <>
+                    <div className="left">
+                      <img src={section1.typeImgSrc} alt="" />
+                    </div>
+                    <div className="right pad-section--right">
+                      <header>{section2.title}</header>
+                      <p className="description">{section2.description}</p>
+                    </div>
+                  </>
+                )
+              )
             }
           </div>
         )}
       </div>
+
+
+
 
 
       {/* 
