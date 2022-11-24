@@ -62,7 +62,7 @@ const TrainingReview = () => {
 
     if (isLoading) {
         return (
-            <Page id='training-reviews' className='app__training-review-banner' header='Training Reviews' headerClassName='app__training-review-banner-title'>
+            <Page id='training-reviews' className='app__training-review' header='Training Reviews' headerClassName='app__training-review-title page-title-size'>
                 <div className='app__flex app__min-height'>
                     <ActivityIndicator borderColour='rgba(239, 179, 183, 1)' borderSpinColour='rgba(16, 40, 121, 1)' />
                 </div>
@@ -72,7 +72,7 @@ const TrainingReview = () => {
 
 
     return (
-        <Page id='training-reviews' className='app__training-review-banner' header='Training Reviews' headerClassName='app__training-review-banner-title'>
+        <Page id='training-reviews' className='app__training-review' header='Training Reviews' headerClassName='app__training-review-title page-title-size'>
             {error ?
                 <>
                     <p>Error is: {error}</p>

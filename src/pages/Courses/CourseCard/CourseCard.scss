@@ -4,10 +4,9 @@
 
 .course-card {
     @media screen and (max-width: 900px) {
-        width: 10rem;
-        height: 15rem;
+        width: 85vw;
+        height: 85vw;
     }
-
     position: relative;
     display: flex;
     flex-direction: column;
@@ -15,8 +14,6 @@
     justify-content: center;
     width: 18rem;
     height: 21rem;
-    // background: linear-gradient(to bottom right, $pink-colour, $white-colour);
-    // background: rgba(black, 1);
     border: 0px solid transparent;
     box-shadow: 10px 10px gray;
     overflow: hidden;
@@ -71,12 +68,12 @@
         right: 0;
         left: 0;
         height: auto;
-        background: rgba($pink-colour, 0.5);
-        padding: 10px 0px;
+        background: $pink-colour;
+        padding: 5px 0px;
         z-index: 4;
 
         transform-origin: right;
-        transform: rotateZ(40deg) translate(42%, 60px);
+        transform: rotateZ(40deg) translate(43%, 55px);
         
         p {
             text-align: center;
@@ -227,8 +224,6 @@
         transform-origin: center;
         opacity: 0;
 
-
-        
 
 
         .enroll-button {

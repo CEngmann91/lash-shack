@@ -13,7 +13,7 @@
 }
 
 .head-text {
-    font-size: 2.75rem;
+    font-size: 2.75em;
     font-weight: 800;
     text-align: center;
     // color: $black-colour;
@@ -26,13 +26,18 @@
     color: $blue-colour;
 
     @media screen and (min-width: 2000px) {
-        font-size: 4rem;
+        font-size: 4em;
     }
 
     @media screen and (max-width: 900px) {
         // @media screen and (max-width: 450px) {
-        font-size: 2.3rem;
+        font-size: 2.3em;
     }
+}
+
+.page-title-size {
+    font-size: 2.5em;
+    border-bottom: 3px solid rgba($green-shade-colour, 0.4);
 }
 
 

@@ -1,9 +1,8 @@
 import './MeetExperts.scss';
-import React, { useEffect } from 'react'
+import React, { useMemo } from 'react'
 import { Page } from '../../components';
 import { Emma, Louisa, Shannon } from '../../util/images';
 import ExpertCard from './ExpertCard/ExpertCard';
-import useIsMobile from '../../helpers/hooks/useIsMobile';
 import { motion } from 'framer-motion';
 
 export interface iExpert {
@@ -14,19 +13,19 @@ export interface iExpert {
 }
 
 const MeetExperts = () => {
-    const isMobile = useIsMobile();
-    const experts: iExpert[] = [
+    const experts: iExpert[] = useMemo(() => [
         {
             id: 0,
-            name: "Louisa",
-            position: "Lash Expert",
-            imgSrc: Louisa
-        },
-        {
-            id: 1,
             name: "Emma",
             position: "CEO",
             imgSrc: Emma
+            
+        },
+        {
+            id: 1,
+            name: "Louisa",
+            position: "Lash Expert",
+            imgSrc: Louisa
         },
         {
             id: 2,
@@ -34,13 +33,7 @@ const MeetExperts = () => {
             position: "Lash Expert",
             imgSrc: Shannon
         },
-        // {
-        //     id: 3,
-        //     name: "John Doe",
-        //     position: "Lash Expert",
-        //     imgSrc: Emma
-        // }
-    ]
+    ], []);
 
     const variants = {
         // visible: {
@@ -56,19 +49,13 @@ const MeetExperts = () => {
     }
 
 
-    useEffect(() => {
-        if (isMobile)
-            // If Mobile, make sure we swap the 2nd element with the first to enusre Emma is first.
-            [experts[0], experts[1]] = [experts[1], experts[0]];
-    }, [isMobile])
-
-
-
-
     return (
-        <Page id='meet' className='app__meet-experts-banner' header='Meet Our Experts' headerClassName='app__meet-experts-banner-title'>
-        {/* <SkewedPage id='meet' className='app__meet-experts-banner' header='Meet Our Experts' headerClassName='app__meet-experts-banner-title' backgroundColour={"#e8ded1"}> */}
-            <div className="list" data-ismobile={isMobile}>
+        <Page id='meet' className='app__meet-experts-banner' header='We Are Lash Shack' headerClassName='app__meet-experts-banner-title page-title-size'>
+            <p className='expert-summary'>
+                We are drivers of the beauty industry and growth across the UK, and have a proven track record across the industry. Find out more about the team below.
+            </p>
+
+            <div className="list">
                 {experts.map(({ id, name, position, imgSrc }) =>
                     <motion.div
                         key={id}
@@ -89,8 +76,19 @@ const MeetExperts = () => {
                     </motion.div>
                 )}
             </div>
-        {/* </SkewedPage> */}
+
+            {/* <div className="pagination">
+                {experts.map(({ id }) =>
+                    <button className="item" onClick={() => console.log(id)}>{id}</button>
+                )}
+            </div> */}
         </Page>
+
+
+
+
+
+
 
 
         // <div className="main">

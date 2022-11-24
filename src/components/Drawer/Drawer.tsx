@@ -1,8 +1,8 @@
-import './Sidebar.scss';
+import './Drawer.scss';
 import '../../res/styles.scss';
 import React, { useCallback, useState } from 'react';
 import NavbarItem from '../navbar/NavbarItem/NavbarItem';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion, useCycle } from 'framer-motion';
 import { NAVIGATION } from '../../constants/constants';
 import { Menu } from '../../util/icons';
 
@@ -27,21 +27,23 @@ const item = {
     open: { opacity: 1 }
 }
 
-const Sidebar: React.FC = () => {
-    const [menuVisible, setMenuVisible] = useState(false);
+const Drawer: React.FC = () => {
+    const [isOpen, toggleOpen] = useCycle(false, true);
+    // const [menuVisible, setMenuVisible] = useState(false);
+
 
     const show = () => {
         // Prevents scrolling whilst the menu is visible.
         document.body.style.overflow = "hidden";
-        setMenuVisible(true);
+        toggleOpen();
     }
 
     const hide = () => {
         document.body.style.overflow = "scroll";
-        setMenuVisible(false);
+        toggleOpen();
     }
 
-    const toggleVisibility = () => !menuVisible ? show() : hide();
+    // const toggleVisibility = () => !isOpen ? show() : hide();
 
 
 
@@ -49,7 +51,7 @@ const Sidebar: React.FC = () => {
     return (
         <div className='app__drawer app__desktop-hide'>
             <div className="app__drawer--menuBtn-container">
-                <button onClick={toggleVisibility} data-menuvisible={menuVisible}>
+                <button onClick={() => toggleOpen()} data-menuvisible={isOpen}>
                     {/* {!menuVisible ? <Menu /> : "X"} */}
                     <i />
                 </button>
@@ -60,7 +62,7 @@ const Sidebar: React.FC = () => {
                 // ${menuIsOpen && 'app__drawer--show'}`}
                 variants={sidebar}
                 initial="closed"
-                animate={menuVisible ? "open" : "closed"}
+                animate={isOpen ? "open" : "closed"}
                 exit='closed'
             >
                 <motion.div variants={item}>
@@ -77,4 +79,4 @@ const Sidebar: React.FC = () => {
     )
 }
 
-export default Sidebar
+export default Drawer

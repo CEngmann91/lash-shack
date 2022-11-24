@@ -4,9 +4,10 @@
 
 .app__meet-experts-banner {
     padding-top: 1rem;
-    background-color: $white-colour;
+    background: $white-colour;
     width: 100%;
     padding: 20px;
+    min-height: 100vh;
 
     @media screen and (min-width: 1200px) {
         height: auto;
@@ -14,21 +15,29 @@
     }
 
     &-title {
-        font-size: 1.8rem;
-        border-bottom: 3px solid rgba($blue-colour, 0.4);
+        // border-bottom: 3px solid rgba($blue-colour, 0.4);
+    }
+
+    .expert-summary {
+        display: block;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        font-size: 1.1em;
     }
 }
 
 // https://codepen.io/fjfalah/pen/jdGNEr
 @supports (scroll-snap-align: start) {
-    .list[data-ismobile="false"] {
-        justify-content: center;
-    }
-
     .list {
+        @media screen and (max-width: 900px) {
+            justify-content: flex-start;
+        }
+        position: relative;
         display: flex;
         flex-direction: row;
-        position: relative;
+        justify-content: center;
         width: 100%;
         height: 100%;
         /* Always force (mandatory) scrolling to a snap point on the x-axis */
@@ -38,7 +47,7 @@
         white-space: nowrap;
         gap: 20px;
         /* top | right | bottom | left */
-        margin: 0rem 1rem 2rem 2rem;
+        margin: 0rem 1rem 2rem 1rem;
         
 
 
@@ -46,4 +55,20 @@
             display: none;
         }
     }
+
+    // .pagination {
+    //     display: flex;
+    //     flex-direction: row;
+    //     gap: 10px;
+        
+        
+    //     .item {
+    //         --scale: 30px;
+    //         width: var(--scale);
+    //         height: var(--scale);
+    //         background: $green-shade-colour;
+    //         color: $white-colour;
+    //         border-radius: 50%;
+    //     }
+    // }
 }
