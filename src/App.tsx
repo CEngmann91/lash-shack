@@ -1,7 +1,8 @@
 import './index.scss';
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { Footer, MapView, Navbar, ScrollTopArrow } from './components';
+import { Footer, Navbar } from './components';
+import { ShoppingCartWidget, ScrollTopArrow } from './components/Widgets';
 import { About, Courses, Gallery, Landing, MeetExperts, NotFound, Services, Testimonial, TrainingReview } from './pages';
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
       <div className='footer-padding' />
       <Footer />
 
+      {/* <ShoppingCartWidget /> */}
       <ScrollTopArrow />
 
 
@@ -34,9 +36,8 @@ function App() {
             <Landing />
             <About />
             <MeetExperts />
-            {/* <Testimonial /> */}
+            <Testimonial />
             <TrainingReview />
-            {/* <MapView /> */}
 
             {/* margin ($footer-height value in constants.scss minus 10px) used in
             order to display the footer once at the bottom seeing as it is behind

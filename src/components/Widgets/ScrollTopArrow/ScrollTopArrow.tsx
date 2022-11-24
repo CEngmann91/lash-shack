@@ -1,6 +1,6 @@
 import './ScrollTopArrow.scss';
 import React, { useState, useEffect } from 'react';
-import { UpArrow } from '../../util/icons';
+import { UpArrow } from '../../../util/icons';
 
 const ScrollTopArrow: React.FC = () => {
     const [visible, setVisible] = useState(false)
@@ -28,7 +28,7 @@ const ScrollTopArrow: React.FC = () => {
     };
 
     return (
-        <div className="scroll-arrow-content" style={{ display: visible ? 'flex' : 'none' }}>
+        <div className="scroll-arrow--content" style={{ display: visible ? 'flex' : 'none' }}>
             <UpArrow onClick={scrollTop} />
         </div>
     );

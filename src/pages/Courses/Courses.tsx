@@ -43,13 +43,10 @@ const Courses = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
 
-
     fetchCourses();
-
   }, [])
 
-
-  const fetchCourses = async () => {
+  const fetchCourses = async() => {
     setIsLoading(true);
 
 
@@ -73,53 +70,6 @@ const Courses = () => {
 
     setCourseList(array);
     setIsLoading(false);
-
-
-
-
-
-
-
-    /*
-    await getDocument(REACT_APP_FIRESTORE_COURSES_COLLECTION as string,
-      REACT_APP_FIRESTORE_COURSES_DOCUMENT as string)
-      .then(res => {
-        const array: iCourse[] = res['content'];
-
-        const unresolvedPromises = array.map(calc);
-        const results = await Promise.all(unresolvedPromises);
-
-        array.map((item) => {
-          getImage(item.img)
-          .then(res => 
-            {
-              // console.log("fetchCourses - " + res)
-              item.img = res
-            }
-            );
-        });
-        // Only get the active items in the array.
-        const filtered = array.filter((item) => item.active);
-        // Sort by ID.
-        const sorted = filtered.sort((a, b) => a.id - b.id);
-
-
-        // sort by price
-        // let sorted = array.sort((a, b) => b.price - a.price);
-        // sort by popularity
-        // let sorted = array.sort((a, b) => b.popularity - a.popularity);
-        // sorted = [...sorted].sort((a, b) => b.salePrice - a.salePrice);
-        setCourseList(sorted);
-        // console.log(sorted);
-
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        // alert(error);
-        setError(error);
-        setIsLoading(false);
-      });
-    */
   }
 
 

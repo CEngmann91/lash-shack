@@ -1,7 +1,7 @@
 @import '../../res/colours.scss';
 @import '../../constants/constants.scss';
 
-.app__training-review-banner {
+.app__training-review {
     @media screen and (min-width: 1200px) {
         height: $banner-height auto;
     }
@@ -13,8 +13,7 @@
     
 
     &-title {
-        font-size: 26px;
-        border-bottom: 3px solid rgba($blue-colour, 0.4);
+        // border-bottom: 3px solid rgba($blue-colour, 0.4);
         // background: green;
     }
 

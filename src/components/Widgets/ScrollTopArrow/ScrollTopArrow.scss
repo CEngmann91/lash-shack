@@ -1,6 +1,6 @@
-@import '../../res/colours.scss';
+@import '../../../res/colours.scss';
 
-.scroll-arrow-content {
+.scroll-arrow--content {
     position: fixed;
     bottom: 20px;
     right: 0;
@@ -11,11 +11,11 @@
     background: $green-shade-colour;
     color: white;
     /* top | right | bottom | left */
-    padding: 0.3rem 3em 0.3rem 0.4rem;
+    padding: 0.3rem 2em 0.3rem 0.4rem;
     
-    --border-raduis: 1rem;
-    border-bottom-left-radius: var(--border-raduis);
-    border-top-left-radius: var(--border-raduis);
+    --border-radius: 1.5rem;
+    border-bottom-left-radius: var(--border-radius);
+    border-top-left-radius: var(--border-radius);
     
     opacity: 0.5;
     transition: 0.3s ease-in-out;
@@ -23,11 +23,13 @@
     
     animation: slide-fadeIn 0.3s;
 
+    z-index: 3;
+
 
 
     @media screen and (max-width: 900px) {
         /* top | right | bottom | left */
-        padding: 0.3rem 2em 0.3rem 0.4rem;
+        padding: 0.3rem 0.5em 0.3rem 0.4rem;
     }
 
 

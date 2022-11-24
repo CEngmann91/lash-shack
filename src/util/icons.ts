@@ -3,10 +3,12 @@ import { FaFacebookF, FaRegEye, FaQuoteRight } from 'react-icons/fa';
 import { AiFillCloseCircle, AiFillInstagram } from 'react-icons/ai';
 import { MdEmail } from 'react-icons/md';
 import { GiHamburgerMenu } from 'react-icons/gi';
+import { FiShoppingCart } from 'react-icons/fi';
 
 export {
     AiFillCloseCircle as Close,
     GiHamburgerMenu as Menu,
+    FiShoppingCart as ShoppingCart,
 
     AiFillInstagram as Instagram,
     BsTwitter as Twitter,

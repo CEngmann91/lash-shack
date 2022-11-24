@@ -1,5 +1,5 @@
 import './Testimonial.scss';
-import React, { useEffect, useState } from 'react'
+import React, { ReactNode, useEffect, useState } from 'react'
 import TestimonialCard from './TestimonialCard/TestimonialCard';
 import { ActivityIndicator, Page } from '../../components';
 import { getDocument } from '../../helpers/firebase/firestore';
@@ -62,39 +62,52 @@ const Testimonial = () => {
       });
   }
 
+  const renderLoadingActivity = (): ReactNode => (
+    <div className='app__flex app__min-height'>
+      <ActivityIndicator borderColour='rgba(239, 179, 183, 1)' borderSpinColour='rgba(16, 40, 121, 1)' />
+    </div>
+  )
+
+  const renderReviews = (): ReactNode => (
+    reviews.map(({ id, createdAt, starRating, title, description }, index) =>
+      <div key={index}>
+        <TestimonialCard
+          id={id}
+          createdAt={createdAt}
+          starRating={starRating}
+          title={title}
+          description={description}
+        />
+      </div>
+    )
+  );
 
 
-  if (isLoading) {
-    return (
-      <Page id='testimonial' className='app__testimonial' header='Customer Reviews'>
-        <div className='app__flex app__min-height'>
-          <ActivityIndicator borderColour='rgba(239, 179, 183, 1)' borderSpinColour='rgba(16, 40, 121, 1)' />
-        </div>
-      </Page>
-    );
-  }
+  // if (isLoading) {
+  //   return (
+  //     <Page id='testimonial' className='app__testimonial' header='Customer Reviews'>
+  //       <div className='app__flex app__min-height'>
+  //         <ActivityIndicator borderColour='rgba(239, 179, 183, 1)' borderSpinColour='rgba(16, 40, 121, 1)' />
+  //       </div>
+  //     </Page>
+  //   );
+  // }
 
   return (
-    <Page id='testimonial' className='app__testimonial' header='Customer Reviews'>
-      {error ?
-        <>
-          <p>Error is: {error}</p>
-
-        </>
+    <Page id='testimonial' className='app__testimonial' header='We Love Hearing From You'>
+      {isLoading
+        ?
+          renderLoadingActivity()
         :
-        <div className="list">
-          {reviews.map(({ id, createdAt, starRating, title, description }, index) =>
-            <div key={index}>
-              <TestimonialCard
-                id={id}
-                createdAt={createdAt}
-                starRating={starRating}
-                title={title}
-                description={description}
-              />
-            </div>
-          )}
-        </div>
+        error ?
+          <>
+            <p>Error is: {error}</p>
+
+          </>
+          :
+          <div className="list">
+            {renderReviews()}
+          </div>
       }
     </Page>
   )
