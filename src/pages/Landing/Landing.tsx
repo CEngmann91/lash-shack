@@ -4,7 +4,7 @@
 import './Landing.scss';
 import React, { useState } from 'react';
 import { Parallax } from 'react-parallax';
-import { Landing0, Landing1, Landing2, Landing3, Landing4, Landing5, Landing6, Landing7, Landing8, photography } from '../../util/images';
+import { Landing0, Landing1, Landing2, Landing3, Landing4, Landing5, Landing6, Landing7, Landing8, Shop } from '../../util/images';
 import { Eye, Pencil, Star } from '../../util/icons';
 import { Page } from '../../components';
 
@@ -53,6 +53,9 @@ const Landing = () => {
         <p>New Beginnings Start Here</p>
       </div>
 
+
+
+
       {/* <ul className='list'>
         {images.map(({ id, src }) => (
           <li key={id} onMouseEnter={() => setHoverChild(id)}
@@ -73,7 +76,7 @@ const Landing = () => {
 
 
 
-    // <Parallax blur={0} bgImage={photography} strength={200}>
+    // <Parallax blur={0} bgImage={Shop} strength={200}>
     //   <div className="overlay" />
     //   <div id='home' className='app__landing app__flex'>
 

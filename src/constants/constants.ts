@@ -8,12 +8,12 @@ export const CONTACT = {
     ADDRESS: "Sunchasers\n37 Mawney Road\nRomford\nRM7 7HL",
 }
 
-export const NAVIGATION = {
+// export const NAVIGATION = {
 
-    ROUTE: [
-        { id: '0', name: 'home',        to: '/'},
-        { id: '1', name: 'gallery',     to: '/gallery'},
-        { id: '2', name: 'services',    to: '/services'},
-        { id: '3', name: 'courses',     to: '/courses'},
-    ]
-}
+//     ROUTE: [
+//         { id: '0', name: 'home',        to: '/'},
+//         { id: '1', name: 'gallery',     to: '/gallery'},
+//         { id: '2', name: 'services',    to: '/services'},
+//         { id: '3', name: 'courses',     to: '/courses'},
+//     ]
+// }

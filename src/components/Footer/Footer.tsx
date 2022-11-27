@@ -2,20 +2,16 @@ import './Footer.scss';
 import React from 'react'
 import NavbarItem from '../navbar/NavbarItem/NavbarItem';
 import { Email, Facebook, Instagram, Twitter, UpArrow } from '../../util/icons';
-import { CONTACT, NAVIGATION } from '../../constants/constants';
-import { logo, logo2 } from '../../util/images';
+import { CONTACT } from '../../constants/constants';
+import { logo } from '../../util/images';
 
 const Footer: React.FC<{}> = () => {
 
   return (
     <div className='app__footer'>
       <div className="app__footer--logo">
-        <NavbarItem
-          key={"home"} id={"home"}
-          to={'/'} onClick={() => { }}
-          idleClassName="link-item" activeClassName=""
-        >
-          <img src={logo2} />
+        <NavbarItem to={'/'} onClick={() => { }} idleClassName="link-item" activeClassName="">
+          <img src={logo} />
         </NavbarItem>
       </div>
 
@@ -50,7 +46,7 @@ const Footer: React.FC<{}> = () => {
 
     //   <ul className="app__footer--quick-links">
     //     <p className='title'>Quick Links</p>
-    //     {NAVIGATION.ROUTE.map(({ id, name, to }) => (
+    //     {menuItems.map(({ id, name, to }) => (
     //       <li key={id}>
     //         <NavbarItem
     //           key={id} id={id}

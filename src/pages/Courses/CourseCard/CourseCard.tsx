@@ -3,7 +3,6 @@ import React, { useEffect } from 'react'
 import { CardFlip } from '../../../components/Cards';
 import { iSale, Popularity } from '../Courses';
 import { ABT } from '../../../util/images';
-import { getImage } from '../../../helpers/firebase/firebase';
 
 interface iProps {
     id: number;

@@ -4,10 +4,9 @@
 import './Courses.scss';
 import React, { useEffect, useState } from 'react'
 import { ActivityIndicator, Page } from '../../components';
-import { CardFlip } from '../../components/Cards';
 import CourseCard from './CourseCard/CourseCard';
 import { getDocument } from '../../helpers/firebase/firestore';
-import { ABT, photography } from '../../util/images';
+import { ABT } from '../../util/images';
 import { REACT_APP_FIRESTORE_COURSES_COLLECTION, REACT_APP_FIRESTORE_COURSES_DOCUMENT } from '../../constants/firebase';
 import { getImage } from '../../helpers/firebase/firebase';
 
@@ -59,13 +58,20 @@ const Courses = () => {
         const filtered = result.filter((item) => item.active);
         // Sort by ID.
         array = filtered.sort((a, b) => a.id - b.id);
+      })
+      .catch(error => {
+        setIsLoading(false);
+        setError(error);
+        return;
       });
+
 
     // Load images from Firestore.
     const mapPromises = array.map((item) =>
       getImage(item.img).then(res => item.img = res)
     );
-    const results = await Promise.all(mapPromises);
+    await Promise.all(mapPromises);
+    // const results = await Promise.all(mapPromises);
     // console.log("results - " + results)
 
     setCourseList(array);
@@ -98,11 +104,10 @@ const Courses = () => {
             {error}
           </div>
           :
-          <>
+          <div>
             <div className="cards">
-              {courseList.length != 0 && courseList.map((item, index) => {
+              {courseList.length !== 0 && courseList.map((item, index) => {
                 const { title, description, img, price, sale, duration, popularity } = item;
-
                 return (
                   <CourseCard
                     key={title} id={index}
@@ -118,8 +123,11 @@ const Courses = () => {
               })}
             </div>
 
+            <p>Train directly with our Expert and Founder Emma and become an Expert Eyelash Technician in no time!</p>
+            <p></p>
+
             <img className='abt' src={ABT} alt="" />
-          </>
+          </div>
       }
     </Page >
   )

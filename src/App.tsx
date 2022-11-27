@@ -8,20 +8,15 @@ import { About, Courses, Gallery, Landing, MeetExperts, NotFound, Services, Test
 function App() {
 
 
-  const RenderRoute = (component: React.ReactNode) => (
+  const RenderRoute = (id: string, component: React.ReactNode) => (
     <>
       <Navbar />
       {component}
-      <div className='footer-padding' />
+      {id === "/" && <div className='footer-padding' /> }
       <Footer />
 
       {/* <ShoppingCartWidget /> */}
       <ScrollTopArrow />
-
-
-      {/* <div className="app__desktop-hide">
-        <div className='border-button app__book-now-button'>Book Now</div>
-      </div> */}
     </>
   );
 
@@ -32,23 +27,19 @@ function App() {
 
       <Route path="/" element={
         RenderRoute(
+          "/",
           <>
             <Landing />
             <About />
             <MeetExperts />
             <Testimonial />
             <TrainingReview />
-
-            {/* margin ($footer-height value in constants.scss minus 10px) used in
-            order to display the footer once at the bottom seeing as it is behind
-            everything else. */}
-            {/* <div style={{ height: '150px' }} /> */}
           </>
         )
       } />
-      <Route path="/services" element={RenderRoute(<Services />)} />
-      <Route path="/courses" element={RenderRoute(<Courses />)} />
-      <Route path="/gallery" element={RenderRoute(<Gallery />)} />
+      <Route path="/services" element={ RenderRoute("/services", <Services />)} />
+      <Route path="/courses" element={ RenderRoute("/courses", <Courses />)} />
+      <Route path="/gallery" element={ RenderRoute("/gallery", <Gallery />)} />
     </Routes>
   );
 }
