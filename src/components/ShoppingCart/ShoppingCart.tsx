@@ -1,7 +1,6 @@
 import './Sidebar.scss';
 import '../../res/styles.scss';
 import React from 'react';
-import NavbarItem from '../navbar/NavbarItem/NavbarItem';
 import { motion, useCycle } from 'framer-motion';
 
 const container = {

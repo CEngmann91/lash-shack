@@ -5,6 +5,35 @@ import { Email, Facebook, Instagram, Twitter, UpArrow } from '../../util/icons';
 import { CONTACT } from '../../constants/constants';
 import { logo } from '../../util/images';
 
+
+interface iSocial {
+  id: string;
+  component: React.ReactNode;
+  to: string;
+}
+const socials: iSocial[] = [
+  // {
+  //   id: "Facebook",
+  //   component: ( <Facebook /> ),
+  //   to: CONTACT.FACEBOOK
+  // },
+  // {
+  //   id: "Twitter",
+  //   component: ( <Twitter /> ),
+  //   to: CONTACT.TWITTER
+  // },
+  {
+    id: "Instagram",
+    component: ( <Instagram /> ),
+    to: CONTACT.INSTAGRAM
+  },
+  {
+    id: "Email",
+    component: ( <Email /> ),
+    to: CONTACT.EMAIL
+  }
+]
+
 const Footer: React.FC<{}> = () => {
 
   return (
@@ -19,18 +48,11 @@ const Footer: React.FC<{}> = () => {
 
       <div className="app__footer--information">
         <div className="socials">
-          <a href={CONTACT.FACEBOOK} className="" target="_blank" rel="noreferrer">
-            <Facebook />
-          </a>
-          <a href={CONTACT.TWITTER} className="" target="_blank" rel="noreferrer">
-            <Twitter />
-          </a>
-          <a href={CONTACT.INSTAGRAM} className="" target="_blank" rel="noreferrer">
-            <Instagram />
-          </a>
-          <a href={CONTACT.EMAIL} className="" target="_blank" rel="noreferrer">
-            <Email />
-          </a>
+          {socials.map(({ id, component, to }, index) => (
+            <a href={to} className="" target="_blank" rel="noreferrer">
+              {component}
+            </a>
+          ))}
         </div>
 
         <div className="location">

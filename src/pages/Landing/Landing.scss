@@ -21,8 +21,8 @@
     .heading {
         display: flex;
         width: auto;
-        height: auto 30rem;
-        font-size: auto 1.5rem;
+        height: auto;
+        font-size: clamp(1.2rem, 1.2rem, 2rem);
         text-align: right;
         text-transform: uppercase;
         // color: $green-shade-colour;

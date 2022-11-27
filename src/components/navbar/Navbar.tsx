@@ -18,7 +18,7 @@ const Navbar: React.FC<{}> = () => {
         // damping: 30,
         restDelta: 0.001
     });
-    const [count, setCount] = useState(1);
+
 
 
 
@@ -52,8 +52,7 @@ const Navbar: React.FC<{}> = () => {
         <nav className={`navbar-nav ${scrolledDown ? 'navbar-nav--scroll' : ''}`}>
             <motion.div className="progress-bar" style={{ scaleX }} />
             <div className="navbar-nav--logo">
-                <NavbarItem to={'/'} onClick={() => { }} idleClassName="link-item" activeClassName=""
-                >
+                <NavbarItem to={'/'} onClick={() => { }} idleClassName="link-item" activeClassName="">
                     <img src={logo} />
                 </NavbarItem>
             </div>
@@ -64,13 +63,14 @@ const Navbar: React.FC<{}> = () => {
             >
                 {menuItems.map(({ id, title, to }, index) => (
                     <li key={id}>
-                        <NavbarItem to={to} onClick={() => { }} idleClassName="" activeClassName="navbar-nav--links-active"
-                        >{title}</NavbarItem>
+                        <NavbarItem to={to} onClick={() => { }} activeClassName="navbar-nav--links-active">
+                            {title}
+                        </NavbarItem>
                     </li>
                 ))}
             </ul>
 
-            <a href={BOOKING_URL} className={`border-button book-now-button app__style-effect__shine`} target="_blank" rel="noreferrer">Book Now</a>
+            <a href={BOOKING_URL} className={`border-button app__style-effect__shine app__mobile-hide`} target="_blank" rel="noreferrer">Book Now</a>
 
             <Sidebar />
         </nav>
