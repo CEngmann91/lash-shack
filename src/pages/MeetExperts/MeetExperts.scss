@@ -7,7 +7,7 @@
     background: $white-colour;
     width: 100%;
     padding: 20px;
-    min-height: 100vh;
+    // min-height: 100vh;
 
     @media screen and (min-width: 1200px) {
         height: auto;
@@ -31,7 +31,7 @@
 // https://codepen.io/fjfalah/pen/jdGNEr
 @supports (scroll-snap-align: start) {
     .list {
-        @media screen and (max-width: 900px) {
+        @media screen and (max-width: 800px) {
             justify-content: flex-start;
         }
         position: relative;

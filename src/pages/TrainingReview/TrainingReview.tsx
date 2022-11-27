@@ -54,9 +54,10 @@ const TrainingReview = () => {
 
                 setIsLoading(false);
             })
-            .catch((error) => {
-                setError(error);
+            .catch(error => {
                 setIsLoading(false);
+                setError(error);
+                return;
             });
     }
 

@@ -3,22 +3,32 @@ import '../../res/styles.scss';
 import React, { useCallback, useState } from 'react';
 import NavbarItem from '../navbar/NavbarItem/NavbarItem';
 import { AnimatePresence, motion, useCycle } from 'framer-motion';
-import { NAVIGATION } from '../../constants/constants';
-import { Menu } from '../../util/icons';
+import { menuItems } from '../../constants/menuItems';
 
 const sidebar = {
-    closed: {
-        y: '-100vh',
-        transition: {
-            staggerChildren: 0.07,
-            staggerDirection: -1,
-        }
-    },
     open: {
         y: 0,
         transition: {
             staggerChildren: 0.07,
             staggerDirection: 1,
+            duration: 0.5,
+            ease: "easeIn",
+            // type: "spring",
+            // stiffness: 20,
+            // restDelta: 2
+        }
+    },
+    closed: {
+        y: '-100vh',
+        transition: {
+            staggerChildren: 0.07,
+            staggerDirection: -1,
+            duration: 0.2,
+            ease: "easeOut",
+            // delay: 0.5,
+            // type: "spring",
+            // stiffness: 400,
+            // damping: 40
         }
     }
 }
@@ -66,12 +76,11 @@ const Drawer: React.FC = () => {
                 exit='closed'
             >
                 <motion.div variants={item}>
-                    {NAVIGATION.ROUTE.map(({ id, name, to }) =>
+                    {menuItems.map(({ id, title, to }) =>
                         <NavbarItem
-                            key={id} id={id}
-                            to={to} onClick={hide}
+                            key={id} to={to} onClick={hide}
                             idleClassName="" activeClassName="app__drawer--panel-active"
-                        >{name}</NavbarItem>
+                        >{title}</NavbarItem>
                     )}
                 </motion.div>
             </motion.div>

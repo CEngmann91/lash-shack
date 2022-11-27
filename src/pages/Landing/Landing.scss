@@ -4,22 +4,31 @@
 
 .app__landing {
     @media screen and (max-width: 900px) {
-        /* top | right | bottom | left */
+        // top | right | bottom | left
         padding: $navbar-height/2 5px 20px 5px;
     }
-
+    min-height: 100vh;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    /* top | right | bottom | left */
-    padding: $navbar-height/2 20px 20px 20px;
     background: $white-colour;
-    min-height: 100vh;
+    // top | right | bottom | left
+    padding: $navbar-height/2 20px 20px 20px;
     z-index: 1;
 
 
-    
+    .heading {
+        display: flex;
+        width: auto;
+        height: auto 30rem;
+        font-size: auto 1.5rem;
+        text-align: right;
+        text-transform: uppercase;
+        // color: $green-shade-colour;
+
+        // background: green;
+    }
 
     .text-logo {
         display: flex;
@@ -30,16 +39,18 @@
 
         z-index: inherit;
 
+        
+        --pad-amount: 0.8rem;
         .left {
             background: $pink-colour;
             color: $blue-colour;
-            padding: 0.8rem 0 0.8rem 0.8rem;
+            padding: var(--pad-amount) 0 var(--pad-amount) var(--pad-amount);
         }
 
         .right {
             background: $blue-colour;
             color: $pink-colour;
-            padding: 0.8rem 0.8rem 0.8rem 0;
+            padding: var(--pad-amount) var(--pad-amount) var(--pad-amount) 0;
         }
 
         h1 {
@@ -47,15 +58,7 @@
         }
     }
 
-    .heading {
-        display: flex;
-        width: 25vw;
-        height: 30rem;
-        font-size: 1.5rem;
-        text-align: right;
-
-        // background: green;
-    }
+    
 
     // .list {
     //     display: flex;
@@ -116,13 +119,11 @@
 
 
 
-/*$banner-height: 300px;
 
-
-.overlay {
+/*.overlay {
     flex: 1;
     display: flex;
-    height: calc(100% - $banner-height);
+    height: calc(100%);
     width: 100vw;
     background: rgba($color: #000000, $alpha: 0.5);
     position: absolute;
@@ -269,7 +270,7 @@
         div {
 
             &:nth-child(2) {
-                background: $beige-dark-colour;
+                background: $beige-colour;
                 padding: 1.1rem;
 
                 .border {

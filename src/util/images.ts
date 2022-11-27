@@ -1,9 +1,11 @@
 /// <reference path='../types/images.d.ts'  />
 
 export { default as logo } from '../assets/images/Logo.png';
-export { default as logo2 } from '../assets/images/Logo2.png';
-export { default as photography } from '../assets/images/Photo62.jpg';
+
+export { default as Shop } from '../assets/images/Shop.jpg';
+export { default as Training } from '../assets/images/Training.jpg';
 export { default as ABT } from '../assets/images/ABT.png';
+
 
 // Landing
 export { default as Landing0 } from '../assets/images/landing/Landing0.jpg';

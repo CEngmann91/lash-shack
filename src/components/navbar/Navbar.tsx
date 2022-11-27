@@ -1,11 +1,11 @@
 import './Navbar.scss';
-import { logo, logo2 } from '../../util/images';
+import { logo } from '../../util/images';
 import React, { useState, useEffect } from 'react'
-import { BOOKING_URL, NAVIGATION } from '../../constants/constants';
+import { BOOKING_URL } from '../../constants/constants';
 import NavbarItem from './NavbarItem/NavbarItem';
 import { motion, useScroll, useSpring } from 'framer-motion';
 import Sidebar from '../Drawer/Drawer';
-import { ShoppingCart } from '../../util/icons';
+import { menuItems } from '../../constants/menuItems';
 
 
 const Navbar: React.FC<{}> = () => {
@@ -52,12 +52,9 @@ const Navbar: React.FC<{}> = () => {
         <nav className={`navbar-nav ${scrolledDown ? 'navbar-nav--scroll' : ''}`}>
             <motion.div className="progress-bar" style={{ scaleX }} />
             <div className="navbar-nav--logo">
-                <NavbarItem
-                    key={"home"} id={"home"}
-                    to={'/'} onClick={() => { }}
-                    idleClassName="link-item" activeClassName=""
+                <NavbarItem to={'/'} onClick={() => { }} idleClassName="link-item" activeClassName=""
                 >
-                    <img src={logo2} />
+                    <img src={logo} />
                 </NavbarItem>
             </div>
 
@@ -65,29 +62,15 @@ const Navbar: React.FC<{}> = () => {
             //data-bb-colour={'rgba(255, 255, 255, 1)'}
             // {location.pathname === "/" ? 'rgba(255, 255, 255, 1)' : 'rgba(239, 179, 183, 1)'}
             >
-                {NAVIGATION.ROUTE.map(({ id, name, to }) => (
+                {menuItems.map(({ id, title, to }, index) => (
                     <li key={id}>
-                        <NavbarItem
-                            key={id} id={id}
-                            to={to} onClick={() => { }}
-                            idleClassName="" activeClassName="navbar-nav--links-active"
-                        >{name}</NavbarItem>
+                        <NavbarItem to={to} onClick={() => { }} idleClassName="" activeClassName="navbar-nav--links-active"
+                        >{title}</NavbarItem>
                     </li>
                 ))}
             </ul>
 
-            <a className='navbar-nav--shopping-cart app__desktop-hide'>
-                {/* {scrolledDown &&
-                <>
-                    <ShoppingCart />
-                    <div className="indicator" style={{ display: count > 0 ? 'flex' : 'none' }}>
-                        <label>{count}</label>
-                    </div>
-                </>
-                } */}
-            </a>
-
-            <a href={BOOKING_URL} className={`border-button book-now-button app__style-effect__shine app__mobile-hide`} target="_blank" rel="noreferrer">Book Now</a>
+            <a href={BOOKING_URL} className={`border-button book-now-button app__style-effect__shine`} target="_blank" rel="noreferrer">Book Now</a>
 
             <Sidebar />
         </nav>

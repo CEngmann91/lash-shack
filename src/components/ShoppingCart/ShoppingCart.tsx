@@ -3,7 +3,6 @@ import '../../res/styles.scss';
 import React from 'react';
 import NavbarItem from '../navbar/NavbarItem/NavbarItem';
 import { motion, useCycle } from 'framer-motion';
-import { NAVIGATION } from '../../constants/constants';
 
 const container = {
     closed: {

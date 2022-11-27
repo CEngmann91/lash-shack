@@ -55,10 +55,10 @@ const Testimonial = () => {
 
         setIsLoading(false);
       })
-      .catch((error) => {
-        // alert(error);
-        setError(error);
+      .catch(error => {
         setIsLoading(false);
+        setError(error);
+        return;
       });
   }
 

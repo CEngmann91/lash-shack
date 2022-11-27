@@ -42,9 +42,13 @@
 
 @mixin blur($amt) {
     -webkit-backdrop-filter: blur($amt);
-    // -webkit-filter: blur($amt);
     backdrop-filter: blur($amt);
 }
+
+// @mixin blur($amt) {
+//     -webkit-backdrop-filter: blur($amt);
+//     backdrop-filter: blur($amt);
+// }
 
 @mixin box-shadow($colour) {
     -webkit-box-shadow: inset 0px 0px 5px $colour;

@@ -25,6 +25,8 @@
     // Ensures that it stays at the top of the screen.
     position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
     justify-content: space-between;
     align-items: center;
     padding: 0rem 2rem;
@@ -170,46 +172,6 @@
 
         &:active {
             transform: scale(0.95);
-        }
-    }
-
-    &--shopping-cart {
-        position: relative;
-        top: 10px;
-        margin-right: 35px;
-        width: 3rem;
-        height: 2.75rem;
-
-        animation: fade-in 0.3s;
-        z-index: 2;
-
-        
-        svg {
-            width: 70%;
-            height: 70%;
-        }
-
-        .indicator {
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 20px;
-            height: 20px;
-            border-radius: 10px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 4px;
-
-            background: $green-shade-colour;
-
-            animation: scale-up 0.3s;
-
-            label {
-                color: white;
-            }
-
-            // z-index: -1;
         }
     }
 }

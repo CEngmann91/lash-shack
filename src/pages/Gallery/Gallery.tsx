@@ -1,9 +1,8 @@
 import './Gallery.scss';
 import React, { useEffect, useMemo, useState } from 'react'
-import PhotoFrame from '../../components/PhotoFrame/PhotoFrame';
 import GalleryPhoto from './GalleryPhoto/GalleryPhoto';
 
-import { getImages, storage } from '../../helpers/firebase/firebase';
+import { getImages } from '../../helpers/firebase/firebase';
 import { REACT_APP_STORAGE_GALLERY_DIRECTORY } from '../../constants/firebase';
 import GalleryViewerModal from './GalleryViewerModal/GalleryViewerModal';
 import { ActivityIndicator, Page } from '../../components';
@@ -33,7 +32,7 @@ const Gallery = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
 
-    if (memoizedList.length == 0)
+    if (memoizedList)
       fetchImages();
   }, [])
 
@@ -50,6 +49,7 @@ const Gallery = () => {
       .catch(error => {
         setIsLoading(false);
         setError(error);
+        return;
       });
   }
 

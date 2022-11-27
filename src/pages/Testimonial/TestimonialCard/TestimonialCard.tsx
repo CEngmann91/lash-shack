@@ -56,7 +56,7 @@ const TestimonialCard: React.FC<iTestimonialReview> = ({ id, createdAt, starRati
                         {/* </div> */}
 
                         <div className="footer">
-                            <label className="text">~~ {getDateFormatted(createdAt)}</label>
+                            {/* <label className="text">~~ {getDateFormatted(createdAt)}</label> */}
                         </div>
                     </div>
                 </motion.div>
