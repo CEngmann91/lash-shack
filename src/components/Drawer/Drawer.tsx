@@ -1,9 +1,10 @@
 import './Drawer.scss';
 import '../../res/styles.scss';
-import React, { useCallback, useState } from 'react';
+import React from 'react';
 import NavbarItem from '../navbar/NavbarItem/NavbarItem';
-import { AnimatePresence, motion, useCycle } from 'framer-motion';
+import { motion, useCycle } from 'framer-motion';
 import { menuItems } from '../../constants/menuItems';
+import DrawerButton from './DrawerButton/DrawerButton';
 
 const sidebar = {
     open: {
@@ -60,12 +61,7 @@ const Drawer: React.FC = () => {
 
     return (
         <div className='app__drawer app__desktop-hide'>
-            <div className="app__drawer--menuBtn-container">
-                <button onClick={() => toggleOpen()} data-menuvisible={isOpen}>
-                    {/* {!menuVisible ? <Menu /> : "X"} */}
-                    <i />
-                </button>
-            </div>
+            <DrawerButton isOpen={isOpen} onClick={() => toggleOpen()} />
 
             <motion.div
                 className={`app__drawer--panel`}

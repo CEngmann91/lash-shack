@@ -1,9 +1,11 @@
 import './ScrollTopArrow.scss';
 import React, { useState, useEffect } from 'react';
 import { UpArrow } from '../../../util/icons';
+import { useCycle } from 'framer-motion';
 
 const ScrollTopArrow: React.FC = () => {
-    const [visible, setVisible] = useState(false)
+    // const [visible, setVisible] = useState(false)
+    const [visible, setVisible] = useCycle(false, true);
 
 
     useEffect(() => {
@@ -16,10 +18,10 @@ const ScrollTopArrow: React.FC = () => {
 
     const onScroll = () => {
         if (!visible && window.pageYOffset > 400) {
-            setVisible(true)
+            setVisible()
         }
         else if (visible && window.pageYOffset <= 400) {
-            setVisible(false)
+            setVisible()
         }
     };
 

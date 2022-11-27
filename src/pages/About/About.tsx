@@ -53,7 +53,6 @@ const About = () => {
     </div>
   );
 
-
   const articles: iArticle[] = [
     {
       section1: {
@@ -103,9 +102,6 @@ const About = () => {
       }
     }
   ];
-
-
-  
 
   const renderArticle = (section1: iSection, section2: iSection) => {
     switch (section1.type) {
@@ -203,7 +199,6 @@ const About = () => {
 
   return (
     <Page id='about' className='app__about' headerClassName='app__about-title'>
-
       <div className="app__about--wrapper">
         {articles.map(({ section1, section2 }) =>
           <div className="card card-shadow">
@@ -211,42 +206,7 @@ const About = () => {
           </div>
         )}
       </div>
-
-
-
-
-
-      {/* 
-      <div className="app__about--wrapper">
-        <div className="card card-shadow">
-          <div className="left pad--left">
-            <header>Expert Services</header>
-            <p className="description">
-              Our expert team of technicians in Romford have carefully vetted our services to provide excellent quality that adheres to everyone's unique style.
-              So what are you waiting for? Come and experience it for yourself. Today!
-            </p>
-          </div>
-          <div className="right">
-            <img src={Shop} alt="" />
-          </div>
-        </div>
-
-        <div className="card card-shadow">
-          <div className="left">
-            <img src={Shop} alt="" />
-          </div>
-          <div className="right pad--right">
-            <header>Expert Services</header>
-            <p className="description">
-              Our expert team of technicians in Romford have carefully vetted our services to provide excellent quality that adheres to everyone's unique style.
-              So what are you waiting for? Come and experience it for yourself. Today!
-            </p>
-          </div>
-        </div>
-      </div>
-       */}
     </Page>
-
   )
 }
 
