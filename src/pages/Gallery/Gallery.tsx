@@ -5,7 +5,7 @@ import GalleryPhoto from './GalleryPhoto/GalleryPhoto';
 import { getImages } from '../../helpers/firebase/firebase';
 import { REACT_APP_STORAGE_GALLERY_DIRECTORY } from '../../constants/firebase';
 import GalleryViewerModal from './GalleryViewerModal/GalleryViewerModal';
-import { ActivityIndicator, Page } from '../../components';
+import { ActivityIndicator, MyIFrame, Page } from '../../components';
 
 
 const Gallery = () => {
@@ -13,6 +13,8 @@ const Gallery = () => {
   const [error, setError] = useState();
   const [files, setFiles] = useState<string[]>([]);
   const [selectedImg, setSelectedImg] = useState("");
+
+  const [hoverChild, setHoverChild] = useState(0);
 
 
 
@@ -75,8 +77,106 @@ const Gallery = () => {
           </div>
           :
           <>
+
+
+
+
+
+            <div className="container">
+              {/* {files.map((url, index) => (
+                <a href="https://images4.alphacoders.com/819/819837.png" className="big">
+                  <img src={url} />
+                </a>
+              ))} */}
+
+
+
+
+
+
+
+
+
+              <a href="https://images4.alphacoders.com/819/819837.png">
+                <img src="https://images4.alphacoders.com/819/819837.png" />
+              </a>
+
+              <a href="https://wallpaperaccess.com/full/938178.jpg" className="vertical">
+                <img src="https://wallpaperaccess.com/full/938178.jpg" />
+              </a>
+
+              <a href="https://c4.wallpaperflare.com/wallpaper/1003/738/330/yakusoku-no-neverland-ray-the-promised-neverland-emma-the-promised-neverland-the-promised-neverland-anime-hd-wallpaper-preview.jpg" className="horizontal">
+                <img src="https://c4.wallpaperflare.com/wallpaper/1003/738/330/yakusoku-no-neverland-ray-the-promised-neverland-emma-the-promised-neverland-the-promised-neverland-anime-hd-wallpaper-preview.jpg" />
+              </a>
+
+              <a href="https://source.unsplash.com/600x600/?sig=40">
+                <MyIFrame source="https://www.youtube.com/embed/W0iCWFwwIaQ" />
+              </a>
+
+              <a href="https://images7.alphacoders.com/722/722029.png">
+                <img src="https://images7.alphacoders.com/722/722029.png" />
+              </a>
+
+              <a href="https://source.unsplash.com/800x800/?sig=7" className="big">
+                <img src="https://source.unsplash.com/800x800/?sig=7" />
+              </a>
+
+              <a href="https://source.unsplash.com/600x600/?sig=111">
+                <img src="https://source.unsplash.com/600x600/?sig=111" />
+              </a>
+
+              <a href="https://source.unsplash.com/600x800/?sig=94" className="vertical">
+                <img src="https://source.unsplash.com/600x800/?sig=94" />
+              </a>
+
+              <a href="https://source.unsplash.com/600x600/?sig=11">
+                <img src="https://source.unsplash.com/600x600/?sig=11" />
+              </a>
+
+              <a href="https://source.unsplash.com/800x600/?sig=68" className="horizontal">
+                <img src="https://source.unsplash.com/800x600/?sig=68" />
+              </a>
+
+              <a href="https://source.unsplash.com/600x600/?sig=24">
+                <img src="https://source.unsplash.com/600x600/?sig=24" />
+              </a>
+
+              <a href="https://source.unsplash.com/800x800/?sig=55" className="big">
+                <img src="https://source.unsplash.com/800x800/?sig=55" />
+              </a>
+
+              <a href="https://source.unsplash.com/600x600/?sig=56">
+                <img src="https://source.unsplash.com/600x600/?sig=56" />
+              </a>
+
+              <a href="https://source.unsplash.com/800x600/?sig=186" className="horizontal">
+                <img src="https://source.unsplash.com/800x600/?sig=186" />
+              </a>
+
+              <a href="https://source.unsplash.com/600x600/?sig=117">
+                <img src="https://source.unsplash.com/600x600/?sig=117" />
+              </a>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             {/* <div className="border"> */}
-              {/* <div className="grid">
+            {/* <div className="grid">
                 {files.map((url, index) => (
                   <div key={index}>
                     <GalleryPhoto id={index.toString()}
@@ -85,7 +185,7 @@ const Gallery = () => {
                   </div>
                 ))} */}
 
-                {/* <div>Item 1</div>
+            {/* <div>Item 1</div>
                 <div>Item 2</div>
                 <div>Item 3</div>
                 <div>Item 4</div>
@@ -93,10 +193,10 @@ const Gallery = () => {
                 <div>Item 6</div>
                 <div>Item 7</div>
                 <div>Item 8</div> */}
-              {/* </div> */}
+            {/* </div> */}
 
 
-              {/* <div className="grid">
+            {/* <div className="grid">
                 <div>Item 1</div>
                 <div>Item 2</div>
                 <div>Item 3</div>
@@ -109,7 +209,13 @@ const Gallery = () => {
 
 
 
-            <div className="container">
+
+
+
+
+
+
+            {/* <div className="container">
               <ul className="image-gallery">
                 {memoizedList}
               </ul>
@@ -118,7 +224,26 @@ const Gallery = () => {
 
             {selectedImg.length > 0 && (
               <GalleryViewerModal selectedPhoto={selectedImg} setSelectedPhoto={setSelectedImg} />
-            )}
+            )} */}
+
+
+
+
+
+
+
+            {/* <ul className='list'>
+                {files.map((url, index) => (
+                <li key={index} onMouseEnter={() => setHoverChild(index)}
+                  style={{ width: (hoverChild === index ? 'calc(100vw / 4.5)' : "4rem") }}
+                >
+                  <div className="item">
+                    <img src={url} />
+                  </div>
+                </li>
+              ))}
+            </ul> */}
+
           </>
         }
       </>

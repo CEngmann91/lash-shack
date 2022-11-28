@@ -1,52 +1,21 @@
 import './Navbar.scss';
 import { logo } from '../../util/images';
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { BOOKING_URL } from '../../constants/constants';
 import NavbarItem from './NavbarItem/NavbarItem';
 import { motion, useScroll, useSpring } from 'framer-motion';
 import Sidebar from '../Drawer/Drawer';
 import { menuItems } from '../../constants/menuItems';
-
+import useScrollHook from '../../helpers/hooks/useScroll';
 
 const Navbar: React.FC<{}> = () => {
-    // const location = useLocation();
-    const [scrolledDown, setScrolledDown] = useState(false);
-    const [menuIsOpen, setMenuIsOpen] = useState(false);
+    const scrolledDown = useScrollHook();
     const { scrollYProgress } = useScroll();
     const scaleX = useSpring(scrollYProgress, {
         // stiffness: 100,
         // damping: 30,
         restDelta: 0.001
     });
-
-
-
-
-    useEffect(() => {
-        window.addEventListener('scroll', onScroll)
-        return function cleanup() {
-            window.removeEventListener('scroll', onScroll)
-        }
-    }, [])
-
-    const onScroll = () => setScrolledDown((window.scrollY > 100))
-
-    const showMenu = () => {
-        // Prevents scrolling whilst the menu is visible.
-        document.body.style.overflow = "hidden";
-        setMenuIsOpen(true);
-    }
-
-    const hideMenu = () => {
-        // if (!menuIsOpen) return;
-        document.body.style.overflow = "scroll";
-        setMenuIsOpen(false);
-    }
-
-    const toggleMenu = () => !menuIsOpen ? showMenu() : hideMenu();
-
-
-
 
     return (
         <nav className={`navbar-nav ${scrolledDown ? 'navbar-nav--scroll' : ''}`}>

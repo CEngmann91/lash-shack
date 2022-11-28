@@ -1,49 +1,11 @@
-// Change to 3d carosell
-
-
 import './Landing.scss';
-import React, { useState } from 'react';
-import { Parallax } from 'react-parallax';
-import { Landing0, Landing1, Landing2, Landing3, Landing4, Landing5, Landing6, Landing7, Landing8, Shop } from '../../util/images';
+import React from 'react';
 import { Eye, Pencil, Star } from '../../util/icons';
 import { Page } from '../../components';
 
 const Landing = () => {
-  const images = [
-    {
-      id: 0, src: Landing0
-    },
-    {
-      id: 1, src: Landing5
-    },
-    {
-      id: 2, src: Landing1
-    },
-    {
-      id: 3, src: Landing6
-    },
-    {
-      id: 4, src: Landing2
-    },
-    {
-      id: 5, src: Landing7
-    },
-    {
-      id: 6, src: Landing3
-    },
-    {
-      id: 7, src: Landing8
-    },
-    {
-      id: 8, src: Landing4
-    },
-  ]
-  const [hoverChild, setHoverChild] = useState(0);
 
-
-
-
-
+  
   return (
     <Page id='home' className='app__landing' header=''>
       <div className="heading app__flex">
