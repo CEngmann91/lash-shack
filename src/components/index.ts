@@ -3,6 +3,7 @@ export { default as Footer } from './Footer/Footer';
 export { default as Drawer } from './Drawer/Drawer';
 
 
+export { default as MyIFrame } from './MyIFrame/MyIFrame';
 export { default as MapView } from './MapView/MapView';
 
 export { default as Page } from './Page/Page';

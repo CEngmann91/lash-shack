@@ -12,16 +12,16 @@
     color: white;
     /* top | right | bottom | left */
     padding: 0.3rem 2em 0.3rem 0.4rem;
-    
+
     --border-radius: 1.5rem;
     border-bottom-left-radius: var(--border-radius);
     border-top-left-radius: var(--border-radius);
-    
+
     // opacity: 0.5;
     transition: 0.3s ease-in-out;
     // z-index: 1000;
-    
-    animation: slide-fadeIn 0.3s;
+
+    animation: slideIn-fadeIn 0.3s;
 
     z-index: 3;
 
@@ -38,6 +38,8 @@
         height: 100%;
 
         color: $green-shade-colour;
+
+        transition: 0.3s ease-in-out;
     }
 
     &:hover {
@@ -45,16 +47,39 @@
 
         opacity: 1;
     }
+
+    &[data-visible="false"] {
+        animation: slideOut-fadeOut 0.3s forwards;
+    }
+
+    &:active {
+        svg {
+            transform: scale(0.9);
+        }
+    }
 }
 
-@keyframes slide-fadeIn {
+@keyframes slideIn-fadeIn {
     from {
         opacity: 0;
         transform: translateX(50px);
     }
+
     to {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+@keyframes slideOut-fadeOut {
+    from {
         // opacity: 0.5;
         opacity: 1;
         transform: translateX(0px);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateX(50px);
     }
 }

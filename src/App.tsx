@@ -2,8 +2,8 @@ import './index.scss';
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Footer, Navbar } from './components';
-import { ShoppingCartWidget, ScrollTopArrow } from './components/Widgets';
 import { About, Courses, Gallery, Landing, MeetExperts, NotFound, Services, Testimonial, TrainingReview } from './pages';
+import Widgets from './components/Widgets/Widgets';
 
 function App() {
 
@@ -15,8 +15,7 @@ function App() {
       {id === "/" && <div className='footer-padding' /> }
       <Footer />
 
-      {/* <ShoppingCartWidget /> */}
-      <ScrollTopArrow />
+      <Widgets />
     </>
   );
 
