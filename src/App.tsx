@@ -11,6 +11,7 @@ function App() {
   const RenderRoute = (id: string, component: React.ReactNode) => (
     <>
       <Navbar />
+      <div className='padding-top' />
       {component}
       {id === "/" && <div className='footer-padding' /> }
       <Footer />
@@ -22,7 +23,11 @@ function App() {
   return (
     <Routes>
       {/* Use it in this way, and it should work: */}
-      <Route path='*' element={<NotFound />} />
+      <Route path='*' element={
+        RenderRoute("*",
+          <NotFound />
+        )
+      } />
 
       <Route path="/" element={
         RenderRoute(

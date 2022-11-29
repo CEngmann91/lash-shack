@@ -1,11 +1,46 @@
 @import '../../res/colours.scss';
+@import '../../constants/constants.scss';
 
 .app__notFound {
-    display: flex;
-    width: 100%;
+    @media screen and (max-width: 900px) {
+        // top | right | bottom | left
+        // padding: $navbar-height/2 5px 20px 5px;
+    }
     min-height: 100vh;
+    background: $white-colour;
+    // top | right | bottom | left
+    // padding: $navbar-height/2 20px 20px 20px;
 
-    justify-content: center;
-    align-items: flex-start;
-    background: pink;
+    z-index: 1;
+
+
+    .main-404 {
+        position: relative;
+        // background: green;
+        // height: ;
+
+        h1 {
+            @media screen and (max-width: 900px) {
+                font-size: 13em;
+            }
+            font-size: 15em;
+            color: lightgray;
+        }
+        .not-found {
+            position: absolute;
+            bottom: 40px;
+            font-size: 2em;
+            font-weight: bolder;
+            color: $pink-colour; //$green-shade-colour;
+        }
+    }
+
+    .information {
+        @media screen and (max-width: 900px) {
+            font-size: 1.3em;
+        }
+        font-size: 1.5em;
+        text-align: center;
+        margin-bottom: 20px;
+    }
 }
