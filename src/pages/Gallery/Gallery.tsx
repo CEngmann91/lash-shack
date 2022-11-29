@@ -19,7 +19,6 @@ const Gallery = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState();
   const [photos, setPhotos] = useState<iGalleryPhoto[]>([]);
-  const [files, setFiles] = useState<string[]>([]);
   const [selectedImg, setSelectedImg] = useState("");
 
   // const [hoverChild, setHoverChild] = useState(0);
@@ -28,14 +27,14 @@ const Gallery = () => {
 
   const memoizedList = useMemo(() => {
     return (
-      files.map((url, index) => (
+      photos.map(({ url, size, id }) => (
         // <PhotoFrame key={index} imgSource={url} onClick={() => getImage(url)} />
-        <GalleryPhoto key={index} id={index}
+        <GalleryPhoto key={id} id={id}
           imgSource={url} onClick={() => setSelectedImg(url)}
         />
       ))
     )
-  }, [files]);
+  }, [photos]);
 
 
 
@@ -117,13 +116,13 @@ const Gallery = () => {
 
 
 
-            <div className="container">
+            {/* <div className="container">
               {photos.map(({ url, size, id }) => (
                 <div className={size}>
                   <img src={url} />
                 </div>
               ))}
-            </div>
+            </div> */}
 
 
 

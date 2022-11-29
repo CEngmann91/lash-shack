@@ -21,7 +21,7 @@
 
 
     // https://codepen.io/shersial/pen/abzeMrN
-    .container {
+    /*.container {
         display: grid;
         grid-gap: var(--gap);
         grid-template-columns: repeat(auto-fit, minmax(var(--width), 1fr));
@@ -93,27 +93,9 @@
             grid-column: span 2;
             grid-row: span 2;
         }
-    }
+    }*/
 
 
-
-
-
-
-    // .container>a:hover::after {
-    //     transform: translateY(50%);
-    // }
-
-    // .container>a>* {
-    //     width: 100%;
-    //     height: 100%;
-    //     object-fit: cover;
-    //     transition-duration: 1s;
-    // }
-
-    // .container>a:hover>img {
-    //     transform: scale(1.05);
-    // }
 
     
 
@@ -121,7 +103,7 @@
 
 
 
-    /*
+    
     .container {
         // top | right | bottom | left
         // vertical | horizontal
@@ -146,7 +128,7 @@
         // grid-auto-rows: var(--height);
         // grid-auto-flow: dense;
         // grid-column: span 2;
-    }*/
+    }
 
 
 
