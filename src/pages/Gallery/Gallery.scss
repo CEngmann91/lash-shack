@@ -19,6 +19,8 @@
 
 
 
+
+    // https://codepen.io/shersial/pen/abzeMrN
     .container {
         display: grid;
         grid-gap: var(--gap);
@@ -28,7 +30,7 @@
         padding: 0 5% 40px 5%;
 
 
-        & > a {
+        & > div {
             position: relative;
             display: flex;
             justify-content: center;
@@ -71,7 +73,23 @@
                 transition-duration: 1s;
             }
         }
+
+        .horizontal {
+            grid-column: span 2;
+        }
+        .vertical {
+            grid-row: span 2;
+        }
+        .big {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
     }
+
+
+
+
+
 
     // .container>a:hover::after {
     //     transform: translateY(50%);
@@ -88,18 +106,7 @@
     //     transform: scale(1.05);
     // }
 
-    .horizontal {
-        grid-column: span 2;
-    }
-
-    .vertical {
-        grid-row: span 2;
-    }
-
-    .big {
-        grid-column: span 2;
-        grid-row: span 2;
-    }
+    
 
 
 

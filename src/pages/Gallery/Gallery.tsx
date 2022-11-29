@@ -3,18 +3,26 @@ import React, { useEffect, useMemo, useState } from 'react'
 import GalleryPhoto from './GalleryPhoto/GalleryPhoto';
 
 import { getImages } from '../../helpers/firebase/firebase';
-import { REACT_APP_STORAGE_GALLERY_DIRECTORY } from '../../constants/firebase';
+import { REACT_APP_FIRESTORE_GALLERY_COLLECTION, REACT_APP_FIRESTORE_GALLERY_DOCUMENT, REACT_APP_STORAGE_GALLERY_DIRECTORY } from '../../constants/firebase';
 import GalleryViewerModal from './GalleryViewerModal/GalleryViewerModal';
 import { ActivityIndicator, MyIFrame, Page } from '../../components';
+import { getDocument } from '../../helpers/firebase/firestore';
 
+type Size = "" | "horizontal" | "vertical" | "big";
+export interface iGalleryPhoto {
+  id: number;
+  size: Size;
+  url: string;
+}
 
 const Gallery = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState();
+  const [photos, setPhotos] = useState<iGalleryPhoto[]>([]);
   const [files, setFiles] = useState<string[]>([]);
   const [selectedImg, setSelectedImg] = useState("");
 
-  const [hoverChild, setHoverChild] = useState(0);
+  // const [hoverChild, setHoverChild] = useState(0);
 
 
 
@@ -43,15 +51,43 @@ const Gallery = () => {
     setIsLoading(true)
 
     await getImages(REACT_APP_STORAGE_GALLERY_DIRECTORY as string)
-      .then(res => {
-        setFiles(res);
-        setIsLoading(false);
-        // console.log("all done");
+      .then(imgResult => {
+        // setFiles(imgResult);
+        // setIsLoading(false);
+        // console.log("getImages - ", result);
+
+
+        getDocument(REACT_APP_FIRESTORE_GALLERY_COLLECTION as string,
+          REACT_APP_FIRESTORE_GALLERY_DOCUMENT as string)
+          .then(docResult => {
+            const result = docResult['content'];
+    
+    
+            for (let i = 0; i < imgResult.length; i++) {
+              const element = imgResult[i];
+              let p: iGalleryPhoto = {
+                id: i,
+                size: result[i] as Size,
+                url: element as string,
+              }
+              setPhotos(prev => [...prev, p]);
+            }
+    
+    
+            setIsLoading(false);
+            // console.log("getDocument - ", result);
+          })
+          .catch(error => {
+            setIsLoading(false);
+            setError(error);
+          });
+          
+
+
       })
       .catch(error => {
         setIsLoading(false);
         setError(error);
-        return;
       });
   }
 
@@ -81,13 +117,24 @@ const Gallery = () => {
 
 
 
-
             <div className="container">
-              {/* {files.map((url, index) => (
+              {photos.map(({ url, size, id }) => (
+                <div className={size}>
+                  <img src={url} />
+                </div>
+              ))}
+            </div>
+
+
+
+
+            {/* <div className="container">
+              {files.map((url, index) => (
                 <a href="https://images4.alphacoders.com/819/819837.png" className="big">
                   <img src={url} />
                 </a>
-              ))} */}
+              ))}
+            </div> */}
 
 
 
@@ -97,6 +144,7 @@ const Gallery = () => {
 
 
 
+            {/* <div className="container">
               <a href="https://images4.alphacoders.com/819/819837.png">
                 <img src="https://images4.alphacoders.com/819/819837.png" />
               </a>
@@ -156,7 +204,7 @@ const Gallery = () => {
               <a href="https://source.unsplash.com/600x600/?sig=117">
                 <img src="https://source.unsplash.com/600x600/?sig=117" />
               </a>
-            </div>
+            </div> */}
 
 
 
@@ -215,7 +263,7 @@ const Gallery = () => {
 
 
 
-            {/* <div className="container">
+            <div className="container">
               <ul className="image-gallery">
                 {memoizedList}
               </ul>
@@ -224,7 +272,7 @@ const Gallery = () => {
 
             {selectedImg.length > 0 && (
               <GalleryViewerModal selectedPhoto={selectedImg} setSelectedPhoto={setSelectedImg} />
-            )} */}
+            )}
 
 
 

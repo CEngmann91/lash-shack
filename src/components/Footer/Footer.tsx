@@ -48,8 +48,8 @@ const Footer: React.FC<{}> = () => {
 
       <div className="app__footer--information">
         <div className="socials">
-          {socials.map(({ id, component, to }, index) => (
-            <a href={to} className="" target="_blank" rel="noreferrer">
+          {socials.map(({ id, component, to }) => (
+            <a key={id} href={to} className="" target="_blank" rel="noreferrer">
               {component}
             </a>
           ))}
