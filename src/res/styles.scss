@@ -98,6 +98,7 @@
 
 
 .app__desktop-hide {
+
     // Extra large or Desktop devices
     @media screen and (min-width: 1200px) {
         display: none;
@@ -156,7 +157,7 @@
         height: 100%;
         background: rgba(255, 255, 255, 0.3);
         transform: skewX(-30deg);
-        
+
         transition: 0.8s ease-out;
     }
 
@@ -167,7 +168,7 @@
         &::before {
             left: 300px;
             background: rgba(255, 255, 255, 0.2);
-        }   
+        }
     }
 }
 
@@ -180,4 +181,5 @@
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
 }
+
 ///////////////////\\\\\\\\\\\\\\\\\\

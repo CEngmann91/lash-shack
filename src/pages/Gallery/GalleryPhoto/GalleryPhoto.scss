@@ -2,6 +2,9 @@
 
 .gallery-photo {
     background: white;
+    @media screen and (max-width: 900px) {
+        flex: 1 0.5 auto;
+    }
     flex: 1 1 auto;
     height: 250px;
     position: relative;
