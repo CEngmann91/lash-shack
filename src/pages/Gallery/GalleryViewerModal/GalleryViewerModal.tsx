@@ -1,7 +1,8 @@
 import './GalleryViewerModal.scss';
 import React, { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion';
-import { Close } from '../../../util/icons';
+import { Close, LeftArrow, RightArrow } from '../../../util/icons';
+import { allowScrolling, preventScrolling } from '../../../constants/funcs';
 
 
 const container = {
@@ -25,46 +26,65 @@ const item = {
 
 interface iProps {
     selectedPhoto: string;
-    setSelectedPhoto: React.Dispatch<React.SetStateAction<string>>
-    // setSelectedPhoto: (value: string | null) => void;
+    setSelectedPhoto: React.Dispatch<React.SetStateAction<string>>;
+
+    selectedPhotoIndex: number;
+    setSelectedPhotoIndex: React.Dispatch<React.SetStateAction<number>>;
 }
-const GalleryViewerModal: React.FC<iProps> = ({ selectedPhoto, setSelectedPhoto, ...props }: iProps) => {
+const GalleryViewerModal: React.FC<iProps> = ({ selectedPhoto, setSelectedPhoto, selectedPhotoIndex, setSelectedPhotoIndex, ...props }: iProps) => {
     const [visible, setVisible] = useState(true);
 
 
 
     useEffect(() => {
-        if (selectedPhoto) {
-            // Prevents scrolling whilst the menu is visible.
-            document.body.style.overflow = "hidden";
-            setVisible(true);
+        // if (selectedPhoto) {
+        //     preventScrolling();
+        //     setVisible(true);
+        // }
+
+
+        if (!visible)
+        {
+            setSelectedPhoto("")
+            allowScrolling();
         }
-    }, [])
+        else 
+        {
+            preventScrolling();
+        }
+
+    }, [visible])
 
 
     const handleClick = () => {
-        document.body.style.overflow = "scroll";
+        allowScrolling();
         setVisible(false);
     }
 
     return (
-        <AnimatePresence onExitComplete={() => { if (!visible) setSelectedPhoto("") }}>
+        <>
             {visible &&
                 <motion.div
-                    className='backdrop'
+                    className='backdrop app__flex'
                     variants={container}
                     initial="hidden"
                     animate='visible'
                     exit='hidden'
-                    onClick={handleClick}
+                    // onClick={handleClick}
                 >
                     <motion.img src={selectedPhoto} alt="enlarged pic" variants={item} />
+
+
                     <button className="close-button" onClick={handleClick}>
                         <Close />
                     </button>
+
+
+                    <button className='left-arrow'><LeftArrow /></button>
+                    <button className='right-arrow'><RightArrow /></button>
                 </motion.div>
             }
-        </AnimatePresence>
+        </>
     )
 }
 

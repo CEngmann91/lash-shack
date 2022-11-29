@@ -1,6 +1,18 @@
 import moment from "moment";
 
 
+export function allowScrolling() {
+    document.body.style.overflow = "scroll";
+}
+// Prevents scrolling
+export function preventScrolling() {
+    document.body.style.overflow = "hidden";
+}
+
+
+
+
+
 
 export function getDateFormatted(date: string) {
     return getDate(date, 'DD/MM/YYYY');

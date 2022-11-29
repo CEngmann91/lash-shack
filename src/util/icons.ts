@@ -1,7 +1,7 @@
 import { BsTwitter, BsStarFill, BsFillArrowUpCircleFill, BsFillPencilFill } from 'react-icons/bs';
 import { FaFacebookF, FaRegEye, FaQuoteRight } from 'react-icons/fa';
 import { AiFillCloseCircle, AiFillInstagram } from 'react-icons/ai';
-import { MdEmail } from 'react-icons/md';
+import { MdEmail, MdOutlineArrowBackIosNew, MdOutlineArrowForwardIos } from 'react-icons/md';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { FiShoppingCart } from 'react-icons/fi';
 
@@ -16,6 +16,8 @@ export {
     MdEmail as Email,
 
     BsFillArrowUpCircleFill as UpArrow,
+    MdOutlineArrowBackIosNew as LeftArrow,
+    MdOutlineArrowForwardIos as RightArrow,
     BsStarFill as Star,
 
 
