@@ -1,7 +1,7 @@
 import './index.scss';
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { Footer, Navbar } from './components';
+import { Footer, Navbar, SidebarMenu } from './components';
 import { About, Courses, Gallery, Landing, MeetExperts, NotFound, Services, Testimonial, TrainingReview } from './pages';
 import Widgets from './components/Widgets/Widgets';
 
@@ -11,6 +11,7 @@ function App() {
   const RenderRoute = (id: string, component: React.ReactNode) => (
     <div className='route-div'>
       <Navbar />
+      <SidebarMenu />
       {id !== "/" && id !== "*" ? <div className='padding-top' /> : null }
       {component}
       {id === "/" && <div className='footer-padding' /> }

@@ -108,7 +108,7 @@
 .app__desktop-hide {
 
     // Extra large or Desktop devices
-    @media screen and (min-width: 1200px) {
+    @media screen and (min-width: 900px) {
         display: none;
     }
 }
