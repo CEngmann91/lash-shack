@@ -2,11 +2,16 @@
 
 .app__drawer {
     // Hide this menu when the screen is larger than 900px
-    @media screen and (min-width: 900px) {
-        display: none;
-    }
+    // @media screen and (min-width: 900px) {
+    //     display: none;
+    // }
     display: flex;
     justify-content: flex-end;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    right: 0;
+    z-index: 10;
 
 
     &--panel {
@@ -58,11 +63,13 @@
     }
 
     &--menuBtn-container {
-
         z-index: 10;
-        right: 0;
+        // right: 0;
 
         button {
+            position: fixed;
+            top: 0;
+
             display: flex;
             width: 35px;
             height: 35px;

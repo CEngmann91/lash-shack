@@ -4,7 +4,7 @@ import React from 'react'
 import { BOOKING_URL } from '../../constants/constants';
 import NavbarItem from './NavbarItem/NavbarItem';
 import { motion, useScroll, useSpring } from 'framer-motion';
-import Sidebar from '../Drawer/Drawer';
+// import SidebarMenu from '../Drawer/Drawer';
 import { menuItems } from '../../constants/menuItems';
 import useScrollHook from '../../helpers/hooks/useScroll';
 
@@ -41,7 +41,7 @@ const Navbar: React.FC<{}> = () => {
 
             <a href={BOOKING_URL} className={`border-button app__style-effect__shine book-now-button app__mobile-hide`} target="_blank" rel="noreferrer">Book Now</a>
 
-            <Sidebar />
+            {/* <SidebarMenu /> */}
         </nav>
     )
 }
