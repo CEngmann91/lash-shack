@@ -17,7 +17,9 @@
     border-bottom-left-radius: var(--border-radius);
     border-top-left-radius: var(--border-radius);
 
-    // opacity: 0.5;
+    // opacity: 0;
+    // transform: translateX(50px);
+    
     transition: 0.3s ease-in-out;
     // z-index: 1000;
 
@@ -60,11 +62,10 @@
 }
 
 @keyframes slideIn-fadeIn {
-    from {
-        opacity: 0;
-        transform: translateX(50px);
-    }
-
+    // from {
+    //     opacity: 0;
+    //     transform: translateX(50px);
+    // }
     to {
         opacity: 1;
         transform: translateX(0px);
@@ -72,12 +73,10 @@
 }
 
 @keyframes slideOut-fadeOut {
-    from {
-        // opacity: 0.5;
-        opacity: 1;
-        transform: translateX(0px);
-    }
-
+    // from {
+    //     opacity: 1;
+    //     transform: translateX(0px);
+    // }
     to {
         opacity: 0;
         transform: translateX(50px);

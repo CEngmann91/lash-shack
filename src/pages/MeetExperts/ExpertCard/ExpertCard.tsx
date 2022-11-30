@@ -18,6 +18,7 @@ const ExpertCard: React.FC<iExpert> = (item, { ...props }: iExpert) => {
 
                  <div className="info">
                      <h1 className='name'>{item.name}</h1>
+                     <hr/>
                      <p className='position'>{item.position}</p>
                  </div>
              </div>
