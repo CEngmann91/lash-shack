@@ -2,14 +2,15 @@
 @import '../../constants/constants.scss';
 
 .app__courses {
-    @media screen and (max-width: 900px) {
-        padding: 4rem 2rem;
-    }
+    // @media screen and (max-width: 900px) {
+    //     padding: 4rem 2rem;
+    // }
     min-height: 50vh;
     background: $white-colour;
     margin-bottom: calc($footer-height - 10px);
-    padding: 4rem 5rem;
-
+    // padding: 4rem 5rem;
+    
+    
 
     .cards {
         @media screen and (max-width: 900px) {

@@ -9,15 +9,15 @@ function App() {
 
 
   const RenderRoute = (id: string, component: React.ReactNode) => (
-    <>
+    <div className='route-div'>
       <Navbar />
-      <div className='padding-top' />
+      {id !== "/" && id !== "*" ? <div className='padding-top' /> : null }
       {component}
       {id === "/" && <div className='footer-padding' /> }
       <Footer />
 
       <Widgets />
-    </>
+    </div>
   );
 
   return (

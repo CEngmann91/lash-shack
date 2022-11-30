@@ -1,6 +1,6 @@
 import './About.scss';
 import React, { useMemo } from 'react';
-import { MapView, Page } from '../../components';
+import { MapView, MyIFrame, Page } from '../../components';
 import { Landing0, Landing1, Shop, Training } from '../../util/images';
 import { CONTACT } from '../../constants/constants';
 
@@ -26,15 +26,17 @@ interface iArticle {
 }
 
 const About = () => {
+
   const renderContactArticle = () => (
     <div className='app__about--mapview-article'>
       <div className="pad--left app__flex">
         <h1>Get In Touch</h1>
         <section style={{ alignItems: 'center', textAlign: 'center' }}>
           <hr />
-          {/* <p className=''>{CONTACT.EMAIL}</p> */}
-          <p className='new-line'>{CONTACT.ADDRESS}</p>
-          <br />
+          <p className='new-line address'>{CONTACT.ADDRESS}</p>
+
+          <a href={CONTACT.EMAIL}>{CONTACT.EMAIL}</a>
+          {/* <br /> */}
         </section>
 
       </div>
@@ -87,6 +89,12 @@ const About = () => {
       section2: {
         type: SectionType.Image,
         typeImgSrc: Landing1
+
+        // type: SectionType.ReactNode,
+        // component: (
+        //   // <MyIFrame source='https://www.youtube.com/embed/W0iCWFwwIaQ' />
+        //   <MyIFrame source="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d547.2194368048818!2d0.1739251796953675!3d51.57855856568328!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8a4b87d9ae185%3A0x86c325f6401e3d5b!2sSun%20Chasers!5e1!3m2!1sen!2suk!4v1668589047803!5m2!1sen!2suk" />
+        // )
       }
     },
     {

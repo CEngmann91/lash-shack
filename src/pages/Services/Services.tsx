@@ -10,7 +10,7 @@ const Services = () => {
 
   return (
     <Page id='services' className='app__services' header='Services'>
-      <h1 className="eyelash-extenstions">Eyelash Extenstions Full Sets</h1>
+      <h1 className="eyelash-extenstions">Eyelash Extensions Full Sets</h1>
       <p>Classic Semi-Permanent - £45 - 60mins</p>
       <p>YY Express - £45 - 60mins</p>
       <p>Classic Xtra Semi-Permanent - £50 - 70mins</p>
@@ -20,7 +20,7 @@ const Services = () => {
       <p>Mega Russian Volume - £75 - 90mins</p>
 
 
-      <h1 className="eyelash-extenstions">Eyelash Extenstions Infills</h1>
+      <h1 className="eyelash-extenstions">Eyelash Extensions Infills</h1>
       <p>Classic Semi-Permanent Infills - £30 - 45mins</p>
       <p>YY Express infills - £35 - 45mins</p>
       <p>Classic Xtra Semi-Permanent Infills - £35 - 60mins</p>
@@ -32,7 +32,7 @@ const Services = () => {
       <h1 className="eyelash-extenstions">Eyebrows</h1>
       <p>Eyebrow Tint - £7 - 10mins</p>
       <p>Eyebrow Wax & Tint - £14 - 20mins</p>
-      <p>Mircoblading - £180 - 90mins</p>
+      <p>Microblading - £180 - 90mins</p>
       <p>Removal - £10 - 20mins</p>
 
       <h1 className="eyelash-extenstions">Lips</h1>
@@ -40,8 +40,8 @@ const Services = () => {
       <p>1.1ml - £140 - 30mins</p>
       <p>3ml Package - £275 - 60mins</p>
 
-      <h1 className="eyelash-extenstions">Semi-Perminent Makeup</h1>
-      <p>Onbre Brows</p>
+      <h1 className="eyelash-extenstions">Semi-Permanent Makeup</h1>
+      <p>Ombre Brows</p>
       <p>Combo Brows</p>
       <p>Lip Blush</p>
       <p>Lip Liner</p>

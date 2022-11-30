@@ -39,7 +39,7 @@ const Navbar: React.FC<{}> = () => {
                 ))}
             </ul>
 
-            <a href={BOOKING_URL} className={`border-button app__style-effect__shine app__mobile-hide`} target="_blank" rel="noreferrer">Book Now</a>
+            <a href={BOOKING_URL} className={`border-button app__style-effect__shine book-now-button app__mobile-hide`} target="_blank" rel="noreferrer">Book Now</a>
 
             <Sidebar />
         </nav>

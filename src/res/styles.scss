@@ -1,5 +1,10 @@
 @import './colours.scss';
 
+
+.route-div {
+    // background: linear-gradient(to bottom, $green-shade-colour, $pink-colour);
+}
+
 .app__flex {
     display: flex;
     flex-direction: column;
@@ -60,12 +65,15 @@
     padding: 0.3em 1.2em;
     // margin: 0 0.3em 0.3em 0;
     box-sizing: border-box;
-    color: black;
     text-align: center;
     text-decoration: none;
-    border: 0.1em solid $blue-colour;
+    // color: black;
+    // border: 0.1em solid $blue-colour;
     border-radius: 20px;
     overflow: hidden;
+
+    border: 0.1em solid white;
+    color: white;
 
     transition: 0.2s ease-in;
 
