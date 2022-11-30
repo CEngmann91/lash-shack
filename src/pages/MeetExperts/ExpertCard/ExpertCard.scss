@@ -17,7 +17,7 @@
     width: 17rem;
     height: 22rem;
     border-radius: 15px;
-    box-shadow: 5px 5px lightgray;
+    box-shadow: 5px 5px rgba(black, 0.25);
     margin-bottom: 20px;
     overflow: hidden;
 
@@ -97,17 +97,27 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        width: 100%;
+        padding: 0 2rem;
+        // width: 80%;
 
         .name {
             color: $white-colour;
             font-size: 1.4em;
             text-transform: uppercase;
             margin-top: 5px;
-            letter-spacing: 2px
+            letter-spacing: 2px;
+            // font-style: italic;
         }
 
         .position {
             color: $white-colour;
+        }
+
+        hr {
+            width: 100%;
+            border: 1px solid rgba($pink-colour, 0.4);
+            margin: .5rem 0;
         }
     }
 
@@ -115,7 +125,7 @@
 
     &:hover {
         // .expert-card-item {
-            box-shadow: 10px 10px lightgray;
+            box-shadow: 8px 8px rgba(black, 0.75);
 
             .container {
 

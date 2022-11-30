@@ -8,7 +8,7 @@
     right: 0;
     bottom: 0;
     height: 2px;
-    background: $pink-colour;
+    background: $green-shade-colour;
     border-radius: 2px;
     transform-origin: center;
 }
@@ -30,6 +30,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 0rem 2rem;
+    overflow: hidden;
     // Add a blur
     @include blur(4px);
     // Ensures the navbar is above the content
@@ -68,7 +69,9 @@
 
         &-active {
             text-shadow: 0 0.5px 0.5px rgba(black, 0.5);
-            border-bottom: solid 3px $pink-colour; // $green-shade-colour;
+            border-bottom: solid 3px 
+            // $pink-colour;
+            $green-shade-colour;
         }
 
         li {
@@ -102,14 +105,18 @@
         }
         // Background colour for the navbar.
         background: rgba($green-shade-colour, 0.85);
-        box-shadow: 0 0 20px rgba(black, 0.75);
+        box-shadow: 0 0 30px rgba(black, 0.85);
         height: calc($navbar-height + 10px);
 
-        // border-bottom-left-radius: 20px;
-        // border-bottom-right-radius: 20px;
+        --border-bottom-radius: 30px;
+        border-bottom-left-radius: var(--border-bottom-radius);
+        border-bottom-right-radius: var(--border-bottom-radius);
 
 
 
+        .progress-bar {
+            background: $pink-colour;
+        }
 
         .navbar-nav {
             transition: 0.3s ease-in-out;
