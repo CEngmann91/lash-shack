@@ -8,7 +8,7 @@ const Widgets: React.FC = () => {
     return (
         <>
             <ScrollTopArrow />
-            <ShoppingCartWidget />
+            {/* <ShoppingCartWidget /> */}
         </>
     )
 }

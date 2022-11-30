@@ -1,6 +1,7 @@
 import './NotFound.scss';
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
+import { ALink } from '../../components';
 
 const NotFound = () => {
   const navigate = useNavigate();
@@ -15,7 +16,7 @@ const NotFound = () => {
       
       <label className="information">Ooops!! This page doesn't exist or is unavailable.</label>
 
-      <a className={`border-button app__style-effect__shine`} target="_blank" rel="noreferrer" onClick={() => navigate(-1)}>Go Back to Home</a>
+      <ALink className={`border-button app__style-effect__shine`} onClick={() => navigate(-1)}>Go Back to Home</ALink>
     </div>
   )
 }

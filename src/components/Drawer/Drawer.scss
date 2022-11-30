@@ -18,7 +18,8 @@
         height: 100vh;
         z-index: 5;
         // background: rgba(rgba($beige-colour, 0.85), 1);
-        background: linear-gradient(to bottom, $pink-colour, $beige-colour);
+        // background: linear-gradient(to bottom, $pink-colour, $beige-colour);
+        background: linear-gradient(to bottom, $green-shade-colour, $pink-colour);
 
         box-shadow: 0 0 20px rgb(128, 128, 128);
 
@@ -36,7 +37,7 @@
             gap: 4rem;
 
             a {
-                color: $green-shade-colour;
+                color: $white-colour;
                 text-decoration: none;
                 font-size: 2rem;
                 text-transform: uppercase;
@@ -52,7 +53,7 @@
         }
 
         &-active {
-            border-bottom: solid 3px $green-shade-colour;
+            border-bottom: solid 3px $white-colour;
         }
     }
 

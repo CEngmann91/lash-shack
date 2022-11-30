@@ -8,7 +8,7 @@
     right: 0;
     bottom: 0;
     height: 2px;
-    background: $green-shade-colour;
+    background: $pink-colour;
     border-radius: 2px;
     transform-origin: center;
 }
@@ -39,13 +39,70 @@
 
 
 
+    .book-now-button {
+        border: 0.1em solid $green-shade-colour;
+        color: $green-shade-colour;
+    }
+
+    &--logo {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        
+        img {            
+            transition: 0.3s ease-in-out;
+            
+            width: 6rem;
+        }
+    }
+
+    &--links {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 3rem;
+
+
+
+        &-active {
+            text-shadow: 0 0.5px 0.5px rgba(black, 0.5);
+            border-bottom: solid 3px $pink-colour; // $green-shade-colour;
+        }
+
+        li {
+            @media screen and (max-width: 900px) {
+                display: none;
+            }
+
+            // padding: 0px 5px 5px 5px;
+            margin: 0rem 1.2rem;
+            // Remove the generic link styles.
+            list-style: none;
+
+            a {
+                color: $green-shade-colour;
+                text-transform: capitalize;
+                font-size: 18px;
+                font-weight: bold;
+                text-decoration: none;
+                // font-family: cursive;
+            }
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+
     &--scroll {
         @media screen and (max-width: 900px) {
             height: calc($navbar-height - 10px);
         }
         // Background colour for the navbar.
-        background: rgba($beige-colour, 0.85);
-        box-shadow: 0 0 20px rgba(128, 128, 128, 0.75);
+        background: rgba($green-shade-colour, 0.85);
+        box-shadow: 0 0 20px rgba(black, 0.75);
         height: calc($navbar-height + 10px);
 
         // border-bottom-left-radius: 20px;
@@ -72,106 +129,25 @@
                 transition: 0.3s ease-in-out;
 
                 &-active {
-                    border-bottom: solid 3px $green-shade-colour;
+                    border-bottom: solid 3px $pink-colour;
                 }
 
                 li {
                     a {
-                        color: $green-shade-colour;
+                        color: $pink-colour;
                     }
                 }
             }
-
-            // .book-now-button {
-            //     background: $beige-colour;
-        
-            //     &:hover {
-            //         background: $beige-colour;
-            //     }
-            // }
-        }
-    }
-
-    &--logo {
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-
-        
-        img {            
-            transition: 0.3s ease-in-out;
-            
-            width: 6rem;
-        }
-    }
-
-    &--links {
-        flex: 1;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-left: 3rem;
-
-        &-active {
-            // &:hover {
-            //     &::after {
-            //         transform: scaleX(1);
-            //         transform-origin: right;
-            //     }
-            // }
-
-            // &:after {
-            //     display: block;
-            //     content: '';
-            //     transform: scaleX(0);
-            //     transform-origin: left;
-            //     transition: transform 250ms ease-in-out;
-            //     transform: scaleX(1);
-
-            //     border-bottom: 3px solid $gray-colour;
-            // }
-
-
-            border-bottom: solid 3px $pink-colour; // $green-shade-colour;
         }
 
-        li {
-            @media screen and (max-width: 900px) {
-                display: none;
-            }
-
-            // padding: 0px 5px 5px 5px;
-            margin: 0rem 1.2rem;
-            // Remove the generic link styles.
-            list-style: none;
-
-            a {
-                color: $blue-colour;
-                text-transform: capitalize;
-                font-size: 18px;
-                font-weight: bold;
-                text-decoration: none;
-                // font-family: cursive;
-            }
+        .book-now-button {
+            border: 0.1em solid $pink-colour;
+            color: $pink-colour;
 
             &:hover {
-                cursor: pointer;
+                box-shadow: 5px 5px black;
+
             }
-        }
-    }
-
-    .book-now-button {
-        position: relative;
-        width: 7.5rem;
-        height: auto;
-        background: $white-colour;
-        border: 0.5px solid $gray-colour;
-        border-radius: 10px;
-
-        transition: 0.3s ease-in-out;
-
-        &:active {
-            transform: scale(0.95);
         }
     }
 }

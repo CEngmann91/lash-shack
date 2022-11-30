@@ -17,7 +17,12 @@
     width: 17rem;
     height: 22rem;
     border-radius: 15px;
+    box-shadow: 5px 5px lightgray;
+    margin-bottom: 20px;
     overflow: hidden;
+
+    transition: 0.3s ease-in-out;
+
 
 
     .container {
@@ -30,7 +35,7 @@
         justify-content: center;
         align-items: center;
 
-        background: $beige-colour;
+        background: $green-shade-colour;
 
 
         .top-border {
@@ -42,11 +47,11 @@
             height: 50%;
             background: $pink-colour;
             border-bottom-left-radius: 25px;
+            box-shadow: 0 0 5px 5px rgba($pink-colour, 0.5);
 
             &::before {
                 content: "";
                 position: absolute;
-
                 right: 0;
                 background: transparent;
                 bottom: -50px;
@@ -54,6 +59,7 @@
                 width: 25px;
                 border-top-right-radius: 25px;
                 box-shadow: 0 -25px 0 0 $pink-colour;
+                // box-shadow: 0 0 5px 5px rgba($pink-colour, 1);
             }
         }
 
@@ -67,12 +73,11 @@
             --headshot-scale: 11em;
             width: var(--headshot-scale);
             height: var(--headshot-scale);
-            box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 5px 5px rgba(black, 0.5);
             border-radius: 50%;
             overflow: hidden;
 
             transition: 0.3s ease-out;
-
 
             img {
                 width: 100%;
@@ -81,9 +86,9 @@
                 object-position: center center;
             }
 
-            &:hover {
-                box-shadow: 0 0 8px 8px rgba(0, 0, 0, 0.5);
-            }
+            // &:hover {
+            //     box-shadow: 0 0 8px 8px rgba(white, 0.5);
+            // }
         }
     }
 
@@ -94,14 +99,31 @@
         align-items: center;
 
         .name {
-            color: black;
+            color: $white-colour;
             font-size: 1.4em;
             text-transform: uppercase;
             margin-top: 5px;
             letter-spacing: 2px
         }
 
-        .position {}
+        .position {
+            color: $white-colour;
+        }
+    }
+
+
+
+    &:hover {
+        // .expert-card-item {
+            box-shadow: 10px 10px lightgray;
+
+            .container {
+
+                .headshot {
+                    box-shadow: 0 0 8px 8px rgba(white, 0.5);
+                }
+            }
+        // }
     }
 }
 
