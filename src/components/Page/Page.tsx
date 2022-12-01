@@ -17,9 +17,10 @@ const Page: React.FC<iProps> = ({ id, className, header, headerClassName, childr
                 {customHeader ?
                     customHeader
                     :
-                    <h1 className={`head-text title ${headerClassName}`}
-                        // style={{ borderBottomColor: "rgba(red, 0.4)" }}
-                    >{header}</h1>
+                    (headerClassName ?
+                        <h1 className={`head-text title ${headerClassName}`}>{header}</h1>
+                        :
+                        null)
                 }
             </header>
             {children}

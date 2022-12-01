@@ -34,7 +34,6 @@ const About = () => {
         <section style={{ alignItems: 'center', textAlign: 'center' }}>
           <hr />
           <p className='new-line address'>{CONTACT.ADDRESS}</p>
-          <a href={CONTACT.EMAIL} className='border-button send-email-button'>Send Us An Email</a>
         </section>
 
       </div>
@@ -49,6 +48,10 @@ const About = () => {
           <p>Sat:</p>
           <p>10am - 3.30pm</p>
         </section>
+      </div>
+
+      <div className='get-in-contact app__flex'>
+        <a href={CONTACT.EMAIL} className='border-button get-in-contact-button'>Get In Contact</a>
       </div>
     </div>
   );
@@ -69,6 +72,11 @@ const About = () => {
       section1: {
         type: SectionType.Image,
         typeImgSrc: Training
+
+        // type: SectionType.ReactNode,
+        // component: (
+        //   <MyIFrame source='https://www.instagram.com/reel/CktbR0_A70Z/?utm_source=ig_embed&amp;utm_campaign=loading' />
+        // )
       },
       section2: {
         type: SectionType.TextAndButton,
@@ -92,8 +100,7 @@ const About = () => {
         type: SectionType.ReactNode,
         component: (
           <MyIFrame source='https://www.youtube.com/embed/Rhpubx3o420' />
-          // <MyIFrame source="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d547.2194368048818!2d0.1739251796953675!3d51.57855856568328!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8a4b87d9ae185%3A0x86c325f6401e3d5b!2sSun%20Chasers!5e1!3m2!1sen!2suk!4v1668589047803!5m2!1sen!2suk" />
-          // <MapView source="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d547.2194368048818!2d0.1739251796953675!3d51.57855856568328!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8a4b87d9ae185%3A0x86c325f6401e3d5b!2sSun%20Chasers!5e1!3m2!1sen!2suk!4v1668589047803!5m2!1sen!2suk" />
+          // <MyIFrame source='https://www.instagram.com/reel/CjYgoxPAOh7/?utm_source=ig_embed&amp;utm_campaign=loading' />
         )
       }
     },
@@ -141,7 +148,7 @@ const About = () => {
       case SectionType.TextAndButton:
         return (
           <>
-            <div className="pad--left">
+            <div className="pad--left app__flex">
               <h1>{section1.title}</h1>
               <p className="description new-line">{section1.description}</p>
               {section1.type === SectionType.TextAndButton ?
@@ -191,7 +198,7 @@ const About = () => {
             <div className="left">
               <img src={section1.typeImgSrc} alt="" />
             </div>
-            <div className="right pad--right">
+            <div className="right pad--right app__flex">
               <h1>{section2.title}</h1>
               <p className="description new-line">{section2.description}</p>
               {section2.type === SectionType.TextAndButton ?
@@ -206,7 +213,7 @@ const About = () => {
   }
 
   return (
-    <Page id='about' className='app__about' headerClassName='app__about-title'>
+    <Page id='about' className='app__about'>
       <div className="app__about--wrapper">
         {articles.map(({ section1, section2 }) =>
           <div className="card card-shadow">

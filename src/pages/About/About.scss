@@ -33,14 +33,14 @@
 
 
 
-    &-title {
-        font-size: 2.5em;
-        border-bottom: 3px solid rgba($blue-colour, 0.4);
-    }
+    // &-title {
+    //     font-size: 2.5em;
+    //     border-bottom: 3px solid rgba($blue-colour, 0.4);
+    // }
 
     &--wrapper {
         @media screen and (max-width: 900px) {
-            padding: 0 2rem;
+            padding: 0 1rem;
         }
 
         display: flex;
@@ -77,6 +77,8 @@
                     height: 50%;
                 }
                 width: 50%;
+                height: 100%;
+                text-align: center;
             }
 
             img {
@@ -90,13 +92,13 @@
                 @media screen and (max-width: 900px) {
                     padding-bottom: 1rem;
                 }
-
                 padding-bottom: 2rem;
             }
         }
     }
 
     &--mapview-article {
+        position: relative;
         display: grid;
         justify-content: space-evenly;
         align-items: flex-start;
@@ -129,9 +131,15 @@
             padding-bottom: 20px;
         }
 
-        .send-email-button {
-            border: 0.1em solid $green-shade-colour;
-            color: $green-shade-colour;
+        .get-in-contact {
+            position: absolute;
+            width: 100%;
+            bottom: 20px;
+
+            &-button {
+                border: 0.1em solid $green-shade-colour;
+                color: $green-shade-colour;
+            }
         }
     }
 
