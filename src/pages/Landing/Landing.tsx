@@ -7,7 +7,7 @@ const Landing = () => {
 
   
   return (
-    <Page id='home' className='app__landing' header=''>
+    <Page id='home' className='app__landing app__flex' header=''>
       <div className="heading app__flex">
         <div className="text-logo">
           <h1 className='head-text left'>Lash</h1><h1 className='head-text right'>Shack</h1>

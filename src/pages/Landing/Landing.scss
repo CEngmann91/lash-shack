@@ -8,13 +8,10 @@
         padding: $navbar-height/2 5px 20px 5px;
     }
     min-height: 100vh;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
     background: $white-colour;
     // top | right | bottom | left
-    padding: $navbar-height/2 20px 20px 20px;
+    // padding: $navbar-height/2 20px 20px 20px;
+    
     z-index: 1;
 
 
