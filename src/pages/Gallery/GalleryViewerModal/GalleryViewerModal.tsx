@@ -47,11 +47,11 @@ const GalleryViewerModal: React.FC<iProps> = ({ selectedPhoto, setSelectedPhoto,
         if (!visible)
         {
             setSelectedPhoto("")
-            lockScroll();
+            unlockScroll();
         }
         else 
         {
-            unlockScroll();
+            lockScroll();
         }
 
     }, [visible])

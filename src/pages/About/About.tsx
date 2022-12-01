@@ -3,6 +3,7 @@ import React, { useMemo } from 'react';
 import { MapView, MyIFrame, Page } from '../../components';
 import { Landing0, Landing1, Shop, Training } from '../../util/images';
 import { CONTACT } from '../../constants/constants';
+import { Email, Phone } from '../../util/icons';
 
 enum SectionType {
   Text,
@@ -34,6 +35,14 @@ const About = () => {
         <section style={{ alignItems: 'center', textAlign: 'center' }}>
           <hr />
           <p className='new-line address'>{CONTACT.ADDRESS}</p>
+
+          <div className='get-in-contact app__flex'>
+            <a href={""} className='border-button get-in-contact-button'><Phone /></a>
+            <a href={
+              // CONTACT.EMAIL
+              ""
+              } className='border-button get-in-contact-button'><Email /></a>
+          </div>
         </section>
 
       </div>
@@ -50,9 +59,11 @@ const About = () => {
         </section>
       </div>
 
-      <div className='get-in-contact app__flex'>
-        <a href={CONTACT.EMAIL} className='border-button get-in-contact-button'>Get In Contact</a>
-      </div>
+      {/* <div className='get-in-contact app__flex'>
+        <h1>Get In Contact</h1>
+        <a href={""} className='border-button get-in-contact-button'><Phone /></a>
+        <a href={CONTACT.EMAIL} className='border-button get-in-contact-button'><Email /></a>
+      </div> */}
     </div>
   );
 
@@ -217,7 +228,7 @@ const About = () => {
       <div className="app__about--wrapper">
         {articles.map(({ section1, section2 }) =>
           <div className="card card-shadow">
-            {renderArticle(section1, section2)}
+            { renderArticle(section1, section2) }
           </div>
         )}
       </div>

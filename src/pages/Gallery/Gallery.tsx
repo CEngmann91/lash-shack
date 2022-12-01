@@ -19,7 +19,7 @@ const Gallery = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState();
   const [files, setFiles] = useState<string[]>([]);
-  const [photos, setPhotos] = useState<iGalleryPhoto[]>([]);
+  // const [photos, setPhotos] = useState<iGalleryPhoto[]>([]);
   const [selectedImgIndex, setSelectedImgIndex] = useState<number>(0);
   const [selectedImg, setSelectedImg] = useState<string>("");
 

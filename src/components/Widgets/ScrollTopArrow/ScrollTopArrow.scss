@@ -1,6 +1,10 @@
 @import '../../../res/colours.scss';
 
 .scroll-arrow--content {
+    @media screen and (max-width: 900px) {
+        /* top | right | bottom | left */
+        padding: 0.3rem 0.5em 0.3rem 0.4rem;
+    }
     position: fixed;
     bottom: 20px;
     right: 0;
@@ -29,10 +33,7 @@
 
 
 
-    @media screen and (max-width: 900px) {
-        /* top | right | bottom | left */
-        padding: 0.3rem 0.5em 0.3rem 0.4rem;
-    }
+    
 
 
     svg {
@@ -46,8 +47,11 @@
 
     &:hover {
         cursor: pointer;
-
         opacity: 1;
+
+        // svg {
+        //     transform: scale(1.1);
+        // }
     }
 
     &[data-visible="false"] {

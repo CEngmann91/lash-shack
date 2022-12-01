@@ -8,6 +8,7 @@ import Widgets from './components/Widgets/Widgets';
 function App() {
 
 
+
   const RenderRoute = (id: string, component: React.ReactNode) => (
     <div className='route-div'>
       <Navbar />
@@ -16,7 +17,7 @@ function App() {
       {component}
       {id === "/" && <div className='footer-padding' /> }
       <Footer />
-
+      
       <Widgets />
     </div>
   );
