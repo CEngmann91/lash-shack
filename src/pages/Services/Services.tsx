@@ -2,15 +2,48 @@ import './Services.scss';
 import React, { useEffect } from 'react'
 import { Page } from '../../components';
 
-const Services = () => {
+export interface iServiceOption {
+  name: string;
+  price: number;
+  duration: number;
+}
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [])
+export interface iService {
+  active: boolean;
+  id: number;
+  name: string;
+  options: iServiceOption[];
+}
+
+interface iProps {
+  services: iService[];
+}
+const Services: React.FC<iProps> = ({ services, ...props }: iProps) => {
+  
+  // useEffect(() => {
+  //   window.scrollTo(0, 0);
+  // }, [])
 
   return (
     <Page id='services' className='app__services' header='Services'>
-      <h1 className="eyelash-extenstions">Eyelash Extensions Full Sets</h1>
+
+      {services.map(({ active, id, name, options }) => 
+        <section>
+          <h1 className="title">{name}</h1>
+          
+          {/* price */}
+          {/* duration */}
+        </section>
+
+      )}
+
+
+
+
+
+
+
+      {/* <h1 className="eyelash-extenstions">Eyelash Extensions Full Sets</h1>
       <p>Classic Semi-Permanent - £45 - 60mins</p>
       <p>YY Express - £45 - 60mins</p>
       <p>Classic Xtra Semi-Permanent - £50 - 70mins</p>
@@ -44,7 +77,7 @@ const Services = () => {
       <p>Ombre Brows</p>
       <p>Combo Brows</p>
       <p>Lip Blush</p>
-      <p>Lip Liner</p>
+      <p>Lip Liner</p> */}
 
 
     </Page>

@@ -15,10 +15,14 @@ export interface iGalleryPhoto {
   url: string;
 }
 
-const Gallery = () => {
+
+interface iProps {
+  photoURLs: string[];
+}
+const Gallery: React.FC<iProps> = ({ photoURLs, ...props }: iProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState();
-  const [files, setFiles] = useState<string[]>([]);
+  // const [files, setFiles] = useState<string[]>([]);
   // const [photos, setPhotos] = useState<iGalleryPhoto[]>([]);
   const [selectedImgIndex, setSelectedImgIndex] = useState<number>(0);
   const [selectedImg, setSelectedImg] = useState<string>("");
@@ -29,7 +33,7 @@ const Gallery = () => {
 
   const memoizedList = useMemo(() => {
     return (
-      files.map((item, index) => (
+      photoURLs.map((item, index) => (
         <GalleryPhoto key={index} id={index}
           imgSource={item} onClick={() => {
             setSelectedImgIndex(index)
@@ -38,19 +42,19 @@ const Gallery = () => {
         />
       ))
     )
-  }, [files]);
+  }, [photoURLs]);
 
 
 
-  useLayoutEffect(() => {
-    window.scrollTo(0, 0);
+  // useLayoutEffect(() => {
+  //   window.scrollTo(0, 0);
 
-    if (memoizedList)
-      fetchImages();
-  }, [])
+  //   if (memoizedList)
+  //     fetchImages();
+  // }, [])
 
 
-  const fetchImages = async () => {
+  /*const fetchImages = async () => {
     setIsLoading(true)
 
     await getImages(REACT_APP_STORAGE_GALLERY_DIRECTORY as string)
@@ -92,7 +96,7 @@ const Gallery = () => {
         setIsLoading(false);
         setError(error);
       });
-  }
+  }*/
 
 
   if (isLoading) {

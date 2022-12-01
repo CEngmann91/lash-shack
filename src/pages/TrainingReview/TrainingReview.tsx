@@ -10,39 +10,26 @@ export interface iTrainingReview {
     name: string;
     description: string;
 }
-// const reviews: iTrainingReview[] = [
-//     {
-//         id: 0,
-//         description: "Training was so insightful, I gained so much knowledge and really felt like I grasped the technique. I have previously done a course and I did not feel how I felt when I left the training with Eyeladh bar. Eni and Emma. I would recommend it and I would love to do the topup course.",
-//         name: "Pheobe"
-//     },
-//     {
-//         id: 1,
-//         description: "I trained with Emma 1/1 & it was so much better than I expected, at first I was worried about asking questions etc and she made me feel so at ease and the training was so detailed and I learned so much, wouldn't recommend anyone else x",
-//         name: "Angel"
-//     },
-//     {
-//         id: 2,
-//         description: "Training was knowledge and they take their time to teach you and help you be better lash tech in the future. What advice I would give is to keep in contact with them even after you finish your course and always ask questions and take on board what they say and do it.",
-//         name: "Rochelle"
-//     }
-// ]
 
-const TrainingReview = () => {
+
+interface iProps {
+    reviews: iTrainingReview[];
+}
+const TrainingReview: React.FC<iProps> = ({ reviews, ...props }: iProps) => {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState('');
-    const [reviews, setReviews] = useState<iTrainingReview[]>([]);
+    // const [reviews, setReviews] = useState<iTrainingReview[]>([]);
 
 
 
-    useEffect(() => {
-        window.scrollTo(0, 0);
+    // useEffect(() => {
+    //     window.scrollTo(0, 0);
 
-        fetchReviews();
-    }, [])
+    //     fetchReviews();
+    // }, [])
 
 
-    const fetchReviews = async() => {
+    /*const fetchReviews = async() => {
         setIsLoading(true);
 
         getDocument(REACT_APP_FIRESTORE_TRAINING_COLLECTION as string,
@@ -59,7 +46,7 @@ const TrainingReview = () => {
                 setError(error);
                 return;
             });
-    }
+    }*/
 
     if (isLoading) {
         return (
