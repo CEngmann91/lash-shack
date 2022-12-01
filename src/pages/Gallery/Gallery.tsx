@@ -1,5 +1,5 @@
 import './Gallery.scss';
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useLayoutEffect, useMemo, useState } from 'react'
 import GalleryPhoto from './GalleryPhoto/GalleryPhoto';
 
 import { getImages } from '../../helpers/firebase/firebase';
@@ -18,6 +18,7 @@ export interface iGalleryPhoto {
 const Gallery = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState();
+  const [files, setFiles] = useState<string[]>([]);
   const [photos, setPhotos] = useState<iGalleryPhoto[]>([]);
   const [selectedImgIndex, setSelectedImgIndex] = useState<number>(0);
   const [selectedImg, setSelectedImg] = useState<string>("");
@@ -28,20 +29,20 @@ const Gallery = () => {
 
   const memoizedList = useMemo(() => {
     return (
-      photos.map(({ url, size, id }) => (
-        <GalleryPhoto key={id} id={id}
-          imgSource={url} onClick={() => {
-            setSelectedImgIndex(id)
-            setSelectedImg(url)
+      files.map((item, index) => (
+        <GalleryPhoto key={index} id={index}
+          imgSource={item} onClick={() => {
+            setSelectedImgIndex(index)
+            setSelectedImg(item)
           }}
         />
       ))
     )
-  }, [photos]);
+  }, [files]);
 
 
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     window.scrollTo(0, 0);
 
     if (memoizedList)
@@ -54,35 +55,35 @@ const Gallery = () => {
 
     await getImages(REACT_APP_STORAGE_GALLERY_DIRECTORY as string)
       .then(imgResult => {
-        // setFiles(imgResult);
-        // setIsLoading(false);
-        // console.log("getImages - ", result);
+        setFiles(imgResult);
+        setIsLoading(false);
+        console.log("getImages - ", imgResult);
 
 
-        getDocument(REACT_APP_FIRESTORE_GALLERY_COLLECTION as string,
-          REACT_APP_FIRESTORE_GALLERY_DOCUMENT as string)
-          .then(docResult => {
-            const result = docResult['content'];
+        // getDocument(REACT_APP_FIRESTORE_GALLERY_COLLECTION as string,
+        //   REACT_APP_FIRESTORE_GALLERY_DOCUMENT as string)
+        //   .then(docResult => {
+        //     const result = docResult['content'];
     
     
-            for (let i = 0; i < imgResult.length; i++) {
-              const element = imgResult[i];
-              let p: iGalleryPhoto = {
-                id: i,
-                size: result[i] as Size,
-                url: element as string,
-              }
-              setPhotos(prev => [...prev, p]);
-            }
+        //     for (let i = 0; i < imgResult.length; i++) {
+        //       const element = imgResult[i];
+        //       let p: iGalleryPhoto = {
+        //         id: i,
+        //         size: result[i] as Size,
+        //         url: element as string,
+        //       }
+        //       setPhotos(prev => [...prev, p]);
+        //     }
     
     
-            setIsLoading(false);
-            // console.log("getDocument - ", result);
-          })
-          .catch(error => {
-            setIsLoading(false);
-            setError(error);
-          });
+        //     setIsLoading(false);
+        //     // console.log("getDocument - ", result);
+        //   })
+        //   .catch(error => {
+        //     setIsLoading(false);
+        //     setError(error);
+        //   });
           
 
 

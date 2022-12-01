@@ -2,7 +2,7 @@ import './GalleryViewerModal.scss';
 import React, { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion';
 import { Close, LeftArrow, RightArrow } from '../../../util/icons';
-import { allowScrolling, preventScrolling } from '../../../constants/funcs';
+import { useScrollLock } from '../../../helpers/hooks/useScrollLock';
 
 
 const container = {
@@ -33,6 +33,7 @@ interface iProps {
 }
 const GalleryViewerModal: React.FC<iProps> = ({ selectedPhoto, setSelectedPhoto, selectedPhotoIndex, setSelectedPhotoIndex, ...props }: iProps) => {
     const [visible, setVisible] = useState(true);
+    const { lockScroll, unlockScroll } = useScrollLock();
 
 
 
@@ -46,18 +47,18 @@ const GalleryViewerModal: React.FC<iProps> = ({ selectedPhoto, setSelectedPhoto,
         if (!visible)
         {
             setSelectedPhoto("")
-            allowScrolling();
+            lockScroll();
         }
         else 
         {
-            preventScrolling();
+            unlockScroll();
         }
 
     }, [visible])
 
 
     const handleClick = () => {
-        allowScrolling();
+        unlockScroll();
         setVisible(false);
     }
 

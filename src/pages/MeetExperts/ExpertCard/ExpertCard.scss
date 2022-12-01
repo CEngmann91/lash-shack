@@ -124,16 +124,15 @@
 
 
     &:hover {
-        // .expert-card-item {
-            box-shadow: 8px 8px rgba(black, 0.75);
+        cursor: pointer;
+        box-shadow: 8px 8px rgba(black, 0.75);
 
-            .container {
+        .container {
 
-                .headshot {
-                    box-shadow: 0 0 8px 8px rgba(white, 0.5);
-                }
+            .headshot {
+                box-shadow: 0 0 8px 8px rgba(white, 0.5);
             }
-        // }
+        }
     }
 }
 

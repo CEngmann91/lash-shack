@@ -5,6 +5,7 @@ import NavbarItem from '../navbar/NavbarItem/NavbarItem';
 import { motion, useCycle } from 'framer-motion';
 import { menuItems } from '../../constants/menuItems';
 import DrawerButton from './DrawerButton/DrawerButton';
+import { useScrollLock } from '../../helpers/hooks/useScrollLock';
 
 const sidebar = {
     open: {
@@ -40,17 +41,18 @@ const item = {
 
 const Drawer: React.FC = () => {
     const [isOpen, toggleOpen] = useCycle(false, true);
+    const { lockScroll, unlockScroll } = useScrollLock();
     // const [menuVisible, setMenuVisible] = useState(false);
 
 
     const show = () => {
         // Prevents scrolling whilst the menu is visible.
-        document.body.style.overflow = "hidden";
+        lockScroll();
         toggleOpen();
     }
 
     const hide = () => {
-        document.body.style.overflow = "scroll";
+        unlockScroll();
         toggleOpen();
     }
 
