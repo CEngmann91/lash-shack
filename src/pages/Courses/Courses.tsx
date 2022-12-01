@@ -32,20 +32,23 @@ export interface iCourse {
   popularity: Popularity.Normal;
 }
 
-const Courses = () => {
+interface iProps {
+  courseList: iCourse[];
+}
+const Courses: React.FC<iProps> = ({ courseList, ...props }: iProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [courseList, setCourseList] = useState<iCourse[]>([]);
+  // const [courseList, setCourseList] = useState<iCourse[]>([]);
 
 
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
+  // useEffect(() => {
+  //   window.scrollTo(0, 0);
 
-    fetchCourses();
-  }, [])
+  //   fetchCourses();
+  // }, [])
 
-  const fetchCourses = async() => {
+  /*const fetchCourses = async() => {
     setIsLoading(true);
 
 
@@ -76,7 +79,7 @@ const Courses = () => {
 
     setCourseList(array);
     setIsLoading(false);
-  }
+  }*/
 
 
 
