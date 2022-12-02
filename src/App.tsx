@@ -4,25 +4,18 @@ import { Routes, Route } from 'react-router-dom';
 import { Footer, Navbar, SidebarMenu } from './components';
 import { About, Courses, Gallery, Landing, MeetExperts, NotFound, Services, Testimonial, TrainingReview } from './pages';
 import Widgets from './components/Widgets/Widgets';
-import { iService } from './pages/Services/Services';
 import { useTrainingReviews } from './helpers/hooks/useTrainingReviews';
 import { useGalleryPhotos } from './helpers/hooks/useGalleryPhotos';
 import { useCourses } from './helpers/hooks/useCourses';
 import { useServices } from './helpers/hooks/useServices';
+import { useTestimonial } from './helpers/hooks/useTestimonial';
 
 function App() {
+  const { testimonials } = useTestimonial();
   const { reviews } = useTrainingReviews();
   const { gallery } = useGalleryPhotos();
   const { courses } = useCourses();
   const { services } = useServices();
-
-
-  
-
-
-
-  
-
 
 
   const RenderRoute = (id: string, component: React.ReactNode) => (
@@ -54,7 +47,7 @@ function App() {
             <Landing />
             <About />
             <MeetExperts />
-            <Testimonial />
+            <Testimonial testimonials={testimonials} />
             <TrainingReview reviews={reviews} />
           </>
         )

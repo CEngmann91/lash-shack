@@ -1,12 +1,19 @@
 import moment from "moment";
 
 
-export function getDateFormatted(date: string) {
+export function getDateFormatted(date: string) : string {
     return getDate(date, 'DD/MM/YYYY');
 }
-export function getDate(date: string, dateFormat: string) {
+export function getDate(date: string, dateFormat: string) : string {
     return moment(date, dateFormat).fromNow();
 }
+
+// export function convertToHoursMinutes(value: number) : string
+// { 
+//   var hours = Math.floor(value / 60);  
+//   var minutes = value % 60;
+//   return hours + ":" + minutes;         
+// }
 
 
 export function remove(arr: number[], item: number) {

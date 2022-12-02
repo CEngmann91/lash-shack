@@ -2,8 +2,6 @@ import './TrainingReview.scss';
 import React, { useEffect, useState } from 'react'
 import { ActivityIndicator, Page } from '../../components';
 import TrainingReviewCard from './TrainingReviewCard/TrainingReviewCard';
-import { getDocument } from '../../helpers/firebase/firestore';
-import { REACT_APP_FIRESTORE_TRAINING_COLLECTION, REACT_APP_FIRESTORE_TRAINING_DOCUMENT } from '../../constants/firebase';
 
 export interface iTrainingReview {
     id: number;

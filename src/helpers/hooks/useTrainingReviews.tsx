@@ -5,10 +5,12 @@ import { getDocument } from "../firebase/firestore";
 
 export const useTrainingReviews = () => {
     const [reviews, setReviews] = useState<iTrainingReview[]>([]);
+    const [reviewsError, setReviewsError] = useState();
+    const [loadingReviews, setLoadingReviews] = useState(false);
 
 
     const fetchReviews = async () => {
-        // setIsLoading(true);
+        setLoadingReviews(true);
 
         getDocument(REACT_APP_FIRESTORE_TRAINING_COLLECTION as string,
             REACT_APP_FIRESTORE_TRAINING_DOCUMENT as string)
@@ -16,13 +18,11 @@ export const useTrainingReviews = () => {
                 const array: iTrainingReview[] = res['content'];
                 let sorted = array.sort((a, b) => a.id - b.id);
                 setReviews(sorted);
-
-                // setIsLoading(false);
+                setLoadingReviews(false);
             })
             .catch(error => {
-                // setIsLoading(false);
-                // setError(error);
-                // return;
+                setReviewsError(error)
+                setLoadingReviews(false);
             });
     }
 
@@ -30,5 +30,5 @@ export const useTrainingReviews = () => {
         fetchReviews();
     }, [])
 
-    return { reviews };
+    return { reviews, loadingReviews, reviewsError };
 }
