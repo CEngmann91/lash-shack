@@ -6,10 +6,12 @@ import { getDocument } from "../firebase/firestore";
 
 export const useCourses = () => {
     const [courses, setCourses] = useState<iCourse[]>([]);
+    const [coursesError, setCoursesError] = useState();
+    const [loadingCourses, setLoadingCourses] = useState(false);
 
 
     const fetchCourses = async () => {
-        // setIsLoading(true);
+        setLoadingCourses(true);
 
         let array: iCourse[] = [];
         await getDocument(REACT_APP_FIRESTORE_COURSES_COLLECTION as string,
@@ -22,8 +24,8 @@ export const useCourses = () => {
                 array = filtered.sort((a, b) => a.id - b.id);
             })
             .catch(error => {
-                // setIsLoading(false);
-                // setError(error);
+                setCoursesError(error)
+                setLoadingCourses(false);
                 return;
             });
 
@@ -36,13 +38,13 @@ export const useCourses = () => {
         // const results = await Promise.all(mapPromises);
         // console.log("results - " + results)
 
+        setLoadingCourses(false);
         setCourses(array);
-        // setIsLoading(false);
     }
 
     useEffect(() => {
         fetchCourses();
     }, [])
 
-    return { courses };
+    return { courses, loadingCourses, coursesError };
 }

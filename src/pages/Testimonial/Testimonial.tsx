@@ -18,49 +18,15 @@ export interface iTestimonialReview {
   createdAt: string;
 }
 
-const Testimonial = () => {
+
+interface iProps {
+  testimonials: iTestimonialReview[];
+}
+const Testimonial: React.FC<iProps> = ({ testimonials, ...props }: iProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
-  const [reviews, setReviews] = useState<iTestimonialReview[]>([]);
 
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-
-    fetchCourses();
-  }, [])
-
-
-  const fetchCourses = async () => {
-    setIsLoading(true);
-
-    getDocument(REACT_APP_FIRESTORE_TESTIMONIAL_COLLECTION as string,
-      REACT_APP_FIRESTORE_TESTIMONIAL_DOCUMENT as string)
-      .then(res => {
-        const array: iTestimonialReview[] = res['content'];
-        // Sort by date.
-        let sorted = array.sort(function (a, b) {
-          let aa = a.createdAt.split('/').reverse().join(),
-            bb = b.createdAt.split('/').reverse().join();
-          return aa > bb ? -1 : (aa < bb ? 1 : 0);
-        });
-
-
-        // let sorted = array.sort((a, b) => a.id - b.id);
-        // sort by price
-        // let sorted = array.sort((a, b) => b.price - a.price);
-        // let sorted = array.sort((a, b) => b.popularity - a.popularity);
-        // sorted = [...sorted].sort((a, b) => b.salePrice - a.salePrice);
-        setReviews(sorted);
-
-        setIsLoading(false);
-      })
-      .catch(error => {
-        setIsLoading(false);
-        setError(error);
-        return;
-      });
-  }
 
   const renderLoadingActivity = (): ReactNode => (
     <div className='app__flex app__min-height'>
@@ -69,7 +35,7 @@ const Testimonial = () => {
   )
 
   const renderReviews = (): ReactNode => (
-    reviews.map(({ id, createdAt, starRating, title, description }, index) =>
+    testimonials.map(({ id, createdAt, starRating, title, description }, index) =>
       <div key={index}>
         <TestimonialCard
           id={id}

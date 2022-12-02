@@ -4,21 +4,23 @@ import { getImages } from "../firebase/firebase";
 
 export const useGalleryPhotos = () => {
     const [gallery, setGallery] = useState<string[]>([]);
+    const [galleryError, setGalleryError] = useState();
+    const [loadingGallery, setLoadingGallery] = useState(false);
 
 
     const fetchGalleryPhotos = async () => {
-        // setIsLoading(true)
+        setLoadingGallery(true);
 
-        await getImages(REACT_APP_STORAGE_GALLERY_DIRECTORY as string)
+        getImages(REACT_APP_STORAGE_GALLERY_DIRECTORY as string)
             .then(imgResult => {
                 setGallery(imgResult);
-                // setIsLoading(false);
-                console.log("getImages - ", imgResult);
+                setLoadingGallery(false);
+                // console.log("getImages - ", imgResult);
             })
             .catch(error => {
-                // setIsLoading(false);
-                // setError(error);
-                console.log(error);
+                setGalleryError(error);
+                setLoadingGallery(false);
+                return;
             });
     }
 
@@ -26,5 +28,5 @@ export const useGalleryPhotos = () => {
         fetchGalleryPhotos();
     }, [])
 
-    return { gallery };
+    return { gallery, loadingGallery, galleryError };
 }
