@@ -6,6 +6,7 @@ import { motion, useCycle } from 'framer-motion';
 import { menuItems } from '../../constants/menuItems';
 import DrawerButton from './DrawerButton/DrawerButton';
 import { useScrollLock } from '../../helpers/hooks/useScrollLock';
+import { ShoppingCart } from '../../util/icons';
 
 const sidebar = {
     open: {
@@ -67,7 +68,6 @@ const Drawer: React.FC = () => {
 
             <motion.div
                 className={`app__drawer--panel`}
-                // ${menuIsOpen && 'app__drawer--show'}`}
                 variants={sidebar}
                 initial="closed"
                 animate={isOpen ? "open" : "closed"}
@@ -81,6 +81,11 @@ const Drawer: React.FC = () => {
                         >{title}</NavbarItem>
                     )}
                 </motion.div>
+
+                <footer>
+                    <button>1</button>
+                    <button><ShoppingCart /></button>
+                </footer>
             </motion.div>
         </div>
     )

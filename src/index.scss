@@ -1,3 +1,4 @@
+@import './res/styles.scss';
 @import './res/colours.scss';
 @import './constants/constants.scss';
 @import './util/mixin.scss';
@@ -49,10 +50,8 @@ a {
   white-space: pre-line;
 }
 
-
-.padding-top {
-  padding-top: $navbar-height;
-}
-.footer-padding {
-  height: $footer-height;
+button {
+  &:hover {
+      cursor: pointer;
+  }
 }
