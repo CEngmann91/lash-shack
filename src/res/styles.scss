@@ -1,5 +1,5 @@
 @import './colours.scss';
-
+@import '../constants/constants.scss';
 
 .route-div {
     // background: linear-gradient(to bottom, $green-shade-colour, $pink-colour);
@@ -25,6 +25,13 @@
         /* top | right | bottom | left */
         padding: 0rem 1.5rem 0rem 1.5rem;
     }
+}
+
+.padding-top {
+    padding-top: $navbar-height;
+}
+.footer-padding {
+    height: $footer-height;
 }
 
 .head-text {
