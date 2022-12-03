@@ -79,20 +79,19 @@
             // background: red;
             
             button {
-                width: 3rem;
-                padding: 0.6rem;
-                background: white;
+                // background: white;
                 // border: none;
 
 
                 display: flex;
-                // width: var(--drawer-menu-button-scale);
-                // height: var(--drawer-menu-button-scale);
+                width: var(--drawer-menu-button-scale);
+                height: var(--drawer-menu-button-scale);
                 // justify-content: center;
                 // align-items: start;
                 border: none;
                 border-radius: 50px;
                 box-shadow: 0 5px 10px rgba($green-shade-colour, 0.5);
+                padding: 0.4rem;
 
                 transition: .2s ease-out;
 
