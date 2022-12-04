@@ -51,6 +51,8 @@ a {
 }
 
 button {
+  border: none;
+
   &:hover {
       cursor: pointer;
   }

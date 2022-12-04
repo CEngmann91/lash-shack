@@ -3,28 +3,35 @@
 @import '../../constants/constants.scss';
 
 .app__meet-experts-banner {
+    @media screen and (min-width: 1200px) {
+        height: auto;
+        // padding: 20px;
+    }
     padding-top: 1rem;
     background: $white-colour;
     width: 100%;
     padding: 20px;
     // min-height: 100vh;
 
-    @media screen and (min-width: 1200px) {
-        height: auto;
-        // padding: 20px;
-    }
+    
 
     &-title {
         // border-bottom: 3px solid rgba($blue-colour, 0.4);
     }
 
     .expert-summary {
+        @media screen and (max-width: 900px) {
+            width: 100%;
+        }
+
         display: block;
         margin-block-start: 1em;
         margin-block-end: 1em;
         margin-inline-start: 0px;
         margin-inline-end: 0px;
         font-size: 1.1em;
+        width: 70%;
+        text-align: center;
     }
 }
 

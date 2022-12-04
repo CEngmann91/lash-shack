@@ -20,13 +20,6 @@ const TrainingReview: React.FC<iProps> = ({ reviews, ...props }: iProps) => {
 
 
 
-    // useEffect(() => {
-    //     window.scrollTo(0, 0);
-
-    //     fetchReviews();
-    // }, [])
-
-
     /*const fetchReviews = async() => {
         setIsLoading(true);
 

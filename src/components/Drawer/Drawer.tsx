@@ -7,6 +7,7 @@ import { menuItems } from '../../constants/menuItems';
 import DrawerButton from './DrawerButton/DrawerButton';
 import { useScrollLock } from '../../helpers/hooks/useScrollLock';
 import { ShoppingCart } from '../../util/icons';
+import { logo } from '../../util/images';
 
 const sidebar = {
     open: {
@@ -73,6 +74,10 @@ const Drawer: React.FC = () => {
                 animate={isOpen ? "open" : "closed"}
                 exit='closed'
             >
+                <header>
+                    <img src={logo} />
+                </header>
+
                 <motion.div variants={item}>
                     {menuItems.map(({ id, title, to }) =>
                         <NavbarItem
