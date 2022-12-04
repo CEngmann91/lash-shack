@@ -13,16 +13,16 @@ interface iProps {
 const Page: React.FC<iProps> = ({ id, className, header, headerClassName, children, customHeader, ...props }: iProps) => {
     return (
         <div id={id} className={`main app__pad-hor ${className}`}>
-            <header>
+            <div className='page-header'>
                 {customHeader ?
                     customHeader
                     :
-                    (headerClassName ?
-                        <h1 className={`head-text title ${headerClassName}`}>{header}</h1>
-                        :
-                        null)
+                    // (headerClassName ?
+                    <h1 className={`head-text page-header-title ${headerClassName}`}>{header}</h1>
+                        // :
+                        // null)
                 }
-            </header>
+            </div>
             {children}
         </div>
     )

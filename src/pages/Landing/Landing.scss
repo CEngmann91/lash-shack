@@ -2,13 +2,26 @@
 @import '../../res/styles.scss';
 @import '../../constants/constants.scss';
 
+:root{
+    --pad-amount: 0.8rem;
+}
+
 .app__landing {
     @media screen and (max-width: 900px) {
         // top | right | bottom | left
         padding: $navbar-height/2 5px 20px 5px;
     }
     min-height: 100vh;
-    background: $white-colour;
+    // background: $white-colour;
+    
+    background: url('../../assets/images/Shop.jpg') no-repeat center center fixed;
+    background-size: cover; /* for IE9+, Safari 4.1+, Chrome 3.0+, Firefox 3.6+ */
+    -webkit-background-size: cover; /* for Safari 3.0 - 4.0 , Chrome 1.0 - 3.0 */
+    -moz-background-size: cover; /* optional for Firefox 3.6 */ 
+    -o-background-size: cover; /* for Opera 9.5 */
+    // background-blend-mode: normal;
+    
+    
     // top | right | bottom | left
     // padding: $navbar-height/2 20px 20px 20px;
     
@@ -17,26 +30,38 @@
 
 
     .heading {
-        display: flex;
-        width: auto;
-        height: auto;
-        font-size: clamp(1.2rem, 1.2rem, 2rem);
-        text-align: right;
-        text-transform: uppercase;
+        // display: flex;
+        // width: auto;
+        // height: auto;
+        // font-size: clamp(1.2rem, 1.2rem, 2rem);
+        // text-align: right;
+        // text-transform: uppercase;
         // color: $green-shade-colour;
 
         // background: green;
+
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 100%;
+        backdrop-filter: blur(5px);
+        z-index: 0;
     }
 
     .text-logo {
         display: flex;
         flex-direction: row;
-        border-radius: 10px;
+        border-radius: 20px;
         overflow: hidden;
         margin-bottom: 10px;
         z-index: inherit;
 
-        --pad-amount: 0.8rem;
+        width: auto;
+        height: auto;
+        font-size: clamp(1.2rem, 1.2rem, 2rem);
+
+
         .left {
             background: $pink-colour;
             color: $blue-colour;
@@ -51,6 +76,10 @@
         h1 {
             text-transform: uppercase;
         }
+    }
+
+    p {
+        color: white;
     }
 }
 

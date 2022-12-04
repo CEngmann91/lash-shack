@@ -8,14 +8,14 @@
     width: 100%;
     padding-top: 70px;
 
-    header {
+    .page-header {
         margin-top: 1.5rem;
         margin-bottom: 1.2rem;
         @media screen and (max-width: 900px) {
             margin-top: 1.2rem;
         }
 
-        .title {
+        .page-header-title {
             color: $green-shade-colour;
             // margin-bottom: 1.5rem;
             // font-family: cursive;

@@ -34,6 +34,22 @@
 
         transition: 0.3s ease-in-out;
 
+
+        header {
+            position: absolute;
+            top: 20px;
+            width: 100%;
+            height: 50px;
+            
+
+            img {
+                object-fit: contain;
+                object-position: center center;
+                width: 100%;
+                height: 100%;
+            }
+        }
+
         div {
             flex: 1;
             height: calc(100% - (4.5rem * 2));
@@ -71,24 +87,14 @@
             left: 0;
             right: 0;
             display: flex;
-            height: 60px;
-            width: 100%;
             justify-content: space-between;
             align-items: center;
-            padding: 0.5rem;
-            // background: red;
-            
+            padding: 0 1rem 1rem 1rem;
+
+
             button {
-                // background: white;
-                // border: none;
-
-
-                display: flex;
                 width: var(--drawer-menu-button-scale);
                 height: var(--drawer-menu-button-scale);
-                // justify-content: center;
-                // align-items: start;
-                border: none;
                 border-radius: 50px;
                 box-shadow: 0 5px 10px rgba($green-shade-colour, 0.5);
                 padding: 0.4rem;
