@@ -87,10 +87,10 @@ const Drawer: React.FC = () => {
                     )}
                 </motion.div>
 
-                <footer>
+                {/* <footer>
                     <button>1</button>
                     <button><ShoppingCart /></button>
-                </footer>
+                </footer> */}
             </motion.div>
         </div>
     )
