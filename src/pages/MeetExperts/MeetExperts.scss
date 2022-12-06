@@ -21,25 +21,29 @@
 
     .expert-summary {
         @media screen and (max-width: 900px) {
-            width: 100%;
+            width: 90%;
         }
-
         display: block;
         margin-block-start: 1em;
         margin-block-end: 1em;
         margin-inline-start: 0px;
         margin-inline-end: 0px;
         font-size: 1.1em;
-        width: 70%;
+        width: 60%;
         text-align: center;
+        margin-bottom: 3rem;
     }
 }
 
 // https://codepen.io/fjfalah/pen/jdGNEr
 @supports (scroll-snap-align: start) {
     .list {
-        @media screen and (max-width: 800px) {
+        @media screen and (max-width: 900px) {
             justify-content: flex-start;
+            scroll-snap-type: y mandatory;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
         }
         position: relative;
         display: flex;
@@ -49,10 +53,10 @@
         height: 100%;
         /* Always force (mandatory) scrolling to a snap point on the x-axis */
         scroll-snap-type: x mandatory;
-        overflow-x: auto;
-        overflow-y: hidden;
+        // overflow-x: auto;
+        // overflow-y: hidden;
         white-space: nowrap;
-        gap: 20px;
+        gap: 40px;
         /* top | right | bottom | left */
         margin: 0rem 1rem 2rem 1rem;
         

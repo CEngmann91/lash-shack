@@ -227,7 +227,7 @@ const About = () => {
     <Page id='about' className='app__about'>
       <div className="app__about--wrapper">
         {articles.map(({ section1, section2 }, index) =>
-          <div className="card card-shadow" key={index}>
+          <div className="card border-white border-white-shadow" key={index}>
             { renderArticle(section1, section2) }
           </div>
         )}

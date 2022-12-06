@@ -66,7 +66,7 @@ const CourseCard: React.FC<iProps> = ({ id, title, frontImg, description, price,
 
 
     return (
-        <div className="course-card">
+        <div className="course-card border-white border-white-shadow">
             <div className="photo">
                 <img className='background' src={frontImg} />
             </div>
