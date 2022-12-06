@@ -56,17 +56,6 @@ const MeetExperts = () => {
                 We are drivers of the beauty industry and growth across the UK, and have a proven track record across the industry.
                 We are commited to empowering you to better yourself every day.
                 Find out more about the team below.
-
-
-
-
-                {/* We are drivers of the beauty industry and growth across the UK, and have a proven track record across the industry. Find out more about the team below. */}
-
-
-                {/* Skincare’s not just our job — it’s our obsession.
-                
-                A persistent search for the best products and techniques.
-                A love of using our hands to heal. And a commitment to empowering you to better your skin every day. */}
             </p>
 
             <div className="list">

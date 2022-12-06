@@ -2,92 +2,150 @@
 @import '../../res/styles.scss';
 @import '../../constants/constants.scss';
 
-:root{
+:root {
     --pad-amount: 0.8rem;
 }
 
 .app__landing {
-    @media screen and (max-width: 900px) {
-        // top | right | bottom | left
-        padding: $navbar-height/2 5px 20px 5px;
-    }
-    min-height: 100vh;
-    background: $white-colour;
-    
+    // @media screen and (max-width: 900px) {
+    //     // top | right | bottom | left
+    //     padding: $navbar-height/2 5px 20px 5px;
+    // }
+    // min-height: 100vh;
+    // // background: $white-colour;
+    // z-index: 1;
+
+    // position: relative; 
     // background: url('../../assets/images/Shop.jpg') no-repeat center center fixed;
     // background-size: cover; /* for IE9+, Safari 4.1+, Chrome 3.0+, Firefox 3.6+ */
     // -webkit-background-size: cover; /* for Safari 3.0 - 4.0 , Chrome 1.0 - 3.0 */
     // -moz-background-size: cover; /* optional for Firefox 3.6 */ 
     // -o-background-size: cover; /* for Opera 9.5 */
-    // background-blend-mode: normal;
-    
-    
-    // top | right | bottom | left
-    // padding: $navbar-height/2 20px 20px 20px;
-    
-    z-index: 1;
+    // // background-blend-mode: normal;
 
-
-
-    .heading {
-        // display: flex;
-        // width: auto;
-        // height: auto;
-        // font-size: clamp(1.2rem, 1.2rem, 2rem);
-        // text-align: right;
-        // text-transform: uppercase;
-        // color: $green-shade-colour;
-
-        // background: green;
-
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 100%;
-        // backdrop-filter: blur(5px);
-        z-index: 0;
-
-        display: flex;
-        flex-direction: row;
-        // justify-content: space-between;
-    }
-
-    // .text-logo {
-    //     display: flex;
-    //     flex-direction: row;
-    //     border-radius: 10px;
-    //     overflow: hidden;
-    //     margin-bottom: 10px;
-    //     z-index: inherit;
-
-    //     width: auto;
-    //     height: auto;
-    //     font-size: clamp(1.2rem, 1.2rem, 2rem);
-
-
-    //     .left {
-    //         background: $pink-colour;
-    //         color: $blue-colour;
-    //         padding: var(--pad-amount) 0 var(--pad-amount) var(--pad-amount);
-    //     }
-    //     .right {
-    //         background: $blue-colour;
-    //         color: $pink-colour;
-    //         padding: var(--pad-amount) var(--pad-amount) var(--pad-amount) 0;
-    //     }
-
-    //     h1 {
-    //         text-transform: uppercase;
-    //     }
+    // &::before {
+    //     content: "";
+    //     position: absolute;
+    //     top: 0px;
+    //     right: 0px;
+    //     bottom: 0px;
+    //     left: 0px;
+    //     background-color: rgba(0,0,0,0.25);
     // }
 
-    p {
+
+
+
+    @media screen and (max-width: 900px) {
+        // top | right | bottom | left
+        padding: $navbar-height/2 5px 20px 5px;
+    }
+
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url('../../assets/images/Shop.jpg');
+    background-size: cover; /* for IE9+, Safari 4.1+, Chrome 3.0+, Firefox 3.6+ */
+    -webkit-background-size: cover; /* for Safari 3.0 - 4.0 , Chrome 1.0 - 3.0 */
+    -moz-background-size: cover; /* optional for Firefox 3.6 */ 
+    -o-background-size: cover; /* for Opera 9.5 */
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        left: 0px;
+        background: rgba(0, 0, 0, 0.25);
+        //   background: rgba(152, 66, 211, 0.63);
+        @include blur(4px);
+    }
+
+
+
+
+    &>div {
+        position: relative;
+        line-height: 0.9;
         @media screen and (max-width: 900px) {
-            font-size: 1.9rem;
+            gap: 20px;
+        //     flex-direction: column;
         }
-        font-size: 3rem;
-        color: black;
+        // display: flex;
+        // flex-direction: row;
+
+        .text-logo {
+            @media screen and (max-width: 900px) {
+                font-size: clamp(0.7rem, 0.7rem, 1.2rem);
+                margin-right: 0px;
+                width: 65%;
+                height: auto;
+            }
+
+            display: flex;
+            flex-direction: row;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 10px;
+            margin-right: 20px;
+            z-index: inherit;
+
+            width: auto;
+            height: auto;
+            font-size: clamp(1.2rem, 1.2rem, 2rem);
+
+
+            .left {
+                background: $pink-colour;
+                color: $blue-colour;
+                padding: var(--pad-amount) 0 var(--pad-amount) var(--pad-amount);
+            }
+
+            .right {
+                background: $blue-colour;
+                color: $pink-colour;
+                padding: var(--pad-amount) var(--pad-amount) var(--pad-amount) 0;
+            }
+
+            h1 {
+                text-transform: uppercase;
+            }
+        }
+
+        .heading {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            // background: green;
+
+
+            h3 {
+                // display: block;
+                font-size: 1.17em;
+                // margin-block-start: 1em;
+                // margin-block-end: 1em;
+                // margin-inline-start: 0px;
+                // margin-inline-end: 0px;
+                font-weight: bold;
+                // background: blue;
+                color: rgb(195, 195, 195);
+            }
+
+            h1 {
+                @media screen and (max-width: 900px) {
+                    font-size: 1.9rem;
+                }
+
+                font-size: 3rem;
+                color: white;
+                // background: yellow;
+            }
+        }
     }
 }
 

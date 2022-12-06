@@ -74,9 +74,7 @@ const Drawer: React.FC = () => {
                 animate={isOpen ? "open" : "closed"}
                 exit='closed'
             >
-                <header>
-                    <img src={logo} />
-                </header>
+                <header><img src={logo} /></header>
 
                 <motion.div variants={item}>
                     {menuItems.map(({ id, title, to }) =>

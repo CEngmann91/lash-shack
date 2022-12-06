@@ -21,8 +21,9 @@
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
+        grid-template-rows: repeat(2, 1fr);
         // height: 100%;
-        margin: 50px 0;
+        // margin: 50px 0;
         gap: 40px;
     }
 

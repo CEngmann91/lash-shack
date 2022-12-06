@@ -4,7 +4,7 @@ import { iExpert } from '../MeetExperts';
 
 const ExpertCard: React.FC<iExpert> = (item, { ...props }: iExpert) => {
     return (
-        <div className="expert-card-item">
+        <div className="expert-card-item border-white border-white-shadow">
              <div className='container'>
 
                  <div className="top-border">

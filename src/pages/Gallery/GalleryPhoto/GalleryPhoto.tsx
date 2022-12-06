@@ -34,13 +34,13 @@ const GalleryPhoto: React.FC<iProps> = ({ id, imgSource, onClick, ...props }: iP
         </div>
       } */}
 
-      <motion.li id={id.toString()} className='gallery-photo' onClick={onClick}
+      <motion.li id={id.toString()} className='gallery-photo gallery-photo-shadow' onClick={onClick}
         initial="hidden"
         animate="visible"
         variants={variants}
         viewport={{ once: true }}
         transition={{
-          duration: 1,
+          duration: 0.1,
           delay: 0.1 * id
         }}
       >
