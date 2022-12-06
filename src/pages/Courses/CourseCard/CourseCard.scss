@@ -5,6 +5,147 @@
 .course-card {
     @media screen and (max-width: 900px) {
         width: 85vw;
+        height: 29rem;
+    }
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 18em;
+    height: 26em;
+    border: 3px solid $pink-colour;
+    border-radius: 15px;
+    box-shadow: 5px 5px rgba($green-shade-colour, 0.25);
+    overflow: hidden;
+    // background: $green-shade-colour;
+
+    transition: 0.3s ease-out;
+    
+
+    .photo {
+        position: relative;
+        // margin: 20px;
+        width: 100%;
+        height: 60%;
+        box-shadow: 0 0 5px 5px rgba($pink-colour, 0.5);
+        // border-radius: 50%;
+        overflow: hidden;
+
+        transition: 0.3s ease-out;
+        
+
+        img {
+            width: 100%;
+            height: 100%;
+            // object-fit: cover;
+            object-position: center center;
+        }
+    }
+
+    .info {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        height: 50%;
+        padding: 0.5rem 1rem;
+        text-align: center;
+
+
+        .title {
+            font-size: 1.5em;
+            color: $black-colour;
+            font-weight: bolder;
+        }
+
+        .description {
+            font-size: 1.3em;
+            color: $black-colour;
+            // font-weight: lighter;
+            max-height: 20%;
+        }
+    }
+
+    .price-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin-top: 10px;
+
+
+        .price {
+            color: $black-colour;
+            font-weight: lighter;
+            font-size: 1.7rem;
+        }
+
+        .sale-price {
+            color: $black-colour;
+            font-weight: bolder;
+            font-size: 20px;
+
+            &::before {
+                content: '\00a0';   // adds a white space between the values
+            }
+        }
+    }
+
+    .join-button {
+        position: absolute;
+        bottom: 20px;
+        width: 60%;
+        padding: 0.8rem 0rem;
+        background: $pink-colour;
+        border: none;
+        color: $blue-colour;
+        border-radius: 10px;
+        font-weight: bolder;
+        overflow: hidden;
+
+        transition: 0.3s ease-in-out;
+        
+
+        &:hover {
+            cursor: pointer;
+            border: 2px solid $gray-colour;
+            transform: scale(1.05);
+            @include shine-effect($pink-colour-HSL);
+        }
+
+        &:active {
+            transform: scale(0.95);
+        }
+    }
+
+    &:hover {
+        cursor: pointer;
+        // transform: scale(1.05);
+        border: 3px solid $pink-colour;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+
+        z-index: 2;
+
+        .circle {
+            box-shadow: 0 0 10px 10px rgba($pink-colour, 0.5);
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*.course-card {
+    @media screen and (max-width: 900px) {
+        width: 85vw;
         height: 85vw;
     }
     position: relative;
@@ -472,3 +613,4 @@
         }
     }
 }
+*/

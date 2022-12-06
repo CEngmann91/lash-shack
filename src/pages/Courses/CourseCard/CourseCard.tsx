@@ -3,6 +3,7 @@ import React, { useEffect } from 'react'
 import { CardFlip } from '../../../components/Cards';
 import { iSale, Popularity } from '../Courses';
 import { ABT } from '../../../util/images';
+import { ThreeContentButton } from '../../../components';
 
 interface iProps {
     id: number;
@@ -66,11 +67,35 @@ const CourseCard: React.FC<iProps> = ({ id, title, frontImg, description, price,
 
     return (
         <div className="course-card">
-            <img className='background' src={ frontImg } />
+            <div className="photo">
+                <img className='background' src={frontImg} />
+            </div>
 
-            {/* <div className="circle">
+            <div className="info"
+            // style={{ padding: (popularity === Popularity.Normal ? '1rem 0.5rem' : '4rem 0.5rem') }}
+            >
+                <label className='title'>{title}</label>
+                {/* <h3 className='description new-line'>{description}</h3> */}
+
+                <div className='price-container'>
+                    <h4 className={`price ${isOnSale() && "is-on-sale"}`}>{toCurrency(price)}</h4>
+                    {isOnSale() &&
+                        <h4 className='sale-price'>{toCurrency(sale?.price)}</h4>
+                    }
+                </div>
+            </div>
+
+            <button className='border-button join-button'>Join Us</button>
+        </div>
+
+
+
+        // <div className="course-card">
+        //     <img className='background' src={ frontImg } />
+
+            /* <div className="circle">
                 
-            </div> */}
+            </div> * / }
 
 
             { renderBanner(popularity as Popularity) }
@@ -106,7 +131,10 @@ const CourseCard: React.FC<iProps> = ({ id, title, frontImg, description, price,
                 <button className="enroll-button">Enroll Now</button>
             </div>
 
-        </div>
+        </div>*/
+
+
+
 
 
 

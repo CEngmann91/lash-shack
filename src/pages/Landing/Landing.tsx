@@ -11,10 +11,14 @@ const Landing = () => {
     <Page id='home' className='app__landing app__flex' header=''>
       <div className="heading app__flex">
         {/* <img src={Shop} alt="" /> */}
-        <div className="text-logo">
+        {/* <div className="text-logo">
           <h1 className='head-text left'>Lash</h1><h1 className='head-text right'>Shack</h1>
+        </div> */}
+
+        <div style={{ backgroundColor: '', width: '50%', height: '50%' }}>
+
         </div>
-        <p>New Beginnings Start Here</p>
+        <p className='new-line'>{'New Beginnings\nStart Here'}</p>
       </div>
 
 
