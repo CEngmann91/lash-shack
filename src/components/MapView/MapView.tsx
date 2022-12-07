@@ -4,11 +4,12 @@ import MyIFrame from '../MyIFrame/MyIFrame';
 
 interface iProps {
   source: string;
+  className?: string;
 }
-const MapView: React.FC<iProps> = ({ source, ...props }: iProps) => {
+const MapView: React.FC<iProps> = ({ source, className, ...props }: iProps) => {
 
   return (
-    <MyIFrame mainClassName="map-responsive" source={source} />
+    <MyIFrame mainClassName={`map-responsive ${className}`} source={source} />
   );
 }
 

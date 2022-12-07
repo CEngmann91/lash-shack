@@ -7,7 +7,7 @@
     // }
     min-height: 50vh;
     background: $white-colour;
-    margin-bottom: calc($footer-height - 10px);
+    // margin-bottom: calc($footer-height - 10px);
     // padding: 4rem 5rem;
     
     
@@ -22,8 +22,7 @@
         justify-content: center;
         align-items: center;
         grid-template-rows: repeat(2, 1fr);
-        // height: 100%;
-        // margin: 50px 0;
+        margin-bottom: 50px;
         gap: 40px;
     }
 
