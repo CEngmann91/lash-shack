@@ -12,10 +12,7 @@
 .app__gallery {
     min-height: 100vh;
     background: $white-colour;
-    margin-bottom: calc($footer-height - 10px);
-
-
-
+    // margin-bottom: calc($footer-height - 10px);
 
 
 
@@ -115,7 +112,7 @@
         flex-wrap: wrap;
         justify-content: center;
         gap: 20px;
-        grid-auto-flow: dense;
+        // grid-auto-flow: dense;
 
 
         // --gap: 15px;

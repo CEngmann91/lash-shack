@@ -2,7 +2,7 @@ import './index.scss';
 import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { Footer, Navbar, SidebarMenu } from './components';
-import { About, Courses, Gallery, Landing, MeetExperts, NotFound, Services, Testimonial, TrainingReview } from './pages';
+import { About, Contact, Courses, Gallery, Landing, MeetExperts, NotFound, Services, Testimonial, TrainingReview } from './pages';
 import Widgets from './components/Widgets/Widgets';
 import { useTrainingReviews } from './helpers/hooks/useTrainingReviews';
 import { useGalleryPhotos } from './helpers/hooks/useGalleryPhotos';
@@ -32,7 +32,8 @@ function App() {
       <SidebarMenu />
       {id !== "/" && id !== "*" ? <div className='padding-top' /> : null}
       {component}
-      {id === "/" && <div className='footer-padding' />}
+      {id !== "/contact" && <Contact />}
+      <div className='footer-padding' />
       <Footer />
 
       <Widgets />
@@ -60,9 +61,10 @@ function App() {
           </>
         )
       } />
-      <Route path="/services" element={RenderRoute("/services", <Services services={services} />)} />
-      <Route path="/courses" element={RenderRoute("/courses", <Courses courseList={courses} />)} />
-      <Route path="/gallery" element={RenderRoute("/gallery", <Gallery photoURLs={gallery} />)} />
+      <Route path="/gallery"  element={ RenderRoute("/gallery", <Gallery photoURLs={gallery} />)} />
+      <Route path="/services" element={ RenderRoute("/services", <Services services={services} />)} />
+      <Route path="/courses"  element={ RenderRoute("/courses", <Courses courseList={courses} />)} />
+      <Route path="/contact"  element={ RenderRoute("/contact",<Contact />) } />
     </Routes>
   );
 }

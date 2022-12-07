@@ -36,15 +36,15 @@ const MeetExperts = () => {
     ], []);
 
     const variants = {
-        // visible: {
-        //     y: 0,
-        //     opacity: 1,
-        //     transition: {
-        //         duration: 0.5,
-        //         // delay: id * 0.1,
-        //         ease: 'easeIn'
-        //     }
-        // },
+        visible: {
+            y: 0,
+            opacity: 1,
+            transition: {
+                duration: 0.5,
+                // delay: 1 + id * 0.2,
+                ease: 'easeIn'
+            }
+        },
         hidden: { opacity: 0, y: 100 },
     }
 
@@ -63,17 +63,18 @@ const MeetExperts = () => {
                     <motion.div
                         key={id}
                         variants={variants}
-                        initial="hidden"
                         viewport={{ once: true }}
-                        whileInView={{
-                            opacity: 1,
-                            y: 0,
-                            transition: {
-                                duration: 0.5,
-                                // delay: 1 + id * 0.2,
-                                ease: 'easeIn'
-                            }
-                        }}
+                        initial="hidden"
+                        whileInView="visible"
+                        // {{
+                        //     opacity: 1,
+                        //     y: 0,
+                        //     transition: {
+                        //         duration: 0.5,
+                        //         // delay: 1 + id * 0.2,
+                        //         ease: 'easeIn'
+                        //     }
+                        // }}
                     >
                         <ExpertCard id={id} name={name} position={position} imgSrc={imgSrc} />
                     </motion.div>

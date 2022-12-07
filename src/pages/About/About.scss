@@ -97,7 +97,7 @@
         }
     }
 
-    &--mapview-article {
+   /*&--mapview-article {
         @media screen and (max-width: 900px) {
             grid-template-rows: 2fr;
         }
@@ -135,34 +135,34 @@
                 color: $green-shade-colour;
             }
         }
-    }
+    }*/
 
-    // top | right | bottom | left 
-    .pad {
-        padding-top: 1em;
+    // // top | right | bottom | left 
+    // .pad {
+    //     padding-top: 1em;
 
-        &--left {
-            @media screen and (max-width: 900px) {
-                padding: 1em .5em .5em 1em;
-            }
-            padding: 3em 0.5em 3em 3em;
-        }
+    //     &--left {
+    //         @media screen and (max-width: 900px) {
+    //             padding: 1em .5em .5em 1em;
+    //         }
+    //         padding: 3em 0.5em 3em 3em;
+    //     }
 
-        &--right {
-            @media screen and (max-width: 900px) {
-                padding: 1em 1em 1em 0.5em;
-            }
-            padding: 3em 1em 3em 3em;
-        }
-    }
+    //     &--right {
+    //         @media screen and (max-width: 900px) {
+    //             padding: 1em 1em 1em 0.5em;
+    //         }
+    //         padding: 3em 1em 3em 3em;
+    //     }
+    // }
 
-    .section-button {
-        border: 0.1em solid $green-shade-colour;
-        color: $green-shade-colour;
-    }
+    // .section-button {
+    //     border: 0.1em solid $green-shade-colour;
+    //     color: $green-shade-colour;
+    // }
 
-    hr {
-        border: 1px solid rgba($green-shade-colour, 0.4);
-        margin: .5rem 0;
-    }
+    // hr {
+    //     border: 1px solid rgba($green-shade-colour, 0.4);
+    //     margin: .5rem 0;
+    // }
 }
