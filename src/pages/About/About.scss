@@ -41,6 +41,7 @@
     &--wrapper {
         @media screen and (max-width: 900px) {
             padding: 0 1rem;
+            gap: 3rem;
         }
 
         display: flex;
@@ -137,24 +138,24 @@
         }
     }*/
 
-    // // top | right | bottom | left 
-    // .pad {
-    //     padding-top: 1em;
+    // top | right | bottom | left 
+    .pad {
+        padding-top: 1em;
 
-    //     &--left {
-    //         @media screen and (max-width: 900px) {
-    //             padding: 1em .5em .5em 1em;
-    //         }
-    //         padding: 3em 0.5em 3em 3em;
-    //     }
+        &--left {
+            @media screen and (max-width: 900px) {
+                padding: 1em .5em .5em 1em;
+            }
+            padding: 3em 0.5em 3em 3em;
+        }
 
-    //     &--right {
-    //         @media screen and (max-width: 900px) {
-    //             padding: 1em 1em 1em 0.5em;
-    //         }
-    //         padding: 3em 1em 3em 3em;
-    //     }
-    // }
+        &--right {
+            @media screen and (max-width: 900px) {
+                padding: 1em 1em 1em 0.5em;
+            }
+            padding: 3em 1em 3em 3em;
+        }
+    }
 
     .section-button {
         border: 0.1em solid $green-shade-colour;

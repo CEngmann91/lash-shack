@@ -136,7 +136,7 @@ const About = () => {
           <>
             {section1.component}
             {section2.type === ((SectionType.Text) as SectionType) ?
-              <div className="app__pad-hor app__flex">
+              <div className="pad--left app__flex">
                 <h1>{section2.title}</h1>
                 <p className="description new-line">{section2.description}</p>
                 {section2.type === SectionType.TextAndButton ?
@@ -159,7 +159,7 @@ const About = () => {
       case SectionType.TextAndButton:
         return (
           <>
-            <div className="app__pad-hor app__flex">
+            <div className="pad--left app__flex">
               <h1>{section1.title}</h1>
               <p className="description new-line">{section1.description}</p>
               {section1.type === SectionType.TextAndButton ?
@@ -182,7 +182,7 @@ const About = () => {
         return (
           <>
             {section1.type === ((SectionType.Text || SectionType.TextAndButton) as SectionType) ?
-              <div className="right app__pad-hor">
+              <div className="right pad--left">
                 <h1>{section1.title}</h1>
                 <p className="description new-line">{section1.description}</p>
                 {section1.type === SectionType.TextAndButton as SectionType ?
@@ -209,7 +209,7 @@ const About = () => {
             <div className="left">
               <img src={section1.typeImgSrc} alt="" />
             </div>
-            <div className="right app__pad-hor app__flex">
+            <div className="right pad--right app__flex">
               <h1>{section2.title}</h1>
               <p className="description new-line">{section2.description}</p>
               {section2.type === SectionType.TextAndButton ?
