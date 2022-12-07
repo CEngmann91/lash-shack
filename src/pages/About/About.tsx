@@ -116,7 +116,7 @@ const About = () => {
         )
       }
     },
-    {
+    /*{
       section1: {
         type: SectionType.ReactNode,
         component: (
@@ -127,7 +127,7 @@ const About = () => {
         type: SectionType.ReactNode,
         component: ( <></> )
       }
-    }
+    }*/
   ];
 
   const renderArticle = (section1: iSection, section2: iSection) => {
