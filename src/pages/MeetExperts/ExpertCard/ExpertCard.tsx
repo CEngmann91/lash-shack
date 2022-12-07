@@ -1,10 +1,11 @@
 import './ExpertCard.scss';
 import React from 'react';
 import { iExpert } from '../MeetExperts';
+import { Card } from '../../../components/Cards';
 
 const ExpertCard: React.FC<iExpert> = (item, { ...props }: iExpert) => {
     return (
-        <div className="expert-card-item border-white border-white-shadow">
+        <Card className="expert-card-item border-white border-white-shadow">
              <div className='container'>
 
                  <div className="top-border">
@@ -22,7 +23,7 @@ const ExpertCard: React.FC<iExpert> = (item, { ...props }: iExpert) => {
                      <p className='position'>{item.position}</p>
                  </div>
              </div>
-        </div>
+        </Card>
 
 
 

@@ -37,9 +37,9 @@ export const menuItems =
         title: 'courses',
         to: '/courses'
     },
-    {
-        id: 4,
-        title: 'contact',
-        to: '/contact'
-    },
+    // {
+    //     id: 4,
+    //     title: 'contact',
+    //     to: '/contact'
+    // },
 ]

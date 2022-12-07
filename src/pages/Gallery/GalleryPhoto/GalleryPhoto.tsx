@@ -2,6 +2,7 @@ import './GalleryPhoto.scss';
 import React, { MouseEventHandler, useCallback, useEffect, useState } from 'react'
 import { motion } from 'framer-motion';
 import { ActivityIndicator } from '../../../components';
+import { Card } from '../../../components/Cards';
 // import ImageLoad from '../../../components/ImageLoad/ImageLoad';
 
 interface iProps {
@@ -27,14 +28,14 @@ const GalleryPhoto: React.FC<iProps> = ({ id, imgSource, onClick, ...props }: iP
 
 
   return (
-    <>
-      {/* {isLoading &&
-        <div className='app__flex' style={{ height: '100%' }}>
-          <ActivityIndicator borderColour='rgba(239, 179, 183, 1)' borderSpinColour='rgba(16, 40, 121, 1)' />
-        </div>
-      } */}
+    <Card className='gallery-photo gallery-photo-shadow' onClick={onClick}>
+      <img src={imgSource} alt="" onLoad={() => setIsLoading(false)}/>
+    </Card>
 
-      <motion.li id={id.toString()} className='gallery-photo gallery-photo-shadow' onClick={onClick}
+
+
+    // <>
+      /* <motion.li id={id.toString()} className='gallery-photo gallery-photo-shadow' onClick={onClick}
         initial="hidden"
         animate="visible"
         variants={variants}
@@ -45,8 +46,8 @@ const GalleryPhoto: React.FC<iProps> = ({ id, imgSource, onClick, ...props }: iP
         }}
       >
         <img src={imgSource} alt="" onLoad={() => setIsLoading(false)}/>
-      </motion.li>
-    </>
+      </motion.li> */
+    // </>
 
 
 
