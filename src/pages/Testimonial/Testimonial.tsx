@@ -4,6 +4,7 @@ import TestimonialCard from './TestimonialCard/TestimonialCard';
 import { ActivityIndicator, Page } from '../../components';
 import { getDocument } from '../../helpers/firebase/firestore';
 import { REACT_APP_FIRESTORE_TESTIMONIAL_COLLECTION, REACT_APP_FIRESTORE_TESTIMONIAL_DOCUMENT } from '../../constants/firebase';
+import MySection from '../../components/MySection/MySection';
 
 // interface iClient {
 //   displayName: string;
@@ -60,10 +61,11 @@ const Testimonial: React.FC<iProps> = ({ testimonials, ...props }: iProps) => {
   // }
 
   return (
-    <Page id='testimonial' className='app__testimonial' header='We Love Hearing From You' headerClassName='app__testimonial-title'>
+    <MySection className='app__testimonial'>
+      <Page id='testimonial' header='We Love Hearing From You' headerClassName='app__testimonial-title'>
       {isLoading
         ?
-          renderLoadingActivity()
+        renderLoadingActivity()
         :
         error ?
           <>
@@ -75,7 +77,26 @@ const Testimonial: React.FC<iProps> = ({ testimonials, ...props }: iProps) => {
             {renderReviews()}
           </div>
       }
-    </Page>
+      </Page>
+    </MySection>
+
+
+    // <Page id='testimonial' className='app__testimonial' header='We Love Hearing From You' headerClassName='app__testimonial-title'>
+    //   {isLoading
+    //     ?
+    //       renderLoadingActivity()
+    //     :
+    //     error ?
+    //       <>
+    //         <p>Error is: {error}</p>
+
+    //       </>
+    //       :
+    //       <div className="list">
+    //         {renderReviews()}
+    //       </div>
+    //   }
+    // </Page>
   )
 }
 

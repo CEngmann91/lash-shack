@@ -1,7 +1,7 @@
 import './DrawerButton.scss';
-import React, { useCallback } from 'react';
+import React, { ButtonHTMLAttributes, useCallback } from 'react';
 
-interface iProps {
+interface iProps extends React.HTMLAttributes<HTMLButtonElement> {
     isOpen: boolean;
     onClick: (e?: React.MouseEvent<HTMLElement>) => void;
 }
@@ -10,7 +10,7 @@ const DrawerButton: React.FC<iProps> = ({ isOpen, onClick, ...props}: iProps) =>
 
     return (
         <div className="menuBtn-container">
-            <button onClick={handleClick} data-menuvisible={isOpen}>
+            <button onClick={handleClick} data-menuvisible={isOpen} {...props}>
                 <i />
             </button>
         </div>

@@ -4,6 +4,7 @@ import { MapView, MyIFrame, Page } from '../../components';
 import { Landing0, Landing1, Shop, Training } from '../../util/images';
 import { CONTACT } from '../../constants/constants';
 import { Email, Phone } from '../../util/icons';
+import { Card } from '../../components/Cards';
 
 enum SectionType {
   Text,
@@ -110,9 +111,7 @@ const About = () => {
 
         type: SectionType.ReactNode,
         component: (
-          // <></>
-          // <MyIFrame source='https://www.youtube.com/embed/Rhpubx3o420' />
-          <MyIFrame source='https://www.instagram.com/reel/CjYgoxPAOh7/?utm_source=ig_embed&amp;utm_campaign=loading' />
+          <MyIFrame source='https://www.instagram.com/reel/CktbR0_A70Z/?utm_source=ig_embed&amp;utm_campaign=loading' />
         )
       }
     },
@@ -228,9 +227,13 @@ const About = () => {
     <Page id='about' className='app__about'>
       <div className="app__about--wrapper">
         {articles.map(({ section1, section2 }, index) =>
-          <div className="card border-white border-white-shadow" key={index}>
+          <Card className="card border-white border-white-shadow">
             { renderArticle(section1, section2) }
-          </div>
+          </Card>
+
+          // <div className="card border-white border-white-shadow" key={index}>
+          //   { renderArticle(section1, section2) }
+          // </div>
         )}
       </div>
     </Page>

@@ -5,7 +5,7 @@
     flex: 1;
     width: 100%;
     min-height: 90vh;
-    background: $white-colour;
+    // background: $white-colour;
 
 
     .content {
@@ -15,7 +15,7 @@
         }
         position: relative;
         display: grid;
-        // justify-content: space-evenly;
+        // justify-content: flex-start;
         align-items: flex-start;
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: 1fr;
@@ -26,7 +26,8 @@
             @media screen and (max-width: 900px) {
                 width: 100%;
             }
-            border-radius: 20px;
+            border-radius: 10px;
+            height: 100%;
         }
 
         h1 {

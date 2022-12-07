@@ -1,6 +1,6 @@
 import './CourseCard.scss';
 import React, { useEffect } from 'react'
-import { CardFlip } from '../../../components/Cards';
+import { Card, CardFlip } from '../../../components/Cards';
 import { iSale, Popularity } from '../Courses';
 import { ABT } from '../../../util/images';
 import { ThreeContentButton } from '../../../components';
@@ -66,7 +66,7 @@ const CourseCard: React.FC<iProps> = ({ id, title, frontImg, description, price,
 
 
     return (
-        <div className="course-card border-white border-white-shadow">
+        <Card className="course-card border-white border-white-shadow">
             <div className="photo">
                 <img className='background' src={frontImg} />
             </div>
@@ -85,8 +85,15 @@ const CourseCard: React.FC<iProps> = ({ id, title, frontImg, description, price,
                 </div>
             </div>
 
-            <button className='border-button join-button'>Join Us</button>
-        </div>
+            <div className='app__flex'>
+                <button className='border-button join-button'>Join Us</button>
+            </div>
+        </Card>
+
+
+
+
+
 
 
 
