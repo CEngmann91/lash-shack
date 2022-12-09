@@ -37,15 +37,6 @@ interface iProps {
 const Courses: React.FC<iProps> = ({ courseList, loading, error, ...props }: iProps) => {
 
 
-  // if (isLoading) {
-  //   return (
-  //     <Page id='courses' className='app__courses' header='Be Your Own Boss'>
-  //       <div className='app__flex app__min-height'>
-  //         <ActivityIndicator borderColour='rgba(239, 179, 183, 1)' borderSpinColour='rgba(16, 40, 121, 1)' />
-  //       </div>
-  //     </Page>
-  //   );
-  // }
 
   return (
     <Page id='courses' className='app__courses' header='Be Your Own Boss'>
@@ -61,7 +52,7 @@ const Courses: React.FC<iProps> = ({ courseList, loading, error, ...props }: iPr
             {error}
           </div>
           :
-          <div>
+          <main>
             <div className="cards">
               {courseList.length !== 0 && courseList.map((item, index) => {
                 const { title, description, img, price, sale, duration, popularity } = item;
@@ -85,7 +76,7 @@ const Courses: React.FC<iProps> = ({ courseList, loading, error, ...props }: iPr
             <p></p>
 
             <img className='abt' src={ABT} alt="" />
-          </div>
+          </main>
       }
     </Page >
   )

@@ -69,11 +69,13 @@
 
 
             span {
+                @media screen and (max-width: 900px) {
+                }
                 color: white;
-                font-size: 0.75vw;
+                font-size: 0.8rem;
 
                 &[data-count="true"] {
-                    font-size: 0.6vw;
+                    font-size: 0.5rem;
                 }
             }
         }
