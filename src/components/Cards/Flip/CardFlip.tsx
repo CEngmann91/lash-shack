@@ -1,7 +1,7 @@
 import './CardFlip.scss';
 import React from 'react'
 
-interface iProps {
+type CardFlipProps = {
     id: number;
     frontClassName: string;
     frontChildren: React.ReactNode;
@@ -9,7 +9,7 @@ interface iProps {
     backChildren: React.ReactNode;
     // onClick: (e?: React.MouseEvent<HTMLElement>) => void;
 }
-const CardFlip : React.FC<iProps> = ({id, frontClassName, frontChildren, backClassName, backChildren, ...props}: iProps) => {
+function CardFlip({ id, frontClassName, frontChildren, backClassName, backChildren }: CardFlipProps) {
 
     return (
         <main>

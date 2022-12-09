@@ -1,9 +1,7 @@
 import './Testimonial.scss';
-import React, { ReactNode, useEffect, useState } from 'react'
+import React, { ReactNode } from 'react'
 import TestimonialCard from './TestimonialCard/TestimonialCard';
 import { ActivityIndicator, Page } from '../../components';
-import { getDocument } from '../../helpers/firebase/firestore';
-import { REACT_APP_FIRESTORE_TESTIMONIAL_COLLECTION, REACT_APP_FIRESTORE_TESTIMONIAL_DOCUMENT } from '../../constants/firebase';
 import MySection from '../../components/MySection/MySection';
 
 // interface iClient {
@@ -22,11 +20,10 @@ export interface iTestimonialReview {
 
 interface iProps {
   testimonials: iTestimonialReview[];
+  loading: boolean;
+  error?: any;
 }
-const Testimonial: React.FC<iProps> = ({ testimonials, ...props }: iProps) => {
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState('');
-
+const Testimonial: React.FC<iProps> = ({ testimonials, loading, error, ...props }: iProps) => {
 
 
   const renderLoadingActivity = (): ReactNode => (
@@ -49,54 +46,22 @@ const Testimonial: React.FC<iProps> = ({ testimonials, ...props }: iProps) => {
     )
   );
 
-
-  // if (isLoading) {
-  //   return (
-  //     <Page id='testimonial' className='app__testimonial' header='Customer Reviews'>
-  //       <div className='app__flex app__min-height'>
-  //         <ActivityIndicator borderColour='rgba(239, 179, 183, 1)' borderSpinColour='rgba(16, 40, 121, 1)' />
-  //       </div>
-  //     </Page>
-  //   );
-  // }
-
   return (
     <MySection className='app__testimonial'>
       <Page id='testimonial' header='We Love Hearing From You' headerClassName='app__testimonial-title'>
-      {isLoading
-        ?
-        renderLoadingActivity()
-        :
-        error ?
-          <>
-            <p>Error is: {error}</p>
-
-          </>
+        {loading
+          ?
+          renderLoadingActivity()
           :
-          <div className="list">
-            {renderReviews()}
-          </div>
-      }
+          (error ?
+            <p>Error is: {error}</p>
+            :
+            <div className="list">
+              {renderReviews()}
+            </div>)
+        }
       </Page>
     </MySection>
-
-
-    // <Page id='testimonial' className='app__testimonial' header='We Love Hearing From You' headerClassName='app__testimonial-title'>
-    //   {isLoading
-    //     ?
-    //       renderLoadingActivity()
-    //     :
-    //     error ?
-    //       <>
-    //         <p>Error is: {error}</p>
-
-    //       </>
-    //       :
-    //       <div className="list">
-    //         {renderReviews()}
-    //       </div>
-    //   }
-    // </Page>
   )
 }
 

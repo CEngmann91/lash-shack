@@ -17,3 +17,4 @@ export { default as ScrollTopArrow } from './Widgets/ScrollTopArrow/ScrollTopArr
 export { default as Navbar } from './navbar/Navbar';
 export { default as Footer } from './Footer/Footer';
 export { default as SidebarMenu } from './Drawer/Drawer';
+export { default as ShoppingCartDrawer } from './ShoppingCartDrawer/ShoppingCartDrawer';

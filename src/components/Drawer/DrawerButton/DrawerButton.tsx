@@ -9,7 +9,7 @@ const DrawerButton: React.FC<iProps> = ({ isOpen, onClick, ...props}: iProps) =>
     const handleClick = useCallback(onClick, []);
 
     return (
-        <div className="menuBtn-container">
+        <div className="sidebar-button-container">
             <button onClick={handleClick} data-menuvisible={isOpen} {...props}>
                 <i />
             </button>

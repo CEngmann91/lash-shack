@@ -1,22 +1,18 @@
 import './index.scss';
-import React, { useEffect, useLayoutEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
-import { Footer, Navbar, SidebarMenu } from './components';
+import { Footer, Navbar, ShoppingCartDrawer, SidebarMenu } from './components';
 import { About, Contact, Courses, Gallery, Landing, MeetExperts, NotFound, Services, Testimonial, TrainingReview } from './pages';
 import Widgets from './components/Widgets/Widgets';
-import { useTrainingReviews } from './helpers/hooks/useTrainingReviews';
-import { useGalleryPhotos } from './helpers/hooks/useGalleryPhotos';
-import { useCourses } from './helpers/hooks/useCourses';
-import { useServices } from './helpers/hooks/useServices';
-import { useTestimonial } from './helpers/hooks/useTestimonial';
+import { useCourses, useGalleryPhotos, useServices, useTestimonial, useTrainingReviews } from './helpers/hooks';
 
 function App() {
   const location = useLocation();
-  const { testimonials } = useTestimonial();
-  const { reviews } = useTrainingReviews();
-  const { gallery } = useGalleryPhotos();
-  const { courses } = useCourses();
-  const { services } = useServices();
+  const { testimonials, loadingTestimonial } = useTestimonial();
+  const { reviews, loadingReviews } = useTrainingReviews();
+  const { gallery, loadingGallery } = useGalleryPhotos();
+  const { courses, loadingCourses } = useCourses();
+  const { services, loadingServices } = useServices();
 
 
 
@@ -30,6 +26,14 @@ function App() {
     <div className='route-div'>
       <Navbar />
       <SidebarMenu />
+      <ShoppingCartDrawer
+        onOpen={() => {
+          // alert('opened')
+        }}
+        onClose={() => {
+          // alert('closed')
+        }}
+      />
       {id !== "/" && id !== "*" ? <div className='padding-top' /> : null}
       {component}
       {id !== "/contact" && <Contact />}
@@ -43,11 +47,7 @@ function App() {
   return (
     <Routes>
       {/* Use it in this way, and it should work: */}
-      <Route path='*' element={
-        RenderRoute("*",
-          <NotFound />
-        )
-      } />
+      <Route path='*' element={RenderRoute("*", <NotFound />)} />
 
       <Route path="/" element={
         RenderRoute(
@@ -56,15 +56,15 @@ function App() {
             <Landing />
             <About />
             <MeetExperts />
-            <Testimonial testimonials={testimonials} />
-            <TrainingReview reviews={reviews} />
+            <Testimonial testimonials={testimonials} loading={loadingTestimonial} />
+            <TrainingReview reviews={reviews} loading={loadingReviews} />
           </>
         )
       } />
-      <Route path="/gallery"  element={ RenderRoute("/gallery", <Gallery photoURLs={gallery} />)} />
-      <Route path="/services" element={ RenderRoute("/services", <Services services={services} />)} />
-      <Route path="/courses"  element={ RenderRoute("/courses", <Courses courseList={courses} />)} />
-      <Route path="/contact"  element={ RenderRoute("/contact",<Contact />) } />
+      <Route path="/gallery" element={RenderRoute("/gallery", <Gallery photoURLs={gallery} loading={loadingGallery} />)} />
+      <Route path="/services" element={RenderRoute("/services", <Services services={services} loading={loadingServices} />)} />
+      <Route path="/courses" element={RenderRoute("/courses", <Courses courseList={courses} loading={loadingCourses} />)} />
+      <Route path="/contact" element={RenderRoute("/contact", <Contact />)} />
     </Routes>
   );
 }

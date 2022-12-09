@@ -2,29 +2,22 @@ import './MyIFrame.scss';
 import React, { useEffect, useState } from 'react'
 import ActivityIndicator from '../ActivityIndicator/ActivityIndicator';
 
-interface iProps {
+type MyIFrameProps = {
   mainClassName?: string;
   source: string;
   allowFullScreen?: boolean;
   ariaHidden?: boolean;
 }
-const MyIFrame: React.FC<iProps> = ({ mainClassName, source, allowFullScreen, ariaHidden, ...props }: iProps) => {
+function MyIFrame({ mainClassName, source, allowFullScreen, ariaHidden }: MyIFrameProps) {
   const [isLoading, setIsLoading] = useState(true);
-
-
-  useEffect(() => {
-
-  }, [source])
-
 
   return (
     <div className={`frame-container ${mainClassName}`}>
       {isLoading &&
-        <div className='app__flex' style={{ height: '100%' }}>
+        <div className='app__absolute-center' style={{ height: '100%' }}>
           <ActivityIndicator borderColour='rgba(239, 179, 183, 1)' borderSpinColour='rgba(16, 40, 121, 1)' />
         </div>
       }
-
       <iframe
         src={source}
         frameBorder="0"

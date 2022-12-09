@@ -1,7 +1,7 @@
 import './Page.scss';
 import React from 'react';
 
-interface iProps {
+type PageProps = {
     id: string;
     className?: string;
     header?: string;
@@ -10,7 +10,7 @@ interface iProps {
     customHeader?: React.ReactNode;
 }
 
-const Page: React.FC<iProps> = ({ id, className, header, headerClassName, children, customHeader, ...props }: iProps) => {
+function Page({ id, className, header, headerClassName, children, customHeader }: PageProps) {
     return (
         <div id={id} className={`main app__pad-hor ${className}`}>
             <div className='page-header'>

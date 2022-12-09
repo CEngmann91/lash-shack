@@ -1,9 +1,8 @@
 import './GalleryViewerModal.scss';
-import React, { useEffect, useState } from 'react'
-import { AnimatePresence, motion } from 'framer-motion';
+import React from 'react'
+import { motion } from 'framer-motion';
 import { Close, LeftArrow, RightArrow } from '../../../util/icons';
-import { useScrollLock } from '../../../helpers/hooks/useScrollLock';
-
+import { useEscKey, useToggle} from '../../../helpers/hooks';
 
 const container = {
     hidden: { opacity: 0 },
@@ -25,67 +24,40 @@ const item = {
 }
 
 interface iProps {
-    selectedPhoto: string;
-    setSelectedPhoto: React.Dispatch<React.SetStateAction<string>>;
-
-    selectedPhotoIndex: number;
-    setSelectedPhotoIndex: React.Dispatch<React.SetStateAction<number>>;
+    imgSrc: string;
+    onOpen: () => void;
+    onClose: () => void;
+    onNextPhoto: () => void;
+    onPreviousPhoto: () => void;
 }
-const GalleryViewerModal: React.FC<iProps> = ({ selectedPhoto, setSelectedPhoto, selectedPhotoIndex, setSelectedPhotoIndex, ...props }: iProps) => {
-    const [visible, setVisible] = useState(true);
-    const { lockScroll, unlockScroll } = useScrollLock();
-
-
-
-    useEffect(() => {
-        // if (selectedPhoto) {
-        //     preventScrolling();
-        //     setVisible(true);
-        // }
-
-
-        if (!visible)
-        {
-            setSelectedPhoto("")
-            unlockScroll();
-        }
-        else 
-        {
-            lockScroll();
-        }
-
-    }, [visible])
+const GalleryViewerModal: React.FC<iProps> = ({ imgSrc, onOpen, onClose, onNextPhoto, onPreviousPhoto, ...props }: iProps) => {
+    const { isOpen, toggleMe } = useToggle(true, onOpen, onClose);
+    const { isPressed } = useEscKey();
 
 
     const handleClick = () => {
-        unlockScroll();
-        setVisible(false);
+        toggleMe();
     }
 
+    if (isPressed)
+        handleClick()
+
     return (
-        <>
-            {visible &&
-                <motion.div
-                    className='backdrop app__flex'
-                    variants={container}
-                    initial="hidden"
-                    animate='visible'
-                    exit='hidden'
-                    // onClick={handleClick}
-                >
-                    <motion.img src={selectedPhoto} alt="enlarged pic" variants={item} />
+        <motion.div
+            className='backdrop app__flex'
+            variants={container}
+            initial="hidden"
+            animate={isOpen ? 'visible' : 'hidden'}
+            exit='hidden'
+            onClick={handleClick}
+        >
+            <button className="close-button" onClick={handleClick}><Close /></button>
 
-
-                    <button className="close-button" onClick={handleClick}>
-                        <Close />
-                    </button>
-
-
-                    <button className='left-arrow'><LeftArrow /></button>
-                    <button className='right-arrow'><RightArrow /></button>
-                </motion.div>
-            }
-        </>
+            <motion.img src={imgSrc} alt="enlarged pic" variants={item} />
+            
+            {/* <button className='left-arrow' onClick={onPreviousPhoto}><LeftArrow /></button>
+            <button className='right-arrow' onClick={onNextPhoto}><RightArrow /></button> */}
+        </motion.div>
     )
 }
 

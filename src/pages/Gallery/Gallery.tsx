@@ -1,12 +1,10 @@
 import './Gallery.scss';
-import React, { useEffect, useLayoutEffect, useMemo, useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import GalleryPhoto from './GalleryPhoto/GalleryPhoto';
 
-import { getImages } from '../../helpers/firebase/firebase';
-import { REACT_APP_FIRESTORE_GALLERY_COLLECTION, REACT_APP_FIRESTORE_GALLERY_DOCUMENT, REACT_APP_STORAGE_GALLERY_DIRECTORY } from '../../constants/firebase';
 import GalleryViewerModal from './GalleryViewerModal/GalleryViewerModal';
-import { ActivityIndicator, MyIFrame, Page } from '../../components';
-import { getDocument } from '../../helpers/firebase/firestore';
+import { ActivityIndicator, Page } from '../../components';
+import { useScrollLock } from '../../helpers/hooks';
 
 type Size = "" | "horizontal" | "vertical" | "big";
 export interface iGalleryPhoto {
@@ -18,13 +16,12 @@ export interface iGalleryPhoto {
 
 interface iProps {
   photoURLs: string[];
+  loading: boolean;
+  error?: any;
 }
-const Gallery: React.FC<iProps> = ({ photoURLs, ...props }: iProps) => {
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState();
-  // const [files, setFiles] = useState<string[]>([]);
-  // const [photos, setPhotos] = useState<iGalleryPhoto[]>([]);
-  const [selectedImgIndex, setSelectedImgIndex] = useState<number>(0);
+const Gallery: React.FC<iProps> = ({ photoURLs, loading, error, ...props }: iProps) => {
+    const { lockScroll, unlockScroll } = useScrollLock();
+    const [selectedImgIndex, setSelectedImgIndex] = useState<number>(0);
   const [selectedImg, setSelectedImg] = useState<string>("");
 
   // const [hoverChild, setHoverChild] = useState(0);
@@ -46,60 +43,7 @@ const Gallery: React.FC<iProps> = ({ photoURLs, ...props }: iProps) => {
 
 
 
-  // useLayoutEffect(() => {
-  //   window.scrollTo(0, 0);
-
-  //   if (memoizedList)
-  //     fetchImages();
-  // }, [])
-
-
-  /*const fetchImages = async () => {
-    setIsLoading(true)
-
-    await getImages(REACT_APP_STORAGE_GALLERY_DIRECTORY as string)
-      .then(imgResult => {
-        setFiles(imgResult);
-        setIsLoading(false);
-        console.log("getImages - ", imgResult);
-
-
-        // getDocument(REACT_APP_FIRESTORE_GALLERY_COLLECTION as string,
-        //   REACT_APP_FIRESTORE_GALLERY_DOCUMENT as string)
-        //   .then(docResult => {
-        //     const result = docResult['content'];
-    
-    
-        //     for (let i = 0; i < imgResult.length; i++) {
-        //       const element = imgResult[i];
-        //       let p: iGalleryPhoto = {
-        //         id: i,
-        //         size: result[i] as Size,
-        //         url: element as string,
-        //       }
-        //       setPhotos(prev => [...prev, p]);
-        //     }
-    
-    
-        //     setIsLoading(false);
-        //     // console.log("getDocument - ", result);
-        //   })
-        //   .catch(error => {
-        //     setIsLoading(false);
-        //     setError(error);
-        //   });
-          
-
-
-      })
-      .catch(error => {
-        setIsLoading(false);
-        setError(error);
-      });
-  }*/
-
-
-  if (isLoading) {
+  if (loading) {
     return (
       <Page id='gallery' className='app__gallery' header='Love What You See?'>
         {/* <p>Error is: {error}</p> */}
@@ -277,12 +221,28 @@ const Gallery: React.FC<iProps> = ({ photoURLs, ...props }: iProps) => {
             </div>
 
 
-            {selectedImg.length > 0 && (
+            {selectedImg.length > 0 ? (
               <GalleryViewerModal
-                selectedPhoto={selectedImg} setSelectedPhoto={setSelectedImg}
-                selectedPhotoIndex={selectedImgIndex} setSelectedPhotoIndex={setSelectedImgIndex}
+                imgSrc={selectedImg}
+                onOpen={() => lockScroll()}
+                onClose={() => {
+                  setSelectedImg("")
+                  setSelectedImgIndex(-1)
+                  unlockScroll()
+                }}
+                onNextPhoto={() => {
+                  setSelectedImgIndex(prev => prev + 1)
+                  setSelectedImg(photoURLs[selectedImgIndex])
+                }}
+                onPreviousPhoto={() => {
+                  setSelectedImgIndex(prev => prev - 1)
+                  setSelectedImg(photoURLs[selectedImgIndex])
+                }}
               />
-            )}
+
+              // setSelectedImgIndex(prev => (prev > photoURLs.length-1 ? prev + 1 : 0))
+              // setSelectedImgIndex(prev => (prev < 1 ? prev - 1 : photoURLs.length-1))
+            ) : null }
 
 
 

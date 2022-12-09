@@ -88,9 +88,9 @@
         opacity: 1;
     }
 
-    &[data-visible="false"] {
-        animation: slideOut-fadeOut 0.3s forwards;
-    }
+    // &[data-visible="false"] {
+    //     animation: slideOut-fadeOut 0.3s forwards;
+    // }
 }
 
 @keyframes slideIn-fadeIn-half {

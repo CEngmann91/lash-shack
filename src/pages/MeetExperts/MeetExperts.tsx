@@ -58,7 +58,7 @@ const MeetExperts = () => {
                 Find out more about the team below.
             </p>
 
-            <div className="list">
+            <div className="expert-list">
                 {experts.map(({ id, name, position, imgSrc }) =>
                     <motion.div
                         key={id}

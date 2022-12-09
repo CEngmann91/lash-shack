@@ -1,15 +1,12 @@
 import './ActivityIndicator.scss';
 import React from 'react';
 
-interface iProps {
-    scale?: number;
-    borderColour?: string;
-    borderSpinColour?: string;
+type ActivityIndicatorProps = {
+    scale?: number
+    borderColour?: string
+    borderSpinColour?: string
 }
-const ActivityIndicator: React.FC<iProps> = ({
-    scale = 48,
-    borderColour = 'rgba(0, 0, 0, 0.3)', borderSpinColour = 'rgba(0, 0, 0, 0.75)',
-    ...props }: iProps) => {
+function ActivityIndicator({ scale = 48, borderColour = 'rgba(0, 0, 0, 0.3)', borderSpinColour = 'rgba(0, 0, 0, 0.75)' }: ActivityIndicatorProps) {
 
     const style = {
         width: `${scale}px`,

@@ -45,15 +45,4 @@ export const useTestimonial = () => {
   }, [])
 
   return { testimonials, loadingTestimonial, testimonialError };
-
-
-
-
-
-  // const { data, error } = useFetchDocument(
-  //   REACT_APP_FIRESTORE_TESTIMONIAL_COLLECTION as string,
-  //   REACT_APP_FIRESTORE_TESTIMONIAL_DOCUMENT as string
-  // );
-
-  // return { data };
 }
