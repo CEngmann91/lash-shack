@@ -15,23 +15,14 @@ const container = {
             staggerChildren: 0.07,
             staggerDirection: 1,
             duration: 0.5,
-            ease: "easeIn",
-            // type: "spring",
-            // stiffness: 20,
-            // restDelta: 2
         }
     },
     closed: {
-        x: '100vw',
+        x: '100%',
         transition: {
             staggerChildren: 0.07,
             staggerDirection: -1,
             duration: 0.2,
-            ease: "easeOut",
-            // delay: 0.5,
-            // type: "spring",
-            // stiffness: 400,
-            // damping: 40
         }
     }
 }
@@ -91,11 +82,40 @@ function ShoppingCartDrawer({ onOpen, onClose }: ShoppingCartDrawerProps) {
                 animate={isOpen ? "open" : "closed"}
                 exit='closed'
             >
-                <motion.div variants={item}>
+                <header>
+                    <span>
+                        <h1>Your Item(s)</h1>
+                        <hr />
+                    </span>
+                    <span>
+                        <button className='shopping-close-button' onClick={() => toggleVisibility()} data-menuvisible={isOpen}>
+                            <p>X</p>
+                        </button>
+                    </span>
+                </header>
+
+                <div className='panel--content'>
                     <p>Insert Content Here</p>
                     <p>isMobile: {isMobile.toString()}</p>
                     <p>isOpen: {isOpen.toString()}</p>
-                </motion.div>
+                </div>
+                    
+                {/* <motion.div variants={item}>
+                    <p>Insert Content Here</p>
+                    <p>isMobile: {isMobile.toString()}</p>
+                    <p>isOpen: {isOpen.toString()}</p>
+                </motion.div> */}
+
+                <footer>
+                    <span>
+                        <hr />
+                        <h3>Total to pay</h3>
+                    </span>
+
+                    <span>
+                        <h3>£0.00</h3>
+                    </span>
+                </footer>
             </motion.aside>
 
 
