@@ -35,12 +35,12 @@ const GalleryViewerModal: React.FC<iProps> = ({ imgSrc, onOpen, onClose, onNextP
     const { isPressed } = useEscKey();
 
 
-    const handleClick = () => {
-        toggleMe();
-    }
+    // const handleClick = () => {
+    //     toggleMe();
+    // }
 
     if (isPressed)
-        handleClick()
+        toggleMe()
 
     return (
         <motion.div
@@ -49,9 +49,9 @@ const GalleryViewerModal: React.FC<iProps> = ({ imgSrc, onOpen, onClose, onNextP
             initial="hidden"
             animate={isOpen ? 'visible' : 'hidden'}
             exit='hidden'
-            onClick={handleClick}
+            onClick={toggleMe}
         >
-            <button className="close-button" onClick={handleClick}><Close /></button>
+            <button className="close-button" onClick={toggleMe}><Close /></button>
 
             <motion.img src={imgSrc} alt="enlarged pic" variants={item} />
             

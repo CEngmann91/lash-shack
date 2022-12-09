@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 
 export default function useDeviceDetect() {
     const [isMobile, setMobile] = useState(false);
@@ -11,7 +11,7 @@ export default function useDeviceDetect() {
         setMobile(mobile);
     }
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         window.addEventListener('resize', handleResize);
 
         return function cleanup() {

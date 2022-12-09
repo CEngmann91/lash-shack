@@ -7,7 +7,7 @@ import { menuItems } from '../../constants/menuItems';
 import DrawerButton from './DrawerButton/DrawerButton';
 import { ShoppingCart } from '../../util/icons';
 import { logo } from '../../util/images';
-import { useScrollLock } from '../../helpers/hooks';
+import { useEscKey, useScrollLock } from '../../helpers/hooks';
 
 const sidebar = {
     open: {
@@ -44,20 +44,28 @@ const item = {
 function Drawer() {
     // const [isOpen, toggleMe] = useToggle({ onOpen, onClose });
 
-    const [isOpen, toggleOpen] = useCycle(false, true);
     const { lockScroll, unlockScroll } = useScrollLock();
+    const { isPressed } = useEscKey();
+    const [ isOpen, toggleOpen ] = useCycle(false, true);
 
     
 
-    const show = () => {
+    if (isPressed)
+        hide();
+
+    function show() {
+        if (isOpen) return
+
+        toggleOpen();
         // Prevents scrolling whilst the menu is visible.
         lockScroll();
-        toggleOpen();
     }
 
-    const hide = () => {
-        unlockScroll();
+    function hide() {
+        if (!isOpen) return
+        
         toggleOpen();
+        unlockScroll();
     }
 
     const toggleVisibility = () => !isOpen ? show() : hide();
@@ -69,7 +77,7 @@ function Drawer() {
         <div className='app__drawer app__desktop-hide'>
             <DrawerButton isOpen={isOpen} onClick={() => toggleVisibility()} />
 
-            <motion.div
+            <motion.aside
                 className={`app__drawer--panel`}
                 variants={sidebar}
                 initial="closed"
@@ -86,7 +94,7 @@ function Drawer() {
                         >{title}</NavbarItem>
                     )}
                 </motion.div>
-            </motion.div>
+            </motion.aside>
         </div>
     )
 }

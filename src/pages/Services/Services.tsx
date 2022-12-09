@@ -1,6 +1,6 @@
 import './Services.scss';
 import React, { useEffect } from 'react'
-import { Page } from '../../components';
+import { ActivityIndicator, Page } from '../../components';
 import moment from 'moment';
 import { Card } from '../../components/Cards';
 import { useShoppinCart } from '../../helpers/hooks';
@@ -75,29 +75,41 @@ const Services: React.FC<iProps> = ({ services, loading, error, ...props }: iPro
 
   return (
     <Page id='services' className='app__services' header='Services'>
+        {loading
+        ?
+        <div className='app__flex app__min-height'>
+          <ActivityIndicator borderColour='rgba(239, 179, 183, 1)' borderSpinColour='rgba(16, 40, 121, 1)' />
+        </div>
+        :
+        error
+          ?
+          <div className='app__flex app__min-height'>
+            {error}
+          </div>
+          :
+          <div className='app__services--list'>
+            {services.map(({ id, name, options }) =>
+              <article key={id} className=''>
+                <h1 className="title">{name}</h1>
+                <div className='options-container'>
+                  {renderOptions(options)}
+                </div>
+              </article>
 
-      <div className='app__services--list'>
-        {services.map(({ id, name, options }) =>
-          <article key={id} className=''>
-            <h1 className="title">{name}</h1>
-            <div className='options-container'>
-              {renderOptions(options)}
-            </div>
-          </article>
 
 
+              // <Card id={id} className='app__half-height border-white border-white-shadow'>
+              //     <h1 className="title">{name}</h1>
+              //   { renderOptions(options) }
+              // </Card>
 
-          // <Card id={id} className='app__half-height border-white border-white-shadow'>
-          //     <h1 className="title">{name}</h1>
-          //   { renderOptions(options) }
-          // </Card>
-
-          // <section key={id}>
-          //   <h1 className="title">{name}</h1>
-          //   { renderOptions(options) }
-          // </section>
-        )}
-      </div>
+              // <section key={id}>
+              //   <h1 className="title">{name}</h1>
+              //   { renderOptions(options) }
+              // </section>
+            )}
+          </div>
+        }
     </Page>
   )
 }

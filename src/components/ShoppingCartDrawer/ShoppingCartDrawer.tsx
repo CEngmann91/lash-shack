@@ -4,9 +4,41 @@ import React from 'react';
 import { motion, useCycle } from 'framer-motion';
 import { ShoppingCart } from '../../util/icons';
 import useDeviceDetect from '../../helpers/hooks/useDeviceDetect';
-import { useScrollLock } from '../../helpers/hooks';
+import { useEscKey, useScrollLock } from '../../helpers/hooks';
 import { ShoppingCartWidget } from '../Widgets';
 
+
+const container = {
+    open: {
+        x: 0,
+        transition: {
+            staggerChildren: 0.07,
+            staggerDirection: 1,
+            duration: 0.5,
+            ease: "easeIn",
+            // type: "spring",
+            // stiffness: 20,
+            // restDelta: 2
+        }
+    },
+    closed: {
+        x: '100vw',
+        transition: {
+            staggerChildren: 0.07,
+            staggerDirection: -1,
+            duration: 0.2,
+            ease: "easeOut",
+            // delay: 0.5,
+            // type: "spring",
+            // stiffness: 400,
+            // damping: 40
+        }
+    }
+}
+const item = {
+    closed: { opacity: 1 },
+    open: { opacity: 0 }
+}
 
 type ShoppingCartDrawerProps = {
     onOpen: () => void;
@@ -17,77 +49,60 @@ function ShoppingCartDrawer({ onOpen, onClose }: ShoppingCartDrawerProps) {
     //     onOpen: () => void, onClose: () => void
     //     ) {
     const { isMobile } = useDeviceDetect();
+    const { isPressed } = useEscKey();
     const { lockScroll, unlockScroll } = useScrollLock();
     const [isOpen, toggleOpen] = useCycle(false, true);
 
 
 
-    const container = {
-        closed: {
-            x: "20px",
-            opacity: 1,
-            // width: 0,
-            transition: {
-                staggerChildren: 0.07,
-                staggerDirection: -1,
-            }
-        },
-        open: {
-            x: isMobile ? '80vw' : '30vw',
-            opacity: 0,
-            // width: '200px',
-            transition: {
-                staggerChildren: 0.07,
-                staggerDirection: 1,
-            }
-        }
+    if (isPressed)
+        hide();
+
+
+    function show() {
+        if (isOpen) return
+
+        onOpen();
+        toggleOpen();
+        // Prevents scrolling whilst the menu is visible.
+        lockScroll();
     }
-    const item = {
-        closed: { opacity: 1 },
-        open: { opacity: 0 }
+
+    function hide() {
+        if (!isOpen) return
+
+        onClose();
+        toggleOpen();
+        unlockScroll();
     }
 
     const toggleVisibility = () => !isOpen ? show() : hide();
 
-    // function toggleView() {
-    //     // toggleOpen();
-    //     const notOpen = !isOpen;
-
-    //     if (notOpen) show();
-    //     else hide();
-    // }
-
-    function show() {
-        onOpen();
-        unlockScroll();
-        toggleOpen();
-    }
-
-    function hide() {
-        onClose();
-        lockScroll();
-        toggleOpen();
-    }
 
 
     return (
         <div className='app__shopping-sidebar'>
-            {/* <div className="app__shopping-sidebar--menuBtn-container">
-                <button onClick={() => toggleView()} data-menuvisible={isOpen}>
-                    <p>X</p> */}
-                    {/* <ShoppingCart /> */}
-                    {/* <div className="indicator" style={{ display: value > 0 ? 'flex' : 'none' }}>
-                        <span data-count={value > 99}>
-                            {value > 99 ? "99+" : value}
-                        </span>
-                    </div> */}
-                    {/* <i /> */}
-                {/* </button>
-            </div> */}
-
 
 
             <motion.aside
+                className={`app__shopping-sidebar--panel`}
+                variants={container}
+                initial="closed"
+                animate={isOpen ? "open" : "closed"}
+                exit='closed'
+            >
+                <motion.div variants={item}>
+                    <p>Insert Content Here</p>
+                    <p>isMobile: {isMobile.toString()}</p>
+                    <p>isOpen: {isOpen.toString()}</p>
+                </motion.div>
+            </motion.aside>
+
+
+
+
+
+            {/* <motion.aside
                 className='app__shopping-sidebar--panel'
                 variants={container}
                 initial="closed"
@@ -108,7 +123,8 @@ function ShoppingCartDrawer({ onOpen, onClose }: ShoppingCartDrawerProps) {
                     
                 <motion.div variants={item}>
                     <p>Insert Content Here</p>
-                    <p>{isMobile.toString()}</p>
+                    <p>isMobile: {isMobile.toString()}</p>
+                    <p>isOpen: {isOpen.toString()}</p>
                 </motion.div>
 
                 <footer>
@@ -116,21 +132,9 @@ function ShoppingCartDrawer({ onOpen, onClose }: ShoppingCartDrawerProps) {
 
                     </span>
                 </footer>
-            </motion.aside>
+            </motion.aside> */}
 
 
-
-            {/* <motion.div
-                className='app__shopping-sidebar--panel'
-                variants={container}
-                initial="closed"
-                animate={isOpen ? "open" : "closed"}
-                exit='closed'
-            >
-                <motion.div variants={item}>
-                    <p>Insert Content Here</p>
-                </motion.div>
-            </motion.div> */}
 
             <ShoppingCartWidget isOpen={isOpen} onOpen={show} onClose={hide} />
         </div>
