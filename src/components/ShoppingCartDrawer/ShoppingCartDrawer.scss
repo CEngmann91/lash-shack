@@ -29,39 +29,13 @@
         z-index: 9;
         // background: rgba(rgba($beige-colour, 0.85), 1);
         // background: linear-gradient(to bottom, $pink-colour, $beige-colour);
-        background: linear-gradient(to bottom, $green-shade-colour, $pink-colour);
-
-        box-shadow: 0 0 20px rgb(128, 128, 128);
-
-        transition: 0.3s ease-in-out;
-    }
-
-
-
-
-    /*
-    &--panel {
-        @media screen and (max-width: 900px) {
-            width: 80vw;
-        }
-        position: fixed;
-        right: 0;
-        top: 0;
-        bottom: 0;
-        width: 30vw;
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-
-        z-index: 5;
-        // background: rgba(rgba($beige-colour, 0.85), 1);
-        // background: linear-gradient(to bottom, $pink-colour, $beige-colour);
         // background: linear-gradient(to bottom, $green-shade-colour, $pink-colour);
         background: $beige-colour;
 
         box-shadow: 0 0 20px rgb(128, 128, 128);
 
         transition: 0.3s ease-in-out;
+
 
 
         header {
@@ -120,7 +94,7 @@
             }
         }
 
-        div {
+        .panel--content {
             flex: 1;
             height: calc(100% - (4.5rem * 2));
             display: flex;
@@ -129,23 +103,7 @@
             align-items: center;
             // margin: 4.5rem 1.4rem;
             gap: 4rem;
-
-            background: blue;
-
-            a {
-                color: $green-shade-colour;
-                text-decoration: none;
-                font-size: 2rem;
-                text-transform: uppercase;
-                font-weight: 500;
-
-                // transition: 0.3s ease-in-out;
-
-                // &:hover {
-                //     // color: $beige-colour;
-                //     // text-shadow: 2px 2px 8px $beige-colour;
-                // }
-            }
+            // background: blue;
         }
 
         footer {
@@ -153,7 +111,28 @@
             justify-content: space-between;
             width: 100%;
             height: 80px;
-            background: green;
+            padding: 1.7rem;
+            // background: green;
+
+
+            span {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                h3 {
+                    font-size: 1.1rem;
+                }
+
+                hr {
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    border: .8px solid rgba($green-shade-colour, 0.4);
+                    margin: 0 1.8rem;
+                }
+            }
         }
-    }*/
+    }
 }
