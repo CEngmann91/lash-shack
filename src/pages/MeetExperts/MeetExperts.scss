@@ -37,7 +37,7 @@
 
 // https://codepen.io/fjfalah/pen/jdGNEr
 @supports (scroll-snap-align: start) {
-    .list {
+    .expert-list {
         @media screen and (max-width: 900px) {
             justify-content: flex-start;
             scroll-snap-type: y mandatory;

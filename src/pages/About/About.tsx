@@ -102,7 +102,7 @@ const About = () => {
     {
       section1: {
         type: SectionType.Text,
-        title: "What To Expect From Us",
+        title: "What To Expect",
         description: "Test description3"
       },
       section2: {
@@ -227,9 +227,11 @@ const About = () => {
     <Page id='about' className='app__about'>
       <div className="app__about--wrapper">
         {articles.map(({ section1, section2 }, index) =>
-          <Card className="card border-white border-white-shadow">
-            { renderArticle(section1, section2) }
-          </Card>
+          <div key={index}>
+            <Card className="card border-white border-white-shadow">
+              { renderArticle(section1, section2) }
+            </Card>
+          </div>
 
           // <div className="card border-white border-white-shadow" key={index}>
           //   { renderArticle(section1, section2) }

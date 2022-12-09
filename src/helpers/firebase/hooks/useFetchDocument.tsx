@@ -22,7 +22,7 @@ export const useFetchDocument = (collectionName: string, documentName: string) =
 
     useEffect(() => {
         fetchDocument();
-    }, [])
+    }, [collectionName, documentName])
 
     return { data, error };
 }

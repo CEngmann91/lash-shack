@@ -4,12 +4,11 @@ import React from 'react'
 import { BOOKING_URL } from '../../constants/constants';
 import NavbarItem from './NavbarItem/NavbarItem';
 import { motion, useScroll, useSpring } from 'framer-motion';
-// import SidebarMenu from '../Drawer/Drawer';
+import { useScroller } from '../../helpers/hooks';
 import { menuItems } from '../../constants/menuItems';
-import useScrollHook from '../../helpers/hooks/useScroll';
 
-const Navbar: React.FC<{}> = () => {
-    const scrolledDown = useScrollHook();
+function Navbar() {
+    const scrolledDown = useScroller();
     const { scrollYProgress } = useScroll();
     const scaleX = useSpring(scrollYProgress, {
         // stiffness: 100,
@@ -20,7 +19,7 @@ const Navbar: React.FC<{}> = () => {
     return (
         <nav className={`navbar-nav ${scrolledDown ? 'navbar-nav--scroll' : ''}`}>
             <motion.div className="progress-bar" style={{ scaleX }} />
-            <div className="navbar-nav--logo">
+            <div className="navbar-nav--logo app__mobile-hide">
                 <NavbarItem to={'/'} onClick={() => { }} idleClassName="link-item" activeClassName="">
                     <img src={logo} />
                 </NavbarItem>
@@ -39,9 +38,7 @@ const Navbar: React.FC<{}> = () => {
                 ))}
             </ul>
 
-            <a href={BOOKING_URL} className={`border-button app__style-effect__shine book-now-button app__mobile-hide`} target="_blank" rel="noreferrer">Book Now</a>
-
-            {/* <SidebarMenu /> */}
+            {/* <a href={BOOKING_URL} className={`border-button app__style-effect__shine book-now-button app__mobile-hide`} target="_blank" rel="noreferrer">Book Now</a> */}
         </nav>
     )
 }

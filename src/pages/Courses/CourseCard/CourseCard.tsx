@@ -1,16 +1,15 @@
 import './CourseCard.scss';
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Card, CardFlip } from '../../../components/Cards';
 import { iSale, Popularity } from '../Courses';
 import { ABT } from '../../../util/images';
-import { ThreeContentButton } from '../../../components';
 
 interface iProps {
     id: number;
     title: string;
 
     // Front
-    frontImg: string;
+    imgSrc: string;
 
     // Back
     description: string;
@@ -19,14 +18,7 @@ interface iProps {
     duration: string;
     popularity?: Popularity;
 }
-const CourseCard: React.FC<iProps> = ({ id, title, frontImg, description, price, sale, duration, popularity, ...props }: iProps) => {
-
-
-
-    // useEffect(() => {
-      
-    // }, [frontImg])
-    
+const CourseCard: React.FC<iProps> = ({ id, title, imgSrc, description, price, sale, duration, popularity, ...props }: iProps) => {
 
 
     function isOnSale(): boolean {
@@ -37,7 +29,7 @@ const CourseCard: React.FC<iProps> = ({ id, title, frontImg, description, price,
         return value.toLocaleString('en-UK', { style: 'currency', currency: 'GBP' });
     }
 
-    function calculateSalePercentage(price: number, salePrice: number): number {
+    /*function calculateSalePercentage(price: number, salePrice: number): number {
         if (salePrice > price) return price;
 
         let value = (salePrice / price);
@@ -62,13 +54,13 @@ const CourseCard: React.FC<iProps> = ({ id, title, frontImg, description, price,
                     </div>
                 );
         }
-    }
+    }*/
 
 
     return (
         <Card className="course-card border-white border-white-shadow">
             <div className="photo">
-                <img className='background' src={frontImg} />
+                <img className='background' src={imgSrc} />
             </div>
 
             <div className="info"

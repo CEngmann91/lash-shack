@@ -1,5 +1,5 @@
 import './TrainingReview.scss';
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { ActivityIndicator, Page } from '../../components';
 import TrainingReviewCard from './TrainingReviewCard/TrainingReviewCard';
 
@@ -12,62 +12,40 @@ export interface iTrainingReview {
 
 interface iProps {
     reviews: iTrainingReview[];
+    loading: boolean;
+    error?: any;
 }
-const TrainingReview: React.FC<iProps> = ({ reviews, ...props }: iProps) => {
-    const [isLoading, setIsLoading] = useState(false);
-    const [error, setError] = useState('');
-    // const [reviews, setReviews] = useState<iTrainingReview[]>([]);
+const TrainingReview: React.FC<iProps> = ({ reviews, loading, error, ...props }: iProps) => {
 
-
-
-    /*const fetchReviews = async() => {
-        setIsLoading(true);
-
-        getDocument(REACT_APP_FIRESTORE_TRAINING_COLLECTION as string,
-            REACT_APP_FIRESTORE_TRAINING_DOCUMENT as string)
-            .then(res => {
-                const array: iTrainingReview[] = res['content'];
-                let sorted = array.sort((a, b) => a.id - b.id);
-                setReviews(sorted);
-
-                setIsLoading(false);
-            })
-            .catch(error => {
-                setIsLoading(false);
-                setError(error);
-                return;
-            });
-    }*/
-
-    if (isLoading) {
-        return (
-            <Page id='training-reviews' className='app__training-review' header='Training Reviews' headerClassName='app__training-review-title page-title-size'>
-                <div className='app__flex app__min-height'>
-                    <ActivityIndicator borderColour='rgba(239, 179, 183, 1)' borderSpinColour='rgba(16, 40, 121, 1)' />
-                </div>
-            </Page>
-        );
-    }
-
+    const renderLoadingActivity = (): React.ReactNode => (
+        <Page id='training-reviews' className='app__training-review' header='Training Reviews' headerClassName='app__training-review-title page-title-size'>
+            <div className='app__flex app__min-height'>
+                <ActivityIndicator borderColour='rgba(239, 179, 183, 1)' borderSpinColour='rgba(16, 40, 121, 1)' />
+            </div>
+        </Page>
+    );
 
     return (
         <Page id='training-reviews' className='app__training-review' header='Training Reviews' headerClassName='app__training-review-title page-title-size'>
-            {error ?
-                <>
-                    <p>Error is: {error}</p>
-
-                </>
+            {loading
+                ?
+                renderLoadingActivity()
                 :
-                <div className="list">
-                    {reviews.map(({ id, name, description }) =>
-                        <TrainingReviewCard
-                            key={id}
-                            id={id}
-                            name={name}
-                            description={description}
-                        />
-                    )}
-                </div>
+                (error ?
+                    <>
+                        <p>Error is: {error}</p>
+                    </>
+                    :
+                    <div className="app__training-review--list">
+                        {reviews.map(({ id, name, description }) =>
+                            <TrainingReviewCard
+                                key={id}
+                                id={id}
+                                name={name}
+                                description={description}
+                            />
+                        )}
+                    </div>)
             }
         </Page>
     )

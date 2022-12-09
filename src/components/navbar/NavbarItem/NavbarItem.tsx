@@ -2,14 +2,14 @@ import './NavbarItem.scss';
 import React, { useCallback } from 'react';
 import { NavLink } from 'react-router-dom';
 
-interface iProps {
+type NavbarItemProps = {
     to: string;
     children: React.ReactNode;
     onClick: (e?: React.MouseEvent<HTMLElement>) => void;
     idleClassName?: string;
     activeClassName?: string;
 }
-const NavbarItem: React.FC<iProps> = ({ to, onClick, children, idleClassName = "link-item", activeClassName = "link-item-active", ...props}: iProps) => {
+function NavbarItem({ to, onClick, children, idleClassName = "link-item", activeClassName = "link-item-active" }: NavbarItemProps) {
     const handleClick = useCallback(onClick, []);
 
     return (

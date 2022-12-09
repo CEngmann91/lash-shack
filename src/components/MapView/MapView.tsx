@@ -2,15 +2,14 @@ import './MapView.scss';
 import React, { useEffect, useState } from 'react'
 import MyIFrame from '../MyIFrame/MyIFrame';
 
-interface iProps {
-  source: string;
-  className?: string;
+type MapViewProps = {
+  source: string
+  className?: string
 }
-const MapView: React.FC<iProps> = ({ source, className, ...props }: iProps) => {
+function MapView({ source, className }: MapViewProps) {
 
   return (
     <MyIFrame mainClassName={`map-responsive ${className}`} source={source} />
   );
 }
-
-export default MapView
+export default MapView;

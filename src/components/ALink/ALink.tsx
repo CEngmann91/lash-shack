@@ -1,12 +1,12 @@
 import React from 'react'
 
-interface iProp {
+type ALinkProp = {
   className?: string;
   path?: string;
   children?: React.ReactNode;
   onClick: (e?: React.MouseEvent<HTMLElement>) => void;
 }
-const ALink: React.FC<iProp> = ({ children, path, className, onClick, ...props }: iProp) => {
+function ALink({ children, path, className, onClick }: ALinkProp) {
   return (
     <a href={path}
       className={className}

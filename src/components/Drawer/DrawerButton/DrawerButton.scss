@@ -5,13 +5,14 @@
     --drawer-menu-button-scale: 35px;
 }
 
-.menuBtn-container {
+.sidebar-button-container {
     position: absolute;
     display: inline-block;
     align-items: center;
     justify-content: center;
-    right: 18px;
-    top: 13px;
+    left: 0;
+    top: 0;
+    transform: translate(15px, 15px);
     // bottom: 0;
     z-index: 10;
 

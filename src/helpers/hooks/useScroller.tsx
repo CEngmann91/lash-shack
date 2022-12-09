@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const useScroll = () => {
+export const useScroller = () => {
     const [scrolledDown, setScrolledDown] = useState(false);
 
     const onScroll = () => {
@@ -21,4 +21,4 @@ const useScroll = () => {
 
     return scrolledDown;
 }
-export default useScroll
+// export default useScroll

@@ -6,7 +6,7 @@ import { CONTACT } from '../../constants/constants';
 import { logo } from '../../util/images';
 
 
-interface iSocial {
+type iSocial = {
   id: string;
   component: React.ReactNode;
   to: string;
@@ -34,7 +34,7 @@ const socials: iSocial[] = [
   }
 ]
 
-const Footer: React.FC<{}> = () => {
+function Footer() {
 
   return (
     <div className='app__footer'>

@@ -5,9 +5,9 @@ import NavbarItem from '../navbar/NavbarItem/NavbarItem';
 import { motion, useCycle } from 'framer-motion';
 import { menuItems } from '../../constants/menuItems';
 import DrawerButton from './DrawerButton/DrawerButton';
-import { useScrollLock } from '../../helpers/hooks/useScrollLock';
 import { ShoppingCart } from '../../util/icons';
 import { logo } from '../../util/images';
+import { useScrollLock } from '../../helpers/hooks';
 
 const sidebar = {
     open: {
@@ -41,11 +41,13 @@ const item = {
     open: { opacity: 1 }
 }
 
-const Drawer: React.FC = () => {
+function Drawer() {
+    // const [isOpen, toggleMe] = useToggle({ onOpen, onClose });
+
     const [isOpen, toggleOpen] = useCycle(false, true);
     const { lockScroll, unlockScroll } = useScrollLock();
-    // const [menuVisible, setMenuVisible] = useState(false);
 
+    
 
     const show = () => {
         // Prevents scrolling whilst the menu is visible.
@@ -58,14 +60,14 @@ const Drawer: React.FC = () => {
         toggleOpen();
     }
 
-    // const toggleVisibility = () => !isOpen ? show() : hide();
+    const toggleVisibility = () => !isOpen ? show() : hide();
 
 
 
 
     return (
         <div className='app__drawer app__desktop-hide'>
-            <DrawerButton isOpen={isOpen} onClick={() => toggleOpen()} />
+            <DrawerButton isOpen={isOpen} onClick={() => toggleVisibility()} />
 
             <motion.div
                 className={`app__drawer--panel`}
@@ -84,11 +86,6 @@ const Drawer: React.FC = () => {
                         >{title}</NavbarItem>
                     )}
                 </motion.div>
-
-                {/* <footer>
-                    <button>1</button>
-                    <button><ShoppingCart /></button>
-                </footer> */}
             </motion.div>
         </div>
     )

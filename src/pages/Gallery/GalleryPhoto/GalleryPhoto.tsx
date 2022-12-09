@@ -1,9 +1,7 @@
 import './GalleryPhoto.scss';
-import React, { MouseEventHandler, useCallback, useEffect, useState } from 'react'
-import { motion } from 'framer-motion';
+import React, { useState } from 'react'
 import { ActivityIndicator } from '../../../components';
 import { Card } from '../../../components/Cards';
-// import ImageLoad from '../../../components/ImageLoad/ImageLoad';
 
 interface iProps {
   id: number;
@@ -22,13 +20,14 @@ const GalleryPhoto: React.FC<iProps> = ({ id, imgSource, onClick, ...props }: iP
   const [isLoading, setIsLoading] = useState(true);
   // const handleClick = useCallback(() => onClick, [])
 
-  useEffect(() => {
-
-  }, [imgSource])
-
 
   return (
-    <Card className='gallery-photo gallery-photo-shadow' onClick={onClick}>
+    <Card className='gallery-photo' onClick={onClick}>
+      {isLoading &&
+        <div className='app__absolute-center' style={{ height: '100%' }}>
+          <ActivityIndicator borderColour='rgba(239, 179, 183, 1)' borderSpinColour='rgba(16, 40, 121, 1)' />
+        </div>
+      }
       <img src={imgSource} alt="" onLoad={() => setIsLoading(false)}/>
     </Card>
 
@@ -48,13 +47,6 @@ const GalleryPhoto: React.FC<iProps> = ({ id, imgSource, onClick, ...props }: iP
         <img src={imgSource} alt="" onLoad={() => setIsLoading(false)}/>
       </motion.li> */
     // </>
-
-
-
-
-    // <li className='gallery-photo' onClick={onClick}>
-    //   <ImageLoad src={imgSource} placeholder="" alt="" />
-    // </li>
   )
 }
 

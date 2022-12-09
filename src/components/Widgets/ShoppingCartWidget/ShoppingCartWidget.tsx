@@ -1,20 +1,32 @@
 import './ShoppingCartWidget.scss';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ShoppingCart } from '../../../util/icons';
-import useScroll from '../../../helpers/hooks/useScroll';
+import { useScroller, useShoppinCart } from '../../../helpers/hooks';
 
-const ShoppingCartWidget: React.FC = () => {
-    const visible = useScroll();
-    const [count, setCount] = useState<number>(0);
+type ShoppingCartWidgetProps = {
+    isOpen: boolean;
+    onOpen: () => void;
+    onClose: () => void;
+}
+function ShoppingCartWidget({ isOpen, onOpen, onClose }: ShoppingCartWidgetProps) {
+    const visible = useScroller();
+    const { value } = useShoppinCart();
+
+
+    // useEffect(() => {
+    //     alert(`ShoppingCartWidget() . widget update ${value}`)
+    // }, [value])
+
+
+
 
     return (
-        <div className="shopping-cart-widget" data-visible={visible}>
-            <div className='shopping-cart-widget--content' onClick={() => setCount(prev => prev + 1)}>
+        <div className="shopping-cart-widget" data-visible={value > 0}>
+            <div className='shopping-cart-widget--content' onClick={() => isOpen ? onClose() : onOpen()}>
                 <ShoppingCart />
-                <div className="indicator" style={{ display: count > 0 ? 'flex' : 'none' }}>
-                    <span data-count={count>99}>
-                        {count > 99 ? "99+" : count}
-                        {/* {visible.toString()} */}
+                <div className="indicator" style={{ display: value > 0 ? 'flex' : 'none' }}>
+                    <span data-count={value > 99}>
+                        {value > 99 ? "99+" : value}
                     </span>
                 </div>
             </div>
