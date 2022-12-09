@@ -52,7 +52,7 @@ const Courses: React.FC<iProps> = ({ courseList, loading, error, ...props }: iPr
             {error}
           </div>
           :
-          <main>
+          <>
             <div className="cards">
               {courseList.length !== 0 && courseList.map((item, index) => {
                 const { title, description, img, price, sale, duration, popularity } = item;
@@ -76,7 +76,7 @@ const Courses: React.FC<iProps> = ({ courseList, loading, error, ...props }: iPr
             <p></p>
 
             <img className='abt' src={ABT} alt="" />
-          </main>
+          </>
       }
     </Page >
   )
