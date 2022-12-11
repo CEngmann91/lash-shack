@@ -1,9 +1,8 @@
 import './ScrollTopArrow.scss';
-import React, { useState, useEffect } from 'react';
 import { UpArrow } from '../../../util/icons';
 import { useScroller } from '../../../helpers/hooks';
 
-const ScrollTopArrow: React.FC = () => {
+export function ScrollTopArrow() {
     const visible = useScroller();
 
 

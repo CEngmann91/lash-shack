@@ -1,10 +1,20 @@
 import moment from "moment";
 
 
-export function getDateFormatted(date: string) : string {
+
+const CURRENCY_FORMATTER = new Intl.NumberFormat(undefined, {
+    currency: "GBP",
+    style: "currency",
+})
+export function formatCurrency(number: number) {
+    return CURRENCY_FORMATTER.format(number)
+}
+
+
+export function getDateFormatted(date: string): string {
     return getDate(date, 'DD/MM/YYYY');
 }
-export function getDate(date: string, dateFormat: string) : string {
+export function getDate(date: string, dateFormat: string): string {
     return moment(date, dateFormat).fromNow();
 }
 

@@ -49,7 +49,7 @@ export const useServices = () => {
     const fetchServices = async () => {
         setLoadingServices(true);
 
-        getDocument(REACT_APP_FIRESTORE_SERVICES_COLLECTION as string,
+        await getDocument(REACT_APP_FIRESTORE_SERVICES_COLLECTION as string,
             REACT_APP_FIRESTORE_SERVICES_DOCUMENT as string)
             .then(res => {
                 const result: iService[] = res['catergory'];

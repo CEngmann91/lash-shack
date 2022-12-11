@@ -1,0 +1,197 @@
+@import '../../res/colours.scss';
+
+.app__shopping-sidebar {
+    display: flex;
+    justify-content: flex-end;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    right: 0;
+    z-index: 10;
+
+    // bottom: 0;
+    // background: red;
+
+
+
+
+    &--panel {
+        @media screen and (max-width: 900px) {
+            width: 80vw;
+        }
+        position: fixed;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: 30vw;
+        z-index: 9;
+        display: flex;
+        flex-direction: column;
+        padding: 0 1.2rem;
+        // background: rgba(rgba($beige-colour, 0.85), 1);
+        // background: linear-gradient(to bottom, $pink-colour, $beige-colour);
+        // background: linear-gradient(to bottom, $green-shade-colour, $pink-colour);
+        background: $beige-colour;
+        box-shadow: 0 0 20px rgb(128, 128, 128);
+
+        transition: 0.3s ease-in-out;
+
+
+
+
+        header {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            height: 10vh;
+            // background: red;
+            // padding: 1.7rem;
+
+            span {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                h1 {
+                    font-size: 1.1rem;
+                }
+
+                hr {
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    border: .8px solid rgba($green-shade-colour, 0.4);
+                    // margin: 0 1.8rem;
+                }
+            }
+
+            .shopping-close-button {
+                position: fixed;
+                top: 0;
+                right: 0;
+                transform: translate(-35px, 13px);
+
+                display: flex;
+                width: 35px;
+                height: 35px;
+                justify-content: center;
+                align-items: center;
+                // border: none;
+                border-radius: 50px;
+                box-shadow: 0 5px 10px rgba($green-shade-colour, 0.5);
+                padding: 0.5rem;
+
+
+                svg {
+                    width: 100%;
+                    height: 100%;
+                }
+
+                // &:hover {
+                //     cursor: pointer;
+                // }
+            }
+        }
+
+        .panel--content {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            justify-content: flex-start;
+            // padding: .5rem 0;
+            height: 75vh;
+            overflow-y: scroll;
+            gap: 1.2rem;
+            padding: 1rem 0;
+
+            // background: blue;
+
+
+            .basket-item {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                height: auto;
+                box-shadow: 0px 0px 0px;
+                background: lightgray;
+                padding: .5rem;
+                // background: $green-shade-colour;
+            }
+        }
+
+        footer {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            height: 15vh;
+            // background: green;
+
+
+            .shopping-basket-drawer-buttons {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-evenly;
+                width: 100%;
+                height: 7vh;
+                gap: 0.5rem;
+
+                button {
+                    width: 100%;
+                    color: black;
+                }
+            }
+
+            .total-content {
+                position: relative;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                width: 100%;
+                // background: blue;
+                height: 60px;
+
+
+                span {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    hr {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        border: .8px solid rgba($green-shade-colour, 0.4);
+                    }
+
+                    h3 {
+                        font-size: 1.1rem;
+                        // font-weight: bolder;
+                        // font-style: italic;
+                    }
+                }
+            }
+
+            .cards-used-to-pay {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                height: 25px;
+                width: 100%;
+                padding-bottom: 5px;
+                gap: 5px;
+                // background: red;
+
+
+                img {
+                    object-fit: contain;
+                    height: 100%;
+                }
+            }
+        }
+    }
+}

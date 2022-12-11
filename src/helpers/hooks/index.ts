@@ -5,7 +5,7 @@ export { useCounter } from './useCounter';
 export { useScroller } from './useScroller';
 export { useScrollLock } from './useScrollLock';
 
-export { useShoppinCart } from './useShoppinCart';
+export { useShoppingBasket } from './useShoppingBasket';
 
 export { useCourses } from './useCourses';
 export { useGalleryPhotos } from './useGalleryPhotos';

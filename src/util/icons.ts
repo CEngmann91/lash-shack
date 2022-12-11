@@ -1,14 +1,14 @@
-import { BsTwitter, BsStarFill, BsFillArrowUpCircleFill, BsFillPencilFill, BsFillTelephoneFill } from 'react-icons/bs';
+import { BsTwitter, BsStarFill, BsFillArrowUpCircleFill, BsFillPencilFill, BsFillTelephoneFill, BsFillBasketFill, BsTrash } from 'react-icons/bs';
 import { FaFacebookF, FaRegEye, FaQuoteRight } from 'react-icons/fa';
 import { AiFillCloseCircle, AiFillInstagram } from 'react-icons/ai';
 import { MdEmail, MdOutlineArrowBackIosNew, MdOutlineArrowForwardIos } from 'react-icons/md';
 import { GiHamburgerMenu } from 'react-icons/gi';
-import { FiShoppingCart } from 'react-icons/fi';
 
 export {
     AiFillCloseCircle as Close,
     GiHamburgerMenu as Menu,
-    FiShoppingCart as ShoppingCart,
+    BsFillBasketFill as ShoppingBasket,
+    BsTrash as Bin,
 
     AiFillInstagram as Instagram,
     BsTwitter as Twitter,
