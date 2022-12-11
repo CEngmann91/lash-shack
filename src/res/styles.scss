@@ -106,7 +106,6 @@
     @media screen and (max-width: 900px) {
         // display: none;
     }
-
     display: inline-block;
     padding: 0.3em 1.2em;
     // margin: 0 0.3em 0.3em 0;
@@ -118,7 +117,8 @@
     border-radius: 20px;
     overflow: hidden;
 
-    border: 0.1em solid white;
+    // border: 0.1em solid white;
+    box-shadow: 0 5px 10px rgba($green-shade-colour, 0.5);
     color: white;
 
     transition: 0.2s ease-in;

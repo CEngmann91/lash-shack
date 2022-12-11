@@ -3,10 +3,11 @@ import React, { useEffect } from 'react'
 import { ActivityIndicator, Page } from '../../components';
 import moment from 'moment';
 import { Card } from '../../components/Cards';
-import { useShoppinCart } from '../../helpers/hooks';
+import { useShoppingBasket } from '../../helpers/hooks';
 
 export interface iServiceOption {
   active: boolean;
+  id: string;
   name: string;
   price: number;
   duration: number;
@@ -14,7 +15,7 @@ export interface iServiceOption {
 
 export interface iService {
   active: boolean;
-  id: number;
+  id: string;
   name: string;
   options: iServiceOption[];
 }
@@ -25,7 +26,7 @@ interface iProps {
   error?: any;
 }
 const Services: React.FC<iProps> = ({ services, loading, error, ...props }: iProps) => {
-  const { addToBasket, removeFromBasket, clearBasket, getCount } = useShoppinCart();
+  const { addToBasket, decreaseFromBasket, removeFromBasket } = useShoppingBasket();
 
 
   // https://stackoverflow.com/questions/60044966/moment-js-convert-x-minutes-to-y-hours-z-minutes
@@ -39,43 +40,41 @@ const Services: React.FC<iProps> = ({ services, loading, error, ...props }: iPro
     return time.format(`h [${hourFormatStr}], mm [${minuteFormatStr}]`);
   }
 
-  const renderOption = (option: iServiceOption) => {
-    const { name, price, duration } = option;
-
-    // https://stackoverflow.com/questions/60044966/moment-js-convert-x-minutes-to-y-hours-z-minutes
-    const timespan = moment.utc(
-      moment.duration(duration, "minutes")
-        .asMilliseconds()
-    )
-
-    return (
-      <Card className='option'>
-        <div className='option-left-side'>
-          <p className='option--name'>{name}</p>
-          <div style={{ display: 'flex', flexDirection: 'row', gap: '1rem' }}>
-            {duration > 0 ? <p className='option--duration'>{formatTime(timespan)}</p> : null}
-            {/* <a href=''>Show Details</a> */}
-            {/* <p className='option--more-details'>Show Details</p> */}
-          </div>
-        </div>
-
-        <div className='option-right-side'>
-          <p className='option-right-side--price'>£{price}</p>
-          <button className='border-button option-right-side-select-button' onClick={() => addToBasket("8fuyafjw0af9if")}>
-            Select
-          </button>
-        </div>
-      </Card>
-    )
-  }
+  const timespan = (duration: number) => moment.utc(
+    moment.duration(duration, "minutes")
+      .asMilliseconds()
+  )
 
   const renderOptions = (options: iServiceOption[]) => (
-    options.map(item => renderOption(item))
+    // options.map((item, index) => renderOption(index, item))
+    options.map((item, index) => {
+      const { id, name, price, duration } = item;
+
+      return (
+        <Card key={index} className='option'>
+          <div className='option-left-side'>
+            <p className='option--name'>{name}</p>
+            <div style={{ display: 'flex', flexDirection: 'row', gap: '1rem' }}>
+              {duration > 0 ? <p className='option--duration'>{formatTime(timespan(duration))}</p> : null}
+              {/* <a href=''>Show Details</a> */}
+              {/* <p className='option--more-details'>Show Details</p> */}
+            </div>
+          </div>
+
+          <div className='option-right-side'>
+            <p className='option-right-side--price'>£{price}</p>
+            <button className='border-button option-right-side-select-button' onClick={() => addToBasket(id, price)}>
+              Select
+            </button>
+          </div>
+        </Card>
+      )
+    })
   )
 
   return (
     <Page id='services' className='app__services' header='Services'>
-        {loading
+      {loading
         ?
         <div className='app__flex app__min-height'>
           <ActivityIndicator borderColour='rgba(239, 179, 183, 1)' borderSpinColour='rgba(16, 40, 121, 1)' />
@@ -109,7 +108,7 @@ const Services: React.FC<iProps> = ({ services, loading, error, ...props }: iPro
               // </section>
             )}
           </div>
-        }
+      }
     </Page>
   )
 }

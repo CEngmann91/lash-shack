@@ -5,7 +5,6 @@ import NavbarItem from '../navbar/NavbarItem/NavbarItem';
 import { motion, useCycle } from 'framer-motion';
 import { menuItems } from '../../constants/menuItems';
 import DrawerButton from './DrawerButton/DrawerButton';
-import { ShoppingCart } from '../../util/icons';
 import { logo } from '../../util/images';
 import { useEscKey, useScrollLock } from '../../helpers/hooks';
 
@@ -63,7 +62,7 @@ function Drawer() {
 
     function hide() {
         if (!isOpen) return
-        
+
         toggleOpen();
         unlockScroll();
     }
@@ -89,7 +88,7 @@ function Drawer() {
                 <motion.div variants={item}>
                     {menuItems.map(({ id, title, to }) =>
                         <NavbarItem
-                            key={id} to={to} onClick={hide}
+                            key={id} to={to} onClick={() => toggleVisibility()}
                             idleClassName="" activeClassName="app__drawer--panel-active"
                         >{title}</NavbarItem>
                     )}

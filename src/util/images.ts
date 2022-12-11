@@ -6,6 +6,10 @@ export { default as Shop } from '../assets/images/Shop.jpg';
 export { default as Training } from '../assets/images/Training.jpg';
 export { default as ABT } from '../assets/images/ABT.png';
 
+export { default as Payment_AmericanExpress } from '../assets/images/payment/american-express.png';
+export { default as Payment_Mastercard } from '../assets/images/payment/mastercard.png';
+export { default as Payment_Visa } from '../assets/images/payment/visa.png';
+
 
 // Landing
 export { default as Landing0 } from '../assets/images/landing/Landing0.jpg';
