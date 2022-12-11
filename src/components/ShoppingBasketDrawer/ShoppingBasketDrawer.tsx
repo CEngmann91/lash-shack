@@ -1,13 +1,13 @@
 import './ShoppingBasketDrawer.scss';
 import '../../res/styles.scss';
-import React from 'react';
+import React, { useState } from 'react';
 import { motion, useCycle } from 'framer-motion';
 import useDeviceDetect from '../../helpers/hooks/useDeviceDetect';
 import { useEscKey, useScrollLock } from '../../helpers/hooks';
 import ShoppingBasketDrawerButton from './ShoppingBasketDrawerButton/ShoppingBasketDrawerButton';
 import { useShoppingBasketContext } from '../../providers/ShoppingBasketProvider';
 import { iService, iServiceOption } from '../../pages/Services/Services';
-import { Bin, Information } from '../../util/icons';
+import { Bin, Information, LeftArrow } from '../../util/icons';
 import { formatCurrency } from '../../constants/funcs';
 import { Payment_AmericanExpress, Payment_Mastercard, Payment_Visa } from '../../util/images';
 import ShoppingBasketItem from './ShoppingBasketItem/ShoppingBasketItem';
@@ -46,6 +46,7 @@ function ShoppingBasketDrawer({ services }: iProps) {
     const { lockScroll, unlockScroll } = useScrollLock();
     const { basketItems, basketQuantity, emptyBasket, basketTotal, removeFromBasket, openBasket, closeBasket } = useShoppingBasketContext();
     const [isOpen, toggleOpen] = useCycle(false, true);
+    const [isShowingPatchTestInfo, setIsShowingPatchTestInfo] = useState(false);
 
 
 
@@ -58,6 +59,7 @@ function ShoppingBasketDrawer({ services }: iProps) {
     function show() {
         if (isOpen) return;
 
+        setIsShowingPatchTestInfo(false);
         // Prevents scrolling whilst the menu is visible.
         lockScroll();
         toggleOpen();
@@ -67,27 +69,19 @@ function ShoppingBasketDrawer({ services }: iProps) {
     function hide() {
         if (!isOpen) return;
 
+        setIsShowingPatchTestInfo(false);
         unlockScroll();
         toggleOpen();
         closeBasket();
     }
 
-    // const getSerivceByID = (id: string) => {
-    //     services.forEach(service => {
-    //         const item = service.options.find(item => item.id === id);
-    //         return item;
-    //     });
-    // }
-
-
-    function findById(id: string) : iServiceOption {
+    function getSerivceOptionByID(id: string): iServiceOption {
         let option;
         for (const item of services) {
-            if (item.options?.length)
-            {
+            if (item.options?.length) {
                 for (option of item.options)
                     if (option.id === id)
-                    return option;
+                        return option;
             }
         }
         return option as iServiceOption;
@@ -105,7 +99,14 @@ function ShoppingBasketDrawer({ services }: iProps) {
             >
                 <header>
                     <span>
-                        <h1>Your Basket</h1>
+                        {!isShowingPatchTestInfo ?
+                            <h1>Your Basket</h1>
+                            :
+                            <button className='path-test-close-button' onClick={() => setIsShowingPatchTestInfo(false)}>
+                                <LeftArrow />
+                            </button>
+                            
+                        }
                         <hr />
                     </span>
                     {/* <span>
@@ -122,54 +123,57 @@ function ShoppingBasketDrawer({ services }: iProps) {
                     :
                     <>
                         <motion.div variants={item} className='panel--content'>
-                            {/* <p>{JSON.stringify(basketItems)}</p> */}
-                            {basketItems.map(({ id, quantity }) => {
-                                const item: iServiceOption = findById(id);
-                                if (item) {
-                                    const { name, price } = item;
-    
-                                    return (
-                                        // ShoppingBasketItem({ id, quantity, name, price })
-                                        
-                                        <Card className='basket-item'>
-                                            <div className="item-content">
-                                                <label>{name}</label>
-                                                <label>{formatCurrency(price * quantity)}</label>
-                                                {/* <label>quantity: {quantity}</label> */}
-                                            </div>
-                                            <p>{quantity}</p>
-                                            <div className='item-remove-button'>
-                                                <button className='' onClick={() => removeFromBasket(id)}><Bin /></button>
-                                            </div>
-                                        </Card>
-                                    )
-                                }
-                            })}
+                            {isShowingPatchTestInfo ?
+                                <div className='app__flex'>
+
+                                    <p className='new-line'>{`To make sure your skin doesn’t react to the products used in your treatment, please book a patch test for at least 48 hours before your appointment.
+                                        \nAlready had one in the past 6 months at this salon? You might not need to do it again (but please check with the salon to be sure)`}.
+                                    </p>
+
+                                    <div className='patch-test-confirm-button'>
+                                        <button className='border-button' onClick={() => setIsShowingPatchTestInfo(false)}>I Understand</button>
+                                    </div>
+                                </div>
+                                :
+                                (basketItems.map(({ id, quantity }) => {
+                                    const item: iServiceOption = getSerivceOptionByID(id);
+                                    if (item) {
+                                        const { name, price } = item;
+
+                                        return (
+                                            // ShoppingBasketItem({ id, quantity, name, price })
+
+                                            <Card className='basket-item'>
+                                                <div className="item-content">
+                                                    <label>{name}</label>
+                                                    <label>{formatCurrency(price * quantity)}</label>
+                                                    {/* <label>quantity: {quantity}</label> */}
+                                                </div>
+                                                <p>{quantity}</p>
+                                                <div className='item-remove-button'>
+                                                    <button className='' onClick={() => removeFromBasket(id)}><Bin /></button>
+                                                </div>
+                                            </Card>
+                                        )
+                                    }
+                                }))
+                            }
                         </motion.div>
 
-                        {/* <div className='app__flex'>
-                            <button className='' onClick={emptyBasket}>
-                                <Bin />
-                            </button>
-                        </div> */}
-
-                        <div className='patch-test'>
-                            <span className="title">
-                                <Information />
-                                <label>You may need a patch test.</label>
-                            </span>
-                            <span className="more-info">
-                                <button className=''>
-                                    More Info
-                                </button>
-                            </span>
-                        </div>
+                        {isShowingPatchTestInfo ?
+                            null
+                            :
+                            <div className='patch-test-options'>
+                                <span className="title"><Information /><label>You may need a patch test.</label></span>
+                                <span className="more-info">
+                                    <button className='' onClick={() => setIsShowingPatchTestInfo(true)}>More Info</button>
+                                </span>
+                            </div>
+                        }
 
                         <footer>
                             <div className='shopping-basket-drawer-buttons'>
-                                <button className=''>
-                                    Choose Time
-                                </button>
+                                <button className=''>Choose Time</button>
                                 <button className='' onClick={emptyBasket}>
                                     {/* <Bin /> */}
                                     Empty Basket

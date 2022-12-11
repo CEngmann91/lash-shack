@@ -1,4 +1,4 @@
-import { BsTwitter, BsStarFill, BsFillArrowUpCircleFill, BsFillPencilFill, BsFillTelephoneFill, BsFillBasketFill, BsTrash } from 'react-icons/bs';
+import { BsTwitter, BsStarFill, BsFillArrowUpCircleFill, BsFillPencilFill, BsFillTelephoneFill, BsFillBasketFill, BsTrash, BsArrowLeftCircle } from 'react-icons/bs';
 import { FaFacebookF, FaRegEye, FaQuoteRight } from 'react-icons/fa';
 import { AiFillCloseCircle, AiFillInstagram } from 'react-icons/ai';
 import { MdEmail, MdOutlineArrowBackIosNew, MdOutlineArrowForwardIos } from 'react-icons/md';
@@ -20,6 +20,7 @@ export {
 
     BsFillArrowUpCircleFill as UpArrow,
     MdOutlineArrowBackIosNew as LeftArrow,
+    BsArrowLeftCircle as LeftRoundArrow,
     MdOutlineArrowForwardIos as RightArrow,
     BsStarFill as Star,
     
