@@ -3,10 +3,11 @@ import { FaFacebookF, FaRegEye, FaQuoteRight } from 'react-icons/fa';
 import { AiFillCloseCircle, AiFillInstagram } from 'react-icons/ai';
 import { MdEmail, MdOutlineArrowBackIosNew, MdOutlineArrowForwardIos } from 'react-icons/md';
 import { GiHamburgerMenu } from 'react-icons/gi';
-import { IoIosInformationCircleOutline } from 'react-icons/io';
+import { IoIosInformationCircleOutline, IoIosCheckmarkCircle } from 'react-icons/io';
 
 export {
     IoIosInformationCircleOutline as Information,
+    IoIosCheckmarkCircle as RoundCheckmark,
     AiFillCloseCircle as Close,
     GiHamburgerMenu as Menu,
     BsFillBasketFill as ShoppingBasket,
