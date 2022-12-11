@@ -2,7 +2,6 @@ import './Landing.scss';
 import React from 'react';
 import { Eye, Pencil, Star } from '../../util/icons';
 import { Page } from '../../components';
-import { Shop } from '../../util/images';
 
 const Landing = () => {
 
@@ -10,14 +9,9 @@ const Landing = () => {
   return (
     <Page id='home' className='app__landing app__flex' header=''>
       <div className="h-content app__flex">
-        {/* <img src={Shop} alt="" /> */}
         <div className="text-logo">
           <h1 className='head-text left'>Lash</h1><h1 className='head-text right'>Shack</h1>
         </div>
-
-        {/* <div style={{ backgroundColor: '', width: '50%', height: '50%' }}>
-
-        </div> */}
         
         <div className='heading app__flex'>
           <h3 className=''>Beauty Salon</h3>

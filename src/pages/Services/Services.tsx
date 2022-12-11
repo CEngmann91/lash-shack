@@ -1,5 +1,5 @@
 import './Services.scss';
-import React, { useEffect } from 'react'
+import React from 'react'
 import { ActivityIndicator, Page } from '../../components';
 import moment from 'moment';
 import { Card } from '../../components/Cards';
@@ -26,7 +26,7 @@ interface iProps {
   error?: any;
 }
 const Services: React.FC<iProps> = ({ services, loading, error }: iProps) => {
-  const { addToBasket, decreaseFromBasket, removeFromBasket } = useShoppingBasket();
+  const { addToBasket } = useShoppingBasket();
 
 
   // https://stackoverflow.com/questions/60044966/moment-js-convert-x-minutes-to-y-hours-z-minutes
