@@ -7,7 +7,7 @@ import { useEscKey, useScrollLock } from '../../helpers/hooks';
 import ShoppingBasketDrawerButton from './ShoppingBasketDrawerButton/ShoppingBasketDrawerButton';
 import { useShoppingBasketContext } from '../../providers/ShoppingBasketProvider';
 import { iService, iServiceOption } from '../../pages/Services/Services';
-import { Bin } from '../../util/icons';
+import { Bin, Information } from '../../util/icons';
 import { formatCurrency } from '../../constants/funcs';
 import { Payment_AmericanExpress, Payment_Mastercard, Payment_Visa } from '../../util/images';
 import ShoppingBasketItem from './ShoppingBasketItem/ShoppingBasketItem';
@@ -95,7 +95,7 @@ function ShoppingBasketDrawer({ services }: iProps) {
 
 
     return (
-        <div className='app__shopping-sidebar'>
+        <div className={`app__shopping-sidebar ${isOpen ? "app__shopping-sidebar-full" : ""}`}>
             <motion.aside
                 className={`app__shopping-sidebar--panel`}
                 variants={container}
@@ -129,23 +129,22 @@ function ShoppingBasketDrawer({ services }: iProps) {
                                     const { name, price } = item;
     
                                     return (
-                                        <div className='basket-item'>
-                                            <label>{name}</label>
-                                            <label>{formatCurrency(price)}</label>
-                                            <label>quantity: {quantity}</label>
-                                            <button className='' onClick={() => removeFromBasket(id)}><Bin /></button>
-                                        </div>
                                         // ShoppingBasketItem({ id, quantity, name, price })
+                                        
+                                        <Card className='basket-item'>
+                                            <div className="item-content">
+                                                <label>{name}</label>
+                                                <label>{formatCurrency(price * quantity)}</label>
+                                                {/* <label>quantity: {quantity}</label> */}
+                                            </div>
+                                            <p>{quantity}</p>
+                                            <div className='item-remove-button'>
+                                                <button className='' onClick={() => removeFromBasket(id)}><Bin /></button>
+                                            </div>
+                                        </Card>
                                     )
                                 }
                             })}
-
-
-
-
-                            {/* <p>Insert Content Here</p>
-                            <p>isMobile: {isMobile.toString()}</p>
-                            <p>isOpen: {isOpen.toString()}</p> */}
                         </motion.div>
 
                         {/* <div className='app__flex'>
@@ -154,14 +153,26 @@ function ShoppingBasketDrawer({ services }: iProps) {
                             </button>
                         </div> */}
 
+                        <div className='patch-test'>
+                            <span className="title">
+                                <Information />
+                                <label>You may need a patch test.</label>
+                            </span>
+                            <span className="more-info">
+                                <button className=''>
+                                    More Info
+                                </button>
+                            </span>
+                        </div>
 
                         <footer>
                             <div className='shopping-basket-drawer-buttons'>
                                 <button className=''>
-                                    Check Out Now
+                                    Choose Time
                                 </button>
                                 <button className='' onClick={emptyBasket}>
-                                    <Bin />
+                                    {/* <Bin /> */}
+                                    Empty Basket
                                 </button>
                             </div>
 
@@ -176,51 +187,17 @@ function ShoppingBasketDrawer({ services }: iProps) {
                                 </span>
                             </div>
 
-                            <div className='cards-used-to-pay app__flex'>
+                            <span className='cards-used-to-pay app__flex'>
                                 <img src={Payment_Visa} />
                                 <img src={Payment_Mastercard} />
                                 <img src={Payment_AmericanExpress} />
-                            </div>
+                            </span>
                         </footer>
                     </>
                 }
             </motion.aside>
 
             <ShoppingBasketDrawerButton value={basketQuantity} isOpen={isOpen} onClick={() => toggleVisibility()} />
-
-
-
-            {/* <motion.aside
-                className='app__shopping-sidebar--panel'
-                variants={container}
-                initial="closed"
-                animate={isOpen ? "open" : "closed"}
-                exit='closed'
-            >
-                <header>
-                    <span>
-                        <h1>Your Item(s)</h1>
-                        <hr />
-                    </span>
-                    <span>
-                        <button className='shopping-close-button' onClick={() => toggleVisibility()} data-menuvisible={isOpen}>
-                            <p>X</p>
-                        </button>
-                    </span>
-                </header>
-                    
-                <motion.div variants={item}>
-                    <p>Insert Content Here</p>
-                    <p>isMobile: {isMobile.toString()}</p>
-                    <p>isOpen: {isOpen.toString()}</p>
-                </motion.div>
-
-                <footer>
-                    <span>
-
-                    </span>
-                </footer>
-            </motion.aside> */}
         </div>
     )
 }

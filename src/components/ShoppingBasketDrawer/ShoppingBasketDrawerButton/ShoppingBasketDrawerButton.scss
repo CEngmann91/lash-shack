@@ -17,6 +17,7 @@
     z-index: 10;
 
 
+
     button {
         display: flex;
         width: var(--drawer-menu-button-scale);
@@ -70,5 +71,13 @@
                 }
             }
         }
+
+
+        // &[data-count="2"] {
+        //     .indicator {
+        //         transform: scale(0);
+        //         animation: scale-up 0.3s 0.5s forwards;
+        //     }
+        // }
     }
 }

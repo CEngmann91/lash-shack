@@ -11,11 +11,5 @@ export const useScrollLock = () => {
             // document.body.style.overflow = "scroll";
         }, [])
 
-    // useLayoutEffect(
-    //     () => {
-
-    //     }
-    // )
-
     return { lockScroll, unlockScroll };
 }

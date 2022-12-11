@@ -46,6 +46,13 @@
     }
 
     &--logo {
+        @media screen and (max-width: 900px) {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            // justify-content: center;
+        }
         display: flex;
         justify-content: flex-start;
         align-items: center;
@@ -122,7 +129,7 @@
         .navbar-nav {
             transition: 0.3s ease-in-out;
 
-            &--logo {
+            /*&--logo {
 
                 img {
                     // transition: 0.3s ease-in-out;
@@ -131,7 +138,7 @@
                         width: 4rem;
                     }
                 }
-            }
+            }*/
 
             &--links {
                 transition: 0.3s ease-in-out;

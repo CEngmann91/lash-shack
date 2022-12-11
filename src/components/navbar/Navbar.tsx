@@ -19,7 +19,7 @@ function Navbar() {
     return (
         <nav className={`navbar-nav ${scrolledDown ? 'navbar-nav--scroll' : ''}`}>
             <motion.div className="progress-bar" style={{ scaleX }} />
-            <div className="navbar-nav--logo app__mobile-hide">
+            <div className="navbar-nav--logo">
                 <NavbarItem to={'/'} onClick={() => { }} idleClassName="link-item" activeClassName="">
                     <img src={logo} />
                 </NavbarItem>

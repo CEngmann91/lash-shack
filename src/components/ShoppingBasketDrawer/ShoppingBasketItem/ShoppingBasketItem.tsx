@@ -1,8 +1,10 @@
 import './ShoppingBasketItem.scss';
 import React, { useCallback } from 'react';
-import { ShoppingBasket } from '../../../util/icons';
+import { Bin, ShoppingBasket } from '../../../util/icons';
 import { iService, iServiceOption } from '../../../pages/Services/Services';
 import { useShoppingBasketContext } from '../../../providers/ShoppingBasketProvider';
+import { formatCurrency } from '../../../constants/funcs';
+import { Card } from '../../Cards';
 
 type ShoppingBasketItemProps = {
     id: string;
@@ -12,17 +14,20 @@ type ShoppingBasketItemProps = {
     // onClick: (e?: React.MouseEvent<HTMLElement>) => void;
 }
 function ShoppingBasketItem({ id, quantity, name, price }: ShoppingBasketItemProps) {
-    // const { addToBasket, decreaseFromBasket, removeFromBasket } = useShoppingBasketContext();
+    const { addToBasket, decreaseFromBasket, removeFromBasket } = useShoppingBasketContext();
     // const handleClick = useCallback(onClick, []);
 
     return (
-        <div className="shopping-basket-item">
-            {/* <h1>'{id}'</h1> */}
-            <h1>'{name}'</h1>
-            <h1>'{price}'</h1>
-            <h3>'{quantity}'</h3>
-            {/* <button onClick={ () => removeFromBasket(id) }>Remove</button> */}
-        </div>
+        <Card className='basket--item'>
+            <div className="item-content">
+                <label>{name}</label>
+                <label>{formatCurrency(price)}</label>
+                <label>quantity: {quantity}</label>
+            </div>
+            <div className='item-remove-button'>
+                <button className='' onClick={() => removeFromBasket(id)}><Bin /></button>
+            </div>
+        </Card>
     )
 }
 

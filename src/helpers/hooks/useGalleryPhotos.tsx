@@ -11,7 +11,7 @@ export const useGalleryPhotos = () => {
     const fetchGalleryPhotos = async () => {
         setLoadingGallery(true);
 
-        getImages(REACT_APP_STORAGE_GALLERY_DIRECTORY as string)
+        await getImages(REACT_APP_STORAGE_GALLERY_DIRECTORY as string)
             .then(imgResult => {
                 setGallery(imgResult);
                 setLoadingGallery(false);

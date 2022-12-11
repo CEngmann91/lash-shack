@@ -25,7 +25,7 @@ interface iProps {
   loading: boolean;
   error?: any;
 }
-const Services: React.FC<iProps> = ({ services, loading, error, ...props }: iProps) => {
+const Services: React.FC<iProps> = ({ services, loading, error }: iProps) => {
   const { addToBasket, decreaseFromBasket, removeFromBasket } = useShoppingBasket();
 
 
