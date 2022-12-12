@@ -2,29 +2,23 @@ import './Testimonial.scss';
 import React, { ReactNode } from 'react'
 import TestimonialCard from './TestimonialCard/TestimonialCard';
 import { ActivityIndicator, Page } from '../../components';
-import MySection from '../../components/MySection/MySection';
 
-// interface iClient {
-//   displayName: string;
-//   createdAt: string;
-// }
 export interface iTestimonialReview {
   id: number;
   title: string;
   description: string;
   starRating: number;
-  // client: iClient;
   createdAt: string;
 }
 
 
-interface iProps {
+type TestimonialProps = {
   testimonials: iTestimonialReview[];
   loading: boolean;
   error?: any;
 }
-const Testimonial: React.FC<iProps> = ({ testimonials, loading, error, ...props }: iProps) => {
-
+const Testimonial: React.FC<TestimonialProps> = ({ testimonials, loading, error }: TestimonialProps) => {
+  
 
   const renderLoadingActivity = (): ReactNode => (
     <div className='app__flex app__min-height'>
@@ -47,21 +41,19 @@ const Testimonial: React.FC<iProps> = ({ testimonials, loading, error, ...props 
   );
 
   return (
-    <MySection className='app__testimonial'>
-      <Page id='testimonial' header='We Love Hearing From You' headerClassName='app__testimonial-title'>
-        {loading
-          ?
-          renderLoadingActivity()
+    <Page id='testimonial' className='app__testimonial' header='We Love Hearing From You' headerClassName='app__testimonial-title'>
+      {loading
+        ?
+        renderLoadingActivity()
+        :
+        (error ?
+          <p>Error is: {error}</p>
           :
-          (error ?
-            <p>Error is: {error}</p>
-            :
-            <div className="list">
-              {renderReviews()}
-            </div>)
-        }
-      </Page>
-    </MySection>
+          <div className="list">
+            {renderReviews()}
+          </div>)
+      }
+    </Page>
   )
 }
 

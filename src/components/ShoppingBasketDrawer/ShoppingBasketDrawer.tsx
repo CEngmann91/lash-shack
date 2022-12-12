@@ -2,7 +2,6 @@ import './ShoppingBasketDrawer.scss';
 import '../../res/styles.scss';
 import React, { useEffect, useState } from 'react';
 import { motion, useCycle } from 'framer-motion';
-import useDeviceDetect from '../../helpers/hooks/useDeviceDetect';
 import { useEscKey, useScrollLock } from '../../helpers/hooks';
 import ShoppingBasketDrawerButton from './ShoppingBasketDrawerButton/ShoppingBasketDrawerButton';
 import { useShoppingBasketContext } from '../../providers/ShoppingBasketProvider';
@@ -36,11 +35,10 @@ const item = {
     open: { opacity: 1 }
 }
 
-interface iProps {
+interface ShoppingBasketDrawerProps {
     services: iService[];
 }
-const ShoppingBasketDrawer = ({ services }: iProps) => {
-    const { isMobile } = useDeviceDetect();
+const ShoppingBasketDrawer = ({ services }: ShoppingBasketDrawerProps) => {
     const { isPressed } = useEscKey();
     const { lockScroll, unlockScroll } = useScrollLock();
     const { basketItems, basketQuantity, emptyBasket, basketTotal, addToBasket, decreaseFromBasket, removeFromBasket, openBasket, closeBasket } = useShoppingBasketContext();
@@ -50,6 +48,10 @@ const ShoppingBasketDrawer = ({ services }: iProps) => {
     const [isShowingPatchTestInfo, setIsShowingPatchTestInfo] = useState(false);
 
 
+
+    // useEffect(() => {
+    //     window.scrollTo(0, 0);
+    //   }, [isOpen]);
 
     useEffect(() => {
 
@@ -64,6 +66,8 @@ const ShoppingBasketDrawer = ({ services }: iProps) => {
 
     function show() {
         if (isOpen) return;
+
+        window.scrollTo(0, 0);
 
         setIsShowingPatchTestInfo(false);
         // Prevents scrolling whilst the menu is visible.
