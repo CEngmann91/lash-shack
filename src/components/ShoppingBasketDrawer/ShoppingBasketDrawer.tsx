@@ -68,7 +68,7 @@ const ShoppingBasketDrawer = ({ services }: ShoppingBasketDrawerProps) => {
     function show() {
         if (isOpen) return;
 
-        window.scrollTo(0, 0);
+        // window.scrollTo(0, 0);
 
         setIsShowingPatchTestInfo(false);
         // Prevents scrolling whilst the menu is visible.
@@ -198,7 +198,7 @@ const ShoppingBasketDrawer = ({ services }: ShoppingBasketDrawerProps) => {
                                 </span>
                                 <span className="more-info">
                                     {!isPatchTestConfirmed ?
-                                        <button className='' onClick={() => setIsShowingPatchTestInfo(true)}>Please Read & Confirm</button>
+                                        <button className='' onClick={() => setIsShowingPatchTestInfo(true)}>More Details</button>
                                         :
                                         <></>
                                     }
@@ -212,7 +212,10 @@ const ShoppingBasketDrawer = ({ services }: ShoppingBasketDrawerProps) => {
                                         style={{ cursor: (!isPatchTestConfirmed ? "default" : "pointer") }}
                                         className=''
                                 >Choose Time</button>
-                                <button className='' onClick={emptyBasket}>
+                                <button className='' onClick={() => {
+                                    setIsPatchTestConfirmed(false)
+                                    emptyBasket()
+                                }}>
                                     {/* <Bin /> */}
                                     Empty Basket
                                 </button>
