@@ -22,7 +22,8 @@ const container = {
         }
     },
     closed: {
-        x: '100%',
+        // Add 10% to hide the box shadow.
+        x: '110%', 
         transition: {
             staggerChildren: 0.07,
             staggerDirection: -1,

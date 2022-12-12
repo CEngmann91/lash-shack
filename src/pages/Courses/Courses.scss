@@ -6,8 +6,10 @@
     //     padding: 4rem 2rem;
     // }
     min-height: 50vh;
-    background: $white-colour;
-    // margin-bottom: calc($footer-height - 10px);
+    // background: $white-colour;
+    background: linear-gradient(#ffffff, $beige-colour) 50% 50%/calc(100% - 42px) calc(100% - 42px) no-repeat,
+        linear-gradient(white 0%, $beige-colour 100%);
+    padding-bottom: 20px;
     // padding: 4rem 5rem;
     
     

@@ -4,7 +4,19 @@ import { MapView, MyIFrame, Page } from '../../components';
 import { Landing0, Landing1, Shop, Training } from '../../util/images';
 import { CONTACT } from '../../constants/constants';
 import { Email, Phone } from '../../util/icons';
-import { Card } from '../../components/Cards';
+import { Card, SectionedCard } from '../../components/Cards';
+
+type HeaderSection = {
+  id: string;
+  index: number;
+  leftNode?: React.ReactNode;
+  rightNode?: React.ReactNode;
+  reversed?: boolean;
+}
+
+
+
+
 
 enum SectionType {
   Text,
@@ -29,44 +41,51 @@ interface iArticle {
 
 const About = () => {
 
-  const renderContactArticle = () => (
-    <div className='app__about--mapview-article'>
-      <div className="pad--left app__flex">
-        <h1>Get In Touch</h1>
-        <section style={{ alignItems: 'center', textAlign: 'center' }}>
-          <hr />
-          <p className='new-line address'>{CONTACT.ADDRESS}</p>
 
-          <div className='get-in-contact app__flex'>
-            <a href={""} className='border-button get-in-contact-button'><Phone /></a>
-            <a href={
-              // CONTACT.EMAIL
-              ""
-              } className='border-button get-in-contact-button'><Email /></a>
-          </div>
-        </section>
+  const sections: HeaderSection[] = [
+    {
+      id: 'Expert Services',
+      index: 0,
+      leftNode: (
+        <div className='app__flex pad--left text-center'>
+          <h1>Expert Services</h1>
+          <p className="description new-line">Our expert team of technicians in Romford have carefully vetted our services to provide excellent quality that adheres to everyone's unique style.</p>
+        </div>
+      ),
+      rightNode: (
+        <img src={Shop} />
+      )
+    },
+    {
+      id: 'Become An Expert',
+      index: 1,
+      leftNode: (
+        <img src={Training} />
+      ),
+      rightNode: (
+        <div className='app__flex pad--right text-center'>
+          <h1>Become An Expert</h1>
+          <p className="description new-line">Eyelash Extension Course's designed specifically with you in mind to make you an expert. Discover new and exciting ways that you can become a fully qualified Lash Technician or refresh your memory with our Refresher Course at Lash Shack.</p>
+          <a href="/courses" className={`border-button section-button`}>Find Out More</a>
+        </div>
+      ),
+    },
+    {
+      id: 'What To Expect',
+      index: 2,
+      leftNode: (
+        <div className='app__flex pad--left text-center'>
+          <h1>What To Expect</h1>
+          <p className="description new-line">Text</p>
+        </div>
+      ),
+      rightNode: (
+        <MyIFrame source='https://www.instagram.com/reel/CktbR0_A70Z/?utm_source=ig_embed&amp;utm_campaign=loading' />
+      )
+    }
+  ]
 
-      </div>
-      <div className="pad--right app__flex">
-        <h1>Hours</h1>
-        <section style={{ alignItems: 'center', textAlign: 'center' }}>
-          <hr />
-          <p>Mon to Thu:</p>
-          <p>9:30am - 5.30pm</p>
-          <p>Fri:</p>
-          <p>9:30am - 6.30pm</p>
-          <p>Sat:</p>
-          <p>10am - 3.30pm</p>
-        </section>
-      </div>
 
-      {/* <div className='get-in-contact app__flex'>
-        <h1>Get In Contact</h1>
-        <a href={""} className='border-button get-in-contact-button'><Phone /></a>
-        <a href={CONTACT.EMAIL} className='border-button get-in-contact-button'><Email /></a>
-      </div> */}
-    </div>
-  );
 
   const articles: iArticle[] = [
     {
@@ -114,19 +133,7 @@ const About = () => {
           <MyIFrame source='https://www.instagram.com/reel/CktbR0_A70Z/?utm_source=ig_embed&amp;utm_campaign=loading' />
         )
       }
-    },
-    /*{
-      section1: {
-        type: SectionType.ReactNode,
-        component: (
-          <></>
-        )
-      },
-      section2: {
-        type: SectionType.ReactNode,
-        component: ( <></> )
-      }
-    }*/
+    }
   ];
 
   const renderArticle = (section1: iSection, section2: iSection) => {
@@ -182,7 +189,7 @@ const About = () => {
         return (
           <>
             {section1.type === ((SectionType.Text || SectionType.TextAndButton) as SectionType) ?
-              <div className="right pad--left">
+              <div className="pad--left">
                 <h1>{section1.title}</h1>
                 <p className="description new-line">{section1.description}</p>
                 {section1.type === SectionType.TextAndButton as SectionType ?
@@ -206,10 +213,10 @@ const About = () => {
       case SectionType.TextAndButton:
         return (
           <>
-            <div className="left">
+            <div className="">
               <img src={section1.typeImgSrc} alt="" />
             </div>
-            <div className="right pad--right app__flex">
+            <div className="pad--right app__flex">
               <h1>{section2.title}</h1>
               <p className="description new-line">{section2.description}</p>
               {section2.type === SectionType.TextAndButton ?
@@ -226,17 +233,26 @@ const About = () => {
   return (
     <Page id='about' className='app__about'>
       <div className="app__about--wrapper">
-        {articles.map(({ section1, section2 }, index) =>
+        {/* {articles.map(({ section1, section2 }, index) =>
           <div key={index}>
             <Card className="card border-white border-white-shadow">
               { renderArticle(section1, section2) }
             </Card>
           </div>
+        )} */}
 
-          // <div className="card border-white border-white-shadow" key={index}>
-          //   { renderArticle(section1, section2) }
-          // </div>
+
+
+        {sections.map(({ index, leftNode, rightNode, reversed }) =>
+          <SectionedCard
+            className='card'
+            leftChildren={leftNode}
+            rightChildren={rightNode}
+            // reversed={reversed}
+            // reversed={index % 2 != 0}
+          />
         )}
+
       </div>
     </Page>
   )

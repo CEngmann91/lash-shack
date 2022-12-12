@@ -41,7 +41,7 @@ function App() {
   const renderRoutes = () => (
     <Routes>
       {/* Use it in this way, and it should work: */}
-      <Route path='*' element={ renderRoute("*", <NotFound />)} />
+      <Route path='*' element={renderRoute("*", <NotFound />)} />
 
       <Route path="/" element={
         renderRoute(
@@ -57,16 +57,21 @@ function App() {
       } />
       <Route path="/gallery" element={renderRoute("/gallery", <Gallery photoURLs={gallery} loading={loadingGallery} />)} />
       <Route path="/services" element={renderRoute("/services", <Services services={services} loading={loadingServices} />)} />
-      <Route path="/courses" element={renderRoute("/courses", <Courses courseList={courses} loading={loadingCourses} />)} />
+
+      <Route path="/courses" element={
+        renderRoute("/courses",
+          <Courses courseList={courses} loading={loadingCourses} />
+        )
+      } />
       <Route path="/contact" element={renderRoute("/contact", <Contact />)} />
     </Routes>
-);
+  );
 
   return (
     <ShoppingBasketProvider>
-      { renderRoutes() }
+      {renderRoutes()}
     </ShoppingBasketProvider>
-  ) 
+  )
 }
 
 export default App;
