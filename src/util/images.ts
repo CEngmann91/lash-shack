@@ -4,6 +4,8 @@ export { default as logo } from '../assets/images/Logo.png';
 
 export { default as Shop } from '../assets/images/Shop.jpg';
 export { default as Training } from '../assets/images/Training.jpg';
+export { default as TrainingCertificate } from '../assets/images/Certificate.jpg';
+export { default as TrainingCertificate_Watermark } from '../assets/images/Certificate (Watermark).jpg';
 export { default as ABT } from '../assets/images/ABT.png';
 
 export { default as Payment_AmericanExpress } from '../assets/images/payment/american-express.png';

@@ -22,7 +22,7 @@ const sidebar = {
         }
     },
     closed: {
-        y: '-100vh',
+        y: '-110vh',
         transition: {
             staggerChildren: 0.07,
             staggerDirection: -1,
