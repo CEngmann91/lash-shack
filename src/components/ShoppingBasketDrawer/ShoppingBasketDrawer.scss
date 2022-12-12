@@ -20,7 +20,8 @@
 
     &--panel {
         @media screen and (max-width: 900px) {
-            width: 80vw;
+            width: 85vw;
+            padding: 0 0.8rem;
         }
         position: fixed;
         right: 0;
@@ -266,6 +267,9 @@
         }
 
         footer {
+            @media screen and (max-width: 900px) {
+                height: 14vh;
+            }
             position: relative;
             display: flex;
             flex-direction: column;
@@ -275,6 +279,9 @@
 
 
             .shopping-basket-drawer-buttons {
+                @media screen and (max-width: 900px) {
+                    height: 5vh;
+                }
                 display: flex;
                 flex-direction: row;
                 justify-content: space-evenly;
