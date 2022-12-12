@@ -7,7 +7,7 @@ import { useEscKey, useScrollLock } from '../../helpers/hooks';
 import ShoppingBasketDrawerButton from './ShoppingBasketDrawerButton/ShoppingBasketDrawerButton';
 import { useShoppingBasketContext } from '../../providers/ShoppingBasketProvider';
 import { iService, iServiceOption } from '../../pages/Services/Services';
-import { Bin, Information, LeftArrow, RoundCheckmark } from '../../util/icons';
+import { Bin, DownArrowHead, Information, LeftArrowHead, RoundCheckmark, UpArrowHead } from '../../util/icons';
 import { formatCurrency } from '../../constants/funcs';
 import { Payment_AmericanExpress, Payment_Mastercard, Payment_Visa } from '../../util/images';
 import { Card } from '../Cards';
@@ -43,7 +43,7 @@ const ShoppingBasketDrawer = ({ services }: iProps) => {
     const { isMobile } = useDeviceDetect();
     const { isPressed } = useEscKey();
     const { lockScroll, unlockScroll } = useScrollLock();
-    const { basketItems, basketQuantity, emptyBasket, basketTotal, removeFromBasket, openBasket, closeBasket } = useShoppingBasketContext();
+    const { basketItems, basketQuantity, emptyBasket, basketTotal, addToBasket, decreaseFromBasket, removeFromBasket, openBasket, closeBasket } = useShoppingBasketContext();
     const [isOpen, toggleOpen] = useCycle(false, true);
 
     const [isPatchTestConfirmed, setIsPatchTestConfirmed] = useState(false);
@@ -95,7 +95,7 @@ const ShoppingBasketDrawer = ({ services }: iProps) => {
 
 
     return (
-        <div className={`app__shopping-sidebar ${isOpen ? "app__shopping-sidebar-full" : ""}`}>
+        <div className={`app__shopping-sidebar`}>
             <motion.aside
                 className={`app__shopping-sidebar--panel`}
                 variants={container}
@@ -109,7 +109,7 @@ const ShoppingBasketDrawer = ({ services }: iProps) => {
                             <h1>Your Basket</h1>
                             :
                             <button className='path-test-close-button' onClick={() => setIsShowingPatchTestInfo(false)}>
-                                <LeftArrow />
+                                <LeftArrowHead />
                             </button>
 
                         }
@@ -154,10 +154,16 @@ const ShoppingBasketDrawer = ({ services }: iProps) => {
                                         return (
                                             <Card className='basket-item'>
                                                 <section className="item-content">
-                                                    <label>{name}</label>
-                                                    <label>{formatCurrency(price * quantity)}</label>
+                                                    <label className='name'>{name}</label>
+                                                    <label className='price'>{formatCurrency(price)}</label>
                                                 </section>
-                                                <p>{quantity}</p>
+
+                                                <div className='item-quantity-selector'>
+                                                    <button onClick={() => addToBasket(id, price)}><UpArrowHead /></button>
+                                                    <p>{quantity}</p>
+                                                    <button disabled={quantity < 2} onClick={() => decreaseFromBasket(id)}><DownArrowHead /></button>
+                                                </div>
+
                                                 <section className='item-remove-button'>
                                                     <button className='' onClick={() => removeFromBasket(id)}><Bin /></button>
                                                 </section>
@@ -181,13 +187,13 @@ const ShoppingBasketDrawer = ({ services }: iProps) => {
                                         :
                                         <>
                                             <RoundCheckmark style={{ color: 'green' }} />
-                                            <label>A patch test will be administered</label>
+                                            <label>A patch test has been confirmed</label>
                                         </>
                                     }
                                 </span>
                                 <span className="more-info">
                                     {!isPatchTestConfirmed ?
-                                        <button className='' onClick={() => setIsShowingPatchTestInfo(true)}>More Info</button>
+                                        <button className='' onClick={() => setIsShowingPatchTestInfo(true)}>Please Read & Confirm</button>
                                         :
                                         <></>
                                     }
@@ -197,10 +203,9 @@ const ShoppingBasketDrawer = ({ services }: iProps) => {
 
                         <footer>
                             <div className='shopping-basket-drawer-buttons'>
-                                <button
-                                    disabled={!isPatchTestConfirmed}
-                                    style={{ cursor: (!isPatchTestConfirmed ? "default" : "pointer") }}
-                                    className=''
+                                <button disabled={!isPatchTestConfirmed}
+                                        style={{ cursor: (!isPatchTestConfirmed ? "default" : "pointer") }}
+                                        className=''
                                 >Choose Time</button>
                                 <button className='' onClick={emptyBasket}>
                                     {/* <Bin /> */}

@@ -16,13 +16,6 @@
     z-index: 10;
 
 
-    &-full {
-        // bottom: 0;
-        // Add a blur
-        // @include blur(4px);
-    }
-
-
 
 
     &--panel {
@@ -37,7 +30,7 @@
         z-index: 9;
         display: flex;
         flex-direction: column;
-        padding: 0 1.2rem;
+        padding: 0 1rem;
         // background: rgba(rgba($beige-colour, 0.85), 1);
         // background: linear-gradient(to bottom, $pink-colour, $beige-colour);
         // background: linear-gradient(to bottom, $green-shade-colour, $pink-colour);
@@ -125,7 +118,7 @@
             // padding: .5rem 0;
             height: 75vh;
             overflow-y: scroll;
-            gap: 1.2rem;
+            gap: 1rem;
             padding: 1rem 0.3rem;
             margin-bottom: 10px;
             text-align: center;
@@ -134,23 +127,18 @@
 
 
             .basket-item {
-                display: flex;
-                flex-direction: row;
-                width: 100%;
-                height: auto;
-                border: 3px solid white;
-                box-shadow: 5px 5px 0px rgba($green-shade-colour, 0.5);
-                overflow: visible;
-                background: lightgray;
-                padding: .5rem;
-                // background: $green-shade-colour;
-
-
                 display: grid;
+                flex-direction: row;
                 grid-template-columns: auto 40px 30px;
                 align-items: center;
-
-
+                width: 100%;
+                height: auto;
+                background: $green-shade-colour;
+                color: $pink-colour;
+                padding: .5rem;
+                border: 3px solid $pink-colour;
+                box-shadow: 5px 5px 0px rgba($green-shade-colour, 0.5);
+                // overflow: visible;
 
 
                 .item-content {
@@ -158,6 +146,38 @@
                     flex: 1;
                     flex-direction: column;
                     align-items: flex-start;
+
+                    .name {
+                        font-size: 1.2rem;
+                        font-family: cursive;
+                    }
+                    .price {
+                        font-size: 0.9rem;
+                        // opacity: 0.8;
+                    }
+                }
+                .item-quantity-selector{
+                    display: flex;
+                    flex-direction: column;
+                    width: 30px;
+                    padding: 0.5rem 0;
+
+                    button {
+                        background: transparent;
+                        height: 20px;
+
+                        transition: 0.3s ease-in-out;
+
+                        svg {
+                            color: $pink-colour;
+                            width: 100%;
+                            height: 100%;
+                        }
+
+                        &:hover {
+                            transform: scale(1.2);
+                        }
+                    }
                 }
                 .item-remove-button {
                     display: flex;
@@ -175,12 +195,13 @@
                         transition: 0.3s ease-in-out;
 
                         svg {
+                            color: $pink-colour;
                             width: 100%;
                             height: 100%;
                         }
 
                         &:hover {
-                            transform: scale(1.2);
+                            transform: scale(1.1);
                         }
                     }
                 }
@@ -249,7 +270,7 @@
             display: flex;
             flex-direction: column;
             width: 100%;
-            height: 15vh;
+            height: 17vh;
             // background: green;
 
 
@@ -258,14 +279,22 @@
                 flex-direction: row;
                 justify-content: space-evenly;
                 width: 100%;
-                height: 7vh;
+                height: 9vh;
                 gap: 0.5rem;
 
                 button {
-                    height: 25px;
+                    // height: 25px;
                     width: 100%;
                     color: black;
                     padding: 5px;
+
+
+                    background: $green-shade-colour;
+                    border: 3px solid $pink-colour;
+                    box-shadow: 5px 5px 0px rgba($green-shade-colour, 0.5);
+                    overflow: visible;
+                    color: $pink-colour;
+
 
                     transition: 0.3s ease-in-out;
 
