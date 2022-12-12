@@ -1,7 +1,7 @@
 import './GalleryViewerModal.scss';
 import React from 'react'
 import { motion } from 'framer-motion';
-import { Close, LeftArrow, RightArrow } from '../../../util/icons';
+import { Close, LeftArrowHead, RightArrow } from '../../../util/icons';
 import { useEscKey, useToggle} from '../../../helpers/hooks';
 
 const container = {
@@ -55,7 +55,7 @@ const GalleryViewerModal: React.FC<iProps> = ({ imgSrc, onOpen, onClose, onNextP
 
             <motion.img src={imgSrc} alt="enlarged pic" variants={item} />
             
-            {/* <button className='left-arrow' onClick={onPreviousPhoto}><LeftArrow /></button>
+            {/* <button className='left-arrow' onClick={onPreviousPhoto}><LeftArrowHead /></button>
             <button className='right-arrow' onClick={onNextPhoto}><RightArrow /></button> */}
         </motion.div>
     )

@@ -5,12 +5,12 @@
 
 @font-face {
   font-family: 'HelveticaNeue';
-  src: local('HelveticaNeue'), url('./assets/fonts/helveticaneue/Helvetica Neu Bold.ttf') format('opentype');
+  src: local('HelveticaNeue'), url('./assets/fonts/helveticaneue/HelveticaNeue.ttf') format('opentype');
 }
 
 :root {
   --font-base:
-  HelveticaNeue;
+    HelveticaNeue;
   // "Arial";
   // Montserrat;
   // "DM Sans", sans-serif;
@@ -23,10 +23,12 @@
 
 
 body {
-  font-family: HelveticaNeue;
+  font-family: var(--font-base)
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
@@ -55,6 +57,15 @@ button {
   border: none;
 
   &:hover {
-      cursor: pointer;
+    cursor: pointer;
+  }
+}
+
+button[disabled] {
+  opacity: 0.3;
+
+  &:hover {
+    cursor: default;
+    transform: scale(1);
   }
 }
