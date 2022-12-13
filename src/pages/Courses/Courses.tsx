@@ -9,7 +9,7 @@ import { ActivityIndicator, MyIFrame, Page } from '../../components';
 import CourseCard from './CourseCard/CourseCard';
 import { ABT, TrainingCertificate_Watermark, Training_1to1Training, Training_Mannequin, Training_Manuals, Training_Models } from '../../util/images';
 import { SectionedCard } from '../../components/Cards';
-import { formatCurrency } from '../../constants/funcs';
+import { formatCurrency, replaceAllNewLineChars } from '../../constants/funcs';
 
 export enum Popularity {
   Normal = 0,
@@ -116,7 +116,7 @@ const Courses: React.FC<CoursesProps> = ({ courseList, loading, error }: Courses
     <Page id='certificate' className='app__flex app__certificate' header='What Happens Next?'>
       <p>At the end of every training, we present the newly qualified trainee with this certficate.</p>
       <div className="app__certificate--img">
-        <img src={TrainingCertificate_Watermark} />
+        <img src={TrainingCertificate_Watermark} className='app__glassmorphism' />
       </div>
 
       <img className='abt' src={ABT} alt="" />
@@ -124,7 +124,7 @@ const Courses: React.FC<CoursesProps> = ({ courseList, loading, error }: Courses
   )
 
   const renderPotentialEarnings = () => (
-    <Page id='potential-earnings' className='app__potential-earnings' header='How Much Could I Earn?*'>
+    <Page id='potential-earnings' className='app__potential-earnings' header='What Could I Earn?*'>
       {/* <p>Insert Potential Earnings here!</p> */}
 
       <div className="earnings-grid-container">
@@ -196,7 +196,11 @@ const Courses: React.FC<CoursesProps> = ({ courseList, loading, error }: Courses
             <>
               <div className="cards">
                 {courseList.length !== 0 && courseList.map((item, index) => {
+                  // Remove all newline (\n) chars from the description string.
+                  item.description = replaceAllNewLineChars(item.description);
+
                   const { title, description, img, price, sale, duration, popularity } = item;
+                  
 
                   return (
                     <CourseCard

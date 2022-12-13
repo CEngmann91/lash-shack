@@ -15,18 +15,13 @@ export const useGalleryPhotos = () => {
             await getImages(REACT_APP_STORAGE_GALLERY_DIRECTORY as string)
                 .then(imgResult => {
                     setGallery(imgResult);
-                    setLoadingGallery(false);
                     // console.log("getImages - ", imgResult);
                 })
-                .catch(error => {
-                    setGalleryError(error);
-                    setLoadingGallery(false);
-                    return;
-                });
+                .catch(error => setGalleryError(error));
         }
-        catch (error) {
-            setGalleryError(error)
-        };
+        catch (error) { setGalleryError(error) };
+
+        setLoadingGallery(false);
     }
 
     useEffect(() => {

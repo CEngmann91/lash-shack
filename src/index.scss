@@ -50,22 +50,25 @@ a {
 }
 
 .new-line {
-  white-space: pre-line;
+  // For line break \n:
+  // white-space: pre-line;
+  // For line break \n and tabs \t:
+  white-space: pre-wrap;
 }
 
-  button {
-    border: none;
+button {
+  border: none;
 
-    &:hover {
-      cursor: pointer;
-    }
+  &:hover {
+    cursor: pointer;
   }
+}
 
-  button[disabled] {
-    opacity: 0.3;
+button[disabled] {
+  opacity: 0.3;
 
-    &:hover {
-      cursor: default;
-      transform: scale(1);
-    }
+  &:hover {
+    cursor: default;
+    transform: scale(1);
   }
+}

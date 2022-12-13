@@ -36,10 +36,21 @@
         background: $pink-colour;
         padding: .5em 8em;
         margin-bottom: 10px;
-        font-size: 1.3rem;
+        font-size: 1.5rem;
         font-family: cursive;
         border-top: 3px solid rgba($green-shade-colour, 0.5);
         border-bottom: 3px solid rgba($green-shade-colour, 0.5);
+    }
+
+    .Clients,
+    .Daily,
+    .Weekly,
+    .Monthly,
+    .Annually {
+
+        header{
+            font-size: 1.2rem;
+        }
     }
 
     .Clients {

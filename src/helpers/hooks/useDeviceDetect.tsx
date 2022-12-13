@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useState } from "react";
+/*import React, { useEffect, useLayoutEffect, useState } from "react";
 
 export default function useDeviceDetect() {
     const [isMobile, setMobile] = useState(false);
@@ -12,12 +12,12 @@ export default function useDeviceDetect() {
     }
 
     useLayoutEffect(() => {
-        window.addEventListener('resize', handleResize);
+        window.addEventListener('resize', handleResize, { passive: false });
 
         return function cleanup() {
-            window.removeEventListener('resize', handleResize)
+            window.removeEventListener('resize', handleResize, { passive: false })
         }
     }, []);
 
     return { isMobile };
-}
+}*/

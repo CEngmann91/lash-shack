@@ -16,7 +16,7 @@ export const useCourses = () => {
 
             let array: iCourse[] = [];
             await getDocument(REACT_APP_FIRESTORE_COURSES_COLLECTION as string,
-                REACT_APP_FIRESTORE_COURSES_DOCUMENT as string)
+                              REACT_APP_FIRESTORE_COURSES_DOCUMENT as string)
                 .then(res => {
                     const result: iCourse[] = res['content'];
                     // Only get the active items in the array.
@@ -24,12 +24,7 @@ export const useCourses = () => {
                     // Sort by ID.
                     array = filtered.sort((a, b) => a.id - b.id);
                 })
-                .catch(error => {
-                    setCoursesError(error)
-                    setLoadingCourses(false);
-                    return;
-                });
-
+                .catch(error => setCoursesError(error));
 
             // Load images from Firestore.
             const mapPromises = array.map((item) =>
@@ -38,14 +33,11 @@ export const useCourses = () => {
             await Promise.all(mapPromises);
             // const results = await Promise.all(mapPromises);
             // console.log("results - " + results)
-
-            setLoadingCourses(false);
             setCourses(array);
         }
-        catch (error) {
-            setCoursesError(error);
-            setLoadingCourses(false);
-        };
+        catch (error) { setCoursesError(error) };
+
+        setLoadingCourses(false);
     }
 
     useEffect(() => {

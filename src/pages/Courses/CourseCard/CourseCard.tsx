@@ -4,9 +4,9 @@ import { Card, CardFlip } from '../../../components/Cards';
 import { iSale, Popularity } from '../Courses';
 import { ABT } from '../../../util/images';
 import { useShoppingBasket } from '../../../helpers/hooks';
-import { formatCurrency } from '../../../constants/funcs';
+import { formatCurrency, replaceAllNewLineChars } from '../../../constants/funcs';
 
-interface iProps {
+type CourseCardProps = {
     id: number;
     title: string;
 
@@ -20,7 +20,7 @@ interface iProps {
     duration: string;
     popularity?: Popularity;
 }
-const CourseCard: React.FC<iProps> = ({ id, title, imgSrc, description, price, sale, duration, popularity, ...props }: iProps) => {
+const CourseCard: React.FC<CourseCardProps> = ({ id, title, imgSrc, description, price, sale, duration, popularity }: CourseCardProps) => {
     const { addToBasket } = useShoppingBasket();
 
 
@@ -72,7 +72,7 @@ const CourseCard: React.FC<iProps> = ({ id, title, imgSrc, description, price, s
                 <h1 className='title'>{title}</h1>
 
                 <div className="description-container">
-                    <label className='new-line'>{`${description}`}</label>
+                    <label className='new-line'>{description}</label>
                 </div>
 
                 <div className='price-container' data-onsale={isOnSale()}>

@@ -25,8 +25,7 @@ export const useTestimonial = () => {
               bb = b.createdAt.split('/').reverse().join();
             return aa > bb ? -1 : (aa < bb ? 1 : 0);
           });
-
-
+          
           // let sorted = array.sort((a, b) => a.id - b.id);
           // sort by price
           // let sorted = array.sort((a, b) => b.price - a.price);
@@ -51,4 +50,48 @@ export const useTestimonial = () => {
   }, [])
 
   return { testimonials, loadingTestimonial, testimonialError };
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /*const { data, loading, error } = useFetchDocument(
+    REACT_APP_FIRESTORE_TESTIMONIAL_COLLECTION as string,
+    REACT_APP_FIRESTORE_TESTIMONIAL_DOCUMENT as string
+  );
+
+  let testimonials : iTestimonialReview[] = []; 
+  let testimonialError: any = error;
+  let loadingTestimonial: boolean = loading;
+
+  if (!data)
+    return { testimonials, loadingTestimonial, testimonialError };
+
+
+  const array: iTestimonialReview[] = data['content'];
+  // Sort by date.
+  let sorted = array.sort(function (a, b) {
+    let aa = a.createdAt.split('/').reverse().join(),
+      bb = b.createdAt.split('/').reverse().join();
+    return aa > bb ? -1 : (aa < bb ? 1 : 0);
+  });
+
+
+  // let sorted = array.sort((a, b) => a.id - b.id);
+  // sort by price
+  // let sorted = array.sort((a, b) => b.price - a.price);
+  // let sorted = array.sort((a, b) => b.popularity - a.popularity);
+  // sorted = [...sorted].sort((a, b) => b.salePrice - a.salePrice);
+  testimonials = sorted;
+
+  return { testimonials, loadingTestimonial, testimonialError };
+  */
 }

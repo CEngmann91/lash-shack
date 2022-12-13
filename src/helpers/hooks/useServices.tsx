@@ -51,7 +51,7 @@ export const useServices = () => {
             setLoadingServices(true);
 
             await getDocument(REACT_APP_FIRESTORE_SERVICES_COLLECTION as string,
-                REACT_APP_FIRESTORE_SERVICES_DOCUMENT as string)
+                              REACT_APP_FIRESTORE_SERVICES_DOCUMENT as string)
                 .then(res => {
                     const result: iService[] = res['catergory'];
                     // Only get the active items in the array.
@@ -66,17 +66,11 @@ export const useServices = () => {
 
                     // console.log(filtered);
                     setServices(filtered);
-                    setLoadingServices(false);
                 })
-                .catch(error => {
-                    setServicesError(error)
-                    setLoadingServices(false);
-                });
+                .catch(error => setServicesError(error));
         }
-        catch (error) {
-            setServicesError(error)
-            setLoadingServices(false);
-        };
+        catch (error) { setServicesError(error) };
+        setLoadingServices(false);
     }
 
     useEffect(() => {
