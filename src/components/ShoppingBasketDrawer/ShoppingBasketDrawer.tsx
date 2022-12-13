@@ -5,11 +5,12 @@ import { motion, useCycle } from 'framer-motion';
 import { useEscKey, useScrollLock } from '../../helpers/hooks';
 import ShoppingBasketDrawerButton from './ShoppingBasketDrawerButton/ShoppingBasketDrawerButton';
 import { useShoppingBasketContext } from '../../providers/ShoppingBasketProvider';
-import { iService, iServiceOption } from '../../pages/Services/Services';
 import { Bin, DownArrowHead, Information, LeftArrowHead, RoundCheckmark, UpArrowHead } from '../../util/icons';
-import { formatCurrency } from '../../constants/funcs';
+import { formatCurrency, formatHrsMins } from '../../constants/funcs';
 import { Payment_AmericanExpress, Payment_Mastercard, Payment_Visa } from '../../util/images';
 import { Card } from '../Cards';
+import { iCourse } from '../../pages/Courses/Courses';
+import { BOOKING_DEPOSIT_FEE } from '../../constants/constants';
 
 
 const container = {
@@ -23,7 +24,7 @@ const container = {
     },
     closed: {
         // Add 10% to hide the box shadow.
-        x: '110%', 
+        x: '110%',
         transition: {
             staggerChildren: 0.07,
             staggerDirection: -1,
@@ -37,16 +38,16 @@ const item = {
 }
 
 interface ShoppingBasketDrawerProps {
-    services: iService[];
+    courses: iCourse[];
 }
-const ShoppingBasketDrawer = ({ services }: ShoppingBasketDrawerProps) => {
+const ShoppingBasketDrawer = ({ courses }: ShoppingBasketDrawerProps) => {
     const { isPressed } = useEscKey();
     const { lockScroll, unlockScroll } = useScrollLock();
     const { basketItems, basketQuantity, emptyBasket, basketTotal, addToBasket, decreaseFromBasket, removeFromBasket, openBasket, closeBasket } = useShoppingBasketContext();
     const [isOpen, toggleOpen] = useCycle(false, true);
 
-    const [isPatchTestConfirmed, setIsPatchTestConfirmed] = useState(false);
-    const [isShowingPatchTestInfo, setIsShowingPatchTestInfo] = useState(false);
+    const [isPaymentConfirmed, setIsPaymentConfirmed] = useState(false);
+    const [isShowingPaymentInfo, setIsShowingPaymentInfo] = useState(false);
 
 
 
@@ -54,13 +55,19 @@ const ShoppingBasketDrawer = ({ services }: ShoppingBasketDrawerProps) => {
     //     window.scrollTo(0, 0);
     //   }, [isOpen]);
 
-    useEffect(() => {
+    // useEffect(() => {
 
-    }, [isShowingPatchTestInfo])
+    // }, [isShowingPaymentInfo])
 
 
-    if (isPressed)
+    if (isPressed) {
+        // if (isShowingPaymentInfo)
+        // {
+        //     setIsShowingPaymentInfo(false);
+        //     return;
+        // }
         hide();
+    }
 
     const toggleVisibility = () => !isOpen ? show() : hide();
 
@@ -70,7 +77,7 @@ const ShoppingBasketDrawer = ({ services }: ShoppingBasketDrawerProps) => {
 
         // window.scrollTo(0, 0);
 
-        setIsShowingPatchTestInfo(false);
+        // setIsShowingPaymentInfo(false);
         // Prevents scrolling whilst the menu is visible.
         lockScroll();
         toggleOpen();
@@ -80,22 +87,18 @@ const ShoppingBasketDrawer = ({ services }: ShoppingBasketDrawerProps) => {
     function hide() {
         if (!isOpen) return;
 
-        setIsShowingPatchTestInfo(false);
+        // setIsShowingPaymentInfo(false);
         unlockScroll();
         toggleOpen();
         closeBasket();
     }
 
-    function getSerivceOptionByID(id: string): iServiceOption {
-        let option;
-        for (const item of services) {
-            if (item.options?.length) {
-                for (option of item.options)
-                    if (option.id === id)
-                        return option;
-            }
-        }
-        return option as iServiceOption;
+    function getCourseByID(id: number): iCourse {
+        return courses?.find(item => item.id === id) as iCourse;
+    }
+
+    function getAmountDueNow() {
+        return basketQuantity * BOOKING_DEPOSIT_FEE;
     }
 
 
@@ -110,13 +113,12 @@ const ShoppingBasketDrawer = ({ services }: ShoppingBasketDrawerProps) => {
             >
                 <header>
                     <span>
-                        {!isShowingPatchTestInfo ?
+                        {!isShowingPaymentInfo ?
                             <h1>Your Basket</h1>
                             :
-                            <button className='path-test-close-button' onClick={() => setIsShowingPatchTestInfo(false)}>
+                            <button className='deposit-close-button' onClick={() => setIsShowingPaymentInfo(false)}>
                                 <LeftArrowHead />
                             </button>
-
                         }
                         <hr />
                     </span>
@@ -134,33 +136,37 @@ const ShoppingBasketDrawer = ({ services }: ShoppingBasketDrawerProps) => {
                     :
                     <>
                         <motion.div variants={item} className='panel--content'>
-                            {isShowingPatchTestInfo ?
+                            {isShowingPaymentInfo ?
                                 <div className='app__flex'>
 
-                                    <p className='new-line'>{`To make sure your skin doesn’t react to the products used in your treatment, please book a patch test for at least 48 hours before your appointment.
-                                        \nAlready had one in the past 6 months at this salon? You might not need to do it again (but please check with the salon to be sure)`}.
+                                    <p className='new-line'>{`A deposit of £50 is required now in order to confirm your time slot.
+                                    The remaining balance will be requested upon arrival.
+                                    `}.
                                     </p>
 
                                     <div className='patch-test-confirm-button'>
                                         <button className='border-button'
                                             onClick={() => {
-                                                setIsPatchTestConfirmed(true)
-                                                setIsShowingPatchTestInfo(false)
+                                                setIsPaymentConfirmed(true)
+                                                setIsShowingPaymentInfo(false)
                                             }}
                                         >I Understand</button>
                                     </div>
                                 </div>
                                 :
                                 (basketItems.map(({ id, quantity }) => {
-                                    const item: iServiceOption = getSerivceOptionByID(id);
+                                    const item: iCourse = getCourseByID(Number(id));
                                     if (item) {
-                                        const { name, price } = item;
+                                        const { title, price, sale, duration } = item;
+                                        const isOnSale = (sale?.price < price);
 
                                         return (
                                             <Card className='basket-item'>
                                                 <section className="item-content">
-                                                    <label className='name'>{name}</label>
-                                                    <label className='price'>{formatCurrency(price)}</label>
+                                                    <label className='name'>{title}</label>
+                                                    <label className='price'>{formatCurrency(isOnSale ? sale.price : price)}</label>
+                                                    {/* <label className='duration'>{formatHrsMins(duration)}</label> */}
+
                                                 </section>
 
                                                 <div className='item-quantity-selector'>
@@ -179,26 +185,21 @@ const ShoppingBasketDrawer = ({ services }: ShoppingBasketDrawerProps) => {
                             }
                         </motion.div>
 
-                        {isShowingPatchTestInfo ?
+                        {isShowingPaymentInfo ?
                             null
                             :
-                            <div className='patch-test-options'>
+                            <div className='final-payment-container'>
                                 <span className="title">
-                                    {!isPatchTestConfirmed ?
-                                        <>
-                                            <Information style={{ color: 'red' }} />
-                                            <label>You may need a patch test.</label>
-                                        </>
+                                    {!isPaymentConfirmed ?
+                                        <Information style={{ color: 'red' }} />
                                         :
-                                        <>
-                                            <RoundCheckmark style={{ color: 'green' }} />
-                                            <label>A patch test has been confirmed</label>
-                                        </>
+                                        <RoundCheckmark style={{ color: 'green' }} />
                                     }
+                                    <label>Terms & Conditions</label>
                                 </span>
                                 <span className="more-info">
-                                    {!isPatchTestConfirmed ?
-                                        <button className='' onClick={() => setIsShowingPatchTestInfo(true)}>More Details</button>
+                                    {!isPaymentConfirmed ?
+                                        <button className='' onClick={() => setIsShowingPaymentInfo(true)}>More Details</button>
                                         :
                                         <></>
                                     }
@@ -208,15 +209,11 @@ const ShoppingBasketDrawer = ({ services }: ShoppingBasketDrawerProps) => {
 
                         <footer>
                             <div className='shopping-basket-drawer-buttons'>
-                                <button disabled={!isPatchTestConfirmed}
-                                        style={{ cursor: (!isPatchTestConfirmed ? "default" : "pointer") }}
-                                        className=''
-                                >Choose Time</button>
+                                <button disabled={!isPaymentConfirmed} className=''>Choose Time</button>
                                 <button className='' onClick={() => {
-                                    setIsPatchTestConfirmed(false)
+                                    setIsPaymentConfirmed(false)
                                     emptyBasket()
                                 }}>
-                                    {/* <Bin /> */}
                                     Empty Basket
                                 </button>
                             </div>
@@ -228,7 +225,7 @@ const ShoppingBasketDrawer = ({ services }: ShoppingBasketDrawerProps) => {
                                 </span>
 
                                 <span>
-                                    <h3>{formatCurrency(basketTotal())}</h3>
+                                    <h3>{formatCurrency(getAmountDueNow())} ({formatCurrency(basketTotal() - getAmountDueNow())} remaining)</h3>
                                 </span>
                             </div>
 

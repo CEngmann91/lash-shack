@@ -7,8 +7,9 @@ import './PotentialEarnings.scss';
 import React from 'react'
 import { ActivityIndicator, MyIFrame, Page } from '../../components';
 import CourseCard from './CourseCard/CourseCard';
-import { ABT, Landing0, Landing1, Training, TrainingCertificate_Watermark } from '../../util/images';
+import { ABT, TrainingCertificate_Watermark, Training_1to1Training, Training_Mannequin, Training_Manuals, Training_Models } from '../../util/images';
 import { SectionedCard } from '../../components/Cards';
+import { formatCurrency } from '../../constants/funcs';
 
 export enum Popularity {
   Normal = 0,
@@ -32,31 +33,31 @@ export interface iCourse {
   popularity: Popularity.Normal;
 }
 
-interface iProps {
+interface CoursesProps {
   courseList: iCourse[];
   loading: boolean;
   error?: any;
 }
-const Courses: React.FC<iProps> = ({ courseList, loading, error, ...props }: iProps) => {
+const Courses: React.FC<CoursesProps> = ({ courseList, loading, error }: CoursesProps) => {
 
 
 
 
   const renderTrainingExpectation = () => (
     <Page id='training-expectation' className='app__flex app__training-expectation' header='What Can I Expect?'>
-      <p>All training performed will be conducted by our certified Lash Technician Specialist who will</p>
+      {/* <p>All training performed will be conducted by our certified Lash Technician Specialist who will</p> */}
 
       <div className="list">
         <SectionedCard
           className='expectation-card'
           leftChildren={(
-            <div className=''>
+            <div className='app__flex pad--left txt-cntr'>
               <h1>1:1 Training</h1>
               <label></label>
             </div>
           )}
           rightChildren={(
-            <img src={Landing0} />
+            <img src={Training_1to1Training} />
           )}
         />
 
@@ -65,13 +66,13 @@ const Courses: React.FC<iProps> = ({ courseList, loading, error, ...props }: iPr
         <SectionedCard
           // className='expectation-card'
           leftChildren={(
-            <div className='app__flex'>
+            <div className='app__flex pad--right txt-cntr'>
               <h1>Theory Sessions</h1>
               <label>Learn</label>
             </div>
           )}
           rightChildren={(
-            <img src={Landing1} />
+            <img src={Training_Manuals} />
           )}
           reversed={true}
         />
@@ -80,13 +81,13 @@ const Courses: React.FC<iProps> = ({ courseList, loading, error, ...props }: iPr
         <SectionedCard
           // className='expectation-card'
           leftChildren={(
-            <div className='app__flex'>
+            <div className='app__flex pad--left txt-cntr'>
               <h1>Mannequin Sessions</h1>
               <label>Learn</label>
             </div>
           )}
           rightChildren={(
-            <img src={Landing1} />
+            <img src={Training_Mannequin} />
           )}
         />
 
@@ -95,13 +96,13 @@ const Courses: React.FC<iProps> = ({ courseList, loading, error, ...props }: iPr
         <SectionedCard
           // className='expectation-card'
           leftChildren={(
-            <div className='app__flex'>
+            <div className='app__flex pad--right txt-cntr'>
               <h1>Live Model Sessions</h1>
               <label>Learn</label>
             </div>
           )}
           rightChildren={(
-            <img src={Landing1} />
+            <img src={Training_Models} />
           )}
           reversed={true}
         />
@@ -117,12 +118,58 @@ const Courses: React.FC<iProps> = ({ courseList, loading, error, ...props }: iPr
       <div className="app__certificate--img">
         <img src={TrainingCertificate_Watermark} />
       </div>
+
+      <img className='abt' src={ABT} alt="" />
     </Page>
   )
 
   const renderPotentialEarnings = () => (
-    <Page id='potential-earnings' className='app__potential-earnings' header='How Much Could I Earn?'>
-      <p>Insert Potential Earnings here!</p>
+    <Page id='potential-earnings' className='app__potential-earnings' header='How Much Could I Earn?*'>
+      {/* <p>Insert Potential Earnings here!</p> */}
+
+      <div className="earnings-grid-container">
+        <div className="Header">
+          <h3>Potential Earnings: Russian Lashes</h3>
+        </div>
+        <div className="Clients">
+          <header>Clients</header>
+          <p>2</p>
+          <p>3</p>
+          <p>4</p>
+          <p>5</p>
+        </div>
+        <div className="Daily">
+          <header>Daily</header>
+          <p>{formatCurrency(120)}</p>
+          <p>{formatCurrency(180)}</p>
+          <p>{formatCurrency(240)}</p>
+          <p>{formatCurrency(300)}</p>
+        </div>
+        <div className="Weekly">
+          <header>Weekly</header>
+          <p>{formatCurrency(600)}</p>
+          <p>{formatCurrency(900)}</p>
+          <p>{formatCurrency(1200)}</p>
+          <p>{formatCurrency(1500)}</p>
+        </div>
+        <div className="Monthly">
+          <header>Monthly</header>
+          <p>{formatCurrency(2400)}</p>
+          <p>{formatCurrency(3600)}</p>
+          <p>{formatCurrency(4800)}</p>
+          <p>{formatCurrency(6000)}</p>
+        </div>
+        <div className="Annually">
+          <header>Annually</header>
+          <p>{formatCurrency(31200)}</p>
+          <p>{formatCurrency(46800)}</p>
+          <p>{formatCurrency(62400)}</p>
+          <p>{formatCurrency(78000)}</p>
+        </div>
+      </div>
+
+
+      <p className='asterisk-data'>*Data collected based upon charging £60 per set, five days a week.</p>
 
     </Page>
   )
@@ -166,10 +213,9 @@ const Courses: React.FC<iProps> = ({ courseList, loading, error, ...props }: iPr
                 })}
               </div>
 
-              <p>Train directly with our Expert and Founder Emma and become an Expert Eyelash Technician in no time!</p>
+              <label className='app__pad-hor txt-cntr new-line'>{`Train directly with our Expert and Founder Emma and become an Expert Eyelash Technician in no time!\nAll Courses require a £50 deposit now, the remaining balance will be requested upon arrival.`}
+              </label>
               <p></p>
-
-              <img className='abt' src={ABT} alt="" />
             </>
         }
       </Page>

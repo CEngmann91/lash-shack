@@ -4,4 +4,65 @@
     padding: 2rem 0;
     background: $white-colour;
 
+
+    .earnings-grid-container {
+        @media screen and (max-width: 900px) {
+            gap: 0px 5px;
+        }
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        gap: 0px 15px;
+        grid-auto-flow: row;
+        grid-template-areas:
+            "Header Header Header Header Header"
+            "Clients Daily Weekly Monthly Annually"
+        ;
+        height: auto;
+        border: 10px solid white;
+        text-align: center;
+        // box-shadow: 5px 5px 5px rgba($green-shade-colour, 0.5);
+        box-shadow: 0px 0px 20px rgba($green-shade-colour, 0.5);
+        margin: 10px;
+        // padding: 10px;
+        border-radius: 15px;
+    }
+
+    .Header {
+        @media screen and (max-width: 900px) {
+            padding: .5em 0em;
+            font-size: 1.1rem;
+        }
+        grid-area: Header;
+        background: $pink-colour;
+        padding: .5em 8em;
+        margin-bottom: 10px;
+        font-size: 1.3rem;
+        font-family: cursive;
+        border-top: 3px solid rgba($green-shade-colour, 0.5);
+        border-bottom: 3px solid rgba($green-shade-colour, 0.5);
+    }
+
+    .Clients {
+        grid-area: Clients;
+    }
+
+    .Daily {
+        grid-area: Daily;
+    }
+
+    .Weekly {
+        grid-area: Weekly;
+    }
+
+    .Monthly {
+        grid-area: Monthly;
+    }
+
+    .Annually {
+        grid-area: Annually;
+    }
+
+    .asterisk-data {
+        font-size: 0.8em;
+    }
 }

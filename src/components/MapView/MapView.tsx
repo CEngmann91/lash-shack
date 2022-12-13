@@ -1,5 +1,4 @@
 import './MapView.scss';
-import React, { useEffect, useState } from 'react'
 import MyIFrame from '../MyIFrame/MyIFrame';
 
 type MapViewProps = {

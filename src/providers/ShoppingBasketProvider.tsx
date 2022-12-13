@@ -1,4 +1,5 @@
 import { ReactNode, useContext, useState } from 'react';
+import { BOOKING_DEPOSIT_FEE } from '../constants/constants';
 import ShoppingBasketContext from '../context/ShoppingBasketContext';
 import { useLocalStorage } from '../helpers/hooks/useLocalStorage';
 
@@ -7,6 +8,9 @@ export type BasketItem = {
     id: string
     quantity: number
     price: number
+    // category: string
+    // depositPaid: boolean
+    // remainingBalance: number
 };
 
 type ShoppingBasketProviderProps = {

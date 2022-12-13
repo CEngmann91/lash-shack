@@ -9,16 +9,12 @@ import { Card, SectionedCard } from '../../components/Cards';
 type HeaderSection = {
   id: string;
   index: number;
-  leftNode?: React.ReactNode;
-  rightNode?: React.ReactNode;
+  leftNode: React.ReactNode;
+  rightNode: React.ReactNode;
   reversed?: boolean;
 }
 
-
-
-
-
-enum SectionType {
+/*enum SectionType {
   Text,
   ReactNode,
   TextAndButton,
@@ -37,17 +33,16 @@ interface iSection {
 interface iArticle {
   section1: iSection;
   section2: iSection;
-}
+}*/
 
 const About = () => {
-
 
   const sections: HeaderSection[] = [
     {
       id: 'Expert Services',
       index: 0,
       leftNode: (
-        <div className='app__flex pad--left text-center'>
+        <div className='app__flex pad--left txt-cntr'>
           <h1>Expert Services</h1>
           <p className="description new-line">Our expert team of technicians in Romford have carefully vetted our services to provide excellent quality that adheres to everyone's unique style.</p>
         </div>
@@ -60,21 +55,22 @@ const About = () => {
       id: 'Become An Expert',
       index: 1,
       leftNode: (
-        <img src={Training} />
-      ),
-      rightNode: (
-        <div className='app__flex pad--right text-center'>
+        <div className='app__flex pad--right txt-cntr'>
           <h1>Become An Expert</h1>
           <p className="description new-line">Eyelash Extension Course's designed specifically with you in mind to make you an expert. Discover new and exciting ways that you can become a fully qualified Lash Technician or refresh your memory with our Refresher Course at Lash Shack.</p>
           <a href="/courses" className={`border-button section-button`}>Find Out More</a>
         </div>
       ),
+      rightNode: (
+        <img src={Training} />
+      ),
+      reversed: true,
     },
     {
       id: 'What To Expect',
       index: 2,
       leftNode: (
-        <div className='app__flex pad--left text-center'>
+        <div className='app__flex pad--left txt-cntr'>
           <h1>What To Expect</h1>
           <p className="description new-line">Text</p>
         </div>
@@ -87,7 +83,7 @@ const About = () => {
 
 
 
-  const articles: iArticle[] = [
+  /*const articles: iArticle[] = [
     {
       section1: {
         type: SectionType.Text,
@@ -134,9 +130,9 @@ const About = () => {
         )
       }
     }
-  ];
+  ];*/
 
-  const renderArticle = (section1: iSection, section2: iSection) => {
+  /*const renderArticle = (section1: iSection, section2: iSection) => {
     switch (section1.type) {
       case SectionType.ReactNode:
         return (
@@ -228,7 +224,7 @@ const About = () => {
           </>
         )
     }
-  }
+  }*/
 
   return (
     <Page id='about' className='app__about'>
@@ -248,8 +244,8 @@ const About = () => {
             className='card'
             leftChildren={leftNode}
             rightChildren={rightNode}
-            // reversed={reversed}
-            // reversed={index % 2 != 0}
+            reversed={reversed}
+          // reversed={index % 2 != 0}
           />
         )}
 

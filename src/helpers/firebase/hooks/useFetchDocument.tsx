@@ -10,18 +10,21 @@ export const useFetchDocument = (collectionName: string, documentName: string) =
 
 
     const fetchDocument = async () => {
-        getDocument(collectionName as string,
+        const doc = await getDocument(collectionName as string,
             documentName as string)
             .then(res => {
                 setData(res);
             })
-            .catch((error) => {
-              setError(error);
-            });
+            .catch((error) => setError(error));
+
+        return doc;
     }
 
     useEffect(() => {
         fetchDocument();
+
+        // const cleanup = fetchDocument();
+        // return cleanup;
     }, [collectionName, documentName])
 
     return { data, error };

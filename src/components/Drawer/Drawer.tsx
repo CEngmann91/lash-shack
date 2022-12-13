@@ -42,7 +42,6 @@ const item = {
 
 function Drawer() {
     // const [isOpen, toggleMe] = useToggle({ onOpen, onClose });
-
     const { lockScroll, unlockScroll } = useScrollLock();
     const { isPressed } = useEscKey();
     const [ isOpen, toggleOpen ] = useCycle(false, true);
@@ -83,7 +82,7 @@ function Drawer() {
                 animate={isOpen ? "open" : "closed"}
                 exit='closed'
             >
-                <header><img src={logo} /></header>
+                {/* <header><img src={logo} /></header> */}
 
                 <motion.div variants={item}>
                     {menuItems.map(({ id, title, to }) =>

@@ -27,7 +27,7 @@ function App() {
     <div className='route-div'>
       <Navbar />
       <SidebarMenu />
-      <ShoppingBasketDrawer services={services} />
+      <ShoppingBasketDrawer courses={courses} />
       {id !== "/" && id !== "*" ? <div className='padding-top' /> : null}
       {component}
       {id !== "/contact" && <Contact />}
