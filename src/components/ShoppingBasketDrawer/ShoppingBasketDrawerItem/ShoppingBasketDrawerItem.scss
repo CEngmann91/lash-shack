@@ -1,0 +1,96 @@
+@import '../../../res/colours.scss';
+@import '../../../constants/constants.scss';
+
+.shopping-basket-item {
+    display: grid;
+    flex-direction: row;
+    grid-template-columns: auto 30px 30px;
+    align-items: center;
+    width: 100%;
+    height: 6rem;
+    background: $green-shade-colour;
+    color: $pink-colour;
+    padding: .5rem .8rem;
+    border: 3px solid $pink-colour;
+    box-shadow: 5px 5px 0px rgba($green-shade-colour, 0.5);
+    // overflow: visible;
+
+
+    .item-content {
+        display: flex;
+        flex: 1;
+        height: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        // background: red;
+
+        .name {
+            font-size: 1.2rem;
+            font-family: cursive;
+        }
+
+        .price {
+            font-size: 0.9rem;
+            // opacity: 0.8;
+        }
+
+        .duration {
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+    }
+
+    .item-quantity-selector {
+        display: flex;
+        flex-direction: column;
+        width: 30px;
+        // padding: 0.5rem 0;
+        // background: green;
+
+        button {
+            background: transparent;
+            height: 20px;
+
+            transition: 0.3s ease-in-out;
+
+            svg {
+                color: $pink-colour;
+                width: 100%;
+                height: 100%;
+            }
+
+            &:hover {
+                transform: scale(1.2);
+            }
+        }
+    }
+
+    .item-remove-button {
+        display: flex;
+        width: auto;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+        // background: yellow;
+
+        button {
+            background: transparent;
+            padding: 5px;
+            height: 100%;
+            width: 30px;
+
+            transition: 0.3s ease-in-out;
+
+            svg {
+                color: $pink-colour;
+                width: 100%;
+                height: 100%;
+            }
+
+            &:hover {
+                transform: scale(1.1);
+            }
+        }
+    }
+}

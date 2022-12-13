@@ -38,6 +38,7 @@ export const getDocument = async(
         const docSnap = await getDoc(docRef);
         if (docSnap.exists())
         {
+            // const data = res = res.toString().replace("\\n", "\n");
             // console.log("Document data:", docSnap.data());
             return new Promise<any>( res => res(docSnap.data()) );
         }

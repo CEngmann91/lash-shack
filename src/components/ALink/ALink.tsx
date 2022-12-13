@@ -1,18 +1,21 @@
 import React from 'react'
 
-type ALinkProp = {
+
+interface iProps extends React.DetailedHTMLProps<React.AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement> {
   className?: string;
   path?: string;
   children?: React.ReactNode;
-  onClick: (e?: React.MouseEvent<HTMLElement>) => void;
+  onClick?: (e?: React.MouseEvent<HTMLElement>) => void;
 }
-function ALink({ children, path, className, onClick }: ALinkProp) {
+const ALink: React.FC<iProps> = ({ children, path, className, onClick, ...props}: iProps) => {
+  
   return (
     <a href={path}
       className={className}
       target="_blank"
       rel="noopener noreferrer"
       onClick={onClick}
+      {...props}
     >
       {children}
     </a>

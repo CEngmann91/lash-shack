@@ -6,11 +6,12 @@ import { useEscKey, useScrollLock } from '../../helpers/hooks';
 import ShoppingBasketDrawerButton from './ShoppingBasketDrawerButton/ShoppingBasketDrawerButton';
 import { useShoppingBasketContext } from '../../providers/ShoppingBasketProvider';
 import { Bin, DownArrowHead, Information, LeftArrowHead, RoundCheckmark, UpArrowHead } from '../../util/icons';
-import { formatCurrency, formatHrsMins } from '../../constants/funcs';
+import { formatCurrency } from '../../constants/funcs';
 import { Payment_AmericanExpress, Payment_Mastercard, Payment_Visa } from '../../util/images';
 import { Card } from '../Cards';
 import { iCourse } from '../../pages/Courses/Courses';
 import { BOOKING_DEPOSIT_FEE } from '../../constants/constants';
+import ShoppingBasketDrawerItem from './ShoppingBasketDrawerItem/ShoppingBasketDrawerItem';
 
 
 const container = {
@@ -33,11 +34,15 @@ const container = {
     }
 }
 const item = {
-    closed: { opacity: 0 },
-    open: { opacity: 1 }
+    closed: {
+        opacity: 0
+    },
+    open: {
+        opacity: 1
+    }
 }
 
-interface ShoppingBasketDrawerProps {
+type ShoppingBasketDrawerProps = {
     courses: iCourse[];
 }
 const ShoppingBasketDrawer = ({ courses }: ShoppingBasketDrawerProps) => {
@@ -55,9 +60,9 @@ const ShoppingBasketDrawer = ({ courses }: ShoppingBasketDrawerProps) => {
     //     window.scrollTo(0, 0);
     //   }, [isOpen]);
 
-    // useEffect(() => {
+    useEffect(() => {
 
-    // }, [isShowingPaymentInfo])
+    }, [isShowingPaymentInfo])
 
 
     if (isPressed) {
@@ -77,7 +82,7 @@ const ShoppingBasketDrawer = ({ courses }: ShoppingBasketDrawerProps) => {
 
         // window.scrollTo(0, 0);
 
-        // setIsShowingPaymentInfo(false);
+        setIsShowingPaymentInfo(false);
         // Prevents scrolling whilst the menu is visible.
         lockScroll();
         toggleOpen();
@@ -87,12 +92,13 @@ const ShoppingBasketDrawer = ({ courses }: ShoppingBasketDrawerProps) => {
     function hide() {
         if (!isOpen) return;
 
-        // setIsShowingPaymentInfo(false);
+        setIsShowingPaymentInfo(false);
+        // Allow scrolling while the menu is going to be hidden.
         unlockScroll();
         toggleOpen();
         closeBasket();
     }
-
+    
     function getCourseByID(id: number): iCourse {
         return courses?.find(item => item.id === id) as iCourse;
     }
@@ -161,24 +167,32 @@ const ShoppingBasketDrawer = ({ courses }: ShoppingBasketDrawerProps) => {
                                         const isOnSale = (sale?.price < price);
 
                                         return (
-                                            <Card className='basket-item'>
-                                                <section className="item-content">
-                                                    <label className='name'>{title}</label>
-                                                    <label className='price'>{formatCurrency(isOnSale ? sale.price : price)}</label>
-                                                    {/* <label className='duration'>{formatHrsMins(duration)}</label> */}
+                                            <ShoppingBasketDrawerItem
+                                                id={id} title={title} quantity={quantity}
+                                                price={price} onSale={isOnSale} salePrice={sale.price}
+                                            />
 
-                                                </section>
 
-                                                <div className='item-quantity-selector'>
-                                                    <button onClick={() => addToBasket(id, price)}><UpArrowHead /></button>
-                                                    <p>{quantity}</p>
-                                                    <button disabled={quantity < 2} onClick={() => decreaseFromBasket(id)}><DownArrowHead /></button>
-                                                </div>
 
-                                                <section className='item-remove-button'>
-                                                    <button className='' onClick={() => removeFromBasket(id)}><Bin /></button>
-                                                </section>
-                                            </Card>
+
+                                            // <Card className='basket-item'>
+                                            //     <section className="item-content">
+                                            //         <label className='name'>{title}</label>
+                                            //         <label className='price'>{formatCurrency(isOnSale ? sale.price : price)}</label>
+                                            //         {/* <label className='duration'>{formatHrsMins(duration)}</label> */}
+
+                                            //     </section>
+
+                                            //     <div className='item-quantity-selector'>
+                                            //         <button onClick={() => addToBasket(id, price)}><UpArrowHead /></button>
+                                            //         <p>{quantity}</p>
+                                            //         <button disabled={quantity < 2} onClick={() => decreaseFromBasket(id)}><DownArrowHead /></button>
+                                            //     </div>
+
+                                            //     <section className='item-remove-button'>
+                                            //         <button className='' onClick={() => removeFromBasket(id)}><Bin /></button>
+                                            //     </section>
+                                            // </Card>
                                         );
                                     }
                                 }))

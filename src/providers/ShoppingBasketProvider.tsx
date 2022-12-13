@@ -1,5 +1,4 @@
 import { ReactNode, useContext, useState } from 'react';
-import { BOOKING_DEPOSIT_FEE } from '../constants/constants';
 import ShoppingBasketContext from '../context/ShoppingBasketContext';
 import { useLocalStorage } from '../helpers/hooks/useLocalStorage';
 

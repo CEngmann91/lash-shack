@@ -13,7 +13,7 @@ export const useScroller = () => {
     };
 
     useEffect(() => {
-        window.addEventListener('scroll', onScroll)
+        window.addEventListener('scroll', onScroll, { passive: false })
         return function cleanup() {
             window.removeEventListener('scroll', onScroll)
         }

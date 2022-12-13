@@ -1,7 +1,5 @@
 import moment from "moment";
 
-
-
 const CURRENCY_FORMATTER = new Intl.NumberFormat(undefined, {
     currency: "GBP",
     style: "currency",
@@ -25,45 +23,11 @@ function formatTime(time: moment.Moment) {
         return time.format(`h [${hourFormatStr}]`);
     return time.format(`h [${hourFormatStr}], mm [${minuteFormatStr}]`);
 }
-const timespan = (duration: number) => moment.utc(
+const timespan = (duration: number) => moment.utc (
     moment.duration(duration, "minutes")
         .asMilliseconds()
 )
 
-
-
-
-
-
-export function getDateFormatted(date: string): string {
-    return getDate(date, 'DD/MM/YYYY');
+export function replaceAllNewLineChars(data: string) : string {
+    return data.replace("\\n", "\n");
 }
-export function getDate(date: string, dateFormat: string): string {
-    return moment(date, dateFormat).fromNow();
-}
-
-// export function convertToHoursMinutes(value: number) : string
-// { 
-//   var hours = Math.floor(value / 60);  
-//   var minutes = value % 60;
-//   return hours + ":" + minutes;         
-// }
-
-
-export function remove(arr: number[], item: number) {
-    const newArr = [...arr];
-    newArr.splice(newArr.findIndex(i => i === item), 1);
-    return newArr;
-};
-
-export function arraymove(arr: any[], fromIndex: number, toIndex: number) {
-    var element = arr[fromIndex];
-    arr.splice(fromIndex, 1);
-    arr.splice(toIndex, 0, element);
-}
-
-
-/*export function NewlineText(input : string) {
-    const text = input;
-    return text.split('\n').map(str => <p>{str}</p>);
-}*/

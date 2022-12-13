@@ -14,22 +14,17 @@ export const useTrainingReviews = () => {
             setLoadingReviews(true);
 
             await getDocument(REACT_APP_FIRESTORE_TRAINING_COLLECTION as string,
-                REACT_APP_FIRESTORE_TRAINING_DOCUMENT as string)
+                              REACT_APP_FIRESTORE_TRAINING_DOCUMENT as string)
                 .then(res => {
                     const array: iTrainingReview[] = res['content'];
                     let sorted = array.sort((a, b) => a.id - b.id);
                     setReviews(sorted);
-                    setLoadingReviews(false);
                 })
-                .catch(error => {
-                    setReviewsError(error)
-                    setLoadingReviews(false);
-                });
+                .catch(error => setReviewsError(error));
         }
-        catch (error) {
-            setReviewsError(error)
-            setLoadingReviews(false);
-        };
+        catch (error) { setReviewsError(error) };
+
+        setLoadingReviews(false);
     }
 
     useEffect(() => {

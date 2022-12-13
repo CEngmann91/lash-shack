@@ -57,7 +57,7 @@ const About = () => {
       leftNode: (
         <div className='app__flex pad--right txt-cntr'>
           <h1>Become An Expert</h1>
-          <p className="description new-line">Eyelash Extension Course's designed specifically with you in mind to make you an expert. Discover new and exciting ways that you can become a fully qualified Lash Technician or refresh your memory with our Refresher Course at Lash Shack.</p>
+          <p className="description new-line">Eyelash Extension Course's designed meticulously with you in mind to make you an expert. Discover new and exciting ways that you can become a fully qualified Lash Technician or refresh your memory with our Refresher Course at Lash Shack.</p>
           <a href="/courses" className={`border-button section-button`}>Find Out More</a>
         </div>
       ),
@@ -240,13 +240,15 @@ const About = () => {
 
 
         {sections.map(({ index, leftNode, rightNode, reversed }) =>
-          <SectionedCard
-            className='card'
-            leftChildren={leftNode}
-            rightChildren={rightNode}
-            reversed={reversed}
-          // reversed={index % 2 != 0}
-          />
+          <div key={index}>
+            <SectionedCard
+              className='card'
+              leftChildren={leftNode}
+              rightChildren={rightNode}
+              reversed={reversed}
+            // reversed={index % 2 != 0}
+            />
+          </div>
         )}
 
       </div>

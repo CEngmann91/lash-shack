@@ -4,6 +4,7 @@ import NavbarItem from '../navbar/NavbarItem/NavbarItem';
 import { Email, Facebook, Instagram, Twitter, UpArrow } from '../../util/icons';
 import { CONTACT } from '../../constants/constants';
 import { logo } from '../../util/images';
+import ALink from '../ALink/ALink';
 
 
 type iSocial = {
@@ -24,12 +25,12 @@ const socials: iSocial[] = [
   // },
   {
     id: "Instagram",
-    component: ( <Instagram /> ),
+    component: (<Instagram />),
     to: CONTACT.INSTAGRAM
   },
   {
     id: "Email",
-    component: ( <Email /> ),
+    component: (<Email />),
     to: CONTACT.EMAIL
   }
 ]
@@ -37,8 +38,56 @@ const socials: iSocial[] = [
 function Footer() {
 
   return (
-    <div className='app__footer'>
-      <div className="app__footer--logo">
+    <footer className='app__footer'>
+      <div className="CompanyInfo">
+        <header>Company Information</header>
+        <p>1</p>
+        <p>2</p>
+        <p>3</p>
+        <p>4</p>
+        <p>5</p>
+        <p>6</p>
+        <p>7</p>
+        <p>8</p>
+        <p>9</p>
+        <p>10</p>
+        <p>11</p>
+      </div>
+      <div className="Services">
+        <header>Services</header>
+        <p>1</p>
+        <p>2</p>
+        <p>3</p>
+        <p>4</p>
+      </div>
+      <div className="ContactInfo">
+        <header>Contact Info</header>
+        <p>1</p>
+        <p>2</p>
+        <p>3</p>
+        <p>4</p>
+      </div>
+
+      <div className='footer'>
+        <label className='company-name'>Lash Shack</label>
+        <label style={{ color: 'lightgray' }}>-</label>
+        <label style={{ color: 'gray' }}>Copyright © 2023</label>
+        <label style={{ color: 'lightgray' }}>|</label>
+        <ALink path=
+        // 'https://www.christianengmann.com'
+        'www.christianengmann.com'
+          style={{ color: 'white', fontSize: '0.7rem' }}>Christian Engmann</ALink>
+        {/* <label className='developer'>Christian Engmann</label> */}
+      </div>
+
+
+
+
+
+
+
+
+      {/* <div className="app__footer--logo">
         <NavbarItem to={'/'} onClick={() => { }} idleClassName="link-item" activeClassName="">
           <img src={logo} />
         </NavbarItem>
@@ -59,11 +108,20 @@ function Footer() {
           <p className='new-line address'>{CONTACT.ADDRESS}</p>
         </div>
       </div>
-    </div>
+    </div> */}
 
 
 
 
+
+
+
+
+
+
+
+
+      {/* 
     // <div className='app__footer'>
 
     //   <ul className="app__footer--quick-links">
@@ -101,12 +159,14 @@ function Footer() {
     //   <div className="app__footer--location">
     //     <p className='title'>Location</p>
     //     <p className='new-line address'>{CONTACT.ADDRESS}</p>
-    //     {/* <p className='email-address app__style-effect__underline'>{CONTACT.EMAIL}</p> */}
+    //     //<p className='email-address app__style-effect__underline'>{CONTACT.EMAIL}</p>
     //   </div>
 
-    //   {/* <p className=''>Copyright © 2022 Lash Shack</p> */}
+    //   <p className=''>Copyright © 2022 Lash Shack</p>
+    */}
 
-    // </div>
+    </footer>
+
   )
 }
 
