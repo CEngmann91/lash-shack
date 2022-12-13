@@ -53,19 +53,19 @@ a {
   white-space: pre-line;
 }
 
-button {
-  border: none;
+  button {
+    border: none;
 
-  &:hover {
-    cursor: pointer;
+    &:hover {
+      cursor: pointer;
+    }
   }
-}
 
-button[disabled] {
-  opacity: 0.3;
+  button[disabled] {
+    opacity: 0.3;
 
-  &:hover {
-    cursor: default;
-    transform: scale(1);
+    &:hover {
+      cursor: default;
+      transform: scale(1);
+    }
   }
-}

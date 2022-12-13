@@ -1,5 +1,5 @@
 import './MyIFrame.scss';
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import ActivityIndicator from '../ActivityIndicator/ActivityIndicator';
 
 type MyIFrameProps = {

@@ -5,7 +5,7 @@ import { getDocument } from "../firebase/firestore";
 
 export const useServices = () => {
     const [services, setServices] = useState<iService[]>([]);
-    const [servicesError, setServicesError] = useState();
+    const [servicesError, setServicesError] = useState<any>();
     const [loadingServices, setLoadingServices] = useState(false);
 
 
@@ -47,31 +47,36 @@ export const useServices = () => {
 
 
     const fetchServices = async () => {
-        setLoadingServices(true);
+        try {
+            setLoadingServices(true);
 
-        await getDocument(REACT_APP_FIRESTORE_SERVICES_COLLECTION as string,
-            REACT_APP_FIRESTORE_SERVICES_DOCUMENT as string)
-            .then(res => {
-                const result: iService[] = res['catergory'];
-                // Only get the active items in the array.
-                const filtered = result.filter((item) => item.active);
+            await getDocument(REACT_APP_FIRESTORE_SERVICES_COLLECTION as string,
+                REACT_APP_FIRESTORE_SERVICES_DOCUMENT as string)
+                .then(res => {
+                    const result: iService[] = res['catergory'];
+                    // Only get the active items in the array.
+                    const filtered = result.filter((item) => item.active);
 
-                // Only provide active options within this service.
-                filtered.forEach(option => {
-                    const op = option.options.filter((item) => item.active);
-                    option.options = op;
+                    // Only provide active options within this service.
+                    filtered.forEach(option => {
+                        const op = option.options.filter((item) => item.active);
+                        option.options = op;
+                    })
+                    // filtered.map(option => option.options.filter((item) => item.active))
+
+                    // console.log(filtered);
+                    setServices(filtered);
+                    setLoadingServices(false);
                 })
-                // filtered.map(option => option.options.filter((item) => item.active))
-
-                // console.log(filtered);
-                setServices(filtered);
-                setLoadingServices(false);
-            })
-            .catch(error => {
-                setServicesError(error)
-                setLoadingServices(false);
-                return;
-            });
+                .catch(error => {
+                    setServicesError(error)
+                    setLoadingServices(false);
+                });
+        }
+        catch (error) {
+            setServicesError(error)
+            setLoadingServices(false);
+        };
     }
 
     useEffect(() => {

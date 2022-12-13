@@ -3,6 +3,8 @@ import React from 'react'
 import { Card, CardFlip } from '../../../components/Cards';
 import { iSale, Popularity } from '../Courses';
 import { ABT } from '../../../util/images';
+import { useShoppingBasket } from '../../../helpers/hooks';
+import { formatCurrency } from '../../../constants/funcs';
 
 interface iProps {
     id: number;
@@ -19,15 +21,16 @@ interface iProps {
     popularity?: Popularity;
 }
 const CourseCard: React.FC<iProps> = ({ id, title, imgSrc, description, price, sale, duration, popularity, ...props }: iProps) => {
+    const { addToBasket } = useShoppingBasket();
 
 
     function isOnSale(): boolean {
         return (sale?.price < price);
     }
 
-    function toCurrency(value: number): string {
-        return value.toLocaleString('en-UK', { style: 'currency', currency: 'GBP' });
-    }
+    // function formatCurrency(value: number): string {
+    //     return value.toLocaleString('en-UK', { style: 'currency', currency: 'GBP' });
+    // }
 
     /*function calculateSalePercentage(price: number, salePrice: number): number {
         if (salePrice > price) return price;
@@ -66,19 +69,25 @@ const CourseCard: React.FC<iProps> = ({ id, title, imgSrc, description, price, s
             <div className="info"
             // style={{ padding: (popularity === Popularity.Normal ? '1rem 0.5rem' : '4rem 0.5rem') }}
             >
-                <label className='title'>{title}</label>
-                {/* <h3 className='description new-line'>{description}</h3> */}
+                <h1 className='title'>{title}</h1>
 
-                <div className='price-container'>
-                    <h4 className={`price ${isOnSale() && "is-on-sale"}`}>{toCurrency(price)}</h4>
+                <div className="description-container">
+                    <label className='new-line'>{`${description}`}</label>
+                </div>
+
+                <div className='price-container' data-onsale={isOnSale()}>
+                    <h4 className={`price ${isOnSale() && "is-on-sale"}`}>{formatCurrency(price)}</h4>
                     {isOnSale() &&
-                        <h4 className='sale-price'>{toCurrency(sale?.price)}</h4>
+                        <h4 className='sale-price'>{formatCurrency(sale?.price)}</h4>
                     }
                 </div>
             </div>
 
             <div className='app__flex'>
-                <button className='border-button join-button'>Join Us</button>
+                <button
+                    className='border-button join-button'
+                    onClick={() => addToBasket(id.toString(), (isOnSale() ? sale?.price : price))}
+                >Join Now</button>
             </div>
         </Card>
 
@@ -116,9 +125,9 @@ const CourseCard: React.FC<iProps> = ({ id, title, imgSrc, description, price, s
                 <h3 className='duration'>{duration}</h3>
 
                 <div className='price-container'>
-                    <h4 className={`price ${isOnSale() && "is-on-sale"}`}>{toCurrency(price)}</h4>
+                    <h4 className={`price ${isOnSale() && "is-on-sale"}`}>{formatCurrency(price)}</h4>
                     {isOnSale() &&
-                        <h4 className='sale-price'>{toCurrency(sale?.price)}</h4>
+                        <h4 className='sale-price'>{formatCurrency(sale?.price)}</h4>
                     }
                 </div>
             </div>
@@ -175,9 +184,9 @@ const CourseCard: React.FC<iProps> = ({ id, title, imgSrc, description, price, s
         //                 <h3 className='description'>{description}</h3>
 
         //                 <div className='price-container'>
-        //                     <h4 className={`price ${isOnSale() && "is-on-sale"}`}>{toCurrency(price)}</h4>
+        //                     <h4 className={`price ${isOnSale() && "is-on-sale"}`}>{formatCurrency(price)}</h4>
         //                     {isOnSale() &&
-        //                         <h4 className='sale-price'>{toCurrency(sale?.price)}</h4>
+        //                         <h4 className='sale-price'>{formatCurrency(sale?.price)}</h4>
         //                     }
         //                 </div>
         //             </div>

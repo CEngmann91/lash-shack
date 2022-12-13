@@ -6,44 +6,53 @@ import { getDocument } from "../firebase/firestore";
 
 export const useCourses = () => {
     const [courses, setCourses] = useState<iCourse[]>([]);
-    const [coursesError, setCoursesError] = useState();
+    const [coursesError, setCoursesError] = useState<any>();
     const [loadingCourses, setLoadingCourses] = useState(false);
 
 
     const fetchCourses = async () => {
-        setLoadingCourses(true);
+        try {
+            setLoadingCourses(true);
 
-        let array: iCourse[] = [];
-        await getDocument(REACT_APP_FIRESTORE_COURSES_COLLECTION as string,
-            REACT_APP_FIRESTORE_COURSES_DOCUMENT as string)
-            .then(res => {
-                const result: iCourse[] = res['content'];
-                // Only get the active items in the array.
-                const filtered = result.filter((item) => item.active);
-                // Sort by ID.
-                array = filtered.sort((a, b) => a.id - b.id);
-            })
-            .catch(error => {
-                setCoursesError(error)
-                setLoadingCourses(false);
-                return;
-            });
+            let array: iCourse[] = [];
+            await getDocument(REACT_APP_FIRESTORE_COURSES_COLLECTION as string,
+                REACT_APP_FIRESTORE_COURSES_DOCUMENT as string)
+                .then(res => {
+                    const result: iCourse[] = res['content'];
+                    // Only get the active items in the array.
+                    const filtered = result.filter((item) => item.active);
+                    // Sort by ID.
+                    array = filtered.sort((a, b) => a.id - b.id);
+                })
+                .catch(error => {
+                    setCoursesError(error)
+                    setLoadingCourses(false);
+                    return;
+                });
 
 
-        // Load images from Firestore.
-        const mapPromises = array.map((item) =>
-            getImage(item.img).then(res => item.img = res)
-        );
-        await Promise.all(mapPromises);
-        // const results = await Promise.all(mapPromises);
-        // console.log("results - " + results)
+            // Load images from Firestore.
+            const mapPromises = array.map((item) =>
+                getImage(item.img).then(res => item.img = res)
+            );
+            await Promise.all(mapPromises);
+            // const results = await Promise.all(mapPromises);
+            // console.log("results - " + results)
 
-        setLoadingCourses(false);
-        setCourses(array);
+            setLoadingCourses(false);
+            setCourses(array);
+        }
+        catch (error) {
+            setCoursesError(error);
+            setLoadingCourses(false);
+        };
     }
 
     useEffect(() => {
         fetchCourses();
+
+        // const cleanup = fetchCourses();
+        // return cleanup;
     }, [])
 
     return { courses, loadingCourses, coursesError };

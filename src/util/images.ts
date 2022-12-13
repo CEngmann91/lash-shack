@@ -29,3 +29,10 @@ export { default as Landing8 } from '../assets/images/landing/Landing8.jpg';
 export { default as Emma } from '../assets/images/team/Emma.jpg';
 export { default as Louisa } from '../assets/images/team/Louisa.jpg';
 export { default as Shannon } from '../assets/images/team/Shannon.jpg';
+
+
+// Training
+export { default as Training_1to1Training } from '../assets/images/training/1to1Training.jpg';
+export { default as Training_Manuals } from '../assets/images/training/Manuals.png';
+export { default as Training_Mannequin } from '../assets/images/training/Mannequin.jpg';
+export { default as Training_Models } from '../assets/images/training/Models.jpg';

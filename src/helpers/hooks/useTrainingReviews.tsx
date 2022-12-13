@@ -5,25 +5,31 @@ import { getDocument } from "../firebase/firestore";
 
 export const useTrainingReviews = () => {
     const [reviews, setReviews] = useState<iTrainingReview[]>([]);
-    const [reviewsError, setReviewsError] = useState();
+    const [reviewsError, setReviewsError] = useState<any>();
     const [loadingReviews, setLoadingReviews] = useState(false);
 
 
     const fetchReviews = async () => {
-        setLoadingReviews(true);
+        try {
+            setLoadingReviews(true);
 
-        getDocument(REACT_APP_FIRESTORE_TRAINING_COLLECTION as string,
-            REACT_APP_FIRESTORE_TRAINING_DOCUMENT as string)
-            .then(res => {
-                const array: iTrainingReview[] = res['content'];
-                let sorted = array.sort((a, b) => a.id - b.id);
-                setReviews(sorted);
-                setLoadingReviews(false);
-            })
-            .catch(error => {
-                setReviewsError(error)
-                setLoadingReviews(false);
-            });
+            await getDocument(REACT_APP_FIRESTORE_TRAINING_COLLECTION as string,
+                REACT_APP_FIRESTORE_TRAINING_DOCUMENT as string)
+                .then(res => {
+                    const array: iTrainingReview[] = res['content'];
+                    let sorted = array.sort((a, b) => a.id - b.id);
+                    setReviews(sorted);
+                    setLoadingReviews(false);
+                })
+                .catch(error => {
+                    setReviewsError(error)
+                    setLoadingReviews(false);
+                });
+        }
+        catch (error) {
+            setReviewsError(error)
+            setLoadingReviews(false);
+        };
     }
 
     useEffect(() => {

@@ -1,9 +1,10 @@
 import './Services.scss';
 import React from 'react'
 import { ActivityIndicator, Page } from '../../components';
-import moment from 'moment';
 import { Card } from '../../components/Cards';
 import { useShoppingBasket } from '../../helpers/hooks';
+import { formatHrsMins } from '../../constants/funcs';
+import { BOOKING_URL } from '../../constants/constants';
 
 export interface iServiceOption {
   active: boolean;
@@ -29,21 +30,7 @@ const Services: React.FC<iProps> = ({ services, loading, error }: iProps) => {
   const { addToBasket } = useShoppingBasket();
 
 
-  // https://stackoverflow.com/questions/60044966/moment-js-convert-x-minutes-to-y-hours-z-minutes
-  function formatTime(time: moment.Moment) {
-    const minutes = time.minutes();
-    const hours = time.hours();
-    const hourFormatStr = hours === 1 ? 'hr' : 'hrs';
-    const minuteFormatStr = minutes === 1 ? 'min' : 'mins';
-    if (!time.minutes())
-      return time.format(`h [${hourFormatStr}]`);
-    return time.format(`h [${hourFormatStr}], mm [${minuteFormatStr}]`);
-  }
-
-  const timespan = (duration: number) => moment.utc(
-    moment.duration(duration, "minutes")
-      .asMilliseconds()
-  )
+  
 
   const renderOptions = (options: iServiceOption[]) => (
     // options.map((item, index) => renderOption(index, item))
@@ -55,7 +42,7 @@ const Services: React.FC<iProps> = ({ services, loading, error }: iProps) => {
           <div className='option-left-side'>
             <p className='option--name'>{name}</p>
             <div style={{ display: 'flex', flexDirection: 'row', gap: '1rem' }}>
-              {duration > 0 ? <p className='option--duration'>{formatTime(timespan(duration))}</p> : null}
+              {duration > 0 ? <p className='option--duration'>{formatHrsMins(duration)}</p> : null}
               {/* <a href=''>Show Details</a> */}
               {/* <p className='option--more-details'>Show Details</p> */}
             </div>
@@ -63,9 +50,10 @@ const Services: React.FC<iProps> = ({ services, loading, error }: iProps) => {
 
           <div className='option-right-side'>
             <p className='option-right-side--price'>£{price}</p>
-            <button className='border-button option-right-side-select-button' onClick={() => addToBasket(id, price)}>
+            {/* <button className='border-button option-right-side-select-button' onClick={() => addToBasket(id, price)}>
               Select
-            </button>
+            </button> */}
+            <a href={BOOKING_URL} className="border-button option-right-side-select-button" target="_blank" rel="noreferrer">View</a>
           </div>
         </Card>
       )

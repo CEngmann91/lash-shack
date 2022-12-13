@@ -100,7 +100,7 @@
     }
 }
 
-.text-center {
+.txt-cntr {
     text-align: center;
 }
 
@@ -123,11 +123,9 @@
     // color: black;
     // border: 0.1em solid $blue-colour;
     border-radius: 20px;
-    overflow: hidden;
-
-    // border: 0.1em solid white;
-    box-shadow: 0 5px 10px rgba($green-shade-colour, 0.5);
+    box-shadow: 5px 5px 5px rgba($green-shade-colour, 0.5);
     color: white;
+    overflow: hidden;
 
     transition: 0.2s ease-in;
 
