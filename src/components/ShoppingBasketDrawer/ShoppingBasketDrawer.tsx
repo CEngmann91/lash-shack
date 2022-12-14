@@ -279,8 +279,6 @@ const ShoppingBasketDrawer = ({ services, courses }: ShoppingBasketDrawerProps) 
                                 </span>
                             </div>
                         }
-
-
                         {renderFooter()}
                     </>
                 }

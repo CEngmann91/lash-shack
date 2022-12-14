@@ -5,6 +5,7 @@ import { Email, Facebook, Instagram, Twitter, UpArrow } from '../../util/icons';
 import { CONTACT, DEVELOPER_URL } from '../../constants/constants';
 import { logo } from '../../util/images';
 import ALink from '../ALink/ALink';
+import { menuItems } from '../../constants/menuItems';
 
 
 type iSocial = {
@@ -39,8 +40,8 @@ function Footer() {
 
   return (
     <footer className='app__footer'>
-      <div className="CompanyInfo">
-        <header>Company Information</header>
+      <section className="CompanyInfo">
+        <header>Company</header>
         <p>1</p>
         <p>2</p>
         <p>3</p>
@@ -52,29 +53,35 @@ function Footer() {
         <p>9</p>
         <p>10</p>
         <p>11</p>
-      </div>
-      <div className="Services">
+      </section>
+      <section className="Services">
         <header>Services</header>
-        <p>1</p>
+        {menuItems.map(({ id, title, to }) =>
+          <NavbarItem
+            key={id} to={to} onClick={() => {}}
+            idleClassName="link" activeClassName="link-active"
+          >{title}</NavbarItem>
+        )}
+        {/* <p>1</p>
         <p>2</p>
         <p>3</p>
-        <p>4</p>
-      </div>
-      <div className="ContactInfo">
+        <p>4</p> */}
+      </section>
+      <section className="ContactInfo">
         <header>Contact Info</header>
         <p>1</p>
         <p>2</p>
         <p>3</p>
         <p>4</p>
-      </div>
+      </section>
 
-      <div className='footer'>
+      <div className='baseline'>
         <ALink path='/' className='company-name'>Lash Shack Ltd</ALink>
         {/* <label className='company-name'>Lash Shack Ltd</label> */}
-        <label style={{ color: 'lightgray' }}>-</label>
-        <label style={{ color: 'gray', fontSize: '0.9rem' }}>Copyright © 2023. All Rights Reserved.</label>
-        <label style={{ color: 'lightgray' }}>|</label>
-        <ALink path={DEVELOPER_URL} style={{ color: 'white', fontSize: '0.7rem', textDecoration: 'underline' }}>Developed by Christian Engmann</ALink>
+        <label className='divider'>-</label>
+        <label className='copyright-text'>Copyright © 2023. All Rights Reserved.</label>
+        <label className='divider'>|</label>
+        <ALink path={DEVELOPER_URL} className='developer-link'>Developed by Christian Engmann</ALink>
       </div>
 
 
