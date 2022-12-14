@@ -4,13 +4,13 @@
 @import './util/mixin.scss';
 
 @font-face {
-  font-family: 'HelveticaNeue';
-  src: local('HelveticaNeue'), url('./assets/fonts/helveticaneue/HelveticaNeue Thin.ttf') format('opentype');
+  font-family: 'Helvetica';
+  src: local('Helvetica'), url('./assets/fonts/Helvetica/Helvetica - 700.ttf') format('opentype');
 }
 
 :root {
   --font-base:
-    HelveticaNeue;
+  Helvetica;
   // "Arial";
   // Montserrat;
   // "DM Sans", sans-serif;
