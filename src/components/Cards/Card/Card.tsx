@@ -13,9 +13,7 @@ function Card({ id, children, className, onClick }: CardProps) {
 
     return (
         <div id={id?.toString()} className={`card-root card-root-shadow ${className}`} onClick={onClick}>
-            {/* <div> */}
-                {children}
-            {/* </div> */}
+            {children}
         </div>
     )
 }

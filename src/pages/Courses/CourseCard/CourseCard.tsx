@@ -4,6 +4,7 @@ import { Card, CardFlip } from '../../../components/Cards';
 import { iSale, Popularity } from '../Courses';
 import { ABT } from '../../../util/images';
 import { useShoppingBasket } from '../../../helpers/hooks';
+import { Category } from '../../../context/ShoppingBasketContext';
 import { formatCurrency, replaceAllNewLineChars } from '../../../constants/funcs';
 
 type CourseCardProps = {
@@ -86,7 +87,12 @@ const CourseCard: React.FC<CourseCardProps> = ({ id, title, imgSrc, description,
             <div className='app__flex'>
                 <button
                     className='border-button join-button'
-                    onClick={() => addToBasket(id.toString(), (isOnSale() ? sale?.price : price))}
+                    onClick={() =>
+                        {
+                            const category : Category = "Courses";
+                            addToBasket(category, id.toString(), (isOnSale() ? sale?.price : price))
+                        }
+                    }
                 >Join Now</button>
             </div>
         </Card>

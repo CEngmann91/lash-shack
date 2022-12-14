@@ -6,12 +6,14 @@ import { useEscKey, useScrollLock } from '../../helpers/hooks';
 import ShoppingBasketDrawerButton from './ShoppingBasketDrawerButton/ShoppingBasketDrawerButton';
 import { useShoppingBasketContext } from '../../providers/ShoppingBasketProvider';
 import { Bin, DownArrowHead, Information, LeftArrowHead, RoundCheckmark, UpArrowHead } from '../../util/icons';
-import { formatCurrency } from '../../constants/funcs';
+import { formatCurrency, scrollToTop } from '../../constants/funcs';
 import { Payment_AmericanExpress, Payment_Mastercard, Payment_Visa } from '../../util/images';
 import { Card } from '../Cards';
 import { iCourse } from '../../pages/Courses/Courses';
 import { BOOKING_DEPOSIT_FEE } from '../../constants/constants';
 import ShoppingBasketDrawerItem from './ShoppingBasketDrawerItem/ShoppingBasketDrawerItem';
+import { iService, iServiceOption } from '../../pages/Services/Services';
+import { Category } from '../../context/ShoppingBasketContext';
 
 
 const container = {
@@ -43,9 +45,10 @@ const item = {
 }
 
 type ShoppingBasketDrawerProps = {
+    services: iService[];
     courses: iCourse[];
 }
-const ShoppingBasketDrawer = ({ courses }: ShoppingBasketDrawerProps) => {
+const ShoppingBasketDrawer = ({ services, courses }: ShoppingBasketDrawerProps) => {
     const { isPressed } = useEscKey();
     const { lockScroll, unlockScroll } = useScrollLock();
     const { basketItems, basketQuantity, emptyBasket, basketTotal, addToBasket, decreaseFromBasket, removeFromBasket, openBasket, closeBasket } = useShoppingBasketContext();
@@ -57,7 +60,7 @@ const ShoppingBasketDrawer = ({ courses }: ShoppingBasketDrawerProps) => {
 
 
     // useEffect(() => {
-    //     window.scrollTo(0, 0);
+    //     scrollToTop();
     //   }, [isOpen]);
 
     useEffect(() => {
@@ -80,7 +83,7 @@ const ShoppingBasketDrawer = ({ courses }: ShoppingBasketDrawerProps) => {
     function show() {
         if (isOpen) return;
 
-        // window.scrollTo(0, 0);
+        // scrollToTop();
 
         setIsShowingPaymentInfo(false);
         // Prevents scrolling whilst the menu is visible.
@@ -98,15 +101,122 @@ const ShoppingBasketDrawer = ({ courses }: ShoppingBasketDrawerProps) => {
         toggleOpen();
         closeBasket();
     }
-    
+
+    // function getByID(category: Category, id: number) {
+    //     if (category === "Courses")
+    //         return courses?.find(item => item.id === id) as iCourse;
+    //     if (category === "Services")
+    //         return services?.find(item => item.id === id.toString()) as iService;
+    // }
+
     function getCourseByID(id: number): iCourse {
         return courses?.find(item => item.id === id) as iCourse;
+    }
+
+    function getServiceOptionByID(id: string): iServiceOption {
+        let op: iServiceOption = { active: false, id: '', name: '', price: 0, duration: 0 };
+        services.forEach(service => {
+            service.options.forEach(option => {
+                if (option.id == id)
+                    op = option;
+            })
+        })
+        return op;
     }
 
     function getAmountDueNow() {
         return basketQuantity * BOOKING_DEPOSIT_FEE;
     }
 
+
+
+
+    const renderHeader = () => (
+        <header>
+            <span>
+                {!isShowingPaymentInfo ?
+                    <h1>Your Basket</h1>
+                    :
+                    <button className='deposit-close-button' onClick={() => setIsShowingPaymentInfo(false)}>
+                        <LeftArrowHead />
+                    </button>
+                }
+                <hr />
+            </span>
+            {/* <span>
+                <button className='shopping-close-button' onClick={() => toggleVisibility()} data-menuvisible={isOpen}>
+                    <p>X</p>
+                </button>
+            </span> */}
+        </header>
+    )
+
+    const renderBasketItems = () => (
+        // (JSON.stringify(basketItems))
+        (basketItems.map(({ category, id, quantity }, index) => {
+            if (category === "Services") {
+                const item: iServiceOption = getServiceOptionByID(id);
+                // console.log("iServiceOption - ", item, id);
+                if (item) {
+                    const { id, name, price, duration } = item;
+
+                    
+
+                    return (
+                        <ShoppingBasketDrawerItem key={`${id} - ${name} - ${index}`}
+                            category={category} id={id} title={name}
+                            quantity={quantity} price={price}
+                        />
+                    );
+                }
+            }
+            if (category === "Courses") {
+                const item: iCourse = getCourseByID(Number(id));
+                if (item) {
+                    const { title, price, sale, duration } = item;
+                    const isOnSale = (sale?.price < price);
+
+                    return (
+                        <ShoppingBasketDrawerItem key={`${id} - ${title} - ${index}`}
+                            category={category} id={id} title={title} quantity={quantity}
+                            price={price} onSale={isOnSale} salePrice={sale.price}
+                        />
+                    );
+                }
+            }
+        }))
+    )
+
+    const renderFooter = () => (
+        <footer>
+            <div className='shopping-basket-drawer-buttons'>
+                <button disabled={!isPaymentConfirmed} className=''>Choose Time</button>
+                <button className='' onClick={() => {
+                    setIsPaymentConfirmed(false)
+                    emptyBasket()
+                }}>
+                    Empty Basket
+                </button>
+            </div>
+
+            <div className='total-content'>
+                <span>
+                    <hr />
+                    <h3>Total {`(${basketQuantity} item${basketQuantity > 1 ? "s" : ""})`}</h3>
+                </span>
+
+                <span>
+                    <h3>{formatCurrency(getAmountDueNow())} ({formatCurrency(basketTotal() - getAmountDueNow())} remaining)</h3>
+                </span>
+            </div>
+
+            <span className='cards-used-to-pay app__flex'>
+                <img src={Payment_Visa} />
+                <img src={Payment_Mastercard} />
+                <img src={Payment_AmericanExpress} />
+            </span>
+        </footer>
+    )
 
     return (
         <div className={`app__shopping-sidebar`}>
@@ -117,23 +227,7 @@ const ShoppingBasketDrawer = ({ courses }: ShoppingBasketDrawerProps) => {
                 animate={isOpen ? "open" : "closed"}
                 exit='closed'
             >
-                <header>
-                    <span>
-                        {!isShowingPaymentInfo ?
-                            <h1>Your Basket</h1>
-                            :
-                            <button className='deposit-close-button' onClick={() => setIsShowingPaymentInfo(false)}>
-                                <LeftArrowHead />
-                            </button>
-                        }
-                        <hr />
-                    </span>
-                    {/* <span>
-                        <button className='shopping-close-button' onClick={() => toggleVisibility()} data-menuvisible={isOpen}>
-                            <p>X</p>
-                        </button>
-                    </span> */}
-                </header>
+                {renderHeader()}
 
                 {basketQuantity === 0 ?
                     <div className='app__flex app__half-height'>
@@ -160,42 +254,7 @@ const ShoppingBasketDrawer = ({ courses }: ShoppingBasketDrawerProps) => {
                                     </div>
                                 </div>
                                 :
-                                (basketItems.map(({ id, quantity }) => {
-                                    const item: iCourse = getCourseByID(Number(id));
-                                    if (item) {
-                                        const { title, price, sale, duration } = item;
-                                        const isOnSale = (sale?.price < price);
-
-                                        return (
-                                            <ShoppingBasketDrawerItem
-                                                id={id} title={title} quantity={quantity}
-                                                price={price} onSale={isOnSale} salePrice={sale.price}
-                                            />
-
-
-
-
-                                            // <Card className='basket-item'>
-                                            //     <section className="item-content">
-                                            //         <label className='name'>{title}</label>
-                                            //         <label className='price'>{formatCurrency(isOnSale ? sale.price : price)}</label>
-                                            //         {/* <label className='duration'>{formatHrsMins(duration)}</label> */}
-
-                                            //     </section>
-
-                                            //     <div className='item-quantity-selector'>
-                                            //         <button onClick={() => addToBasket(id, price)}><UpArrowHead /></button>
-                                            //         <p>{quantity}</p>
-                                            //         <button disabled={quantity < 2} onClick={() => decreaseFromBasket(id)}><DownArrowHead /></button>
-                                            //     </div>
-
-                                            //     <section className='item-remove-button'>
-                                            //         <button className='' onClick={() => removeFromBasket(id)}><Bin /></button>
-                                            //     </section>
-                                            // </Card>
-                                        );
-                                    }
-                                }))
+                                (renderBasketItems())
                             }
                         </motion.div>
 
@@ -221,34 +280,8 @@ const ShoppingBasketDrawer = ({ courses }: ShoppingBasketDrawerProps) => {
                             </div>
                         }
 
-                        <footer>
-                            <div className='shopping-basket-drawer-buttons'>
-                                <button disabled={!isPaymentConfirmed} className=''>Choose Time</button>
-                                <button className='' onClick={() => {
-                                    setIsPaymentConfirmed(false)
-                                    emptyBasket()
-                                }}>
-                                    Empty Basket
-                                </button>
-                            </div>
 
-                            <div className='total-content'>
-                                <span>
-                                    <hr />
-                                    <h3>Total {`(${basketQuantity} item${basketQuantity > 1 ? "s" : ""})`}</h3>
-                                </span>
-
-                                <span>
-                                    <h3>{formatCurrency(getAmountDueNow())} ({formatCurrency(basketTotal() - getAmountDueNow())} remaining)</h3>
-                                </span>
-                            </div>
-
-                            <span className='cards-used-to-pay app__flex'>
-                                <img src={Payment_Visa} />
-                                <img src={Payment_Mastercard} />
-                                <img src={Payment_AmericanExpress} />
-                            </span>
-                        </footer>
+                        {renderFooter()}
                     </>
                 }
             </motion.aside>

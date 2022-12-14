@@ -1,13 +1,14 @@
 import { ReactNode, useContext, useState } from 'react';
-import ShoppingBasketContext from '../context/ShoppingBasketContext';
+import ShoppingBasketContext, { Category } from '../context/ShoppingBasketContext';
 import { useLocalStorage } from '../helpers/hooks/useLocalStorage';
+
 
 
 export type BasketItem = {
     id: string
     quantity: number
     price: number
-    // category: string
+    category: Category;
     // depositPaid: boolean
     // remainingBalance: number
 };
@@ -18,44 +19,56 @@ type ShoppingBasketProviderProps = {
 function ShoppingBasketProvider({ children }: ShoppingBasketProviderProps) {
     const [isOpen, setIsOpen] = useState(false);
     const [basketItems, setBasketItems] = useLocalStorage<BasketItem[]>("shopping-basket", []);
+    
 
 
-    const openBasket = () => setIsOpen(true)
+
+    const getAllCategoryInBasket = (category: string) : BasketItem[] => {
+        return basketItems.filter(item => item.category === category);
+    }
+
+
+    function sortBasketByCategory() {
+        // Sort by Category.
+        setBasketItems(items =>items.sort((a, b) => b.category.localeCompare(a.category)));
+    }
+    
+    const openBasket = () => {
+        sortBasketByCategory();
+        setIsOpen(true)
+    } 
     const closeBasket = () => setIsOpen(false)
-    const addToBasket = (id: string, price: number) => {
+    const addToBasket = (category: Category, id: string, price: number) => {
         setBasketItems(items => {
-            const serviceItem = items.find(item => item.id === id);
-            const exists = serviceItem != null;
-            if (!exists) {
-                return [...items, { id, quantity: 1, price }]
-            }
+            const itemsOfCategory = getAllCategoryInBasket(category);
+            const basketItem = itemsOfCategory.find(item => (item.category === category && item.id === id));
+            if (!basketItem)
+                return [...items, { category, id, quantity: 1, price }]
+            
             return items.map(item => {
-                if (item.id === id) {
+                if (item.category === category && item.id === id)
                     return { ...item, quantity: item.quantity + 1, price: item.price }
-                } else {
-                    return item
-                }
+                return item;
             })
         })
     }
-    const decreaseFromBasket = (id: string) => {
+    const decreaseFromBasket = (category: Category, id: string) => {
         setBasketItems(items => {
-            const serviceItem = items.find(item => item.id === id);
-            if (serviceItem?.quantity === 1)
-                return items.filter(item => item.id !== id)
+            const itemsOfCategory = getAllCategoryInBasket(category);
+            const basketItem = itemsOfCategory.find(item => (item.category === category && item.id === id));
+            if (basketItem?.quantity === 1)
+                return items.filter(item => (item.category === category && item.id !== id))
             else {
                 return items.map(item => {
-                    if (item.id === id) {
+                    if (item.category === category && item.id === id)
                         return { ...item, quantity: item.quantity - 1, price: item.price }
-                    } else {
-                        return item
-                    }
+                    return item;
                 })
             }
         })
     }
-    const removeFromBasket = (id: string) => {
-        setBasketItems(items => items.filter(item => item.id !== id))
+    const removeFromBasket = (category: Category, id: string) => {
+        setBasketItems(items => items.filter(item => (item.category === category && item.id !== id)))
     }
     const emptyBasket = () => {
         setBasketItems([]);
@@ -66,7 +79,8 @@ function ShoppingBasketProvider({ children }: ShoppingBasketProviderProps) {
         0
     )
 
-    const basketTotal = () => basketItems.reduce((total, basketItem) => {
+    const basketTotal = () => basketItems.reduce(
+        (total, basketItem) => {
         const item = basketItems.find(i => i.id === basketItem.id)
         return total + (item?.price || 0) * basketItem.quantity},
         0
