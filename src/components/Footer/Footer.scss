@@ -24,70 +24,91 @@
 
     .grid-container {
         @media screen and (max-width: 900px) {
-            // gap: 0px 5px;
         }
-        display: grid;
         position: relative;
+        display: grid;
         grid-template-columns: 1fr 1fr 1fr;
-        // gap: 0px 15px;
         grid-auto-flow: row;
         grid-template-areas:
             "CompanyInfo Services ContactIno"
         ;
         width: 100%;
-        // height: calc($footer-height - var(--copyright-height));
-        // box-shadow: 5px 5px 5px rgba($green-shade-colour, 0.5);
         box-shadow: 0px 0px 20px rgba($green-shade-colour, 0.5);
         // margin: 10px;
         // padding: 30px;
-        border-radius: 15px;
     }
 
     .CompanyInfo,
     .Services,
     .ContactInfo {
+        @media screen and (max-width: 900px) {
+            // top | right | bottom | left
+            padding: 20px 10px;
+        }
+        // display: inline-block;
+        display: flex;
+        flex-direction: column;
         width: 100%;
         height: 100%;
+        // top | right | bottom | left
         padding: 30px;
-
-        color: $white-colour;
+        color: $pink-colour;
+        margin-top: 20px;
+        
 
         header{
             grid-area: Header;
+            @media screen and (max-width: 900px) {
+                font-size: 1.4rem;
+            }
             // background: $pink-colour;
             margin-bottom: 10px;
             font-size: 1.5rem;
             font-family: cursive;
+            border-bottom: solid 3px $pink-colour;
         }
     }
 
     .CompanyInfo {
         grid-area: CompanyInfo;
-        display: flex;
-        flex-direction: column;
         align-items: flex-end;
         text-align: flex-end;
         // background: green;
     }
     .Services {
         grid-area: Services;
-        display: flex;
-        flex-direction: column;
         align-items: center;
         text-align: center;
         // background: yellow;
+
+        a {
+            color: $white-colour;
+            text-transform: capitalize;
+            // text-decoration: underline;
+            margin-bottom: 15px;
+
+            // transition: 0.3s ease-in-out;
+
+            &:hover {
+                // transform: scale(1.1);
+            }
+        }
+
+        .link {
+            &-active {
+                border-bottom: solid 3px $white-colour;
+            }
+        }
     }
     .ContactInfo {
         grid-area: ContactInfo;
-        display: flex;
-        flex-direction: column;
         align-items: flex-start;
         text-align: flex-start;
         // background: red;
     }
 
 
-    .footer {
+    .baseline {
         position: absolute;
         bottom: 0;
         width: 100%;
@@ -101,8 +122,32 @@
         gap: 5px;
 
 
+        .divider {
+            color: lightgray;
+        }
+
         .company-name {
+            @media screen and (max-width: 900px) {
+                font-size: 0.7rem;
+            }
             color: $pink-colour;
+        }
+
+        .copyright-text {
+            @media screen and (max-width: 900px) {
+                font-size: 0.5rem;
+            }
+            color: gray;
+            font-size: 0.9rem;
+        }
+
+        .developer-link {
+            @media screen and (max-width: 900px) {
+                font-size: 0.5rem;
+            }
+            color: white;
+            font-size: 0.7rem;
+            text-decoration: underline;
         }
     }
 
