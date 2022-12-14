@@ -1,7 +1,7 @@
 @import '../../../res/colours.scss';
 @import '../../../constants/constants.scss';
 
-.shopping-basket-item {
+.shopping-basket-card {
     display: grid;
     flex-direction: row;
     grid-template-columns: auto 30px 30px;
@@ -12,11 +12,10 @@
     color: $pink-colour;
     padding: .5rem .8rem;
     border: 3px solid $pink-colour;
-    box-shadow: 5px 5px 0px rgba($green-shade-colour, 0.5);
-    // overflow: visible;
+    // box-shadow: 5px 5px 0px rgba($green-shade-colour, 0.5);
 
 
-    .item-content {
+    .bc-info-content {
         display: flex;
         flex: 1;
         height: 100%;
@@ -28,6 +27,7 @@
         .name {
             font-size: 1.2rem;
             font-family: cursive;
+            // text-shadow: 2px 2px 0px rgba($pink-colour, 0.5);
         }
 
         .price {
@@ -41,7 +41,7 @@
         }
     }
 
-    .item-quantity-selector {
+    .bc-quantity-selector {
         display: flex;
         flex-direction: column;
         width: 30px;
@@ -66,7 +66,7 @@
         }
     }
 
-    .item-remove-button {
+    .bc-remove-button {
         display: flex;
         width: auto;
         height: 100%;

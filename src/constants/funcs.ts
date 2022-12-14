@@ -31,3 +31,14 @@ const timespan = (duration: number) => moment.utc (
 export function replaceAllNewLineChars(data: string) : string {
     return data.replace("\\n", "\n");
 }
+
+
+
+
+
+
+export function scrollToTop()
+{
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+

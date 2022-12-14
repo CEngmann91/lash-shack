@@ -6,6 +6,7 @@ import { About, Contact, Courses, Gallery, Landing, MeetExperts, NotFound, Servi
 import Widgets from './components/Widgets/Widgets';
 import { useCourses, useGalleryPhotos, useServices, useTestimonial, useTrainingReviews } from './helpers/hooks';
 import ShoppingBasketProvider from './providers/ShoppingBasketProvider';
+import { scrollToTop } from './constants/funcs';
 
 function App() {
   const location = useLocation();
@@ -19,7 +20,7 @@ function App() {
 
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    scrollToTop();
   }, [location.pathname]);
 
 
@@ -27,7 +28,7 @@ function App() {
     <div className='route-div'>
       <Navbar />
       <SidebarMenu />
-      <ShoppingBasketDrawer courses={courses} />
+      <ShoppingBasketDrawer services={services} courses={courses} />
       {id !== "/" && id !== "*" ? <div className='padding-top' /> : null}
       {component}
       {id !== "/contact" && <Contact />}

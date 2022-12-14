@@ -2,9 +2,10 @@ import './Services.scss';
 import React from 'react'
 import { ActivityIndicator, Page } from '../../components';
 import { Card } from '../../components/Cards';
-import { useShoppingBasket } from '../../helpers/hooks';
+// import { useShoppingBasket } from '../../helpers/hooks';
 import { formatHrsMins } from '../../constants/funcs';
 import { BOOKING_URL } from '../../constants/constants';
+// import { Category } from '../../context/ShoppingBasketContext';
 
 export interface iServiceOption {
   active: boolean;
@@ -21,13 +22,13 @@ export interface iService {
   options: iServiceOption[];
 }
 
-interface iProps {
+type ServicesProps = {
   services: iService[];
   loading: boolean;
   error?: any;
 }
-const Services: React.FC<iProps> = ({ services, loading, error }: iProps) => {
-  const { addToBasket } = useShoppingBasket();
+const Services: React.FC<ServicesProps> = ({ services, loading, error }: ServicesProps) => {
+  // const { addToBasket } = useShoppingBasket();
 
 
   
@@ -38,7 +39,7 @@ const Services: React.FC<iProps> = ({ services, loading, error }: iProps) => {
       const { id, name, price, duration } = item;
 
       return (
-        <Card key={index} className='option'>
+        <Card className='option'>
           <div className='option-left-side'>
             <p className='option--name'>{name}</p>
             <div style={{ display: 'flex', flexDirection: 'row', gap: '1rem' }}>
@@ -50,7 +51,12 @@ const Services: React.FC<iProps> = ({ services, loading, error }: iProps) => {
 
           <div className='option-right-side'>
             <p className='option-right-side--price'>£{price}</p>
-            {/* <button className='border-button option-right-side-select-button' onClick={() => addToBasket(id, price)}>
+            {/* <button className='border-button option-right-side-select-button'
+                    onClick={() =>
+                    {
+                      const category : Category = "Services";
+                      addToBasket(category, id, price)}
+                    }>
               Select
             </button> */}
             <a href={BOOKING_URL} className="border-button option-right-side-select-button" target="_blank" rel="noreferrer">View</a>

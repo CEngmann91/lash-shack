@@ -16,11 +16,9 @@
     z-index: 10;
 
 
-
-
     &--panel {
         @media screen and (max-width: 900px) {
-            width: 85vw;
+            width: 100vw;
             padding: 0 0.8rem;
         }
         position: fixed;
@@ -39,7 +37,6 @@
         box-shadow: 0 0 20px rgb(128, 128, 128);
 
         transition: 0.3s ease-in-out;
-
 
 
 
@@ -271,7 +268,6 @@
                     }
                 }
             }
-
         }
 
         footer {
@@ -297,19 +293,16 @@
                 height: 9vh;
                 gap: 0.5rem;
 
+
                 button {
                     // height: 25px;
                     width: 100%;
-                    color: black;
                     padding: 5px;
-
-
                     background: $green-shade-colour;
                     border: 3px solid $pink-colour;
                     box-shadow: 5px 5px 0px rgba($green-shade-colour, 0.5);
-                    overflow: visible;
+                    // overflow: visible;
                     color: $pink-colour;
-
 
                     transition: 0.3s ease-in-out;
 

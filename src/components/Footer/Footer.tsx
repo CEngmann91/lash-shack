@@ -2,7 +2,7 @@ import './Footer.scss';
 import React from 'react'
 import NavbarItem from '../navbar/NavbarItem/NavbarItem';
 import { Email, Facebook, Instagram, Twitter, UpArrow } from '../../util/icons';
-import { CONTACT } from '../../constants/constants';
+import { CONTACT, DEVELOPER_URL } from '../../constants/constants';
 import { logo } from '../../util/images';
 import ALink from '../ALink/ALink';
 
@@ -69,15 +69,12 @@ function Footer() {
       </div>
 
       <div className='footer'>
-        <label className='company-name'>Lash Shack</label>
+        <ALink path='/' className='company-name'>Lash Shack Ltd</ALink>
+        {/* <label className='company-name'>Lash Shack Ltd</label> */}
         <label style={{ color: 'lightgray' }}>-</label>
-        <label style={{ color: 'gray' }}>Copyright © 2023</label>
+        <label style={{ color: 'gray', fontSize: '0.9rem' }}>Copyright © 2023. All Rights Reserved.</label>
         <label style={{ color: 'lightgray' }}>|</label>
-        <ALink path=
-        // 'https://www.christianengmann.com'
-        'www.christianengmann.com'
-          style={{ color: 'white', fontSize: '0.7rem' }}>Christian Engmann</ALink>
-        {/* <label className='developer'>Christian Engmann</label> */}
+        <ALink path={DEVELOPER_URL} style={{ color: 'white', fontSize: '0.7rem', textDecoration: 'underline' }}>Developed by Christian Engmann</ALink>
       </div>
 
 
