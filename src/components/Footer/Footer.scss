@@ -54,6 +54,7 @@
         padding: 30px;
         color: $pink-colour;
         margin-top: 20px;
+        font-weight: bolder;
         
 
         header{
@@ -63,7 +64,7 @@
             }
             // background: $pink-colour;
             margin-bottom: 10px;
-            font-size: 1.5rem;
+            font-size: 1.7rem;
             font-family: cursive;
             border-bottom: solid 3px $pink-colour;
         }
@@ -84,8 +85,8 @@
         a {
             color: $white-colour;
             text-transform: capitalize;
-            // text-decoration: underline;
-            margin-bottom: 15px;
+            text-decoration: underline;
+            // margin-bottom: 15px;
 
             // transition: 0.3s ease-in-out;
 
@@ -96,7 +97,7 @@
 
         .link {
             &-active {
-                border-bottom: solid 3px $white-colour;
+                // border-bottom: solid 3px $white-colour;
             }
         }
     }

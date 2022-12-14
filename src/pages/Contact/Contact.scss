@@ -22,10 +22,10 @@
         }
         position: relative;
         display: grid;
-        // justify-content: flex-start;
-        align-items: flex-start;
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: 1fr;
+        justify-content: flex-start;
+        align-items: flex-start;
         
 
 
