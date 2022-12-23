@@ -189,11 +189,11 @@ const ShoppingBasketDrawer = ({ services, courses }: ShoppingBasketDrawerProps) 
             <div className='total-content'>
                 <span>
                     <hr />
-                    <h3>Total {`(${basketQuantity} item${basketQuantity > 1 ? "s" : ""})`}</h3>
+                    <label>Total {`(${basketQuantity} item${basketQuantity > 1 ? "s" : ""})`}</label>
                 </span>
 
                 <span>
-                    <h3>{formatCurrency(getAmountDueNow())} ({formatCurrency(basketTotal() - getAmountDueNow())} remaining)</h3>
+                    <label>{formatCurrency(getAmountDueNow())} ({formatCurrency(basketTotal() - getAmountDueNow())} remaining)</label>
                 </span>
             </div>
 
