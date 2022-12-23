@@ -30,7 +30,7 @@
         grid-template-columns: 1fr 1fr 1fr;
         grid-auto-flow: row;
         grid-template-areas:
-            "CompanyInfo Services ContactIno"
+            "CompanyInfo Services SocialMedia"
         ;
         width: 100%;
         box-shadow: 0px 0px 20px rgba($green-shade-colour, 0.5);
@@ -40,7 +40,7 @@
 
     .CompanyInfo,
     .Services,
-    .ContactInfo {
+    .SocialMedia {
         @media screen and (max-width: 900px) {
             // top | right | bottom | left
             padding: 20px 10px;
@@ -52,21 +52,22 @@
         height: 100%;
         // top | right | bottom | left
         padding: 30px;
-        color: $pink-colour;
         margin-top: 20px;
         font-weight: bolder;
+        color: $white-colour;
         
-
+        
         header{
             grid-area: Header;
             @media screen and (max-width: 900px) {
-                font-size: 1.4rem;
+                font-size: 1.3rem;
             }
             // background: $pink-colour;
             margin-bottom: 10px;
             font-size: 1.7rem;
             font-family: cursive;
             border-bottom: solid 3px $pink-colour;
+            color: $pink-colour;
         }
     }
 
@@ -83,15 +84,14 @@
         // background: yellow;
 
         a {
-            color: $white-colour;
+            color: rgb(205, 205, 205);
             text-transform: capitalize;
             text-decoration: underline;
-            // margin-bottom: 15px;
 
             // transition: 0.3s ease-in-out;
 
             &:hover {
-                // transform: scale(1.1);
+                color: $white-colour;
             }
         }
 
@@ -101,15 +101,46 @@
             }
         }
     }
-    .ContactInfo {
-        grid-area: ContactInfo;
+    .SocialMedia {
+        grid-area: SocialMedia;
         align-items: flex-start;
         text-align: flex-start;
         // background: red;
+
+        section {
+            flex-direction: row;
+
+            .icon {
+                @media screen and (max-width: 900px) {
+                    width: 30px;
+                    height: 30px;
+                    padding: 6px;
+                    margin: 3px;
+                }
+                width: 40px;
+                height: 40px;
+                border: 1px solid $pink-colour;
+                border-radius: 50%;
+                background: $beige-colour;
+                padding: 10px;
+                margin: 10px;
+                // box-shadow: 5px 5px 5px rgba($pink-colour, 0.5);
+    
+                svg {
+                    color: $green-shade-colour;
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
     }
 
 
     .baseline {
+        @media screen and (max-width: 900px) {
+            // gap: 2px;
+            padding: 5px 10px;
+        }
         position: absolute;
         bottom: 0;
         width: 100%;

@@ -2,17 +2,17 @@ import './ShoppingBasketDrawerButton.scss';
 import React, { useCallback } from 'react';
 import { ShoppingBasket } from '../../../util/icons';
 
-interface iProps extends React.HTMLAttributes<HTMLButtonElement> {
+interface ShoppingBasketDrawerButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
     value: number;
     isOpen: boolean;
     onClick: (e?: React.MouseEvent<HTMLElement>) => void;
 }
-const ShoppingBasketDrawerButton: React.FC<iProps> = ({ value, isOpen, onClick, ...props }: iProps) => {
+function ShoppingBasketDrawerButton({ value, isOpen, onClick, ...props }: ShoppingBasketDrawerButtonProps) {
     const handleClick = useCallback(onClick, []);
 
     return (
         <div className="shopping-button-container">
-            <button className='border-button' onClick={handleClick} data-count={value} {...props}>
+            <button className='border-button app__navbar-icon-scaled' onClick={handleClick} data-count={value} {...props}>
                 {!isOpen ?
                     <>
                         <ShoppingBasket />

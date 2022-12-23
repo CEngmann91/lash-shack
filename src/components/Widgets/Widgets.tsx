@@ -1,12 +1,12 @@
 import '../../res/styles.scss';
 import React from 'react';
-import ScrollTopArrow from './ScrollTopArrow/ScrollTopArrow';
+import ScrollTopArrowWidget from './ScrollTopArrowWidget/ScrollTopArrowWidget';
 
-const Widgets: React.FC = () => {
+function Widgets() {
 
     return (
         <>
-            <ScrollTopArrow />
+            <ScrollTopArrowWidget />
         </>
     )
 }

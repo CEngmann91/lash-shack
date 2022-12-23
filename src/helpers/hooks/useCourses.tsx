@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { REACT_APP_FIRESTORE_COURSES_COLLECTION, REACT_APP_FIRESTORE_COURSES_DOCUMENT } from "../../constants/firebase";
-import { iCourse } from "../../pages/Courses/Courses";
-import { getImage } from "../firebase/firebase";
-import { getDocument } from "../firebase/firestore";
+import { iCourse } from "../../pages/Main/Courses/Courses";
+import { getDownloadURLRef } from "../../networking/firebase/firebase";
+import { getDocument } from "../../networking/firebase/firestore";
 
 export const useCourses = () => {
     const [courses, setCourses] = useState<iCourse[]>([]);
@@ -28,7 +28,7 @@ export const useCourses = () => {
 
             // Load images from Firestore.
             const mapPromises = array.map((item) =>
-                getImage(item.img).then(res => item.img = res)
+                getDownloadURLRef(item.img).then(res => item.img = res)
             );
             await Promise.all(mapPromises);
             // const results = await Promise.all(mapPromises);

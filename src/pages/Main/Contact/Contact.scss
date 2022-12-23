@@ -1,0 +1,29 @@
+@import '../../../res/colours.scss';
+
+.app__contact {
+    display: flex;
+    flex: 1;
+    width: 100%;
+    min-height: 90vh;
+    background:
+    // $white-colour;
+    $beige-colour;
+    
+
+    &--content {
+        @media screen and (max-width: 900px) {
+            // width: 350px;
+        }
+        grid-area: box;
+        box-sizing: border-box;
+        width: 100%;
+
+
+        form {
+
+            div {
+                margin-bottom: 20px;
+            }
+        }
+    }
+}

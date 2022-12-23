@@ -9,6 +9,8 @@ export type BasketItem = {
     quantity: number
     price: number
     category: Category;
+    date?: string;
+    time?: string;
     // depositPaid: boolean
     // remainingBalance: number
 };
@@ -27,23 +29,24 @@ function ShoppingBasketProvider({ children }: ShoppingBasketProviderProps) {
         return basketItems.filter(item => item.category === category);
     }
 
-
     function sortBasketByCategory() {
         // Sort by Category.
         setBasketItems(items =>items.sort((a, b) => b.category.localeCompare(a.category)));
     }
+
+
     
     const openBasket = () => {
         sortBasketByCategory();
         setIsOpen(true)
     } 
     const closeBasket = () => setIsOpen(false)
-    const addToBasket = (category: Category, id: string, price: number) => {
+    const addToBasket = (category: Category, id: string, price: number, date?: string, time?: string) => {
         setBasketItems(items => {
             const itemsOfCategory = getAllCategoryInBasket(category);
             const basketItem = itemsOfCategory.find(item => (item.category === category && item.id === id));
             if (!basketItem)
-                return [...items, { category, id, quantity: 1, price }]
+                return [...items, { category, id, quantity: 1, price, date, time }]
             
             return items.map(item => {
                 if (item.category === category && item.id === id)
@@ -70,15 +73,22 @@ function ShoppingBasketProvider({ children }: ShoppingBasketProviderProps) {
     const removeFromBasket = (category: Category, id: string) => {
         setBasketItems(items => items.filter(item => (item.category === category && item.id !== id)))
     }
+    const setDateTimeForBasketItem = (category: Category, id: string, date: string, time?: string) => {
+        setBasketItems(items => {
+            return items.map(item => {
+                if (item.category === category && item.id === id)
+                    return { ...item, date, time };
+                return item;
+            })
+        })
+    }
     const emptyBasket = () => {
         setBasketItems([]);
     }
-
     const basketQuantity = basketItems.reduce(
         (quantity, item) => item.quantity + quantity,
         0
     )
-
     const basketTotal = () => basketItems.reduce(
         (total, basketItem) => {
         const item = basketItems.find(i => i.id === basketItem.id)
@@ -92,8 +102,9 @@ function ShoppingBasketProvider({ children }: ShoppingBasketProviderProps) {
             openBasket,
             closeBasket,
             addToBasket,
-            decreaseFromBasket,
             removeFromBasket,
+            decreaseFromBasket,
+            setDateTimeForBasketItem,
             basketTotal,
             emptyBasket,
             basketItems,

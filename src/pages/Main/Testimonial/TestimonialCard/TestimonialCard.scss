@@ -1,0 +1,236 @@
+@import '../../../../res/colours.scss';
+
+.testimonial-card {
+    @media screen and (max-width: 900px) {
+        // margin: 0rem;
+    }
+    width: 18rem;
+    height: 21rem;
+    // margin: 1.1rem;
+    border-radius: 10px;
+    perspective: 1000px;
+
+
+
+    &--wrapper {
+        position: relative;
+        // padding: 1.5rem 2rem;
+        width: 100%;
+        height: 100%;
+
+        transform-origin: center;
+        transition: transform 0.6s;
+        transform-style: preserve-3d;
+
+
+        .content {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: $dark-shadow;
+            background: $white-colour;
+
+            text-align: center;
+            word-wrap: normal;
+            white-space: normal;
+
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+
+            padding: 1.5rem 1.8rem;
+
+
+
+            .star {
+                margin: 1.5rem;
+
+                svg {
+                    margin-right: 3px;
+                    color: $pink-colour;
+                }
+            }
+
+            .quote-icon {
+                position: absolute;
+                top: 0;
+                left: 5;
+                width: 2.5rem;
+                height: 2.5rem;
+                display: grid;
+                place-items: center;
+                border-radius: 50%;
+                color: $pink-colour;
+                transform: translateY(25%);
+            }
+
+            .title {
+                margin: 1rem 0;
+
+                font-size: 1rem;
+                text-transform: uppercase;
+                letter-spacing: 1.5px;
+                // text-shadow: rgba($pink-colour, 1);
+            }
+
+            .description {
+                overflow-x: scroll;
+
+                // height: fit-content;
+                // margin: 0 1rem;
+                // font-family: cursive;
+
+            }
+
+            .footer {
+                flex: 1;
+                display: flex;
+                position: absolute;
+                bottom: 5px;
+                left: 0;
+                right: 0;
+                justify-content: flex-end;
+                align-items: center;
+                margin: 0 2rem;
+                padding: 0.5rem;
+                border-top: 2px solid rgba($pink-colour, 0.5);
+
+                .text {
+                    font-family: cursive;
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*.testimonial-card {
+    width: 18rem;
+    height: 21rem;
+
+    margin: 1.5rem;
+    border-radius: 10px;
+    perspective: 1000px;
+
+
+
+    &--wrapper {
+        position: relative;
+        // padding: 1.5rem 2rem;
+        width: 100%;
+        height: 100%;
+
+        transform-origin: center;
+        transition: transform 0.6s;
+        transform-style: preserve-3d;
+    }
+}
+
+.front,
+.back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: $dark-shadow;
+
+    background: $white-colour;
+
+    text-align: center;
+
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.front {
+    color: black;
+}
+
+.back {
+    transform: rotateY(180deg);
+    padding: 1.5rem .8rem;
+
+    &--star {
+        margin: 1.5rem;
+
+        svg {
+            margin-right: 3px;
+            color: $pink-colour;
+        }
+    }
+
+    .quote-icon {
+        position: absolute;
+        top: 0;
+        left: 5;
+        width: 2.5rem;
+        height: 2.5rem;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        color: $pink-colour;
+        transform: translateY(25%);
+        // background: $pink-colour;
+    }
+
+    &--title {
+        margin: 1rem 0;
+        // font-size: 18px;
+
+        // color: $black-colour;
+        font-size: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        // text-shadow: rgba($pink-colour, 1);
+    }
+
+    &--description {
+        margin: 0 1rem;
+        // font-family: cursive;
+    }
+
+    // &--date {
+    //     position: absolute;
+    //     bottom: 3rem;
+    //     right: 2rem;
+    //     font-size: 12px;
+    // }
+
+    &--footer {
+        flex: 1;
+        display: flex;
+        position: absolute;
+        bottom: 5px;
+        left: 0;
+        right: 0;
+        justify-content: flex-end;
+        align-items: center;
+        margin: 0 2rem;
+        padding: 0.5rem;
+        border-top: 2px solid rgba($pink-colour, 0.5);
+
+        .text {
+            font-family: cursive;
+        }
+    }
+
+    &--name {
+        font-family: cursive;
+    }
+}
+
+*/

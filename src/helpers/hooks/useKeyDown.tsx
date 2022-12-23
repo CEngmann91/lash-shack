@@ -8,7 +8,7 @@ export const useKeyDown = () => {
     };
 
     useEffect(() => {
-        window.addEventListener('keydown', handler, { passive: false })
+        window.addEventListener('keydown', handler, { passive: true })
         return function cleanup() {
             window.removeEventListener('keydown', handler)
         }

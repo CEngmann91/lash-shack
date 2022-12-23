@@ -26,7 +26,7 @@
 
         .name {
             font-size: 1.2rem;
-            font-family: cursive;
+            // font-family: cursive;
             // text-shadow: 2px 2px 0px rgba($pink-colour, 0.5);
         }
 
@@ -92,5 +92,37 @@
                 transform: scale(1.1);
             }
         }
+    }
+
+    .bc-time-selector {
+        width: auto;
+        // padding: 0.5rem 0;
+        // background: green;
+
+
+        button {
+            background: transparent;
+            height: 30px;
+            color: $pink-colour;
+            font-weight: bolder;
+
+            svg {
+                color: $pink-colour;
+                // width: 100%;
+                // height: 100%;
+            }
+        }
+    }
+}
+
+.time-menu {
+    background: $green-shade-colour;
+    font-size: 1em;
+    cursor: pointer;
+    color: $pink-colour;
+
+
+    &:hover {
+
     }
 }

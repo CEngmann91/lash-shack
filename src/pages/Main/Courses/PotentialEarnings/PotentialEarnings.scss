@@ -1,0 +1,107 @@
+@import '../../../../res/colours.scss';
+
+.app__potential-earnings {
+    // top | right | bottom | left
+    padding: 0 0 4rem 0;
+    background: $white-colour;
+
+
+    .earnings-grid-container {
+        @media screen and (max-width: 900px) {
+            gap: 0px 5px;
+        }
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        gap: 0px 15px;
+        grid-auto-flow: row;
+        grid-template-areas:
+            "Header Header Header Header Header"
+            "Data Data Data Data Data"
+            "Clients Daily Weekly Monthly Annually"
+            "Footer Footer Footer Footer Footer"
+        ;
+        height: auto;
+        text-align: center;
+        box-shadow: 0px 0px 20px rgba($green-shade-colour, 0.5);
+        margin: 10px;
+    }
+
+    .Header {
+        @media screen and (max-width: 900px) {
+            padding: .5em 0em;
+            font-size: 1.1rem;
+        }
+        grid-area: Header;
+        background: $pink-colour;
+        padding: .5em 8em;
+        font-size: 1.5rem;
+        // font-family: cursive;
+        color: $blue-colour;
+    }
+
+    .Data {
+        @media screen and (max-width: 900px) {
+            font-size: 0.6em;
+        }
+        grid-area: Data;
+        color: $blue-colour;
+        padding: 0em 2em;
+        font-weight: bolder;
+        font-size: 0.8em;
+        text-transform: uppercase;
+    }
+
+    .Clients,
+    .Daily,
+    .Weekly,
+    .Monthly,
+    .Annually {
+        @media screen and (max-width: 900px) {
+            font-size: 0.8em;
+        }
+        margin: 10px 0;
+        font-weight: bolder;
+        text-transform: uppercase;
+
+        header{
+            @media screen and (max-width: 900px) {
+                font-size: 0.8em;
+            }
+            font-size: 1.2rem;
+        }
+
+    }
+
+    .Clients {
+        grid-area: Clients;
+    }
+
+    .Daily {
+        grid-area: Daily;
+    }
+
+    .Weekly {
+        grid-area: Weekly;
+    }
+
+    .Monthly {
+        grid-area: Monthly;
+    }
+
+    .Annually {
+        grid-area: Annually;
+    }
+
+    .Footer {
+        @media screen and (max-width: 900px) {
+            padding: .5em 0em;
+            font-size: 1.1rem;
+        }
+        grid-area: Footer;
+        background: $pink-colour;
+        padding: .5em 8em;
+        font-size: 1.5rem;
+        // font-family: cursive;
+        color: $blue-colour;
+    }
+}

@@ -8,5 +8,10 @@ export const CONTACT = {
     EMAIL: "lashshackuk@hotmail.com",
     ADDRESS: "Sunchasers\n37 Mawney Road\nRomford\nRM7 7HL",
 }
+export const COURSE_MAX_CAPACITY = 3;
 
-export const BOOKING_DEPOSIT_FEE = 50;
+
+export const BOOKING = {
+    TERMS: `All courses require a deposit of £50 is required now in order to confirm your time slot.\nThe remaining balance will be requested upon arrival.`,
+    DEPOSIT_FEE: 50
+}
