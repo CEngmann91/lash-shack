@@ -5,15 +5,13 @@ import { motion, useCycle } from 'framer-motion';
 import { useEscKey, useScrollLock } from '../../helpers/hooks';
 import ShoppingBasketDrawerButton from './ShoppingBasketDrawerButton/ShoppingBasketDrawerButton';
 import { useShoppingBasketContext } from '../../providers/ShoppingBasketProvider';
-import { Bin, DownArrowHead, Information, LeftArrowHead, RoundCheckmark, UpArrowHead } from '../../util/icons';
-import { formatCurrency, scrollToTop } from '../../constants/funcs';
+import { Information, LeftArrowHead, RoundCheckmark } from '../../util/icons';
+import { formatCurrency } from '../../constants/funcs';
 import { Payment_AmericanExpress, Payment_Mastercard, Payment_Visa } from '../../util/images';
-import { Card } from '../Cards';
-import { iCourse } from '../../pages/Courses/Courses';
-import { BOOKING_DEPOSIT_FEE } from '../../constants/constants';
+import { iCourse } from '../../pages/Main/Courses/Courses';
+import { BOOKING } from '../../constants/constants';
 import ShoppingBasketDrawerItem from './ShoppingBasketDrawerItem/ShoppingBasketDrawerItem';
-import { iService, iServiceOption } from '../../pages/Services/Services';
-import { Category } from '../../context/ShoppingBasketContext';
+import { iService, iServiceOption } from '../../pages/Main/Services/Services';
 
 
 const container = {
@@ -27,7 +25,7 @@ const container = {
     },
     closed: {
         // Add 10% to hide the box shadow.
-        x: '110%',
+        x: '103%',
         transition: {
             staggerChildren: 0.07,
             staggerDirection: -1,
@@ -59,9 +57,7 @@ const ShoppingBasketDrawer = ({ services, courses }: ShoppingBasketDrawerProps) 
 
 
 
-    // useEffect(() => {
-    //     scrollToTop();
-    //   }, [isOpen]);
+
 
     useEffect(() => {
 
@@ -83,8 +79,6 @@ const ShoppingBasketDrawer = ({ services, courses }: ShoppingBasketDrawerProps) 
     function show() {
         if (isOpen) return;
 
-        // scrollToTop();
-
         setIsShowingPaymentInfo(false);
         // Prevents scrolling whilst the menu is visible.
         lockScroll();
@@ -102,13 +96,6 @@ const ShoppingBasketDrawer = ({ services, courses }: ShoppingBasketDrawerProps) 
         closeBasket();
     }
 
-    // function getByID(category: Category, id: number) {
-    //     if (category === "Courses")
-    //         return courses?.find(item => item.id === id) as iCourse;
-    //     if (category === "Services")
-    //         return services?.find(item => item.id === id.toString()) as iService;
-    // }
-
     function getCourseByID(id: number): iCourse {
         return courses?.find(item => item.id === id) as iCourse;
     }
@@ -125,7 +112,7 @@ const ShoppingBasketDrawer = ({ services, courses }: ShoppingBasketDrawerProps) 
     }
 
     function getAmountDueNow() {
-        return basketQuantity * BOOKING_DEPOSIT_FEE;
+        return basketQuantity * BOOKING.DEPOSIT_FEE;
     }
 
 
@@ -152,18 +139,17 @@ const ShoppingBasketDrawer = ({ services, courses }: ShoppingBasketDrawerProps) 
     )
 
     const renderBasketItems = () => (
-        // (JSON.stringify(basketItems))
-        (basketItems.map(({ category, id, quantity }, index) => {
+        // JSON.stringify(basketItems, null, 2)
+        (basketItems.map(({ category, id, quantity, date, time }, index) => {
             if (category === "Services") {
                 const item: iServiceOption = getServiceOptionByID(id);
                 // console.log("iServiceOption - ", item, id);
                 if (item) {
                     const { id, name, price, duration } = item;
 
-                    
-
                     return (
-                        <ShoppingBasketDrawerItem key={`${id} - ${name} - ${index}`}
+                        <ShoppingBasketDrawerItem
+                            key={`${id} - ${name} - ${index}`}
                             category={category} id={id} title={name}
                             quantity={quantity} price={price}
                         />
@@ -174,12 +160,13 @@ const ShoppingBasketDrawer = ({ services, courses }: ShoppingBasketDrawerProps) 
                 const item: iCourse = getCourseByID(Number(id));
                 if (item) {
                     const { title, price, sale, duration } = item;
-                    const isOnSale = (sale?.price < price);
 
                     return (
-                        <ShoppingBasketDrawerItem key={`${id} - ${title} - ${index}`}
+                        <ShoppingBasketDrawerItem
+                            key={`${id} - ${title} - ${index}`}
                             category={category} id={id} title={title} quantity={quantity}
-                            price={price} onSale={isOnSale} salePrice={sale.price}
+                            price={price} onSale={sale.active} salePrice={sale.price}
+                            selectedDate={date} dates={item.schedule.dates}
                         />
                     );
                 }
@@ -190,7 +177,7 @@ const ShoppingBasketDrawer = ({ services, courses }: ShoppingBasketDrawerProps) 
     const renderFooter = () => (
         <footer>
             <div className='shopping-basket-drawer-buttons'>
-                <button disabled={!isPaymentConfirmed} className=''>Choose Time</button>
+                <button disabled={!isPaymentConfirmed} className=''>Proceed</button>
                 <button className='' onClick={() => {
                     setIsPaymentConfirmed(false)
                     emptyBasket()
@@ -220,6 +207,8 @@ const ShoppingBasketDrawer = ({ services, courses }: ShoppingBasketDrawerProps) 
 
     return (
         <div className={`app__shopping-sidebar`}>
+            {isOpen ? <div className='app__shopping-sidebar--overlay' data-isopen={isOpen} onClick={() => toggleOpen()} /> : null}
+
             <motion.aside
                 className={`app__shopping-sidebar--panel`}
                 variants={container}
@@ -239,10 +228,7 @@ const ShoppingBasketDrawer = ({ services, courses }: ShoppingBasketDrawerProps) 
                             {isShowingPaymentInfo ?
                                 <div className='app__flex'>
 
-                                    <p className='new-line'>{`A deposit of £50 is required now in order to confirm your time slot.
-                                    The remaining balance will be requested upon arrival.
-                                    `}.
-                                    </p>
+                                    <p className='new-line'>{BOOKING.TERMS}.</p>
 
                                     <div className='patch-test-confirm-button'>
                                         <button className='border-button'

@@ -1,0 +1,76 @@
+@import '../../../res/colours.scss';
+
+.input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+    
+
+    input {
+        width: 100%;
+        // box-sizing: border-box;
+        box-shadow: none;
+        outline: none;
+        border: none;
+        // border-bottom: 2px solid gray;
+        padding: 10px .5rem;
+        // margin-bottom: 40px;
+        height: 55px;
+
+        transition: var(--modeTransition);
+
+        &:focus {
+            // border-bottom: 5px solid $green-shade-colour;
+        }
+
+
+        &:not(:placeholder-shown) {
+            border-bottom: 3px solid hsl(0, 76%, 50%);;
+        }
+        &:valid {
+            border-bottom: 3px solid hsl(120, 76%, 50%);
+        }
+
+        // If focused, not empty or valid then update the label.
+        &:focus~label,
+        &[value=" "]~label,
+        &:valid~label
+        {
+            color: $green-shade-colour;
+            font-size: 1.1em;
+            font-weight: bold;
+            transform: translate(5px, -30px);
+        }
+    }
+
+    label {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        color: gray;
+        pointer-events: none;
+        transform: translate(5px, -50%);
+        transition: var(--modeTransition);
+    }
+
+    &--icon {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 10%;
+        margin-bottom: 20px;
+        // max-width: 48px;
+        // height: 100%;
+        
+        svg {
+            display: block;
+        }
+    }
+}

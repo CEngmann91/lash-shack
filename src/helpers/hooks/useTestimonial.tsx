@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { REACT_APP_FIRESTORE_TESTIMONIAL_COLLECTION, REACT_APP_FIRESTORE_TESTIMONIAL_DOCUMENT } from "../../constants/firebase";
-import { iTestimonialReview } from "../../pages/Testimonial/Testimonial";
-import { getDocument } from "../firebase/firestore";
-import { useFetchDocument } from "../firebase/hooks/useFetchDocument";
+import { iTestimonialReview } from "../../pages/Main/Testimonial/Testimonial";
+import { getDocument } from "../../networking/firebase/firestore";
+import { useFetchDocument } from "../../networking/firebase/hooks/useFetchDocument";
 
 export const useTestimonial = () => {
   const [testimonials, setTestimonials] = useState<iTestimonialReview[]>([]);

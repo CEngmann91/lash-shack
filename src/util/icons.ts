@@ -1,7 +1,7 @@
 import { BsTwitter, BsStarFill, BsFillArrowUpCircleFill, BsFillPencilFill, BsFillTelephoneFill, BsFillBasketFill, BsTrash, BsArrowLeftCircle } from 'react-icons/bs';
-import { FaFacebookF, FaRegEye, FaQuoteRight } from 'react-icons/fa';
+import { FaFacebookF, FaRegEye, FaQuoteRight, FaPlay } from 'react-icons/fa';
 import { AiFillCloseCircle, AiFillInstagram } from 'react-icons/ai';
-import { MdEmail, MdOutlineKeyboardArrowLeft, MdOutlineKeyboardArrowRight, MdOutlineKeyboardArrowUp, MdOutlineKeyboardArrowDown, MdOutlineArrowForwardIos } from 'react-icons/md';
+import { MdEmail, MdOutlineKeyboardArrowLeft, MdOutlineKeyboardArrowRight, MdOutlineKeyboardArrowUp, MdOutlineKeyboardArrowDown, MdOutlineArrowForwardIos, MdOutlineAccountCircle } from 'react-icons/md';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { IoIosInformationCircleOutline, IoIosCheckmarkCircle } from 'react-icons/io';
 
@@ -12,6 +12,7 @@ export {
     GiHamburgerMenu as Menu,
     BsFillBasketFill as ShoppingBasket,
     BsTrash as Bin,
+    FaPlay as Play,
 
     AiFillInstagram as Instagram,
     BsTwitter as Twitter,
@@ -28,6 +29,7 @@ export {
     MdOutlineArrowForwardIos as RightArrow,
     BsStarFill as Star,
     
+    MdOutlineAccountCircle as Account,
     FaRegEye as Eye,
     FaQuoteRight as QuoteRight,
     BsFillPencilFill as Pencil,

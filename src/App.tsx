@@ -1,18 +1,26 @@
+// Landing page with carousel
+// Details of the course, when clicked shows 3 images.
+// Add upcoming days/dates that are available for the selected course for the next 3 months.
+
+
+
 import './index.scss';
 import React, { useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
-import { Footer, Navbar, ShoppingBasketDrawer, SidebarMenu } from './components';
-import { About, Contact, Courses, Gallery, Landing, MeetExperts, NotFound, Services, Testimonial, TrainingReview } from './pages';
+import { Footer, GetInTouch, Navbar, ShoppingBasketDrawer, SidebarMenu } from './components';
+import { About, Contact, Courses, Gallery, Landing, MeetExperts, NotFound, Services, Testimonial, TrainingReview } from './pages/Main';
 import Widgets from './components/Widgets/Widgets';
-import { useCourses, useGalleryPhotos, useServices, useTestimonial, useTrainingReviews } from './helpers/hooks';
+import { useCourses, useGalleryMedia, useServices, useTestimonial, useTrainingReviews } from './helpers/hooks';
 import ShoppingBasketProvider from './providers/ShoppingBasketProvider';
 import { scrollToTop } from './constants/funcs';
+import { Dashboard } from './pages/Main/Account';
+import { LoginModal } from './pages/Auth';
 
 function App() {
   const location = useLocation();
   const { testimonials, loadingTestimonial } = useTestimonial();
   const { reviews, loadingReviews } = useTrainingReviews();
-  const { gallery, loadingGallery } = useGalleryPhotos();
+  const { gallery, loadingGallery } = useGalleryMedia();
   const { courses, loadingCourses } = useCourses();
   const { services, loadingServices } = useServices();
 
@@ -24,20 +32,28 @@ function App() {
   }, [location.pathname]);
 
 
-  const renderRoute = (id: string, component: React.ReactNode) => (
-    <div className='route-div'>
-      <Navbar />
-      <SidebarMenu />
-      <ShoppingBasketDrawer services={services} courses={courses} />
-      {id !== "/" && id !== "*" ? <div className='padding-top' /> : null}
-      {component}
-      {id !== "/contact" && <Contact />}
-      <div className='footer-padding' />
-      <Footer />
+  const renderRoute = (id: string, component: React.ReactNode) => {
+    const isHome = (id === "/");
+    const isNotFound = (id === "*");
+    const isGetInTouch = (id === "/getintouch");
+    const isContactPage = (id === "/contact");
 
-      <Widgets />
-    </div>
-  );
+    return (
+      <div className='route-div'>
+        <Navbar />
+        <SidebarMenu />
+        <ShoppingBasketDrawer services={services} courses={courses} />
+        {!isHome && !isNotFound ? <div className='padding-top' /> : null}
+        {component}
+        {!isGetInTouch && !isContactPage ? <GetInTouch /> : null}
+        <div className='footer-padding' />
+        <Footer />
+
+        <Widgets />
+      </div>
+    );
+  }
+
 
   const renderRoutes = () => (
     <Routes>
@@ -56,21 +72,20 @@ function App() {
           </>
         )
       } />
-      <Route path="/gallery" element={renderRoute("/gallery", <Gallery photoURLs={gallery} loading={loadingGallery} />)} />
-      <Route path="/services" element={renderRoute("/services", <Services services={services} loading={loadingServices} />)} />
+      <Route path="/gallery" element={renderRoute("/gallery", <Gallery media={gallery} loading={loadingGallery} /> )} />
+      <Route path="/services" element={renderRoute("/services", <Services services={services} loading={loadingServices} /> )} />
+      <Route path="/courses" element={renderRoute("/courses", <Courses courseList={courses} loading={loadingCourses} /> )} />
+      <Route path="/getintouch" element={renderRoute("/getintouch", <GetInTouch /> )} />
+      <Route path="/contact" element={renderRoute("/contact", <Contact /> )} />
 
-      <Route path="/courses" element={
-        renderRoute("/courses",
-          <Courses courseList={courses} loading={loadingCourses} />
-        )
-      } />
-      <Route path="/contact" element={renderRoute("/contact", <Contact />)} />
+      {/* <Route path="/dashboard" element={renderRoute("/dashboard", <Dashboard /> )} /> */}
     </Routes>
   );
 
   return (
     <ShoppingBasketProvider>
       {renderRoutes()}
+      {/* <LoginModal /> */}
     </ShoppingBasketProvider>
   )
 }

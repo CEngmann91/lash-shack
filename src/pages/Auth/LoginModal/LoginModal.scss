@@ -1,0 +1,31 @@
+
+@import '../../../res/colours.scss';
+
+
+.app__login-modal {
+
+    .login-colose-button {
+        border: none;
+        background: $beige-colour;
+        
+
+        svg {
+            width: 100%;
+            height: 100%;
+            background: $green-shade-colour;
+            color: $beige-colour;
+        }
+    }
+
+    .card-window {
+        width: 30em;
+        height: 80%;
+        background: $beige-colour;
+
+
+        .login-button {
+            width: 8rem;
+            color: black;
+        }
+    }
+}

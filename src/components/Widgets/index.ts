@@ -1,1 +1,1 @@
-export { default as ScrollTopArrow } from './ScrollTopArrow/ScrollTopArrow';
+export { default as Widget_ScrollTopArrow } from './ScrollTopArrowWidget/ScrollTopArrowWidget';

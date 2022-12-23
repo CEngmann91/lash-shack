@@ -1,7 +1,7 @@
 import './Footer.scss';
 import React from 'react'
 import NavbarItem from '../navbar/NavbarItem/NavbarItem';
-import { Email, Facebook, Instagram, Twitter, UpArrow } from '../../util/icons';
+import { Email, Facebook, Instagram, Phone, Twitter, UpArrow } from '../../util/icons';
 import { CONTACT, DEVELOPER_URL } from '../../constants/constants';
 import { logo } from '../../util/images';
 import ALink from '../ALink/ALink';
@@ -58,7 +58,7 @@ function Footer() {
         <header>Services</header>
         {menuItems.map(({ id, title, to }) =>
           <NavbarItem
-            key={id} to={to} onClick={() => {}}
+            key={id} to={to} onClick={() => { }}
             idleClassName="link" activeClassName="link-active"
           >{title}</NavbarItem>
         )}
@@ -67,12 +67,14 @@ function Footer() {
         <p>3</p>
         <p>4</p> */}
       </section>
-      <section className="ContactInfo">
-        <header>Contact Info</header>
-        <p>1</p>
-        <p>2</p>
-        <p>3</p>
-        <p>4</p>
+      <section className="SocialMedia">
+        <header>Social Media</header>
+        <section>
+          <button className='border-button icon'><Instagram /></button>
+          <button className='border-button icon'><Phone /></button>
+          <button className='border-button icon'><Email /></button>
+
+        </section>
       </section>
 
       <div className='baseline'>

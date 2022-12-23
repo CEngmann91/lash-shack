@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { REACT_APP_FIRESTORE_SERVICES_COLLECTION, REACT_APP_FIRESTORE_SERVICES_DOCUMENT } from "../../constants/firebase";
-import { iService } from "../../pages/Services/Services";
-import { getDocument } from "../firebase/firestore";
+import { iService } from "../../pages/Main/Services/Services";
+import { getDocument } from "../../networking/firebase/firestore";
 
 export const useServices = () => {
     const [services, setServices] = useState<iService[]>([]);

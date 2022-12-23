@@ -1,11 +1,11 @@
 import './DrawerButton.scss';
 import React, { ButtonHTMLAttributes, useCallback } from 'react';
 
-interface iProps extends React.HTMLAttributes<HTMLButtonElement> {
+interface DrawerButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
     isOpen: boolean;
     onClick: (e?: React.MouseEvent<HTMLElement>) => void;
 }
-const DrawerButton: React.FC<iProps> = ({ isOpen, onClick, ...props}: iProps) => {
+function DrawerButton({ isOpen, onClick, ...props }: DrawerButtonProps) {
     const handleClick = useCallback(onClick, []);
 
     return (

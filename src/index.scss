@@ -3,22 +3,21 @@
 @import './constants/constants.scss';
 @import './util/mixin.scss';
 
-@font-face {
-  font-family: 'Helvetica';
-  src: local('Helvetica'), url('./assets/fonts/Helvetica/Helvetica - 700.ttf') format('opentype');
-}
-
 :root {
-  --font-base:
-  Helvetica;
-  // "Arial";
-  // Montserrat;
-  // "DM Sans", sans-serif;
-  // "Lato", sans-serif;
-  // Menlo;
-  // Monaco;
-  // 'Courier New';
-  // monospace;
+  --font-base: 
+  // "HelveticaNeue-Light",
+  // "Helvetica Neue Light",
+  "Helvetica Neue",
+  // Helvetica,
+  // Arial,
+  // "Lucida Grande", sans-serif
+  ; 
+
+
+  /* Transitions for navbar link selection. */
+  --mainTransition: 0.25s ease-in-out;
+  /* Transitions for mode (dark/light) selection. */
+  --modeTransition: 0.25s ease-in-out;
 }
 
 
@@ -71,4 +70,11 @@ button[disabled] {
     cursor: default;
     transform: scale(1);
   }
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
 }

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { REACT_APP_FIRESTORE_TRAINING_COLLECTION, REACT_APP_FIRESTORE_TRAINING_DOCUMENT } from "../../constants/firebase";
-import { iTrainingReview } from "../../pages/TrainingReview/TrainingReview";
-import { getDocument } from "../firebase/firestore";
+import { iTrainingReview } from "../../pages/Main/TrainingReview/TrainingReview";
+import { getDocument } from "../../networking/firebase/firestore";
 
 export const useTrainingReviews = () => {
     const [reviews, setReviews] = useState<iTrainingReview[]>([]);

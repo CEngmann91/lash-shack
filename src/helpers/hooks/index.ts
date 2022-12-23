@@ -8,7 +8,7 @@ export { useScrollLock } from './useScrollLock';
 export { useShoppingBasket } from './useShoppingBasket';
 
 export { useCourses } from './useCourses';
-export { useGalleryPhotos } from './useGalleryPhotos';
+export { useGalleryMedia } from './useGalleryMedia';
 export { useServices } from './useServices';
 export { useTestimonial } from './useTestimonial';
 export { useTrainingReviews } from './useTrainingReviews';
