@@ -50,9 +50,9 @@ function Navbar() {
 
 
 
-                    createUser("emmalouisewest1992@gmail.com", "Chancemia05",
+                    createUser("christian.j.engmann@gmail.com", "password123",
                         (user) => {
-                            alert(user.toObject());
+                            alert(user.toString());
                         },
                         (errorCode, errorMessage) => {
                             alert(errorMessage.toString());
