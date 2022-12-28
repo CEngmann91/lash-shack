@@ -1,6 +1,5 @@
 import './GalleryMediaCard.scss';
-import React, { useEffect, useState } from 'react'
-import { ActivityIndicator } from '../../../../components';
+import React, { ReactNode, useEffect, useState } from 'react'
 import { Card } from '../../../../components/Cards';
 import { GalleryItem } from '../Gallery';
 import { VideoFrame } from '../../../../components/Frames';
@@ -22,16 +21,18 @@ const GalleryMediaCard = ({ id, item, onClick, ...props }: GalleryMediaCardProps
   // const handleClick = useCallback(() => onClick, [])
   
 
+
+  const renderLoadingActivity = (): ReactNode => (
+    <div className='app__item-loading' />
+  )
+
   return (
     <Card className='gallery-media' onClick={onClick}>
       {item.type === "Image"
         &&
         <>
-          {isLoading
-            ?
-            <ActivityIndicator className='app__absolute-center' borderColour='rgba(239, 179, 183, 1)' borderSpinColour='rgba(16, 40, 121, 1)' />
-            : null}
-          <img src={item.path} alt="" onLoad={() => setIsLoading(false)}/>
+          {isLoading ? renderLoadingActivity() : null}
+          <img src={item.path} alt="" onLoad={() => setIsLoading(false)} />
         </>
       }
       

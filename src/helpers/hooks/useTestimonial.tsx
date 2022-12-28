@@ -69,7 +69,7 @@ export const useTestimonial = () => {
   );
 
   let testimonials : iTestimonialReview[] = []; 
-  let testimonialError: any = error;
+  let testimonialError: unknown = error;
   let loadingTestimonial: boolean = loading;
 
   if (!data)

@@ -1,8 +1,7 @@
 import { ReactNode, useContext, useState } from 'react';
-import ShoppingBasketContext, { Category } from '../context/ShoppingBasketContext';
+import ShoppingBasketContext from '../context/ShoppingBasketContext';
+import { Category } from '../helpers/firebase/data/Category';
 import { useLocalStorage } from '../helpers/hooks/useLocalStorage';
-
-
 
 export type BasketItem = {
     id: string

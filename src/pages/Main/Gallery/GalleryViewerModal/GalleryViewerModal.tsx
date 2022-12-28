@@ -32,14 +32,12 @@ const GalleryViewerModal = ({ item, onOpen, onClose, onNextPhoto, onPreviousPhot
 
 
     return (
-        <Modal className='app__gallery-viewer' onOpen={onOpen} onClose={onClose} >
+        <Modal className='app__gallery-viewer' closeButtonClassName='close-button' onOpen={onOpen} onClose={onClose} >
             {item.type === "Image" ?
-                <>
-                    <motion.img src={item.path} alt="enlarged pic" variants={imgVariant} />
+                    <motion.img className='image' src={item.path} alt="enlarged pic" variants={imgVariant} />
 
-                    {/* <button className='left-arrow' onClick={onPreviousPhoto}><LeftArrowHead /></button>
-                    <button className='right-arrow' onClick={onNextPhoto}><RightArrow /></button> */}
-                </>
+                    // <button className='left-arrow' onClick={onPreviousPhoto}><LeftArrowHead /></button>
+                    // <button className='right-arrow' onClick={onNextPhoto}><RightArrow /></button>
                 : null}
             {item.type === "Video" ?
                 <div className='video'>

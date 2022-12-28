@@ -1,7 +1,6 @@
 import { createContext } from 'react';
+import { Category } from '../helpers/firebase/data/Category';
 import { BasketItem } from '../providers/ShoppingBasketProvider';
-
-export type Category = "Courses" | "Services";
 
 type ShoppingBasketContextType = {
     openBasket: () => void

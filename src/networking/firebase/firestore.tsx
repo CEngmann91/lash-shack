@@ -21,8 +21,8 @@ import {
 
 
 export const addDocument = async(
-    collection_name: string, document_name: string, data: any,
-    onSuccess: () => void, onError: (errorCode: any, errorMessage: any) => void
+    collection_name: string, document_name: string, data: unknown,
+    onSuccess: () => void, onError: (errorCode: unknown, errorMessage: unknown) => void
 ) => {
     try {
         const docRef = doc(firestore, collection_name, document_name)
@@ -45,7 +45,7 @@ export const addDocument = async(
 export const updateDocument = async(
     collection_name: string, document_name: string, dataObject: any,
     onSuccess: () => void
-    // , onError: (errorCode: any, errorMessage: any) => void
+    // , onError: (errorCode: unknown, errorMessage: unknown) => void
 ) : Promise<any> => {
     try {
         const docRef = doc(firestore, collection_name, document_name)
@@ -78,5 +78,40 @@ export const getDocument = async(
     } catch (error) {
         // onError(error.code, error.message);
         return new Promise<any>( res => res(error) );
+    }
+}
+
+/**
+ * Deletes a document to the firestore
+ * @param {string} collection_name Name of the collection in the database.
+ * @param {string} document_name Name of the document nested within the collection above.
+ * @param {function} onSuccess Callback IF successful.
+ * @param {function} onError Callback returned if any problems arise.
+ */
+export const deleteDocument = async(
+    collection_name: string, document_name: string,
+    onSuccess: () => void, onError: (errorCode: unknown, errorMessage: unknown) => void
+) => {
+    try {
+        const docRef = doc(firestore, collection_name, document_name)
+        await deleteDoc( docRef )
+            .then( ()=> onSuccess() )
+            .catch( (error) => onError(error.code, error.message) );
+    } catch (error) {
+        onError(error, error);
+    }
+}
+
+export const documentExists = async(
+    collection_name: string, document_name: string,
+    onError: (errorCode: unknown, errorMessage: unknown) => void
+) => {
+    try {
+        const docRef = doc(firestore, collection_name, document_name);
+        const docSnap = await getDoc(docRef);
+        return docSnap.exists();
+    } catch (error) {
+        onError(error, error);
+        return false;
     }
 }

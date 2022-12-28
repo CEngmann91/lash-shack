@@ -41,9 +41,3 @@ export function scrollToTop()
 {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
-
-// export function renderLoadin() {
-//     return (
-//         <ActivityIndicator className='app__absolute-center' borderColour='rgba(239, 179, 183, 1)' borderSpinColour='rgba(16, 40, 121, 1)' />
-//     )
-// }

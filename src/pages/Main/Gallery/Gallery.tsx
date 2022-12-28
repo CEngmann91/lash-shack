@@ -1,9 +1,9 @@
 import './Gallery.scss';
-import React, { useMemo, useState } from 'react'
+import React, { ReactNode, useMemo, useState } from 'react'
 import GalleryMediaCard from './GalleryMediaCard/GalleryMediaCard';
 
 import GalleryViewerModal from './GalleryViewerModal/GalleryViewerModal';
-import { ActivityIndicator, Page } from '../../../components';
+import { Page } from '../../../components';
 import { useScrollLock } from '../../../helpers/hooks';
 
 export type GalleryType = "Image" | "Video";
@@ -16,7 +16,7 @@ export type GalleryItem = {
 type GalleryProps = {
   media: GalleryItem[];
   loading: boolean;
-  error?: any;
+  error?: unknown;
 }
 const Gallery = ({ media, loading, error }: GalleryProps) => {
   const { lockScroll, unlockScroll } = useScrollLock();
@@ -42,13 +42,14 @@ const Gallery = ({ media, loading, error }: GalleryProps) => {
 
 
 
+  const renderLoadingActivity = (): ReactNode => (
+    <div className='app__item-loading' />
+  )
+
   if (loading) {
     return (
       <Page id='gallery' className='app__gallery' header='Love What You See?'>
-        {/* <p>Error is: {error}</p> */}
-        <div className='app__flex app__min-height'>
-          <ActivityIndicator borderColour='rgba(239, 179, 183, 1)' borderSpinColour='rgba(16, 40, 121, 1)' />
-        </div>
+        {renderLoadingActivity()}
       </Page>
     );
   }
@@ -59,7 +60,7 @@ const Gallery = ({ media, loading, error }: GalleryProps) => {
       <>
         {error ?
           <div className='app__flex app__min-height'>
-            <h1 className="error">{error}</h1>
+            <h1 className="error">{error.toString()}</h1>
           </div>
           :
           <>

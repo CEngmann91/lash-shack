@@ -8,15 +8,67 @@ import { useScroller } from '../../helpers/hooks';
 import { menuItems } from '../../constants/menuItems';
 import { Account } from '../../util/icons';
 import { createUser } from '../../helpers/firebase/Utils';
+import { useAuthContext } from '../../providers/AuthContextProvider';
+import { Avatar } from '..';
+import DropDown, { DropDownMenuItem } from '../DropDown/DropDown';
+import { useNavigate } from 'react-router-dom';
 
-function Navbar() {
+type NavbarProps = {
+    onAccountOpen: () => void;
+}
+function Navbar({ onAccountOpen }: NavbarProps) {
+    const navigate = useNavigate();
     const scrolledDown = useScroller();
+    const { profile, isAuthenticated, signOut } = useAuthContext();
     const { scrollYProgress } = useScroll();
     const scaleX = useSpring(scrollYProgress, {
         // stiffness: 100,
         // damping: 30,
         restDelta: 0.001
     });
+
+
+
+    const renderAccountDropdown = () => {
+
+        const menuItems: DropDownMenuItem[] = [
+            {
+                id: 0,
+                title: "Dashboard",
+                action: () => navigate('/dashboard')
+            },
+            {
+                id: 1,
+                title: "My Profile",
+                action: () => {}
+            },
+            {
+                id: 2,
+                title: "History",
+                action: () => {}
+            },
+            {
+                id: 3,
+                title: "Sign Out",
+                action: () => signOut(() => {})
+            }
+        ]
+
+        return (
+            <div className='navbar-nav--account'>
+                {isAuthenticated() ?
+                    <DropDown menuClassName="navbar-dropdown"
+                        menuComponent={ <Avatar url={profile?.photo_URL} onClick={() => {}} /> }
+                        menuItems={menuItems}
+                        menuItemsClassName="navbar-dropdown--item"
+                    />
+                    :
+                    <Avatar url={profile?.photo_URL} onClick={() => onAccountOpen()} />
+                }
+            </div>
+        );
+    }
+
 
     return (
         <nav className={`navbar-nav ${scrolledDown ? 'navbar-nav--scroll' : ''}`}>
@@ -40,36 +92,8 @@ function Navbar() {
                 ))}
             </ul>
 
+            {renderAccountDropdown()}
 
-            <div className='navbar-nav--account'>
-                <button className='border-button app__navbar-icon-scaled app__svg-fill' onClick={()=>{
-
-
-
-
-
-
-
-                    createUser("christian.j.engmann@gmail.com", "password123",
-                        (user) => {
-                            alert(user.toString());
-                        },
-                        (errorCode, errorMessage) => {
-                            alert(errorMessage.toString());
-                        });
-
-
-
-
-
-
-
-
-
-                }}>
-                    <Account />
-                </button>
-            </div>
 
             {/* <a href={BOOKING_URL} className={`border-button app__style-effect__shine book-now-button app__mobile-hide`} target="_blank" rel="noreferrer">Book Now</a> */}
         </nav>

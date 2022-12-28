@@ -15,15 +15,13 @@ export interface iTestimonialReview {
 type TestimonialProps = {
   testimonials: iTestimonialReview[];
   loading: boolean;
-  error?: any;
+  error?: unknown;
 }
 const Testimonial: React.FC<TestimonialProps> = ({ testimonials, loading, error }: TestimonialProps) => {
   
 
   const renderLoadingActivity = (): ReactNode => (
-    <div className='app__flex app__min-height'>
-      <ActivityIndicator borderColour='rgba(239, 179, 183, 1)' borderSpinColour='rgba(16, 40, 121, 1)' />
-    </div>
+    <div className='app__item-loading' />
   )
 
   const renderReviews = (): ReactNode => (
@@ -47,7 +45,7 @@ const Testimonial: React.FC<TestimonialProps> = ({ testimonials, loading, error 
         renderLoadingActivity()
         :
         (error ?
-          <p>Error is: {error}</p>
+          <p>Error is: {error.toString()}</p>
           :
           <div className="list">
             {renderReviews()}

@@ -1,23 +1,32 @@
 @import '../../../res/colours.scss';
+@import '../../../constants/constants.scss';
 
 .app__contact {
-    display: flex;
-    flex: 1;
     width: 100%;
-    min-height: 100vh;
-    background:
-    $white-colour;
-    // $beige-colour;
+    min-height: calc(100vh - $navbar-height);
+    background: $white-colour;
     
 
     &--content {
         @media screen and (max-width: 900px) {
-            // width: 350px;
+            width: 95%;
+            height: 80%;
         }
-        grid-area: box;
+        // grid-area: box;
         box-sizing: border-box;
-        width: 100%;
+        width: 30em;
+        height: 30em;
+        background: $beige-colour;
+        padding: 20px;
 
+
+        .title {
+            text-transform: uppercase;
+            margin-bottom: 40px;
+
+            color: $green-shade-colour;
+            border-bottom: 3px solid rgba($pink-colour, 0.4);
+        }
 
         form {
 
@@ -25,8 +34,26 @@
                 margin-bottom: 20px;
 
                 input {
-                    background: $beige-colour;
+                    background: $white-colour;
                 }
+            }
+
+            // .options {
+            //     display: flex;
+            //     justify-content: space-between;
+
+            //     .forgot-password {
+                    
+            //     }
+    
+            //     .signup {
+                    
+            //     }
+            // }
+
+            .send {
+                width: 70%;
+                height: 40px;
             }
         }
     }

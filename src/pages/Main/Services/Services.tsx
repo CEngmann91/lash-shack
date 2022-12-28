@@ -1,11 +1,10 @@
 import './Services.scss';
-import React from 'react'
-import { ActivityIndicator, Page } from '../../../components';
+import React, { ReactNode } from 'react'
+import { Page } from '../../../components';
 import { Card } from '../../../components/Cards';
 import { useShoppingBasket } from '../../../helpers/hooks';
 import { formatHrsMins } from '../../../constants/funcs';
 import { BOOKING_URL } from '../../../constants/constants';
-import { Category } from '../../../context/ShoppingBasketContext';
 
 export interface iServiceOption {
   active: boolean;
@@ -25,13 +24,18 @@ export interface iService {
 type ServicesProps = {
   services: iService[];
   loading: boolean;
-  error?: any;
+  error?: unknown;
 }
 const Services: React.FC<ServicesProps> = ({ services, loading, error }: ServicesProps) => {
   const { addToBasket } = useShoppingBasket();
 
 
   
+
+
+  const renderLoadingActivity = (): ReactNode => (
+    <div className='app__item-loading' />
+  )
 
   const renderOptions = (options: iServiceOption[]) => (
     // options.map((item, index) => renderOption(index, item))
@@ -66,14 +70,12 @@ const Services: React.FC<ServicesProps> = ({ services, loading, error }: Service
     <Page id='services' className='app__services' header='Services'>
       {loading
         ?
-        <div className='app__flex app__min-height'>
-          <ActivityIndicator borderColour='rgba(239, 179, 183, 1)' borderSpinColour='rgba(16, 40, 121, 1)' />
-        </div>
+        (renderLoadingActivity())
         :
         error
           ?
           <div className='app__flex app__min-height'>
-            {error}
+            {error.toString()}
           </div>
           :
           <div className='app__services--list'>

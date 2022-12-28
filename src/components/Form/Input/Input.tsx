@@ -1,50 +1,24 @@
 import './Input.scss';
-import React, { ForwardRefRenderFunction, InputHTMLAttributes } from 'react';
+import React, { forwardRef, ForwardRefRenderFunction, InputHTMLAttributes } from 'react';
 
-interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+// Todo: ref prop does not work!
+type InputProps = InputHTMLAttributes<HTMLInputElement> & {
+// interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
     placeholder: string;
-    icon?: string;
+    // icon?: React.ReactNode;
     className?: string;
     ref: React.RefObject<HTMLInputElement>;
+    // ref?: React.ForwardedRef<HTMLInputElement>;
 }
-const Input: ForwardRefRenderFunction<HTMLInputElement, InputProps> = ({ placeholder, icon, className, ref, ...props }) => {
+const Input: ForwardRefRenderFunction<HTMLInputElement, InputProps> = ({ placeholder, className, ref, ...props }) => {
     
     return (
         <div className='input-container'>
             <input {...props} ref={ref} type={props.type} />
             <label>{placeholder}</label>
-            {icon && <span className='input-container--icon'>{icon}</span>}
+            {/* {icon && <span className='input-container--icon'>{icon}</span>} */}
         </div>
     );
 };
 
-export default React.forwardRef(Input);
-
-
-
-
-
-
-
-
-
-
-
-
-// import './Input.scss';
-// import React, { InputHTMLAttributes } from 'react';
-
-// interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-//     placeholder: string;
-//     icon?: string;
-//     className?: string;
-//     ref: React.RefObject<HTMLInputElement>;
-// }
-
-// const Input = React.forwardRef(({ placeholder, icon, className, ref, ...props }: InputProps) => (
-//     <div className='input-container'>
-//         <input {...props} ref={ref} type={props.type} />
-//         <label>{placeholder}</label>
-//         {icon && <span className='input-container--icon'>{icon}</span>}
-//     </div>
-// ));
+export default forwardRef(Input);

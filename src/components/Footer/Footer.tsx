@@ -42,7 +42,7 @@ function Footer() {
     <footer className='app__footer'>
       <section className="CompanyInfo">
         <header>Company</header>
-        <p>1</p>
+        {/* <p>1</p>
         <p>2</p>
         <p>3</p>
         <p>4</p>
@@ -52,7 +52,7 @@ function Footer() {
         <p>8</p>
         <p>9</p>
         <p>10</p>
-        <p>11</p>
+        <p>11</p> */}
       </section>
       <section className="Services">
         <header>Services</header>
