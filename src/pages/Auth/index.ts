@@ -1,2 +1,2 @@
-export { default as LoginModal } from './LoginModal/LoginModal';
-export { default as RegisterModal } from './RegisterModal/RegisterModal';
+export { default as Authentication } from './Authentication/Authentication';
+export { default as Dashboard } from './Dashboard/Dashboard';

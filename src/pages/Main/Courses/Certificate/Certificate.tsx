@@ -16,7 +16,7 @@ const Certificate = () => {
         <img src={TrainingCertificate_Watermark} className='' />
       </div>
 
-      <div className="abt">
+      <div className="ABT">
         <img src={ABT} alt="" />
       </div>
     </Page>

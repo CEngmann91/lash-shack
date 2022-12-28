@@ -1,5 +1,5 @@
 import './TrainingReview.scss';
-import React from 'react'
+import React, { ReactNode } from 'react'
 import { ActivityIndicator, Page } from '../../../components';
 import TrainingReviewCard from './TrainingReviewCard/TrainingReviewCard';
 
@@ -13,27 +13,23 @@ export interface iTrainingReview {
 interface iProps {
     reviews: iTrainingReview[];
     loading: boolean;
-    error?: any;
+    error?: unknown;
 }
 const TrainingReview: React.FC<iProps> = ({ reviews, loading, error, ...props }: iProps) => {
 
-    const renderLoadingActivity = (): React.ReactNode => (
-        <Page id='training-reviews' className='app__training-review' header='Training Reviews' headerClassName='app__training-review-title page-title-size'>
-            <div className='app__flex app__min-height'>
-                <ActivityIndicator borderColour='rgba(239, 179, 183, 1)' borderSpinColour='rgba(16, 40, 121, 1)' />
-            </div>
-        </Page>
-    );
+    const renderLoadingActivity = (): ReactNode => (
+        <div className='app__item-loading' />
+    )
 
     return (
         <Page id='training-reviews' className='app__training-review' header='Training Reviews' headerClassName='app__training-review-title page-title-size'>
             {loading
                 ?
-                renderLoadingActivity()
+                (renderLoadingActivity())
                 :
                 (error ?
                     <>
-                        <p>Error is: {error}</p>
+                        <p>Error is: {error.toString()}</p>
                     </>
                     :
                     <div className="app__training-review--list">

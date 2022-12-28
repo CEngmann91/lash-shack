@@ -1,6 +1,6 @@
 import './Courses.scss';
-import React, { useState } from 'react'
-import { ActivityIndicator, Page } from '../../../components';
+import React, { ReactNode, useState } from 'react'
+import { Page } from '../../../components';
 import CourseCard from './CourseCard/CourseCard';
 import { replaceAllNewLineChars } from '../../../constants/funcs';
 import PotentialEarnings from './PotentialEarnings/PotentialEarnings';
@@ -38,24 +38,27 @@ export interface iCourse {
 interface CoursesProps {
   courseList: iCourse[];
   loading: boolean;
-  error?: any;
+  error?: unknown;
 }
 const Courses: React.FC<CoursesProps> = ({ courseList, loading, error }: CoursesProps) => {
 
   
+
+  const renderLoadingActivity = (): ReactNode => (
+    <div className='app__item-loading' />
+  )
+
   return (
     <>
       <Page id='courses' className='app__courses' header='Be Your Own Boss'>
         {loading
           ?
-          <div className='app__flex app__min-height'>
-            <ActivityIndicator borderColour='rgba(239, 179, 183, 1)' borderSpinColour='rgba(16, 40, 121, 1)' />
-          </div>
+          (renderLoadingActivity())
           :
           error
             ?
             <div className='app__flex app__min-height'>
-              {error}
+              {error.toString()}
             </div>
             :
             <>

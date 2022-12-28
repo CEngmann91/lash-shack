@@ -1,6 +1,5 @@
 import './RootIFrame.scss';
 import React, { useState } from 'react'
-import ActivityIndicator from '../../ActivityIndicator/ActivityIndicator';
 
 type RootIFrameProps = {
   mainClassName?: string;
@@ -17,13 +16,7 @@ function RootIFrame({ mainClassName, source, allowFullScreen, ariaHidden,
 
   return (
     <div className={`frame-container ${mainClassName}`}>
-      {isLoading ?
-        // <div className='app__absolute-center' style={{ height: '100%' }}>
-          <ActivityIndicator className='app__absolute-center' borderColour='rgba(239, 179, 183, 1)' borderSpinColour='rgba(16, 40, 121, 1)' />
-        // </div>
-        :
-        null
-      }
+      {isLoading ? <div className='app__item-loading' /> : null}
       <iframe
         src={source}
         // frameBorder="0"

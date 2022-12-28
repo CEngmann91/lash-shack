@@ -4,7 +4,7 @@ import { formatCurrency } from '../../../constants/funcs';
 import { useShoppingBasket } from '../../../helpers/hooks';
 import { Bin, DownArrowHead, UpArrowHead } from '../../../util/icons';
 import { Card } from '../../Cards';
-import { Category } from '../../../context/ShoppingBasketContext';
+import { Category } from '../../../helpers/firebase/data/Category';
 
 import Dropdown from 'rc-dropdown';
 import Menu, { Item as MenuItem, Divider } from 'rc-menu';
