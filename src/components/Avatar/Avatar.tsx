@@ -1,31 +1,23 @@
 import './Avatar.scss';
-import React, { useCallback, useEffect } from 'react'
-import { Account } from '../../util/icons';
-import { useAuthContext } from '../../providers/AuthContextProvider';
+import React, { useEffect } from 'react'
+import { Icon_Account } from '../../res/icons';
 
 type AvatarProps = {
     url: string;
-    width?: string;
-    height?: string;
-    onClick: (e?: React.MouseEvent<HTMLElement>) => void;
+    className?: string;
+    scale?: string;
+    onClick?: (e: React.MouseEvent<HTMLElement>) => void;
 }
-function Avatar({ url, width = "35px", height = "35px", onClick }: AvatarProps) {
-    const handleClick = useCallback(onClick, []);
-    const { isAuthenticated } = useAuthContext();
-
+const Avatar = ({ url, className, scale = '25px', onClick }: AvatarProps) => {
 
     useEffect(() => {
-      
-    }, [url, isAuthenticated()])
-    
+        
+    }, [url])
 
     return (
-        <button className='border-button avatar'
-            style={{ width: width, height: height, padding: (isAuthenticated() ? '0' : '0.3em') }}
-            onClick={handleClick}
-        >
-            {!url ? <Account /> : <img src={url} /> }
-        </button>
+        <div className={`avatar ${className}`} onClick={onClick} style={{ width: scale, height: scale }}>
+            {!url ? <Icon_Account /> : <img src={url} key={url} alt="" />}
+        </div>
     )
 }
 

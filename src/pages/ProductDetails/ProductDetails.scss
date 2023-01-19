@@ -1,0 +1,160 @@
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+@import '../../res/colours.scss';
+
+.product__details {
+    margin-top: 50px;
+
+    h2 {
+        font-size: 1.6rem;
+        margin-bottom: 10px;
+    }
+
+
+    .product__rating {
+
+        span {
+
+            svg {
+                color: red;
+            }
+        }
+
+        p {
+
+            span {
+                color: $green-shade-colour;
+                font-weight: 500;
+            }
+        }
+    }
+
+    .product__price {
+        font-size: 1.3rem;
+        font-weight: 500;
+    }
+
+    .product__upcoming-dates {
+
+        &-title {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+    }
+}
+
+.buy__button {
+    color: white;
+    text-transform: uppercase;
+    padding: 8px 20px;
+    border-radius: 5px;
+    background: $green-shade-colour;
+    // font-size: 1rem;
+    font-weight: 600;
+    margin-top: 20px;
+    // width: fit-content;
+
+    a {
+        color: inherit;
+
+        &hover {}
+    }
+}
+
+.tab__wrapper {
+    color: rgb(106, 106, 106);
+    font-weight: 600;
+    font-size: 1rem;
+
+    .tab {
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+.active__tab {
+    font-weight: 600;
+}
+
+.tab__content {
+    line-height: 30px;
+}
+
+.product__review {
+    position: relative;
+
+    .review__wrapper {
+        position: inherit;
+
+        ul li span {
+            color: $green-shade-colour;
+            font-weight: 600;
+
+        }
+
+        ul li p {}
+
+
+
+
+        .review__compose-form {
+            position: inherit;
+            width: 70%;
+            margin: auto;
+            margin-top: 50px;
+
+            h4 {
+                font-size: 1.2rem;
+                font-weight: 600;
+                margin-bottom: 30px;
+            }
+
+            span {
+
+                svg {
+                    width: 15px;
+                    height: 15px;
+                    color: $green-shade-colour;
+                }
+            }
+
+            .form__group {
+                position: inherit;
+                margin-bottom: 30px;
+
+                input,
+                textarea {
+                    width: 100%;
+                    border: 1px solid black;
+                    border-radius: 5px;
+                    padding: 8px 20px;
+
+                    &:focus {}
+                }
+
+                span {
+                    display: flex;
+                    align-items: center;
+                    column-gap: 5px;
+                    color: $green-shade-colour;
+                    font-weight: 600;
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .product__details {
+
+        h2 {
+            font-size: 1.3rem;
+        }
+    }
+    
+}

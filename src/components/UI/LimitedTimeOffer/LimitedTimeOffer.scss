@@ -1,0 +1,60 @@
+@import '../../../res/colours.scss';
+
+.timer__wrapper {
+    background: $green-shade-colour;
+    height: 300px;
+
+    .counter__image {
+
+        img {
+            width: 90% !important;
+            height: 90% !important;
+            object-fit: contain;
+        }
+    }
+
+    .countdown-col {
+
+        .store__button {
+            color: $green-shade-colour;
+            text-transform: uppercase;
+            padding: 8px 20px;
+            border-radius: 5px;
+            background: white;
+            // font-size: 1rem;
+            font-weight: 600;
+            margin-top: 20px;
+            // width: fit-content;
+
+            a {
+                color: inherit;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .timer__wrapper {
+        justify-content: center;
+
+        .countdown-col {
+            text-align: center;
+
+            .clock__top-content {
+                text-align: center;
+
+                h4 {
+                    font-size: 1.1rem !important;
+                }
+
+                h3 {
+                    font-size: 1.4rem !important;
+                }
+            }
+        }
+
+        .counter__image {
+            display: none;
+        }
+    }
+}

@@ -1,0 +1,83 @@
+:root {
+    --loading-grey: #aaa9aa;
+}
+
+.image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    .placeholder {
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+
+        background: var(--loading-grey);
+        background: linear-gradient(140deg,
+                rgba(255, 255, 255, 0) 40%,
+                rgba(255, 255, 255, .5) 50%,
+                rgba(255, 255, 255, 0) 60%) var(--loading-grey);
+        background-size: 200% 100%;
+        background-position-x: 180%;
+        animation: 1s keyframes__loading ease-in-out infinite;
+
+
+        img {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    img {
+        opacity: 0;
+    }
+
+
+    &[data-loaded="true"] {
+        .placeholder {
+            animation: keyframes__loading 1s ease-in-out, keyframes__fade-out-placeholder 800ms 1s linear forwards;
+        }
+
+        img {
+            animation: keyframes__fade-in-image 800ms 1s linear forwards;
+        }
+    }
+}
+
+@keyframes keyframes__loading {
+    to {
+        background-position-x: -20%;
+    }
+}
+
+@keyframes keyframes__fade-in-image {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes keyframes__fade-out-placeholder {
+    99% {
+        opacity: 0;
+        height: initial;
+    }
+
+    100% {
+        opacity: 0;
+        height: 0;
+        display: none;
+    }
+}

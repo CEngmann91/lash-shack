@@ -1,0 +1,33 @@
+@import '../../../res/colours.scss';
+@import '../../../constants/constants.scss';
+
+
+.dashboard_account__section {
+
+    .profile__photo {
+        border: 2px solid $beige-colour;
+    }
+
+    .profile__photo-picker {
+        position: relative;
+        display: inline-block;
+        background: $green-shade-colour;
+        color: #fff;
+        border-radius: 5px;
+        padding: 0.4rem 1.2rem;
+        vertical-align: middle;
+        font-size: inherit;
+        font-weight: 500;
+        box-shadow: 0 6px darken($green-shade-colour, 10%);
+        border: none;
+        outline: none;
+        transition: all 0.3s;
+        
+        transition: none;
+    
+        &:hover {
+            cursor: pointer;
+            box-shadow: 0 4px darken($green-shade-colour, 10%);
+        }
+    }
+}

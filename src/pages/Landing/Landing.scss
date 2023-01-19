@@ -1,0 +1,94 @@
+@import '../../res/colours.scss';
+@import '../../constants/constants.scss';
+
+.landing__section {
+    background: $beige-colour;
+    min-height: calc(100vh - $navbar-height);
+
+
+    .landing__content {
+        // display: flex;
+        // flex-direction: column;
+        // align-items: flex-start;
+        padding-top: 80px;
+
+
+        h2 {
+            color: black;
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin: 20px 0px;
+        }
+    
+        p {
+            color: black;
+            line-height: 28px;
+            // text-align: right;
+        }
+        
+
+        .landing__subTitle {
+            color: $green-shade-colour;
+        }
+
+        .landing__buy-button {
+            color: white;
+            text-transform: uppercase;
+            padding: 8px 20px;
+            border-radius: 5px;
+            background: $green-shade-colour;
+            font-size: 1rem;
+            margin-top: 40px;
+
+
+            &:hover {
+                color: white;
+            }
+        }
+    }
+
+    .landing__image {
+        // width: 20em;
+
+        img {
+            object-fit: contain;
+
+        }
+    }
+
+
+    @media only screen and (max-width: 992px) {
+        .landing__content {
+            padding-top: 45px;
+
+            h2 {
+                font-size: 2rem;
+            }
+        }
+    }
+
+    @media only screen and (max-width: 768px) {
+        .landing__content {
+            padding-top: 45px;
+
+            h2 {
+                font-size: 1.6rem;
+            }
+
+            p {
+                font-size: 0.9rem;
+            }
+
+            .landing__buy-button {
+                font-size: 0.9rem;
+            }
+        }
+    }
+
+    @media only screen and (max-width: 576px) {
+        .landing__content {
+            padding-top: 0;
+            margin-bottom: 40px;
+        }
+    }
+}

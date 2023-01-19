@@ -1,103 +1,155 @@
 import './Navbar.scss';
-import { logo } from '../../util/images';
-import React from 'react'
-import { BOOKING_URL } from '../../constants/constants';
-import NavbarItem from './NavbarItem/NavbarItem';
+import React, { useRef, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom';
+import { Container, Row } from 'reactstrap';
+
+import images from '../../res/images';
+import { NAVIGATION } from '../../constants/constants';
 import { motion, useScroll, useSpring } from 'framer-motion';
-import { useScroller } from '../../helpers/hooks';
-import { menuItems } from '../../constants/menuItems';
-import { Account } from '../../util/icons';
-import { createUser } from '../../helpers/firebase/Utils';
-import { useAuthContext } from '../../providers/AuthContextProvider';
-import { Avatar } from '..';
-import DropDown, { DropDownMenuItem } from '../DropDown/DropDown';
-import { useNavigate } from 'react-router-dom';
+import NavbarItem from './NavbarItem/NavbarItem';
+import { Icon_ShoppingBasket, Icon_WishList } from '../../res/icons';
+import DrawerMenu from '../DrawerMenu/DrawerMenu';
+import Avatar from '../Avatar/Avatar';
+import { useScroller } from '../../hooks/useScroller';
+import DrawerMenuButton from '../DrawerMenu/DrawerMenuButton/DrawerMenuButton';
+import { useSelector as useReduxSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
+import { useToggle } from '../../hooks/useToggle';
+import { useAuth } from '../../hooks/useAuth';
+import { signUserOut } from '../../helpers/firebase/firebaseHelper';
 
-type NavbarProps = {
-    onAccountOpen: () => void;
-}
-function Navbar({ onAccountOpen }: NavbarProps) {
-    const navigate = useNavigate();
-    const scrolledDown = useScroller();
-    const { profile, isAuthenticated, signOut } = useAuthContext();
-    const { scrollYProgress } = useScroll();
-    const scaleX = useSpring(scrollYProgress, {
-        // stiffness: 100,
-        // damping: 30,
-        restDelta: 0.001
-    });
+const Navbar = () => {
+  const navigate = useNavigate();
+  const { currentUser } = useAuth();
+  const userPhotoURL = useReduxSelector((state: RootState) => state.userAccount.user.photoURL);
+  const userNotificationCount = useReduxSelector((state: RootState) => state.userAccount.notificationCount);
+  const totalBasketQuantity = useReduxSelector((state: RootState) => state.basket.totalQuantity);
+  const totalWishListQuantity = useReduxSelector((state: RootState) => state.wishList.totalQuantity);
+  const scrolledDown = useScroller();
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    // stiffness: 100,
+    // damping: 30,
+    restDelta: 0.001
+  });
+  // const profileActionsRef = useRef<HTMLDivElement>(null);
+  const [showingProfileActions, setShowingProfileActions] = useState<boolean>(false);
+  const { isOpen, toggle } = useToggle(false);
 
 
 
-    const renderAccountDropdown = () => {
 
-        const menuItems: DropDownMenuItem[] = [
-            {
-                id: 0,
-                title: "Dashboard",
-                action: () => navigate('/dashboard')
-            },
-            {
-                id: 1,
-                title: "My Profile",
-                action: () => {}
-            },
-            {
-                id: 2,
-                title: "History",
-                action: () => {}
-            },
-            {
-                id: 3,
-                title: "Sign Out",
-                action: () => signOut(() => {})
-            }
-        ]
-
-        return (
-            <div className='navbar-nav--account'>
-                {isAuthenticated() ?
-                    <DropDown menuClassName="navbar-dropdown"
-                        menuComponent={ <Avatar url={profile?.photo_URL} onClick={() => {}} /> }
-                        menuItems={menuItems}
-                        menuItemsClassName="navbar-dropdown--item"
-                    />
-                    :
-                    <Avatar url={profile?.photo_URL} onClick={() => onAccountOpen()} />
-                }
-            </div>
-        );
+  const toggleProfileActions = () => {
+    if (!currentUser)
+    {
+      navigate('/login')
+      return;
     }
 
+    if (!showingProfileActions) {
+      // profileActionsRef.current?.classList.add("show__profile-actions");
+      setShowingProfileActions(true);
+    }
+    else {
+      // profileActionsRef.current?.classList.remove("show__profile-actions");
+      setShowingProfileActions(false);
+    }
 
-    return (
-        <nav className={`navbar-nav ${scrolledDown ? 'navbar-nav--scroll' : ''}`}>
-            <motion.div className="progress-bar" style={{ scaleX }} />
-            <div className="navbar-nav--logo">
-                <NavbarItem to={'/'} onClick={() => { }} idleClassName="link-item" activeClassName="">
-                    <img src={logo} />
-                </NavbarItem>
+    // console.log(profileActionsRef.current);
+  }
+
+  function signOut() {
+    toggleProfileActions();
+    signUserOut()
+      .then(() => {
+        navigate("/");
+      });
+  }
+
+
+
+  const renderMenuIcons = () => (
+    <div className="navbar-nav--icons">
+      <motion.span className="wishlist_icon" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+        <Link to={"/wishlist"}>
+          <Icon_WishList />
+          <span className="badge" data-quantity={totalWishListQuantity > 0}>{totalWishListQuantity}</span>
+        </Link>
+      </motion.span>
+      <motion.span className="basket_icon" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+        <Link to={"/basket"}>
+          <Icon_ShoppingBasket />
+          <span className="badge" data-quantity={totalBasketQuantity > 0}>{totalBasketQuantity}</span>
+        </Link>
+      </motion.span>
+
+      <div className='profile'>
+        <motion.span className="avatar_icon" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+          <Avatar url={userPhotoURL} onClick={toggleProfileActions} />
+          {/* <span className="badge" data-quantity={totalBasketQuantity > 0}>{totalBasketQuantity}</span> */}
+          <span className="badge" data-quantity={userNotificationCount > 0}>{userNotificationCount}</span>
+        </motion.span>
+
+        <div className="avatar_icon-actions" style={{ display: (showingProfileActions ? "flex" : "none") }}
+        // ref={profileActionsRef}
+        >
+          {currentUser ? 
+            <>
+              <Link to="/dashboard" onClick={toggleProfileActions}>Dashboard</Link>
+              <Link to="/dashboard/account" onClick={toggleProfileActions}>My Account</Link>
+              <Link to="" onClick={signOut}>Logout</Link>
+            </>
+            :
+            <></>
+            // <>
+            //   <Link to="/login" onClick={toggleProfileActions}>Login</Link>
+            //   <Link to="/register" onClick={toggleProfileActions}>Sign Up</Link>
+            // </>
+          }
+        </div>
+      </div>
+
+
+      <DrawerMenuButton isOpen={isOpen} onClick={toggle} />
+    </div>
+  )
+
+  const renderMenuItems = () => (
+    <div className="navigation app__device-hide-mobile">
+      <ul className="navbar-nav--links">
+        {NAVIGATION.ROUTEs.map(({ title, to }, key) => (
+          <li className='nav--link-item' key={key}>
+            <NavbarItem to={to} activeClassName="link-item-active" idleClassName='link-item'>{title}</NavbarItem>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+
+
+
+  return (
+    <header className={`header ${scrolledDown ? "header--scroll" : ""}`}>
+      <motion.div className="progress-bar" style={{ scaleX }} />
+      <Container>
+        <Row>
+          <div className="app_navbar__wrapper">
+            <div className="logo">
+              <Link to={"/"}>
+                <img src={images.LogoNoBG} alt="logo" />
+              </Link>
             </div>
 
-            <ul className='navbar-nav--links app__mobile-hide'
-            //data-bb-colour={'rgba(255, 255, 255, 1)'}
-            // {location.pathname === "/" ? 'rgba(255, 255, 255, 1)' : 'rgba(239, 179, 183, 1)'}
-            >
-                {menuItems.map(({ id, title, to }) => (
-                    <li key={id}>
-                        <NavbarItem activeClassName="navbar-nav--links-active" to={to} onClick={() => { }}>
-                            {title}
-                        </NavbarItem>
-                    </li>
-                ))}
-            </ul>
+            {renderMenuItems()}
 
-            {renderAccountDropdown()}
+            {renderMenuIcons()}
 
-
-            {/* <a href={BOOKING_URL} className={`border-button app__style-effect__shine book-now-button app__mobile-hide`} target="_blank" rel="noreferrer">Book Now</a> */}
-        </nav>
-    )
+            <DrawerMenu isOpen={isOpen} onClose={toggle} />
+          </div>
+        </Row>
+      </Container>
+    </header>
+  )
 }
 
 export default Navbar

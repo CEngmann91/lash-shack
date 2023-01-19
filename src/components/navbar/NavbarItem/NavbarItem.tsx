@@ -1,20 +1,17 @@
 import './NavbarItem.scss';
-import React, { useCallback } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 type NavbarItemProps = {
     to: string;
     children: React.ReactNode;
-    onClick: (e?: React.MouseEvent<HTMLElement>) => void;
     idleClassName?: string;
     activeClassName?: string;
 }
-function NavbarItem({ to, onClick, children, idleClassName = "link-item", activeClassName = "link-item-active" }: NavbarItemProps) {
-    const handleClick = useCallback(onClick, []);
+function NavbarItem({ to, children, idleClassName = "link-item", activeClassName = "link-item-active" }: NavbarItemProps) {
 
     return (
-        <NavLink
-            to={to} end onClick={handleClick}
+        <NavLink to={to} end
             className={({ isActive }) => (isActive ? activeClassName : idleClassName)}
         >{children}</NavLink>
     )

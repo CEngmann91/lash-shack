@@ -1,0 +1,103 @@
+@import '../../../res/colours.scss';
+@import '../../../constants/constants.scss';
+
+:root {
+    --drawer-menu-button-scale: 35px;
+}
+
+.mobile__menu_button {
+
+    z-index: 100;
+
+
+    span {
+        // @media screen and (min-width: 768px) {
+        //     display: none;
+        // }
+        display: flex;
+        width: var(--drawer-menu-button-scale);
+        height: var(--drawer-menu-button-scale);
+        justify-content: center;
+        align-items: center;
+        border: none;
+        border-radius: 50%;
+        // box-shadow: 5px 5px 5px rgba($green-shade-colour, 0.5);
+
+
+        i {
+            position: relative;
+            display: inline-block;
+            width: 18px;
+            height: 3px;
+            background: black;
+
+            transition: .2s ease-out;
+
+            &::before {
+                top: -5px;
+            }
+
+            &::after {
+                bottom: -5px;
+            }
+
+            &::before,
+            &::after {
+                content: '';
+                width: 18px;
+                height: 3px;
+                background: black;
+                position: absolute;
+                left: 0;
+
+                transition: .2s ease-out;
+            }
+        }
+
+        &[data-menuvisible="true"] {
+            i {
+                // Hide the center line.
+                background: inherit;
+
+                &::before {
+                    top: 0;
+                    -webkit-transform: rotateZ(45deg);
+                    -moz-transform: rotateZ(45deg);
+                    -ms-transform: rotateZ(45deg);
+                    -o-transform: rotateZ(45deg);
+                    transform: rotateZ(45deg);
+                }
+
+                &::after {
+                    bottom: 0;
+                    -webkit-transform: rotateZ(-45deg);
+                    -moz-transform: rotateZ(-45deg);
+                    -ms-transform: rotateZ(-45deg);
+                    -o-transform: rotateZ(-45deg);
+                    transform: rotateZ(-45deg);
+                }
+            }
+        }
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+
+    &--scroll {
+
+        span {
+
+            i {
+                background: $beige-colour;
+
+                &::before,
+                &::after {
+                    background: $beige-colour;
+                }
+            }
+        }
+
+    }
+}

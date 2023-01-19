@@ -1,42 +1,13 @@
-@import '../../res/styles.scss';
-@import '../../util/mixin.scss';
 @import '../../constants/constants.scss';
+@import '../../res/colours.scss';
 
-:root {
-    --account-menu-button-scale: 35px;
-}
 
-.progress-bar {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 2px;
-    background: $green-shade-colour;
-    border-radius: 2px;
-    transform-origin: center;
-}
-
-.navbar-nav {
-    @media screen and (max-width: 900px) {
-        padding: 0rem 1rem;
-    }
-    display: grid;
-    grid-template-columns: auto auto auto;
-    // Full widht of the screen.
+.header {
+    position: sticky;
+    top: 0;
+    background: rgba(white, 0.85);
     width: 100%;
     height: $navbar-height;
-    // Ensures that it stays at the top of the screen.
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0rem 2rem;
-    // overflow: hidden;
-    // Add a blur
-    @include blur(4px);
     // Ensures the navbar is above the content
     z-index: 5;
 
@@ -44,175 +15,296 @@
 
 
 
-    // .book-now-button {
-    //     border: 0.1em solid $green-shade-colour;
-    //     color: $green-shade-colour;
-    // }
-
-    &--logo {
-        @media screen and (max-width: 900px) {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            // justify-content: center;
-        }
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-
-        
-        img {            
-            transition: 0.3s ease-in-out;
-            
-            width: 6rem;
-        }
+    .progress-bar {
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: $navbar-height;
+        bottom: 0;
+        height: 2px;
+        background: $green-shade-colour;
+        border-radius: 2px;
+        transform-origin: center;
     }
 
-    &--links {
-        flex: 1;
+
+
+
+    .app_navbar__wrapper {
         display: flex;
-        justify-content: center;
+        flex: 1;
         align-items: center;
-        // margin-left: 3rem;
-        margin-right: 3rem;
+        justify-content: space-between;
+        padding: 0rem 2rem;
+        height: $navbar-height;
 
+        .logo {
+            display: flex;
+            align-items: center;
+            column-gap: 8px;
 
-
-        &-active {
-            text-shadow: 0 0.5px 0.5px rgba(black, 0.5);
-            border-bottom: solid 3px 
-            // $pink-colour;
-            $green-shade-colour;
-            // font-weight: bold;
+            img {
+                width: 6rem;
+            }
         }
 
-        li {
-            @media screen and (max-width: 900px) {
-                display: none;
+
+        .navigation {
+
+            .navbar-nav--links {
+                display: flex;
+                align-items: center;
+                column-gap: 2.7rem;
+                margin-bottom: 0;
+
+                .link-item {
+                    color: $green-shade-colour;
+                    font-weight: 500;
+                    cursor: pointer;
+
+                    &-active {
+                        text-shadow: 0 0.5px 0.5px rgba($green-shade-colour, 0.5);
+                        border-bottom: solid 3px $green-shade-colour;
+                        color: inherit;
+                        // font-weight: 700 !important;
+                    }
+                }
+            }
+        }
+
+
+        .navbar-nav--icons {
+            display: flex;
+            align-items: center;
+            column-gap: 1.2rem;
+
+
+            .profile {
+                position: relative;
+
+                img {
+                    width: 30px;
+                    height: 30px;
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+
+                .avatar_icon {
+                    position: relative;
+
+
+                    .badge {
+                        &[data-quantity="false"] {
+                            display: none;
+                        }
+
+                        transition: 0.3s ease-in-out;
+
+                        position: absolute;
+                        bottom: 50%;
+                        left: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        content: '';
+                        width: 16px;
+                        height: 16px;
+                        background: red;
+                        color: white;
+                        border-radius: 50%;
+                        font-size: 0.8rem;
+                        font-weight: 600;
+                        z-index: 10;
+
+                        animation: keyframes__badge_scale-up 250ms linear forwards;
+                    }
+
+
+                    &-actions {
+                        position: absolute;
+                        top: 100%;
+                        right: -50px;
+                        width: 150px;
+                        z-index: 10;
+                        padding: 5px 10px;
+                        // display: flex;
+                        display: none;
+                        align-items: center;
+                        flex-direction: column;
+                        background: $beige-colour;
+                        line-height: 30px;
+                        margin-top: 20px;
+
+
+                        border-radius: 5px;
+                        border: 5px solid white;
+                        box-shadow: 0px 0px 20px rgba($green-shade-colour, 0.5);
+                        overflow: hidden;
+
+                        
+                        a {
+                            width: 100%;
+                            // background: green;
+                            display: flex;
+                            justify-content: center;
+
+                            &:not(:last-child) {
+                                border-bottom: 2px solid rgba(gray, 0.5);
+                            }
+                        }
+
+
+                        &:hover {
+                            cursor: pointer;
+                        }
+                    }
+                }
             }
 
-            // padding: 0px 5px 5px 5px;
-            margin: 0rem 1.2rem;
-            // Remove the generic link styles.
-            list-style: none;
+            span {
+                width: 1.5rem;
+                height: 1.3rem;
 
-            a {
-                color: $green-shade-colour;
-                text-transform: capitalize;
-                font-size: 18px;
-                // font-weight: bold;
-                text-decoration: none;
-                // font-family: cursive;
+                svg {
+                    width: 1.4rem;
+                    height: 1.4rem;
+                }
             }
 
-            // &:hover {
-            //     cursor: pointer;
+            .basket_icon,
+            .wishlist_icon
+            // .avatar_icon
+            {
+                position: relative;
+
+
+                .badge {
+                    &[data-quantity="false"] {
+                        display: none;
+                    }
+
+                    transition: 0.3s ease-in-out;
+
+                    position: absolute;
+                    bottom: 50%;
+                    left: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    content: '';
+                    width: 16px;
+                    height: 16px;
+                    background: red;
+                    color: white;
+                    border-radius: 50%;
+                    font-size: 0.8rem;
+                    font-weight: 600;
+                    z-index: 10;
+
+                    animation: keyframes__badge_scale-up 250ms linear forwards;
+                }
+            }
+
+            .basket_icon,
+            .wishlist_icon,
+            .avatar_icon,
+            .menu_icon {
+
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+
+
+            // .active__menu {
+            //     display: block;
+            // }
+
+            // .mobile__menu {
+            //     display: block;
             // }
         }
     }
 
-    &--scroll {
-        @media screen and (max-width: 900px) {
-            height: calc($navbar-height - 10px);
+    @media only screen and (max-width: 992px) {
+        .app_navbar__wrapper .navigation .navbar-nav--links {
+            column-gap: 2.3rem;
+            margin-right: 30px;
         }
-        // Background colour for the navbar.
-        background: rgba($green-shade-colour, 0.85);
-        box-shadow: 0 0 30px rgba(black, 0.85);
-        height: calc($navbar-height + 10px);
+    }
 
-        --border-bottom-radius: 30px;
-        border-bottom-left-radius: var(--border-bottom-radius);
-        border-bottom-right-radius: var(--border-bottom-radius);
+
+
+
+    &--scroll {
+        // --border-bottom-radius: 30px;
+        // border-bottom-left-radius: var(--border-bottom-radius);
+        // border-bottom-right-radius: var(--border-bottom-radius);
+
+        // Background colour for the navbar.
+        background: rgba($green-shade-colour, 0.95);
+
+        box-shadow: 0 0 30px rgba(black, 0.85);
 
 
 
         .progress-bar {
-            background: $pink-colour;
+            background: $beige-colour;
         }
 
-        .navbar-nav {
-            transition: 0.3s ease-in-out;
+        .app_navbar__wrapper {
 
-            /*&--logo {
+            .logo {}
 
-                img {
-                    // transition: 0.3s ease-in-out;
+            .navigation {
 
-                    @media screen and (max-width: 900px) {
-                        width: 4rem;
+                .navbar-nav--links {
+
+                    .link-item {
+                        color: $beige-colour;
+
+                        &-active {
+                            border-bottom: solid 3px $beige-colour;
+                            color: $beige-colour;
+                        }
                     }
                 }
-            }*/
+            }
 
-            &--links {
-                transition: 0.3s ease-in-out;
 
-                &-active {
-                    border-bottom: solid 3px $pink-colour;
-                }
+            .navbar-nav--icons {
 
-                li {
-                    a {
-                        color: $pink-colour;
+                .basket_icon,
+                .wishlist_icon,
+                .avatar_icon,
+                .menu_icon {
+
+                    svg {
+                        color: $beige-colour;
                     }
                 }
             }
         }
+    }
+}
 
-        // .book-now-button {
-        //     border: 0.1em solid $pink-colour;
-        //     color: $pink-colour;
+.show__profile-actions {
+    display: flex;
+}
 
-        //     // &:hover {
-        //     //     box-shadow: 5px 5px black;
-        //     // }
-        // }
 
+@keyframes keyframes__badge_scale-up {
+    0% {
+        transform: scale(0);
     }
 
-    &--account {
-        position: absolute;
-        display: inline-block;
-        align-items: flex-start;
-        right: 0;
-        top: 0;
-        transform: translate(-70px, 15px);
-        z-index: 10;
+    80% {
+        transform: scale(1.2);
+    }
 
-
-        .navbar-dropdown {
-            position: relative;
-            transform: translateX(30px);
-        
-        
-            &--item {
-                // font-size: 2rem;
-                background: $beige-colour;
-                border-bottom: $pink-colour;
-            }
-        }
-
-
-        
-        
-        // button {
-        //     display: flex;
-        //     width: $navbar-icon-scale;
-        //     height: $navbar-icon-scale;
-        //     justify-content: center;
-        //     align-items: center;
-        //     // border: none;
-        //     // border-radius: 50px;
-        //     // box-shadow: 5px 5px 5px rgba($green-shade-colour, 0.5);
-        //     padding: 5px;
-        //     color: black;
-
-        //     svg {
-        //         width: 100%;
-        //         height: 100%;
-        //         color: black;
-        //     }
-        // }
+    100% {
+        transform: scale(1);
     }
 }

@@ -1,178 +1,153 @@
 import './Footer.scss';
 import React from 'react'
-import NavbarItem from '../navbar/NavbarItem/NavbarItem';
-import { Email, Facebook, Instagram, Phone, Twitter, UpArrow } from '../../util/icons';
-import { CONTACT, DEVELOPER_URL } from '../../constants/constants';
-import { logo } from '../../util/images';
-import ALink from '../ALink/ALink';
-import { menuItems } from '../../constants/menuItems';
+import { Container, Row, Col, ListGroup, ListGroupItem } from 'reactstrap'
+import images from '../../res/images';
+import { Link } from 'react-router-dom';
+import { Icon_Email, Icon_Location, Icon_Phone } from '../../res/icons';
+import { CONTACT } from '../../constants/constants';
+import { motion } from 'framer-motion';
 
+const Footer = () => {
 
-type iSocial = {
-  id: string;
-  component: React.ReactNode;
-  to: string;
-}
-const socials: iSocial[] = [
-  // {
-  //   id: "Facebook",
-  //   component: ( <Facebook /> ),
-  //   to: CONTACT.FACEBOOK
-  // },
-  // {
-  //   id: "Twitter",
-  //   component: ( <Twitter /> ),
-  //   to: CONTACT.TWITTER
-  // },
-  {
-    id: "Instagram",
-    component: (<Instagram />),
-    to: CONTACT.INSTAGRAM
-  },
-  {
-    id: "Email",
-    component: (<Email />),
-    to: CONTACT.EMAIL
+  const renderLogoInformation = () => (
+    <Col lg="4" md='6' className='mb-4'>
+      <div className="logo">
+        <div>
+          <h1 className=''>Lash Shack</h1>
+        </div>
+      </div>
+
+      <p className="footer__text mt-4">
+        Insert Information About the Company Here!
+        Insert Information About the Company Here!
+        Insert Information About the Company Here!
+        Insert Information About the Company Here!
+        Insert Information About the Company Here!
+      </p>
+    </Col>
+  )
+
+  const renderCategoryLinks = () => (
+    <Col lg="3" md='3' className='mb-4'>
+      <div className="footer__quick-links">
+        <h4 className="quick__links-title">Catgories</h4>
+        <ListGroup className='mb-3'>
+          <ListGroupItem className='ps-0 border-0'>
+            <Link to={"/courses"}>Courses</Link>
+          </ListGroupItem>
+          <ListGroupItem className='ps-0 border-0'>
+            <Link to={"/services"}>Services</Link>
+          </ListGroupItem>
+          {/* <ListGroupItem className='ps-0 border-0'>
+            <Link to={"#"}>Eyelash Extensions Full Sets</Link>
+          </ListGroupItem>
+          <ListGroupItem className='ps-0 border-0'>
+            <Link to={"#"}>Eyelash Extensions Infills</Link>
+          </ListGroupItem>
+          <ListGroupItem className='ps-0 border-0'>
+            <Link to={"#"}>Eyebrows</Link>
+          </ListGroupItem>
+          <ListGroupItem className='ps-0 border-0'>
+            <Link to={"#"}>Lips</Link>
+          </ListGroupItem>
+          <ListGroupItem className='ps-0 border-0'>
+            <Link to={"#"}>Semi-Permanent Makeup</Link>
+          </ListGroupItem> */}
+        </ListGroup>
+      </div>
+    </Col>
+  )
+
+  const renderQuickLinks = () => (
+    <Col lg="2" md='3' className='mb-4'>
+      <div className="footer__quick-links">
+        <h4 className="quick__links-title">Useful Links</h4>
+        <ListGroup className='mb-3'>
+          <ListGroupItem className='ps-0 border-0'>
+            <Link to={"/shop"}>Shop</Link>
+          </ListGroupItem>
+          <ListGroupItem className='ps-0 border-0'>
+            <Link to={"/basket"}>Basket</Link>
+          </ListGroupItem>
+          <ListGroupItem className='ps-0 border-0'>
+            <Link to={"/login"}>Login</Link>
+          </ListGroupItem>
+          <ListGroupItem className='ps-0 border-0'>
+            <Link to={"/register"}>Register</Link>
+          </ListGroupItem>
+          <ListGroupItem className='ps-0 border-0'>
+            <Link to={"/register"}>Privacy Policy</Link>
+          </ListGroupItem>
+        </ListGroup>
+      </div>
+    </Col>
+  )
+
+  const renderContactInformation = () => (
+    <Col lg="3" md='3'>
+      <div className="footer__quick-links">
+        <h4 className="quick__links-title">Get In Touch</h4>
+        <ListGroup className='footer__contact'>
+
+          {CONTACT.LOCATIONS.map(({ ADDRESS, MAP }, key) => (
+            <ListGroupItem key={key} className='ps-0 border-0'>
+              <a target="_blank" className='d-flex align-items-center gap-2' href={MAP}>
+                <motion.span whileHover={{ scale: 1.1 }}><Icon_Location /></motion.span>
+                <p className='text__new-line'>{ADDRESS}</p>
+              </a>
+            </ListGroupItem>
+          ))}
+
+          <ListGroupItem className='ps-0 border-0 d-flex align-items-center gap-2'>
+            <a target="_blank"
+              className=' d-flex align-items-center gap-2'
+              href={`tel:${CONTACT.PHONE}`}>
+              <span><Icon_Phone /></span>
+              <p>{CONTACT.PHONE}</p>
+            </a>
+          </ListGroupItem>
+          <ListGroupItem className='ps-0 border-0'>
+            <a target="_blank"
+              className=' d-flex align-items-center gap-2'
+              href={`mailto:${CONTACT.EMAIL}`}>
+              <span><Icon_Email /></span>
+              <p>{CONTACT.EMAIL}</p>
+            </a>
+          </ListGroupItem>
+        </ListGroup>
+      </div>
+    </Col>
+  )
+
+  const renderCopyright = () => {
+    const year = new Date().getFullYear();
+
+    return (
+      <Col lg="12">
+        <p className="footer__copyright">
+          Copyright &copy; LashShack {year}. All Rights Reserved. Developed By
+          <a href="https://www.christianjengmann.com" target="_blank" rel="noopener noreferrer" className='fw-bold'> Christian Engmann</a>
+        </p>
+      </Col>
+    )
   }
-]
-
-function Footer() {
 
   return (
-    <footer className='app__footer'>
-      <section className="CompanyInfo">
-        <header>Company</header>
-        {/* <p>1</p>
-        <p>2</p>
-        <p>3</p>
-        <p>4</p>
-        <p>5</p>
-        <p>6</p>
-        <p>7</p>
-        <p>8</p>
-        <p>9</p>
-        <p>10</p>
-        <p>11</p> */}
-      </section>
-      <section className="Services">
-        <header>Services</header>
-        {menuItems.map(({ id, title, to }) =>
-          <NavbarItem
-            key={id} to={to} onClick={() => { }}
-            idleClassName="link" activeClassName="link-active"
-          >{title}</NavbarItem>
-        )}
-        {/* <p>1</p>
-        <p>2</p>
-        <p>3</p>
-        <p>4</p> */}
-      </section>
-      <section className="SocialMedia">
-        <header>Social Media</header>
-        <section>
-          <button className='border-button icon'><Instagram /></button>
-          <button className='border-button icon'><Phone /></button>
-          <button className='border-button icon'><Email /></button>
+    <footer className='footer'>
+      <Container>
+        <Row>
+          {renderLogoInformation()}
 
-        </section>
-      </section>
+          {renderCategoryLinks()}
 
-      <div className='baseline'>
-        <ALink path='/' className='company-name'>Lash Shack Ltd</ALink>
-        {/* <label className='company-name'>Lash Shack Ltd</label> */}
-        <label className='divider'>-</label>
-        <label className='copyright-text'>Copyright © 2023. All Rights Reserved.</label>
-        <label className='divider'>|</label>
-        <ALink path={DEVELOPER_URL} className='developer-link'>Developed by Christian Engmann</ALink>
-      </div>
+          {renderQuickLinks()}
 
+          {renderContactInformation()}
 
-
-
-
-
-
-
-      {/* <div className="app__footer--logo">
-        <NavbarItem to={'/'} onClick={() => { }} idleClassName="link-item" activeClassName="">
-          <img src={logo} />
-        </NavbarItem>
-      </div>
-
-
-
-      <div className="app__footer--information">
-        <div className="socials">
-          {socials.map(({ id, component, to }) => (
-            <a key={id} href={to} className="" target="_blank" rel="noreferrer">
-              {component}
-            </a>
-          ))}
-        </div>
-
-        <div className="location">
-          <p className='new-line address'>{CONTACT.ADDRESS}</p>
-        </div>
-      </div>
-    </div> */}
-
-
-
-
-
-
-
-
-
-
-
-
-      {/* 
-    // <div className='app__footer'>
-
-    //   <ul className="app__footer--quick-links">
-    //     <p className='title'>Quick Links</p>
-    //     {menuItems.map(({ id, name, to }) => (
-    //       <li key={id}>
-    //         <NavbarItem
-    //           key={id} id={id}
-    //           to={to} onClick={() => { }}
-    //           idleClassName="" activeClassName=""
-    //         >{name}</NavbarItem>
-    //       </li>
-    //     ))}
-    //   </ul>
-
-
-    //   <div className="app__footer--socials">
-    //     <p className='title'>Find Us On</p>
-    //     <div>
-    //       <a href={CONTACT.FACEBOOK} className="" target="_blank" rel="noreferrer">
-    //         <Facebook />
-    //       </a>
-    //       <a href={CONTACT.TWITTER} className="" target="_blank" rel="noreferrer">
-    //         <Twitter />
-    //       </a>
-    //       <a href={CONTACT.INSTAGRAM} className="" target="_blank" rel="noreferrer">
-    //         <Instagram />
-    //       </a>
-    //       <a href={CONTACT.EMAIL} className="" target="_blank" rel="noreferrer">
-    //         <Email />
-    //       </a>
-    //     </div>
-    //   </div>
-
-    //   <div className="app__footer--location">
-    //     <p className='title'>Location</p>
-    //     <p className='new-line address'>{CONTACT.ADDRESS}</p>
-    //     //<p className='email-address app__style-effect__underline'>{CONTACT.EMAIL}</p>
-    //   </div>
-
-    //   <p className=''>Copyright © 2022 Lash Shack</p>
-    */}
-
+          {renderCopyright()}
+        </Row>
+      </Container>
     </footer>
-
   )
 }
 

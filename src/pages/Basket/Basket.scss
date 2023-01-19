@@ -1,0 +1,86 @@
+@import '../../res/colours.scss';
+@import '../../constants/constants.scss';
+
+:root {
+    ---svg_size: 30px;
+}
+
+.basket__section {
+    min-height: calc(100vh - $navbar-height);
+
+
+    .buy-button {
+        color: white;
+        text-transform: uppercase;
+        padding: 8px 20px;
+        border-radius: 5px;
+        background: $green-shade-colour;
+        font-size: 1rem;
+        margin-top: 40px;
+
+
+        &:hover {
+            color: white;
+        }
+    }
+
+
+    .table {
+
+        tr td img {
+            width: 50px !important;
+            height: 50px !important;
+            object-fit: cover;
+        }
+
+        td, th {
+            // color: $green-shade-colour;
+        }
+
+        .product__increase,
+        .product__decrease {
+            width: 25px;
+            height: 25px;
+            background: transparent;
+            color: black;
+            padding: 0px;
+
+         
+            svg {
+                width: 100%;
+                height: 100%;
+                padding: 5px;
+                color: $green-shade-colour;
+            }
+        }
+
+        .product__delete {
+            color: black;
+            background: transparent;
+            border: none;
+            outline: none;
+            width: var(---svg_size);
+            height: var(---svg_size);
+            padding: 0px;
+
+            &:hover {
+                cursor: pointer;
+            }
+
+            svg {
+                width: 100%;
+                height: 100%;
+                padding: 5px;
+                color: black;
+            }
+        }
+    }
+
+
+    .basket__checkout,
+    .basket__shop {
+        color: white;
+        background: black;
+
+    }
+}

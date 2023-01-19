@@ -6,20 +6,12 @@
 
 import './index.scss';
 import React from 'react';
-import ShoppingBasketProvider from './providers/ShoppingBasketProvider';
-import UserAccountProvider from './providers/AuthContextProvider';
-import AppMain from './AppMain';
+import Layout from './components/Layout/Layout';
+import Maintenance from './components/Maintenance/Maintenance';
 
 function App() {
-
-
-  return (
-    <UserAccountProvider>
-      <ShoppingBasketProvider>
-        <AppMain />
-      </ShoppingBasketProvider>
-    </UserAccountProvider>
-  )
+  return <Maintenance />
+  // return <Layout />
 }
 
 export default App;

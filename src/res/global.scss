@@ -1,0 +1,52 @@
+@import './colours.scss';
+
+
+
+
+
+.text__new-line {
+    // For line break \n:
+    // white-space: pre-line;
+    // For line break \n and tabs \t:
+    white-space: pre-wrap;
+  }
+
+
+.app__hover-with-shadow {
+    transition: 0.3s ease-out;
+
+    &:hover {
+        box-shadow: 0 0.5em 0.5em -0.4em $green-shade-colour;
+        transform: translateY(-0.25em);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.app__device {
+
+    &-hide-desktop {
+
+        // Extra large or Desktop devices
+        @media screen and (min-width: 768px) {
+            display: none;
+        }
+    }
+
+    &-hide-mobile {
+        @media screen and (max-width: 768px) {
+            display: none;
+        }
+    }
+}

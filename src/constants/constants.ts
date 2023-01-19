@@ -1,17 +1,46 @@
-export const BOOKING_URL = "https://widget.treatwell.co.uk/place/lash-shack/?utm_medium=partner-ecosystem&utm_campaign=partner-instagram&utm_content=book-now"
-export const DEVELOPER_URL = 'https://www.christianjengmann.com/';
+export const NAVIGATION = {
+    ROUTEs: [
+        {
+            title: "Home",
+            to: "home",
+        },
+        {
+            title: "Services",
+            to: "services",
+        },
+        {
+            title: "Courses",
+            to: "courses",
+        },
+        {
+            title: "Gallery",
+            to: "gallery",
+        },
+        {
+            title: "Latest News",
+            to: "news",
+        },
+        {
+            title: "Shop",
+            to: "shop",
+        }
+    ]
+}
 
 export const CONTACT = {
     FACEBOOK: '',
     TWITTER: '',
     INSTAGRAM: 'https://www.instagram.com/lashshack.uk/',
+    PHONE: "+447",
     EMAIL: "lashshackuk@hotmail.com",
-    ADDRESS: "Sunchasers\n37 Mawney Road\nRomford\nRM7 7HL",
-}
-export const COURSE_MAX_CAPACITY = 3;
-
-
-export const BOOKING = {
-    TERMS: `All courses require a deposit of £50 is required now in order to confirm your time slot.\nThe remaining balance will be requested upon arrival.`,
-    DEPOSIT_FEE: 50
+    LOCATIONS: [
+        // {
+        //     ADDRESS: "Lash Shack", //\n15 Hainault Rd\nRomford\nRM5 3AA",
+        //     MAP: "", //"https://goo.gl/maps/V94YaagVFaKJpnXh6",
+        // },
+        {
+            ADDRESS: "Sunchasers\n37 Mawney Road\nRomford RM7 7HL",
+            MAP: "https://goo.gl/maps/Y6JbXV9A7pSAwbWs7",
+        }
+    ]
 }

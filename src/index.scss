@@ -1,17 +1,19 @@
-@import './res/styles.scss';
+@import './res/global.scss';
 @import './res/colours.scss';
 @import './constants/constants.scss';
-@import './util/mixin.scss';
+
+/* google fonts */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap");
 
 :root {
-  --font-base: 
-  // "HelveticaNeue-Light",
-  // "Helvetica Neue Light",
-  "Helvetica Neue",
-  // Helvetica,
-  // Arial,
-  // "Lucida Grande", sans-serif
-  ; 
+  --font-base:
+    // "HelveticaNeue-Light",
+    // "Helvetica Neue Light",
+    "Helvetica Neue",
+    // Helvetica,
+    // Arial,
+    // "Lucida Grande", sans-serif
+  ;
 
 
   /* Transitions for navbar link selection. */
@@ -22,30 +24,46 @@
 
 
 body {
-  font-family: var(--font-base)
+  font-family: "Montserrat", sans-serif;
 }
 
-*,
+*
 *::before,
-*::after {
-  box-sizing: border-box;
-  padding: 0;
+*::after
+{
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   scroll-behavior: smooth;
 
 
   -webkit-tap-highlight-color: transparent;
   outline: none;
-
-  line-height: 1.5em;
 }
 
 ul {
-  list-style-type: none;
+  list-style: none;
 }
 
 a {
+  color: unset;
   text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  padding: 0;
+  margin: 0;
+}
+
+h1,
+h2 {
+  font-size: $heading-fontSize;
 }
 
 .new-line {
@@ -59,8 +77,14 @@ button {
   background: transparent;
   border: none;
 
+
   &:hover {
     cursor: pointer;
+  }
+
+  &:focus {
+    outline: none !important;
+    box-shadow: none;
   }
 
   &[disabled] {
@@ -73,18 +97,27 @@ button {
   }
 }
 
-// button[disabled] {
-//   opacity: 0.3;
+input, textarea {
 
-//   &:hover {
-//     cursor: default;
-//     transform: scale(1);
-//   }
-// }
+  &:focus {
+    outline: none;
+  }
+}
 
-img {
+
+svg {
   width: 100%;
   height: 100%;
+  color: black;
+}
+
+img {
   object-fit: cover;
   object-position: center center;
+  width: 100%;
+  height: 100%;
+}
+
+section {
+  padding: 60px 30px;
 }
