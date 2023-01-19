@@ -37,7 +37,7 @@ export const {
 // };
 
 
-const firebaseConfig = {
+export const firebaseConfig = {
     apiKey: "AIzaSyBVgIhVoKjw4eHYfRCFkj0ElsWtl6XmKOM",
     authDomain: "lash-shack-uk.firebaseapp.com",
     projectId: "lash-shack-uk",
