@@ -1,5 +1,5 @@
 import React from 'react'
-import Navbar from '../Navbar/Navbar'
+import Navbar from '../navbar/Navbar'
 import Footer from '../Footer/Footer'
 import Routers from '../../routers/Routers'
 
