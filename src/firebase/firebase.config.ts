@@ -26,12 +26,23 @@ export const {
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-export const firebaseConfig = {
-    apiKey: REACT_APP_FIREBASE_API_KEY,
-    authDomain: REACT_APP_AUTH_DOMAIN,
-    projectId: REACT_APP_PROJECT_ID,
-    storageBucket: REACT_APP_FIREBASE_STORAGE_BUCKET,
-    messagingSenderId: REACT_APP_FIREBASE_MESSAGING_ID,
-    appId: REACT_APP_FIREBASE_APP_ID,
-    measurementId: REACT_APP_MEASUREMENT_ID
+// export const firebaseConfig = {
+//     apiKey: REACT_APP_FIREBASE_API_KEY,
+//     authDomain: REACT_APP_AUTH_DOMAIN,
+//     projectId: REACT_APP_PROJECT_ID,
+//     storageBucket: REACT_APP_FIREBASE_STORAGE_BUCKET,
+//     messagingSenderId: REACT_APP_FIREBASE_MESSAGING_ID,
+//     appId: REACT_APP_FIREBASE_APP_ID,
+//     measurementId: REACT_APP_MEASUREMENT_ID
+// };
+
+
+const firebaseConfig = {
+    apiKey: "AIzaSyBVgIhVoKjw4eHYfRCFkj0ElsWtl6XmKOM",
+    authDomain: "lash-shack-uk.firebaseapp.com",
+    projectId: "lash-shack-uk",
+    storageBucket: "lash-shack-uk.appspot.com",
+    messagingSenderId: "359883414285",
+    appId: "1:359883414285:web:be5083d062a7e616faae44",
+    measurementId: "G-XL66DWLGWG"
 };
