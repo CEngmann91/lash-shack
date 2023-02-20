@@ -74,9 +74,10 @@ const Landing = () => {
                 effect={"coverflow"}
                 centeredSlides={true}
                 spaceBetween={20}
-                slidesPerView={2}
+                slidesPerView={"auto"}
                 coverflowEffect={{
-                  rotate: 50,
+                  rotate: 30,
+                  stretch: 0,
                   depth: 100,
                   modifier: 1,
                   slideShadows: true,

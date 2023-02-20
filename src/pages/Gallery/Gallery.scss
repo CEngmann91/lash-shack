@@ -15,4 +15,12 @@
         border-radius: 35px;
         overflow: hidden;
     }
+
+
+    @media only screen and (max-width: 576px) {
+        .loading-container {
+            width: 350px !important;
+
+        }
+    }
 }
