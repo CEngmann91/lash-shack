@@ -47,7 +47,7 @@ const Navbar = () => {
       navigate('/login')
       return;
     }
-    
+
     setShowingProfileActions(p => !p)
   }
 
@@ -139,11 +139,11 @@ const Navbar = () => {
             {renderMenuItems()}
 
             {renderMenuIcons()}
-
-            <DrawerMenu isOpen={isOpen} onClose={toggle} />
           </div>
         </Row>
       </Container>
+
+      <DrawerMenu isOpen={isOpen} onClose={toggle} />
     </header>
   )
 }

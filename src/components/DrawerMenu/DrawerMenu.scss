@@ -1,26 +1,45 @@
 @import '../../res/global.scss';
 
 .drawer {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba($color: #000000, $alpha: 0.5);
-    z-index: 99;
+    display: flex;
+    z-index: 5;
+
+
+    // position: fixed;
+    // top: 0;
+    // left: 0;
+    // width: 100%;
+    // height: 100%;
+    // background: rgba($color: #000000, $alpha: 0.5);
+    // z-index: 99;
 
 
     .menu {
-        position: absolute;
-        top: 0;
+        position: fixed;
         right: 0;
-        width: 300px;
+        top: 0;
+        bottom: 0;
+
+
+        // position: absolute;
+        // top: 0;
+        // right: 0;
+        width: 100%;
         height: 100%;
-        background: white;
+        // background: white;
+        background: linear-gradient(to bottom right, $pink-colour, $green-shade-colour);
         flex-direction: column;
         align-items: center;
         justify-content: center;
         z-index: 100;
+
+        // transition: transform 0.3s ease-in-out;
+        // transform: translateX(0);
+
+
+        // &[data-isopen="true"] {
+        //     transform: translateX(100%);
+        // }
 
 
         .navigation {

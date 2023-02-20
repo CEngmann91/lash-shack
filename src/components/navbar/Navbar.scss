@@ -5,7 +5,7 @@
     position: sticky;
     top: 0;
     background: rgba(white, 0.85);
-    width: 100%;
+    margin: 0 auto;
     height: $navbar-height;
     // Ensures the navbar is above the content
     z-index: 5;
@@ -31,11 +31,11 @@
 
     .app_navbar__wrapper {
         display: flex;
-        flex: 1;
         align-items: center;
         justify-content: space-between;
         padding: 0rem 2rem;
         height: $navbar-height;
+
 
         .logo {
             display: flex;
@@ -49,7 +49,6 @@
 
 
         .navigation {
-
             .navbar-nav--links {
                 display: flex;
                 align-items: center;
@@ -192,7 +191,7 @@
                 border-radius: 50%;
                 font-size: 0.8rem;
                 font-weight: 600;
-                z-index: 10;
+                z-index: 3;
 
                 animation: keyframes__badge_scale-up 250ms linear forwards;
             }

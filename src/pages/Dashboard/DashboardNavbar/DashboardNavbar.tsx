@@ -89,7 +89,7 @@ const DashboardNavbar = () => {
 
 
                             <div className='app__device-hide-desktop'>
-                                <h4>{getLocationTitle()}</h4>
+                                <h4 className='dash_navbar__title'>{getLocationTitle()}</h4>
                             </div>
 
 
