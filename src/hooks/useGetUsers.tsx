@@ -47,39 +47,39 @@ const useGetUsers = (removeCurrentUser: boolean = true) => {
     /**
      * Returns all users that have logged in today
      */
-    const getActiveUsersToday = useMemo(async () => {
-        // Get todays date.
-        const dateTimeNow = new Date().toUTCString();
-        // Split it by the separator provided.
-        const split = dateTimeNow.split(" ");
-        const dayOfWeek = split[0];
-        const day = split[1];
-        const month = split[2];
-        const year = split[3];
-        // Get the collection from the store.
-        const collectionRef = collection(firestore, "users");
-        // const q = query(collectionRef, where("displayName", "==", "Christian Engmann"));
-        // Only query users that have logged in today.
-        // Sun, 22 Jan 2023 14:12:53 GMT
-        const queryDateTime = `${dayOfWeek} ${day} ${month} ${year} 00:00:00 GMT`;
-        const q = query(collectionRef,
-            // where("uid", "!=", getCurrentUser()?.uid),
-            where("lastLoggedIn", ">", queryDateTime),
-        );
-        const querySnapshot = await getDocs(q);
-        let array: DocumentData[] = [];
-        querySnapshot.forEach((doc) => array = [...array, doc.data()]);
-        setActiveCount(array?.length);
-        return array as UserProfile[];
-    }, [users])
+    // const getActiveUsersToday = useMemo(async () => {
+    //     // Get todays date.
+    //     const dateTimeNow = new Date().toUTCString();
+    //     // Split it by the separator provided.
+    //     const split = dateTimeNow.split(" ");
+    //     const dayOfWeek = split[0];
+    //     const day = split[1];
+    //     const month = split[2];
+    //     const year = split[3];
+    //     // Get the collection from the store.
+    //     const collectionRef = collection(firestore, "users");
+    //     // const q = query(collectionRef, where("displayName", "==", "Christian Engmann"));
+    //     // Only query users that have logged in today.
+    //     // Sun, 22 Jan 2023 14:12:53 GMT
+    //     const queryDateTime = `${dayOfWeek} ${day} ${month} ${year} 00:00:00 GMT`;
+    //     const q = query(collectionRef,
+    //         // where("uid", "!=", getCurrentUser()?.uid),
+    //         where("lastLoggedIn", ">", queryDateTime),
+    //     );
+    //     const querySnapshot = await getDocs(q);
+    //     let array: DocumentData[] = [];
+    //     querySnapshot.forEach((doc) => array = [...array, doc.data()]);
+    //     setActiveCount(array?.length);
+    //     return array as UserProfile[];
+    // }, [users])
 
-    const getActiveUsersTodayCount = useMemo(() => {
-        const usersToday = getActiveUsersToday;
-        usersToday.catch(error => console.log(error));
-        // return usersToday?.length;
+    // const getActiveUsersTodayCount = useMemo(() => {
+    //     const usersToday = getActiveUsersToday;
+    //     usersToday.catch(error => console.log(error));
+    //     // return usersToday?.length;
 
-        return activeCount;
-    }, [users]);
+    //     return activeCount;
+    // }, [users]);
 
     return {
         users,
@@ -87,8 +87,8 @@ const useGetUsers = (removeCurrentUser: boolean = true) => {
         getUsersError,
         // getUserByID,
         getAllStaff,
-        getActiveUsersToday,
-        getActiveUsersTodayCount,
+        // getActiveUsersToday,
+        // getActiveUsersTodayCount,
     }
 }
 

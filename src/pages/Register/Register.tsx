@@ -120,11 +120,11 @@ const Register = () => {
                                     {/* Create a Password still does not match all rules yet */}
 
                                     {/* Your password must contain
-at least 8 characters!
-at least one uppercase letter!
-at least one lowercase letter!
-at least one number!
-at least one special character! */}
+                                        at least 8 characters!
+                                        at least one uppercase letter!
+                                        at least one lowercase letter!
+                                        at least one number!
+                                        at least one special character! */}
                                 </FormGroup>
 
                                 <p>I agree to the <Link to='/terms' className='fw-bold'>Terms and Conditions</Link></p>

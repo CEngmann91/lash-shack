@@ -12,7 +12,7 @@ import { RootState } from '../../redux/store';
 
 const Dashboard = () => {
     const user = useReduxSelector((state: RootState) => state.userAccount.user);
-    const { users, getActiveUsersTodayCount, loadingUsers, getUsersError } = useGetUsers();
+    const { users, loadingUsers, getUsersError } = useGetUsers();
     const { orders, totalOrderAmount, totalOrderAmountThisMonth, loadingOrders, getOrdersError, getOrdersFromCurrentUser, totalOrderAmountFromCurrentUser } = useGetOrders((user.account === "Admin" ? null : user.uid));
     const { courses, loadingCourses, getCoursesError } = useGetCourses();
     const { services, loadingServices, getServicesError } = useGetServices();
@@ -61,7 +61,7 @@ const Dashboard = () => {
                                         {loadingOrders ?
                                             <span>Loading...</span>
                                             :
-                                            <span>{formatCurrency(totalOrderAmountThisMonth)} / {formatCurrency(totalOrderAmount)}</span>
+                                            <span>{formatCurrency(totalOrderAmount)}</span>
                                         }
                                     </div>
                                 </Col>
@@ -81,14 +81,14 @@ const Dashboard = () => {
                                         {loadingUsers ?
                                             <span>Loading...</span>
                                             :
-                                            <span>{getActiveUsersTodayCount} / {users?.length}</span>
+                                            <span>{users?.length}</span>
                                         }
                                     </div>
                                 </Col>
 
                                 <Col className="lg-3">
                                     <div className="catalog__box">
-                                        <h5>Total Catalog</h5>
+                                        <h5>Catalog Total</h5>
                                         {loadingServices || loadingCourses ?
                                             <span>Loading...</span>
                                             :

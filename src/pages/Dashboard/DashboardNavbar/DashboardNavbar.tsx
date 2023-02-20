@@ -2,7 +2,7 @@ import './DashboardNavbar.scss';
 import React, { useState } from 'react'
 import { Col, Container, Row } from 'reactstrap';
 import { motion } from 'framer-motion';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import images from '../../../res/images';
 import { Avatar } from '../../../components';
 import { useSelector as useReduxSelector } from 'react-redux';
@@ -15,9 +15,12 @@ import { useScroller } from '../../../hooks/useScroller';
 import { signUserOut } from '../../../helpers/firebase/firebaseHelper';
 import { useUserActions } from '../../../redux/hooks/useUserActions';
 import { useApplicationActions } from '../../../redux/hooks/useApplicationActions';
+import { capitalizeFirstLetter } from '../../../res/funcs';
 
 const DashboardNavbar = () => {
     const navigate = useNavigate();
+    const location = useLocation();
+    
     const scrolledDown = useScroller();
     const { authenticated } = useAuth();
     const { setAsLoading, setAsNotLoading } = useApplicationActions();
@@ -40,6 +43,16 @@ const DashboardNavbar = () => {
                 setAsNotLoading();
                 navigate("/");
             });
+    }
+
+    function getLocationTitle() {
+        const array = location.pathname.split('/');
+        if (array)
+        {
+            const last = array[array.length-1];
+            return capitalizeFirstLetter(last);
+        }
+        return "";
     }
 
 
@@ -75,6 +88,11 @@ const DashboardNavbar = () => {
                             </div>
 
 
+                            <div className='app__device-hide-desktop'>
+                                <h4>{getLocationTitle()}</h4>
+                            </div>
+
+
                             {showingProfileActions && <div className="dash_navbar__icons-actions--overlay" onClick={() => setShowingProfileActions(false)} />}
                             <div className="dash_navbar__icons">
                                 <motion.span className="avatar_icon" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
@@ -88,10 +106,11 @@ const DashboardNavbar = () => {
 
 
 
-                                <div className="avatar_icon-actions app__device-hide-desktop" style={{ display: (showingProfileActions ? "flex" : "none") }}
+                                <div className="avatar_icon-actions" style={{ display: (showingProfileActions ? "flex" : "none") }}
                                 // ref={profileActionsRef}
                                 >
-                                    <>
+                                    {/* Display only on the mobile versions */}
+                                    <div className='app__device-hide-desktop'>
                                         <Link to="/dashboard" onClick={toggleProfileActions}>Dashboard</Link>
                                         <Link to="/dashboard/account" onClick={toggleProfileActions}>My Account</Link>
                                         <Link to="/dashboard/orders" onClick={toggleProfileActions}>Orders</Link>
@@ -102,15 +121,13 @@ const DashboardNavbar = () => {
                                         <Link to="/dashboard/messages" onClick={toggleProfileActions}>Messages</Link>
                                         <Link to="/dashboard/settings" onClick={toggleProfileActions}>Settings</Link>
                                         <Link to="" onClick={signOut}>Logout</Link>
-                                    </>
+                                    </div>
+
+                                    {/* Display on the web versions */}
+                                    <div className='app__device-hide-mobile'>
+                                        <Link to="" onClick={signOut}>Logout</Link>
+                                    </div>
                                 </div>
-
-
-                                <div className='app__device-hide-mobile'>
-                                    <Link to="" onClick={signOut}>Logout</Link>
-                                </div>
-
-
                             </div>
                         </div>
                     </Col>
