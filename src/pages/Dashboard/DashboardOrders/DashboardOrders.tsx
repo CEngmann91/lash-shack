@@ -121,31 +121,27 @@ const DashboardOrders = () => {
         <SectionContainerWrapper className='dashboard_orders__section'>
 
             <Col lg='12' className='d-flex justify-content-between'>
-                {ordersList?.length > 0 ?
-                    <h4 className='fw-bold'>Orders ({ordersList?.length})</h4>
-                    :
-                    <h4 className='fw-bold'>Empty</h4>
-                }
+                <h4 className='fw-bold'>Orders ({ordersList?.length})</h4>
 
                 <div className='filter-by-duration d-flex'>
                     <MotionButton className={`dash__action-button tab ${selectedTab === "NONE" ? "tab-selected" : ""}`}
-                        disabled={ordersList?.length === 0}
+                        disabled={ordersList?.length == 0}
                         onClick={() => setSelectedTab("NONE")}>
                         NONE
                     </MotionButton>
 
                     <MotionButton className={`dash__action-button tab ${selectedTab === "Day" ? "tab-selected" : ""}`}
-                        disabled={ordersList?.length === 0}
+                        disabled={ordersList?.length == 0}
                         onClick={() => setSelectedTab("Day")}>
                         Day
                     </MotionButton>
                     <MotionButton className={`dash__action-button tab ${selectedTab === "Week" ? "tab-selected" : ""}`}
-                        disabled={ordersList?.length === 0}
+                        disabled={ordersList?.length == 0}
                         onClick={() => setSelectedTab("Week")}>
                         Week
                     </MotionButton>
                     <MotionButton className={`dash__action-button tab ${selectedTab === "Month" ? "tab-selected" : ""}`}
-                        disabled={ordersList?.length === 0}
+                        disabled={ordersList?.length == 0}
                         onClick={() => setSelectedTab("Month")}>
                         Month
                     </MotionButton>
