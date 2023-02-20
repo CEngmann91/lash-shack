@@ -1,14 +1,24 @@
 import './LoadingScreen.scss';
 import React from 'react'
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
+import { useScrollLock } from '../../hooks/useScrollLock';
+
 
 type LoadingScreenProps = {
     visible: boolean;
     title?: string;
 }
 const LoadingScreen = ({ visible, title = "Loading..." }: LoadingScreenProps) => {
+    const { lockScroll, unlockScroll } = useScrollLock();
 
-    if (!visible) return null;
+
+    if (!visible)
+    {
+        unlockScroll();
+        return null;
+    }
+
+    lockScroll();
 
     return (
         <div className='loading-screen'>
