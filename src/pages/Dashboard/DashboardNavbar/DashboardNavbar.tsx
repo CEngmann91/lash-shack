@@ -88,11 +88,11 @@ const DashboardNavbar = () => {
 
 
 
-                                <div className="avatar_icon-actions" style={{ display: (showingProfileActions ? "flex" : "none") }}
+                                <div className="avatar_icon-actions app__device-hide-desktop" style={{ display: (showingProfileActions ? "flex" : "none") }}
                                 // ref={profileActionsRef}
                                 >
                                     <>
-                                        {/* <Link to="/dashboard" onClick={toggleProfileActions}>Dashboard</Link>
+                                        <Link to="/dashboard" onClick={toggleProfileActions}>Dashboard</Link>
                                         <Link to="/dashboard/account" onClick={toggleProfileActions}>My Account</Link>
                                         <Link to="/dashboard/orders" onClick={toggleProfileActions}>Orders</Link>
                                         {user.account === "Admin" &&
@@ -100,9 +100,14 @@ const DashboardNavbar = () => {
                                         {user.account === "Admin" &&
                                             <Link to="/dashboard/catalog" onClick={toggleProfileActions}>Catalog</Link>}
                                         <Link to="/dashboard/messages" onClick={toggleProfileActions}>Messages</Link>
-                                        <Link to="/dashboard/settings" onClick={toggleProfileActions}>Settings</Link> */}
+                                        <Link to="/dashboard/settings" onClick={toggleProfileActions}>Settings</Link>
                                         <Link to="" onClick={signOut}>Logout</Link>
                                     </>
+                                </div>
+
+
+                                <div className='app__device-hide-mobile'>
+                                    <Link to="" onClick={signOut}>Logout</Link>
                                 </div>
 
 

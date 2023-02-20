@@ -127,7 +127,7 @@ const DashboardOrders = () => {
                     <h4 className='fw-bold'>Empty</h4>
                 }
 
-                <div className='d-flex gap-1'>
+                <div className='filter-by-duration d-flex'>
                     <MotionButton className={`dash__action-button tab ${selectedTab === "NONE" ? "tab-selected" : ""}`}
                         disabled={ordersList?.length === 0}
                         onClick={() => setSelectedTab("NONE")}>

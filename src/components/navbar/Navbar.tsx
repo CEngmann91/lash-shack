@@ -47,17 +47,8 @@ const Navbar = () => {
       navigate('/login')
       return;
     }
-
-    if (!showingProfileActions) {
-      // profileActionsRef.current?.classList.add("show__profile-actions");
-      setShowingProfileActions(true);
-    }
-    else {
-      // profileActionsRef.current?.classList.remove("show__profile-actions");
-      setShowingProfileActions(false);
-    }
-
-    // console.log(profileActionsRef.current);
+    
+    setShowingProfileActions(p => !p)
   }
 
   function signOut() {
