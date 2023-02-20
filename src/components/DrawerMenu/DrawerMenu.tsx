@@ -18,7 +18,7 @@ const DrawerMenu = ({ isOpen, onClose }: DrawerMenuProps) => {
             <div className="menu">
                 <div className="navigation">
                     <ul className="nav--links">
-                        {NAVIGATION.ROUTEs.map(({ title, to }, key) => (
+                        {NAVIGATION.MAIN_ROUTES.map(({ title, to }, key) => (
                             <li className='nav--link-item' key={key}>
                                 <NavLink to={to}>{title}</NavLink>
                                 {/* <NavbarItem to={to} activeClassName="link-item-active" idleClassName='link-item'>{title}</NavbarItem> */}

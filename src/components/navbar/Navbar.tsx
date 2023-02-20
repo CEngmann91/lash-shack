@@ -17,11 +17,14 @@ import { RootState } from '../../redux/store';
 import { useToggle } from '../../hooks/useToggle';
 import { useAuth } from '../../hooks/useAuth';
 import { signUserOut } from '../../helpers/firebase/firebaseHelper';
+import { useUserActions } from '../../redux/hooks/useUserActions';
+import { UserProfile } from '../../types/UserProfile';
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const { currentUser } = useAuth();
-  const userPhotoURL = useReduxSelector((state: RootState) => state.userAccount.user.photoURL);
+  const { authenticated } = useAuth();
+  const { logout } = useUserActions();
+  const user = useReduxSelector((state: RootState) => state.userAccount.user) as UserProfile;
   const userNotificationCount = useReduxSelector((state: RootState) => state.userAccount.notificationCount);
   const totalBasketQuantity = useReduxSelector((state: RootState) => state.basket.totalQuantity);
   const totalWishListQuantity = useReduxSelector((state: RootState) => state.wishList.totalQuantity);
@@ -40,8 +43,7 @@ const Navbar = () => {
 
 
   const toggleProfileActions = () => {
-    if (!currentUser)
-    {
+    if (!authenticated) {
       navigate('/login')
       return;
     }
@@ -60,8 +62,9 @@ const Navbar = () => {
 
   function signOut() {
     toggleProfileActions();
-    signUserOut()
+    signUserOut(user)
       .then(() => {
+        logout();
         navigate("/");
       });
   }
@@ -83,29 +86,31 @@ const Navbar = () => {
         </Link>
       </motion.span>
 
+      {showingProfileActions && <div className="avatar_icon-actions--overlay" onClick={() => setShowingProfileActions(false)} />}
       <div className='profile'>
         <motion.span className="avatar_icon" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-          <Avatar url={userPhotoURL} onClick={toggleProfileActions} />
+          <Avatar url={user.photoURL} onClick={toggleProfileActions} />
           {/* <span className="badge" data-quantity={totalBasketQuantity > 0}>{totalBasketQuantity}</span> */}
-          <span className="badge" data-quantity={userNotificationCount > 0}>{userNotificationCount}</span>
+          <span className="badge" data-quantity={authenticated && userNotificationCount > 0}>{userNotificationCount}</span>
         </motion.span>
 
         <div className="avatar_icon-actions" style={{ display: (showingProfileActions ? "flex" : "none") }}
         // ref={profileActionsRef}
         >
-          {currentUser ? 
+          {authenticated ?
             <>
               <Link to="/dashboard" onClick={toggleProfileActions}>Dashboard</Link>
               <Link to="/dashboard/account" onClick={toggleProfileActions}>My Account</Link>
+              <Link to="/dashboard/orders" onClick={toggleProfileActions}>Orders</Link>
+              {user.account === "Admin" &&
+                <Link to="/dashboard/users" onClick={toggleProfileActions}>Users</Link>}
+              {user.account === "Admin" &&
+                <Link to="/dashboard/catalog" onClick={toggleProfileActions}>Catalog</Link>}
+              <Link to="/dashboard/messages" onClick={toggleProfileActions}>Messages</Link>
+              <Link to="/dashboard/settings" onClick={toggleProfileActions}>Settings</Link>
               <Link to="" onClick={signOut}>Logout</Link>
             </>
-            :
-            <></>
-            // <>
-            //   <Link to="/login" onClick={toggleProfileActions}>Login</Link>
-            //   <Link to="/register" onClick={toggleProfileActions}>Sign Up</Link>
-            // </>
-          }
+            : null}
         </div>
       </div>
 
@@ -117,7 +122,7 @@ const Navbar = () => {
   const renderMenuItems = () => (
     <div className="navigation app__device-hide-mobile">
       <ul className="navbar-nav--links">
-        {NAVIGATION.ROUTEs.map(({ title, to }, key) => (
+        {NAVIGATION.MAIN_ROUTES.map(({ title, to }, key) => (
           <li className='nav--link-item' key={key}>
             <NavbarItem to={to} activeClassName="link-item-active" idleClassName='link-item'>{title}</NavbarItem>
           </li>

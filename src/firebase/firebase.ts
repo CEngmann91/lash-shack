@@ -17,4 +17,4 @@ export const storage = getStorage(firebaseApp);
 
 
 // Auth - set persistance
-setPersistence(auth, inMemoryPersistence);
+// setPersistence(auth, inMemoryPersistence);

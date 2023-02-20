@@ -1,29 +1,35 @@
 import './ProductDetails.scss';
 import React, { useEffect, useState } from 'react'
-import { MotionButton, PageWrapper } from '../../components'
+import { LoadingSpinner, MotionButton, PageWrapper } from '../../components'
 import { Container, Col, Row } from 'reactstrap';
 import { useParams } from 'react-router-dom';
 import ImageBanner from '../../components/UI/ImageBanner/ImageBanner';
-import { productListing } from '../../assets/listing';
 import { calculateDaysFromTodayString, clearFormFields, formatCurrency } from '../../res/funcs';
 import { Icon_Star } from '../../res/icons';
-import { motion } from 'framer-motion';
 import { useDispatch } from 'react-redux';
 import { basketActions } from '../../redux/slices/basketSlice';
 import { ProductItem } from '../../types/ProductItem';
 import StarRating from '../../components/StarRating/StarRating';
+import useGetCatalog from '../../hooks/useGetCatalog';
 
 const ProductDetails = () => {
     const { id } = useParams();
     const dispatch = useDispatch();
+    const { catalog, loading, error } = useGetCatalog();
+    const product = catalog?.find(item => item.id === id) as ProductItem;
     type Tab = "Description" | "Reviews";
-    const product = productListing.find(item => item.id === id) as ProductItem;
-    const { title, category, subServiceCategory, shortDesc, description, imgUrl, price, reviews, upcomingDates } = product;
     const [selectedTab, setSelectedTab] = useState<Tab>("Description");
     const [reviewRating, setReviewRating] = useState<number>(0);
 
 
 
+    // Ensures that we haev in fact found the product before continuing.
+    if (!product) {
+        return <LoadingSpinner title='Loading Product...' />
+    }
+
+
+    const { title, category, subServiceCategory, shortDesc, description, imgUrl, price, reviews, upcomingDates } = product;
 
 
     function handleFormSubmit(e: React.FormEvent<EventTarget | HTMLFormElement>) {
@@ -47,7 +53,7 @@ const ProductDetails = () => {
             message,
             date: new Date().toLocaleDateString('en-GB')
         };
-        reviews.push(newReview);
+        reviews.unshift(newReview);
 
         setReviewRating(0);
         clearFormFields();
@@ -63,8 +69,9 @@ const ProductDetails = () => {
         if (reviews?.length === 0)
             return 0;
 
-        let sum = 0;
-        reviews?.forEach(element => sum += element.rating);
+        let sum = reviews.reduce<number>((total, item) => {
+            return total + item.rating;
+        }, 0);
         return Number((sum / reviews?.length).toFixed(2));
     }
 
@@ -77,7 +84,10 @@ const ProductDetails = () => {
                 <Container>
                     <Row>
                         <Col lg='6'>
-                            <img src={imgUrl} alt="" />
+                            <div className='product__details-image'>
+
+                                <img src={imgUrl} alt="" />
+                            </div>
                         </Col>
 
                         <Col lg='6'>
@@ -89,17 +99,21 @@ const ProductDetails = () => {
                                     :
                                     <p className='mb-3'>{category}</p>
                                 }
-                                <div className='product__rating d-flex align-items-center gap-1 mb-4'>
-                                    
-                                    {[...Array(Math.floor(avgRatings()))].map((i) =>
-                                        <div key={i}>
-                                            <span><Icon_Star /></span>
-                                        </div>
-                                    )}
-                                    <p>
-                                        ({<span>{avgRatings()}</span>} out of 5)
-                                    </p>
-                                </div>
+                                {avgRatings() === 0 ?
+                                    <p className='mb-4'>No Reviews</p>
+                                    :
+                                    <div className='product__rating d-flex align-items-center gap-1 mb-4'>
+
+                                        {[...Array(Math.floor(avgRatings()))].map((i) =>
+                                            <div key={i}>
+                                                <span><Icon_Star /></span>
+                                            </div>
+                                        )}
+                                        <p>
+                                            ({<span>{avgRatings()}</span>} out of 5)
+                                        </p>
+                                    </div>
+                                }
 
                                 <span className='product__price'>{formatCurrency(price)}</span>
                                 <p className='mt-3'>{shortDesc}</p>
@@ -157,7 +171,21 @@ const ProductDetails = () => {
                                         {reviews?.map(({ name, message, date, rating }, key) => (
                                             <li key={key} className="mt-4">
                                                 <h6>{name}</h6>
-                                                <span>{rating} (rating)</span>
+
+
+                                                <div className='d-flex align-items-center gap-1'>
+
+                                                    {[...Array(Math.floor(rating))].map((i) =>
+                                                        <div key={i}>
+                                                            <span><Icon_Star /></span>
+                                                        </div>
+                                                    )}
+                                                    <p>
+                                                        ({<span>{rating}</span>} out of 5)
+                                                    </p>
+                                                </div>
+
+                                                {/* <span>{rating} (rating)</span> */}
                                                 <p>{date}</p>
                                                 <p>{message}</p>
                                             </li>
@@ -171,7 +199,7 @@ const ProductDetails = () => {
                                                 <input type="text" name="name" placeholder='Enter Name' required />
                                             </div>
                                             <div className="form__group d-flex align-items-center gap-5">
-                                                <StarRating initialValue={5} onChange={value => setReviewRating(value)}/>
+                                                <StarRating initialValue={5} onChange={value => setReviewRating(value)} />
                                             </div>
                                             <div className="form__group">
                                                 <textarea rows={4} name="message" placeholder='Message Content' required />

@@ -1,0 +1,22 @@
+@import '../../../res/colours.scss';
+
+.dashboard_orders__section {
+    position: relative;
+
+
+
+    .tab {
+        background: lightgray;
+        color: black;
+        border: 2px solid grey;
+
+        transition: 0.3s ease-in-out;
+
+
+        &-selected {
+            background: $pink-colour;
+            border: 2px solid $green-shade-colour;
+            color: white;
+        }
+    }
+}

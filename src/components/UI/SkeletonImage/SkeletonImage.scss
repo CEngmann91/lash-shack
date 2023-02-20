@@ -44,7 +44,7 @@
 
     &[data-loaded="true"] {
         .placeholder {
-            animation: keyframes__loading 1s ease-in-out, keyframes__fade-out-placeholder 800ms 1s linear forwards;
+            animation: keyframes__loading 700ms ease-in-out, keyframes__fade-out-placeholder 400ms 1s linear forwards;
         }
 
         img {

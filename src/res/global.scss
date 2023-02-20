@@ -2,6 +2,29 @@
 
 
 
+.swiper {
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.swiper-slide {
+    background-position: center;
+    background-size: cover;
+    width: 300px;
+    height: 300px;
+
+    border-radius: 35px;
+    overflow: hidden;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+}
+
+
+
 
 
 .text__new-line {
@@ -9,7 +32,7 @@
     // white-space: pre-line;
     // For line break \n and tabs \t:
     white-space: pre-wrap;
-  }
+}
 
 
 .app__hover-with-shadow {
@@ -26,8 +49,53 @@
 
 
 
+.dash__action-button,
+.action-button {
+    background: $green-shade-colour;
+    color: white;
+    padding: 4px 10px;
+
+    svg {
+        color: inherit;
+    }
+
+    @media only screen and (max-width: 992px) {}
+
+    @media only screen and (max-width: 768px) {}
+
+    @media only screen and (max-width: 576px) {}
+}
 
 
+.app__icon-with-badge {
+    position: relative;
+
+    .badge {
+        &[data-quantity="false"] {
+            display: none;
+        }
+
+        transition: 0.3s ease-in-out;
+
+        position: absolute;
+        bottom: 50%;
+        left: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        content: '';
+        width: 16px;
+        height: 16px;
+        background: red;
+        color: white;
+        border-radius: 50%;
+        font-size: 0.8rem;
+        font-weight: 600;
+        z-index: 10;
+
+        animation: keyframes__badge_scale-up 250ms linear forwards;
+    }
+}
 
 
 
@@ -39,14 +107,43 @@
     &-hide-desktop {
 
         // Extra large or Desktop devices
-        @media screen and (min-width: 768px) {
+        @media only screen and (min-width: 992px) {
             display: none;
         }
+
+        // @media screen and (min-width: 768px) {
+        //     display: none;
+        // }
     }
 
     &-hide-mobile {
+        @media only screen and (max-width: 992px) {
+            display: none;
+        }
+
         @media screen and (max-width: 768px) {
             display: none;
         }
     }
+}
+
+
+
+
+
+
+
+
+
+
+.bg__beige-colour {
+    background: $beige-colour;
+}
+
+.bg__pink-colour {
+    background: $pink-colour;
+}
+
+.bg__green-shade-colour {
+    background: $green-shade-colour;
 }

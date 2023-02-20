@@ -1,0 +1,175 @@
+@import '../../../constants/constants.scss';
+@import '../../../res/colours.scss';
+
+.dash__header {
+    position: sticky;
+    top: 0;
+    background: rgba(white, 1);
+    width: 100%;
+    height: $navbar-height;
+    // Ensures the navbar is above the content
+    z-index: 5;
+
+    transition: 0.3s ease-in-out;
+
+
+    .dash_navbar__wrapper {
+        display: flex;
+        flex: 1;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0rem 2rem;
+        height: $navbar-height;
+
+
+
+        .logo {
+            display: flex;
+            align-items: center;
+            column-gap: 8px;
+
+            img {
+                width: 6rem;
+            }
+        }
+
+
+        .navigation {
+
+            .navbar-nav--links {
+                display: flex;
+                align-items: center;
+                column-gap: 2rem;
+                margin-bottom: 0;
+
+                .link-item {
+                    color: $green-shade-colour;
+                    font-weight: 500;
+                    cursor: pointer;
+
+                    &-active {
+                        text-shadow: 0 0.5px 0.5px rgba($green-shade-colour, 0.5);
+                        border-bottom: solid 3px $green-shade-colour;
+                        color: inherit;
+                        // font-weight: 700 !important;
+                    }
+                }
+            }
+        }
+
+
+
+        .dash_navbar__icons-actions--overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            right: 0;
+            background: transparent;
+        }
+        .dash_navbar__icons {
+            display: flex;
+            align-items: center;
+            column-gap: 1.2rem;
+
+
+
+            span {
+                width: 1.5rem;
+                height: 1.3rem;
+
+                svg {
+                    width: 1.7rem;
+                    height: 1.7rem;
+                }
+            }
+
+            .avatar_icon,
+            .agenda_icon {
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+
+
+            .avatar_icon {
+                position: relative;
+
+                .badge {
+                    &[data-quantity="false"] {
+                        display: none;
+                    }
+
+                    transition: 0.3s ease-in-out;
+
+                    position: absolute;
+                    bottom: 50%;
+                    left: 80%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    content: '';
+                    width: 16px;
+                    height: 16px;
+                    background: red;
+                    color: white;
+                    border-radius: 50%;
+                    font-size: 0.8rem;
+                    font-weight: 600;
+                    z-index: 10;
+
+                    animation: keyframes__badge_scale-up 250ms linear forwards;
+                }
+
+
+                &-actions {
+                    position: absolute;
+                    top: 100%;
+                    right: 30px;
+                    width: 150px;
+                    z-index: 10;
+                    padding: 5px 10px;
+                    // display: flex;
+                    display: none;
+                    align-items: center;
+                    flex-direction: column;
+                    background: $beige-colour;
+                    line-height: 30px;
+                    margin-top: 0px;
+
+
+                    border-radius: 5px;
+                    border: 5px solid white;
+                    box-shadow: 0px 0px 20px rgba($green-shade-colour, 0.5);
+                    overflow: hidden;
+
+                    
+                    a {
+                        width: 100%;
+                        // background: green;
+                        display: flex;
+                        justify-content: center;
+
+                        &:not(:last-child) {
+                            border-bottom: 2px solid rgba(lightgray, 1);
+                        }
+                    }
+
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+            }
+
+            .agenda_icon {}
+        }
+    }
+
+    &--scroll {
+        // Background colour for the navbar.
+        background: rgba($green-shade-colour, 0.95);
+
+        box-shadow: 0 0 30px rgba(black, 0.85);
+    }
+}

@@ -1,19 +1,47 @@
+@import '../../../../res/global.scss';
 @import '../../../../res/colours.scss';
+
+
+$button-colours:
+    #0072b1,
+    red,
+    $green-shade-colour,
+;
+
+:root {
+    --icon_svg_size: 2rem;
+    --icon_svg_size-half: calc((var(--icon_svg_size) / 2) * -1);
+}
 
 .product__card {
     position: relative;
     border-radius: 15px;
     border: 10px solid white;
     box-shadow: 0px 0px 20px rgba($green-shade-colour, 0.5);
-    min-height: 25rem;
+    height: 25rem;
+    width: 19rem;
     overflow: hidden;
     z-index: 1;
 
+    transition: .2s ease-out;
+
+
     &:hover {
         cursor: pointer;
+        border: 10px solid rgba($pink-colour, 1);
+        box-shadow: 0px 0px 30px rgba($green-shade-colour, 0.5);
+        transform: scale(1.05);
+        z-index: 3;
+
+        .product__image-wrapper {
+
+            img {
+                transform: scale(1.2);
+            }
+        }
     }
 
-    .product__wish-list {
+    /*.product__wish-list {
         position: absolute;
         top: 5px;
         right: 5px;
@@ -32,14 +60,62 @@
                 color: red;
             }
         }
-    }
+    }*/
 
-    .product__image {
+    .product__image-wrapper {
+        position: relative;
         height: 15rem;
+
+        .product__image {
+            // border-bottom-left-radius: 0;
+            border-bottom-right-radius: 30%;
+            height: 100%;
+            overflow: hidden;
+        }
 
         img {
             object-fit: cover;
-            height: 100%;
+
+            transition: .2s ease-out;
+        }
+
+        .buttons {
+            position: absolute;
+            bottom: var(--icon_svg_size-half);
+            right: 0;
+            margin-right: 10px;
+            z-index: 2;
+
+
+            button {
+                display: flex;
+                margin: 0 auto;
+                position: relative;
+                width: var(--icon_svg_size);
+                height: var(--icon_svg_size);
+                border-radius: 50%;
+                border: 1px solid rgba($green-shade-colour, 1);
+                background: $pink-colour;
+                padding: 5px;
+
+                svg {
+                    width: 100%;
+                    height: 100%;
+                    color: $green-shade-colour;
+                }
+            }
+
+
+            @for $i from 1 through length($button-colours) {
+                :nth-child(#{length($button-colours)}n+#{$i}) {
+                    background: nth($button-colours, $i);
+
+                    svg {
+                        background: transparent;
+                        color: white;
+                    }
+                }
+            }
         }
     }
 
@@ -88,6 +164,17 @@
             font-weight: 500;
         }
 
+        .sale-price {
+            font-size: 1.13rem;
+            font-weight: 500;
+            color: lightgray;
+            text-decoration-line: line-through;
+        }
+
+        .add-to-basket-button {
+            background: $green-shade-colour;
+            color: white;
+        }
 
         span {
 

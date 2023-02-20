@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { PurchaseOrder } from '../../types/PurchaseOrder';
 import { UserProfile } from '../../types/UserProfile';
 
 // const initialState = null as Nullable<UserProfile>;
@@ -12,31 +13,39 @@ const initialState = {
         email: '',
         phoneNumber: '',
         photoURL: '',
+        memberSince: "",
+        lastLoggedIn: "",
         // subscribed: false,
     } as UserProfile,
-
+    authenticated: false,
     token: "",
-    notificationCount: 1,
+    notificationCount: 0,
 }
 
 const userSlice = createSlice({
     name: "user",
     initialState: initialState,
     reducers: {
+        setAsAuthenticated: (state, action) => {
+            state.authenticated = action.payload;
+        },
         login: (state, action) => {
             state.user = action.payload;
         },
         logout: (state) => {
-            // state.user = initialState.user;
-            // state.token = "";
-
             return initialState;
+        },
+        setAsActive: (state, action) => {
+            state.user.active = action.payload;
         },
         setUID: (state, action) => {
             state.user.uid = action.payload;
         },
         setToken: (state, action) => {
             state.token = action.payload;
+        },
+        setAccountType: (state, action) => {
+            state.user.account = action.payload;
         },
         setFirstName: (state, action) => {
             state.user.firstName = action.payload;
@@ -53,6 +62,16 @@ const userSlice = createSlice({
         setPhotoURL: (state, action) => {
             state.user.photoURL = action.payload;
         },
+        setBillingAddress: (state, action) => {
+            state.user.billingAddress = action.payload;
+        },
+        setMemberSince: (state, action) => {
+            state.user.memberSince = action.payload;
+        },
+        setLastLoggedIn: (state, action) => {
+            state.user.lastLoggedIn = action.payload;
+        },
+        
         // setSubscribedToEmails: (state, action) => {
         //     state.user.subscribed = action.payload;
         // },

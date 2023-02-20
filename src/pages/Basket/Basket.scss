@@ -6,7 +6,7 @@
 }
 
 .basket__section {
-    min-height: calc(100vh - $navbar-height);
+    // min-height: calc(100vh - $navbar-height);
 
 
     .buy-button {
@@ -16,7 +16,7 @@
         border-radius: 5px;
         background: $green-shade-colour;
         font-size: 1rem;
-        margin-top: 40px;
+        // margin-top: 40px;
 
 
         &:hover {
@@ -77,10 +77,10 @@
     }
 
 
-    .basket__checkout,
-    .basket__shop {
-        color: white;
-        background: black;
+    // .basket__checkout,
+    // .basket__shop {
+    //     color: white;
+    //     background: black;
 
-    }
+    // }
 }

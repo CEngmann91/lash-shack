@@ -6,18 +6,37 @@ import {
     updateDoc,
     deleteDoc,
     deleteField,
+    collection,
+    addDoc,
 } from 'firebase/firestore';
 
 
 
 export const addDocument = async (collection_name: string, document_name: string, data: unknown) => {
     try {
-        const docRef = doc(firestore, collection_name, document_name)
-        await setDoc(docRef, data)
-            .then(result => {
-                return result;
-            })
-        // .catch((error) => onError(error.code) );
+        if (!document_name)
+        {
+            const docRef = collection(firestore, collection_name);
+            await addDoc(docRef, data)
+                .then(result => {
+                    // console.log("result", result)
+                    return result;
+                })
+                .catch(error => {
+                    console.error(error)
+                })
+        }
+        else
+        {
+            const docRef = doc(firestore, collection_name, document_name)
+            await setDoc(docRef, data)
+                .then(result => {
+                    return result;
+                })
+                .catch(error => {
+                    console.error(error)
+                })
+        }
     } catch (error) {
         // onError(error);
         return new Promise<any>((res, reject) => reject(error));
@@ -39,6 +58,17 @@ export const deleteDocument = async (collection_name: string, document_name: str
     }
 }
 
+export const updateDocument = async (collection_name: string, document_name: string, data: any) => {
+    try {
+        const docRef = doc(firestore, collection_name, document_name)
+        const update = await updateDoc(docRef, data)
+        return update;
+    } catch (error) {
+        // onError(error, error);
+        return new Promise<any>((res, reject) => reject(error));
+    }
+}
+
 export const getDocument = async (collection_name: string, document_name: string): Promise<any> => {
     try {
         const docRef = doc(firestore, collection_name, document_name);
@@ -55,17 +85,6 @@ export const getDocument = async (collection_name: string, document_name: string
         }
     } catch (error) {
         // onError(error);
-        return new Promise<any>((res, reject) => reject(error));
-    }
-}
-
-export const updateDocument = async (collection_name: string, document_name: string, data: any) => {
-    try {
-        const docRef = doc(firestore, collection_name, document_name)
-        const update = await updateDoc(docRef, data)
-        return update;
-    } catch (error) {
-        // onError(error, error);
         return new Promise<any>((res, reject) => reject(error));
     }
 }

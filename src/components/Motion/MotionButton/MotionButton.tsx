@@ -15,7 +15,7 @@ const MotionButton = ({ className, type, disabled, onClick, children, ...props }
     return (
         <motion.button className={`motion__button ${className}`}
             type={type}
-            whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
+            whileHover={{ scale: (disabled ? 1 : 1.02) }} whileTap={{ scale: (disabled ? 1 : 0.98) }}
             onClick={onClick}
             disabled={disabled}
             // {...props}

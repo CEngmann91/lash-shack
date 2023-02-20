@@ -1,39 +1,23 @@
 import './Basket.scss';
 import React from 'react'
 import { RootState } from '../../redux/store';
-import { useDispatch, useSelector as useReduxSelector } from 'react-redux';
-import { basketActions } from '../../redux/slices/basketSlice';
+import { useSelector as useReduxSelector } from 'react-redux';
 import { Col, Container, Row } from 'reactstrap';
 import { ImageBanner, MotionButton, PageWrapper } from '../../components'
 import { formatCurrency } from '../../res/funcs';
 import { Icon_Minus, Icon_Plus, Icon_Trash } from '../../res/icons';
 import { useNavigate } from 'react-router-dom';
+import { useBasketActions } from '../../redux/hooks/useBasketActions';
+import useGetUsers from '../../hooks/useGetUsers';
 
 const Basket = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const { addToBasket, removeFromBasket, deleteItemFromBasket, emptyBasket } = useBasketActions();
+  const { getAllStaff } = useGetUsers();
   const firstName = useReduxSelector((state: RootState) => state.userAccount.user.firstName);
   const basketItems = useReduxSelector((state: RootState) => state.basket.basketItems);
   const totalAmount = useReduxSelector((state: RootState) => state.basket.totalAmount);
 
-  // const basketCount = 0;
-
-
-  function addToBasket(id: string, title: string, imgUrl: string, price: number) {
-    dispatch(basketActions.addToBasket({
-      id, title, imgUrl, price
-    }));
-  }
-
-  function removeFromBasket(id: string, title: string, imgUrl: string, price: number) {
-    dispatch(basketActions.removeFromBasket({
-      id, price
-    }));
-  }
-
-  function deleteItemFromBasket(id: string) {
-    dispatch(basketActions.deleteItem(id));
-  }
 
   return (
     <PageWrapper title="Basket">
@@ -41,16 +25,21 @@ const Basket = () => {
 
       <section className='basket__section'>
         <Container>
-          <Row>
-            <Col lg='9'>
-              {basketItems?.length === 0 ?
-                <div className=''>
-                  <h2 className='text-center'>No Lashes have been added to the basket.</h2>
-                  <MotionButton className='buy-button' onClick={() => navigate("/shop")}>
-                    Shop Now
-                  </MotionButton>
-                </div>
+          {basketItems?.length === 0 ?
+            <div className='d-flex flex-column justify-content-center align-items-center'>
+
+              {!firstName ?
+                <h2 className='text-center'>No Lashes have been added to the basket.</h2>
                 :
+                <h2 className='text-center'>No Lashes here {firstName}, add some to the basket?</h2>
+              }
+              <MotionButton className='buy-button w-15 mt-4' onClick={() => navigate("/shop")}>
+                Shop Now
+              </MotionButton>
+            </div>
+            :
+            <Row>
+              <Col lg='8'>
                 <table className='table bordered'>
                   <thead>
                     <tr>
@@ -95,34 +84,52 @@ const Basket = () => {
                   </tbody>
 
                 </table>
-              }
-            </Col>
+              </Col>
 
-            <Col lg='3'>
-              {basketItems?.length === 0 ?
-                <></>
-                :
-                <>
-                  <div>
-                    <h6 className='d-flex align-items-center justify-content-between'>
-                      Subtotal
-                      <span className='fs-4 fw-bold'>{formatCurrency(totalAmount)}</span>
-                    </h6>
-                  </div>
+              <Col lg='4'>
+                {basketItems?.length !== 0 ?
+                  <>
+                    <div>
+                      <h6 className='d-flex align-items-center justify-content-between'>
+                        Select Staff
+                        <select name="technicians">
+                          <option value="select">Please Select</option>
+                          {getAllStaff?.map(({ uid, firstName, lastName }, key) =>
+                            <option key={key} value={uid}>{firstName} {lastName}</option>
+                          )}
+                        </select>
+                      </h6>
 
-                  <div>
-                    <MotionButton className='basket__checkout w-100' onClick={() => navigate("/checkout")}>
+
+                    </div>
+
+
+                    <div>
+                      <h6 className='d-flex align-items-center justify-content-between'>
+                        Subtotal
+                        <span className='fs-4 fw-bold'>{formatCurrency(totalAmount)}</span>
+                      </h6>
+                    </div>
+
+                    <div className='d-flex flex-row gap-2 mt-2'>
+                      <MotionButton className='buy-button w-100' onClick={() => navigate(-1)}>
+                        Back
+                      </MotionButton>
+
+                      <MotionButton className='buy-button w-100' onClick={emptyBasket}>
+                        Clear All
+                      </MotionButton>
+                    </div>
+
+                    <MotionButton className='buy-button w-100 mt-2' disabled={true} onClick={() => navigate("/checkout")}>
                       Checkout
                     </MotionButton>
-
-                    <MotionButton className='basket__shop w-100 mt-3' onClick={() => navigate("/shop")}>
-                      Continue Shopping
-                    </MotionButton>
-                  </div>
-                </>
-              }
-            </Col>
-          </Row>
+                  </>
+                  : null
+                }
+              </Col>
+            </Row>
+          }
         </Container>
       </section>
     </PageWrapper >

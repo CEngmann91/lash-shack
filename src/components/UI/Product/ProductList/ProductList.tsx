@@ -11,21 +11,14 @@ const ProductList = ({ items }: ProductListProps) => {
     return (
         <Container>
             <Row>
-                {items?.map(({ id, imgUrl, title, category, subServiceCategory, price, shortDesc, description, reviews, upcomingDates }, key) =>
-                    <ProductCard
-                        key={key}
-                        imgUrl={imgUrl}
-                        title={title}
-                        category={category}
-                        subServiceCategory={subServiceCategory}
-                        price={price}
-                        id={id}
-                        shortDesc={shortDesc}
-                        description={description}
-                        reviews={reviews}
-                        upcomingDates={upcomingDates}
-                    />
-                )}
+                {items?.map((item, key) => {
+                    const { active } = item;
+
+                    if (!active)
+                        return null;
+
+                    return <ProductCard key={key} item={item}/>
+                })}
             </Row>
         </Container>
     )

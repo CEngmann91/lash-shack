@@ -5,11 +5,13 @@ import { Col, Container, Row, Form, FormGroup } from 'reactstrap'
 import { MotionButton, PageWrapper } from '../../components'
 
 import { createAUser } from '../../helpers/firebase/firebaseHelper';
-import { useUserActions } from '../../redux/hooks/userActionsUtils';
+import { useUserActions } from '../../redux/hooks/useUserActions';
+import { useApplicationActions } from '../../redux/hooks/useApplicationActions';
 
 const Register = () => {
     const navigate = useNavigate();
-    const { setFullName, setProfile } = useUserActions();
+    const { setAsLoading, setAsNotLoading } = useApplicationActions();
+    const { setAsActive, setFullName, setProfile, setAccountType } = useUserActions();
 
     const [loading, setLoading] = useState(false);
     const [password, setPassword] = useState("");
@@ -27,6 +29,8 @@ const Register = () => {
     function handleFormSubmit(e: React.FormEvent<EventTarget | HTMLFormElement>) {
         e.preventDefault();
 
+        setAsLoading()
+
         const target = e.target as typeof e.target & {
             // name property has to match
             firstName: { value: string };
@@ -41,9 +45,11 @@ const Register = () => {
         const password = target.password.value; // typechecks!
         const confirm = target.confirm.value; // typechecks!
         if (!firstName || !lastName || !email || !password || !confirm) {
+            setAsNotLoading();
             return;
         }
         if (password !== confirm) {
+            setAsNotLoading();
             return;
         }
         register(firstName, lastName, email, password);
@@ -53,17 +59,22 @@ const Register = () => {
         // setLoading(true)
 
         const displayName = `${firstName} ${lastName}`;
-        setFullName(firstName, lastName);
-        const userReq = await createAUser(firstName, lastName, email, password, displayName);
-        if (userReq)
+        const registerReq = await createAUser(firstName, lastName, email, password, displayName);
+        if (registerReq)
         {
-            const photoURL = userReq?.photoURL as string;
-            setProfile(displayName, photoURL);
             // setLoading(false);
+            
+            setAsActive(registerReq.active);
+            setAccountType(registerReq.account);
+            setFullName(registerReq.firstName, registerReq.lastName);
+            setProfile(displayName, registerReq.photoURL);
+
     
             // console.log("photoURL - '" + photoURL + "'.");
             console.log("Done creating user.");
     
+            setAsNotLoading();
+
             navigate('/');
         }
     }
@@ -106,6 +117,14 @@ const Register = () => {
                                 <FormGroup className="form__group">
                                     <input name="confirm" type="password" onChange={handleConfirmPasswordChange} placeholder='Confirm Password' autoComplete='current-password' />
                                     {/* {!passwordsMatch ? <label className='text-danger'>Passwords Do Not Match</label> : <label className='text-success'>&nbsp; Passwords Match</label>} */}
+                                    {/* Create a Password still does not match all rules yet */}
+
+                                    {/* Your password must contain
+at least 8 characters!
+at least one uppercase letter!
+at least one lowercase letter!
+at least one number!
+at least one special character! */}
                                 </FormGroup>
 
                                 <p>I agree to the <Link to='/terms' className='fw-bold'>Terms and Conditions</Link></p>

@@ -1,43 +1,48 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 
-import { onAuthStateChanged, User } from 'firebase/auth'
+import { onAuthStateChanged } from 'firebase/auth'
+import { useSelector as useReduxSelector } from 'react-redux';
 
 import { auth } from '../firebase/firebase';
-import { useUserActions } from '../redux/hooks/userActionsUtils';
+import { useUserActions } from '../redux/hooks/useUserActions';
+import { RootState } from '../redux/store';
 
 export const useAuth = () => {
-    const { logout, setToken, setUID, setProfile, setEmail } = useUserActions();
-    const [currentUser, setCurrentUser] = useState<User | null>(null)
-
-
+    const { logout, setAsAuthenticated, setToken, setUID, setDisplayName, setProfile, setEmail, setLastLoggedIn, setMemberSince } = useUserActions();
+    const authenticated = useReduxSelector((state: RootState) => state.userAccount.authenticated);
 
 
 
     useEffect(() => {
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                setCurrentUser(user)
-                // console.log(user);
+        const unsubscribe = onAuthStateChanged(auth, async (user) => {
+            setAsAuthenticated(!!user);
 
+            if (user) {
                 user.getIdToken()
                     .then(function (idToken) {
                         setToken(idToken);
                     });
 
                 setUID(user.uid);
-                setProfile(user.displayName as string, user.photoURL as string);
                 setEmail(user.email as string);
-                // console.log(user);
+                setDisplayName(user.displayName as string);
+
+                if (user.metadata.creationTime)
+                    setMemberSince(user.metadata.creationTime)
+                if (user.metadata.lastSignInTime)
+                    setLastLoggedIn(user.metadata.lastSignInTime)
             }
             else {
-                setCurrentUser(null)
                 setToken("");
                 logout();
             }
         })
 
-    }, [])
+        return function cleanup() {
+            if (unsubscribe) unsubscribe();
+        }
+    }, [authenticated])
 
 
-    return { currentUser }
+    return { authenticated }
 }

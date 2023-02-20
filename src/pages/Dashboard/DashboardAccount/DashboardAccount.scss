@@ -3,31 +3,48 @@
 
 
 .dashboard_account__section {
+    position: relative;
 
-    .profile__photo {
-        border: 2px solid $beige-colour;
-    }
-
-    .profile__photo-picker {
+    .profile__photo-wrapper {
         position: relative;
         display: inline-block;
-        background: $green-shade-colour;
-        color: #fff;
-        border-radius: 5px;
-        padding: 0.4rem 1.2rem;
-        vertical-align: middle;
-        font-size: inherit;
-        font-weight: 500;
-        box-shadow: 0 6px darken($green-shade-colour, 10%);
-        border: none;
-        outline: none;
-        transition: all 0.3s;
+
         
-        transition: none;
+        .profile__photo {
+            border: 2px solid $beige-colour;
+        }
     
-        &:hover {
-            cursor: pointer;
-            box-shadow: 0 4px darken($green-shade-colour, 10%);
+        .profile__photo-picker {
+            position: absolute;
+            bottom: -10px;
+            right: 0;
+            // display: inline-block;
+            background: $beige-colour;
+            color: #fff;
+            // border-radius: 5px;
+            padding: 0.2rem 0.7rem;
+            // vertical-align: middle;
+            // font-size: inherit;
+            // font-weight: 500;
+            box-shadow: 0 6px darken($green-shade-colour, 10%);
+            // border: none;
+            // outline: none;
+            transition: all 0.3s ease-out;
+            transition: none;
+        
+            &:hover {
+                cursor: pointer;
+                box-shadow: 0 4px darken($green-shade-colour, 10%);
+                // top: 75%;
+                bottom: -12px;
+            }
+
+            svg {
+                width: 100%;
+                height: 100%;
+                color: black;
+            }
         }
     }
+
 }

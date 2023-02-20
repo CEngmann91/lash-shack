@@ -1,13 +1,17 @@
 @import '../../res/colours.scss';
 
-.billing__form {
+
+.payment__form,
+.billing__form,
+.discountCode__form
+{
     
     .form__group {
         position: inherit;
         margin-bottom: 30px;
     
         input {
-            width: 100%;
+            // width: 100%;
             border: 1px solid black;
             border-radius: 5px;
             padding: 8px 20px;
@@ -45,8 +49,21 @@
     }
 
     h4 {
-        border-top: 1px solid gray;
         padding-top: 20px;
+    }
+
+    .line {
+        border-top: 1px solid gray;
+    }
+
+
+    .discount__code {
+        input {
+            // width: 100%;
+            border: 1px solid black;
+            border-radius: 5px;
+            padding: 8px 20px;
+        }
     }
 
 

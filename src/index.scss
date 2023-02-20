@@ -104,6 +104,27 @@ input, textarea {
   }
 }
 
+.table {
+  position: relative;
+  border-radius: 5px;
+  display: block;
+  display: table;
+  width: 100%;
+  overflow: auto;
+
+
+  @media only screen and (max-width: 992px) {
+  }
+  
+  @media only screen and (max-width: 768px) {
+      display: block;
+  }
+  
+  @media only screen and (max-width: 576px) {
+      display: block;
+  }
+}
+
 
 svg {
   width: 100%;
@@ -120,4 +141,8 @@ img {
 
 section {
   padding: 60px 30px;
+}
+
+.disabled-link {
+  pointer-events: none;
 }

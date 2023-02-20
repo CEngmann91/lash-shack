@@ -3,4 +3,101 @@
 
 .dashboard__section {
 
+
+    .revenue__box, .orders__box, .users__box, .catalog__box
+    {
+        padding: 20px;
+        border-radius: 5px;
+        margin-bottom: 30px;
+        height: 8em;
+
+        div {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        h5 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        span {
+            font-size: 2rem;
+            font-weight: 600;
+        }
+    }
+
+
+
+
+    .revenue__box {
+        background: $beige-colour;
+
+        span {
+            font-size: 1.5rem;
+        }
+    }
+
+    .orders__box {
+        background: $pink-colour;
+    }
+    
+    .users__box {
+        background: $beige-colour;
+    }
+
+    .catalog__box {
+        background: $pink-colour;
+    }
+
+
+
+
+    @media only screen and (max-width: 992px) {
+        .revenue__box {
+    
+            span {
+                font-size: 1rem;
+            }
+        }
+    }
+    
+    @media only screen and (max-width: 768px) {
+        .revenue__box, .orders__box, .users__box, .catalog__box {
+
+            h5 {
+                font-size: 1.1rem;
+                font-weight: 500;
+                margin-bottom: 20px;
+            }
+    
+            span {
+                font-size: 1.5rem;
+                font-weight: 600;
+            }
+        }
+
+        .revenue__box {
+    
+            span {
+                font-size: 1rem;
+            }
+        }
+    }
+    
+    @media only screen and (max-width: 576px) {
+        .revenue__box, .orders__box, .users__box, .catalog__box {
+
+            span {
+                font-size: 1.5rem;
+            }
+        }
+        .revenue__box {
+    
+            span {
+                font-size: 1rem;
+            }
+        }
+    }
 }

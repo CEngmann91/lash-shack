@@ -17,9 +17,9 @@ const SkeletonImage = ({ className, src, alt }: SkeletonImageProps) => {
     return (
         <div className={`image-wrapper ${className}`} data-loaded={loaded}>
             <div className="placeholder"/>
-            <img onLoad={removePlaceholder} onError={removePlaceholder} src={src} alt={alt}/>
+            <img onLoad={removePlaceholder} onError={removePlaceholder} loading="lazy" src={src} alt={alt}/>
         </div>
     )
 }
 
-export default SkeletonImage
+export default React.memo(SkeletonImage)

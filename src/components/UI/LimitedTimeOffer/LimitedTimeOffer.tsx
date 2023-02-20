@@ -18,6 +18,14 @@ const LimitedTimeOffer = ({ title = "Groupon Deals", subtitle = "Limited Offer",
     const navigate = useNavigate();
 
 
+    // If it has expired then don't show anything.
+    const destination = new Date(endDate).getTime();
+    const now = new Date().getTime();
+    const dif = destination - now;
+    if (dif < 0)
+        return <></>
+
+
     return (
         <section className="timer__wrapper" style={{ background: background }}>
             <Container>

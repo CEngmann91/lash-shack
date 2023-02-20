@@ -1,23 +1,25 @@
 import './Login.scss';
-import React, { useState } from 'react'
+import React from 'react'
 import { Col, Container, Row, Form, FormGroup } from 'reactstrap'
-import { MotionButton, PageWrapper } from '../../components'
+import { Checkbox, MotionButton, PageWrapper } from '../../components'
 import { Link, useNavigate } from 'react-router-dom';
-import Checkbox from '../../components/Form/Checkbox/Checkbox';
 
-import { signIntoUserAccount, updateUserPhotoURL } from '../../helpers/firebase/firebaseHelper';
-import { UserProfile } from '../../types/UserProfile';
-import { useUserActions } from '../../redux/hooks/userActionsUtils';
+import { signIntoUserAccount, signUserOut, updateUserDisplayName } from '../../helpers/firebase/firebaseHelper';
+import { useUserActions } from '../../redux/hooks/useUserActions';
+import { useApplicationActions } from '../../redux/hooks/useApplicationActions';
 
 const Login = () => {
     const navigate = useNavigate();
-    const { setFullName } = useUserActions();
+    const { setAsLoading, setAsNotLoading } = useApplicationActions();
+    const { setAsActive, setFullName, setProfile, setAccountType } = useUserActions();
 
 
 
 
     const handleFormSubmit = async(e: React.FormEvent<EventTarget | HTMLFormElement>) => {
         e.preventDefault();
+
+        setAsLoading();
 
         const target = e.target as typeof e.target & {
             // name property has to match
@@ -27,9 +29,9 @@ const Login = () => {
         const email = target.email.value;       // typechecks!
         const password = target.password.value; // typechecks!
         if (!email || !password) {
+            setAsNotLoading();
             return;
         }
-        // alert(email + " - " + password);
         await login(email, password);
     };
 
@@ -38,18 +40,22 @@ const Login = () => {
         const signInReq = await signIntoUserAccount(email, password)
         if (signInReq)
         {
-            console.log(signInReq);
-    
-            // const url = signInReq?.photoURL as string;
-            // await updateUserPhotoURL(signInReq as UserProfile, url);
-            // console.log(updatePhoto);
-    
-
-
+            if (!signInReq.active) {
+                alert(signInReq.email + " is not active");
+                await signUserOut(signInReq);
+                setAsNotLoading();
+                return;
+            }
+            
+            // console.log(signInReq);
+            setAsActive(true);
+            setAccountType(signInReq.account);
             setFullName(signInReq.firstName, signInReq.lastName);
+            setProfile(signInReq.displayName, signInReq.photoURL);
 
+            setAsNotLoading();
 
-            navigate("/");
+            navigate(-1);
         }
         else {
 

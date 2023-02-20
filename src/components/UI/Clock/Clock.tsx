@@ -14,6 +14,9 @@ const Clock = ({ destinationDate, onTimerCompleted, textColour = "white" }: Cloc
     const [minutes, setMinutes] = useState<number>();
     const [seconds, setSeconds] = useState<number>();
 
+    const destination = new Date(destinationDate).getTime();
+
+
 
     useEffect(() => {
         countDown();
@@ -25,8 +28,6 @@ const Clock = ({ destinationDate, onTimerCompleted, textColour = "white" }: Cloc
     
 
     function countDown() {
-        const destination = new Date(destinationDate).getTime();
-
         interval = setInterval(() => {
             const now = new Date().getTime();
             const dif = destination - now;
@@ -35,7 +36,7 @@ const Clock = ({ destinationDate, onTimerCompleted, textColour = "white" }: Cloc
             const minutes = Math.floor(dif % (1000 * 60 * 60) / (1000 * 60))
             const seconds = Math.floor(dif % (1000 * 60) / 1000)
 
-            if (destination < 0) {
+            if (destination < 0 || seconds < 0) {
                 clearInterval(interval);
                 onTimerCompleted();
             }
@@ -48,6 +49,10 @@ const Clock = ({ destinationDate, onTimerCompleted, textColour = "white" }: Cloc
             }
         })
     }
+
+
+    if (destination < 0)
+        return <></>
 
 
     return (

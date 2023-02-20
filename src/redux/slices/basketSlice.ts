@@ -89,14 +89,9 @@ const basketSlice = createSlice({
                 return total + itemPrice * itemQuantity;
             }, 0);
         },
-        emptyBasket: (state, action) => {
-            state = initialState;
+        emptyBasket: (state) => {
+            return initialState;
         },
-        /*existInBasket: (state, action) => {
-            const id = action.payload;
-            const basketItem = state.basketItems.find(item => item.id === id) as BasketItem;
-            // return basketItem === undefined || basketItem === null;
-        }*/
     }
 });
 

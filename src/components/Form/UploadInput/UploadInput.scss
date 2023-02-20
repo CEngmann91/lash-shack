@@ -1,17 +1,17 @@
 .picker {
+    position: relative;
+    display: inline-block;
     background: #f15d22;
     border: none;
     border-radius: 5px;
     color: #fff;
     cursor: pointer;
-    display: inline-block;
     font-family: 'Rubik', sans-serif;
     font-size: inherit;
     font-weight: 500;
     margin-bottom: 1rem;
     outline: none;
     padding: 1rem 50px;
-    position: relative;
     transition: all 0.3s;
     vertical-align: middle;
 
@@ -21,6 +21,6 @@
 
     &:hover {
         box-shadow: 0 4px darken(#f79159, 10%);
-        top: 2px;
+        // top: 2px;
     }
 }

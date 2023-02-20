@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 // Slices
-import basketSlice from './slices/basketSlice';
+import appSlice from './slices/appSlice';
 import userSlice from './slices/userSlice';
+import basketSlice from './slices/basketSlice';
 import wishListSlice from './slices/wishListSlice';
 
 const store = configureStore({
     reducer: {
+        application: appSlice,
         userAccount: userSlice,
         basket: basketSlice,
         wishList: wishListSlice,

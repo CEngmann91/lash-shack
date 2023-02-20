@@ -10,8 +10,8 @@ import Layout from './components/Layout/Layout';
 import Maintenance from './components/Maintenance/Maintenance';
 
 function App() {
-  return <Maintenance />
-  // return <Layout />
+  // return <Maintenance />
+  return <Layout />
 }
 
 export default App;

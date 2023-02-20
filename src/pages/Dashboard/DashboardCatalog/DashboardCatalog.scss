@@ -1,0 +1,45 @@
+@import '../../../res/colours.scss';
+
+.dash__catalog {
+
+
+
+    &__menu {
+        display: flex;
+        flex: 1;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1.5rem 2rem;
+        height: 40px;
+        background: $beige-colour;
+
+        button {
+            background: $green-shade-colour;
+            color: white;
+        }
+
+        .tab {
+            background: lightgray;
+            color: black;
+            border: 2px solid grey;
+
+            transition: 0.3s ease-in-out;
+
+
+            &-selected {
+                background: $pink-colour;
+                border: 2px solid $green-shade-colour;
+                color: white;
+            }
+        }
+    }
+
+
+    .catalog__form {
+
+
+
+        .new-product__photo-picker {}
+
+    }
+}

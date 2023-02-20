@@ -67,16 +67,16 @@ const Footer = () => {
             <Link to={"/shop"}>Shop</Link>
           </ListGroupItem>
           <ListGroupItem className='ps-0 border-0'>
-            <Link to={"/basket"}>Basket</Link>
+            <Link to={"/news"}>Latest News</Link>
+          </ListGroupItem>
+          <ListGroupItem className='ps-0 border-0'>
+            <Link to={"/gallery"}>Gallery</Link>
           </ListGroupItem>
           <ListGroupItem className='ps-0 border-0'>
             <Link to={"/login"}>Login</Link>
           </ListGroupItem>
           <ListGroupItem className='ps-0 border-0'>
-            <Link to={"/register"}>Register</Link>
-          </ListGroupItem>
-          <ListGroupItem className='ps-0 border-0'>
-            <Link to={"/register"}>Privacy Policy</Link>
+            <Link to={"/privacy"}>Privacy Policy</Link>
           </ListGroupItem>
         </ListGroup>
       </div>
@@ -91,7 +91,7 @@ const Footer = () => {
 
           {CONTACT.LOCATIONS.map(({ ADDRESS, MAP }, key) => (
             <ListGroupItem key={key} className='ps-0 border-0'>
-              <a target="_blank" className='d-flex align-items-center gap-2' href={MAP}>
+              <a target="_blank" className='d-flex align-items-center gap-2' href={MAP} rel="noopener noreferrer">
                 <motion.span whileHover={{ scale: 1.1 }}><Icon_Location /></motion.span>
                 <p className='text__new-line'>{ADDRESS}</p>
               </a>
@@ -101,6 +101,7 @@ const Footer = () => {
           <ListGroupItem className='ps-0 border-0 d-flex align-items-center gap-2'>
             <a target="_blank"
               className=' d-flex align-items-center gap-2'
+              rel="noopener noreferrer"
               href={`tel:${CONTACT.PHONE}`}>
               <span><Icon_Phone /></span>
               <p>{CONTACT.PHONE}</p>
@@ -109,6 +110,7 @@ const Footer = () => {
           <ListGroupItem className='ps-0 border-0'>
             <a target="_blank"
               className=' d-flex align-items-center gap-2'
+              rel="noopener noreferrer"
               href={`mailto:${CONTACT.EMAIL}`}>
               <span><Icon_Email /></span>
               <p>{CONTACT.EMAIL}</p>

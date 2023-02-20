@@ -1,0 +1,28 @@
+@import '../../res/anim.scss';
+
+.loading-spinner {
+    --scale: 5rem;
+
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding: 24px;
+
+
+    .spinner {
+        margin: 16px;
+        animation: rotate360 1s linear infinite;
+        transform: translateZ(0);
+        // border-top: 2px solid grey;
+        // border-right: 2px solid grey;
+        // border-bottom: 2px solid grey;
+        // border-left: 4px solid black;
+        background: transparent;
+        width: var(--scale);
+        height: var(--scale);
+        border-radius: 50%;
+    }
+}

@@ -1,10 +1,13 @@
 import { ProductItem } from "../types/ProductItem"
 import images from "../res/images"
 
-export const productListing: ProductItem[] = [
+export const catalogListing: ProductItem[] = [];
+
+/*export const productListing: ProductItem[] = [
     // Courses
     {
         id: "cour-01",
+        active: true,
         imgUrl: images.TestProduct,
         title: "1:1 Masterclass Course",
         category: "Courses",
@@ -12,6 +15,7 @@ export const productListing: ProductItem[] = [
         price: 500,
         shortDesc: "Short Description",
         description: "Description",
+        duration: -1,
         reviews: [
             {
                 name: "Christian Engmann",
@@ -24,6 +28,7 @@ export const productListing: ProductItem[] = [
     },
     {
         id: "cour-02",
+        active: true,
         imgUrl: images.TestProduct,
         title: "Masterclass Course",
         category: "Courses",
@@ -31,6 +36,7 @@ export const productListing: ProductItem[] = [
         price: 425,
         shortDesc: "2 day fast track Masterclass Lash Course.\nIncludes Classic, Classic Xtra, Hybrid and Russian Volume.",
         description: "Description",
+        duration: -1,
         reviews: [
             {
                 name: "Christian Engmann",
@@ -43,6 +49,7 @@ export const productListing: ProductItem[] = [
     },
     {
         id: "cour-03",
+        active: true,
         imgUrl: images.TestProduct,
         title: "Classic Lash Course",
         category: "Courses",
@@ -50,6 +57,7 @@ export const productListing: ProductItem[] = [
         price: 225,
         shortDesc: "Short Description",
         description: "*Intense Theory Learning* \nPrepping Lashes, isolation and 1:1 Application* \nInfills, removal and aftercare* \nBONUS : Learn our Classic Xtra Technique* \nSocial Media advertising and our fill suppliers list",
+        duration: -1,
         reviews: [
             {
                 name: "Christian Engmann",
@@ -65,6 +73,7 @@ export const productListing: ProductItem[] = [
     },
     {
         id: "cour-04",
+        active: true,
         imgUrl: images.TestProduct,
         title: "Russian Volume Course",
         category: "Courses",
@@ -72,6 +81,7 @@ export const productListing: ProductItem[] = [
         price: 225,
         shortDesc: "Short Description",
         description: "Description",
+        duration: -1,
         reviews: [
             {
                 name: "Christian Engmann",
@@ -84,6 +94,7 @@ export const productListing: ProductItem[] = [
     },
     {
         id: "cour-05",
+        active: true,
         imgUrl: images.TestProduct,
         title: "Russian Volume Course",
         category: "Courses",
@@ -91,6 +102,7 @@ export const productListing: ProductItem[] = [
         price: 225,
         shortDesc: "Short Description",
         description: "Description",
+        duration: -1,
         reviews: [
             {
                 name: "Christian Engmann",
@@ -109,6 +121,7 @@ export const productListing: ProductItem[] = [
     // Services - Full Sets
     {
         id: "serv-Fs01",
+        active: true,
         imgUrl: images.TestProduct,
         title: "Classic Semi-Permanent",
         category: "Services",
@@ -116,6 +129,7 @@ export const productListing: ProductItem[] = [
         price: 45,
         shortDesc: "Short Description",
         description: "Description",
+        duration: -1,
         reviews: [
             {
                 name: "Christian Engmann",
@@ -128,6 +142,7 @@ export const productListing: ProductItem[] = [
     },
     {
         id: "serv-Fs02",
+        active: true,
         imgUrl: images.TestProduct,
         title: "YY Express",
         category: "Services",
@@ -135,6 +150,7 @@ export const productListing: ProductItem[] = [
         price: 45,
         shortDesc: "Short Description",
         description: "Description",
+        duration: -1,
         reviews: [
             {
                 name: "Christian Engmann",
@@ -147,6 +163,7 @@ export const productListing: ProductItem[] = [
     },
     {
         id: "serv-Fs03",
+        active: true,
         imgUrl: images.TestProduct,
         title: "Classic Xtra Semi-Permanent",
         category: "Services",
@@ -154,6 +171,7 @@ export const productListing: ProductItem[] = [
         price: 55,
         shortDesc: "Short Description",
         description: "Description",
+        duration: -1,
         reviews: [
             {
                 name: "Christian Engmann",
@@ -166,6 +184,7 @@ export const productListing: ProductItem[] = [
     },
     {
         id: "serv-Fs04",
+        active: true,
         imgUrl: images.TestProduct,
         title: "Hybrid",
         category: "Services",
@@ -173,6 +192,7 @@ export const productListing: ProductItem[] = [
         price: 55,
         shortDesc: "Short Description",
         description: "Description",
+        duration: -1,
         reviews: [
             {
                 name: "Christian Engmann",
@@ -185,6 +205,7 @@ export const productListing: ProductItem[] = [
     },
     {
         id: "serv-Fs05",
+        active: true,
         imgUrl: images.TestProduct,
         title: "Russian Volume",
         category: "Services",
@@ -192,6 +213,7 @@ export const productListing: ProductItem[] = [
         price: 55,
         shortDesc: "Short Description",
         description: "Description",
+        duration: -1,
         reviews: [
             {
                 name: "Christian Engmann",
@@ -204,6 +226,7 @@ export const productListing: ProductItem[] = [
     },
     {
         id: "serv-Fs06",
+        active: true,
         imgUrl: images.TestProduct,
         title: "Wispy Volume",
         category: "Services",
@@ -211,6 +234,7 @@ export const productListing: ProductItem[] = [
         price: 70,
         shortDesc: "Short Description",
         description: "Description",
+        duration: -1,
         reviews: [
             {
                 name: "Christian Engmann",
@@ -223,6 +247,7 @@ export const productListing: ProductItem[] = [
     },
     {
         id: "serv-Fs07",
+        active: true,
         imgUrl: images.TestProduct,
         title: "Mega Russian Volume",
         category: "Services",
@@ -230,6 +255,7 @@ export const productListing: ProductItem[] = [
         price: 75,
         shortDesc: "Short Description",
         description: "Description",
+        duration: -1,
         reviews: [
             {
                 name: "Christian Engmann",
@@ -244,6 +270,7 @@ export const productListing: ProductItem[] = [
     // Services - Infills
     {
         id: "serv-I01",
+        active: true,
         imgUrl: images.TestProduct,
         title: "Classic Semi-Permanent",
         category: "Services",
@@ -251,6 +278,7 @@ export const productListing: ProductItem[] = [
         price: 30,
         shortDesc: "Short Description",
         description: "Description",
+        duration: -1,
         reviews: [
             {
                 name: "Christian Engmann",
@@ -263,6 +291,7 @@ export const productListing: ProductItem[] = [
     },
     {
         id: "serv-I02",
+        active: true,
         imgUrl: images.TestProduct,
         title: "YY Express",
         category: "Services",
@@ -270,6 +299,7 @@ export const productListing: ProductItem[] = [
         price: 35,
         shortDesc: "Short Description",
         description: "Description",
+        duration: -1,
         reviews: [
             {
                 name: "Christian Engmann",
@@ -282,6 +312,7 @@ export const productListing: ProductItem[] = [
     },
     {
         id: "serv-I03",
+        active: true,
         imgUrl: images.TestProduct,
         title: "Classic Xtra Semi-Permanent",
         category: "Services",
@@ -289,6 +320,7 @@ export const productListing: ProductItem[] = [
         price: 35,
         shortDesc: "Short Description",
         description: "Description",
+        duration: -1,
         reviews: [
             {
                 name: "Christian Engmann",
@@ -301,6 +333,7 @@ export const productListing: ProductItem[] = [
     },
     {
         id: "serv-I04",
+        active: true,
         imgUrl: images.TestProduct,
         title: "Hybrid",
         category: "Services",
@@ -308,6 +341,7 @@ export const productListing: ProductItem[] = [
         price: 40,
         shortDesc: "Short Description",
         description: "Description",
+        duration: -1,
         reviews: [
             {
                 name: "Christian Engmann",
@@ -320,6 +354,7 @@ export const productListing: ProductItem[] = [
     },
     {
         id: "serv-I05",
+        active: true,
         imgUrl: images.TestProduct,
         title: "Russian Volume",
         category: "Services",
@@ -327,6 +362,7 @@ export const productListing: ProductItem[] = [
         price: 45,
         shortDesc: "Short Description",
         description: "Description",
+        duration: -1,
         reviews: [
             {
                 name: "Christian Engmann",
@@ -339,6 +375,7 @@ export const productListing: ProductItem[] = [
     },
     {
         id: "serv-I06",
+        active: true,
         imgUrl: images.TestProduct,
         title: "Mega Volume",
         category: "Services",
@@ -346,6 +383,7 @@ export const productListing: ProductItem[] = [
         price: 50,
         shortDesc: "Short Description",
         description: "Description",
+        duration: -1,
         reviews: [
             {
                 name: "Christian Engmann",
@@ -360,6 +398,7 @@ export const productListing: ProductItem[] = [
     // Services - Eyebrows
     {
         id: "serv-E01",
+        active: true,
         imgUrl: images.TestProduct,
         title: "Eyebrow Tint",
         category: "Services",
@@ -367,6 +406,7 @@ export const productListing: ProductItem[] = [
         price: 7,
         shortDesc: "Short Description",
         description: "Description",
+        duration: -1,
         reviews: [
             {
                 name: "Christian Engmann",
@@ -379,6 +419,7 @@ export const productListing: ProductItem[] = [
     },
     {
         id: "serv-E02",
+        active: true,
         imgUrl: images.TestProduct,
         title: "Eyebrow Wax & Tint",
         category: "Services",
@@ -386,6 +427,7 @@ export const productListing: ProductItem[] = [
         price: 14,
         shortDesc: "Short Description",
         description: "Description",
+        duration: -1,
         reviews: [
             {
                 name: "Christian Engmann",
@@ -398,6 +440,7 @@ export const productListing: ProductItem[] = [
     },
     {
         id: "serv-E03",
+        active: true,
         imgUrl: images.TestProduct,
         title: "Microblading",
         category: "Services",
@@ -405,6 +448,7 @@ export const productListing: ProductItem[] = [
         price: 18,
         shortDesc: "Short Description",
         description: "Description",
+        duration: -1,
         reviews: [
             {
                 name: "Christian Engmann",
@@ -417,6 +461,7 @@ export const productListing: ProductItem[] = [
     },
     {
         id: "serv-E04",
+        active: true,
         imgUrl: images.TestProduct,
         title: "Removal",
         category: "Services",
@@ -424,6 +469,7 @@ export const productListing: ProductItem[] = [
         price: 10,
         shortDesc: "Short Description",
         description: "Description",
+        duration: -1,
         reviews: [
             {
                 name: "Christian Engmann",
@@ -439,6 +485,7 @@ export const productListing: ProductItem[] = [
     // Services - Lips
     {
         id: "serv-L01",
+        active: true,
         imgUrl: images.TestProduct,
         title: "0.5ml",
         category: "Services",
@@ -446,6 +493,7 @@ export const productListing: ProductItem[] = [
         price: 90,
         shortDesc: "Short Description",
         description: "Description",
+        duration: -1,
         reviews: [
             {
                 name: "Christian Engmann",
@@ -458,6 +506,7 @@ export const productListing: ProductItem[] = [
     },
     {
         id: "serv-L02",
+        active: true,
         imgUrl: images.TestProduct,
         title: "1.1ml",
         category: "Services",
@@ -465,6 +514,7 @@ export const productListing: ProductItem[] = [
         price: 140,
         shortDesc: "Short Description",
         description: "Description",
+        duration: -1,
         reviews: [
             {
                 name: "Christian Engmann",
@@ -477,6 +527,7 @@ export const productListing: ProductItem[] = [
     },
     {
         id: "serv-L03",
+        active: true,
         imgUrl: images.TestProduct,
         title: "3ml Package",
         category: "Services",
@@ -484,6 +535,7 @@ export const productListing: ProductItem[] = [
         price: 275,
         shortDesc: "Short Description",
         description: "Description",
+        duration: -1,
         reviews: [
             {
                 name: "Christian Engmann",
@@ -498,6 +550,7 @@ export const productListing: ProductItem[] = [
     // Services - SMPU
     {
         id: "serv-SMPU01",
+        active: true,
         imgUrl: images.TestProduct,
         title: "Ombre Brows",
         category: "Services",
@@ -505,6 +558,7 @@ export const productListing: ProductItem[] = [
         price: 0,
         shortDesc: "Short Description",
         description: "Description",
+        duration: -1,
         reviews: [
             {
                 name: "Christian Engmann",
@@ -517,6 +571,7 @@ export const productListing: ProductItem[] = [
     },
     {
         id: "serv-SMPU02",
+        active: true,
         imgUrl: images.TestProduct,
         title: "Combo Brows",
         category: "Services",
@@ -524,6 +579,7 @@ export const productListing: ProductItem[] = [
         price: 0,
         shortDesc: "Short Description",
         description: "Description",
+        duration: -1,
         reviews: [
             {
                 name: "Christian Engmann",
@@ -536,6 +592,7 @@ export const productListing: ProductItem[] = [
     },
     {
         id: "serv-SMPU03",
+        active: true,
         imgUrl: images.TestProduct,
         title: "Lip Blush",
         category: "Services",
@@ -543,6 +600,7 @@ export const productListing: ProductItem[] = [
         price: 0,
         shortDesc: "Short Description",
         description: "Description",
+        duration: -1,
         reviews: [
             {
                 name: "Christian Engmann",
@@ -555,6 +613,7 @@ export const productListing: ProductItem[] = [
     },
     {
         id: "serv-SMPU04",
+        active: true,
         imgUrl: images.TestProduct,
         title: "Lip Liner",
         category: "Services",
@@ -562,6 +621,7 @@ export const productListing: ProductItem[] = [
         price: 0,
         shortDesc: "Short Description",
         description: "Description",
+        duration: -1,
         reviews: [
             {
                 name: "Christian Engmann",
@@ -572,4 +632,4 @@ export const productListing: ProductItem[] = [
         ],
         upcomingDates: []
     },
-]
+]*/
