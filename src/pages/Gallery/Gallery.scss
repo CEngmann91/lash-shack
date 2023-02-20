@@ -16,9 +16,12 @@
         overflow: hidden;
     }
 
+    @media only screen and (max-width: 768px) {
+
+    }
 
     @media only screen and (max-width: 576px) {
-        .loading-container {
+        .swiper-slide {
             width: 350px !important;
 
         }
