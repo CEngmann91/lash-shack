@@ -47,6 +47,8 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 
 
-framer-motion
-@reduxjs/toolkit
-react-redux
+## Built With:
+[framer-motion](https://www.framer.com/motion/).
+[@reduxjs/toolkit](https://redux-toolkit.js.org/).
+[react-redux](https://react-redux.js.org/).
+[Swiper.js](https://swiperjs.com/).

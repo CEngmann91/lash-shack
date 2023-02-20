@@ -1,0 +1,37 @@
+@import '../../res/colours.scss';
+@import '../../constants/constants.scss';
+
+.testimonials__section {
+
+
+
+
+    .swiper-slide {
+        width: 20rem !important;
+        height: 22rem !important;
+
+
+        transition: ease 0.3s;
+
+
+    &:hover {
+        cursor: pointer;
+        transform: scale(1.1);
+    }
+    }
+
+
+
+
+    @media only screen and (max-width: 992px) {}
+
+    @media only screen and (max-width: 768px) {}
+
+    @media only screen and (max-width: 576px) {
+        .swiper-slide {
+            // width: 25rem !important;
+            // height: 30rem !important;
+        }
+    }
+
+}

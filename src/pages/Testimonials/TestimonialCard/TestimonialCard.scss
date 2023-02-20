@@ -1,0 +1,112 @@
+@import '../../../res/colours.scss';
+@import '../../../constants/constants.scss';
+
+.testimonial-card {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    // flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
+
+    border-radius: 35px !important;
+    border: 5px solid $beige-colour;
+    // box-shadow: 0px 0px 20px rgba($green-shade-colour, 1) !important;
+
+    overflow: hidden;
+    
+
+
+    .wrapper {
+        display: flex;
+        // flex: 1;
+        flex-direction: column;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+        padding: 30px 40px;
+
+        background: white;
+
+
+
+
+        .card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            width: 100%;
+            height: 80px;
+
+
+            .profile {
+                display: flex;
+                align-items: center;
+
+                &-img {
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50%;
+                    overflow: hidden;
+                    margin-right: 10px;
+
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        object-position: center;
+                    }
+                }
+
+                .name-user {
+                    display: flex;
+                    flex-direction: column;
+
+                    strong {
+                        color: #3d3d3d;
+                        font-size: 1.1rem;
+                        letter-spacing: 0.5px;
+                    }
+
+                    span {
+                        color: #979797;
+                        font-size: 0.8rem;
+                    }
+                }
+            }
+
+
+
+
+
+            .reviews {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+
+                div>span>img,
+                svg {
+                    color: $pink-colour;
+                }
+            }
+        }
+
+        .client-comment {
+
+            p {
+                font-size: 0.9rem;
+                color: #4b4b4b;
+            }
+        }
+
+
+
+
+
+
+
+    }
+}

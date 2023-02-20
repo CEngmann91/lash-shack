@@ -17,6 +17,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { SkeletonImage } from '../../components'
 import { getAllDownloadURLRef } from '../../helpers/firebase/firebaseHelper';
+import Testimonials from "../Testimonials/Testimonials";
 
 const Landing = () => {
   const navigate = useNavigate();
@@ -50,16 +51,7 @@ const Landing = () => {
                 <p className="landing__subTitle">Beauty Salon</p>
                 <h2>New Beginnings Start Here</h2>
                 <p>
-                  Insert More Text Here!
-                  Insert More Text Here!
-                  Insert More Text Here!
-                  Insert More Text Here!
-                  Insert More Text Here!
-                  Insert More Text Here!
-                  Insert More Text Here!
-                  Insert More Text Here!
-                  Insert More Text Here!
-                  Insert More Text Here!
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
                 </p>
                 <MotionButton className='landing__buy-button' onClick={() => navigate("/shop")}>
                   Shop Now
@@ -88,6 +80,7 @@ const Landing = () => {
                   pauseOnMouseEnter: true,
                   disableOnInteraction: false,
                 }}
+                slideToClickedSlide={false}
                 modules={[EffectCoverflow, Autoplay]}
               >
 
@@ -162,6 +155,10 @@ const Landing = () => {
 
 
       <LimitedTimeOffer title='Groupon Deals' subtitle='Limited Offer' imageUrl={images.Lash} endDate="Mar 31, 2023" onTimerCompleted={() => { }} />
+
+
+
+      <Testimonials />
 
     </PageWrapper>
   )

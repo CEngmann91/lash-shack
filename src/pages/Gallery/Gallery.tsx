@@ -64,8 +64,8 @@ const Gallery = () => {
                         modules={[EffectCoverflow, Pagination]}
                         className="mySwiper"
                     >
-                        {imagePaths.map(path => (
-                            <SwiperSlide>
+                        {imagePaths.map((path, key) => (
+                            <SwiperSlide key={key}>
                                 <GalleryCard url={path} />
                             </SwiperSlide>
                         ))}

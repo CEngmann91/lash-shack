@@ -18,11 +18,7 @@ const Footer = () => {
       </div>
 
       <p className="footer__text mt-4">
-        Insert Information About the Company Here!
-        Insert Information About the Company Here!
-        Insert Information About the Company Here!
-        Insert Information About the Company Here!
-        Insert Information About the Company Here!
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
       </p>
     </Col>
   )
