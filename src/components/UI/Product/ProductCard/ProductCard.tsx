@@ -33,40 +33,38 @@ const ProductCard = ({ item }: ProductCardProps) => {
 
     return (
         <Col lg='3' md='4' className='product__card mb-4'>
-            <>
-                <div className="product__image-wrapper">
-                    <div className='product__image' onClick={() => navigate(`/shop/${id}`)}>
-                        <SkeletonImage className='' src={imgUrl} alt="" />
-                    </div>
-
-                    <div className="buttons d-flex align-items-center gap-2">
-                        <MotionButton onClick={() => { }}>
-                            <Icon_Share />
-                        </MotionButton>
-
-                        <MotionButton onClick={() => toggleWishList(id)}>
-                            {!existsInWishList(id) ? <Icon_WishList /> : <Icon_WishListFilled />}
-                        </MotionButton>
-
-                        <MotionButton className='app__icon-with-badge' onClick={() => addToBasket(id, title, imgUrl, price)}>
-                            <Icon_ShoppingBasket />
-                            <span className="badge" data-quantity={countByID(id) > 0}>{countByID(id)}</span>
-                        </MotionButton>
-                    </div>
+            <div className="product__image-wrapper">
+                <div className='product__image' onClick={() => navigate(`/shop/${id}`)}>
+                    <SkeletonImage className='' src={imgUrl} alt="" />
                 </div>
 
-                <div className="p-2 d-flex align-items-center justify-content-between"
-                // onClick={() => navigate(`/shop/${id}`)}
-                >
-                    <div className='product__info'>
-                        <h3 className="product__name">{title}</h3>
-                        {category === "Courses" && <span className=''>{category}</span>}
-                        {category === "Services" && <span className=''>{category} - {subServiceCategory}</span>}
-                    </div>
-                </div>
+                <div className="buttons d-flex align-items-center gap-2">
+                    <MotionButton onClick={() => { }}>
+                        <Icon_Share />
+                    </MotionButton>
 
-                {/* <span className="d-flex align-items-center justify-content-center">{shortDesc}</span> */}
-            </>
+                    <MotionButton onClick={() => toggleWishList(id)}>
+                        {!existsInWishList(id) ? <Icon_WishList /> : <Icon_WishListFilled />}
+                    </MotionButton>
+
+                    <MotionButton className='app__icon-with-badge' onClick={() => addToBasket(id, title, imgUrl, price)}>
+                        <Icon_ShoppingBasket />
+                        <span className="badge" data-quantity={countByID(id) > 0}>{countByID(id)}</span>
+                    </MotionButton>
+                </div>
+            </div>
+
+            <div className="d-flex align-items-center justify-content-between mt-3"
+            // onClick={() => navigate(`/shop/${id}`)}
+            >
+                <div className='product__info'>
+                    <h3 className="product__name">{title}</h3>
+                    {category === "Courses" && <span className=''>{category}</span>}
+                    {category === "Services" && <span className=''>{category} - {subServiceCategory}</span>}
+                </div>
+            </div>
+
+            {/* <span className="d-flex align-items-center justify-content-center">{shortDesc}</span> */}
 
             <div className="product_card-bottom d-flex align-items-center justify-content-center p-2 gap-3"
             // onClick={() => navigate(`/shop/${id}`)}
