@@ -27,10 +27,8 @@ body {
   font-family: "Montserrat", sans-serif;
 }
 
-*
-*::before,
-*::after
-{
+* *::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -97,7 +95,8 @@ button {
   }
 }
 
-input, textarea {
+input,
+textarea {
 
   &:focus {
     outline: none;
@@ -113,15 +112,14 @@ input, textarea {
   overflow: auto;
 
 
-  @media only screen and (max-width: 992px) {
-  }
-  
+  @media only screen and (max-width: 992px) {}
+
   @media only screen and (max-width: 768px) {
-      display: block;
+    display: block;
   }
-  
+
   @media only screen and (max-width: 576px) {
-      display: block;
+    display: block;
   }
 }
 
@@ -141,8 +139,31 @@ img {
 
 section {
   padding: 60px 30px;
+
+
+  @media only screen and (max-width: 992px) {}
+
+  @media only screen and (max-width: 768px) {
+    padding: 45px 22px;
+  }
+
+  @media only screen and (max-width: 576px) {
+    padding: 30px 15px;
+  }
 }
 
 .disabled-link {
   pointer-events: none;
+}
+
+table tbody tr td {
+  @media only screen and (max-width: 992px) {}
+
+  @media only screen and (max-width: 768px) {
+    font-size: 15px;
+  }
+
+  @media only screen and (max-width: 576px) {
+    font-size: 12px;
+  }
 }

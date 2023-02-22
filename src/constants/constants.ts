@@ -1,18 +1,22 @@
 export const NAVIGATION = {
     MAIN_ROUTES: [
         {
+            id: 1,
             title: "Home",
             to: "home",
         },
         {
+            id: 2,
             title: "Services",
             to: "services",
         },
         {
+            id: 3,
             title: "Courses",
             to: "courses",
         },
         {
+            id: 4,
             title: "Gallery",
             to: "gallery",
         },
@@ -21,32 +25,34 @@ export const NAVIGATION = {
         //     to: "news",
         // },
         {
+            id: 5,
             title: "Shop",
             to: "shop",
         }
     ],
     DASHBOARD_ROUTES: [
-        // {
-        //     title: "Home",
-        //     to: "home"
-        // },
         {
+            id: 0,
             title: "Home",
             to: "dashboard"
         },
         {
+            id: 1,
             title: "Profile",
             to: "dashboard/account"
         },
         {
+            id: 2,
             title: "Orders",
             to: "dashboard/orders"
         },
         {
+            id: 3,
             title: "Messages",
             to: "dashboard/messages"
         },
         {
+            id: 4,
             title: "Settings",
             to: "dashboard/settings"
         }

@@ -47,7 +47,7 @@ const Testimonials = () => {
                             disableOnInteraction: false,
                         }}
                         pagination={{ clickable: true }}
-                        slideToClickedSlide={true}
+                        slideToClickedSlide={false}
                         modules={[EffectCoverflow, Pagination, Autoplay]}
                     >
                         {testimonials?.map((testimonial, key) =>

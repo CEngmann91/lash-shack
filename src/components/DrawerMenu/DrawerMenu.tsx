@@ -70,18 +70,19 @@ const DrawerMenu = ({ isOpen, onClose }: DrawerMenuProps) => {
                             className='navigation'
                         >
                             <ul className="nav--links">
-                                {NAVIGATION.MAIN_ROUTES.map(({ title, to }, key) => (
-                                    // <motion.li
-                                    //     key={key}
-                                    //     whileHover={{ scale: 1.1 }}
-                                    //     variants={itemVariants}
-                                    //     onClick={onClose}
-                                    // >{title}</motion.li>
+                                {NAVIGATION.MAIN_ROUTES.map(({ id, title, to }) => (
+                                    <motion.li
+                                        key={id}
+                                        whileHover={{ scale: 1.1 }}
+                                        variants={itemVariants}
+                                        onClick={onClose}
+                                        className='nav--link-item'
+                                    >{title}</motion.li>
 
 
-                                    <li className='nav--link-item' key={key}>
-                                        <NavLink to={to}>{title}</NavLink>
-                                    </li>
+                                    // <li className='nav--link-item' key={key}>
+                                    //     <NavLink to={to}>{title}</NavLink>
+                                    // </li>
                                 ))}
                             </ul>
                         </motion.div>

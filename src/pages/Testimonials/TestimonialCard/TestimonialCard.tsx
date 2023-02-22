@@ -14,14 +14,12 @@ const TestimonialCard = ({ data }: TestimonialCardProps) => {
     return (
         <div className="testimonial-card">
             <div className="wrapper">
-
                 <div className="card-top">
                     <div className="profile">
-                        <div className="profile-img">
-                            {/* <img src="https://cdn3.iconfinder.com/data/icons/avatars-15/64/_Ninja-2-512.png" /> */}
+                        {/* <div className="profile-img">
                             <img src={images.Logo} />
-                        </div>
-                        <div className="name-user">
+                        </div> */}
+                        <div className="title-date">
                             <strong>{title}</strong>
                             <span>{createdAt}</span>
                         </div>
@@ -29,9 +27,7 @@ const TestimonialCard = ({ data }: TestimonialCardProps) => {
 
                     <div className="reviews">
                         {[...Array(Math.floor(starRating))].map((i) =>
-                            <div key={i}>
-                                <span><Icon_Star /></span>
-                            </div>
+                            <span key={i}><Icon_Star /></span>
                         )}
                     </div>
                 </div>

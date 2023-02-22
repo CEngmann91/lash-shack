@@ -121,7 +121,7 @@ const DashboardOrders = () => {
         <SectionContainerWrapper className='dashboard_orders__section'>
 
             <Col lg='12' className='d-flex justify-content-between'>
-                <h4 className='fw-bold'>Orders ({ordersList?.length})</h4>
+                <h4 className='fw-bold'>Orders ({ordersList?.length === 0 ? 0 : ordersList?.length})</h4>
 
                 <div className='filter-by-duration d-flex'>
                     <MotionButton className={`dash__action-button tab ${selectedTab === "NONE" ? "tab-selected" : ""}`}
