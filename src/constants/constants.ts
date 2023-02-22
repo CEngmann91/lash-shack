@@ -1,22 +1,22 @@
 export const NAVIGATION = {
     MAIN_ROUTES: [
         {
-            id: 1,
+            id: 0,
             title: "Home",
             to: "home",
         },
         {
-            id: 2,
+            id: 1,
             title: "Services",
             to: "services",
         },
         {
-            id: 3,
+            id: 2,
             title: "Courses",
             to: "courses",
         },
         {
-            id: 4,
+            id: 3,
             title: "Gallery",
             to: "gallery",
         },
@@ -25,7 +25,7 @@ export const NAVIGATION = {
         //     to: "news",
         // },
         {
-            id: 5,
+            id: 4,
             title: "Shop",
             to: "shop",
         }
@@ -58,35 +58,38 @@ export const NAVIGATION = {
         }
     ],
     DASHBOARD_ADMIN_ROUTES: [
-        // {
-        //     title: "Home",
-        //     to: "home"
-        // },
         {
+            id: 0,
             title: "Home",
             to: "dashboard"
         },
         {
+            id: 1,
             title: "Profile",
             to: "dashboard/account"
         },
         {
+            id: 2,
             title: "Orders",
             to: "dashboard/orders"
         },
         {
+            id: 3,
             title: "Users",
             to: "dashboard/users"
         },
         {
+            id: 4,
             title: "Messages",
             to: "dashboard/messages"
         },
         {
+            id: 5,
             title: "Catalog",
             to: "dashboard/catalog"
         },
         {
+            id: 6,
             title: "Settings",
             to: "dashboard/settings"
         }

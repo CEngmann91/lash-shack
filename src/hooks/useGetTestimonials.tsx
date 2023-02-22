@@ -9,7 +9,8 @@ const useGetTestimonials = () => {
     const testimonials = useMemo(() => {
         let list = [] as Testimonial[];
         data?.map(item => list = item['content'])
-        return list;
+        const sorted = list.slice().sort((a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()).reverse();
+        return sorted;
     }, [data,]);
 
     const loadingTestimonials = useMemo(() => loadingData, [loadingData]);
