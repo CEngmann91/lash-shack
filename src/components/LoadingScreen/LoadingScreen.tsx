@@ -1,5 +1,4 @@
 import './LoadingScreen.scss';
-import React from 'react'
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 import { useScrollLock } from '../../hooks/useScrollLock';
 

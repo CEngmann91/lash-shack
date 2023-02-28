@@ -1,5 +1,5 @@
 import './DashboardCatalog.scss';
-import React, { useEffect, useMemo, useState } from 'react'
+import { ChangeEvent, FormEvent, useEffect, useMemo, useState } from 'react'
 import { Col, Form, FormGroup } from 'reactstrap';
 import { useSelector as useReduxSelector } from 'react-redux';
 import { RootState } from '../../../redux/store';
@@ -72,7 +72,7 @@ const DashboardCatalog = () => {
         return sortedData as ProductItem[];
     }, [data, folder]);
 
-    const handleProductImageChange = (e: React.ChangeEvent<HTMLInputElement>, index: number) => {
+    const handleProductImageChange = (e: ChangeEvent<HTMLInputElement>, index: number) => {
         const files = e.target.files;
         if (files && files?.length > 0) {
             const product: ProductItem = listing[index];
@@ -165,14 +165,14 @@ const DashboardCatalog = () => {
         )
     }
 
-    function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
+    function handleFileChange(e: ChangeEvent<HTMLInputElement>) {
         const files = e.target.files;
         if (files && files?.length > 0) {
             setSelectImage(files[0])
         }
     }
 
-    const handleFormSubmit = (e: React.FormEvent<EventTarget | HTMLFormElement>) => {
+    const handleFormSubmit = (e: FormEvent<EventTarget | HTMLFormElement>) => {
         e.preventDefault();
 
 

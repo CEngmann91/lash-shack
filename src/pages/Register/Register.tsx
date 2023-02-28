@@ -1,5 +1,5 @@
 import './Register.scss';
-import React, { useState } from 'react'
+import { FocusEvent, FormEvent, ChangeEvent, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Col, Container, Row, Form, FormGroup } from 'reactstrap'
 import { MotionButton, PageWrapper } from '../../components'
@@ -20,13 +20,13 @@ const Register = () => {
 
 
     
-    function handlePasswordBlur(e: React.FocusEvent<HTMLInputElement>) {
+    function handlePasswordBlur(e: FocusEvent<HTMLInputElement>) {
         e.preventDefault();
 
         setPassword(e.target.value);
     }
 
-    function handleFormSubmit(e: React.FormEvent<EventTarget | HTMLFormElement>) {
+    function handleFormSubmit(e: FormEvent<EventTarget | HTMLFormElement>) {
         e.preventDefault();
 
         setAsLoading()
@@ -79,7 +79,7 @@ const Register = () => {
         }
     }
 
-    function handleConfirmPasswordChange(e: React.ChangeEvent<HTMLInputElement>) {
+    function handleConfirmPasswordChange(e: ChangeEvent<HTMLInputElement>) {
         const value = e.target.value;
         if (value === password)
             setPasswordsMatch(true)

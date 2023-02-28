@@ -1,7 +1,5 @@
-import React from 'react'
 import { useDispatch } from 'react-redux';
 import { Address } from '../../types/Address';
-import { PurchaseOrder } from '../../types/PurchaseOrder';
 import { AccountType } from '../../types/UserProfile';
 import { userActions } from '../slices/userSlice';
 

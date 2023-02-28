@@ -1,5 +1,5 @@
 import './Shop.scss';
-import React, { useEffect, useMemo, useRef, useState } from 'react'
+import { ChangeEvent, useEffect, useMemo, useRef, useState } from 'react'
 import { LoadingSpinner, PageWrapper, ProductList } from '../../components'
 import ImageBanner from '../../components/UI/ImageBanner/ImageBanner'
 import { Container, Col, Row } from 'reactstrap';
@@ -29,7 +29,7 @@ const Shop = () => {
         searchInputRef.current?.focus();
     };
 
-    function handleFilter(e: React.ChangeEvent<HTMLSelectElement>) {
+    function handleFilter(e: ChangeEvent<HTMLSelectElement>) {
         const filterValue = e.target.value;
         // Revert back to all listings.
         if (filterValue === "default")
@@ -73,7 +73,7 @@ const Shop = () => {
         }
     }
 
-    function handleSort(e: React.ChangeEvent<HTMLSelectElement>) {
+    function handleSort(e: ChangeEvent<HTMLSelectElement>) {
         const sortValue = e.target.value;
         console.log(sortValue);
 
@@ -103,7 +103,7 @@ const Shop = () => {
         // }
     }
 
-    function handleSearch(e: React.ChangeEvent<HTMLInputElement>) {
+    function handleSearch(e: ChangeEvent<HTMLInputElement>) {
         const query = e.target.value;
         const queriedProducts = catalog.filter(item => item.title.toLowerCase().includes(query.toLowerCase()))
         setProducts(queriedProducts);

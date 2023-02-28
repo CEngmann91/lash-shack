@@ -1,13 +1,12 @@
 import './DashboardSettings.scss';
-import React from 'react'
 import SectionContainerWrapper from '../../../components/SectionContainerWrapper/SectionContainerWrapper';
 
 const DashboardSettings = () => {
 
     return (
-        <SectionContainerWrapper >
+        <SectionContainerWrapper className='dashboard_settings__section'>
             DashboardSettings
-        </SectionContainerWrapper >
+        </SectionContainerWrapper>
     )
 }
 

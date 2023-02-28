@@ -1,5 +1,4 @@
 import './LoadingSpinner.scss';
-import React from 'react'
 
 type LoadingSpinnerProps = {
     title: string;

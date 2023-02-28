@@ -81,6 +81,7 @@ const Landing = () => {
                   disableOnInteraction: false,
                 }}
                 slideToClickedSlide={false}
+                preventClicks={true}
                 modules={[EffectCoverflow, Autoplay]}
               >
 

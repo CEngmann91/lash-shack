@@ -1,5 +1,5 @@
 import './DashboardOrders.scss'
-import React, { useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 import { useSelector as useReduxSelector } from 'react-redux';
 import { RootState } from '../../../redux/store';
 import SectionContainerWrapper from '../../../components/SectionContainerWrapper/SectionContainerWrapper'

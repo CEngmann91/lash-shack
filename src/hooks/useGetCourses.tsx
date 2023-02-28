@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import { useMemo } from 'react'
 import { ProductItem } from '../types/ProductItem';
 import useFirestoreData from './useFirestoreData';
 
@@ -13,10 +13,7 @@ const useGetCourses = () => {
 
     const getCoursesError = useMemo(() => dataError, [dataError]);
 
-    const getCourseByID = (id: string) => {
-        const product = courses.find(item => item.id === id)
-        return product;
-    }
+    const getCourseByID = (id: string) => courses.find(item => item.id === id)
 
     return { courses, loadingCourses, getCoursesError, getCourseByID }
 }

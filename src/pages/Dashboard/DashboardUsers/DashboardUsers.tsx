@@ -1,5 +1,4 @@
 import './DashboardUsers.scss';
-import React from 'react'
 import { useSelector as useReduxSelector } from 'react-redux';
 import { RootState } from '../../../redux/store';
 import { Col } from 'reactstrap';

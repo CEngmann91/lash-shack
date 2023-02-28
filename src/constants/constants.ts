@@ -1,3 +1,22 @@
+import { ReactNode } from "react";
+import { Icon_Dash_Account, Icon_Dash_Catalog, Icon_Dash_Home, Icon_Dash_Message, Icon_Dash_Orders, Icon_Dash_Settings, Icon_Dash_Users } from "../res/icons"
+
+
+
+// ImHome as Icon_Dash_Home,
+// RiAccountPinCircleFill as Icon_Dash_Account,
+// FaFileInvoiceDollar as Icon_Dash_Orders,
+// RiMessage2Fill as Icon_Dash_Message,
+// SiBookstack as Icon_Dash_Catalog,
+// RiSettings3Fill as Icon_Dash_Settings,
+
+
+export type NavType = {
+    id: number;
+    title: string;
+    icon: ReactNode;
+    to: string;
+}
 export const NAVIGATION = {
     MAIN_ROUTES: [
         {
@@ -34,66 +53,78 @@ export const NAVIGATION = {
         {
             id: 0,
             title: "Home",
+            icon: Icon_Dash_Home,
             to: "dashboard"
         },
         {
             id: 1,
             title: "Profile",
+            icon: Icon_Dash_Account,
             to: "dashboard/account"
         },
         {
             id: 2,
-            title: "Orders",
-            to: "dashboard/orders"
+            title: "Calendar",
+            icon: Icon_Dash_Home,
+            to: "dashboard/schedule"
         },
         {
             id: 3,
             title: "Messages",
+            icon: Icon_Dash_Message,
             to: "dashboard/messages"
         },
         {
             id: 4,
             title: "Settings",
+            icon: Icon_Dash_Settings,
             to: "dashboard/settings"
         }
-    ],
+    ] as unknown as NavType[],
     DASHBOARD_ADMIN_ROUTES: [
         {
             id: 0,
             title: "Home",
+            icon: Icon_Dash_Home,
             to: "dashboard"
         },
         {
             id: 1,
             title: "Profile",
+            icon: Icon_Dash_Account,
             to: "dashboard/account"
         },
         {
             id: 2,
             title: "Orders",
+            icon: Icon_Dash_Orders,
             to: "dashboard/orders"
         },
         {
             id: 3,
             title: "Users",
+            icon: Icon_Dash_Users,
             to: "dashboard/users"
         },
         {
             id: 4,
             title: "Messages",
+            icon: Icon_Dash_Message,
             to: "dashboard/messages"
         },
         {
             id: 5,
             title: "Catalog",
+            icon: Icon_Dash_Catalog,
             to: "dashboard/catalog"
         },
         {
             id: 6,
             title: "Settings",
+            icon: Icon_Dash_Settings,
             to: "dashboard/settings"
         }
-    ]
+    ] as unknown as NavType[],
 }
 
 export const CONTACT = {

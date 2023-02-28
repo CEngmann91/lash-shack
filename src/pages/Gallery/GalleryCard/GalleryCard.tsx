@@ -1,5 +1,4 @@
 import './GalleryCard.scss';
-import React from 'react'
 import { SkeletonImage } from '../../../components';
 
 type GalleryCardProps = {

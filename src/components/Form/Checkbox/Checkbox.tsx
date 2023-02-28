@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { ChangeEvent, useState } from "react";
 
 type CheckboxProps = {
     label: string;
@@ -9,7 +9,7 @@ const Checkbox = ({ label, isSelected, onChange }: CheckboxProps) => {
     const [remembered, setRemembered] = useState(isSelected);
 
     
-    function handleCheckboxChange(e: React.ChangeEvent<HTMLInputElement>) {
+    function handleCheckboxChange(e: ChangeEvent<HTMLInputElement>) {
         isSelected = e.target.checked;
         setRemembered(isSelected);
         onChange(isSelected);

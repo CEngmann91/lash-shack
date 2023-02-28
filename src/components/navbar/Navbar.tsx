@@ -1,8 +1,7 @@
 import './Navbar.scss';
-import React, { useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import { Container, Row } from 'reactstrap';
-
 import images from '../../res/images';
 import { NAVIGATION } from '../../constants/constants';
 import { motion, useScroll, useSpring } from 'framer-motion';
@@ -115,7 +114,7 @@ const Navbar = () => {
       <ul className="navbar-nav--links">
         {NAVIGATION.MAIN_ROUTES.map(({ title, to }, key) => (
           <li className='nav--link-item' key={key}>
-            <NavbarItem to={to} activeClassName="link-item-active" idleClassName='link-item'>{title}</NavbarItem>
+            <NavbarItem to={to} activeClassName="app__border-bottom link-item-active" idleClassName='link-item'>{title}</NavbarItem>
           </li>
         ))}
       </ul>

@@ -1,5 +1,4 @@
 import './LimitedTimeOffer.scss';
-import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import { Col, Container, Row } from 'reactstrap';
 import Clock from '../Clock/Clock';

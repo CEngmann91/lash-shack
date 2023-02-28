@@ -1,10 +1,10 @@
 import './DrawerMenuButton.scss';
-import React, { useCallback } from 'react'
+import { MouseEvent, useCallback } from 'react'
 import { useScroller } from '../../../hooks/useScroller';
 
 type DrawerMenuButtonProps = {
     isOpen: boolean;
-    onClick: (e?: React.MouseEvent<HTMLElement>) => void;
+    onClick: (e?: MouseEvent<HTMLElement>) => void;
 }
 const DrawerMenuButton = ({ isOpen, onClick }: DrawerMenuButtonProps) => {
   const scrolledDown = useScroller();

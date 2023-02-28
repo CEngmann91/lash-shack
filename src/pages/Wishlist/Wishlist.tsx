@@ -1,5 +1,4 @@
 import './Wishlist.scss';
-import React from 'react'
 import { PageWrapper, ImageBanner, MotionButton } from '../../components';
 import { useSelector as useReduxSelector } from 'react-redux';
 import { RootState } from '../../redux/store';

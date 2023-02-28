@@ -47,8 +47,30 @@
             }
         }
 
+        h2 {
+            position: relative;
+
+            &::before {
+                content: '';
+                position: absolute;
+                bottom: -3px;
+                left: 0;
+                height: 3px;
+                width: 100%;
+                transition: 0.3s;
+                border-radius: 25px;
+                transform: scaleX(0);
+                background: #4070f4;
+            }
+
+            &:hover::before {
+                transform: scaleX(1);
+            }
+        }
+
 
         .navigation {
+
             .navbar-nav--links {
                 display: flex;
                 align-items: center;
@@ -56,15 +78,20 @@
                 margin-bottom: 0;
 
                 .link-item {
+                    position: relative;
                     color: $green-shade-colour;
                     font-weight: 500;
                     cursor: pointer;
 
+
                     &-active {
+                        position: relative;
                         text-shadow: 0 0.5px 0.5px rgba($green-shade-colour, 0.5);
-                        border-bottom: solid 3px $green-shade-colour;
                         color: inherit;
-                        // font-weight: 700 !important;
+
+                        &::before {
+                            background: $green-shade-colour !important;
+                        }
                     }
                 }
             }

@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react'
+import { useMemo } from 'react'
 import { ProductItem } from '../types/ProductItem';
 import useFirestoreData from './useFirestoreData';
 

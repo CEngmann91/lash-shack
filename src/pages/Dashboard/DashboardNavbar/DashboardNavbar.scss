@@ -23,6 +23,11 @@
 
 
 
+        svg {
+            width: 25px;
+            height: 25px;
+        }
+
         .logo {
             // display: flex;
             // align-items: center;
@@ -43,15 +48,20 @@
                 margin-bottom: 0;
 
                 .link-item {
-                    color: $green-shade-colour;
-                    font-weight: 500;
-                    cursor: pointer;
+                    
+                    svg {
+                        color: $green-shade-colour;
+                        transform: scale(1);
+                        transition: 0.3s ease-in-out;
+                    }
 
                     &-active {
-                        text-shadow: 0 0.5px 0.5px rgba($green-shade-colour, 0.5);
-                        border-bottom: solid 3px $green-shade-colour;
-                        color: inherit;
-                        // font-weight: 700 !important;
+
+                        svg {
+                            cursor: pointer;
+                            color: $pink-colour;
+                            transform: scale(1.2);
+                        }
                     }
                 }
             }

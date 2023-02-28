@@ -10,19 +10,19 @@
         width: 30rem !important;
         height: 22rem !important;
     }
+}
 
 
 
+@media only screen and (max-width: 992px) {}
 
-    @media only screen and (max-width: 992px) {}
+@media only screen and (max-width: 768px) {}
 
-    @media only screen and (max-width: 768px) {}
-
-    @media only screen and (max-width: 576px) {
+@media only screen and (max-width: 576px) {
+    .testimonials__section {
         .swiper-slide {
-            // width: 25rem !important;
-            // height: 30rem !important;
+            width: 22rem !important;
+            height: 20rem !important;
         }
     }
-
 }

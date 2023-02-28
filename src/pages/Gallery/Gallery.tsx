@@ -9,7 +9,7 @@ import "swiper/scss/pagination";
 import { EffectCoverflow, Pagination } from "swiper";
 
 import './Gallery.scss';
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { LoadingSpinner, PageWrapper, SkeletonImage } from '../../components'
 import { getAllDownloadURLRef } from '../../helpers/firebase/firebaseHelper';
 import GalleryCard from "./GalleryCard/GalleryCard";

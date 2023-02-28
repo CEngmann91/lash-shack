@@ -1,5 +1,5 @@
 import './Avatar.scss';
-import React, { useEffect } from 'react'
+import { useEffect, MouseEvent } from 'react'
 import { Icon_Account } from '../../res/icons';
 import SkeletonImage from '../UI/SkeletonImage/SkeletonImage';
 
@@ -8,7 +8,7 @@ type AvatarProps = {
     className?: string;
     scale?: string;
     borderRadius?: string;
-    onClick?: (e: React.MouseEvent<HTMLElement>) => void;
+    onClick?: (e: MouseEvent<HTMLElement>) => void;
 }
 const Avatar = ({ url, className, scale = '25px', borderRadius = '50%', onClick }: AvatarProps) => {
 

@@ -1,5 +1,5 @@
 import './ProductDetails.scss';
-import React, { useEffect, useState } from 'react'
+import { FormEvent, useEffect, useState } from 'react'
 import { LoadingSpinner, MotionButton, PageWrapper } from '../../components'
 import { Container, Col, Row } from 'reactstrap';
 import { useParams } from 'react-router-dom';
@@ -32,7 +32,7 @@ const ProductDetails = () => {
     const { title, category, subServiceCategory, shortDesc, description, imgUrl, price, reviews, upcomingDates } = product;
 
 
-    function handleFormSubmit(e: React.FormEvent<EventTarget | HTMLFormElement>) {
+    function handleFormSubmit(e: FormEvent<EventTarget | HTMLFormElement>) {
         // We don't want our page to refresh
         e.preventDefault();
 

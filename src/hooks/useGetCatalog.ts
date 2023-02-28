@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import { useMemo } from 'react'
 import { ProductItem } from '../types/ProductItem';
 import useGetCourses from './useGetCourses';
 import useGetServices from './useGetServices';
@@ -15,18 +15,12 @@ const useGetCatalog = () => {
             // data = data.sort((a, b) => a.category.localeCompare(b.category));
             return data;
         }
-
         return [] as ProductItem[];
-    }, [loadingCourses, loadingServices]);
+    }, [courses, services]);
 
+    const loading = useMemo(() => loadingCourses, [loadingCourses, loadingServices]);
 
-    const loading = useMemo(() => {
-        return (loadingCourses);
-    }, [loadingCourses, loadingServices]);
-
-    const error = useMemo(() => {
-        return (!getCoursesError || !getServicesError)
-    }, [getCoursesError, getServicesError]);
+    const error = useMemo(() => (!getCoursesError || !getServicesError), [getCoursesError, getServicesError]);
 
     
 

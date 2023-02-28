@@ -1,10 +1,10 @@
 import './SectionContainerWrapper.scss'
-import React from 'react'
+import { ReactNode } from 'react'
 import { Container, Row } from 'reactstrap'
 
 interface SectionContainerWrapperProps {
     className?: string;
-    children: React.ReactNode;
+    children: ReactNode;
 }
 const SectionContainerWrapper = ({ className, children, ...props }: SectionContainerWrapperProps) => {
 

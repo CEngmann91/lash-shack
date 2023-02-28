@@ -1,12 +1,12 @@
 import './UploadInput.scss';
-import React from 'react';
+import { ChangeEventHandler, ReactNode } from 'react';
 
 type UploadInputProps = {
     className?: string;
     value?: string | number | readonly string[] | undefined;
-    // onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-    onChange?: React.ChangeEventHandler<HTMLInputElement> | undefined;
-    children: React.ReactNode;
+    // onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+    onChange?: ChangeEventHandler<HTMLInputElement> | undefined;
+    children: ReactNode;
     disabled?: boolean;
     accept?: string;
 }

@@ -1,13 +1,13 @@
 import './MotionButton.scss';
 import { motion } from 'framer-motion'
-import React, { useCallback } from 'react'
+import { MouseEvent, ReactNode, HTMLAttributes } from 'react'
 
-interface MotionButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
+interface MotionButtonProps extends HTMLAttributes<HTMLButtonElement> {
     className?: string;
     type?: "button" | "submit" | "reset" | undefined;
     disabled?: boolean;
-    onClick?: (e: React.MouseEvent<HTMLElement>) => void;
-    children: React.ReactNode;
+    onClick?: (e: MouseEvent<HTMLElement>) => void;
+    children: ReactNode;
 }
 const MotionButton = ({ className, type, disabled, onClick, children, ...props }: MotionButtonProps) => {
     // const handleClick = useCallback(onClick, []);

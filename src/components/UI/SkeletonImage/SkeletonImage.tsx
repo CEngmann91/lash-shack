@@ -1,14 +1,16 @@
 import './SkeletonImage.scss';
-import React, { useRef, useState } from 'react'
+import { useMemo, useState } from 'react'
 
 type SkeletonImageProps = {
     className: string;
     src: string;
     alt?: string;
-    // onClick: (e?: React.MouseEvent<HTMLElement>) => void;
 }
 const SkeletonImage = ({ className, src, alt }: SkeletonImageProps) => {
     const [loaded, setLoaded] = useState(false);
+
+
+    const url = useMemo(() => src, [src]);
 
     function removePlaceholder() {
         setLoaded(true);
@@ -17,9 +19,9 @@ const SkeletonImage = ({ className, src, alt }: SkeletonImageProps) => {
     return (
         <div className={`image-wrapper ${className}`} data-loaded={loaded}>
             <div className="placeholder"/>
-            <img onLoad={removePlaceholder} onError={removePlaceholder} loading="lazy" src={src} alt={alt}/>
+            <img onLoad={removePlaceholder} onError={removePlaceholder} loading="lazy" src={url} alt={alt}/>
         </div>
     )
 }
 
-export default React.memo(SkeletonImage)
+export default SkeletonImage

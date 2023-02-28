@@ -1,4 +1,3 @@
-import React from 'react'
 import { Container, Row } from 'reactstrap'
 import { ProductItem } from '../../../../types/ProductItem';
 import ProductCard from '../ProductCard/ProductCard'

@@ -44,6 +44,27 @@
     }
 }
 
+.app__border-bottom {
+    position: relative;
+
+    &::before {
+        content: '';
+        position: absolute;
+        bottom: -3px;
+        left: 0;
+        height: 3px;
+        width: 100%;
+        transition: 0.3s;
+        border-radius: 25px;
+        // transform: scaleX(1);
+        background: #4070f4;
+    }
+
+    &:hover::before {
+        transform: scaleX(1.2);
+    }
+}
+
 
 
 

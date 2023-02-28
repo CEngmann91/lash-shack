@@ -1,6 +1,17 @@
 @import '../../res/colours.scss';
 @import '../../constants/constants.scss';
 
+
+.dashboard-sidebar {
+    display: flex;
+    flex: 1;
+    position: fixed;
+    background: red;
+    height: 100vh;
+    width: 100px;
+    z-index: 999;
+}
+
 .dashboard__section {
 
 

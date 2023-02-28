@@ -1,5 +1,4 @@
 import './TestimonialCard.scss';
-import React from 'react'
 import { Container, Row } from 'reactstrap'
 import { Testimonial } from '../../../types/Testimonial';
 import { Icon_Star } from '../../../res/icons';

@@ -1,5 +1,4 @@
 import './ImageBanner.scss';
-import React from 'react'
 import { Container } from 'reactstrap';
 
 type ImageBannerProps = {

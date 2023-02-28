@@ -1,5 +1,5 @@
 import './DashboardNavbar.scss';
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Col, Container, Row } from 'reactstrap';
 import { motion } from 'framer-motion';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -72,15 +72,15 @@ const DashboardNavbar = () => {
                             <div className="navigation app__device-hide-mobile">
                                 <ul className="navbar-nav--links">
                                     {user.account === "Admin" ?
-                                        (NAVIGATION.DASHBOARD_ADMIN_ROUTES.map(({ title, to }, key) => (
-                                            <li className='nav--link-item' key={key}>
-                                                <NavbarItem to={to} activeClassName="link-item-active" idleClassName='link-item'>{title}</NavbarItem>
+                                        (NAVIGATION.DASHBOARD_ADMIN_ROUTES.map(({ id, title, icon, to }) => (
+                                            <li key={id}>
+                                                <NavbarItem to={to} activeClassName="link-item-active" idleClassName='link-item'>{icon}</NavbarItem>
                                             </li>
                                         )))
                                         :
-                                        (NAVIGATION.DASHBOARD_ROUTES.map(({ title, to }, key) => (
-                                            <li className='nav--link-item' key={key}>
-                                                <NavbarItem to={to} activeClassName="link-item-active" idleClassName='link-item'>{title}</NavbarItem>
+                                        (NAVIGATION.DASHBOARD_ROUTES.map(({ id, title, icon, to }) => (
+                                            <li key={id}>
+                                                <NavbarItem to={to} activeClassName="link-item-active" idleClassName='link-item'>{icon}</NavbarItem>
                                             </li>
                                         )))
                                     }

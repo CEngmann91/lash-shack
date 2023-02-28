@@ -1,5 +1,5 @@
 import './Checkout.scss';
-import React, { useState } from 'react'
+import { FormEvent, useState } from 'react'
 import { ImageBanner, MotionButton, PageWrapper } from '../../components'
 import { Col, Container, Row, Form, FormGroup } from 'reactstrap';
 import { useSelector as useReduxSelector } from 'react-redux';
@@ -97,7 +97,7 @@ const Checkout = () => {
     clearFormFields();
   }
 
-  const handleFormSubmit = async (e: React.FormEvent<EventTarget | HTMLFormElement>) => {
+  const handleFormSubmit = async (e: FormEvent<EventTarget | HTMLFormElement>) => {
     e.preventDefault();
 
     // const target = e.target as typeof e.target & {

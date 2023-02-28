@@ -1,13 +1,19 @@
 import './DrawerMenu.scss';
-import React from 'react'
 import { NAVIGATION } from '../../constants/constants';
 import { NavLink } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 
-
-const overlayVariants = {
-    closed: { opacity: 0 },
-    open: { opacity: 1 }
+const containerVariants = {
+    closed: {
+        top: '-100%',
+        transition: {
+            delay: 0.7,
+            duration: 0.2,
+        }
+    },
+    open: {
+        top: 0
+    }
 };
 
 const sideVariants = {
@@ -27,12 +33,12 @@ const sideVariants = {
 
 const itemVariants = {
     closed: {
-        y: 200,
         opacity: 0,
+        y: 100,
     },
     open: {
-        y: 0,
         opacity: 1,
+        y: 0,
     }
 };
 
@@ -52,15 +58,10 @@ const DrawerMenu = ({ isOpen, onClose }: DrawerMenuProps) => {
                 {isOpen && (
                     <motion.div
                         className='menu'
-                        initial={{ top: '-100%' }}
-                        animate={{ top: 0 }}
-                        exit={{
-                            top: '-100%',
-                            transition: {
-                                // delay: 0.7,
-                                duration: 0.2,
-                            }
-                        }}
+                        initial="closed"
+                        animate="open"
+                        exit="closed"
+                        variants={containerVariants}
                     >
                         <motion.div
                             initial="closed"
@@ -73,16 +74,12 @@ const DrawerMenu = ({ isOpen, onClose }: DrawerMenuProps) => {
                                 {NAVIGATION.MAIN_ROUTES.map(({ id, title, to }) => (
                                     <motion.li
                                         key={id}
+                                        className='nav--link-item'
                                         whileHover={{ scale: 1.1 }}
                                         variants={itemVariants}
-                                        onClick={onClose}
-                                        className='nav--link-item'
-                                    >{title}</motion.li>
-
-
-                                    // <li className='nav--link-item' key={key}>
-                                    //     <NavLink to={to}>{title}</NavLink>
-                                    // </li>
+                                    >
+                                        <NavLink to={to}>{title}</NavLink>
+                                    </motion.li>
                                 ))}
                             </ul>
                         </motion.div>

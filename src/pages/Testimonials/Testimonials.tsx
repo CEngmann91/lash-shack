@@ -9,7 +9,6 @@ import "swiper/scss/pagination";
 import { EffectCoverflow, Autoplay, Pagination } from "swiper";
 
 import './Testimonials.scss';
-import React from 'react'
 import { LoadingSpinner, PageWrapper } from '../../components'
 import TestimonialCard from "./TestimonialCard/TestimonialCard";
 import useGetTestimonials from "../../hooks/useGetTestimonials";
@@ -50,10 +49,12 @@ const Testimonials = () => {
                         slideToClickedSlide={false}
                         modules={[EffectCoverflow, Pagination, Autoplay]}
                     >
-                        {testimonials?.map((testimonial, key) =>
-                            <SwiperSlide key={key}>
-                                <TestimonialCard data={testimonial} />
-                            </SwiperSlide>
+                        {testimonials?.map((testimonial) =>
+                            <div key={testimonial.id}>
+                                <SwiperSlide>
+                                    <TestimonialCard data={testimonial} />
+                                </SwiperSlide>
+                            </div>
                         )}
                     </Swiper>
                 }

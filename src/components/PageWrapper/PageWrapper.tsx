@@ -1,12 +1,13 @@
-import React from 'react'
+import { ReactNode } from 'react'
 
 type PageWrapperProps = {
   title: string;
-  children: React.ReactNode;
+  className?: string;
+  children: ReactNode;
 }
-const PageWrapper = ({ title, children }: PageWrapperProps) => {
+const PageWrapper = ({ title, className, children }: PageWrapperProps) => {
   document.title = "Lash Shack - " + title;
-  return <div className='w-100'>{children}</div>
+  return <div className={`${className} w-100`}>{children}</div>
 }
 
 export default PageWrapper

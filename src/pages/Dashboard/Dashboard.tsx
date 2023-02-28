@@ -1,5 +1,4 @@
 import './Dashboard.scss';
-import React from 'react'
 import { PageWrapper } from '../../components';
 import { Col, Container, Row } from 'reactstrap';
 import useGetUsers from '../../hooks/useGetUsers';
@@ -9,8 +8,11 @@ import useGetOrders from '../../hooks/useGetOrders';
 import { useSelector as useReduxSelector } from 'react-redux';
 import { formatCurrency } from '../../res/funcs';
 import { RootState } from '../../redux/store';
+import { useDate } from '../../hooks/useDate';
+import DashboardSidebar from './DashboardSidebar/DashboardSidebar';
 
 const Dashboard = () => {
+    const { getRelativeTimeString } = useDate();
     const user = useReduxSelector((state: RootState) => state.userAccount.user);
     const { users, loadingUsers, getUsersError } = useGetUsers();
     const { orders, totalOrderAmount, totalOrderAmountThisMonth, loadingOrders, getOrdersError, getOrdersFromCurrentUser, totalOrderAmountFromCurrentUser } = useGetOrders((user.account === "Admin" ? null : user.uid));
@@ -20,42 +22,40 @@ const Dashboard = () => {
 
 
 
-
-
     return (
         <PageWrapper title="Dashboard">
-
             <section className='dashboard__section'>
                 <Container>
                     <Row>
 
                         {user.account !== "Admin" ?
                             <>
-                                <Col className="lg-3">
+                                <Col lg="3">
                                     <div className="orders__box">
                                         <h5>Total Orders</h5>
                                         {loadingOrders ?
                                             <span>Loading...</span>
                                             :
-                                            <span>{getOrdersFromCurrentUser ? getOrdersFromCurrentUser?.length : 0} / {formatCurrency(totalOrderAmountFromCurrentUser)}</span>
+                                            <span>{formatCurrency(totalOrderAmountFromCurrentUser)} ({getOrdersFromCurrentUser ? getOrdersFromCurrentUser?.length : 0})</span>
                                         }
                                     </div>
                                 </Col>
 
-                                <Col className="lg-3">
+                                <Col lg="3">
                                     <div className="revenue__box">
                                         <h5>Member Since</h5>
                                         {loadingOrders ?
                                             <span>Loading...</span>
                                             :
-                                            <span>{user.memberSince}</span>
+                                            <span>{getRelativeTimeString(new Date(user.memberSince.slice(0, -7)))}</span>
+                                            // <span>{user.memberSince.slice(0, -7)}</span>
                                         }
                                     </div>
                                 </Col>
                             </>
                             :
                             <>
-                                <Col className="lg-3">
+                                <Col lg="3">
                                     <div className="revenue__box">
                                         <h5>Total Sales</h5>
                                         {loadingOrders ?
@@ -65,7 +65,7 @@ const Dashboard = () => {
                                         }
                                     </div>
                                 </Col>
-                                <Col className="lg-3">
+                                <Col lg="3">
                                     <div className="orders__box">
                                         <h5>Total Orders</h5>
                                         {loadingOrders ?
@@ -75,7 +75,7 @@ const Dashboard = () => {
                                         }
                                     </div>
                                 </Col>
-                                <Col className="lg-3">
+                                <Col lg="3">
                                     <div className="users__box">
                                         <h5>Total Users</h5>
                                         {loadingUsers ?
@@ -86,7 +86,7 @@ const Dashboard = () => {
                                     </div>
                                 </Col>
 
-                                <Col className="lg-3">
+                                <Col lg="3">
                                     <div className="catalog__box">
                                         <h5>Catalog Total</h5>
                                         {loadingServices || loadingCourses ?
@@ -101,8 +101,6 @@ const Dashboard = () => {
                     </Row>
                 </Container>
             </section>
-
-            {/* Dashboard */}
         </PageWrapper>
     )
 }

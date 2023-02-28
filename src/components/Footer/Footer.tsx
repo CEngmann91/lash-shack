@@ -1,5 +1,4 @@
 import './Footer.scss';
-import React from 'react'
 import { Container, Row, Col, ListGroup, ListGroupItem } from 'reactstrap'
 import images from '../../res/images';
 import { Link } from 'react-router-dom';

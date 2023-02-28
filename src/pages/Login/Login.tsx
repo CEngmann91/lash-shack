@@ -1,5 +1,6 @@
 import './Login.scss';
-import React from 'react'
+import { useLocation } from 'react-router-dom'
+import { FormEvent } from 'react'
 import { Col, Container, Row, Form, FormGroup } from 'reactstrap'
 import { Checkbox, MotionButton, PageWrapper } from '../../components'
 import { Link, useNavigate } from 'react-router-dom';
@@ -10,13 +11,14 @@ import { useApplicationActions } from '../../redux/hooks/useApplicationActions';
 
 const Login = () => {
     const navigate = useNavigate();
+    const location = useLocation();
     const { setAsLoading, setAsNotLoading } = useApplicationActions();
     const { setAsActive, setFullName, setProfile, setAccountType } = useUserActions();
 
 
 
 
-    const handleFormSubmit = async(e: React.FormEvent<EventTarget | HTMLFormElement>) => {
+    const handleFormSubmit = async (e: FormEvent<EventTarget | HTMLFormElement>) => {
         e.preventDefault();
 
         setAsLoading();
@@ -35,18 +37,16 @@ const Login = () => {
         await login(email, password);
     };
 
-    const login = async(email: string, password: string) =>
-    {
+    const login = async (email: string, password: string) => {
         const signInReq = await signIntoUserAccount(email, password)
-        if (signInReq)
-        {
+        if (signInReq) {
             if (!signInReq.active) {
                 alert(signInReq.email + " is not active");
                 await signUserOut(signInReq);
                 setAsNotLoading();
                 return;
             }
-            
+
             // console.log(signInReq);
             setAsActive(true);
             setAccountType(signInReq.account);
@@ -55,7 +55,14 @@ const Login = () => {
 
             setAsNotLoading();
 
-            navigate(-1);
+
+            if (location.pathname.includes("login")
+                || location.pathname.includes("register")
+                || location.pathname.includes("forgot")
+            )
+                navigate("/");
+            else
+                navigate(-1);
         }
         else {
 
@@ -82,7 +89,7 @@ const Login = () => {
                                     <input name="password" type="password" placeholder='Enter Password' autoComplete='password' />
                                 </FormGroup>
 
-                                <Checkbox label='Stay Signed In' onChange={(value) => {}} />
+                                <Checkbox label='Stay Signed In' onChange={(value) => { }} />
 
                                 <MotionButton className='login-button' type='submit'>
                                     Login

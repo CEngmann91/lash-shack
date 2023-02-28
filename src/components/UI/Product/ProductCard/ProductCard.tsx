@@ -1,5 +1,4 @@
 import './ProductCard.scss';
-import React from 'react'
 import { Icon_Minus, Icon_Plus, Icon_Share, Icon_ShoppingBasket, Icon_WishList, Icon_WishListFilled } from '../../../../res/icons';
 import { Col } from 'reactstrap';
 import { motion } from 'framer-motion';

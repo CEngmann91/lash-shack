@@ -1,7 +1,4 @@
-import { collection, DocumentData, getDocs, query, where } from 'firebase/firestore';
-import React, { useMemo, useState } from 'react'
-import { firestore } from '../firebase/firebase';
-import { getCurrentUser } from '../helpers/firebase/firebaseHelper';
+import { useMemo } from 'react'
 import { PurchaseOrder } from '../types/PurchaseOrder';
 import useFirestoreData from './useFirestoreData';
 
@@ -23,9 +20,7 @@ const useGetOrders = (userID:string | null = null) => {
 
     const getOrdersError = useMemo(() =>  dataError, [dataError]);
 
-    const getOrdersFromCurrentUser = useMemo(() => {
-        return orders?.filter(item => item.customerID === userID);
-    }, [userID]);
+    const getOrdersFromCurrentUser = useMemo(() => orders?.filter(item => item.customerID === userID), [userID]);
 
     const totalOrderAmountFromCurrentUser = useMemo(() => {
         if (!getOrdersFromCurrentUser || getOrdersFromCurrentUser?.length === 0) return 0;
@@ -34,10 +29,7 @@ const useGetOrders = (userID:string | null = null) => {
         return total;
     }, [userID]);
 
-    const totalOrderAmount = useMemo(() => {
-        const total = orders?.reduce((acc, curr) => acc + curr.total, 0);
-        return total;
-    }, [data]);
+    const totalOrderAmount = useMemo(() => orders?.reduce((acc, curr) => acc + curr.total, 0), [data]);
 
     const totalOrderAmountThisMonth = useMemo(() => {
         const dateTimeNow = new Date().toLocaleString('en-GB');

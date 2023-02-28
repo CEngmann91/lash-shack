@@ -1,5 +1,4 @@
 import './Services.scss'
-import React from 'react'
 import { ImageBanner, PageWrapper } from '../../components'
 import { Container, Row, Col } from 'reactstrap'
 

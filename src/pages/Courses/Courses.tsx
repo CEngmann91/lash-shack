@@ -1,5 +1,4 @@
 import './Courses.scss';
-import React from 'react'
 import { Container, Row, Col } from 'reactstrap'
 import { LimitedTimeOffer, PageWrapper } from '../../components'
 import images from '../../res/images'

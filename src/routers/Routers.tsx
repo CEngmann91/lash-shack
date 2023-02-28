@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import { Basket, Checkout, Courses, Dashboard, ForgotPassword, Gallery, Landing, LatestNews, Login, NotFound, Privacy, ProductDetails, Register, Services, Shop, TermsConditions, Wishlist } from '../pages';
-import { Dashboard_Account, Dashboard_Catalog, Dashboard_Messages, Dashboard_Orders, Dashboard_Settings, Dashboard_Users } from '../pages/Dashboard';
+import { Dashboard_Account, Dashboard_Catalog, Dashboard_Messages, Dashboard_Orders, Dashboard_Schedule, Dashboard_Settings, Dashboard_Users } from '../pages/Dashboard';
+import DashboardSidebar from '../pages/Dashboard/DashboardSidebar/DashboardSidebar';
 import AuthRoute from './AuthRoute';
 
 const Routers = () => {
@@ -42,6 +43,7 @@ const Routers = () => {
                 <Route path='dashboard/account' element={<Dashboard_Account />} />
                 <Route path='dashboard/orders' element={<Dashboard_Orders />} />
                 <Route path='dashboard/users' element={<Dashboard_Users />} />
+                <Route path='dashboard/schedule' element={<Dashboard_Schedule />} />
                 <Route path='dashboard/messages' element={<Dashboard_Messages />} />
                 <Route path='dashboard/catalog' element={<Dashboard_Catalog />} />
                 <Route path='dashboard/settings' element={<Dashboard_Settings />} />
