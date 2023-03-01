@@ -46,9 +46,11 @@ export const useDate = () => {
 
     const dayNumeric = useMemo(() => String(date.getDate()).padStart(2, '0'), [date]);
 
+    const monthNumeric = useMemo(() => String(date.getMonth() + 1).padStart(2, '0'), [date]);
+
     const fullMonth = useMemo(() => date.toLocaleString('default', { month: 'long' }), [date]);
 
     const fullYear = useMemo(() => date.getFullYear(), [date]);
 
-    return { getRelativeTimeString, dayOfWeekName, dayNumeric, fullMonth, fullYear }
+    return { getRelativeTimeString, dayOfWeekName, dayNumeric, monthNumeric, fullMonth, fullYear }
 }

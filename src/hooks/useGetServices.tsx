@@ -6,10 +6,17 @@ const useGetServices = () => {
     const { data, loadingData, dataError } = useFirestoreData("services");
 
 
-    const services = useMemo(() =>
+    const services = useMemo(() => 
+    {
+        // Only grab active items.
+        const filtered = (data as ProductItem[])?.filter(item => item.active);
+        // Sort by price.
+        const sorted = filtered?.sort((a, b) => a.price - b.price);
+        return sorted;
+
         // (data as ProductItem[])?.sort((a, b) => a.subServiceCategory.localeCompare(b.subServiceCategory))
-        (data as ProductItem[])?.sort((a, b) => a.price - b.price)
-        , [data]);
+        // (data as ProductItem[])?.sort((a, b) => a.price - b.price)
+    }, [data]);
 
     const loadingServices = useMemo(() => loadingData, [loadingData]);
 

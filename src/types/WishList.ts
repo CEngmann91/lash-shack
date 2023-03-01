@@ -1,0 +1,3 @@
+type WishList = {
+    items: WishListItem[];
+}

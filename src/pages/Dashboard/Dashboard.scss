@@ -1,22 +1,13 @@
 @import '../../res/colours.scss';
 @import '../../constants/constants.scss';
 
-
-.dashboard-sidebar {
-    display: flex;
-    flex: 1;
-    position: fixed;
-    background: red;
-    height: 100vh;
-    width: 100px;
-    z-index: 999;
-}
-
 .dashboard__section {
+    min-height: 100vh;
 
 
-    .revenue__box, .orders__box, .users__box, .catalog__box
-    {
+    
+
+    .revenue__box, .orders__box, .users__box, .catalog__box {
         padding: 20px;
         border-radius: 5px;
         margin-bottom: 30px;
@@ -63,6 +54,10 @@
     }
 
 
+    .stats-header {
+        display: flex;
+        justify-content: center;
+    }
 
 
     @media only screen and (max-width: 992px) {
@@ -92,7 +87,7 @@
     
     @media only screen and (max-width: 576px) {
         .revenue__box, .orders__box, .users__box, .catalog__box {
-
+        
             span {
                 font-size: 1.4rem;
             }

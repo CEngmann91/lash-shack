@@ -1,10 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-type WishListItem = {
-  id: string;
-  dateAdded: string;
-}
-
 const initialState = {
   wishListItems: [] as WishListItem[],
   totalQuantity: 0

@@ -9,13 +9,12 @@ const useGetCatalog = () => {
 
 
     const catalog = useMemo(() => {
-        if (courses && services)
-        {
-            let data = [...courses, ...services];
-            // data = data.sort((a, b) => a.category.localeCompare(b.category));
-            return data;
-        }
-        return [] as ProductItem[];
+        if (loadingServices && loadingCourses)
+            return [] as ProductItem[];
+
+        let data = [...courses, ...services];
+        // data = data.sort((a, b) => a.category.localeCompare(b.category));
+        return data;
     }, [courses, services]);
 
     const loading = useMemo(() => loadingCourses, [loadingCourses, loadingServices]);

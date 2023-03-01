@@ -6,8 +6,14 @@ const useGetCourses = () => {
     const { data, loadingData, dataError } = useFirestoreData("courses");
 
 
-    
-    const courses = useMemo(() => (data as ProductItem[])?.sort((a, b) => a.price - b.price), [data]);
+
+    const courses = useMemo(() => {
+        // Only grab active items.
+        const filtered = (data as ProductItem[])?.filter(item => item.active);
+        // Sort by price.
+        const sorted = filtered?.sort((a, b) => a.price - b.price);
+        return sorted;
+    }, [data]);
 
     const loadingCourses = useMemo(() => loadingData, [loadingData]);
 

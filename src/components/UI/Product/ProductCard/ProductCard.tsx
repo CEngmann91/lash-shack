@@ -31,7 +31,7 @@ const ProductCard = ({ item }: ProductCardProps) => {
 
 
     return (
-        <Col lg='3' md='4' className='product__card mb-4'>
+        <Col lg='3' md='4' className='product__card'>
             <div className="product__image-wrapper">
                 <div className='product__image' onClick={() => navigate(`/shop/${id}`)}>
                     <SkeletonImage className='' src={imgUrl} alt="" />

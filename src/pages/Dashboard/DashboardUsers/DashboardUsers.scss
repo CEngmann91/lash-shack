@@ -1,15 +1,26 @@
 @import '../../../res/global.scss';
 @import '../../../res/colours.scss';
+@import '../../../constants/constants.scss';
+
+.dashboard_users__section {
+    min-height: 100vh;
+    padding: 0;
+}
+
 
 .table {
+    z-index: 4;
 
     thead {
         
         
         tr {
-            background: $beige-colour;
-
+            
             th {
+                position: sticky;
+                top: $navbar-height;
+                background: $beige-colour;
+                z-index: 5;
 
                 svg {
                     padding-left: 10px;

@@ -29,7 +29,7 @@ import { PurchaseOrder } from "../../types/PurchaseOrder";
 export const signIntoUserAccount = async (email: string, password: string)  => {
     let userProfile: UserProfile = {
         uid: "",
-        account: "Standard",
+        account: "Client",
         active: true,
         firstName: '',
         lastName: '',
@@ -83,7 +83,7 @@ export const signIntoUserAccount = async (email: string, password: string)  => {
 export const createAUser = async (firstName: string, lastName: string, email: string, password: string, displayName: string) => {
     let userProfile: UserProfile = {
         uid: "",
-        account: "Standard",
+        account: "Client",
         active: true,
         firstName: '',
         lastName: '',
@@ -106,7 +106,7 @@ export const createAUser = async (firstName: string, lastName: string, email: st
     
             userProfile.uid = userData.uid;
             userProfile.active = true;
-            userProfile.account = "Standard";
+            userProfile.account = "Client";
             userProfile.firstName = firstName;
             userProfile.lastName = lastName;
             userProfile.displayName = `${firstName} ${lastName}`;

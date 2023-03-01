@@ -9,7 +9,7 @@ const ProductList = ({ items }: ProductListProps) => {
 
     return (
         <Container>
-            <Row className='d-flex align-items-center gap-3'>
+            <Row className='d-flex justify-content-center gap-3'>
                 {items?.map((item, key) => {
                     const { active } = item;
 

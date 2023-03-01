@@ -30,20 +30,20 @@ const DashboardUsers = () => {
 
             return (
                 <tr key={key}>
-                    <td>{item.account === "Admin" ?
+                    <td>{item.account === "Manager" ?
                         // <label>&#9819;</label>
                         <Icon_Chess_QueenCrown />
                         :
-                        (item.account === "Employee" ?
+                        (item.account === "Staff" ?
                             // <label>&#9822;{key + 1}</label>
                             <Icon_Chess_Pawn />
                             : (key + 1))
                         }
                     </td>
-                    {/* {item.account === "Admin" ?
+                    {/* {item.account === "Manager" ?
                         <td>&#9819;</td>
                         :
-                        (item.account === "Employee"
+                        (item.account === "Staff"
                             ?
                             <td>&#9822;</td>
                             :
@@ -62,7 +62,7 @@ const DashboardUsers = () => {
                     <td>{getRelativeTimeString(new Date(item.memberSince))}</td>
                     <td>{getRelativeTimeString(new Date(item.lastLoggedIn))}</td>
                     <td className='d-flex gap-2'>
-                        {item.account === "Admin" || item.account === "Employee" ?
+                        {item.account === "Manager" || item.account === "Staff" ?
                             <MotionButton className='dash__action-button' onClick={() => { }}>
                                 <Icon_Calendar className='text-white' />
                             </MotionButton>
@@ -76,7 +76,7 @@ const DashboardUsers = () => {
                             <Icon_Email className='text-white' />
                         </MotionButton>
 
-                        {user.account === "Admin" &&
+                        {user.account === "Manager" &&
                             <MotionButton className='dash__action-button' onClick={() => { }}>
                                 <Icon_Trash className='text-white' />
                             </MotionButton>
@@ -88,7 +88,7 @@ const DashboardUsers = () => {
     )
 
     return (
-        <SectionContainerWrapper>
+        <SectionContainerWrapper className='dashboard_users__section'>
 
             <Col lg='12'>
                 <h4 className='fw-bold'>Users ({users?.length})</h4>

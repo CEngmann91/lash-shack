@@ -92,9 +92,9 @@ const Navbar = () => {
               <Link to="/dashboard" onClick={toggleProfileActions}>Dashboard</Link>
               <Link to="/dashboard/account" onClick={toggleProfileActions}>My Account</Link>
               <Link to="/dashboard/orders" onClick={toggleProfileActions}>Orders</Link>
-              {user.account === "Admin" &&
+              {user.account === "Manager" &&
                 <Link to="/dashboard/users" onClick={toggleProfileActions}>Users</Link>}
-              {user.account === "Admin" &&
+              {user.account === "Manager" &&
                 <Link to="/dashboard/catalog" onClick={toggleProfileActions}>Catalog</Link>}
               <Link to="/dashboard/messages" onClick={toggleProfileActions}>Messages</Link>
               <Link to="/dashboard/settings" onClick={toggleProfileActions}>Settings</Link>

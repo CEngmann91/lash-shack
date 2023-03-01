@@ -3,10 +3,11 @@ import Routers from '../../routers/Routers'
 import LoadingScreen from '../LoadingScreen/LoadingScreen'
 import Navbar from '../navbar/Navbar'
 import Footer from '../Footer/Footer'
-import { DashboardNavbar } from '../../pages/Dashboard'
+import { DashboardNavbar, DashboardWrapper } from '../../pages/Dashboard'
 import { useApplicationActions } from '../../redux/hooks/useApplicationActions'
-import LoadingSpinner from '../LoadingSpinner/LoadingSpinner'
 import DashboardSidebar from '../../pages/Dashboard/DashboardSidebar/DashboardSidebar'
+import NavbarItem from '../navbar/NavbarItem/NavbarItem'
+import { NAVIGATION } from '../../constants/constants'
 
 const Layout = () => {
     const location = useLocation();
@@ -14,13 +15,36 @@ const Layout = () => {
 
 
     return (
-        <>
-            {location.pathname.includes("dashboard") ? <DashboardNavbar /> : <Navbar />}
-            <Routers />
-            <Footer />
+        location.pathname.includes("dashboard")
+            ?
+            <>
+                <DashboardWrapper>
+                    <DashboardNavbar />
+                    <Routers />
+                    <Footer />
+                </DashboardWrapper>
 
-            <LoadingScreen visible={isLoading()} />
-        </>
+
+                <LoadingScreen visible={isLoading()} />
+            </>
+            :
+            <>
+                <Navbar />
+                <Routers />
+                <Footer />
+
+                <LoadingScreen visible={isLoading()} />
+            </>
+
+
+
+        // <>
+        //     {location.pathname.includes("dashboard") ? <DashboardNavbar /> : <Navbar />}
+        //     <Routers />
+        //     <Footer />
+
+        //     <LoadingScreen visible={isLoading()} />
+        // </>
     )
 }
 

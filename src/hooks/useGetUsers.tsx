@@ -36,7 +36,7 @@ const useGetUsers = (removeCurrentUser: boolean = true) => {
 
     const getUsersError = useMemo(() => dataError, [dataError]);
 
-    const getAllStaff = useMemo(() => activeUsers?.filter(item => item.account === "Employee"), [users]);
+    const getAllStaff = useMemo(() => activeUsers?.filter(item => item.account === "Staff"), [users]);
 
 
     // const getUserByID = (id: string) => data?.find(item => item.id === id);

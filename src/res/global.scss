@@ -125,7 +125,7 @@
 
 .app__device {
 
-    &-hide-desktop {
+    /*&-hide-desktop {
 
         // Extra large or Desktop devices
         @media only screen and (min-width: 992px) {
@@ -143,6 +143,28 @@
         }
 
         @media screen and (max-width: 768px) {
+            display: none;
+        }
+    }*/
+
+
+
+
+    &-hide-desktop {
+        // Extra large or Desktop devices
+        @media only screen and (max-width: 992px) {
+            display: none;
+        }
+    }
+    
+    &-hide-tablet {
+        @media only screen and (max-width: 768px) {
+            display: none;
+        }
+    }
+
+    &-hide-mobile {
+        @media only screen and (max-width: 576px) {
             display: none;
         }
     }

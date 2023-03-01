@@ -15,7 +15,7 @@ const Dashboard = () => {
     const { getRelativeTimeString } = useDate();
     const user = useReduxSelector((state: RootState) => state.userAccount.user);
     const { users, loadingUsers, getUsersError } = useGetUsers();
-    const { orders, totalOrderAmount, totalOrderAmountThisMonth, loadingOrders, getOrdersError, getOrdersFromCurrentUser, totalOrderAmountFromCurrentUser } = useGetOrders((user.account === "Admin" ? null : user.uid));
+    const { orders, totalOrderAmount, totalOrderAmountThisMonth, loadingOrders, getOrdersError, getOrdersFromCurrentUser, totalOrderAmountFromCurrentUser } = useGetOrders((user.account === "Manager" ? null : user.uid));
     const { courses, loadingCourses, getCoursesError } = useGetCourses();
     const { services, loadingServices, getServicesError } = useGetServices();
 
@@ -26,11 +26,11 @@ const Dashboard = () => {
         <PageWrapper title="Dashboard">
             <section className='dashboard__section'>
                 <Container>
-                    <Row>
+                    <Row className='stats-header'>
 
-                        {user.account !== "Admin" ?
+                        {user.account !== "Manager" ?
                             <>
-                                <Col lg="3">
+                                <Col lg='3' md='3'>
                                     <div className="orders__box">
                                         <h5>Total Orders</h5>
                                         {loadingOrders ?
@@ -41,7 +41,7 @@ const Dashboard = () => {
                                     </div>
                                 </Col>
 
-                                <Col lg="3">
+                                <Col lg='3' md='3'>
                                     <div className="revenue__box">
                                         <h5>Member Since</h5>
                                         {loadingOrders ?
@@ -55,9 +55,9 @@ const Dashboard = () => {
                             </>
                             :
                             <>
-                                <Col lg="3">
+                                <Col lg='3' md='3'>
                                     <div className="revenue__box">
-                                        <h5>Total Sales</h5>
+                                        <h5>Total Revenue</h5>
                                         {loadingOrders ?
                                             <span>Loading...</span>
                                             :
@@ -65,7 +65,7 @@ const Dashboard = () => {
                                         }
                                     </div>
                                 </Col>
-                                <Col lg="3">
+                                <Col lg='3' md='3'>
                                     <div className="orders__box">
                                         <h5>Total Orders</h5>
                                         {loadingOrders ?
@@ -75,7 +75,7 @@ const Dashboard = () => {
                                         }
                                     </div>
                                 </Col>
-                                <Col lg="3">
+                                <Col lg='3' md='3'>
                                     <div className="users__box">
                                         <h5>Total Users</h5>
                                         {loadingUsers ?
@@ -86,7 +86,7 @@ const Dashboard = () => {
                                     </div>
                                 </Col>
 
-                                <Col lg="3">
+                                <Col lg='3' md='3'>
                                     <div className="catalog__box">
                                         <h5>Catalog Total</h5>
                                         {loadingServices || loadingCourses ?
@@ -99,6 +99,20 @@ const Dashboard = () => {
                             </>
                         }
                     </Row>
+
+                    {/* <Row>
+                        <Col lg='3' md='3'>
+                            <div className="catalog__box">
+                                <h5>Catalog Total</h5>
+                                {loadingServices || loadingCourses ?
+                                    <span>Loading...</span>
+                                    :
+                                    <span>{services?.length + courses?.length}</span>
+                                }
+                            </div>
+                        </Col>
+                    </Row> */}
+
                 </Container>
             </section>
         </PageWrapper>

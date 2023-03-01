@@ -1,4 +1,4 @@
-import { BsFillBasketFill, BsStarFill, BsTrash, BsBellFill, BsCalendarCheck, BsPencilFill } from 'react-icons/bs';
+import { BsFillBasketFill, BsStarFill, BsTrash, BsBellFill, BsCalendarCheck, BsPencilFill, BsCalendarFill } from 'react-icons/bs';
 import { BiSearchAlt } from 'react-icons/bi';
 import { FiHeart } from 'react-icons/fi';
 import { IoIosArrowUp } from 'react-icons/io';
@@ -12,16 +12,18 @@ import { RiInformationFill, RiSettings3Fill, RiMessage2Fill, RiAccountPinCircleF
 import { ImLocation, ImPhone, ImHome } from 'react-icons/im';
 import { TbCheckupList } from 'react-icons/tb';
 import { SiBookstack } from 'react-icons/si';
-import { ImUsers } from 'react-icons/im';
+import { ImUsers, ImExit } from 'react-icons/im';
 
 export {
     ImHome as Icon_Dash_Home,
     RiAccountPinCircleFill as Icon_Dash_Account,
+    BsCalendarFill as Icon_Dash_Calendar,
     FaFileInvoiceDollar as Icon_Dash_Orders,
     RiMessage2Fill as Icon_Dash_Message,
     ImUsers as Icon_Dash_Users,
     SiBookstack as Icon_Dash_Catalog,
     RiSettings3Fill as Icon_Dash_Settings,
+    ImExit as Icon_Dash_Exit,
 
     BsFillBasketFill as Icon_ShoppingBasket,
     FiHeart as Icon_WishList,

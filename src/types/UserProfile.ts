@@ -3,7 +3,7 @@ import { PurchaseOrder } from "./PurchaseOrder";
 import { Schedule } from "./Schedule";
 import { ShopLocations } from "./ShopLocations";
 
-export type AccountType = "Standard" | "Admin" | "Employee";
+export type AccountType = "Client" | "Manager" | "Staff";
 export type UserProfile = {
     uid: string;
     account: AccountType;
@@ -16,10 +16,10 @@ export type UserProfile = {
     photoURL: string;
     // schedule: Schedule;
     // orderHistory: PurchaseOrder[];
+    // wishlist: WishList;
     memberSince: string;
     lastLoggedIn: string;
     // subscribed: boolean;
     billingAddress: Address | null;
     preferredLocation: ShopLocations;
-
 }

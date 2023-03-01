@@ -1,15 +1,5 @@
 import { ReactNode } from "react";
-import { Icon_Dash_Account, Icon_Dash_Catalog, Icon_Dash_Home, Icon_Dash_Message, Icon_Dash_Orders, Icon_Dash_Settings, Icon_Dash_Users } from "../res/icons"
-
-
-
-// ImHome as Icon_Dash_Home,
-// RiAccountPinCircleFill as Icon_Dash_Account,
-// FaFileInvoiceDollar as Icon_Dash_Orders,
-// RiMessage2Fill as Icon_Dash_Message,
-// SiBookstack as Icon_Dash_Catalog,
-// RiSettings3Fill as Icon_Dash_Settings,
-
+import { Icon_Dash_Account, Icon_Dash_Calendar, Icon_Dash_Catalog, Icon_Dash_Home, Icon_Dash_Message, Icon_Dash_Orders, Icon_Dash_Settings, Icon_Dash_Users } from "../res/icons"
 
 export type NavType = {
     id: number;
@@ -65,7 +55,7 @@ export const NAVIGATION = {
         {
             id: 2,
             title: "Calendar",
-            icon: Icon_Dash_Home,
+            icon: Icon_Dash_Calendar,
             to: "dashboard/schedule"
         },
         {
@@ -96,30 +86,36 @@ export const NAVIGATION = {
         },
         {
             id: 2,
+            title: "Calendar",
+            icon: Icon_Dash_Calendar,
+            to: "dashboard/schedule"
+        },
+        {
+            id: 3,
             title: "Orders",
             icon: Icon_Dash_Orders,
             to: "dashboard/orders"
         },
         {
-            id: 3,
+            id: 4,
             title: "Users",
             icon: Icon_Dash_Users,
             to: "dashboard/users"
         },
         {
-            id: 4,
+            id: 5,
             title: "Messages",
             icon: Icon_Dash_Message,
             to: "dashboard/messages"
         },
         {
-            id: 5,
+            id: 6,
             title: "Catalog",
             icon: Icon_Dash_Catalog,
             to: "dashboard/catalog"
         },
         {
-            id: 6,
+            id: 7,
             title: "Settings",
             icon: Icon_Dash_Settings,
             to: "dashboard/settings"

@@ -15,6 +15,7 @@ export type ProductItem = {
     shortDesc: string;
     description: string;
     duration: number;
-    reviews: Review[],
-    upcomingDates: string[]
+    reviews: Review[];
+    upcomingDates: string[];
+    dateCreated?: string;
 }

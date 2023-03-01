@@ -18,7 +18,7 @@ import SectionContainerWrapper from '../../../components/SectionContainerWrapper
 const DashboardCatalog = () => {
     const navigate = useNavigate();
     const user = useReduxSelector((state: RootState) => state.userAccount.user);
-    const isAnAdmin = user.account === "Admin";
+    const isAnAdmin = user.account === "Manager";
 
     type Tab = "Courses" | "Services";
     const [selectedTab, setSelectedTab] = useState<Tab>("Courses");
@@ -283,7 +283,7 @@ const DashboardCatalog = () => {
 
 
     return (
-        <SectionContainerWrapper>
+        <SectionContainerWrapper className='dashboard_catalog__section'>
             <Col lg='12' className='dash__catalog__menu'>
                 <div className='d-flex gap-2'>
                     <MotionButton className={`tab ${selectedTab === "Courses" ? "tab-selected" : ""}`} onClick={() => {

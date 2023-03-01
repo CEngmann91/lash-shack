@@ -1,45 +1,90 @@
 @import '../../../res/colours.scss';
+@import '../../../constants/constants.scss';
 
-.dash__catalog {
+.dashboard_catalog__section {
+    min-height: 100vh;
+    padding: 0;
 
-
-
-    &__menu {
-        display: flex;
-        flex: 1;
-        align-items: center;
-        justify-content: space-between;
-        padding: 1.5rem 2rem;
-        height: 40px;
-        background: $beige-colour;
-
-        button {
-            background: $green-shade-colour;
-            color: white;
-        }
-
-        .tab {
-            background: lightgray;
-            color: black;
-            border: 2px solid grey;
-
-            transition: 0.3s ease-in-out;
+    .dash__catalog {
 
 
-            &-selected {
-                background: $pink-colour;
-                border: 2px solid $green-shade-colour;
+
+        &__menu {
+            display: flex;
+            flex: 1;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.5rem 2rem;
+            height: 40px;
+            background: $beige-colour;
+
+            position: sticky;
+            top: $navbar-height;
+            z-index: 5;
+
+            button {
+                background: $green-shade-colour;
                 color: white;
             }
+
+            .tab {
+                background: lightgray;
+                color: black;
+                border: 2px solid grey;
+
+                transition: 0.3s ease-in-out;
+
+
+                &-selected {
+                    background: $pink-colour;
+                    border: 2px solid $green-shade-colour;
+                    color: white;
+                }
+            }
+        }
+
+
+        .catalog__form {
+
+
+
+            .new-product__photo-picker {}
+
         }
     }
 
 
-    .catalog__form {
 
 
-
-        .new-product__photo-picker {}
-
+    .table {
+        z-index: 4;
+    
+        thead {
+    
+    
+            tr {
+    
+                th {
+                    position: sticky;
+                    top: $navbar-height + 48px;
+                    background: $beige-colour;
+                    z-index: 5;
+                }
+            }
+        }
+    
+        tbody {
+    
+            tr {
+    
+                td {}
+            }
+        }
+    
+        @media only screen and (max-width: 992px) {}
+    
+        @media only screen and (max-width: 768px) {}
+    
+        @media only screen and (max-width: 576px) {}
     }
 }

@@ -15,12 +15,13 @@ import { useScroller } from '../../../hooks/useScroller';
 import { signUserOut } from '../../../helpers/firebase/firebaseHelper';
 import { useUserActions } from '../../../redux/hooks/useUserActions';
 import { useApplicationActions } from '../../../redux/hooks/useApplicationActions';
-import { capitalizeFirstLetter } from '../../../res/funcs';
+import { useMyLocation } from '../../../hooks/useMyLocation';
+import { Icon_Dash_Exit } from '../../../res/icons';
 
 const DashboardNavbar = () => {
     const navigate = useNavigate();
-    const location = useLocation();
-    
+    const { getLocationTitle } = useMyLocation();
+
     const scrolledDown = useScroller();
     const { authenticated } = useAuth();
     const { setAsLoading, setAsNotLoading } = useApplicationActions();
@@ -45,16 +46,6 @@ const DashboardNavbar = () => {
             });
     }
 
-    function getLocationTitle() {
-        const array = location.pathname.split('/');
-        if (array)
-        {
-            const last = array[array.length-1];
-            return capitalizeFirstLetter(last);
-        }
-        return "";
-    }
-
 
     return (
         <header className={`dash__header ${scrolledDown ? "dash__header--scroll" : ""}`}>
@@ -69,9 +60,9 @@ const DashboardNavbar = () => {
                             </div>
 
 
-                            <div className="navigation app__device-hide-mobile">
+                            {/* <div className="navigation app__device-hide-mobile">
                                 <ul className="navbar-nav--links">
-                                    {user.account === "Admin" ?
+                                    {user.account === "Manager" ?
                                         (NAVIGATION.DASHBOARD_ADMIN_ROUTES.map(({ id, title, icon, to }) => (
                                             <li key={id}>
                                                 <NavbarItem to={to} activeClassName="link-item-active" idleClassName='link-item'>{icon}</NavbarItem>
@@ -85,12 +76,10 @@ const DashboardNavbar = () => {
                                         )))
                                     }
                                 </ul>
-                            </div>
+                            </div> */}
 
 
-                            <div className='app__device-hide-desktop'>
-                                <h4 className='dash_navbar__title'>{getLocationTitle()}</h4>
-                            </div>
+                            <h4 className='dash_navbar__title'>{getLocationTitle()}</h4>
 
 
                             {showingProfileActions && <div className="dash_navbar__icons-actions--overlay" onClick={() => setShowingProfileActions(false)} />}
@@ -99,6 +88,11 @@ const DashboardNavbar = () => {
                                     <Avatar url={user.photoURL} scale="2rem" onClick={toggleProfileActions} />
                                     <span className="badge" data-quantity={authenticated && userNotificationCount > 0}>{userNotificationCount}</span>
                                 </motion.span>
+
+                                <button onClick={signOut} className="signout_icon">
+                                    <Icon_Dash_Exit />
+                                </button>
+
 
                                 {/* <motion.span className="agenda_icon" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                                     <Icon_CheckupList />
@@ -114,9 +108,9 @@ const DashboardNavbar = () => {
                                         <Link to="/dashboard" onClick={toggleProfileActions}>Dashboard</Link>
                                         <Link to="/dashboard/account" onClick={toggleProfileActions}>My Account</Link>
                                         <Link to="/dashboard/orders" onClick={toggleProfileActions}>Orders</Link>
-                                        {user.account === "Admin" &&
+                                        {user.account === "Manager" &&
                                             <Link to="/dashboard/users" onClick={toggleProfileActions}>Users</Link>}
-                                        {user.account === "Admin" &&
+                                        {user.account === "Manager" &&
                                             <Link to="/dashboard/catalog" onClick={toggleProfileActions}>Catalog</Link>}
                                         <Link to="/dashboard/messages" onClick={toggleProfileActions}>Messages</Link>
                                         <Link to="/dashboard/settings" onClick={toggleProfileActions}>Settings</Link>
