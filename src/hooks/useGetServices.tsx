@@ -3,7 +3,7 @@ import { ProductItem } from '../types/ProductItem';
 import useFirestoreData from './useFirestoreData';
 
 const useGetServices = () => {
-    const { data, loadingData, dataError } = useFirestoreData("services");
+    const { data, loadingData, error } = useFirestoreData("services");
 
 
     const services = useMemo(() => 
@@ -20,16 +20,14 @@ const useGetServices = () => {
 
     const loadingServices = useMemo(() => loadingData, [loadingData]);
 
-    const getServicesError = useMemo(() => dataError, [dataError]);
+    const servicesError = useMemo(() => error, [error]);
 
-
-    const getServiceByID = (id: string) => {
-        const product = services.find(item => item.id === id)
-        return product;
+    function getServiceByID(id: string) {
+        return services.find(item => item.id === id);
     }
 
 
-    return { services, loadingServices, getServicesError, getServiceByID }
+    return { services, loadingServices, servicesError, getServiceByID }
 }
 
 export default useGetServices

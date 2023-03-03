@@ -51,7 +51,7 @@ const DashboardOrders = () => {
     const { dayNumeric, monthNumeric, fullYear } = useDate();
     const user = useReduxSelector((state: RootState) => state.userAccount.user);
     const isAnAdmin = user.account === "Manager";
-    const { orders, loadingOrders, getOrdersError, getOrdersFromCurrentUser } = useGetOrders((isAnAdmin ? null : user.uid));
+    const { orders, loadingOrders, ordersError, getOrdersFromCurrentUser } = useGetOrders((isAnAdmin ? null : user.uid));
     type Tab = "ALL" | "Day" | 'Week' | "Month" | "Year";
     const [selectedTab, setSelectedTab] = useState<Tab>("ALL");
 

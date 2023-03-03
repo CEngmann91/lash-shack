@@ -9,7 +9,7 @@ interface ErrorState {
 const useFirestoreData = (collectionName: string) => {
     const [loadingData, setLoadingData] = useState<boolean>(false);
     const [data, setData] = useState<DocumentData[] | null>(null);
-    const [dataError, setDataError] = useState<ErrorState | null>(null);
+    const [error, setError] = useState<ErrorState | null>(null);
     const collectionRef = collection(firestore, collectionName);
 
 
@@ -28,12 +28,12 @@ const useFirestoreData = (collectionName: string) => {
             getData();
         } catch (error) {
             const err: string = error as string;
-            setDataError({ code: err, message: err });
+            setError({ code: err, message: err });
             setLoadingData(false);
         }
     }, [collectionName])
 
-    return { data, loadingData, dataError, collectionRef }
+    return { data, loadingData, error, collectionRef }
 }
 
 export default useFirestoreData

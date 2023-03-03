@@ -51,9 +51,9 @@ const Landing = () => {
                 <p className="landing__subTitle">Beauty Salon</p>
                 <h2>New Beginnings Start Here</h2>
                 <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
                 </p>
-                <MotionButton className='landing__buy-button' onClick={() => navigate("/shop")}>
+                <MotionButton className='landing__buy-button app__hover-arrow-button' onClick={() => navigate("/shop")}>
                   Shop Now
                 </MotionButton>
               </div>

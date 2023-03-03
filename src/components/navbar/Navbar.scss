@@ -106,6 +106,7 @@
             right: 0;
             background: transparent;
         }
+
         .navbar-nav--icons {
             display: flex;
             align-items: center;
@@ -149,7 +150,7 @@
                         box-shadow: 0px 0px 20px rgba($green-shade-colour, 0.5);
                         overflow: hidden;
 
-                        
+
                         a {
                             width: 100%;
                             // background: green;
@@ -180,9 +181,9 @@
             }
 
             .basket_icon,
-            .wishlist_icon
-            // .avatar_icon
-            {
+            .wishlist_icon // .avatar_icon
+
+                {
                 position: relative;
             }
 
@@ -222,20 +223,6 @@
 
                 animation: keyframes__badge_scale-up 250ms linear forwards;
             }
-        }
-    }
-
-    @media only screen and (max-width: 992px) {
-        .app_navbar__wrapper .navigation .navbar-nav--links {
-            column-gap: 2.3rem;
-            margin-right: 30px;
-        }
-    }
-
-    @media only screen and (max-width: 768px) {
-        .app_navbar__wrapper .navigation .navbar-nav--links {
-            column-gap: 1.9rem;
-            margin-right: 30px;
         }
     }
 
@@ -310,5 +297,40 @@
 
     100% {
         transform: scale(1);
+    }
+}
+
+
+
+
+
+@media only screen and (max-width: 992px) {
+    .header {
+        .app_navbar__wrapper .navigation .navbar-nav--links {
+            column-gap: 2.3rem;
+            margin-right: 30px;
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .header {
+        .app_navbar__wrapper .navigation .navbar-nav--links {
+            column-gap: 1.9rem;
+            margin-right: 30px;
+        }
+
+        .app_navbar__wrapper .navbar-nav--icons .profile .avatar_icon-actions {
+            right: 0px;
+        }
+    }
+}
+
+
+@media only screen and (max-width: 576px) {
+    .header {
+        .app_navbar__wrapper .navbar-nav--icons .profile .avatar_icon-actions {
+            right: 0px;
+        }
     }
 }

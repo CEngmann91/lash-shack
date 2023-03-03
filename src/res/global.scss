@@ -44,6 +44,33 @@
     }
 }
 
+/*.app__hover-arrow-button {
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+
+
+    &:after {
+        content: '\2192';
+        position: absolute;
+        opacity: 0;
+        top: 7px;
+        right: -20px;
+        transition: 0.5s;
+    }
+
+    &:hover {
+        padding-right: 30px;
+        padding-left: 12px;
+        color: white;
+    }
+
+    &:hover:after {
+        opacity: 1;
+        right: 10px;
+    }
+}*/
+
 .app__border-bottom {
     position: relative;
 
@@ -124,8 +151,7 @@
 
 
 .app__device {
-
-    /*&-hide-desktop {
+    &-hide-desktop {
 
         // Extra large or Desktop devices
         @media only screen and (min-width: 992px) {
@@ -145,29 +171,29 @@
         @media screen and (max-width: 768px) {
             display: none;
         }
-    }*/
-
-
-
-
-    &-hide-desktop {
-        // Extra large or Desktop devices
-        @media only screen and (max-width: 992px) {
-            display: none;
-        }
-    }
-    
-    &-hide-tablet {
-        @media only screen and (max-width: 768px) {
-            display: none;
-        }
     }
 
-    &-hide-mobile {
-        @media only screen and (max-width: 576px) {
-            display: none;
-        }
-    }
+
+
+
+    // &-hide-desktop {
+    //     // Extra large or Desktop devices
+    //     @media only screen and (max-width: 992px) {
+    //         display: none;
+    //     }
+    // }
+
+    // &-hide-tablet {
+    //     @media only screen and (max-width: 768px) {
+    //         display: none;
+    //     }
+    // }
+
+    // &-hide-mobile {
+    //     @media only screen and (max-width: 576px) {
+    //         display: none;
+    //     }
+    // }
 }
 
 

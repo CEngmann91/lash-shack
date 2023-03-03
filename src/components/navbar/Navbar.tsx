@@ -109,6 +109,7 @@ const Navbar = () => {
     </div>
   )
 
+
   const renderMenuItems = () => (
     <div className="navigation app__device-hide-mobile">
       <ul className="navbar-nav--links">

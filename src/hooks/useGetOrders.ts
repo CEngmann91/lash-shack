@@ -3,7 +3,7 @@ import { PurchaseOrder } from '../types/PurchaseOrder';
 import useFirestoreData from './useFirestoreData';
 
 const useGetOrders = (userID:string | null = null) => {
-    const { data, loadingData, dataError, collectionRef } = useFirestoreData("orders");
+    const { data, loadingData, error, collectionRef } = useFirestoreData("orders");
 
 
     const orders = useMemo(() => {
@@ -18,7 +18,7 @@ const useGetOrders = (userID:string | null = null) => {
 
     const loadingOrders = useMemo(() => loadingData, [loadingData]);
 
-    const getOrdersError = useMemo(() =>  dataError, [dataError]);
+    const ordersError = useMemo(() =>  error, [error]);
 
     const getOrdersFromCurrentUser = useMemo(() => orders?.filter(item => item.customerID === userID), [userID]);
 
@@ -51,7 +51,7 @@ const useGetOrders = (userID:string | null = null) => {
     }, [data]);
     
 
-    return { loadingOrders, getOrdersError, orders, getOrdersFromCurrentUser, totalOrderAmountFromCurrentUser, totalOrderAmount, totalOrderAmountThisMonth }
+    return { loadingOrders, ordersError, orders, getOrdersFromCurrentUser, totalOrderAmountFromCurrentUser, totalOrderAmount, totalOrderAmountThisMonth }
 }
 
 export default useGetOrders

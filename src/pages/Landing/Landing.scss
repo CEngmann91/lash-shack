@@ -45,10 +45,30 @@
             background: $green-shade-colour;
             font-size: 1rem;
             margin-top: 40px;
+            // display: inline-block;
+            // position: relative;
+            transition: 0.5s;
 
+
+            &:after {
+                content: '\2192';
+                position: absolute;
+                opacity: 0;
+                top: 9px;
+                right: -20px;
+                transition: 0.5s;
+                transform: scale(1.2);
+            }
 
             &:hover {
+                padding-right: 30px;
+                padding-left: 12px;
                 color: white;
+            }
+
+            &:hover:after {
+                opacity: 1;
+                right: 10px;
             }
         }
     }

@@ -52,7 +52,7 @@ const DashboardCatalog = () => {
     const [selectImage, setSelectImage] = useState<File | null>(null)
 
     const folder = form.category.toLowerCase();
-    const { data, loadingData, dataError } = useFirestoreData(folder);
+    const { data, loadingData, error } = useFirestoreData(folder);
     const [productOnSale, setProductOnSale] = useState<boolean>(false)
 
 

@@ -14,7 +14,7 @@ import TestimonialCard from "./TestimonialCard/TestimonialCard";
 import useGetTestimonials from "../../hooks/useGetTestimonials";
 
 const Testimonials = () => {
-    const { testimonials, loadingTestimonials, getTestimonialsError } = useGetTestimonials();
+    const { testimonials, loadingTestimonials, testimonialsError } = useGetTestimonials();
 
 
     return (

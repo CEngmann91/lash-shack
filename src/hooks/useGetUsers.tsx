@@ -5,7 +5,7 @@ import { UserProfile } from '../types/UserProfile';
 import useFirestoreData from './useFirestoreData';
 
 const useGetUsers = (removeCurrentUser: boolean = true) => {
-    const { data, loadingData, dataError } = useFirestoreData("users");
+    const { data, loadingData, error } = useFirestoreData("users");
     const [ activeCount, setActiveCount] = useState(0);
 
 
@@ -34,7 +34,7 @@ const useGetUsers = (removeCurrentUser: boolean = true) => {
 
     const loadingUsers = useMemo(() => loadingData, [loadingData]);
 
-    const getUsersError = useMemo(() => dataError, [dataError]);
+    const usersError = useMemo(() => error, [error]);
 
     const getAllStaff = useMemo(() => activeUsers?.filter(item => item.account === "Staff"), [users]);
 
@@ -82,7 +82,7 @@ const useGetUsers = (removeCurrentUser: boolean = true) => {
     return {
         users,
         loadingUsers,
-        getUsersError,
+        usersError,
         // getUserByID,
         getAllStaff,
         // getActiveUsersToday,

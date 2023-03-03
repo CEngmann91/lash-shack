@@ -14,10 +14,10 @@ import DashboardSidebar from './DashboardSidebar/DashboardSidebar';
 const Dashboard = () => {
     const { getRelativeTimeString } = useDate();
     const user = useReduxSelector((state: RootState) => state.userAccount.user);
-    const { users, loadingUsers, getUsersError } = useGetUsers();
-    const { orders, totalOrderAmount, totalOrderAmountThisMonth, loadingOrders, getOrdersError, getOrdersFromCurrentUser, totalOrderAmountFromCurrentUser } = useGetOrders((user.account === "Manager" ? null : user.uid));
-    const { courses, loadingCourses, getCoursesError } = useGetCourses();
-    const { services, loadingServices, getServicesError } = useGetServices();
+    const { users, loadingUsers, usersError } = useGetUsers();
+    const { orders, totalOrderAmount, totalOrderAmountThisMonth, loadingOrders, ordersError, getOrdersFromCurrentUser, totalOrderAmountFromCurrentUser } = useGetOrders((user.account === "Manager" ? null : user.uid));
+    const { courses, loadingCourses, coursesError } = useGetCourses();
+    const { services, loadingServices, servicesError } = useGetServices();
 
 
 

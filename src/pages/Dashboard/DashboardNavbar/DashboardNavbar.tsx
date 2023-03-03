@@ -28,16 +28,12 @@ const DashboardNavbar = () => {
     const { logout } = useUserActions();
     const user = useReduxSelector((state: RootState) => state.userAccount.user) as UserProfile;
     const userNotificationCount = useReduxSelector((state: RootState) => state.userAccount.notificationCount);
-    const [showingProfileActions, setShowingProfileActions] = useState<boolean>(false);
 
 
-
-    const toggleProfileActions = () => setShowingProfileActions(p => !p);
 
     function signOut() {
         setAsLoading();
 
-        toggleProfileActions();
         signUserOut(user)
             .then(() => {
                 logout();
@@ -82,10 +78,9 @@ const DashboardNavbar = () => {
                             <h4 className='dash_navbar__title'>{getLocationTitle()}</h4>
 
 
-                            {showingProfileActions && <div className="dash_navbar__icons-actions--overlay" onClick={() => setShowingProfileActions(false)} />}
                             <div className="dash_navbar__icons">
                                 <motion.span className="avatar_icon" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                                    <Avatar url={user.photoURL} scale="2rem" onClick={toggleProfileActions} />
+                                    <Avatar url={user.photoURL} scale="2rem" />
                                     <span className="badge" data-quantity={authenticated && userNotificationCount > 0}>{userNotificationCount}</span>
                                 </motion.span>
 
@@ -97,31 +92,7 @@ const DashboardNavbar = () => {
                                 {/* <motion.span className="agenda_icon" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                                     <Icon_CheckupList />
                                 </motion.span> */}
-
-
-
-                                <div className="avatar_icon-actions" style={{ display: (showingProfileActions ? "flex" : "none") }}
-                                // ref={profileActionsRef}
-                                >
-                                    {/* Display only on the mobile versions */}
-                                    <div className='app__device-hide-desktop'>
-                                        <Link to="/dashboard" onClick={toggleProfileActions}>Dashboard</Link>
-                                        <Link to="/dashboard/account" onClick={toggleProfileActions}>My Account</Link>
-                                        <Link to="/dashboard/orders" onClick={toggleProfileActions}>Orders</Link>
-                                        {user.account === "Manager" &&
-                                            <Link to="/dashboard/users" onClick={toggleProfileActions}>Users</Link>}
-                                        {user.account === "Manager" &&
-                                            <Link to="/dashboard/catalog" onClick={toggleProfileActions}>Catalog</Link>}
-                                        <Link to="/dashboard/messages" onClick={toggleProfileActions}>Messages</Link>
-                                        <Link to="/dashboard/settings" onClick={toggleProfileActions}>Settings</Link>
-                                        <Link to="" onClick={signOut}>Logout</Link>
-                                    </div>
-
-                                    {/* Display on the web versions */}
-                                    <div className='app__device-hide-mobile'>
-                                        <Link to="" onClick={signOut}>Logout</Link>
-                                    </div>
-                                </div>
+                                
                             </div>
                         </div>
                     </Col>

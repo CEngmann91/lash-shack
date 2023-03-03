@@ -48,7 +48,7 @@
         //         margin-bottom: 0;
 
         //         .link-item {
-                    
+
         //             svg {
         //                 color: $green-shade-colour;
         //                 transform: scale(1);
@@ -68,9 +68,7 @@
         // }
 
 
-        .dash_navbar__title {
-
-        }
+        .dash_navbar__title {}
 
 
         .dash_navbar__icons-actions--overlay {
@@ -81,13 +79,14 @@
             right: 0;
             background: transparent;
         }
+
         .dash_navbar__icons {
             display: flex;
             align-items: center;
             column-gap: 1.2rem;
 
 
-            
+
 
 
             span {
@@ -158,7 +157,7 @@
                     box-shadow: 0px 0px 20px rgba($green-shade-colour, 0.5);
                     overflow: hidden;
 
-                    
+
                     a {
                         width: 100%;
                         // background: green;
@@ -199,6 +198,10 @@
 
 
         .dash_navbar__wrapper {
+            .dash_navbar__title {
+                color: white;
+            }
+
             .dash_navbar__icons {
                 .signout_icon {
                     svg {
@@ -207,10 +210,26 @@
                 }
             }
         }
-    
+    }
+}
+
+
+
+@media only screen and (max-width: 992px) {}
+
+@media only screen and (max-width: 768px) {}
+
+@media only screen and (max-width: 576px) {
+    .dash__header .dash_navbar__wrapper {
+        padding: 0rem .2rem;
+
+
+        .logo img {
+            width: 4rem;
+        }
 
         .dash_navbar__title {
-            color: white;
+            font-size: 1.1rem;
         }
     }
 }

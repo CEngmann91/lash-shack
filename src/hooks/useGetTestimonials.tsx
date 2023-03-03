@@ -3,7 +3,7 @@ import { Testimonial } from '../types/Testimonial';
 import useFirestoreData from './useFirestoreData';
 
 const useGetTestimonials = () => {
-    const { data, loadingData, dataError } = useFirestoreData("testimonials");
+    const { data, loadingData, error } = useFirestoreData("testimonials");
 
 
     const testimonials = useMemo(() => {
@@ -15,9 +15,9 @@ const useGetTestimonials = () => {
 
     const loadingTestimonials = useMemo(() => loadingData, [loadingData]);
 
-    const getTestimonialsError = useMemo(() => dataError, [dataError])
+    const testimonialsError = useMemo(() => error, [error])
 
-    return { testimonials, loadingTestimonials, getTestimonialsError }
+    return { testimonials, loadingTestimonials, testimonialsError }
 }
 
 export default useGetTestimonials

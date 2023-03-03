@@ -6,8 +6,11 @@ import { Container, Col, Row } from 'reactstrap';
 import { Icon_Search } from '../../res/icons';
 import { ProductItem } from '../../types/ProductItem';
 import useGetCatalog from '../../hooks/useGetCatalog';
+import useGetCourses from '../../hooks/useGetCourses';
 
 const Shop = () => {
+    // const {  } = useGetCourses();
+
     const { catalog, loading, error } = useGetCatalog();
 
     const searchInputRef = useRef<HTMLInputElement>(null);

@@ -4,8 +4,8 @@ import useGetCourses from './useGetCourses';
 import useGetServices from './useGetServices';
 
 const useGetCatalog = () => {
-    const { courses, loadingCourses, getCoursesError } = useGetCourses();
-    const { services, loadingServices, getServicesError } = useGetServices();
+    const { courses, loadingCourses, coursesError } = useGetCourses();
+    const { services, loadingServices, servicesError } = useGetServices();
 
 
     const catalog = useMemo(() => {
@@ -19,7 +19,7 @@ const useGetCatalog = () => {
 
     const loading = useMemo(() => loadingCourses, [loadingCourses, loadingServices]);
 
-    const error = useMemo(() => (!getCoursesError || !getServicesError), [getCoursesError, getServicesError]);
+    const error = useMemo(() => (!coursesError || !servicesError), [coursesError, servicesError]);
 
     
 

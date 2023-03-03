@@ -12,7 +12,7 @@ import { useDate } from '../../../hooks/useDate';
 
 const DashboardUsers = () => {
     const user = useReduxSelector((state: RootState) => state.userAccount.user);
-    const { users, loadingUsers, getUsersError } = useGetUsers();
+    const { users, loadingUsers, usersError } = useGetUsers();
     const { getRelativeTimeString } = useDate();
 
 

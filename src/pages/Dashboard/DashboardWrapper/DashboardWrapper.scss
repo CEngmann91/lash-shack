@@ -1,3 +1,7 @@
+@import '../../../res/global.scss';
+@import '../../../res/colours.scss';
+@import '../../../constants/constants.scss';
+
 .dash__wrapper__main {
     display: flex;
     flex-direction: row;
@@ -5,7 +9,7 @@
     width: 100%;
 
     .content {
-        width: calc(100% - 100px);
+        width: 100%;
         // padding: 10px 20px;
     }
 }

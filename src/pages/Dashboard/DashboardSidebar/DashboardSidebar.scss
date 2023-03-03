@@ -57,6 +57,7 @@
                     font-size: 12px;
                     font-weight: 700;
                 }
+
                 .sub-title {
                     font-size: 10px;
                 }
@@ -107,18 +108,19 @@
             }
         }
     }
+}
 
 
+@media only screen and (max-width: 992px) {}
 
-
-
-    @media only screen and (max-width: 992px) {}
-
-    @media only screen and (max-width: 768px) {
+@media only screen and (max-width: 768px) {
+    .dash-sidebar {
         width: $sidebar-width-mobile;
     }
+}
 
-    @media only screen and (max-width: 576px) {
+@media only screen and (max-width: 576px) {
+    .dash-sidebar {
         width: $sidebar-width-mobile;
 
         .dash_sidebar__wrapper {

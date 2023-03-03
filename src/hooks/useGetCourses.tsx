@@ -3,7 +3,7 @@ import { ProductItem } from '../types/ProductItem';
 import useFirestoreData from './useFirestoreData';
 
 const useGetCourses = () => {
-    const { data, loadingData, dataError } = useFirestoreData("courses");
+    const { data, loadingData, error } = useFirestoreData("courses");
 
 
 
@@ -17,11 +17,11 @@ const useGetCourses = () => {
 
     const loadingCourses = useMemo(() => loadingData, [loadingData]);
 
-    const getCoursesError = useMemo(() => dataError, [dataError]);
+    const coursesError = useMemo(() => error, [error]);
 
-    const getCourseByID = (id: string) => courses.find(item => item.id === id)
+    function getCourseByID(id: string) { return courses.find(item => item.id === id) }
 
-    return { courses, loadingCourses, getCoursesError, getCourseByID }
+    return { courses, loadingCourses, coursesError, getCourseByID }
 }
 
 export default useGetCourses
