@@ -1,4 +1,3 @@
-import './GalleryCard.scss';
 import { SkeletonImage } from '../../../components';
 
 type GalleryCardProps = {

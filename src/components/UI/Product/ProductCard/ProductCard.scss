@@ -2,8 +2,7 @@
 @import '../../../../res/colours.scss';
 
 
-$button-colours:
-    #0072b1,
+$button-colours: #0072b1,
     red,
     $green-shade-colour,
 ;
@@ -176,6 +175,11 @@ $button-colours:
     }
 
 
+
+
+    /* ===========================
+   ====== Media Query's ====== 
+   =========================== */
     @media only screen and (max-width: 992px) {
 
         .product__info h3 a {

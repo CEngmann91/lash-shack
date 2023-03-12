@@ -1,18 +1,17 @@
 import React from 'react'
 import { Col, Container, NavLink, Row } from 'reactstrap';
-import NavbarItem from '../../../components/navbar/NavbarItem/NavbarItem';
 import { NAVIGATION } from '../../../constants/constants';
 import './DashboardSidebar.scss';
 import { useSelector as useReduxSelector } from 'react-redux';
 import { RootState } from '../../../redux/store';
 import { UserProfile } from '../../../types/UserProfile';
 import { motion } from 'framer-motion';
-import { Avatar, MotionButton } from '../../../components';
-import { Icon_Dash_Exit } from '../../../res/icons';
 import { useUserActions } from '../../../redux/hooks/useUserActions';
 import { useApplicationActions } from '../../../redux/hooks/useApplicationActions';
 import { signUserOut } from '../../../helpers/firebase/firebaseHelper';
 import { useNavigate } from 'react-router-dom';
+import { Avatar, MotionSpan } from '../..';
+import NavbarItem from '../../navbar/NavbarItem/NavbarItem';
 
 const DashboardSidebar = () => {
     const navigate = useNavigate();
@@ -38,10 +37,10 @@ const DashboardSidebar = () => {
         <div className='dash-sidebar'>
             <div className="dash_sidebar__wrapper">
                 <div className="avatar_wrapper app__device-hide-mobile">
-                    <motion.span className="avatar_icon" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                    <MotionSpan className='avatar_icon'>
                         <Avatar className='profile-photo' url={user.photoURL} scale="3rem" />
                         {/* <span className="badge" data-quantity={authenticated && userNotificationCount > 0}>{userNotificationCount}</span> */}
-                    </motion.span>
+                    </MotionSpan>
 
                     <div className='avatar__details'>
                         <label className='title'>{user.displayName}</label>

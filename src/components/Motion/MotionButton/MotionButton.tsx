@@ -2,7 +2,7 @@ import './MotionButton.scss';
 import { motion } from 'framer-motion'
 import { MouseEvent, ReactNode, HTMLAttributes } from 'react'
 
-interface MotionButtonProps extends HTMLAttributes<HTMLButtonElement> {
+export interface MotionButtonProps extends HTMLAttributes<HTMLButtonElement> {
     id?: string;
     className?: string;
     type?: "button" | "submit" | "reset" | undefined;

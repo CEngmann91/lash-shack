@@ -5,7 +5,7 @@ import { useSelector as useReduxSelector } from 'react-redux';
 import { RootState } from '../../../redux/store';
 import { ProductItem } from '../../../types/ProductItem';
 import { addProduct, deleteProduct, updateProduct, updateProductActiveStatus, uploadPhoto } from '../../../helpers/firebase/firebaseHelper';
-import { Avatar, Checkbox, LoadingSpinner, MotionButton, ProductList } from '../../../components';
+import { ArrowMotionButton, Avatar, Checkbox, LoadingSpinner, MotionButton, ProductList } from '../../../components';
 import useFirestoreData from '../../../hooks/useFirestoreData';
 import UploadInput from '../../../components/Form/UploadInput/UploadInput';
 import { Category } from '../../../types/Category';
@@ -39,21 +39,17 @@ const DashboardCatalog = () => {
         reviews: [],
         upcomingDates: []
     };
-    const [form, setForm] = useState({...initialState, editing: false});
-
-
-
-
-    // const [newProductActive, setNewProductActive] = useState<boolean>(true)
-    // const [addingNewProduct, setAddingNewProduct] = useState<boolean>();
-    // const [editingProduct, setEditingProduct] = useState<boolean>();
-    // const [selectedCategory, setSelectedCategory] = useState<Category>("Courses");
-    // const [selectedServiceCategory, setSelectedServiceCategory] = useState<ServiceCategory>("NA");
+    const [form, setForm] = useState({
+        ...initialState,
+        selectedProductIndex: 0,
+        addingNewProduct: false,
+        editingProduct: false,
+        specialDates: false
+    });
     const [selectImage, setSelectImage] = useState<File | null>(null)
 
     const folder = form.category.toLowerCase();
     const { data, loadingData, error } = useFirestoreData(folder);
-    const [productOnSale, setProductOnSale] = useState<boolean>(false)
 
 
 
@@ -93,81 +89,50 @@ const DashboardCatalog = () => {
     const renderListData = () => {
 
         return (
-            listing?.map((item, key) => (
-                <tr key={key}>
-                    <td>#{key + 1}</td>
-                    <td>
-                        {/* <Checkbox label='' isSelected={item.active} onChange={checked => handleActiveChange(checked, item)} /> */}
-                        <MotionButton className='dash__action-button' onClick={() => handleActiveChange(!item.active, item)}>
-                            {item.active ? "Disable" : "Enable"}
-                        </MotionButton>
-                    </td>
-                    <td className='d-flex flex-row gap-2'>
-                        <Avatar url={item.imgUrl} scale="2.5rem" borderRadius='10px' />
+            listing?.map((item, key) => {
+                const { id, active, title, price, imgUrl, subServiceCategory, upcomingDates, } = item;
 
-
-                        {/* <input type="file" id="file" accept="image/*" onChange={() => {
-                            alert("onChange:: " + " - key: " + key);
-                         }} /> */}
-
-                        {/* <UploadInput
-                            // className=''
-                            accept="image/*"
-                            onChange={() => {
-                                alert("onChange:: " + " - key: " + key);
-                                // handleProductImageChange
-                            }}
-                        >
-                            Change
-                        </UploadInput> */}
-
-
-
-                    </td>
-                    <td>{item.title}</td>
-                    {form.category === "Services" &&
+                return (
+                    <tr key={key}>
+                        {/* <td>#{key + 1}</td> */}
                         <td>
-                            {item.subServiceCategory}
-                            {/* <select
-                                placeholder="Blue"
-                                name="category"
-                                value={item.subServiceCategory}
-                            >
-                                <option value="Eyelash Extensions Full Sets">Eyelash Extensions Full Sets</option>
-                                <option value="Eyelash Extensions Infills">Eyelash Extensions Infills</option>
-                                <option value="Eyebrows">Eyebrows</option>
-                                <option value="Lips">Lips</option>
-                                <option value="Semi-Permanent Makeup">Semi-Permanent Makeup</option>
-                            </select> */}
-                        </td>
-                    }
-                    <td>{formatCurrency(item.price)}</td>
-                    {/* <td>
-                        <MotionButton className='dash__action-button' onClick={() => { }}>Edit</MotionButton>
-                    </td> */}
-                    <td className='d-flex gap-2'>
-                        {isAnAdmin &&
-                            <MotionButton className='dash__action-button' onClick={() => setForm({ ...item, editing: true })}>
-                                <Icon_Pencil className='text-white' />
+                            {/* <Checkbox label='' isSelected={item.active} onChange={checked => handleActiveChange(checked, item)} /> */}
+                            <MotionButton className='dash__action-button' onClick={() => handleActiveChange(!active, item)}>
+                                {active ? "Disable" : "Enable"}
                             </MotionButton>
-                        }
+                        </td>
+                        <td className='d-flex flex-row gap-2'>
+                            <Avatar url={imgUrl} scale="2.5rem" borderRadius='10px' />
+                        </td>
+                        <td>{title}</td>
+                        <td>{formatCurrency(price)}</td>
+                        <td className='d-flex gap-2'>
+                            {isAnAdmin &&
+                                <MotionButton className='dash__action-button' onClick={() => setForm({ ...item, editingProduct: true, addingNewProduct: false, specialDates: upcomingDates?.length > 0, selectedProductIndex: key })}>
+                                    <Icon_Pencil className='text-white' />
+                                </MotionButton>
+                            }
 
-                        <MotionButton className='dash__action-button'>
-                            <Icon_Email className='text-white' />
-                        </MotionButton>
+                            <MotionButton className='dash__action-button'>
+                                <Icon_Email className='text-white' />
+                            </MotionButton>
 
-                        <MotionButton className='dash__action-button' onClick={() => handleProductRemove(item.id)}>
-                            <Icon_Trash className='text-white' />
-                        </MotionButton>
-                    </td>
-                </tr>
-            ))
+                            <MotionButton className='dash__action-button' onClick={() => handleProductRemove(id)}>
+                                <Icon_Trash className='text-white' />
+                            </MotionButton>
+                        </td>
+                    </tr>
+                )
+            })
         )
     }
 
     function handleFileChange(e: ChangeEvent<HTMLInputElement>) {
         const files = e.target.files;
         if (files && files?.length > 0) {
+
+            const element = document.getElementById("product-preview") as HTMLImageElement;
+            element.src = window.URL.createObjectURL(files[0])
             setSelectImage(files[0])
         }
     }
@@ -285,133 +250,52 @@ const DashboardCatalog = () => {
     return (
         <SectionContainerWrapper className='dashboard_catalog__section'>
             <Col lg='12' className='dash__catalog__menu'>
-                <div className='d-flex gap-2'>
-                    <MotionButton className={`tab ${selectedTab === "Courses" ? "tab-selected" : ""}`} onClick={() => {
-                        setSelectedTab("Courses")
-                        setForm({ ...form, category: "Courses" })
-                    }}>Courses</MotionButton>
-                    <MotionButton className={`tab ${selectedTab === "Services" ? "tab-selected" : ""}`} onClick={() => {
-                        setSelectedTab("Services")
-                        setForm({ ...form, category: "Services" })
-                    }}>Services</MotionButton>
-                </div>
+                {!form.editingProduct && !form.addingNewProduct ?
+                    <>
+                        <></>
 
-                {form.editing ? <h4 className='fw-bold'>Add A New {selectedTab.slice(0, -1)}</h4> : null}
+                        <div className="d-flex align-items-center justify-content-center gap-2 h-100">
+                            <button className={`${selectedTab === "Courses" ? "app__border-bottom" : ""}`} onClick={() => {
+                                setSelectedTab("Courses")
+                                setForm({ ...form, category: "Courses" })
+                            }}>Courses</button>
 
-                <div className='d-flex gap-2'>
-                    {/* <MotionButton onClick={() => setForm(initialState)}>
-                        {!form.title ? <Icon_Plus className='text-white' /> : "Done"}
-                    </MotionButton> */}
+                            <button className={`${selectedTab === "Services" ? "app__border-bottom" : ""}`} onClick={() => {
+                                setSelectedTab("Services")
+                                setForm({ ...form, category: "Services" })
+                            }}>Services</button>
+                        </div>
 
-                    {/* {!editingProduct ?
-                        <MotionButton onClick={() => {
-                            setAddingNewProduct(prev => prev = !prev)}
-                        }>
-                            {!form.title ? <Icon_Plus className='text-white' /> : "Done"}
-                        </MotionButton>
-                        :
-                        <MotionButton onClick={() => setEditingProduct(prev => prev = !prev)}>
-                            Done
-                        </MotionButton>
-                    } */}
-                    {/* {!addingNewProduct ? <MotionButton>Clear All</MotionButton> : null} */}
-
-
-                    <MotionButton onClick={() => {
-                        // setForm(prev => {...prev, editing: !prev.editing })
-                        setForm({...initialState, editing: !form.editing})
-                    }}>
-                        {!form.editing ? <Icon_Plus className='text-white' /> : "Done"}
-                    </MotionButton>
-                </div>
+                        <ArrowMotionButton className='green-button' onClick={() => setForm({ ...form, addingNewProduct: true })}>
+                            Add Product
+                        </ArrowMotionButton>
+                    </>
+                    :
+                    <>
+                        <div />
+                        <MotionButton onClick={() => setForm({ ...initialState, editingProduct: false, addingNewProduct: false, specialDates: false, selectedProductIndex: 0 })}>Cancel</MotionButton>
+                    </>
+                }
             </Col>
 
-            {form.editing ?
-                <Col lg='12' className=''>
-                    <Form className='catalog__form mt-1' onSubmit={handleFormSubmit}>
-                        {/* <FormGroup className="form__group">
-                                    <Checkbox label='Active' isSelected={newProductActive} onChange={checked => setNewProductActive(checked)} />
-                                </FormGroup> */}
 
-                        <FormGroup className="form__group">
-                            <input name="title" type="text" placeholder='Enter Title' value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })} />
-                        </FormGroup>
 
-                        <FormGroup className="form__group">
-                            <input name="price" type="number" placeholder='Enter Price' value={form.price} onChange={(e) => setForm({ ...form, price: Number(e.target.value) })} />
-                        </FormGroup>
 
-                        <FormGroup className="form__group">
-                            <Checkbox label='Is On Sale' onChange={(value) => setForm({ ...form, isOnSale: value })} />
-                        </FormGroup>
 
-                        {productOnSale ?
-                            <FormGroup className="form__group">
-                                <input name="salePrice" type="number" placeholder='Enter Sale Price' value={form.salePrice} onChange={(e) => setForm({ ...form, salePrice: Number(e.target.value) })} />
-                            </FormGroup>
-                            : null
-                        }
 
-                        <FormGroup className="form__group">
-                            <input name="shortDesc" type="text" placeholder='Enter A Short Decription' value={form.shortDesc} onChange={(e) => setForm({ ...form, shortDesc: e.target.value })} />
-                        </FormGroup>
 
-                        <FormGroup className="form__group">
-                            <input name="description" type="text" placeholder='Enter A Decription' value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} />
-                        </FormGroup>
-
-                        {form.category === "Services" ?
-                            <FormGroup className="form__group">
-                                <label htmlFor="">Service Category&nbsp;</label>
-                                <select onChange={e => {
-                                    let category: ServiceCategory = e.target.value as ServiceCategory;
-                                    setForm({ ...form, subServiceCategory: category })
-                                }}>
-                                    <option value='N/A'>N/A</option>
-                                    <option value='Eyelash Extensions Full Sets'>Eyelash Extensions Full Sets</option>
-                                    <option value='Eyelash Extensions Infills'>Eyelash Extensions Infills</option>
-                                    <option value='Eyebrows'>Eyebrows</option>
-                                    <option value='Lips'>Lips</option>
-                                    <option value='Semi-Permanent Makeup'>Semi-Permanent Makeup</option>
-                                </select>
-                            </FormGroup>
-                            : null}
-
-                        <FormGroup className="form__group">
-                            <input name="duration" type="number" placeholder='Enter Duration' value={form.duration} onChange={(e) => setForm({ ...form, duration: Number(e.target.value) })} />
-                        </FormGroup>
-
-                        <FormGroup className="form__group">
-                            <input name="upcomingDates" type="text" placeholder='Enter Upcoming Dates' value={form.upcomingDates} />
-                        </FormGroup>
-
-                        <FormGroup className="form__group">
-                            <UploadInput className='new-product__photo-picker' accept="image/*" onChange={handleFileChange}>
-                                Upload Photo
-                            </UploadInput>
-                        </FormGroup>
-
-                        <FormGroup className="form__group">
-                            <MotionButton type='submit' disabled={form.title === "" && form.price == 0}>
-                                {form.id ? "Update" : "Add New Product"}
-                            </MotionButton>
-                        </FormGroup>
-                    </Form>
-                </Col>
-                :
+            {!form.editingProduct && !form.addingNewProduct ?
                 <Col lg='12' className='mt-4'>
                     <h4 className='fw-bold'>All {selectedTab} ({listing?.length})</h4>
 
                     <table className='table mt-3'>
                         <thead>
                             <tr className=''>
-                                <th>#</th>
                                 <th>Active</th>
                                 <th>Image</th>
                                 <th>Title</th>
                                 {form.category === "Services" && <th>Category</th>}
                                 <th>Price</th>
-                                {/* <th>Edit</th> */}
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -422,6 +306,180 @@ const DashboardCatalog = () => {
                             }
                         </tbody>
                     </table>
+                </Col>
+                :
+                <Col lg='12' className='mt-4'>
+                    <h1 className='text-center'>Product Information</h1>
+
+                    <Form className='catalog__form mt-3 gap-4'>
+                        <div className='d-flex flex-row gap-4'>
+                            <FormGroup className="form__group d-flex flex-column w-100">
+                                <label className='fw-bold'>Product Name</label>
+                                <input className=''
+                                    name="productName"
+                                    type="text"
+                                    placeholder='Enter Product Name'
+                                    value={form.title}
+                                    onChange={(e) => setForm({ ...form, title: e.target.value })}
+                                />
+                            </FormGroup>
+
+
+                            <FormGroup className="form__group d-flex flex-column w-100">
+                                <label className='fw-bold'>Product Price</label>
+                                <input className=''
+                                    name="productPrice"
+                                    type="text"
+                                    placeholder='Enter Price'
+                                    value={Number(form.price)}
+                                    onChange={(e) => setForm({ ...form, price: Number(e.target.value) })}
+                                />
+                            </FormGroup>
+                        </div>
+
+                        <FormGroup className="form__group d-flex flex-column w-100">
+                            <label className='fw-bold'>Product Short Description</label>
+                            <input className=''
+                                name="productShortDescription"
+                                type="text"
+                                placeholder='Enter A Short Description'
+                                value={form.shortDesc}
+                                onChange={(e) => setForm({ ...form, shortDesc: e.target.value })}
+                            />
+                        </FormGroup>
+
+
+                        {form.addingNewProduct ?
+                            <FormGroup className="form__group d-flex flex-column w-100">
+                                <label className='fw-bold'>Category</label>
+                                <select onChange={e => {
+                                    let category: Category = e.target.value as Category;
+                                    if (category === "Courses")
+                                        setForm({ ...form, category, subServiceCategory: "NA" })
+                                    else
+                                        setForm({ ...form, category })
+                                }}>
+                                    <option value='Course'>Course</option>
+                                    <option value='Services'>Services</option>
+                                </select>
+
+
+                                {form.category === "Services" ?
+                                    <FormGroup className="form__group d-flex flex-column w-100 p-2">
+                                        <label className='fw-bold'>Type</label>
+                                        <select onChange={e => {
+                                            let sub: ServiceCategory = e.target.value as ServiceCategory;
+                                            setForm({ ...form, subServiceCategory: sub })
+                                        }}>
+                                            <option value='Eyelash Extensions Full Sets'>Eyelash Extensions Full Sets</option>
+                                            <option value='Eyelash Extensions Infills'>Eyelash Extensions Infills</option>
+                                            <option value='Eyebrows'>Eyebrows</option>
+                                            <option value='Lips'>Lips</option>
+                                            <option value='Semi-Permanent Makeup'>Semi-Permanent Makeup</option>
+                                        </select>
+                                    </FormGroup>
+                                    : null}
+                            </FormGroup>
+                            :
+                            <FormGroup className="form__group d-flex flex-column w-100">
+                                {selectedTab === "Services" ?
+                                    <FormGroup className="form__group d-flex flex-column w-100 p-2">
+                                        <label className='fw-bold'>Type</label>
+                                        <select onChange={e => {
+                                            let sub: ServiceCategory = e.target.value as ServiceCategory;
+                                            setForm({ ...form, subServiceCategory: sub })
+                                        }}>
+                                            <option value='Eyelash Extensions Full Sets'>Eyelash Extensions Full Sets</option>
+                                            <option value='Eyelash Extensions Infills'>Eyelash Extensions Infills</option>
+                                            <option value='Eyebrows'>Eyebrows</option>
+                                            <option value='Lips'>Lips</option>
+                                            <option value='Semi-Permanent Makeup'>Semi-Permanent Makeup</option>
+                                        </select>
+                                    </FormGroup>
+                                    : null}
+                            </FormGroup>
+                        }
+
+
+                        <FormGroup className="form__group d-flex flex-column w-100">
+                            <label className='fw-bold'>Product Full Description</label>
+                            <textarea required
+                                rows={4}
+                                name="description"
+                                placeholder='Enter Full Product description'
+                                value={form.description}
+                                onChange={(e) => setForm({ ...form, description: e.target.value })}
+                            />
+                        </FormGroup>
+
+                        <FormGroup className="form__group">
+                            <Checkbox label='Is On Sale'
+                                isSelected={form.isOnSale}
+                                onChange={(value) => setForm({ ...form, isOnSale: value })}
+                            />
+                        </FormGroup>
+
+                        {form.isOnSale &&
+                            <FormGroup className="form__group d-flex flex-column w-100">
+                                <label className='fw-bold'>Product Sale Price</label>
+                                <input className=''
+                                    name="productSalePrice"
+                                    type="text"
+                                    placeholder='Enter Sale Price'
+                                    value={Number(form.salePrice)}
+                                    onChange={(e) => setForm({ ...form, salePrice: Number(e.target.value) })}
+                                />
+                            </FormGroup>
+                        }
+
+                        <FormGroup className="form__group">
+                            <Checkbox label='Special Upcoming Dates'
+                                isSelected={form.specialDates}
+                                onChange={(value) => setForm({ ...form, specialDates: value })}
+                            />
+                        </FormGroup>
+
+                        {form.specialDates &&
+                            <FormGroup className="form__group d-flex flex-column w-100">
+                                <input className=''
+                                    name="specialUpcomingDates"
+                                    type="text"
+                                    placeholder='Enter Upcoming Dates'
+                                    value={form.upcomingDates?.join(",")}
+                                    onChange={(e) => setForm({ ...form, upcomingDates: e.target.value.split(",") })}
+                                />
+                            </FormGroup>
+                        }
+
+                        <FormGroup className="form__group">
+                            <UploadInput className='new-product__photo-picker' accept="image/*" onChange={handleFileChange}>
+                                Upload Photo
+                            </UploadInput>
+                        </FormGroup>
+
+                        <FormGroup className="form__group product-previewImage d-flex">
+                            <img id="product-preview" alt="your product image" />
+                        </FormGroup>
+
+                        {form.editingProduct &&
+                            <FormGroup className="form__group d-flex w-100">
+                                <ArrowMotionButton className='' onClick={() => {
+                                    setForm({ ...form, addingNewProduct: false, editingProduct: false })
+                                }}>
+                                    Update Product
+                                </ArrowMotionButton>
+                            </FormGroup>
+                        }
+                        {form.addingNewProduct &&
+                            <FormGroup className="form__group d-flex w-100">
+                                <ArrowMotionButton className='' onClick={() => {
+                                    setForm({ ...form, addingNewProduct: false, editingProduct: false })
+                                }}>
+                                    Create Product
+                                </ArrowMotionButton>
+                            </FormGroup>
+                        }
+                    </Form>
                 </Col>
             }
         </SectionContainerWrapper>

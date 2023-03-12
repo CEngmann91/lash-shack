@@ -12,11 +12,12 @@ import { useDate } from '../../../hooks/useDate';
 
 const DashboardUsers = () => {
     const user = useReduxSelector((state: RootState) => state.userAccount.user);
-    const { users, loadingUsers, usersError } = useGetUsers();
+    const { users, loadingUsers, usersError, getAllUsersInMonth } = useGetUsers();
     const { getRelativeTimeString } = useDate();
 
 
 
+    getAllUsersInMonth("March");
 
     const handleActiveChange = async (checked: boolean, profile: UserProfile) => {
         await updateUserActiveStatus(profile, checked);

@@ -23,6 +23,18 @@
     width: 100%;
 }
 
+.table {
+    z-index: 4;
+
+    thead tr th {
+        background: $beige-colour;
+        z-index: 5;
+    }
+}
+
+
+
+
 
 
 

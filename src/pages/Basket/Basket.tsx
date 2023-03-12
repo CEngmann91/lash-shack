@@ -1,9 +1,8 @@
 import './Basket.scss';
-import React from 'react'
 import { RootState } from '../../redux/store';
 import { useSelector as useReduxSelector } from 'react-redux';
 import { Col, Container, Row } from 'reactstrap';
-import { ImageBanner, MotionButton, PageWrapper } from '../../components'
+import { ArrowMotionButton, ImageBanner, MotionButton, PageWrapper } from '../../components'
 import { formatCurrency } from '../../res/funcs';
 import { Icon_Minus, Icon_Plus, Icon_Trash } from '../../res/icons';
 import { useNavigate } from 'react-router-dom';
@@ -33,9 +32,9 @@ const Basket = () => {
                 :
                 <h2 className='text-center'>No Lashes here {firstName}, add some to the basket?</h2>
               }
-              <MotionButton className='buy-button w-15 mt-4' onClick={() => navigate("/shop")}>
+              <ArrowMotionButton className='buy-button w-15 mt-4' onClick={() => navigate("/shop")}>
                 Shop Now
-              </MotionButton>
+              </ArrowMotionButton>
             </div>
             :
             <Row>

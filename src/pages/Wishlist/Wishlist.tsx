@@ -1,5 +1,5 @@
 import './Wishlist.scss';
-import { PageWrapper, ImageBanner, MotionButton } from '../../components';
+import { PageWrapper, ImageBanner, ArrowMotionButton } from '../../components';
 import { useSelector as useReduxSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
 import { useNavigate } from 'react-router-dom';
@@ -28,9 +28,9 @@ const Wishlist = () => {
                                                 `${firstName}, blow ` : `Blow `}
                                             a lash and make a wish.</h2>
                                     </>
-                                    <MotionButton className='buy-button w-15 mt-4' onClick={() => navigate("/shop")}>
+                                    <ArrowMotionButton className='buy-button w-15 mt-4' onClick={() => navigate("/shop")}>
                                         Shop Now
-                                    </MotionButton>
+                                    </ArrowMotionButton>
                                 </div>
                                 :
                                 <div>

@@ -11,7 +11,7 @@ const useGetCourses = () => {
         // Only grab active items.
         const filtered = (data as ProductItem[])?.filter(item => item.active);
         // Sort by price.
-        const sorted = filtered?.sort((a, b) => a.price - b.price);
+        const sorted = filtered?.sort((a, b) => b.price - a.price);
         return sorted;
     }, [data]);
 

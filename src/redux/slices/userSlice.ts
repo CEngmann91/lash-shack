@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { PurchaseOrder } from '../../types/PurchaseOrder';
 import { UserProfile } from '../../types/UserProfile';
 
 // const initialState = null as Nullable<UserProfile>;

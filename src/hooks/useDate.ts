@@ -39,6 +39,25 @@ export const useDate = () => {
         }
     }
 
+    function getLocalDayNames() {
+        let d = new Date(2000, 0, 3); // Monday
+        let days = [];
+        for (let i = 0; i < 7; i++) {
+            days.push(d.toLocaleString('default', { weekday: 'long' }));
+            d.setDate(d.getDate() + 1);
+        }
+        return days;
+    }
+
+    function getLocalMonthNames() {
+        let d = new Date(2000, 0); // January
+        let months = [];
+        for (let i = 0; i < 12; i++) {
+            months.push(d.toLocaleString('default', { month: 'long' }));
+            d.setMonth(i + 1);
+        }
+        return months;
+    }
 
     const date: Date = new Date();
 
@@ -52,5 +71,14 @@ export const useDate = () => {
 
     const fullYear = useMemo(() => date.getFullYear(), [date]);
 
-    return { getRelativeTimeString, dayOfWeekName, dayNumeric, monthNumeric, fullMonth, fullYear }
+    return {
+        getRelativeTimeString,
+        getLocalDayNames,
+        getLocalMonthNames,
+        dayOfWeekName,
+        dayNumeric,
+        monthNumeric,
+        fullMonth,
+        fullYear
+    }
 }

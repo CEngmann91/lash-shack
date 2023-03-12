@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { Icon_Email, Icon_Location, Icon_Phone } from '../../res/icons';
 import { CONTACT } from '../../constants/constants';
 import { motion } from 'framer-motion';
+import MotionSpan from '../Motion/MotionSpan/MotionSpan';
 
 const Footer = () => {
 
@@ -87,7 +88,7 @@ const Footer = () => {
           {CONTACT.LOCATIONS.map(({ ADDRESS, MAP }, key) => (
             <ListGroupItem key={key} className='ps-0 border-0'>
               <a target="_blank" className='d-flex align-items-center gap-2' href={MAP} rel="noopener noreferrer">
-                <motion.span whileHover={{ scale: 1.1 }}><Icon_Location /></motion.span>
+                <MotionSpan hoverScale={1.1}><Icon_Location /></MotionSpan>
                 <p className='text__new-line'>{ADDRESS}</p>
               </a>
             </ListGroupItem>

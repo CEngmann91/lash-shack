@@ -9,35 +9,69 @@ import "swiper/scss/pagination";
 import { EffectCoverflow, Autoplay } from "swiper";
 
 import './Landing.scss';
-import React from 'react'
-import { LimitedTimeOffer, LoadingSpinner, MotionButton, PageWrapper } from '../../components'
+import { useEffect, useMemo } from 'react'
+import { ArrowMotionButton, LimitedTimeOffer, LoadingSpinner, MotionButton, PageWrapper } from '../../components'
 import { Container, Row, Col } from 'reactstrap'
 import images from '../../res/images';
 import { useNavigate } from 'react-router-dom';
 
 import { SkeletonImage } from '../../components'
 import { getAllDownloadURLRef } from '../../helpers/firebase/firebaseHelper';
-import Testimonials from "../Testimonials/Testimonials";
+import useGetMiscellaneous from "../../hooks/useMiscellaneous";
+import { connectFirestoreEmulator } from "firebase/firestore";
+import { MeetExperts, Testimonials } from "..";
 
 const Landing = () => {
   const navigate = useNavigate();
+  const { miscellaneous, loadingMiscellaneous, miscellaneousError } = useGetMiscellaneous();
+  // const { landing_SpecialOfferBanner } = miscellaneous;
+
+
 
   // const [imagePaths, setImagePaths] = useState<string[] | null>(null);
 
 
-  // useEffect(() => {
+  useEffect(() => {
   //   if (imagePaths == null)
   //     getAllPaths();
 
   //   return function cleanup() {
   //     getAllPaths();
   //   }
-  // }, [])
+  }, [])
 
   // const getAllPaths = async () => {
   //   const paths = await getAllDownloadURLRef('landing')
   //   setImagePaths(paths);
   // }
+
+
+  const limitedTimeOffer = useMemo(() => {
+    if (!miscellaneous)
+      return {};
+    
+    const { landing_SpecialOfferBanner } = miscellaneous as any;
+    return landing_SpecialOfferBanner;
+  }, [miscellaneous])
+
+  const renderLimitedTimeOffer = () => {
+    const { active, content, background, textColour } = limitedTimeOffer;
+    if (!active)
+      return;
+
+    const { title, subtitle, imgUrl, startDate, endDate } = content;
+
+    return <LimitedTimeOffer
+        title={title}
+        subtitle={subtitle}
+        imageUrl={imgUrl}
+        startDate={startDate}
+        endDate={endDate}
+        background={background}
+        textColour={textColour}
+        // onTimerCompleted={() => { }}
+      />
+  }
 
 
 
@@ -53,9 +87,9 @@ const Landing = () => {
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
                 </p>
-                <MotionButton className='landing__buy-button app__hover-arrow-button' onClick={() => navigate("/shop")}>
+                <ArrowMotionButton className='landing__buy-button' onClick={() => navigate("/shop")}>
                   Shop Now
-                </MotionButton>
+                </ArrowMotionButton>
               </div>
             </Col>
 
@@ -155,9 +189,11 @@ const Landing = () => {
       </section>
 
 
-      <LimitedTimeOffer title='Groupon Deals' subtitle='Limited Offer' imageUrl={images.Lash} endDate="Mar 31, 2023" onTimerCompleted={() => { }} />
+
+      {renderLimitedTimeOffer()}
 
 
+      <MeetExperts />
 
       <Testimonials />
 

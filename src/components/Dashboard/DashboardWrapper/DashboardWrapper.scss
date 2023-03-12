@@ -1,0 +1,33 @@
+@import '../../../res/global.scss';
+@import '../../../res/colours.scss';
+@import '../../../constants/constants.scss';
+
+.dash__wrapper__main {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    width: 100%;
+
+    .content {
+        width: 100%;
+    }
+
+
+
+
+
+
+
+    /* ===========================
+   ====== Media Query's ====== 
+   =========================== */
+    @media only screen and (max-width: 992px) {}
+
+    @media only screen and (max-width: 768px) {}
+
+    @media only screen and (max-width: 576px) {
+        .content {
+            width: 85%;
+        }
+    }
+}

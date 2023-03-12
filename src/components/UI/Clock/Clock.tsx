@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 
 type ClockProps = {
     destinationDate: string;
-    onTimerCompleted: () => void;
+    onTimerCompleted?: () => void;
     textColour?: string;
 }
 // "Mar 31, 2023"
@@ -38,7 +38,7 @@ const Clock = ({ destinationDate, onTimerCompleted, textColour = "white" }: Cloc
 
             if (destination < 0 || seconds < 0) {
                 clearInterval(interval);
-                onTimerCompleted();
+                if (onTimerCompleted) onTimerCompleted();
             }
             else 
             {
@@ -59,32 +59,32 @@ const Clock = ({ destinationDate, onTimerCompleted, textColour = "white" }: Cloc
         <div className='clock__wrapper d-flex align-items-center gap-3'>
             <div className="clock__data d-flex align-items-center gap-3">
                 <div className='text-center'>
-                    <h1 className={`text-${textColour} mb-2`}>{days} </h1>
-                    <h5 className={`text-${textColour}`}>Days</h5>
+                    <h1 className={`mb-2`} style={{ color: textColour }}>{days} </h1>
+                    <h5 className={``} style={{ color: textColour }}>Days</h5>
                 </div>
-                <span className={`text-${textColour} fs-3`}>:</span>
+                <span className={`fs-3`} style={{ color: textColour }}>:</span>
             </div>
 
             <div className="clock__data d-flex align-items-center gap-3">
                 <div className='text-center'>
-                    <h1 className={`text-${textColour} mb-2`}>{hours} </h1>
-                    <h5 className={`text-${textColour}`}>Hours</h5>
+                    <h1 className={`mb-2`} style={{ color: textColour }}>{hours} </h1>
+                    <h5 className={``} style={{ color: textColour }}>Hours</h5>
                 </div>
-                <span className={`text-${textColour}`}>:</span>
+                <span className={``} style={{ color: textColour }}>:</span>
             </div>
 
             <div className="clock__data d-flex align-items-center gap-3">
                 <div className='text-center'>
-                    <h1 className={`text-${textColour} mb-2`}>{minutes} </h1>
-                    <h5 className={`text-${textColour}`}>Minutes</h5>
+                    <h1 className={`mb-2`} style={{ color: textColour }}>{minutes} </h1>
+                    <h5 className={``} style={{ color: textColour }}>Minutes</h5>
                 </div>
-                <span className={`text-${textColour}`}>:</span>
+                <span className={``} style={{ color: textColour }}>:</span>
             </div>
 
             <div className="clock__data d-flex align-items-center gap-3">
                 <div className='text-center'>
-                    <h1 className={`text-${textColour} mb-2`}>{seconds} </h1>
-                    <h5 className={`text-${textColour}`}>Seconds</h5>
+                    <h1 className={`mb-2`} style={{ color: textColour }}>{seconds} </h1>
+                    <h5 className={``} style={{ color: textColour }}>Seconds</h5>
                 </div>
             </div>
         </div>

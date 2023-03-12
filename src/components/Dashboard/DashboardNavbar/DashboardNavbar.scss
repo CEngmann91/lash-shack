@@ -211,25 +211,42 @@
             }
         }
     }
-}
 
 
 
-@media only screen and (max-width: 992px) {}
-
-@media only screen and (max-width: 768px) {}
-
-@media only screen and (max-width: 576px) {
-    .dash__header .dash_navbar__wrapper {
-        padding: 0rem .2rem;
 
 
-        .logo img {
-            width: 4rem;
-        }
+    /* ===========================
+   ====== Media Query's ====== 
+   =========================== */
+    @media only screen and (max-width: 992px) {}
 
-        .dash_navbar__title {
-            font-size: 1.1rem;
+    @media only screen and (max-width: 768px) {}
+
+    @media only screen and (max-width: 576px) {
+        .dash_navbar__wrapper {
+            padding: 0rem .2rem;
+
+
+            .logo img {
+                width: 4rem;
+            }
+
+            .dash_navbar__title {
+                font-size: 1.1rem;
+            }
+
+            // .dash_navbar__icons {
+            //     span {
+            //         width: 1.1rem;
+            //         height: 0.9rem;
+
+            //         svg {
+            //             width: 1.3rem;
+            //             height: 1.3rem;
+            //         }
+            //     }
+            // }
         }
     }
 }

@@ -1,0 +1,17 @@
+.list-container {
+
+
+
+    /* ===========================
+   ====== Media Query's ====== 
+   =========================== */
+    @media only screen and (max-width: 992px) {}
+
+    @media only screen and (max-width: 768px) {
+        justify-content: center;
+    }
+
+    @media only screen and (max-width: 576px) {
+        justify-content: center;
+    }
+}

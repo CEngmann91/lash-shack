@@ -15,29 +15,49 @@ const useGetUsers = (removeCurrentUser: boolean = true) => {
         const sortedUsers = data?.sort((a, b) => a.account.localeCompare(b.account));
         if (removeCurrentUser)
         {
-            const filtered = sortedUsers?.filter(item => item.uid !== getCurrentUser().uid)
-            return filtered as UserProfile[]
+            const filtered = sortedUsers?.filter(item => item?.uid !== getCurrentUser()?.uid) as UserProfile[]
+            return filtered;
         }
         return data as UserProfile[];
-    }
-
-    // {
-    //     const sortedUsers = [...(data as UserProfile[])].sort((a, b) => a.account.localeCompare(b.account));
-    //     return sortedUsers;
-   
-    // }
-
-    // data as UserProfile[]
-    , [data]);
+    }, [data]);
 
     const activeUsers = useMemo(() => users?.filter(item => item.active == true), [users])
+
+    function getAllUsersInMonth(month: string) {
+        if (month && month.length > 3)
+            month = month.slice(0, 3);
+
+        const months = getLocalMonthNames();
+        const indexof = months.findIndex(m => m.toLowerCase().startsWith(month.toLowerCase()));
+        if (indexof != -1)
+        {
+            const filtered = activeUsers?.filter(item => item.memberSince) as UserProfile[]
+        }
+        // console.log(indexof)
+
+
+        // return services.find(item => item.id === id);
+    }
+    // const users = useMemo(() =>
+    // {
+
+    // }, [data]);
+    
+    const getAllStaff = useMemo(() => activeUsers?.filter(item => item.account === "Staff"), [users]);
 
     const loadingUsers = useMemo(() => loadingData, [loadingData]);
 
     const usersError = useMemo(() => error, [error]);
 
-    const getAllStaff = useMemo(() => activeUsers?.filter(item => item.account === "Staff"), [users]);
-
+    function getLocalMonthNames() {
+        let d = new Date(2000, 0); // January
+        let months = [];
+        for (let i = 0; i < 12; i++) {
+            months.push(d.toLocaleString('default', { month: 'long' }));
+            d.setMonth(i + 1);
+        }
+        return months;
+    }
 
     // const getUserByID = (id: string) => data?.find(item => item.id === id);
 
@@ -84,6 +104,7 @@ const useGetUsers = (removeCurrentUser: boolean = true) => {
         loadingUsers,
         usersError,
         // getUserByID,
+        getAllUsersInMonth,
         getAllStaff,
         // getActiveUsersToday,
         // getActiveUsersTodayCount,

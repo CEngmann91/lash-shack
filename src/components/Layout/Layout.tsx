@@ -3,11 +3,8 @@ import Routers from '../../routers/Routers'
 import LoadingScreen from '../LoadingScreen/LoadingScreen'
 import Navbar from '../navbar/Navbar'
 import Footer from '../Footer/Footer'
-import { DashboardNavbar, DashboardWrapper } from '../../pages/Dashboard'
 import { useApplicationActions } from '../../redux/hooks/useApplicationActions'
-import DashboardSidebar from '../../pages/Dashboard/DashboardSidebar/DashboardSidebar'
-import NavbarItem from '../navbar/NavbarItem/NavbarItem'
-import { NAVIGATION } from '../../constants/constants'
+import { DashboardNavbar, DashboardWrapper } from '../Dashboard'
 
 const Layout = () => {
     const location = useLocation();

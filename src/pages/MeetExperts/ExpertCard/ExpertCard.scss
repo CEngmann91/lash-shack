@@ -1,0 +1,15 @@
+@import '../../../res/global.scss';
+@import '../../../res/colours.scss';
+
+.expert__card {
+    position: relative;
+    border-radius: 15px;
+    border: 10px solid white;
+    box-shadow: 0px 0px 20px rgba($green-shade-colour, 0.5);
+    // width: 19rem;
+    min-width: 14rem;
+    height: 25rem;
+    overflow: hidden;
+    z-index: 1;
+    padding: 0;
+}

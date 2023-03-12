@@ -1,8 +1,8 @@
 import './DashboardWrapper.scss';
 import { ReactNode } from 'react'
 import { PageWrapper } from '../../../components'
-import DashboardSidebar from '../DashboardSidebar/DashboardSidebar';
 import { useMyLocation } from '../../../hooks/useMyLocation';
+import { DashboardSidebar } from '..';
 
 type DashboardWrapperProps = {
     className?: string;

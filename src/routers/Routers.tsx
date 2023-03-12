@@ -2,7 +2,6 @@ import { useEffect } from 'react'
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import { Basket, Checkout, Courses, Dashboard, ForgotPassword, Gallery, Landing, LatestNews, Login, NotFound, Privacy, ProductDetails, Register, Services, Shop, TermsConditions, Wishlist } from '../pages';
 import { Dashboard_Account, Dashboard_Catalog, Dashboard_Messages, Dashboard_Orders, Dashboard_Schedule, Dashboard_Settings, Dashboard_Users } from '../pages/Dashboard';
-import DashboardSidebar from '../pages/Dashboard/DashboardSidebar/DashboardSidebar';
 import AuthRoute from './AuthRoute';
 
 const Routers = () => {

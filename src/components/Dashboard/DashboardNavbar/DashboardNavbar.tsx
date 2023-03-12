@@ -4,13 +4,13 @@ import { Col, Container, Row } from 'reactstrap';
 import { motion } from 'framer-motion';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import images from '../../../res/images';
-import { Avatar } from '../../../components';
+import { Avatar, MotionSpan } from '../..';
 import { useSelector as useReduxSelector } from 'react-redux';
 import { RootState } from '../../../redux/store';
 import { UserProfile } from '../../../types/UserProfile';
 import { useAuth } from '../../../hooks/useAuth';
 import { NAVIGATION } from '../../../constants/constants';
-import NavbarItem from '../../../components/navbar/NavbarItem/NavbarItem';
+import NavbarItem from '../../navbar/NavbarItem/NavbarItem';
 import { useScroller } from '../../../hooks/useScroller';
 import { signUserOut } from '../../../helpers/firebase/firebaseHelper';
 import { useUserActions } from '../../../redux/hooks/useUserActions';
@@ -79,20 +79,14 @@ const DashboardNavbar = () => {
 
 
                             <div className="dash_navbar__icons">
-                                <motion.span className="avatar_icon" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                                <MotionSpan className='avatar_icon'>
                                     <Avatar url={user.photoURL} scale="2rem" />
                                     <span className="badge" data-quantity={authenticated && userNotificationCount > 0}>{userNotificationCount}</span>
-                                </motion.span>
+                                </MotionSpan>
 
                                 <button onClick={signOut} className="signout_icon">
                                     <Icon_Dash_Exit />
                                 </button>
-
-
-                                {/* <motion.span className="agenda_icon" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                                    <Icon_CheckupList />
-                                </motion.span> */}
-                                
                             </div>
                         </div>
                     </Col>

@@ -279,6 +279,39 @@
             }
         }
     }
+
+
+
+
+
+
+    /* ===========================
+   ====== Media Query's ====== 
+   =========================== */
+    @media only screen and (max-width: 992px) {
+        .app_navbar__wrapper .navigation .navbar-nav--links {
+            column-gap: 2.3rem;
+            margin-right: 30px;
+        }
+    }
+
+    @media only screen and (max-width: 768px) {
+        .app_navbar__wrapper .navigation .navbar-nav--links {
+            column-gap: 1.9rem;
+            margin-right: 30px;
+        }
+
+        .app_navbar__wrapper .navbar-nav--icons .profile .avatar_icon-actions {
+            right: 0px;
+        }
+    }
+
+
+    @media only screen and (max-width: 576px) {
+        .app_navbar__wrapper .navbar-nav--icons .profile .avatar_icon-actions {
+            right: 0px;
+        }
+    }
 }
 
 .show__profile-actions {
@@ -297,40 +330,5 @@
 
     100% {
         transform: scale(1);
-    }
-}
-
-
-
-
-
-@media only screen and (max-width: 992px) {
-    .header {
-        .app_navbar__wrapper .navigation .navbar-nav--links {
-            column-gap: 2.3rem;
-            margin-right: 30px;
-        }
-    }
-}
-
-@media only screen and (max-width: 768px) {
-    .header {
-        .app_navbar__wrapper .navigation .navbar-nav--links {
-            column-gap: 1.9rem;
-            margin-right: 30px;
-        }
-
-        .app_navbar__wrapper .navbar-nav--icons .profile .avatar_icon-actions {
-            right: 0px;
-        }
-    }
-}
-
-
-@media only screen and (max-width: 576px) {
-    .header {
-        .app_navbar__wrapper .navbar-nav--icons .profile .avatar_icon-actions {
-            right: 10px;
-        }
     }
 }

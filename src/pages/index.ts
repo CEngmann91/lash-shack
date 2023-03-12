@@ -1,6 +1,7 @@
 export { default as NotFound } from './NotFound/NotFound';
 
 export { default as Landing } from './Landing/Landing';
+export { default as MeetExperts } from './MeetExperts/MeetExperts';
 export { default as Testimonials } from './Testimonials/Testimonials';
 export { default as Courses } from './Courses/Courses';
 export { default as Gallery } from './Gallery/Gallery';

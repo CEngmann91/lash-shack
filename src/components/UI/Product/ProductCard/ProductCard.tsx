@@ -5,9 +5,10 @@ import { motion } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom';
 import { formatCurrency } from '../../../../res/funcs';
 import { ProductItem } from '../../../../types/ProductItem';
-import { MotionButton, SkeletonImage } from '../../..';
+import { MotionButton, MotionSpan, SkeletonImage } from '../../..';
 import { useBasketActions } from '../../../../redux/hooks/useBasketActions';
 import { useWishListActions } from '../../../../redux/hooks/useWishListActions';
+import { useEffect } from 'react';
 
 type ProductCardProps = {
     item: ProductItem;
@@ -21,6 +22,14 @@ const ProductCard = ({ item }: ProductCardProps) => {
 
 
 
+    // useEffect(() => {
+    //     const color = getComputedStyle(document.documentElement).getPropertyValue('--icon_svg_size');
+    //     // alert(color);
+    
+    //     document.documentElement.style.setProperty('--icon_svg_size', "4rem");
+    //   }, [])
+
+
     function toggleWishList(id: string) {
         const exists = existsInWishList(id);
         if (!exists)
@@ -31,7 +40,7 @@ const ProductCard = ({ item }: ProductCardProps) => {
 
 
     return (
-        <Col lg='3' md='4' className='product__card'>
+        <Col lg='3' md='3' className='product__card'>
             <div className="product__image-wrapper">
                 <div className='product__image' onClick={() => navigate(`/shop/${id}`)}>
                     <SkeletonImage className='' src={imgUrl} alt="" />
@@ -69,12 +78,9 @@ const ProductCard = ({ item }: ProductCardProps) => {
             // onClick={() => navigate(`/shop/${id}`)}
             >
                 {existsInBasket(id) &&
-                    <motion.span className='minus'
-                        whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
-                        onClick={() => removeFromBasket(id, title, imgUrl, price)}
-                    >
+                    <MotionSpan className='minus' onClick={() => removeFromBasket(id, title, imgUrl, price)}>
                         <Icon_Minus />
-                    </motion.span>
+                    </MotionSpan>
                 }
 
                 {!isOnSale ?
@@ -90,12 +96,9 @@ const ProductCard = ({ item }: ProductCardProps) => {
                 }
 
                 {existsInBasket(id) &&
-                    <motion.span className='add'
-                        whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
-                        onClick={() => addToBasket(id, title, imgUrl, price)}
-                    >
+                    <MotionSpan className='add' onClick={() => addToBasket(id, title, imgUrl, price)}>
                         <Icon_Plus />
-                    </motion.span>
+                    </MotionSpan>
                 }
             </div>
 

@@ -2,7 +2,7 @@
 @import '../../constants/constants.scss';
 
 :root {
-    ---svg_size: 30px;
+    --svg_size: 30px;
 }
 
 .basket__section {
@@ -12,7 +12,6 @@
     .buy-button {
         color: white;
         text-transform: uppercase;
-        padding: 8px 20px;
         border-radius: 5px;
         background: $green-shade-colour;
         font-size: 1rem;
@@ -59,8 +58,8 @@
             background: transparent;
             border: none;
             outline: none;
-            width: var(---svg_size);
-            height: var(---svg_size);
+            width: var(--svg_size);
+            height: var(--svg_size);
             padding: 0px;
 
             &:hover {

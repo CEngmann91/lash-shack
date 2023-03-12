@@ -1,8 +1,6 @@
 import './TestimonialCard.scss';
-import { Container, Row } from 'reactstrap'
 import { Testimonial } from '../../../types/Testimonial';
 import { Icon_Star } from '../../../res/icons';
-import images from '../../../res/images';
 
 type TestimonialCardProps = {
     data: Testimonial;
@@ -15,9 +13,6 @@ const TestimonialCard = ({ data }: TestimonialCardProps) => {
             <div className="wrapper">
                 <div className="card-top">
                     <div className="profile">
-                        {/* <div className="profile-img">
-                            <img src={images.Logo} />
-                        </div> */}
                         <div className="title-date">
                             <strong>{title}</strong>
                             <span>{createdAt}</span>

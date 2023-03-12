@@ -1,5 +1,5 @@
 import './Shop.scss';
-import { ChangeEvent, useEffect, useMemo, useRef, useState } from 'react'
+import { ChangeEvent, useEffect, useRef, useState } from 'react'
 import { LoadingSpinner, PageWrapper, ProductList } from '../../components'
 import ImageBanner from '../../components/UI/ImageBanner/ImageBanner'
 import { Container, Col, Row } from 'reactstrap';
@@ -7,9 +7,11 @@ import { Icon_Search } from '../../res/icons';
 import { ProductItem } from '../../types/ProductItem';
 import useGetCatalog from '../../hooks/useGetCatalog';
 import useGetCourses from '../../hooks/useGetCourses';
+import useGetServices from '../../hooks/useGetServices';
 
 const Shop = () => {
-    // const {  } = useGetCourses();
+    const { courses, loadingCourses, coursesError } = useGetCourses();
+    const { services, loadingServices, servicesError } = useGetServices();
 
     const { catalog, loading, error } = useGetCatalog();
 
@@ -20,10 +22,10 @@ const Shop = () => {
 
 
     useEffect(() => {
-      if (products.length === 0) setProducts(catalog);
+        if (products.length === 0) setProducts(catalog);
 
     }, [loading])
-    
+
 
 
 
@@ -123,7 +125,8 @@ const Shop = () => {
                         <Col lg='4' md='6'>
                             <div className="filter__widget">
                                 <select onChange={handleFilter}>
-                                    <option value="default">Filter By Type</option>
+                                    <option value="empty">Filter By Type</option>
+                                    <option value="default">Show All</option>
                                     <option value="courses">Courses</option>
                                     <option value="servicesAll">Services (All)</option>
                                     <option value="servicesEEFS">Services - Eyelash Extensions Full Sets</option>
@@ -173,7 +176,18 @@ const Shop = () => {
                             (products && products?.length === 0 ?
                                 <h1 className='text-center fs-4'>Sorry, No Lashes Here</h1>
                                 :
-                                <ProductList items={products} />
+                                <>
+                                    <div className='mb-4'>
+                                        <h1 className='category-header'>Courses</h1>
+                                        <ProductList items={courses} />
+                                    </div>
+
+                                    <div className='mt-4'>
+                                        <h1 className='category-header'>Services</h1>
+                                        <ProductList items={services} />
+                                    </div>
+                                </>
+                                // <ProductList items={products} />
                             )
                         }
                     </Row>

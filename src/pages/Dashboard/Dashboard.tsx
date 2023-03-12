@@ -1,5 +1,5 @@
 import './Dashboard.scss';
-import { PageWrapper } from '../../components';
+import { CircleProgressBar, PageWrapper } from '../../components';
 import { Col, Container, Row } from 'reactstrap';
 import useGetUsers from '../../hooks/useGetUsers';
 import useGetCourses from '../../hooks/useGetCourses';
@@ -9,7 +9,7 @@ import { useSelector as useReduxSelector } from 'react-redux';
 import { formatCurrency } from '../../res/funcs';
 import { RootState } from '../../redux/store';
 import { useDate } from '../../hooks/useDate';
-import DashboardSidebar from './DashboardSidebar/DashboardSidebar';
+import { useEffect } from 'react';
 
 const Dashboard = () => {
     const { getRelativeTimeString } = useDate();
@@ -30,6 +30,29 @@ const Dashboard = () => {
 
                         {user.account !== "Manager" ?
                             <>
+                                {/* <Col lg='3' md='3'>
+                                    <div className="revenue__box">
+                                        <h5>Total Revenue</h5>
+                                        {loadingOrders ?
+                                            <span>Loading...</span>
+                                            :
+                                            <span>{formatCurrency(totalOrderAmount)}</span>
+                                        }
+                                    </div>
+                                </Col>
+                                <Col lg='3' md='3'>
+                                    <div className="orders__box">
+                                        <h5>Total Orders</h5>
+                                        {loadingOrders ?
+                                            <span>Loading...</span>
+                                            :
+                                            <span>{orders?.length}</span>
+                                        }
+                                    </div>
+                                </Col> */}
+
+
+
                                 <Col lg='3' md='3'>
                                     <div className="orders__box">
                                         <h5>Total Orders</h5>
@@ -48,7 +71,6 @@ const Dashboard = () => {
                                             <span>Loading...</span>
                                             :
                                             <span>{getRelativeTimeString(new Date(user.memberSince.slice(0, -7)))}</span>
-                                            // <span>{user.memberSince.slice(0, -7)}</span>
                                         }
                                     </div>
                                 </Col>
@@ -100,19 +122,23 @@ const Dashboard = () => {
                         }
                     </Row>
 
-                    {/* <Row>
-                        <Col lg='3' md='3'>
-                            <div className="catalog__box">
-                                <h5>Catalog Total</h5>
-                                {loadingServices || loadingCourses ?
-                                    <span>Loading...</span>
-                                    :
-                                    <span>{services?.length + courses?.length}</span>
-                                }
-                            </div>
+                    <Row>
+                        <Col lg='3' md='3' className='d-flex justify-content-center'>
+                            <CircleProgressBar id='I' progress={9} barColour="rgb(232, 222, 209)" backgroundColour="green">
+                                <h1>90%</h1>
+                            </CircleProgressBar>
                         </Col>
-                    </Row> */}
-
+                        <Col lg='3' md='3' className='d-flex justify-content-center'>
+                            <CircleProgressBar id='Test' progress={6} barColour="rgb(7, 76, 79)">
+                                <h1>60%</h1>
+                            </CircleProgressBar>
+                        </Col>
+                        <Col lg='3' md='3' className='d-flex justify-content-center'>
+                            <CircleProgressBar id='Test2' progress={3} barColour="hsl(356, 55%, 85%)">
+                                <h1>30%</h1>
+                            </CircleProgressBar>
+                        </Col>
+                    </Row>
                 </Container>
             </section>
         </PageWrapper>

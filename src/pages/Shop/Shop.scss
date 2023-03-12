@@ -1,5 +1,16 @@
 @import '../../res/colours.scss';
 
+
+
+.category-header {
+    font-weight: 700;
+    margin-left: 10px;
+    margin-bottom: 20px;
+    text-decoration: underline;
+}
+
+
+
 .filter__widget {
 
     select {
@@ -15,6 +26,7 @@
         &:focus {
             outline: none !important;
         }
+
         &:hover {
             cursor: pointer;
         }
@@ -58,8 +70,16 @@
     }
 }
 
+
+/* ===========================
+   ====== Media Query's ====== 
+   =========================== */
 @media only screen and (max-width: 768px) {
-    .filter__widget {
+    .category-header {
+        text-align: center;
+    }
+
+    .search__box {
         margin-bottom: 30px;
 
         select {

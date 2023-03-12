@@ -200,7 +200,7 @@ const Checkout = () => {
                 <h6>Total Qty: <span>{totalQuantity} items</span></h6>
                 {/* <h6>SubTotal: <span>{formatCurrency(totalAmount)}</span></h6> */}
                 <h4 className="line"></h4>
-                <h5 className='text-center'><span>Discount Code</span></h5>
+                {/* <h5 className='text-center'><span>Discount Code</span></h5> */}
 
                 {/* <Form className='discountCode__form '>
                   <FormGroup className="form__group d-flex flex-row gap-2">

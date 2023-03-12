@@ -18,6 +18,7 @@ import { useAuth } from '../../hooks/useAuth';
 import { signUserOut } from '../../helpers/firebase/firebaseHelper';
 import { useUserActions } from '../../redux/hooks/useUserActions';
 import { UserProfile } from '../../types/UserProfile';
+import MotionSpan from '../Motion/MotionSpan/MotionSpan';
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -63,26 +64,26 @@ const Navbar = () => {
 
   const renderMenuIcons = () => (
     <div className="navbar-nav--icons">
-      <motion.span className="wishlist_icon" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+      <MotionSpan className="wishlist_icon">
         <Link to={"/wishlist"}>
           <Icon_WishList />
           <span className="badge" data-quantity={totalWishListQuantity > 0}>{totalWishListQuantity}</span>
         </Link>
-      </motion.span>
-      <motion.span className="basket_icon" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+      </MotionSpan>
+      <MotionSpan className="basket_icon">
         <Link to={"/basket"}>
           <Icon_ShoppingBasket />
           <span className="badge" data-quantity={totalBasketQuantity > 0}>{totalBasketQuantity}</span>
         </Link>
-      </motion.span>
+      </MotionSpan>
 
       {showingProfileActions && <div className="avatar_icon-actions--overlay" onClick={() => setShowingProfileActions(false)} />}
       <div className='profile'>
-        <motion.span className="avatar_icon" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+        <MotionSpan className="avatar_icon">
           <Avatar url={user.photoURL} onClick={toggleProfileActions} />
           {/* <span className="badge" data-quantity={totalBasketQuantity > 0}>{totalBasketQuantity}</span> */}
           <span className="badge" data-quantity={authenticated && userNotificationCount > 0}>{userNotificationCount}</span>
-        </motion.span>
+        </MotionSpan>
 
         <div className="avatar_icon-actions" style={{ display: (showingProfileActions ? "flex" : "none") }}
         // ref={profileActionsRef}

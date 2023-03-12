@@ -80,15 +80,15 @@ export const NAVIGATION = {
         },
         {
             id: 1,
-            title: "Profile",
-            icon: Icon_Dash_Account,
-            to: "dashboard/account"
-        },
-        {
-            id: 2,
             title: "Calendar",
             icon: Icon_Dash_Calendar,
             to: "dashboard/schedule"
+        },
+        {
+            id: 2,
+            title: "Messages",
+            icon: Icon_Dash_Message,
+            to: "dashboard/messages"
         },
         {
             id: 3,
@@ -104,15 +104,15 @@ export const NAVIGATION = {
         },
         {
             id: 5,
-            title: "Messages",
-            icon: Icon_Dash_Message,
-            to: "dashboard/messages"
-        },
-        {
-            id: 6,
             title: "Catalog",
             icon: Icon_Dash_Catalog,
             to: "dashboard/catalog"
+        },
+        {
+            id: 6,
+            title: "Profile",
+            icon: Icon_Dash_Account,
+            to: "dashboard/account"
         },
         {
             id: 7,

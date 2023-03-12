@@ -11,11 +11,11 @@ const useGetServices = () => {
         // Only grab active items.
         const filtered = (data as ProductItem[])?.filter(item => item.active);
         // Sort by price.
-        const sorted = filtered?.sort((a, b) => a.price - b.price);
+        const sorted = 
+        // filtered?.sort((a, b) => b.price - a.price);
+        filtered?.sort((a, b) => a.subServiceCategory.localeCompare(b.subServiceCategory))
+        // filtered?.sort((a, b) => b.price - a.price)
         return sorted;
-
-        // (data as ProductItem[])?.sort((a, b) => a.subServiceCategory.localeCompare(b.subServiceCategory))
-        // (data as ProductItem[])?.sort((a, b) => a.price - b.price)
     }, [data]);
 
     const loadingServices = useMemo(() => loadingData, [loadingData]);
