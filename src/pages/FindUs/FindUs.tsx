@@ -1,12 +1,16 @@
 import './FindUs.scss';
-import React, { useEffect } from 'react'
-import { Container, Row, Col } from 'reactstrap';
+import React, { useEffect, useMemo, useState } from 'react'
 import { CONTACT, WORKING_HOURS } from '../../constants/constants';
 import { useDate } from '../../hooks/useDate';
 import { timeConversion, currentTimeIsBetweenTimes } from '../../res/funcs';
 import MapViewFrame from '../../components/iFrames/MapViewFrame/MapViewFrame';
+import useGetMiscellaneous from '../../hooks/useMiscellaneous';
 
 const FindUs = () => {
+    // const { openingHours, loadingMiscellaneous, miscellaneousError } = useGetMiscellaneous();
+    
+
+
     const { dayOfWeekName } = useDate();
     let interval: NodeJS.Timer;
 
@@ -16,19 +20,16 @@ const FindUs = () => {
     const { from, to } = today;
     let start = timeConversion(`0${from.padStart(2, '0').slice(0, -2)}:00am`);
     let finish = timeConversion(`0${to.padStart(2, '0').slice(0, -2)}:00pm`);
-    let isOpen = false;
+    const [isOpen, setIsOpen] = useState<boolean>(false);
 
 
     useEffect(() => {
-        interval = setInterval(() => {
-            isOpen = currentTimeIsBetweenTimes(start, finish);
-        })
+        interval = setInterval(() => setIsOpen(currentTimeIsBetweenTimes(start, finish)), 1000)
 
         return function cleanup() {
             clearInterval(interval);
         }
     }, [])
-
 
     return (
         <section className="location__banner">
@@ -39,36 +40,30 @@ const FindUs = () => {
             <div className="module-border-wrap">
                 <div className="module">
                     <h2 className='text-center'>Opening Hours</h2>
-                    <div className="schedule">
-                        {values.map((key, value) => {
-                            const day = keys[value];
+                    <div className="schedule" data-open={`${isOpen}`}>
+                        {values.map((key, index) => {
+                            const day = keys[index];
                             const { from, to } = key;
 
                             const sameDay = day === dayOfWeekName;
                             const closed = from === "Closed" && to === "Closed";
 
                             return (
-                                <div className="d-flex flex-row justify-content-between">
-                                    <label className={`${sameDay && 'fw-bold text-success'} ${sameDay && closed && 'text-danger'}`}
-                                    >{day}</label>
+                                <div className="d-flex flex-row justify-content-between" key={index}>
+                                    <label className={`${sameDay && 'fw-bold openColour'} ${sameDay && closed && 'closedColour'}`}>{day}</label>
 
                                     {closed ?
-                                        <label className={`${sameDay && 'fw-bold text-success'} ${sameDay && closed && 'text-danger'}`}>Closed</label>
+                                        <label className={`${sameDay && 'fw-bold openColour'} ${sameDay && closed && 'closedColour'}`}>Closed</label>
                                         :
-                                        <label className={`${sameDay && 'fw-bold text-success'} ${!isOpen && closed && 'text-danger'}`}>{from} - {to}</label>
+                                        <label className={`${sameDay && 'fw-bold openColour'} ${!isOpen && closed && 'closedColour'}`}>{from} - {to}</label>
                                     }
                                 </div>
                             );
                         })}
 
-                        {/* {isOpen ?
-                            <label className="d-flex justify-content-center fw-bold text-success">We Are Open!</label>
-                            :
-                            <label className="d-flex justify-content-center fw-bold text-danger">We are now CLOSED</label>
-                            // <label className="d-flex justify-content-center fw-bold">{isOpen ? 'We Are Open!' : 'We are now CLOSED'}</label>
-                        } */}
+                       <label className="openLabel" data-open={`${isOpen}`}>{isOpen ? 'We Are Open!' : 'We are now CLOSED'}</label>
                     </div>
-                    
+
 
                 </div>
             </div>

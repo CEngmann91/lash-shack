@@ -26,17 +26,15 @@ const Courses = () => {
             <section className='courses__section'>
                 <Container>
                     <Row>
-                        {loadingCourses
-                            ?
+                        {loadingCourses ? (
                             <LoadingSpinner title="Loading..." />
-                            :
-                            (
-                                courses?.length === 0 ?
-                                    <h1 className='text-center fs-4'>Sorry, No Lashes Here</h1>
-                                    :
-                                    <ProductList items={courses} />
+                        ) : (
+                            courses?.length === 0 ? (
+                                <h1 className='text-center fs-4'>Sorry, No Lashes Here</h1>
+                            ) : (
+                                <ProductList items={courses} />
                             )
-                        }
+                        )}
                     </Row>
                 </Container>
             </section>

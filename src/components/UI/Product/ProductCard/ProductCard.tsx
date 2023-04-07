@@ -23,9 +23,8 @@ const variants = {
 
 type ProductCardProps = {
     item: ProductItem;
-    key: number
 }
-const ProductCard = ({ item, key }: ProductCardProps) => {
+const ProductCard = ({ item }: ProductCardProps) => {
     const navigate = useNavigate();
     const { id, imgUrl, title, price, isOnSale, salePrice, shortDesc, category, subServiceCategory } = item;
     const { addToBasket, removeFromBasket, existsInBasket, countByID } = useBasketActions();

@@ -62,7 +62,7 @@ const DashboardNavbar = () => {
 
                 <h4 className='dash_navbar__title'>{getLocationTitle()}</h4>
 
-                {/* <Form_RadioOptionGroup wrapperClassName='w-75' value={navTitles().indexOf(getLocationTitle())} options={navTitles()} onChange={(value) => navigate(getRoutes()[value].to)} /> */}
+                {/* <Form_RadioOptionGroup wrapperClassName='w-50' value={navTitles().indexOf(getLocationTitle())} options={navTitles()} onChange={(value) => navigate(getRoutes()[value].to)} /> */}
 
                 <div className="dash_navbar__icons">
                     <MotionSpan className='avatar_icon'>

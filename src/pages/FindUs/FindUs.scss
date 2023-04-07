@@ -52,54 +52,50 @@
             color: white;
             padding: 1.5rem 3.5rem;
 
-
             h2 {
-                font-size: 2rem;
+                font-size: 1.8rem;
                 border-bottom: 1px solid $pink-new-colour;
                 width: 100%;
                 margin-bottom: 10px;
                 color: $green-shade-colour;
             }
 
-            label {
-                font-size: 0.9rem;
+            .schedule {
+                &[data-open="true"] {
+                    color: white;
+                }
+    
+                label {
+                    font-size: 0.9rem;
+                }
+    
+                .openColour {
+                    color: black;
+                    font-weight: bolder;
+                    text-decoration: underline;
+                    text-transform: uppercase;
+                }
+                .closedColour {
+                    color: red;
+                    font-weight: normal;
+                }
+    
+                .openLabel {
+                    display: flex;
+                    justify-content: center;
+                    color: red;
+                    text-transform: uppercase;
+                    font-size: 1.3rem;
+                    font-weight: bolder;
+    
+                    &[data-open="true"] {
+                        color: $green-shade-colour;
+                    }
+                }
             }
+
         }
     }
-
-
-
-    /*
-
-    .wrapper {
-        display: flex;
-        justify-content: center;
-        border: 4mm ridge linear-gradient(to right, red, purple); //$pink-new-colour;
-        // border-top-color: $pink-new-colour;
-        // border-left-color: $pink-new-colour;
-        // border-bottom-color: $green-shade-colour;
-        // border-right-color: $green-shade-colour;
-        border-radius: 10px 100px / 120px;
-        padding: 24px;
-        color: white;
-        backdrop-filter: blur(10px);
-        background: transparent;
-        width: fit-content;
-
-
-        h2 {
-            border-bottom: 1px solid #ccc;
-            width: fit-content;
-            margin-bottom: 10px;
-        }
-
-        .schedule {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            width: 80%;
-        }
-    }*/
 }
 
 
@@ -111,11 +107,13 @@
                 padding: 24px;
 
                 h2 {
-                    font-size: 1.5rem;
+                    font-size: 1.3rem;
                 }
 
-                label {
-                    font-size: 0.9rem;
+                .schedule {
+                    label {
+                        font-size: 0.9rem;
+                    }
                 }
             }
 

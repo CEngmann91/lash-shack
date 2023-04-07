@@ -23,27 +23,7 @@ import { launchTreatwell } from "../../res/funcs";
 
 const Landing = () => {
   const navigate = useNavigate();
-  const { miscellaneous, loadingMiscellaneous, miscellaneousError } = useGetMiscellaneous();
-  // const { landing_SpecialOfferBanner } = miscellaneous;
-
-
-
-  // const [imagePaths, setImagePaths] = useState<string[] | null>(null);
-
-
-  useEffect(() => {
-    //   if (imagePaths == null)
-    //     getAllPaths();
-
-    //   return function cleanup() {
-    //     getAllPaths();
-    //   }
-  }, [])
-
-  // const getAllPaths = async () => {
-  //   const paths = await getAllDownloadURLRef('landing')
-  //   setImagePaths(paths);
-  // }
+  const { landingPage_LimitedTimOffer, loadingMiscellaneous, miscellaneousError } = useGetMiscellaneous();
 
 
   const renderLandingSwiper = () => (
@@ -93,16 +73,8 @@ const Landing = () => {
     </Swiper>
   )
 
-  const limitedTimeOffer = useMemo(() => {
-    if (!miscellaneous)
-      return {};
-
-    const { landing_SpecialOfferBanner } = miscellaneous as any;
-    return landing_SpecialOfferBanner;
-  }, [miscellaneous])
-
   const renderLimitedTimeOffer = () => {
-    const { active, content, background, textColour } = limitedTimeOffer;
+    const { active, content, background, textColour } = landingPage_LimitedTimOffer;
     if (!active)
       return;
 

@@ -14,22 +14,22 @@ import { LoadingSpinner, PageWrapper, SkeletonImage } from '../../components'
 import { getAllDownloadURLRef } from '../../helpers/firebase/firebaseHelper';
 import GalleryCard from "./GalleryCard/GalleryCard";
 import GalleryViewerModal from "./GalleryViewerModal/GalleryViewerModal";
+import { useScrollLock } from "../../hooks/useScrollLock";
 
 const Gallery = () => {
-    const [imagePaths, setImagePaths] = useState<string[] | null>(null);
-    const [selected, setSelected] = useState({
-        key: -1,
-        image: "",
-    });
+    const [imagePaths, setImagePaths] = useState<string[]>([]);
+    const [[page, direction], setPage] = useState([0, 0]);
+    const [showModal, setShowModal] = useState<boolean>(false);
+    const { lockScroll, unlockScroll } = useScrollLock();
 
-
+    
 
     useEffect(() => {
-        if (imagePaths == null)
+        if (imagePaths.length == 0)
             getAllPaths();
 
         return function cleanup() {
-            getAllPaths();
+            // getAllPaths();
         }
     }, [])
 
@@ -38,42 +38,76 @@ const Gallery = () => {
         setImagePaths(paths);
     }
 
-
-
     return (
         <PageWrapper title="Gallery">
             <div className="gallery__section">
-                {imagePaths === null ?
+                {imagePaths === null ? (
                     <div className="loading-container">
                         <LoadingSpinner title="Loading..." />
                     </div>
-                    :
+                ) : (
                     <>
-                        {/* <h5 className="text-center mt-5"></h5>
-                        <h1 className="text-center mb-4">Love What You See?</h1> */}
-
-
                         <div className="container">
                             <ul className="image-gallery">
                                 {imagePaths.map((path, key) =>
                                     <GalleryCard key={key} id={key} imgSource={path}
-                                        onClick={() => setSelected({ key, image: path })}
+                                        onClick={() => {
+                                            setPage([key, 0])
+                                            setShowModal(true)
+                                            lockScroll();
+                                        }}
                                     />
                                 )}
                             </ul>
                         </div>
 
-                        
-                        <GalleryViewerModal visible={selected.key != -1}
-                            selectedPhoto={selected.image}
-                            onNextClick={() => {}} onPreviousClick={() => {}}
-                            onClose={() => setSelected({ key: -1, image: "" })}
-                        />
+                        {showModal && (
+                            <GalleryViewerModal visible={page != -1} imagePaths={imagePaths}
+                                page={page} direction={direction} setPage={setPage}
+                                onClose={() => {
+                                    setPage([-1, 0]);
+                                    setShowModal(false);
+                                    unlockScroll();
+                                }}
+                            />
+                        )}
                     </>
-                }
+                )}
             </div>
         </PageWrapper>
     )
+
+
+    // return (
+    //     <PageWrapper title="Gallery">
+    //         <div className="gallery__section">
+    //             {imagePaths === null ?
+    //                 <div className="loading-container">
+    //                     <LoadingSpinner title="Loading..." />
+    //                 </div>
+    //                 :
+    //                 <>
+    //                     {/* <div className="container">
+    //                         <ul className="image-gallery">
+    //                             {imagePaths.map((path, key) =>
+    //                                 <GalleryCard key={key} id={key} imgSource={path}
+    //                                     onClick={() => setSelected({ key, image: path })}
+    //                                 />
+    //                             )}
+    //                         </ul>
+    //                     </div>
+
+
+    //                     <GalleryViewerModal visible={selected.key != -1}
+    //                         selectedPhoto={selected.image}
+    //                         onNextClick={() => {}} onPreviousClick={() => {}}
+    //                         onClose={() => setSelected({ key: -1, image: "" })}
+    //                     /> */}
+    //                 </>
+    //             }
+    //         </div>
+    //     </PageWrapper>
+    // )
 }
 
 export default Gallery

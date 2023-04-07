@@ -28,6 +28,7 @@ const MeetExperts = () => {
 
                         return (
                             <ExpertCard
+                                key={key}
                                 id={key}
                                 firstName={firstName}
                                 position={position}
