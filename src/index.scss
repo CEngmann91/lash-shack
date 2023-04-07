@@ -3,19 +3,9 @@
 @import './constants/constants.scss';
 
 /* google fonts */
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Gotu&display=swap');
 
 :root {
-  --font-base:
-    // "HelveticaNeue-Light",
-    // "Helvetica Neue Light",
-    "Helvetica Neue",
-    // Helvetica,
-    // Arial,
-    // "Lucida Grande", sans-serif
-  ;
-
-
   /* Transitions for navbar link selection. */
   --mainTransition: 0.25s ease-in-out;
   /* Transitions for mode (dark/light) selection. */
@@ -24,7 +14,7 @@
 
 
 body {
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Gotu', sans-serif;
 }
 
 * *::before,
