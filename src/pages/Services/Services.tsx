@@ -1,7 +1,8 @@
 import './Services.scss'
-import { ImageBanner, LoadingSpinner, PageWrapper, ProductList } from '../../components'
+import { Form_RadioOptionGroup, ImageBanner, LoadingSpinner, PageWrapper, ProductList } from '../../components'
 import { Container, Row } from 'reactstrap'
 import useGetServices from '../../hooks/useGetServices'
+import { useState } from 'react'
 
 const Services = () => {
     const {
@@ -14,6 +15,9 @@ const Services = () => {
         loadingServices,
         servicesError
     } = useGetServices();
+
+    const tabs = ['Full Set Extensions', 'Eyelash Extensions Infills', 'Eyebrows',];
+    const [selectedTabIndex, setSelectedTabIndex] = useState<number>(0);
 
 
     return (
@@ -46,7 +50,28 @@ const Services = () => {
                                 <h1 className='text-center fs-4'>Sorry, No Lashes Here</h1>
                                 :
                                 <>
-                                    <div className='mb-4'>
+                                    <Form_RadioOptionGroup wrapperClassName='w-100' value={selectedTabIndex} options={tabs} onChange={setSelectedTabIndex} />
+                                    {selectedTabIndex === 0 && (
+                                        <div className='mb-4'>
+                                            {/* <h1 className='category-header'>Full Set Extensions</h1> */}
+                                            <ProductList items={getAllFullSetExtensions} />
+                                        </div>
+                                    )}
+                                    {selectedTabIndex === 1 && (
+                                        <div className='mb-4'>
+                                            {/* <h1 className='category-header'>Eyelash Extensions Infills</h1> */}
+                                            <ProductList items={getAllExtensionInfills} />
+                                        </div>
+                                    )}
+                                    {selectedTabIndex === 2 && (
+                                        <div className='mb-4'>
+                                            {/* <h1 className='category-header'>Eyebrows</h1> */}
+                                            <ProductList items={getAllEyebrows} />
+                                        </div>
+                                    )}
+
+
+                                    {/* <div className='mb-4'>
                                         <h1 className='category-header'>Full Set Extensions</h1>
                                         <ProductList items={getAllFullSetExtensions} />
                                     </div>
@@ -59,7 +84,7 @@ const Services = () => {
                                     <div className='mb-4'>
                                         <h1 className='category-header'>Eyebrows</h1>
                                         <ProductList items={getAllEyebrows} />
-                                    </div>
+                                    </div> */}
 
                                     {/* <div className='mb-4'>
                                         <h1 className='category-header'>Lips</h1>
