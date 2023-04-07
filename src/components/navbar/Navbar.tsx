@@ -130,18 +130,18 @@ const Navbar = () => {
       <motion.div className="progress-bar" style={{ scaleX }} />
       {/* <Container>
         <Row> */}
-          <div className="app_navbar__wrapper">
-            <div className="logo">
-              <Link to={"/"}>
-                <img src={images.LogoNoBG} alt="logo" />
-              </Link>
-            </div>
+      <div className="app_navbar__wrapper">
+        <div className="logo">
+          <Link to={"/"}>
+            <img src={images.LogoNoBG} alt="logo" />
+          </Link>
+        </div>
 
-            {renderMenuItems()}
+        {renderMenuItems()}
 
-            {renderMenuIcons()}
-          </div>
-        {/* </Row>
+        {renderMenuIcons()}
+      </div>
+      {/* </Row>
       </Container> */}
 
       <DrawerMenu isOpen={isOpen} onClose={toggle} />
