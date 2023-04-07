@@ -4,7 +4,7 @@ import { ArrowMotionButton, LoadingSpinner, MotionButton, PageWrapper } from '..
 import { Container, Col, Row } from 'reactstrap';
 import { useParams } from 'react-router-dom';
 import ImageBanner from '../../components/UI/ImageBanner/ImageBanner';
-import { clearFormFields, formatCurrency } from '../../res/funcs';
+import { clearFormFields, formatCurrency, launchTreatwell } from '../../res/funcs';
 import { useDispatch } from 'react-redux';
 import { basketActions } from '../../redux/slices/basketSlice';
 import { ProductItem } from '../../types/ProductItem';
@@ -83,7 +83,7 @@ const ProductDetails = () => {
 
     return (
         <PageWrapper title={title}>
-            <ImageBanner title={title} />
+            {/* <ImageBanner title={title} /> */}
 
 
             <section className='pt-0'>
@@ -123,7 +123,7 @@ const ProductDetails = () => {
                                 <span className='product__price'>{formatCurrency(price)}</span>
                                 <p className='mt-3'>{shortDesc}</p>
 
-                                {category === "Courses" ? (
+                                {/* {category === "Courses" ? (
                                     <div className='product__upcoming-dates mt-3'>
                                         <span className='product__upcoming-dates-title'>Upcoming Dates</span>
                                         {upcomingDates.length > 0
@@ -133,10 +133,14 @@ const ProductDetails = () => {
                                             <p>No Upcoming dates. STAY TUNED.</p>
                                         }
                                     </div>
-                                ) : null}
+                                ) : null} */}
 
-                                <ArrowMotionButton className='buy__button' onClick={addToBasket}>
+                                {/* <ArrowMotionButton className='buy__button' onClick={addToBasket}>
                                     Add To Basket
+                                </ArrowMotionButton> */}
+
+                                <ArrowMotionButton className='buy__button' onClick={launchTreatwell}>
+                                    View {category.slice(0, -1)}
                                 </ArrowMotionButton>
                             </div>
 
