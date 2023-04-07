@@ -112,11 +112,11 @@
             display: flex;
             align-items: center;
             column-gap: 1.2rem;
-            pointer-events: none;
-            visibility: hidden;
 
 
             .profile {
+                pointer-events: none;
+                visibility: hidden;
                 position: relative;
 
                 img {
@@ -192,12 +192,20 @@
 
             .basket_icon,
             .wishlist_icon,
-            .avatar_icon,
-            .menu_icon {
+            .avatar_icon
+            // .menu_icon
+            {
+                pointer-events: none;
+                visibility: hidden; 
 
                 &:hover {
                     cursor: pointer;
                 }
+            }
+
+            .menu_icon {
+                pointer-events: all;
+                visibility: visible; 
             }
 
 
