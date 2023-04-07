@@ -7,10 +7,20 @@
 import './index.scss';
 import Layout from './components/Layout/Layout';
 import Maintenance from './components/Maintenance/Maintenance';
+import useFirestoreData from './hooks/useFirestoreData';
 
 function App() {
-  return <Maintenance />
-  // return <Layout />
+  const { data, loadingData, error } = useFirestoreData("maintenance");
+  const first = data?.at(0);
+
+  if (!first || loadingData)
+    return null;
+
+  const active = first?.active;
+  if (active)
+    return <Maintenance />
+
+  return <Layout />
 }
 
 export default App;

@@ -41,10 +41,10 @@
             display: flex;
             flex: 1;
             align-items: center;
-            justify-content: space-between;
+            justify-content: center;
             padding: 1.5rem 2rem;
             height: 40px;
-            background: $beige-colour;
+            // background: $beige-colour;
 
             // position: sticky;
             // top: $navbar-height;
@@ -64,13 +64,15 @@
 
 
                 &-selected {
-                    background: $pink-colour;
+                    background: $pink-new-colour;
                     border: 2px solid $green-shade-colour;
                     color: white;
                 }
             }
 
             .green-button {
+                position: fixed;
+                right: 1rem;
                 background: $green-shade-colour;
                 color: white;
             }

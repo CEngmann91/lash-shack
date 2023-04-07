@@ -6,35 +6,58 @@ import { Col, Container, Row } from 'reactstrap';
 import ExpertCard from './ExpertCard/ExpertCard';
 
 const MeetExperts = () => {
-    const { getAllStaff, loadingUsers } = useGetUsers();
+    const { getAllAtLashShack, loadingUsers } = useGetUsers();
+
+
 
 
 
     return (
-        <PageWrapper title="experts">
-            <section className="experts__section">
+        // <PageWrapper title="Experts">
+        <section className="experts__section">
 
-                <h1 className="text-center">Our Team</h1>
+            <h5 className="text-center mb-2">Meet The Experts</h5>
+            <h1 className="text-center mb-4">Some of the people you'll be with</h1>
 
 
-                {loadingUsers ?
-                    <LoadingSpinner title="Loading..." />
-                    :
-                    <Container>
-                        <Row className='d-flex gap-3 justify-content-center list-container'>
-                            {getAllStaff?.map(({ firstName, lastName, photoURL }, key) =>
-                                <ExpertCard key={key}
-                                            firstName={firstName}
-                                            lastName={lastName}
-                                            imgURL={photoURL}
-                                            message={`${key}`}
-                                />
-                            )}
-                        </Row>
-                    </Container>
-                }
-            </section>
-        </PageWrapper>
+            {loadingUsers ?
+                <LoadingSpinner title="Loading..." />
+                :
+                <div className="list">
+                    {getAllAtLashShack?.map(({ firstName, position, photoURL, summary }, key) => {
+
+                        return (
+                            <ExpertCard
+                                id={key}
+                                firstName={firstName}
+                                position={position}
+                                photoURL={photoURL}
+                                message={summary}
+                            />
+                        );
+                    })}
+                </div>
+
+
+
+                // <Container>
+                //     <Row className='d-flex gap-4 justify-content-center list-container'>
+                //         {getAllAtLashShack?.map(({ firstName, position, photoURL, summary }, key) =>
+                //             <Col lg='3' md='3' key={key}>
+                //                 <ExpertCard
+                //                     id={key}
+                //                     firstName={firstName}
+                //                     position={position}
+                //                     photoURL={photoURL}
+                //                     message={summary}
+                //                 />
+                //             </Col>
+                //         )}
+                //     </Row>
+                // </Container>
+            }
+        </section>
+        // </PageWrapper>
     )
 }
 

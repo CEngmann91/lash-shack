@@ -4,52 +4,12 @@
     position: relative;
     min-height: 100vh;
 
-
-    .filter-by-duration {
-
-        .tab {
-            background: lightgray;
-            color: gray;
-            border-radius: 0px;
-            border: 2px solid transparent;
-
-            transition: 0.3s ease-in-out;
-
-
-            &-selected {
-                background: $pink-colour;
-                border: 2px solid $green-shade-colour;
-                color: $green-shade-colour;
-                font-weight: 500;
-            }
-        }
-    }
-
-
-
     @media only screen and (max-width: 768px) {
-        .filter-by-duration {
-            .tab {
-
-            }
-        }
     }
 
     @media only screen and (max-width: 576px) {
         h4 {
             font-size: 1rem;
-        }
-
-        .filter-by-duration {
-            .tab {
-                height: 30px;
-                font-size: 0.6rem;
-
-                &-selected {
-                    font-weight: 700;
-                }
-    
-            }
         }
     }
 }

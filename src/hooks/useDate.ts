@@ -71,6 +71,12 @@ export const useDate = () => {
 
     const fullYear = useMemo(() => date.getFullYear(), [date]);
 
+    const fullDateUK = useMemo(() => {
+        // const options = { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' };
+        return date.toLocaleDateString('en-GB', { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' });
+    }, [date]);
+
+
     return {
         getRelativeTimeString,
         getLocalDayNames,
@@ -79,6 +85,7 @@ export const useDate = () => {
         dayNumeric,
         monthNumeric,
         fullMonth,
-        fullYear
+        fullYear,
+        fullDateUK
     }
 }

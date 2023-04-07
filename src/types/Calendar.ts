@@ -5,6 +5,7 @@ type Appointments = {
     date: string;
     start: string;
     end: string;
+    fullDateTime: string;
     disabled: boolean;
     colour: string;
     attendStatus: AttendStatus;

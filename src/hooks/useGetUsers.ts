@@ -43,7 +43,22 @@ const useGetUsers = (removeCurrentUser: boolean = true) => {
 
     // }, [data]);
     
+    const getManagers = useMemo(() => activeUsers?.filter(item => item.account === "Manager"), [users]);
+
     const getAllStaff = useMemo(() => activeUsers?.filter(item => item.account === "Staff"), [users]);
+
+    const getAllAtLashShack = useMemo(() => {
+        if (getManagers && getAllStaff)
+            return [...getManagers, ...getAllStaff]
+        return [];
+    }, [users]);
+
+    const getAllAtLashShackBirthdays = useMemo(() =>
+    {
+        let dates = [] as string[];
+        getAllAtLashShack.forEach(staff => dates.push(staff.dob));
+        return dates;
+    }, [users]);
 
     const loadingUsers = useMemo(() => loadingData, [loadingData]);
 
@@ -105,7 +120,8 @@ const useGetUsers = (removeCurrentUser: boolean = true) => {
         usersError,
         // getUserByID,
         getAllUsersInMonth,
-        getAllStaff,
+        getAllAtLashShack, getManagers, getAllStaff,
+        getAllAtLashShackBirthdays,
         // getActiveUsersToday,
         // getActiveUsersTodayCount,
     }

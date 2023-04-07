@@ -5,7 +5,7 @@ import { useSelector as useReduxSelector } from 'react-redux';
 import { RootState } from '../../../redux/store';
 import { ProductItem } from '../../../types/ProductItem';
 import { addProduct, deleteProduct, updateProduct, updateProductActiveStatus, uploadPhoto } from '../../../helpers/firebase/firebaseHelper';
-import { ArrowMotionButton, Avatar, Checkbox, LoadingSpinner, MotionButton, ProductList } from '../../../components';
+import { ArrowMotionButton, Avatar, Checkbox, Form_RadioOptionGroup, LoadingSpinner, MotionButton, ProductList } from '../../../components';
 import useFirestoreData from '../../../hooks/useFirestoreData';
 import UploadInput from '../../../components/Form/UploadInput/UploadInput';
 import { Category } from '../../../types/Category';
@@ -252,19 +252,11 @@ const DashboardCatalog = () => {
             <Col lg='12' className='dash__catalog__menu'>
                 {!form.editingProduct && !form.addingNewProduct ?
                     <>
-                        <></>
-
-                        <div className="d-flex align-items-center justify-content-center gap-2 h-100">
-                            <button className={`${selectedTab === "Courses" ? "app__border-bottom" : ""}`} onClick={() => {
-                                setSelectedTab("Courses")
-                                setForm({ ...form, category: "Courses" })
-                            }}>Courses</button>
-
-                            <button className={`${selectedTab === "Services" ? "app__border-bottom" : ""}`} onClick={() => {
-                                setSelectedTab("Services")
-                                setForm({ ...form, category: "Services" })
-                            }}>Services</button>
-                        </div>
+                        <Form_RadioOptionGroup value={selectedTab == "Courses" ? 0 : 1} options={["Courses", "Services"]} onChange={(value) => {
+                            const tab = (value == 0 ? "Courses" : "Services");
+                            setSelectedTab(tab)
+                            setForm({ ...form, category: tab})
+                        }} />
 
                         <ArrowMotionButton className='green-button' onClick={() => setForm({ ...form, addingNewProduct: true })}>
                             Add Product
@@ -285,10 +277,10 @@ const DashboardCatalog = () => {
 
 
             {!form.editingProduct && !form.addingNewProduct ?
-                <Col lg='12' className='mt-4'>
-                    <h4 className='fw-bold'>All {selectedTab} ({listing?.length})</h4>
+                <Col lg='12' className='mt-2'>
+                    {/* <h4 className='fw-bold'>All {selectedTab} ({listing?.length})</h4> */}
 
-                    <table className='table mt-3'>
+                    <table className='table'>
                         <thead>
                             <tr className=''>
                                 <th>Active</th>

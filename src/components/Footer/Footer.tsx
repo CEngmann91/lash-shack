@@ -26,7 +26,7 @@ const Footer = () => {
   const renderCategoryLinks = () => (
     <Col lg="3" md='3' className='mb-4'>
       <div className="footer__quick-links">
-        <h4 className="quick__links-title">Catgories</h4>
+        <h4 className="quick__links-title">Categories</h4>
         <ListGroup className='mb-3'>
           <ListGroupItem className='ps-0 border-0'>
             <Link to={"/courses"}>Courses</Link>
@@ -62,18 +62,18 @@ const Footer = () => {
           <ListGroupItem className='ps-0 border-0'>
             <Link to={"/shop"}>Shop</Link>
           </ListGroupItem>
-          <ListGroupItem className='ps-0 border-0'>
+          {/* <ListGroupItem className='ps-0 border-0'>
             <Link to={"/news"}>Latest News</Link>
-          </ListGroupItem>
+          </ListGroupItem> */}
           <ListGroupItem className='ps-0 border-0'>
             <Link to={"/gallery"}>Gallery</Link>
           </ListGroupItem>
-          <ListGroupItem className='ps-0 border-0'>
+          {/* <ListGroupItem className='ps-0 border-0'>
             <Link to={"/login"}>Login</Link>
-          </ListGroupItem>
-          <ListGroupItem className='ps-0 border-0'>
+          </ListGroupItem> */}
+          {/* <ListGroupItem className='ps-0 border-0'>
             <Link to={"/privacy"}>Privacy Policy</Link>
-          </ListGroupItem>
+          </ListGroupItem> */}
         </ListGroup>
       </div>
     </Col>

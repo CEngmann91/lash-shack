@@ -1,23 +1,40 @@
 import './ProductCard.scss';
-import { Icon_Minus, Icon_Plus, Icon_Share, Icon_ShoppingBasket, Icon_WishList, Icon_WishListFilled } from '../../../../res/icons';
+import { Icon_Minus, Icon_Plus, Icon_Share, Icon_ShoppingBasket, Icon_Trash, Icon_WishList, Icon_WishListFilled } from '../../../../res/icons';
 import { Col } from 'reactstrap';
 import { motion } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom';
-import { formatCurrency } from '../../../../res/funcs';
+import { formatCurrency, launchTreatwell } from '../../../../res/funcs';
 import { ProductItem } from '../../../../types/ProductItem';
 import { MotionButton, MotionSpan, SkeletonImage } from '../../..';
 import { useBasketActions } from '../../../../redux/hooks/useBasketActions';
 import { useWishListActions } from '../../../../redux/hooks/useWishListActions';
 import { useEffect } from 'react';
 
+const variants = {
+    hidden: {
+        opacity: 0,
+        translateY: 40
+    },
+    visible: {
+        opacity: 1,
+        translateY: 0
+    },
+}
+
 type ProductCardProps = {
     item: ProductItem;
+    key: number
 }
-const ProductCard = ({ item }: ProductCardProps) => {
+const ProductCard = ({ item, key }: ProductCardProps) => {
     const navigate = useNavigate();
     const { id, imgUrl, title, price, isOnSale, salePrice, shortDesc, category, subServiceCategory } = item;
     const { addToBasket, removeFromBasket, existsInBasket, countByID } = useBasketActions();
     const { addToWishList, removeFromWishList, existsInWishList } = useWishListActions();
+
+    const count = countByID(id);
+    const exists = existsInBasket(id)
+
+
 
 
 
@@ -25,7 +42,7 @@ const ProductCard = ({ item }: ProductCardProps) => {
     // useEffect(() => {
     //     const color = getComputedStyle(document.documentElement).getPropertyValue('--icon_svg_size');
     //     // alert(color);
-    
+
     //     document.documentElement.style.setProperty('--icon_svg_size', "4rem");
     //   }, [])
 
@@ -40,48 +57,67 @@ const ProductCard = ({ item }: ProductCardProps) => {
 
 
     return (
-        <Col lg='3' md='3' className='product__card'>
+        <motion.div
+            id={id}
+            className='product__card'
+            initial="hidden"
+            whileInView='visible'
+            variants={variants}
+            viewport={{ once: true }}
+            transition={{
+                duration: 0.3,
+                // delay: key * 1
+            }}
+        >
+
             <div className="product__image-wrapper">
                 <div className='product__image' onClick={() => navigate(`/shop/${id}`)}>
                     <SkeletonImage className='' src={imgUrl} alt="" />
                 </div>
 
                 <div className="buttons d-flex align-items-center gap-2">
-                    <MotionButton onClick={() => { }}>
+                    {/* <MotionButton onClick={() => { }}>
                         <Icon_Share />
                     </MotionButton>
 
                     <MotionButton onClick={() => toggleWishList(id)}>
                         {!existsInWishList(id) ? <Icon_WishList /> : <Icon_WishListFilled />}
-                    </MotionButton>
+                    </MotionButton> */}
 
-                    <MotionButton className='app__icon-with-badge' onClick={() => addToBasket(id, title, imgUrl, price)}>
+                    {/* <MotionButton className='app__icon-with-badge' onClick={() => addToBasket(id, title, imgUrl, price)}>
                         <Icon_ShoppingBasket />
-                        <span className="badge" data-quantity={countByID(id) > 0}>{countByID(id)}</span>
+                        <span className="badge" data-quantity={count > 0}>{count}</span>
+                    </MotionButton> */}
+
+
+                    <MotionButton className='app__icon-with-badge' onClick={launchTreatwell}>
+                        <Icon_ShoppingBasket />
+                        <span className="badge" data-quantity={count > 0}>{count}</span>
                     </MotionButton>
                 </div>
             </div>
 
-            <div className="d-flex align-items-center justify-content-between mt-3"
-            // onClick={() => navigate(`/shop/${id}`)}
-            >
-                <div className='product__info'>
-                    <h3 className="product__name">{title}</h3>
-                    {category === "Courses" && <span className=''>{category}</span>}
-                    {category === "Services" && <span className=''>{category} - {subServiceCategory}</span>}
+            <div className="d-flex align-items-center justify-content-between mt-3">
+                <div className='product__info text-center w-100' onClick={() => navigate(`/shop/${id}`)}>
+                    <h2 className="product__title">{title}</h2>
+                    {category === "Courses" && <span className='product__detail'>{category}</span>}
+                    {category === "Services" && <span className='product__detail'>{subServiceCategory}</span>}
                 </div>
             </div>
 
             {/* <span className="d-flex align-items-center justify-content-center">{shortDesc}</span> */}
 
-            <div className="product_card-bottom d-flex align-items-center justify-content-center p-2 gap-3"
-            // onClick={() => navigate(`/shop/${id}`)}
-            >
-                {existsInBasket(id) &&
-                    <MotionSpan className='minus' onClick={() => removeFromBasket(id, title, imgUrl, price)}>
-                        <Icon_Minus />
-                    </MotionSpan>
-                }
+            <div className="product_card-bottom d-flex align-items-center justify-content-center p-2 gap-3">
+                {exists && (
+                    count === 1 ?
+                        <MotionSpan onClick={() => removeFromBasket(id, title, imgUrl, price)}>
+                            <Icon_Trash />
+                        </MotionSpan>
+                        :
+                        <MotionSpan onClick={() => removeFromBasket(id, title, imgUrl, price)}>
+                            <Icon_Minus />
+                        </MotionSpan>
+                )}
 
                 {!isOnSale ?
                     <span className="price">{formatCurrency(price)}</span>
@@ -95,21 +131,13 @@ const ProductCard = ({ item }: ProductCardProps) => {
                     </div>
                 }
 
-                {existsInBasket(id) &&
-                    <MotionSpan className='add' onClick={() => addToBasket(id, title, imgUrl, price)}>
+                {existsInBasket(id) && (
+                    <MotionSpan onClick={() => addToBasket(id, title, imgUrl, price)}>
                         <Icon_Plus />
                     </MotionSpan>
-                }
+                )}
             </div>
-
-
-            {/* {existsInBasket(id) &&
-                    <MotionButton className='add-to-basket-button' onClick={() => removeFromBasket(id, title, imgUrl, price)}>
-                        Remove Basket
-                    </MotionButton>
-                } */}
-
-        </Col>
+        </motion.div>
     )
 }
 

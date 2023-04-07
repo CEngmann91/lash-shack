@@ -1,5 +1,6 @@
 @import '../../constants/constants.scss';
 @import '../../res/colours.scss';
+@import '../../res/mixin.scss';
 
 .header {
     position: sticky;
@@ -9,7 +10,7 @@
     height: $navbar-height;
     // Ensures the navbar is above the content
     z-index: 5;
-
+    // @include blur(4px);
     transition: 0.3s ease-in-out;
 
 
@@ -43,30 +44,30 @@
             // column-gap: 8px;
 
             img {
-                width: 6rem;
+                width: 8rem;
             }
         }
 
-        h2 {
-            position: relative;
+        // h2 {
+        //     position: relative;
 
-            &::before {
-                content: '';
-                position: absolute;
-                bottom: -3px;
-                left: 0;
-                height: 3px;
-                width: 100%;
-                transition: 0.3s;
-                border-radius: 25px;
-                transform: scaleX(0);
-                background: #4070f4;
-            }
+        //     &::before {
+        //         content: '';
+        //         position: absolute;
+        //         bottom: -3px;
+        //         left: 0;
+        //         height: 3px;
+        //         width: 100%;
+        //         transition: 0.3s;
+        //         border-radius: 25px;
+        //         transform: scaleX(0);
+        //         background: #4070f4;
+        //     }
 
-            &:hover::before {
-                transform: scaleX(1);
-            }
-        }
+        //     &:hover::before {
+        //         transform: scaleX(1);
+        //     }
+        // }
 
 
         .navigation {
@@ -76,13 +77,13 @@
                 align-items: center;
                 column-gap: 2.7rem;
                 margin-bottom: 0;
+                
 
                 .link-item {
                     position: relative;
                     color: $green-shade-colour;
                     font-weight: 500;
                     cursor: pointer;
-
 
                     &-active {
                         position: relative;
@@ -111,6 +112,8 @@
             display: flex;
             align-items: center;
             column-gap: 1.2rem;
+            pointer-events: none;
+            visibility: hidden;
 
 
             .profile {
@@ -140,7 +143,7 @@
                         display: none;
                         align-items: center;
                         flex-direction: column;
-                        background: $beige-colour;
+                        background: $pink-new-colour;
                         line-height: 30px;
                         margin-top: 20px;
 
@@ -242,7 +245,7 @@
 
 
         .progress-bar {
-            background: $beige-colour;
+            background: $pink-new-colour;
         }
 
         .app_navbar__wrapper {
@@ -254,11 +257,16 @@
                 .navbar-nav--links {
 
                     .link-item {
-                        color: $beige-colour;
+                        color: $pink-new-colour;
 
                         &-active {
-                            border-bottom: solid 3px $beige-colour;
-                            color: $beige-colour;
+                            border-bottom: solid 3px $pink-new-colour;
+                            color: $pink-new-colour;
+
+
+                            &::before {
+                                background: $pink-new-colour !important;
+                            }
                         }
                     }
                 }
@@ -273,7 +281,7 @@
                 .menu_icon {
 
                     svg {
-                        color: $beige-colour;
+                        color: $pink-new-colour;
                     }
                 }
             }

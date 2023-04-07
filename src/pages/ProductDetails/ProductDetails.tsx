@@ -1,11 +1,10 @@
 import './ProductDetails.scss';
 import { FormEvent, useEffect, useState } from 'react'
-import { LoadingSpinner, MotionButton, PageWrapper } from '../../components'
+import { ArrowMotionButton, LoadingSpinner, MotionButton, PageWrapper } from '../../components'
 import { Container, Col, Row } from 'reactstrap';
 import { useParams } from 'react-router-dom';
 import ImageBanner from '../../components/UI/ImageBanner/ImageBanner';
-import { calculateDaysFromTodayString, clearFormFields, formatCurrency } from '../../res/funcs';
-import { Icon_Star } from '../../res/icons';
+import { clearFormFields, formatCurrency } from '../../res/funcs';
 import { useDispatch } from 'react-redux';
 import { basketActions } from '../../redux/slices/basketSlice';
 import { ProductItem } from '../../types/ProductItem';
@@ -17,7 +16,7 @@ const ProductDetails = () => {
     const dispatch = useDispatch();
     const { catalog, loading, error } = useGetCatalog();
     const product = catalog?.find(item => item.id === id) as ProductItem;
-    type Tab = "Description" | "Reviews";
+    type Tab = "Description" | "Reviews" | "Topics Covered" | "Itinerary";
     const [selectedTab, setSelectedTab] = useState<Tab>("Description");
     const [reviewRating, setReviewRating] = useState<number>(0);
 
@@ -29,8 +28,15 @@ const ProductDetails = () => {
     }
 
 
-    const { title, category, subServiceCategory, shortDesc, description, imgUrl, price, reviews, upcomingDates } = product;
+    let { title, category, subServiceCategory, shortDesc, description, imgUrl, price, reviews, upcomingDates, courseTopics, courseItinerary } = product;
 
+
+
+
+    // description = description.replace(/\*([^*]+?)\*/g, "<b>$1<\/b>");
+    // description = description.replace(/\s\*/g, "-");
+    // description = description.replace(/\*([^*]+)\*/g , '<i>$1</i>');
+    // description = description.replace(/\*\*(.+?)\*\*(?!\*)/g,'<b>$1</b>').replace(/\*([^*><]+)\*/g,'<i>$1</i>');
 
     function handleFormSubmit(e: FormEvent<EventTarget | HTMLFormElement>) {
         // We don't want our page to refresh
@@ -75,17 +81,16 @@ const ProductDetails = () => {
         return Number((sum / reviews?.length).toFixed(2));
     }
 
-
     return (
         <PageWrapper title={title}>
             <ImageBanner title={title} />
+
 
             <section className='pt-0'>
                 <Container>
                     <Row>
                         <Col lg='6'>
                             <div className='product__details-image'>
-
                                 <img src={imgUrl} alt="" />
                             </div>
                         </Col>
@@ -99,7 +104,7 @@ const ProductDetails = () => {
                                     :
                                     <p className='mb-3'>{category}</p>
                                 }
-                                {avgRatings() === 0 ?
+                                {/* {avgRatings() === 0 ?
                                     <p className='mb-4'>No Reviews</p>
                                     :
                                     <div className='product__rating d-flex align-items-center gap-1 mb-4'>
@@ -113,36 +118,26 @@ const ProductDetails = () => {
                                             ({<span>{avgRatings()}</span>} out of 5)
                                         </p>
                                     </div>
-                                }
+                                } */}
 
                                 <span className='product__price'>{formatCurrency(price)}</span>
                                 <p className='mt-3'>{shortDesc}</p>
 
-                                {category === "Courses" ?
+                                {category === "Courses" ? (
                                     <div className='product__upcoming-dates mt-3'>
                                         <span className='product__upcoming-dates-title'>Upcoming Dates</span>
                                         {upcomingDates.length > 0
                                             ?
-                                            (upcomingDates.map((date, key) => {
-                                                const daysPast = calculateDaysFromTodayString(date);
-                                                // Ensures that we only show dates that havent yet passed.
-                                                if (daysPast < 0)
-                                                    return null;
-
-                                                return (
-                                                    <p key={key}>{date}</p>
-                                                )
-                                            }
-                                            ))
+                                            (upcomingDates.map((date, key) => <p key={key}>{date}</p>))
                                             :
                                             <p>No Upcoming dates. STAY TUNED.</p>
                                         }
                                     </div>
-                                    : null}
+                                ) : null}
 
-                                <MotionButton className='buy__button' onClick={addToBasket}>
+                                <ArrowMotionButton className='buy__button' onClick={addToBasket}>
                                     Add To Basket
-                                </MotionButton>
+                                </ArrowMotionButton>
                             </div>
 
                         </Col>
@@ -154,67 +149,45 @@ const ProductDetails = () => {
             <section>
                 <Row>
                     <Col lg='12'>
-                        <div className="tab__wrapper d-flex align-items-center gap-5">
-                            <h6 className={`tab ${selectedTab === "Description" ? "active__tab" : ""}`} onClick={() => setSelectedTab("Description")}>Description</h6>
-                            <h6 className={`tab ${selectedTab === "Reviews" ? "active__tab" : ""}`} onClick={() => setSelectedTab("Reviews")}>Reviews ({reviews.length})</h6>
-                        </div>
+                        {category === "Services" ? (
+                            <div id="services-tabs">
+                                <main>
+                                    <input id="tab1" type="radio" name="tabs" checked={selectedTab === "Description"} onChange={() => setSelectedTab("Description")} />
+                                    <label htmlFor='tab1'>Decription</label>
 
-                        {selectedTab === "Description"
-                            ?
-                            <div className="tab__content mt-4">
-                                <p className='new-line'>{description}</p>
+                                    <section id="content1">
+                                        <p className='text__new-line' id="description">{description}</p>
+                                    </section>
+                                </main>
                             </div>
-                            :
-                            <div className="product__review mt-4">
-                                <div className="review__wrapper">
-                                    <ul>
-                                        {reviews?.map(({ name, message, date, rating }, key) => (
-                                            <li key={key} className="mt-4">
-                                                <h6>{name}</h6>
+                        ) : (
+                            <div id="course-tabs">
+                                <main>
+                                    <input id="tab1" type="radio" name="tabs" checked={selectedTab === "Description"} onChange={() => setSelectedTab("Description")} />
+                                    <label htmlFor='tab1'>Decription</label>
 
+                                    <input id="tab2" type="radio" name="tabs" checked={selectedTab === "Topics Covered"} onChange={() => setSelectedTab("Topics Covered")} />
+                                    <label htmlFor='tab2'>Topics Covered</label>
 
-                                                <div className='d-flex align-items-center gap-1'>
+                                    <input id="tab3" type="radio" name="tabs" checked={selectedTab === "Itinerary"} onChange={() => setSelectedTab("Itinerary")} />
+                                    <label htmlFor='tab3'>Itinerary</label>
 
-                                                    {[...Array(Math.floor(rating))].map((i) =>
-                                                        <div key={i}>
-                                                            <span><Icon_Star /></span>
-                                                        </div>
-                                                    )}
-                                                    <p>
-                                                        ({<span>{rating}</span>} out of 5)
-                                                    </p>
-                                                </div>
+                                    <section id="content1">
+                                        <p className='text__new-line'>{description}</p>
+                                    </section>
 
-                                                {/* <span>{rating} (rating)</span> */}
-                                                <p>{date}</p>
-                                                <p>{message}</p>
-                                            </li>
-                                        ))}
-                                    </ul>
+                                    <section id="content2">
+                                        <p className='text__new-line'>{courseTopics}</p>
+                                    </section>
 
-                                    <div className="review__compose-form">
-                                        <h4>Leave a Review</h4>
-                                        <form action="" onSubmit={handleFormSubmit}>
-                                            <div className="form__group">
-                                                <input type="text" name="name" placeholder='Enter Name' required />
-                                            </div>
-                                            <div className="form__group d-flex align-items-center gap-5">
-                                                <StarRating initialValue={5} onChange={value => setReviewRating(value)} />
-                                            </div>
-                                            <div className="form__group">
-                                                <textarea rows={4} name="message" placeholder='Message Content' required />
-                                            </div>
-
-                                            <MotionButton className='buy__button' type="submit">
-                                                Send
-                                            </MotionButton>
-                                        </form>
-                                    </div>
-
-                                </div>
+                                    <section id="content3">
+                                        <p className='text__new-line'>{courseItinerary}</p>
+                                    </section>
+                                </main>
                             </div>
-                        }
+                        )}
                     </Col>
+
                 </Row>
             </section>
         </PageWrapper>

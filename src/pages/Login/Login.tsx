@@ -2,7 +2,7 @@ import './Login.scss';
 import { useLocation } from 'react-router-dom'
 import { FormEvent } from 'react'
 import { Col, Container, Row, Form, FormGroup } from 'reactstrap'
-import { Checkbox, MotionButton, PageWrapper } from '../../components'
+import { Checkbox, InputField, MotionButton, PageWrapper } from '../../components'
 import { Link, useNavigate } from 'react-router-dom';
 
 import { signIntoUserAccount, signUserOut, updateUserDisplayName } from '../../helpers/firebase/firebaseHelper';
@@ -81,6 +81,11 @@ const Login = () => {
                             <Form className='login__form' onSubmit={handleFormSubmit}>
                                 <h3 className='fw-bold fs-4 mt-2 mb-4 mt-2'>LOGIN</h3>
 
+                                {/* <InputField placeholder="Enter Your Email" type="text" />
+                                <InputField placeholder="Enter Password" type="password" /> */}
+
+
+
                                 <FormGroup className="form__group">
                                     <input name="email" type="email" placeholder='Enter Your Email' autoComplete='email' />
                                 </FormGroup>
@@ -100,7 +105,7 @@ const Login = () => {
                                 </FormGroup> */}
                                 <p className='mt-3'><Link to='/forgot' className='fw-bold'>Forgot Password?</Link></p>
 
-                                <p>Don't have an account? <Link to='/register' className='fw-bold'>Sign Up</Link></p>
+                                <p>Don't have an account? <Link to='/register' className='fw-bold'>Sign up</Link></p>
 
                             </Form>
                         </Col>

@@ -1,21 +1,58 @@
+import { motion } from 'framer-motion';
 import './ExpertCard.scss';
-import React from 'react'
-import { Col, Container, Row } from 'reactstrap';
+
+const variants = {
+    // visible: {
+    //     y: 0,
+    //     opacity: 1,
+    //     transition: {
+    //         duration: 0.5,
+    //         // delay: id * 0.1,
+    //         ease: 'easeIn'
+    //     }
+    // },
+    hidden: { opacity: 0, y: 100 },
+}
 
 type ExpertCardProps = {
+    id: number;
     firstName: string;
-    lastName: string;
-    imgURL: string;
+    position: string;
+    photoURL: string;
     message: string;
 }
-const ExpertCard = ({ firstName, lastName, imgURL, message }: ExpertCardProps) => {
-    
+const ExpertCard = ({ id, firstName, position, photoURL, message }: ExpertCardProps) => {
+
     return (
-        <Col lg='3' md='3' className='expert__card'>
-            <h1>{firstName} {lastName}</h1>
-            <h2>{message}</h2>
-            <img src={imgURL} alt="" />
-        </Col>
+        <motion.div
+            className='expert-card' id={`expert-card${id}`}
+            variants={variants}
+            initial="hidden"
+            viewport={{ once: true }}
+            whileInView={{
+                opacity: 1,
+                y: 0,
+                transition: {
+                    duration: 0.5,
+                    delay: 1 + id * 0.2,
+                    ease: 'easeIn'
+                }
+            }}
+        >
+            <div className="imgBx">
+                <img src={photoURL} alt="" />
+            </div>
+            <div className="content">
+                <div className="contentBx">
+                    <h2>{firstName}
+                        <br />
+                        <span>{position}</span>
+                        <br />
+                        <span>{message}</span>
+                    </h2>
+                </div>
+            </div>
+        </motion.div>
     )
 }
 

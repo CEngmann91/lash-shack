@@ -1,23 +1,19 @@
 @import '../../res/colours.scss';
 
-
-
-.category-header {
-    font-weight: 700;
-    margin-left: 10px;
-    margin-bottom: 20px;
-    text-decoration: underline;
-}
-
-
-
 .filter__widget {
+    .category-header {
+        font-weight: 700;
+        margin-left: 10px;
+        margin-bottom: 20px;
+        text-decoration: underline;
+    }
+
 
     select {
         padding: 5px 20px;
         border: 1px solid grey;
         border-radius: 5px;
-        background: $beige-colour;
+        background: $pink-new-colour;
 
         option {
             // font-size: 0.9rem;
@@ -38,7 +34,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: $beige-colour;
+    background: $pink-new-colour;
     border: 1px solid grey;
     border-radius: 5px;
     padding-right: 10px;
@@ -49,7 +45,7 @@
         width: 100%;
         border: none;
         padding: 5px 20px;
-        background: $beige-colour;
+        background: $pink-new-colour;
 
 
         &:focus {

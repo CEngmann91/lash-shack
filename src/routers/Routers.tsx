@@ -42,7 +42,7 @@ const Routers = () => {
                 <Route path='dashboard/account' element={<Dashboard_Account />} />
                 <Route path='dashboard/orders' element={<Dashboard_Orders />} />
                 <Route path='dashboard/users' element={<Dashboard_Users />} />
-                <Route path='dashboard/schedule' element={<Dashboard_Schedule />} />
+                <Route path='dashboard/planner' element={<Dashboard_Schedule />} />
                 <Route path='dashboard/messages' element={<Dashboard_Messages />} />
                 <Route path='dashboard/catalog' element={<Dashboard_Catalog />} />
                 <Route path='dashboard/settings' element={<Dashboard_Settings />} />

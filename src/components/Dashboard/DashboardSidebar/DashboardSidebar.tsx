@@ -38,7 +38,7 @@ const DashboardSidebar = () => {
             <div className="dash_sidebar__wrapper">
                 <div className="avatar_wrapper app__device-hide-mobile">
                     <MotionSpan className='avatar_icon'>
-                        <Avatar className='profile-photo' url={user.photoURL} scale="3rem" />
+                        <Avatar className='profile-photo' url={user.photoURL} scale="3rem" onClick={() => navigate("dashboard/account")} />
                         {/* <span className="badge" data-quantity={authenticated && userNotificationCount > 0}>{userNotificationCount}</span> */}
                     </MotionSpan>
 

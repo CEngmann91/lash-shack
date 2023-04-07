@@ -1,14 +1,17 @@
 import './Courses.scss';
 import { Container, Row, Col } from 'reactstrap'
-import { LimitedTimeOffer, PageWrapper } from '../../components'
+import { LimitedTimeOffer, LoadingSpinner, PageWrapper, ProductList } from '../../components'
 import images from '../../res/images'
 import ImageBanner from '../../components/UI/ImageBanner/ImageBanner';
+import useGetCourses from '../../hooks/useGetCourses';
 
 const Courses = () => {
+    const { courses, loadingCourses, coursesError } = useGetCourses();
+
 
     return (
         <PageWrapper title="Courses">
-            <ImageBanner title={'Courses'} />
+            <ImageBanner title={'Become A Lash Expert'} />
 
             {/* <LimitedTimeOffer
                 title="Classic Lash Course"
@@ -20,13 +23,20 @@ const Courses = () => {
                 onTimerCompleted={() => { }}
             /> */}
 
-
             <section className='courses__section'>
                 <Container>
                     <Row>
-                        <Col>
-                            Courses
-                        </Col>
+                        {loadingCourses
+                            ?
+                            <LoadingSpinner title="Loading..." />
+                            :
+                            (
+                                courses?.length === 0 ?
+                                    <h1 className='text-center fs-4'>Sorry, No Lashes Here</h1>
+                                    :
+                                    <ProductList items={courses} />
+                            )
+                        }
                     </Row>
                 </Container>
             </section>

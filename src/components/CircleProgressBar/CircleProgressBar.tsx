@@ -14,6 +14,7 @@ interface CircleProgressBarProps extends HTMLAttributes<HTMLElement> {
 }
 const CircleProgressBar = ({ id, progress, barColour = "rgb(255,0,0)", backgroundColour = "white", children }: CircleProgressBarProps) => {
 
+    id = `circular-progress-bar_${id}`;
     
     useLayoutEffect(() => {
         progress = clamp(progress, 0, 10);

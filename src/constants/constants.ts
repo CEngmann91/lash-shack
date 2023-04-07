@@ -33,11 +33,11 @@ export const NAVIGATION = {
         //     title: "Latest News",
         //     to: "news",
         // },
-        {
-            id: 4,
-            title: "Shop",
-            to: "shop",
-        }
+        // {
+        //     id: 4,
+        //     title: "Shop",
+        //     to: "shop",
+        // }
     ],
     DASHBOARD_ROUTES: [
         {
@@ -48,15 +48,15 @@ export const NAVIGATION = {
         },
         {
             id: 1,
-            title: "Profile",
+            title: "Account",
             icon: Icon_Dash_Account,
             to: "dashboard/account"
         },
         {
             id: 2,
-            title: "Calendar",
+            title: "Planner",
             icon: Icon_Dash_Calendar,
-            to: "dashboard/schedule"
+            to: "dashboard/planner"
         },
         {
             id: 3,
@@ -80,9 +80,9 @@ export const NAVIGATION = {
         },
         {
             id: 1,
-            title: "Calendar",
+            title: "Planner",
             icon: Icon_Dash_Calendar,
-            to: "dashboard/schedule"
+            to: "dashboard/planner"
         },
         {
             id: 2,
@@ -110,7 +110,7 @@ export const NAVIGATION = {
         },
         {
             id: 6,
-            title: "Profile",
+            title: "Account",
             icon: Icon_Dash_Account,
             to: "dashboard/account"
         },
@@ -123,19 +123,31 @@ export const NAVIGATION = {
     ] as unknown as NavType[],
 }
 
+export const WORKING_HOURS: { [key: string]: { from: string, to: string } } = {
+    Monday:     { from: "9:00am",     to: "6:00pm" },
+    Tuesday:    { from: "9:00am",     to: "6:00pm" },
+    Wednesday:  { from: "9:00am",     to: "6:00pm" },
+    Thursday:   { from: "9:00am",     to: "7:00pm" },
+    Friday:     { from: "9:00am",     to: "7:00pm" },
+    Saturday:   { from: "9:00am",     to: "4:00pm" },
+    Sunday:     { from: "Closed",     to: "Closed" },
+    
+}
 export const CONTACT = {
     FACEBOOK: '',
     TWITTER: '',
     INSTAGRAM: 'https://www.instagram.com/lashshack.uk/',
     PHONE: "+447435252126",
     EMAIL: "lashshackuk@hotmail.com",
-    HOURS: "Monday - Saturday, 9:30am - 6pm",
     LOCATIONS: [
         {
-            ADDRESS: "Lash Shack\n49 White Hart Lane\nCollier Row,\nEssex\nRM7 8JB",
-            MAP: "https://goo.gl/maps/pZcJw97HJBCo8YVk6",
+            id: 'White Hart Lane',
+            ADDRESS: "Lash Shack\n49 White Hart Lane\nCollier Row,\nRomford\nRM7 8JB",
+            MAP: "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d679.5204988947316!2d0.15733319970601195!3d51.59129798954456!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8a49a4b2a8bd5%3A0x8b08e8d25374186a!2s49%20White%20Hart%20Ln%2C%20Romford%20RM7%208JB!5e1!3m2!1sen!2suk!4v1678780540278!5m2!1sen!2suk",
+            BOROUGH_SUB: "Romford",
         },
         // {
+        //     id: 'NEW',
         //     ADDRESS: "Sunchasers\n37 Mawney Road\nRomford\nRM7 7HL",
         //     MAP: "https://goo.gl/maps/Y6JbXV9A7pSAwbWs7",
         // }

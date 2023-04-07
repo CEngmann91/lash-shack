@@ -1,66 +1,40 @@
-// Import Swiper React components
-import { Swiper, SwiperSlide } from "swiper/react";
-// Import Swiper styles
-import "swiper/scss";
-import "swiper/scss/effect-coverflow";
-import 'swiper/css/navigation';
-import "swiper/scss/pagination";
-// import required modules
-import { EffectCoverflow, Autoplay, Pagination } from "swiper";
-
 import './Testimonials.scss';
-import { LoadingSpinner, PageWrapper } from '../../components'
+import { LoadingSpinner } from '../../components'
 import TestimonialCard from "./TestimonialCard/TestimonialCard";
 import useGetTestimonials from "../../hooks/useGetTestimonials";
 
 const Testimonials = () => {
     const { testimonials, loadingTestimonials, testimonialsError } = useGetTestimonials();
 
-
     return (
-        <PageWrapper title="Testimonials">
+        // <PageWrapper title="Testimonials">
             <section className="testimonials__section">
-
-                <h1 className="text-center">We Love Hearing From You</h1>
+                <h5 className="text-center mb-2">Testimonials</h5>
+                <h1 className="text-center mb-4">We Love Hearing From You</h1>
 
 
                 {loadingTestimonials ?
                     <LoadingSpinner title="Loading..." />
                     :
-                    <></>
-                    // <Swiper
-                    //     effect={"coverflow"}
-                    //     centeredSlides={true}
-                    //     spaceBetween={70}
-                    //     slidesPerView={"auto"}
-                    //     coverflowEffect={{
-                    //         rotate: 0,
-                    //         stretch: 0,
-                    //         depth: 100,
-                    //         modifier: 1,
-                    //         slideShadows: true,
-                    //     }}
-                    //     // loop={true}
-                    //     autoplay={{
-                    //         delay: 5000,
-                    //         pauseOnMouseEnter: true,
-                    //         disableOnInteraction: false,
-                    //     }}
-                    //     pagination={{ clickable: true }}
-                    //     slideToClickedSlide={false}
-                    //     modules={[EffectCoverflow, Pagination, Autoplay]}
-                    // >
-                    //     {testimonials?.map((testimonial) =>
-                    //         <div key={testimonial.id}>
-                    //             <SwiperSlide>
-                    //                 <TestimonialCard data={testimonial} />
-                    //             </SwiperSlide>
-                    //         </div>
-                    //     )}
-                    // </Swiper>
+                    <div className="list">
+                        {testimonials.map(({ id, createdAt, starRating, title, description, customerName }, index) => {
+
+                            return (
+                                <TestimonialCard
+                                    key={index}
+                                    id={id}
+                                    createdAt={createdAt}
+                                    starRating={starRating}
+                                    title={title}
+                                    description={description}
+                                    customerName={customerName}
+                                />
+                            )
+                        })}
+                    </div>
                 }
             </section>
-        </PageWrapper>
+        // </PageWrapper>
     )
 }
 

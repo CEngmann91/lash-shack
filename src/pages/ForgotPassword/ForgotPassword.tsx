@@ -2,7 +2,7 @@ import './ForgotPassword.scss';
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Col, Container, Row, Form, FormGroup } from 'reactstrap'
-import { MotionButton, PageWrapper } from '../../components'
+import { InputField, MotionButton, PageWrapper } from '../../components'
 
 const ForgotPassword = () => {
     const navigate = useNavigate();
@@ -18,9 +18,12 @@ const ForgotPassword = () => {
                             <Form className='forgot-password__form'>
                                 <h3 className='mb-4'>Forgot Password</h3>
 
-                                <FormGroup className="form__group">
+                                <InputField placeholder="Enter Your Email" type="email" />
+
+
+                                {/* <FormGroup className="form__group">
                                     <input type="email" placeholder='Enter Email' autoComplete='email' />
-                                </FormGroup>
+                                </FormGroup> */}
 
                                 <FormGroup className="">
                                     <MotionButton className='forgot-button' type='button' onClick={() => navigate('/login')}>

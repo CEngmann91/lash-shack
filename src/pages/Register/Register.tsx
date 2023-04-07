@@ -2,7 +2,7 @@ import './Register.scss';
 import { FocusEvent, FormEvent, ChangeEvent, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Col, Container, Row, Form, FormGroup } from 'reactstrap'
-import { MotionButton, PageWrapper } from '../../components'
+import { InputField, MotionButton, PageWrapper } from '../../components'
 
 import { createAUser } from '../../helpers/firebase/firebaseHelper';
 import { useUserActions } from '../../redux/hooks/useUserActions';
@@ -98,7 +98,15 @@ const Register = () => {
                             <Form className='register__form' onSubmit={handleFormSubmit}>
                                 <h3 className='fw-bold fs-4 mt-2 mb-4 mt-2'>REGISTER</h3>
 
-                                <FormGroup className="form__group">
+                                <InputField placeholder="Enter First Name" type="text" />
+                                <InputField placeholder="Enter Surname" type="text" />
+                                <InputField placeholder="Enter Your Email" type="email" />
+                                <InputField placeholder="Enter Password" type="password" />
+                                <InputField placeholder="Confirm Password" type="password" />
+
+
+
+                                {/* <FormGroup className="form__group">
                                     <input name="firstName" type="text" placeholder='Enter First Name' />
                                 </FormGroup>
 
@@ -112,10 +120,10 @@ const Register = () => {
 
                                 <FormGroup className="form__group">
                                     <input id="password-field" name="password" type="password" placeholder='Enter Password' onBlur={handlePasswordBlur} autoComplete='current-password' />
-                                </FormGroup>
+                                </FormGroup> */}
 
-                                <FormGroup className="form__group">
-                                    <input name="confirm" type="password" onChange={handleConfirmPasswordChange} placeholder='Confirm Password' autoComplete='current-password' />
+                                {/* <FormGroup className="form__group">
+                                    <input name="confirm" type="password" onChange={handleConfirmPasswordChange} placeholder='Confirm Password' autoComplete='current-password' /> */}
                                     {/* {!passwordsMatch ? <label className='text-danger'>Passwords Do Not Match</label> : <label className='text-success'>&nbsp; Passwords Match</label>} */}
                                     {/* Create a Password still does not match all rules yet */}
 
@@ -125,7 +133,7 @@ const Register = () => {
                                         at least one lowercase letter!
                                         at least one number!
                                         at least one special character! */}
-                                </FormGroup>
+                                {/* </FormGroup> */}
 
                                 <p>I agree to the <Link to='/terms' className='fw-bold'>Terms and Conditions</Link></p>
 

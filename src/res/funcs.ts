@@ -1,3 +1,11 @@
+export function launchTreatwell() {
+    window.open("https://www.treatwell.co.uk/place/lash-shack/?utm_source=&utm_medium=performancemax&utm_campaign_id=14041377065&utm_campaign=&utm_source_platform=googleads&utm_marketing_tactic=pro&utm_click_id=Cj0KCQjw_r6hBhDdARIsAMIDhV_A_g7jMSMIQJX0a2weoVKvWH-c-p1mJn-wMFT8DJgjzc-g-lqFHYoaAhjPEALw_wcB&gclid=Cj0KCQjw_r6hBhDdARIsAMIDhV_A_g7jMSMIQJX0a2weoVKvWH-c-p1mJn-wMFT8DJgjzc-g-lqFHYoaAhjPEALw_wcB&gclsrc=aw.ds",'_blank')
+}
+
+
+
+
+
 const CURRENCY_FORMATTER = new Intl.NumberFormat(undefined, {
     currency: "GBP",
     style: "currency",
@@ -9,7 +17,10 @@ export function formatCurrency(number: number) {
 
 
 export function calculateDaysFromTodayString(date_format: string): number {
-    const date_1: Date = new Date(date_format);
+
+    const splitDate = date_format.split('/');
+    const month = Number(splitDate[1]) - 1; //Javascript months are 0-11
+    const date_1: Date = new Date(Number(splitDate[2]), month, Number(splitDate[0]));
     const date_2: Date = new Date();
     return calculateDifferenceInDays(date_1, date_2);
 }
@@ -23,6 +34,47 @@ export function calculateDifferenceInDays(date_1: Date, date_2: Date): number {
     const difference: number = date_1.getTime() - date_2.getTime();
     const TotalDays: number = Math.ceil(difference / (1000 * 3600 * 24));
     return TotalDays;
+}
+
+
+export function currentTimeIsBetweenTimes(startTime: string = '09:10:00', endTime: string = '22:30:00'): boolean {
+    // const startTime = '09:10:00';
+    // const endTime = '22:30:00';
+
+    const startTimeSplit = startTime.split(":");
+    const endTimeSplit = endTime.split(":");
+
+    var currentDate = new Date()
+
+    let startDate = new Date(currentDate.getTime());
+    startDate.setHours(+startTimeSplit[0]);
+    startDate.setMinutes(+startTimeSplit[1]);
+    startDate.setSeconds(+startTimeSplit[2]);
+
+    let endDate = new Date(currentDate.getTime());
+    endDate.setHours(+endTimeSplit[0]);
+    endDate.setMinutes(+endTimeSplit[1]);
+    endDate.setSeconds(+endTimeSplit[2]);
+
+    const valid = startDate < currentDate && endDate > currentDate
+    return valid;
+}
+
+export function timeConversion(s: string) {
+    let time = "";
+    let hour = s.slice(0, 2)
+    let toD = s.slice(-2)
+
+    if (toD.toUpperCase() === 'AM' && +hour == 12) {
+        time = `00${s.slice(2, s.length -2)}`
+    } else {
+        if (toD.toUpperCase() === 'PM' && +hour < 12) {
+            time = `${Number(12 + parseInt(hour))}${s.slice(2, s.length - 2)}`
+        } else {
+            time = s.slice(0, s.length - 2)
+        }
+    }
+    return time;
 }
 
 

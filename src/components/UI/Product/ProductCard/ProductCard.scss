@@ -2,8 +2,9 @@
 @import '../../../../res/colours.scss';
 
 
-$button-colours: #0072b1,
-    red,
+$button-colours: 
+    // #0072b1,
+    // red,
     $green-shade-colour,
 ;
 
@@ -15,32 +16,36 @@ $button-colours: #0072b1,
 .product__card {
     position: relative;
     border-radius: 15px;
-    border: 10px solid white;
-    box-shadow: 0px 0px 20px rgba($green-shade-colour, 0.5);
+    border: 5px solid white;
+    box-shadow: 0px 0px 5px rgba($green-shade-colour, 0.5);
     width: 19rem;
     height: 25rem;
     overflow: hidden;
     z-index: 1;
-    padding: 0;
-
-    transition: .2s ease-out;
+    padding: 0 0rem;
+    background: white;
+    transition: .5s ease-out;
 
 
     &:hover {
         cursor: pointer;
-        border: 10px solid rgba($pink-colour, 1);
-        box-shadow: 0px 0px 30px rgba($green-shade-colour, 0.5);
-        padding: 0 5px;
-        transform: scale(1.05);
+        border: 5px solid rgba($pink-new-colour, 1);
+        box-shadow: 0px 0px 30px 1px rgba($green-shade-colour, 0.5);
         z-index: 3;
 
-        .product__image-wrapper {
 
-            img {
-                transform: scale(1.2);
-            }
-        }
+        // .product__image-wrapper {
+
+        //     img {
+        //         // transform: scale(1.2);
+        //     }
+        // }
+        transform: scale(1.05);
     }
+
+    // &:active {
+    //     transform: scale(0.95);
+    // }
 
 
     .product__image-wrapper {
@@ -48,7 +53,6 @@ $button-colours: #0072b1,
         height: 15rem;
 
         .product__image {
-            // border-bottom-left-radius: 0;
             border-bottom-right-radius: 30%;
             height: 100%;
             overflow: hidden;
@@ -75,18 +79,18 @@ $button-colours: #0072b1,
                 display: flex;
                 margin: 0 auto;
                 position: relative;
-                width: var(--icon_svg_size);
-                height: var(--icon_svg_size);
+                // width: var(--icon_svg_size);
+                // height: var(--icon_svg_size);
                 border-radius: 50%;
                 border: 1px solid rgba($green-shade-colour, 1);
-                background: $pink-colour;
+                background: $pink-new-colour;
                 padding: 5px;
 
-                svg {
-                    width: 100%;
-                    height: 100%;
-                    color: $green-shade-colour;
-                }
+                // svg {
+                //     width: 100%;
+                //     height: 100%;
+                //     color: $pink-new-colour;
+                // }
             }
 
 
@@ -105,20 +109,29 @@ $button-colours: #0072b1,
 
     .product__info {
         color: inherit;
+        padding: 0 0.3rem;
 
 
-        .product__name {
+        .product__title {
             font-size: 1rem;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-        }
 
-        h3 {
             font-size: 1.2rem;
             font-weight: 600;
             margin-top: 15px;
         }
+
+        .product__detail {
+            color: gray;
+        }
+
+        // h3 {
+        //     font-size: 1.2rem;
+        //     font-weight: 600;
+        //     margin-top: 15px;
+        // }
 
         span {
             font-size: 0.85rem;
@@ -182,16 +195,16 @@ $button-colours: #0072b1,
    =========================== */
     @media only screen and (max-width: 992px) {
 
-        .product__info h3 a {
-            font-size: 1.1rem;
-        }
+        // .product__info h3 a {
+        //     font-size: 1.1rem;
+        // }
     }
 
     @media only screen and (max-width: 768px) {
 
-        .product__info h3 a {
-            font-size: 1rem;
-        }
+        // .product__info h3 a {
+        //     font-size: 1rem;
+        // }
 
         .product_card-bottom span svg {
             // width: 30px;

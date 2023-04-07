@@ -2,9 +2,20 @@
 @import '../../constants/constants.scss';
 
 .experts__section {
+    background: $pink-new-colour;
+    // margin: 1rem 0;
 
+
+    .list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        overflow-y: hidden;
+        padding-bottom: 10px;
+    }
 
     .list-container {
-        
+
     }
 }

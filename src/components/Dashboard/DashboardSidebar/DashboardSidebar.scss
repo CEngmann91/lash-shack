@@ -7,6 +7,7 @@
     width: $sidebar-width-desktop;
     height: calc(100vh + $navbar-height);
     background: $green-shade-colour;
+    // background: $pink-new-colour;
     // Ensures the navbar is above the content
     z-index: 5;
 
@@ -39,7 +40,7 @@
 
             .profile-photo {
                 width: 3rem;
-                border: 2px solid $pink-colour;
+                border: 2px solid $pink-new-colour;
             }
 
             .avatar__details {
@@ -100,7 +101,7 @@
 
                         svg {
                             cursor: pointer;
-                            color: $pink-colour;
+                            color: $pink-new-colour;
                             transform: scale(1.2);
                         }
                     }

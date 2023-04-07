@@ -3,5 +3,6 @@ export type ServiceCategory =
 |   "Eyelash Extensions Full Sets"
 |   "Eyelash Extensions Infills"
 |   "Eyebrows"
-|   "Lips"
-|   "Semi-Permanent Makeup";
+// |   "Lips"
+// |   "Semi-Permanent Makeup"
+;

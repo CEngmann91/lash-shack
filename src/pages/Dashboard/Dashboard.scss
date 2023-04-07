@@ -173,6 +173,23 @@
             font-size: 2rem;
             font-weight: 600;
         }
+
+        .percentage {
+            height: 20px;
+            font-size: 1rem;
+
+            svg {
+                width: 17px;
+                height: 17px;
+            }
+
+            .success {
+                color: green;
+            }
+            .failure {
+                color: red;
+            }
+        }
     }
 
 
@@ -187,7 +204,7 @@
     }
 
     .orders__box {
-        background: $pink-colour;
+        background: $pink-new-colour;
     }
 
     .users__box {
@@ -195,7 +212,7 @@
     }
 
     .catalog__box {
-        background: $pink-colour;
+        background: $pink-new-colour;
     }
 
 

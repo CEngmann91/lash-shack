@@ -2,13 +2,15 @@
 @import '../../constants/constants.scss';
 
 .landing__section {
-    background: $beige-colour;
+    background: $pink-new-colour;
     min-height: calc(100vh - $navbar-height);
 
 
     .swiper-slide {
         width: 20rem !important;
         height: 27rem !important;
+
+        animation: slideUp 0.5s forwards;
     }
 
 
@@ -24,26 +26,37 @@
             font-size: 2.5rem;
             font-weight: 600;
             margin: 20px 0px;
+
+            animation: slideFromRight 1.1s forwards;
         }
 
         p {
             color: black;
             line-height: 28px;
             // text-align: right;
+
+            animation: slideFromRight 0.8s forwards;
         }
 
 
         .landing__subTitle {
             color: $green-shade-colour;
+            opacity: 0;
+            animation: slideFromRight 0.5s forwards;
         }
 
-        .landing__buy-button {
+        .landing__cta-button {
             color: white;
             text-transform: uppercase;
             border-radius: 5px;
             background: $green-shade-colour;
             font-size: 1rem;
             margin-top: 40px;
+            animation: scaleUp 0.5s forwards;
+
+            &:hover {
+                box-shadow: 5px 5px 20px rgba($green-shade-colour, 0.5);
+            }
         }
     }
 
@@ -56,9 +69,6 @@
         }
     }
 }
-
-
-
 
 @media only screen and (max-width: 992px) {
     .landing__section {

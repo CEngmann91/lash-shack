@@ -6,12 +6,18 @@
 
     
     .login__form {
-        background: $beige-colour;
+        background: $pink-new-colour;
         padding: 20px;
         border-radius: 5px;
+        box-shadow: 0px 0px 20px rgba($green-shade-colour, 0.3);
         border: 10px solid white;
-        box-shadow: 0px 0px 20px rgba($green-shade-colour, 0.5);
         overflow: hidden;
+        transition: 0.3s ease-out;
+
+
+        &:hover {
+            box-shadow: 0px 0px 20px rgba($green-shade-colour, 0.7);
+        }
 
         .form__group {
             position: inherit;

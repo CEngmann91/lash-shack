@@ -2,27 +2,22 @@
 @import '../../constants/constants.scss';
 
 .testimonials__section {
+    background: white;
 
-
-
-
-    .swiper-slide {
-        width: 30rem !important;
-        height: 22rem !important;
+    .list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        overflow-y: hidden;
+        padding-bottom: 10px;
     }
 }
-
-
 
 @media only screen and (max-width: 992px) {}
 
 @media only screen and (max-width: 768px) {}
 
 @media only screen and (max-width: 576px) {
-    .testimonials__section {
-        .swiper-slide {
-            width: 22rem !important;
-            height: 20rem !important;
-        }
-    }
+    
 }

@@ -1,16 +1,12 @@
 import './DashboardNavbar.scss';
-import { useState } from 'react'
-import { Col, Container, Row } from 'reactstrap';
-import { motion } from 'framer-motion';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import images from '../../../res/images';
-import { Avatar, MotionSpan } from '../..';
+import { Avatar, Form_RadioOptionGroup, MotionSpan } from '../..';
 import { useSelector as useReduxSelector } from 'react-redux';
 import { RootState } from '../../../redux/store';
 import { UserProfile } from '../../../types/UserProfile';
 import { useAuth } from '../../../hooks/useAuth';
 import { NAVIGATION } from '../../../constants/constants';
-import NavbarItem from '../../navbar/NavbarItem/NavbarItem';
 import { useScroller } from '../../../hooks/useScroller';
 import { signUserOut } from '../../../helpers/firebase/firebaseHelper';
 import { useUserActions } from '../../../redux/hooks/useUserActions';
@@ -42,56 +38,43 @@ const DashboardNavbar = () => {
             });
     }
 
+    const getRoutes = () => {
+        if (user?.account === "Manager")
+            return NAVIGATION.DASHBOARD_ADMIN_ROUTES;
+        return NAVIGATION.DASHBOARD_ROUTES;
+    }
+
+    const navTitles = () =>
+    {
+        let titles = [] as string[];
+        getRoutes().forEach(item => titles.push(item.title))
+        return titles;
+    };
 
     return (
         <header className={`dash__header ${scrolledDown ? "dash__header--scroll" : ""}`}>
-            <Container>
-                <Row>
-                    <Col>
-                        <div className="dash_navbar__wrapper">
-                            <div className="logo">
-                                <Link to={"/"}>
-                                    <img src={images.LogoNoBG} alt="logo" />
-                                </Link>
-                            </div>
+            <div className="dash_navbar__wrapper">
+                <div className="logo">
+                    <Link to={"/"}>
+                        <img src={images.LogoNoBG} alt="logo" />
+                    </Link>
+                </div>
 
+                <h4 className='dash_navbar__title'>{getLocationTitle()}</h4>
 
-                            {/* <div className="navigation app__device-hide-mobile">
-                                <ul className="navbar-nav--links">
-                                    {user.account === "Manager" ?
-                                        (NAVIGATION.DASHBOARD_ADMIN_ROUTES.map(({ id, title, icon, to }) => (
-                                            <li key={id}>
-                                                <NavbarItem to={to} activeClassName="link-item-active" idleClassName='link-item'>{icon}</NavbarItem>
-                                            </li>
-                                        )))
-                                        :
-                                        (NAVIGATION.DASHBOARD_ROUTES.map(({ id, title, icon, to }) => (
-                                            <li key={id}>
-                                                <NavbarItem to={to} activeClassName="link-item-active" idleClassName='link-item'>{icon}</NavbarItem>
-                                            </li>
-                                        )))
-                                    }
-                                </ul>
-                            </div> */}
+                {/* <Form_RadioOptionGroup wrapperClassName='w-75' value={navTitles().indexOf(getLocationTitle())} options={navTitles()} onChange={(value) => navigate(getRoutes()[value].to)} /> */}
 
+                <div className="dash_navbar__icons">
+                    <MotionSpan className='avatar_icon'>
+                        <Avatar url={user.photoURL} scale="2rem" onClick={() => navigate("dashboard/account")} />
+                        <span className="badge" data-quantity={authenticated && userNotificationCount > 0}>{userNotificationCount}</span>
+                    </MotionSpan>
 
-                            <h4 className='dash_navbar__title'>{getLocationTitle()}</h4>
-
-
-                            <div className="dash_navbar__icons">
-                                <MotionSpan className='avatar_icon'>
-                                    <Avatar url={user.photoURL} scale="2rem" />
-                                    <span className="badge" data-quantity={authenticated && userNotificationCount > 0}>{userNotificationCount}</span>
-                                </MotionSpan>
-
-                                <button onClick={signOut} className="signout_icon">
-                                    <Icon_Dash_Exit />
-                                </button>
-                            </div>
-                        </div>
-                    </Col>
-                </Row>
-            </Container>
+                    <button onClick={signOut} className="signout_icon">
+                        <Icon_Dash_Exit />
+                    </button>
+                </div>
+            </div>
         </header>
     )
 }

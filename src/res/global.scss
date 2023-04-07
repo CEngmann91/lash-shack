@@ -2,6 +2,19 @@
 
 
 
+.app__flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    // height: 100vh;
+}
+
+
+
+
+
+
 .swiper {
     width: 100%;
     padding-top: 50px;
@@ -102,6 +115,16 @@
     &:hover::before {
         transform: scaleX(1.2);
     }
+}
+
+.app__top-gradientBlend {
+    -webkit-mask-image: linear-gradient(to top, black 90%, transparent 100%);
+    mask-image: linear-gradient(to top, black 90%, transparent 100%);
+}
+
+.app__buttom-gradientBlend {
+    -webkit-mask-image: linear-gradient(to bottom, black 90%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 90%, transparent 100%);
 }
 
 
@@ -222,7 +245,7 @@
 }
 
 .bg__pink-colour {
-    background: $pink-colour;
+    background: $pink-new-colour;
 }
 
 .bg__green-shade-colour {

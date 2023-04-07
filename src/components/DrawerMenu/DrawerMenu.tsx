@@ -2,6 +2,7 @@ import './DrawerMenu.scss';
 import { NAVIGATION } from '../../constants/constants';
 import { NavLink } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
+import MotionLi from '../Motion/MotionLi/MotionLi';
 
 const containerVariants = {
     closed: {
@@ -72,6 +73,16 @@ const DrawerMenu = ({ isOpen, onClose }: DrawerMenuProps) => {
                         >
                             <ul className="nav--links">
                                 {NAVIGATION.MAIN_ROUTES.map(({ id, title, to }) => (
+                                    // <MotionLi
+                                    //     key={id}
+                                    //     className='nav--link-item'
+                                    //     hoverScale={1.1}
+                                    //     variants={itemVariants}
+                                    // >
+                                    //     <NavLink to={to}>{title}</NavLink>
+                                    // </MotionLi>
+
+                                    
                                     <motion.li
                                         key={id}
                                         className='nav--link-item'

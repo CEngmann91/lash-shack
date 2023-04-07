@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { Col, Container, Row } from 'reactstrap';
 import Clock from '../Clock/Clock';
 import { ArrowMotionButton } from '../..';
+import images from '../../../res/images';
+import { launchTreatwell } from '../../../res/funcs';
 
 type LimitedTimeOfferProps = {
     title: string;
@@ -25,7 +27,6 @@ const LimitedTimeOffer = ({ title = "Groupon Deals", subtitle = "Limited Offer",
     // If this hasn't happen yet and is in the future then do nothing.
     if (isInFuture > 0)
         return null
-
     
     const destination = new Date(endDate).getTime();
     const dif = destination - now;
@@ -44,18 +45,15 @@ const LimitedTimeOffer = ({ title = "Groupon Deals", subtitle = "Limited Offer",
                         </div>
                         <Clock destinationDate={endDate} textColour={textColour} onTimerCompleted={onTimerCompleted} />
 
-                        <ArrowMotionButton className='store__button' onClick={() => navigate("/shop")}>
+                        {/* <ArrowMotionButton className='store__button' onClick={() => navigate("/shop")}> */}
+                        <ArrowMotionButton className='store__button' onClick={launchTreatwell}>
                             Visit Store
                         </ArrowMotionButton>
                     </Col>
 
-                    {imageUrl && 
-                        (
-                            <Col lg='4' md='12' className='text-end counter__image'>
-                                <img src={imageUrl} alt="" />
-                            </Col>
-                        )
-                    }
+                    <Col lg='4' md='12' className='text-end counter__image'>
+                        <img src={imageUrl ? imageUrl : images.LogoNoBG} alt="" />
+                    </Col>
                 </Row>
             </Container>
         </section>

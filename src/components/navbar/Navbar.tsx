@@ -128,8 +128,8 @@ const Navbar = () => {
   return (
     <header className={`header ${scrolledDown ? "header--scroll" : ""}`}>
       <motion.div className="progress-bar" style={{ scaleX }} />
-      <Container>
-        <Row>
+      {/* <Container>
+        <Row> */}
           <div className="app_navbar__wrapper">
             <div className="logo">
               <Link to={"/"}>
@@ -141,8 +141,8 @@ const Navbar = () => {
 
             {renderMenuIcons()}
           </div>
-        </Row>
-      </Container>
+        {/* </Row>
+      </Container> */}
 
       <DrawerMenu isOpen={isOpen} onClose={toggle} />
     </header>

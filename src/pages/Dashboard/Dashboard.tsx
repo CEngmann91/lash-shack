@@ -10,24 +10,49 @@ import { formatCurrency } from '../../res/funcs';
 import { RootState } from '../../redux/store';
 import { useDate } from '../../hooks/useDate';
 import { useEffect } from 'react';
+import { Icon_ArrowDown, Icon_ArrowUp } from '../../res/icons';
 
 const Dashboard = () => {
-    const { getRelativeTimeString } = useDate();
+    const { getRelativeTimeString, fullDateUK } = useDate();
     const user = useReduxSelector((state: RootState) => state.userAccount.user);
     const { users, loadingUsers, usersError } = useGetUsers();
-    const { orders, totalOrderAmount, totalOrderAmountThisMonth, loadingOrders, ordersError, getOrdersFromCurrentUser, totalOrderAmountFromCurrentUser } = useGetOrders((user.account === "Manager" ? null : user.uid));
+    const { orders, totalOrderAmount, totalOrderAmountThisMonth, totalOrderAmountLastMonth, totalOrderPercentileFromLastMonth, loadingOrders, ordersError, getOrdersFromCurrentUser, totalOrderAmountFromCurrentUser } = useGetOrders((user.account === "Manager" ? null : user.uid));
     const { courses, loadingCourses, coursesError } = useGetCourses();
     const { services, loadingServices, servicesError } = useGetServices();
 
 
 
 
+
+    const testPercentages = [
+        {
+            value: 9,
+            barColour: "rgb(232, 222, 209)",
+            backgroundColour: "green"
+        },
+        {
+            value: 2,
+            barColour: "rgb(7, 76, 79)",
+        },
+        {
+            value: 8,
+            barColour: "hsl(356, 55%, 85%)",
+        },
+
+        {
+            value: 100,
+            barColour: "rgb(255, 76, 79)",
+        },
+    ];
+
+
     return (
         <PageWrapper title="Dashboard">
             <section className='dashboard__section'>
                 <Container>
-                    <Row className='stats-header'>
+                    <h1 className='text-center mb-4'>{fullDateUK}</h1>
 
+                    <Row className='stats-header'>
                         {user.account !== "Manager" ?
                             <>
                                 {/* <Col lg='3' md='3'>
@@ -79,7 +104,10 @@ const Dashboard = () => {
                             <>
                                 <Col lg='3' md='3'>
                                     <div className="revenue__box">
-                                        <h5>Total Revenue</h5>
+                                        <div className='d-flex flex-row'>
+                                            <h5>Total Revenue</h5>
+                                            <span className='percentage'>{totalOrderPercentileFromLastMonth >= 0 ? <Icon_ArrowUp className='success' /> : <Icon_ArrowDown className='failure' />}{totalOrderPercentileFromLastMonth}%</span>
+                                        </div>
                                         {loadingOrders ?
                                             <span>Loading...</span>
                                             :
@@ -89,7 +117,9 @@ const Dashboard = () => {
                                 </Col>
                                 <Col lg='3' md='3'>
                                     <div className="orders__box">
-                                        <h5>Total Orders</h5>
+                                        <div className='d-flex flex-row'>
+                                            <h5>Total Orders</h5>
+                                        </div>
                                         {loadingOrders ?
                                             <span>Loading...</span>
                                             :
@@ -99,7 +129,9 @@ const Dashboard = () => {
                                 </Col>
                                 <Col lg='3' md='3'>
                                     <div className="users__box">
-                                        <h5>Total Users</h5>
+                                        <div className='d-flex flex-row'>
+                                            <h5>Total Users</h5>
+                                        </div>
                                         {loadingUsers ?
                                             <span>Loading...</span>
                                             :
@@ -110,7 +142,9 @@ const Dashboard = () => {
 
                                 <Col lg='3' md='3'>
                                     <div className="catalog__box">
-                                        <h5>Catalog Total</h5>
+                                        <div className='d-flex flex-row'>
+                                            <h5>Catalog Total</h5>
+                                        </div>
                                         {loadingServices || loadingCourses ?
                                             <span>Loading...</span>
                                             :
@@ -123,21 +157,13 @@ const Dashboard = () => {
                     </Row>
 
                     <Row>
-                        <Col lg='3' md='3' className='d-flex justify-content-center'>
-                            <CircleProgressBar id='I' progress={9} barColour="rgb(232, 222, 209)" backgroundColour="green">
-                                <h1>90%</h1>
-                            </CircleProgressBar>
-                        </Col>
-                        <Col lg='3' md='3' className='d-flex justify-content-center'>
-                            <CircleProgressBar id='Test' progress={6} barColour="rgb(7, 76, 79)">
-                                <h1>60%</h1>
-                            </CircleProgressBar>
-                        </Col>
-                        <Col lg='3' md='3' className='d-flex justify-content-center'>
-                            <CircleProgressBar id='Test2' progress={3} barColour="hsl(356, 55%, 85%)">
-                                <h1>30%</h1>
-                            </CircleProgressBar>
-                        </Col>
+                        {testPercentages.map(({value, barColour, backgroundColour}, key) => (
+                            <Col key={key} lg='3' md='3' className='d-flex justify-content-center'>
+                                <CircleProgressBar id={`${key}`} progress={value} barColour={barColour} backgroundColour={backgroundColour}>
+                                    <h1>{value * 10}%</h1>
+                                </CircleProgressBar>
+                            </Col>
+                        ))}
                     </Row>
                 </Container>
             </section>

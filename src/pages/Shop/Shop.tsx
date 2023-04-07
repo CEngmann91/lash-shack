@@ -8,8 +8,10 @@ import { ProductItem } from '../../types/ProductItem';
 import useGetCatalog from '../../hooks/useGetCatalog';
 import useGetCourses from '../../hooks/useGetCourses';
 import useGetServices from '../../hooks/useGetServices';
+import useGetProducts from '../../hooks/useGetProducts';
 
 const Shop = () => {
+    const { items, loadingProducts, productsError } = useGetProducts();
     const { courses, loadingCourses, coursesError } = useGetCourses();
     const { services, loadingServices, servicesError } = useGetServices();
 
@@ -68,14 +70,14 @@ const Shop = () => {
             const filteredProducts = catalog?.filter(item => item.category === "Services" && item.subServiceCategory === "Eyebrows")
             setProducts(filteredProducts);
         }
-        if (filterValue === "servicesL") {
-            const filteredProducts = catalog?.filter(item => item.category === "Services" && item.subServiceCategory === "Lips")
-            setProducts(filteredProducts);
-        }
-        if (filterValue === "servicesSMPU") {
-            const filteredProducts = catalog?.filter(item => item.category === "Services" && item.subServiceCategory === "Semi-Permanent Makeup")
-            setProducts(filteredProducts);
-        }
+        // if (filterValue === "servicesL") {
+        //     const filteredProducts = catalog?.filter(item => item.category === "Services" && item.subServiceCategory === "Lips")
+        //     setProducts(filteredProducts);
+        // }
+        // if (filterValue === "servicesSMPU") {
+        //     const filteredProducts = catalog?.filter(item => item.category === "Services" && item.subServiceCategory === "Semi-Permanent Makeup")
+        //     setProducts(filteredProducts);
+        // }
     }
 
     function handleSort(e: ChangeEvent<HTMLSelectElement>) {
@@ -132,8 +134,8 @@ const Shop = () => {
                                     <option value="servicesEEFS">Services - Eyelash Extensions Full Sets</option>
                                     <option value="servicesEEI">Services - Eyelash Extensions Infills</option>
                                     <option value="servicesE">Services - Eyebrows</option>
-                                    <option value="servicesL">Services - Lips</option>
-                                    <option value="servicesSMPU">Services - Semi-Permanent Makeup</option>
+                                    {/* <option value="servicesL">Services - Lips</option>
+                                    <option value="servicesSMPU">Services - Semi-Permanent Makeup</option> */}
                                     {/* <option value=""></option> */}
                                     {/* <option value=""></option> */}
                                 </select>
@@ -169,25 +171,30 @@ const Shop = () => {
             <section className='pt-0'>
                 <Container>
                     <Row>
-                        {loading
+                        {loadingProducts
                             ?
                             <LoadingSpinner title="Loading..." />
                             :
-                            (products && products?.length === 0 ?
+                            (items && items?.length === 0 ?
                                 <h1 className='text-center fs-4'>Sorry, No Lashes Here</h1>
                                 :
-                                <>
-                                    <div className='mb-4'>
-                                        <h1 className='category-header'>Courses</h1>
-                                        <ProductList items={courses} />
-                                    </div>
+                                (JSON.stringify(items, null, 2))
 
-                                    <div className='mt-4'>
-                                        <h1 className='category-header'>Services</h1>
-                                        <ProductList items={services} />
-                                    </div>
-                                </>
-                                // <ProductList items={products} />
+
+                                // <>
+                                //     <div className='mb-4'>
+                                //         <h1 className='category-header'>Courses</h1>
+                                //         <ProductList items={courses} />
+                                //     </div>
+
+                                //     <div className='mt-4'>
+                                //         <h1 className='category-header'>Services</h1>
+                                //         <ProductList items={services} />
+                                //     </div>
+                                // </>
+
+                                // <ProductList items={items as ProductItem[]} />
+                                // <h1>{items?.length.toString()}</h1>
                             )
                         }
                     </Row>

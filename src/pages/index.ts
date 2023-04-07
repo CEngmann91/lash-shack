@@ -1,6 +1,7 @@
 export { default as NotFound } from './NotFound/NotFound';
 
 export { default as Landing } from './Landing/Landing';
+export { default as About } from './About/About';
 export { default as MeetExperts } from './MeetExperts/MeetExperts';
 export { default as Testimonials } from './Testimonials/Testimonials';
 export { default as Courses } from './Courses/Courses';
@@ -11,6 +12,8 @@ export { default as ProductDetails } from './ProductDetails/ProductDetails';
 export { default as Basket } from './Basket/Basket';
 export { default as Checkout } from './Checkout/Checkout';
 export { default as Wishlist } from './Wishlist/Wishlist';
+export { default as FindUs } from './FindUs/FindUs';
+
 export { default as LatestNews } from './LatestNews/LatestNews';
 
 

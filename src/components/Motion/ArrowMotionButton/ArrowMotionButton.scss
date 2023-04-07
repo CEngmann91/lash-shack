@@ -2,6 +2,7 @@
 
 .arrow_motion_button {
     transition: 0.5s;
+    position: relative;
 
 
     &:after {
@@ -32,7 +33,7 @@
    =========================== */
     @media only screen and (max-width: 576px) {
         &:after {
-            top: 5px;
+            top: 9px;
             transform: scale(1);
         }
 

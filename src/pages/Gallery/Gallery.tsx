@@ -13,10 +13,15 @@ import { useEffect, useState } from 'react'
 import { LoadingSpinner, PageWrapper, SkeletonImage } from '../../components'
 import { getAllDownloadURLRef } from '../../helpers/firebase/firebaseHelper';
 import GalleryCard from "./GalleryCard/GalleryCard";
+import GalleryViewerModal from "./GalleryViewerModal/GalleryViewerModal";
 
 const Gallery = () => {
     const [imagePaths, setImagePaths] = useState<string[] | null>(null);
-    const [activeIndex, setActiveIndex] = useState(0);
+    const [selected, setSelected] = useState({
+        key: -1,
+        image: "",
+    });
+
 
 
     useEffect(() => {
@@ -43,33 +48,28 @@ const Gallery = () => {
                         <LoadingSpinner title="Loading..." />
                     </div>
                     :
-                    <Swiper
-                        onRealIndexChange={(element) => setActiveIndex(element.activeIndex)}
-                        effect={"coverflow"}
-                        grabCursor={true}
-                        centeredSlides={true}
-                        spaceBetween={30}
-                        slidesPerView={"auto"}
-                        coverflowEffect={{
-                            rotate: 30,
-                            stretch: 0,
-                            depth: 100,
-                            modifier: 1,
-                            slideShadows: true,
-                        }}
-                        pagination={{ clickable: true }}
-                        // onSwiper={(swiper) => console.log(swiper)}
-                        // onSlideChange={() => console.log('slide change')}
-                        slideToClickedSlide={true}
-                        modules={[EffectCoverflow, Pagination]}
-                        className="mySwiper"
-                    >
-                        {imagePaths.map((path, key) => (
-                            <SwiperSlide key={key}>
-                                <GalleryCard url={path} />
-                            </SwiperSlide>
-                        ))}
-                    </Swiper>
+                    <>
+                        {/* <h5 className="text-center mt-5"></h5>
+                        <h1 className="text-center mb-4">Love What You See?</h1> */}
+
+
+                        <div className="container">
+                            <ul className="image-gallery">
+                                {imagePaths.map((path, key) =>
+                                    <GalleryCard key={key} id={key} imgSource={path}
+                                        onClick={() => setSelected({ key, image: path })}
+                                    />
+                                )}
+                            </ul>
+                        </div>
+
+                        
+                        <GalleryViewerModal visible={selected.key != -1}
+                            selectedPhoto={selected.image}
+                            onNextClick={() => {}} onPreviousClick={() => {}}
+                            onClose={() => setSelected({ key: -1, image: "" })}
+                        />
+                    </>
                 }
             </div>
         </PageWrapper>

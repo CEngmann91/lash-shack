@@ -1,0 +1,188 @@
+@mixin keyframes($name) {
+    @-webkit-keyframes #{$name} { @content; }
+    /* Safari & Chrome */
+    @-moz-keyframes #{$name} { @content; }
+    @-ms-keyframes #{$name} { @content; }
+    @-o-keyframes #{$name} { @content; }
+    @keyframes #{$name} { @content; }
+}
+
+// e.g. "@include animation(animation-name-here)"
+@mixin animation($name) {
+    -webkit-animation: $name;
+    /* Safari & Chrome */
+    -moz-animation: $name;
+    -o-animation: $name;
+    animation: $name;
+}
+
+// @mixin background-image-linear-gradient($from, $to) {
+//     background-image: -webkit-gradient(linear, 0 0, 0 100%, from($from), to($to));
+//     background-image: -webkit-linear-gradient($from, $to);
+//     background-image: -moz-linear-gradient($from, $to);
+//     background-image: -o-linear-gradient($from, $to);
+//     background-image: linear-gradient($from, $to);
+// }
+
+// @mixin rotateZ($degrees) {
+//     transform: rotateZ($degrees);
+//     -webkit-transform: rotateZ($degrees);
+//     -moz-transform: rotateZ($degrees);
+//     -o-transform: rotateZ($degrees);
+// }
+
+// @mixin skewY($degrees) {
+//     -webkit-transform: skewY( $degrees);  //calc($degrees * 1deg) );
+//     -moz-transform: skewY( $degrees);  //calc($degrees * 1deg) );
+//     -ms-transform: skewY( $degrees);  //calc($degrees * 1deg) );
+//     -o-transform: skewY( $degrees);  //calc($degrees * 1deg) );
+//     transform: skewY( $degrees);  //calc($degrees * 1deg) );
+// }
+
+
+@mixin blur($amt) {
+    -webkit-backdrop-filter: blur($amt);
+    backdrop-filter: blur($amt);
+}
+
+// @mixin blur($amt) {
+//     -webkit-backdrop-filter: blur($amt);
+//     backdrop-filter: blur($amt);
+// }
+
+@mixin box-shadow($colour) {
+    -webkit-box-shadow: inset 0px 0px 5px $colour;
+    -moz-box-shadow: inset 0px 0px 5px $colour;
+    box-shadow: inset 0px 0px 5px $colour;
+}
+
+@mixin scale($amt) {
+    -webkit-transform: scale($amt);
+    -moz-transform: scale($amt);
+    -ms-transform: scale($amt);
+    -o-transform: scale($amt);
+    transform: scale($amt);
+}
+
+@mixin translateX($amt) {
+    -webkit-transform: translate($amt, 0);
+    -moz-transform: translate($amt, 0);
+    -ms-transform: translate($amt, 0);
+    -o-transform: translate($amt, 0);
+    transform: translate($amt, 0);
+}
+
+@mixin transition-delay($amt) {
+    -webkit-transition-delay: $amt;
+    -moz-transition-delay: $amt;
+    -o-transition-delay: $amt;
+    transition-delay: $amt;
+}
+
+@mixin transition($amt) {
+    -webkit-transition: $amt;
+    -moz-transition: $amt;
+    -o-transition: $amt;
+    transition: $amt;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@mixin shine-effect($colour-HSL) {
+    @include shine-effect-delayed($colour-HSL, 0);
+}
+
+@mixin shine-effect-delayed($colour-HSL, $delay) {
+    @include keyframes(shine-anim) {
+        0% {
+            background: linear-gradient(30deg,
+                    hsl(260, 85%, 95%) 0%,
+                    $colour-HSL 25%);
+        }
+        25% {
+            background: linear-gradient(30deg,
+                    $colour-HSL 0%,
+                    hsl(260, 85%, 95%) 25%,
+                    $colour-HSL 50%);
+        }
+        50% {
+            background: linear-gradient(30deg,
+                    $colour-HSL 0%,
+                    hsl(260, 85%, 95%) 50%,
+                    $colour-HSL 75%);
+        }
+        75% {
+            background: linear-gradient(30deg,
+                    $colour-HSL 0%,
+                    hsl(260, 85%, 95%) 75%,
+                    $colour-HSL 100%);
+        }
+        100% {
+            background: linear-gradient(30deg,
+                    $colour-HSL 0%,
+                    hsl(260, 85%, 95%) 100%);
+        }
+    }
+    animation: shine-anim 260ms;
+    animation-delay: $delay;
+    // @include animation('shine-anim 260ms');
+    // @include animation(shine-anim);
+}
+
+@mixin shine-effect-delayed-infinite($colour-HSL, $delay) {
+    @include keyframes(shine-anim) {
+        0% {
+            background: linear-gradient(30deg,
+                    hsl(260, 85%, 95%) 0%,
+                    $colour-HSL 25%);
+        }
+        25% {
+            background: linear-gradient(30deg,
+                    $colour-HSL 0%,
+                    hsl(260, 85%, 95%) 25%,
+                    $colour-HSL 50%);
+        }
+        50% {
+            background: linear-gradient(30deg,
+                    $colour-HSL 0%,
+                    hsl(260, 85%, 95%) 50%,
+                    $colour-HSL 75%);
+        }
+        75% {
+            background: linear-gradient(30deg,
+                    $colour-HSL 0%,
+                    hsl(260, 85%, 95%) 75%,
+                    $colour-HSL 100%);
+        }
+        100% {
+            background: linear-gradient(30deg,
+                    $colour-HSL 0%,
+                    hsl(260, 85%, 95%) 100%);
+        }
+    }
+    animation: shine-anim 260ms;
+    animation-delay: $delay;
+    animation-iteration-count: infinite;
+    
+    // @include animation('shine-anim 260ms');
+    // @include animation(shine-anim);
+}

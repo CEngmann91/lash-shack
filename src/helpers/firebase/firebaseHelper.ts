@@ -35,12 +35,15 @@ export const signIntoUserAccount = async (email: string, password: string)  => {
         lastName: '',
         displayName: '',
         email: email,
+        dob: '',
         photoURL: '',
         phoneNumber: "",
         memberSince: "",
         lastLoggedIn: "",
         billingAddress: null,
         preferredLocation: 'Lash Shack',
+        position: "NA",
+        summary: "",
     };
 
     try {
@@ -68,8 +71,14 @@ export const signIntoUserAccount = async (email: string, password: string)  => {
         // userProfile.displayName = docData.displayName;
         userProfile.displayName = `${userProfile.firstName} ${userProfile.lastName}`;
         userProfile.email = docData.email;
+        userProfile.dob = docData.dob;
         userProfile.phoneNumber = docData.phoneNumber;
         userProfile.photoURL = docData.photoURL;
+
+        userProfile.position = docData.position;
+        userProfile.summary = docData.summary;
+        userProfile.startDate = docData.startDate;
+        
 
 
         // updateUserDisplayName(userProfile, userProfile.displayName);
@@ -89,12 +98,15 @@ export const createAUser = async (firstName: string, lastName: string, email: st
         lastName: '',
         displayName: '',
         email: email,
+        dob: '',
         photoURL: '',
         phoneNumber: "",
         memberSince: "",
         lastLoggedIn: "",
         billingAddress: null,
-        preferredLocation: 'Lash Shack'
+        preferredLocation: 'Lash Shack',
+        position: "NA",
+        summary: "",
     };
 
     try {
@@ -336,3 +348,12 @@ export const getAllDownloadURLRef = async (dir: string) => {
         paths.push(result);
     return paths;
 }
+
+
+
+
+
+
+export const processStringData = (input: string) => {
+    return input.replaceAll("\\n", "\n");
+} 

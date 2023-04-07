@@ -2,8 +2,8 @@ import { BsFillBasketFill, BsStarFill, BsTrash, BsBellFill, BsCalendarCheck, BsP
 import { BiSearchAlt } from 'react-icons/bi';
 import { FiHeart } from 'react-icons/fi';
 import { IoIosArrowUp } from 'react-icons/io';
-import { FaHeart, FaFileInvoiceDollar } from 'react-icons/fa';
-import { AiOutlineUpload } from 'react-icons/ai';
+import { FaHeart, FaFileInvoiceDollar, FaQuoteRight } from 'react-icons/fa';
+import { AiOutlineUpload, AiFillCloseCircle, AiOutlineArrowUp, AiOutlineArrowDown } from 'react-icons/ai';
 import { GiQueenCrown, GiShare } from 'react-icons/gi';
 import { FaChessPawn } from 'react-icons/fa';
 import { FaPlus, FaMinus } from 'react-icons/fa';
@@ -24,6 +24,12 @@ export {
     SiBookstack as Icon_Dash_Catalog,
     RiSettings3Fill as Icon_Dash_Settings,
     ImExit as Icon_Dash_Exit,
+
+    AiFillCloseCircle as Icon_Close,
+    FaQuoteRight as Icon_QuoteRight,
+
+    AiOutlineArrowUp as Icon_ArrowUp,
+    AiOutlineArrowDown as Icon_ArrowDown,
 
     BsFillBasketFill as Icon_ShoppingBasket,
     FiHeart as Icon_WishList,

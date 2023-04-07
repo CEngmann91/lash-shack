@@ -9,6 +9,10 @@ export type ProductItem = {
     title: string;
     category: Category;
     subServiceCategory: ServiceCategory;
+
+    courseTopics?: string;
+    courseItinerary?: string;
+
     price: number;
     isOnSale: boolean;
     salePrice: number;

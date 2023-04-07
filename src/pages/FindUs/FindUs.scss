@@ -1,0 +1,124 @@
+@import '../../res/colours.scss';
+
+.location__banner {
+    // background: linear-gradient(rgba(0, 0, 0, 0.562), rgba(0, 0, 0, 0.562)),
+    //     url("../../assets/images/BannerImage.png") no-repeat center center;
+    // background-size: cover;
+    position: relative;
+    display: flex;
+    flex: 1;
+    // align-items: flex-end;
+    justify-content: flex-start;
+    margin: 0 auto;
+    transition: .5s ease-out;
+
+    &:hover {
+
+        .map-content {
+            filter: blur(0px) brightness(100%);
+        }
+
+        .module-border-wrap {
+            background: rgba(166, 166, 166, 0.75);
+        }
+    }
+
+    .map-content {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        transition: .5s ease-out;
+        filter: blur(2px) brightness(50%);
+    }
+
+    .module-border-wrap {
+        position: relative;
+        width: 30rem;
+        border-radius: 10px 100px / 120px;
+        border: 10px solid $pink-new-colour;
+        overflow: hidden;
+        // border: 10px solid transparent;
+        transition: .5s ease-out;
+
+        background: rgba(255, 255, 255, 0.45);
+        box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+        backdrop-filter: blur( 13px );
+        -webkit-backdrop-filter: blur( 13px );
+        // border-radius: 10px;
+
+
+        .module {
+            // background: white;
+            color: white;
+            padding: 1.5rem 3.5rem;
+
+
+            h2 {
+                font-size: 2rem;
+                border-bottom: 1px solid $pink-new-colour;
+                width: 100%;
+                margin-bottom: 10px;
+                color: $green-shade-colour;
+            }
+
+            label {
+                font-size: 0.9rem;
+            }
+        }
+    }
+
+
+
+    /*
+
+    .wrapper {
+        display: flex;
+        justify-content: center;
+        border: 4mm ridge linear-gradient(to right, red, purple); //$pink-new-colour;
+        // border-top-color: $pink-new-colour;
+        // border-left-color: $pink-new-colour;
+        // border-bottom-color: $green-shade-colour;
+        // border-right-color: $green-shade-colour;
+        border-radius: 10px 100px / 120px;
+        padding: 24px;
+        color: white;
+        backdrop-filter: blur(10px);
+        background: transparent;
+        width: fit-content;
+
+
+        h2 {
+            border-bottom: 1px solid #ccc;
+            width: fit-content;
+            margin-bottom: 10px;
+        }
+
+        .schedule {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 80%;
+        }
+    }*/
+}
+
+
+@media only screen and (max-width: 768px) {
+    .location__banner {
+
+        .module-border-wrap {
+            .module {
+                padding: 24px;
+
+                h2 {
+                    font-size: 1.5rem;
+                }
+
+                label {
+                    font-size: 0.9rem;
+                }
+            }
+
+        }
+    }
+}

@@ -32,16 +32,6 @@ const Layout = () => {
 
                 <LoadingScreen visible={isLoading()} />
             </>
-
-
-
-        // <>
-        //     {location.pathname.includes("dashboard") ? <DashboardNavbar /> : <Navbar />}
-        //     <Routers />
-        //     <Footer />
-
-        //     <LoadingScreen visible={isLoading()} />
-        // </>
     )
 }
 

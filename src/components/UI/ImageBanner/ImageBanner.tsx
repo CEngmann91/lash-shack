@@ -4,7 +4,6 @@ import { Container } from 'reactstrap';
 type ImageBannerProps = {
     title: string;
 }
-// "Mar 31, 2023"
 const ImageBanner = ({ title }: ImageBannerProps) => {
     return (
         <section className="image__banner">

@@ -1,6 +1,9 @@
 @import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
 @import '../../res/colours.scss';
 
+// div { color: #aaa; }
+strong { color: #000; }
+
 .product__details {
     margin-top: 50px;
 
@@ -64,25 +67,109 @@
     }
 }
 
-.tab__wrapper {
-    color: rgb(106, 106, 106);
-    font-weight: 600;
-    font-size: 1rem;
+// https://astronautweb.co/snippet/font-awesome/
+// https://codepen.io/schalkjoubert/pen/MeLZYe
+#services-tabs,
+#course-tabs {
 
-    .tab {
+    h1 {
+        padding: 50px 0;
+        font-weight: 400;
+        text-align: center;
+    }
+
+    p {
+        margin: 0 0 20px;
+        line-height: 1.5;
+    }
+
+    main {
+        min-width: 320px;
+        // max-width: 800px;
+        // padding: 50px;
+        margin: 0 auto;
+        background: #fff;
+    }
+
+    section {
+        display: none;
+        padding: 20px 0 0;
+        border-top: 1px solid #ddd;
+    }
+
+    input {
+        display: none;
+    }
+
+    label {
+        display: inline-block;
+        margin: 0 0 -1px;
+        padding: 15px 25px;
+        font-weight: 600;
+        text-align: center;
+        color: #bbb;
+        border: 1px solid transparent;
+
+        &::before {
+            font-family: fontawesome;
+            font-weight: normal;
+            margin-right: 10px;
+        }
 
         &:hover {
+            color: #888;
             cursor: pointer;
         }
     }
-}
 
-.active__tab {
-    font-weight: 600;
-}
+    label[for*='1']:before {
+        content: '\f05a';
+    }
 
-.tab__content {
-    line-height: 30px;
+    label[for*='2']:before {
+        content: '\f0cb';
+    }
+
+    label[for*='3']:before {
+        content: '\f073';
+    }
+
+    // label[for*='4']:before {
+    //     content: '\f1a9';
+    // }
+
+
+
+    input:checked+label {
+        color: #555;
+        border: 1px solid #ddd;
+        border-top: 2px solid $pink-new-colour;
+        border-bottom: 1px solid #fff;
+    }
+
+    #tab1:checked~#content1,
+    #tab2:checked~#content2,
+    #tab3:checked~#content3,
+    #tab4:checked~#content4 {
+        display: block;
+    }
+
+    @media screen and (max-width: 650px) {
+        label {
+            font-size: 0;
+        }
+
+        label:before {
+            margin: 0;
+            font-size: 18px;
+        }
+    }
+
+    @media screen and (max-width: 400px) {
+        label {
+            padding: 15px;
+        }
+    }
 }
 
 .product__review {
@@ -160,5 +247,5 @@
             font-size: 1.3rem;
         }
     }
-    
+
 }
