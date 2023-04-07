@@ -17,7 +17,7 @@ const TestimonialCard = (item: Testimonial) => {
 
     return (
         <motion.div
-            className="testimonial-card card-5"
+            className="testimonial-card"
             initial="hidden"
             whileInView='visible'
             variants={variants}
