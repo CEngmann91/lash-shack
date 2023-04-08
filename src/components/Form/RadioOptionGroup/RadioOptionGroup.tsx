@@ -15,7 +15,7 @@ type RadioOptionGroupProps = {
 const RadioOptionGroup = ({ wrapperClassName, radioOptionClassName, radioOptionTitleClassName, value = 0, options, onChange, disabled }: RadioOptionGroupProps) => (
     <div className={`radio-group-options ${wrapperClassName}`}>
         {options.map((option, key) => (
-            <label className={`radio ${radioOptionClassName}`}>
+            <label className={`radio ${radioOptionClassName}`} key={key}>
                 <input type="radio" disabled={disabled} checked={value === key} onChange={() => onChange(key)} />
                 <span className={`name ${radioOptionTitleClassName}`}>{option}</span>
             </label>

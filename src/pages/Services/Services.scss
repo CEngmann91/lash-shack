@@ -1,4 +1,5 @@
 @import '../../res/colours.scss';
+@import '../../constants/constants.scss';
 
 .services__section {
     background: white;
@@ -10,9 +11,150 @@
         text-decoration: underline;
     }
 
-    .list {
-        margin-bottom: 20px;
+
+
+
+
+
+
+    .radio-group-section {
+        position: sticky;
+        top: calc($navbar-height + 10px);
+        z-index: 1;
     }
 
 
+
+    .pricelist {
+        width: 100%;
+        padding: 6px 2em 6rem 2em;
+
+
+        .title {
+            text-align: center;
+            margin-bottom: 2rem;
+
+
+            p {
+                margin-top: 1rem;
+                line-height: 1.75rem;
+                color: rgb(107 114 128 / 1);
+            }
+
+            h3 {
+                margin-top: 1rem;
+                font-size: 1.8rem;
+                line-height: 0.25rem;
+            }
+        }
+
+        .ttable {
+
+            .theader {
+                padding: 0.75rem 1.25rem;
+                background-color: #EEE;
+                color: #6B7280;
+                font-size: 1rem;
+                line-height: 1.25rem;
+                font-weight: 500;
+                text-transform: uppercase;
+                // border-radius: 0.5rem;
+            }
+
+            .tContent {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: flex-start;
+                margin-top: 1rem;
+                margin-bottom: 1.5rem;
+                padding: 0rem 1rem;
+                border-bottom: 2px solid rgba(211, 211, 211, 0.45);
+
+
+
+                .left {
+
+                    .item-title {
+                        color: #111827;
+                        font-weight: 600;
+                    }
+
+                    .item-subTitle {
+                        color: #6B7280;
+                        font-size: 0.875rem;
+                        // line-height: 1.25rem; 
+
+                        line-height: 1rem;
+                        margin-top: 0;
+                    }
+                }
+
+                .right {
+
+                    .price,
+                    .sale-price {
+                        font-size: 1.13rem;
+                        font-weight: 500;
+                        margin-right: 20px;
+                    }
+
+                    .sale-price {
+                        color: lightgray;
+                        text-decoration-line: line-through;
+                    }
+
+                    .cta-button {
+                        background: $green-shade-colour;
+                        color: white;
+                    }
+                }
+
+            }
+        }
+
+    }
+
+
+
+
+    /* ===========================
+   ====== Media Query's ====== 
+   =========================== */
+    @media only screen and (max-width: 992px) {}
+
+    @media only screen and (max-width: 768px) {
+        .pricelist {
+            padding: 6px 0em 6rem 0em;
+
+            .ttable {
+                .theader {
+                    font-size: 0.7rem;
+                }
+
+                .tContent {
+                    .left {
+                        .item-title {
+                            font-size: 0.8rem;
+                        }
+
+                        .item-subTitle {
+                            font-size: 0.7rem;
+                        }
+                    }
+
+                    .right {
+
+                        .price,
+                        .sale-price {
+                            margin-right: 10px;
+                            font-size: 0.9rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @media only screen and (max-width: 576px) {}
 }
