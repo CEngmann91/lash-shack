@@ -1,8 +1,155 @@
 @import '../../../res/global.scss';
+@import '../../../res/mixin.scss';
 @import '../../../res/colours.scss';
 
+@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 
 
+// $social-colours:
+//     #3b5998,
+//     #00acee,
+//     // #feda75,
+//     // red,
+// ;
+
+.expert-card {
+    position: relative;
+    width: 250px;
+    height: 350px;
+    box-shadow: 0 0 10px rgb(7, 76, 79);
+    border-radius: 20px;
+    overflow: hidden;
+    color: white;
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+    transition: all 500ms;
+
+
+    &:hover {
+        box-shadow: 10px 10px 20px rgb(7, 76, 79);
+
+        .gradient {
+            background: transparent;
+        }
+
+        // .content {
+        //     h2 {
+        //         transform: translateX(0);
+        //     }
+        // }
+    }
+
+
+
+    .gradient {
+        height: 100%;
+        width: 100%;
+        top: 0;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(253, 252, 252, 0.21));
+        color: white;
+    }
+
+    .content {
+        bottom: 0;
+        position: absolute;
+        margin-bottom: 10px;
+        padding: 20px;
+        width: 100%;
+
+
+        h2 {
+            font-size: xx-large;
+            letter-spacing: -1px;
+            // transition: all 0.3s;
+            // transform: translateX(-200px);
+        }
+
+        .details {
+            font-style: italic;
+            color: rgb(185, 206, 224);
+            max-height: 3rem;
+            overflow-y: scroll;
+            padding-right: 15px;
+        }
+
+        .icons {
+            display: flex;
+            flex-direction: column;
+            // top: -30px;
+            bottom: 0;
+            position: absolute;
+            right: 5%;
+            
+            i {
+                font-size: 20px;
+                margin-bottom: 10px;
+                color: rgb(202, 215, 226);
+                transition: 0.3s;
+
+                &:hover {
+                    cursor: pointer;
+                    color: white;
+                }
+            }
+
+            // @for $i from 1 through length($social-colours) {
+            //     :nth-child(#{length($social-colours)}n+#{$i}) {
+            //         color: nth($social-colours, $i);
+            //     }
+            // }
+        }
+    }
+
+    /* ===========================
+   ====== Media Query's ====== 
+   =========================== */
+    @media only screen and (max-width: 992px) {}
+
+    @media only screen and (max-width: 768px) {
+        .gradient {
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(253, 252, 252, 0.11));
+        }    
+    }
+
+    @media only screen and (max-width: 576px) {}
+
+
+
+    // @media screen and (min-width:200px) {
+    //     height: 350px;
+    //     width: 200px;
+
+    //     .content {
+    //         h2 {
+    //             font-size: x-large;
+    //         }
+
+    //         .icons i {
+    //             font-size: large;
+    //             margin-bottom: 10px;
+    //         }
+    //     }
+    // }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 // https://codepen.io/mmuazam99/pen/XWjzvdX
 .expert-card {
     position: relative;
@@ -87,6 +234,17 @@
         }
     }
 }
+*/
+
+
+
+
+
+
+
+
+
+
 
 
 

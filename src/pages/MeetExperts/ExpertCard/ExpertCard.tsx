@@ -24,35 +24,68 @@ type ExpertCardProps = {
 const ExpertCard = ({ id, firstName, position, photoURL, message }: ExpertCardProps) => {
 
     return (
-        <motion.div
-            className='expert-card' id={`expert-card${id}`}
-            variants={variants}
-            initial="hidden"
-            viewport={{ once: true }}
-            whileInView={{
-                opacity: 1,
-                y: 0,
-                transition: {
-                    duration: 0.5,
-                    delay: 1 + id * 0.2,
-                    ease: 'easeIn'
-                }
-            }}
-        >
-            <div className="imgBx">
-                <img src={photoURL} alt="" />
-            </div>
-            <div className="content">
-                <div className="contentBx">
-                    <h2>{firstName}
-                        <br />
-                        <span>{position}</span>
-                        <br />
-                        <span>{message}</span>
-                    </h2>
+        <div className="expert-card" style={{ backgroundImage: `url(${photoURL})` }}>
+            <div className="gradient">
+                <div className="content">
+                    <h2>{firstName}</h2>
+                    <p>{position}</p>
+                    <br />
+                    {/* <p className="details">{message}</p> */}
+                    {/* <div className="icons">
+                        <i className="fa fa-facebook-square" aria-hidden="true"></i>
+                        <i className="fa fa-twitter" aria-hidden="true"></i>
+                        <i className="fa fa-instagram" aria-hidden="true"></i>
+                        <i className="fa fa-pinterest" aria-hidden="true"></i>
+                    </div> */}
                 </div>
             </div>
-        </motion.div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // <motion.div
+        //     className='expert-card' id={`expert-card${id}`}
+        //     variants={variants}
+        //     initial="hidden"
+        //     viewport={{ once: true }}
+        //     whileInView={{
+        //         opacity: 1,
+        //         y: 0,
+        //         transition: {
+        //             duration: 0.5,
+        //             delay: 1 + id * 0.2,
+        //             ease: 'easeIn'
+        //         }
+        //     }}
+        // >
+        //     <div className="imgBx">
+        //         <img src={photoURL} alt="" />
+        //     </div>
+        //     <div className="content">
+        //         <div className="contentBx">
+        //             <h2>{firstName}
+        //                 <br />
+        //                 <span>{position}</span>
+        //                 <br />
+        //                 <span>{message}</span>
+        //             </h2>
+        //         </div>
+        //     </div>
+        // </motion.div>
     )
 }
 

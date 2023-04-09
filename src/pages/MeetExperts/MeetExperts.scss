@@ -3,8 +3,6 @@
 
 .experts__section {
     background: $pink-new-colour;
-    // margin: 1rem 0;
-
 
     .list {
         display: flex;
@@ -12,10 +10,9 @@
         justify-content: center;
         align-items: center;
         overflow-y: hidden;
-        padding-bottom: 10px;
-    }
+        padding-top: 10px;
+        padding-bottom: 30px;
 
-    .list-container {
-
+        gap: 30px;
     }
 }

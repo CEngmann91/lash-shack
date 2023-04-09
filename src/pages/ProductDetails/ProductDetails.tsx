@@ -10,6 +10,7 @@ import { basketActions } from '../../redux/slices/basketSlice';
 import { ProductItem } from '../../types/ProductItem';
 import StarRating from '../../components/StarRating/StarRating';
 import useGetCatalog from '../../hooks/useGetCatalog';
+import { Icon_Star } from '../../res/icons';
 
 const ProductDetails = () => {
     const { id } = useParams();
@@ -131,7 +132,6 @@ const ProductDetails = () => {
         <PageWrapper title={title}>
             {/* <ImageBanner title={title} /> */}
 
-
             <section className='pt-0'>
                 <Container>
                     <Row>
@@ -145,12 +145,12 @@ const ProductDetails = () => {
                             <div className="product__details">
                                 <h2>{title}</h2>
 
-                                {category === "Services" ?
+                                {category === "Services" ? (
                                     <p className='mb-3'>{category} - {subServiceCategory}</p>
-                                    :
+                                ) : (
                                     <p className='mb-3'>{category}</p>
-                                }
-                                {/* {avgRatings() === 0 ?
+                                )}
+                                {avgRatings() === 0 ?
                                     <p className='mb-4'>No Reviews</p>
                                     :
                                     <div className='product__rating d-flex align-items-center gap-1 mb-4'>
@@ -164,7 +164,7 @@ const ProductDetails = () => {
                                             ({<span>{avgRatings()}</span>} out of 5)
                                         </p>
                                     </div>
-                                } */}
+                                }
 
                                 <span className='product__price'>{formatCurrency(price)}</span>
                                 {/* <p className='mt-3'>{shortDesc}</p> */}
@@ -192,7 +192,7 @@ const ProductDetails = () => {
 
 
                                 <div className='mt-3'>
-                                    {category === "Services" ? ( renderServicesTabs() ) : (renderCoursesTabs())}
+                                    {category === "Services" ? (renderServicesTabs()) : (renderCoursesTabs())}
                                 </div>
                             </div>
 
