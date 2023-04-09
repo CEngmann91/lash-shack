@@ -32,6 +32,52 @@ const ProductDetails = () => {
 
 
 
+    function renderServicesTabs() {
+
+        return (
+            <div id="services-tabs">
+                <main>
+                    <input id="tab1" type="radio" name="tabs" checked={selectedTab === "Description"} onChange={() => setSelectedTab("Description")} />
+                    <label htmlFor='tab1'>Decription</label>
+
+                    <section id="content1">
+                        <p className='text__new-line' id="description">{description}</p>
+                    </section>
+                </main>
+            </div>
+        );
+    }
+
+    function renderCoursesTabs() {
+
+        return (
+            <div id="course-tabs">
+                <main>
+                    <input id="tab1" type="radio" name="tabs" checked={selectedTab === "Description"} onChange={() => setSelectedTab("Description")} />
+                    <label htmlFor='tab1'>Decription</label>
+
+                    <input id="tab2" type="radio" name="tabs" checked={selectedTab === "Topics Covered"} onChange={() => setSelectedTab("Topics Covered")} />
+                    <label htmlFor='tab2'>Topics Covered</label>
+
+                    <input id="tab3" type="radio" name="tabs" checked={selectedTab === "Itinerary"} onChange={() => setSelectedTab("Itinerary")} />
+                    <label htmlFor='tab3'>Itinerary</label>
+
+                    <section id="content1">
+                        <p className='text__new-line'>{description}</p>
+                    </section>
+
+                    <section id="content2">
+                        <p className='text__new-line'>{courseTopics}</p>
+                    </section>
+
+                    <section id="content3">
+                        <p className='text__new-line'>{courseItinerary}</p>
+                    </section>
+                </main>
+            </div>
+        );
+    }
+
 
     // description = description.replace(/\*([^*]+?)\*/g, "<b>$1<\/b>");
     // description = description.replace(/\s\*/g, "-");
@@ -121,7 +167,8 @@ const ProductDetails = () => {
                                 } */}
 
                                 <span className='product__price'>{formatCurrency(price)}</span>
-                                <p className='mt-3'>{shortDesc}</p>
+                                {/* <p className='mt-3'>{shortDesc}</p> */}
+                                <p />
 
                                 {/* {category === "Courses" ? (
                                     <div className='product__upcoming-dates mt-3'>
@@ -139,9 +186,14 @@ const ProductDetails = () => {
                                     Add To Basket
                                 </ArrowMotionButton> */}
 
-                                <ArrowMotionButton className='buy__button' onClick={launchTreatwell}>
+                                <ArrowMotionButton className='buy__button w-100' onClick={launchTreatwell}>
                                     View {category.slice(0, -1)}
                                 </ArrowMotionButton>
+
+
+                                <div className='mt-3'>
+                                    {category === "Services" ? ( renderServicesTabs() ) : (renderCoursesTabs())}
+                                </div>
                             </div>
 
                         </Col>
@@ -150,50 +202,14 @@ const ProductDetails = () => {
             </section>
 
 
-            <section>
+            {/* <section>
                 <Row>
                     <Col lg='12'>
-                        {category === "Services" ? (
-                            <div id="services-tabs">
-                                <main>
-                                    <input id="tab1" type="radio" name="tabs" checked={selectedTab === "Description"} onChange={() => setSelectedTab("Description")} />
-                                    <label htmlFor='tab1'>Decription</label>
-
-                                    <section id="content1">
-                                        <p className='text__new-line' id="description">{description}</p>
-                                    </section>
-                                </main>
-                            </div>
-                        ) : (
-                            <div id="course-tabs">
-                                <main>
-                                    <input id="tab1" type="radio" name="tabs" checked={selectedTab === "Description"} onChange={() => setSelectedTab("Description")} />
-                                    <label htmlFor='tab1'>Decription</label>
-
-                                    <input id="tab2" type="radio" name="tabs" checked={selectedTab === "Topics Covered"} onChange={() => setSelectedTab("Topics Covered")} />
-                                    <label htmlFor='tab2'>Topics Covered</label>
-
-                                    <input id="tab3" type="radio" name="tabs" checked={selectedTab === "Itinerary"} onChange={() => setSelectedTab("Itinerary")} />
-                                    <label htmlFor='tab3'>Itinerary</label>
-
-                                    <section id="content1">
-                                        <p className='text__new-line'>{description}</p>
-                                    </section>
-
-                                    <section id="content2">
-                                        <p className='text__new-line'>{courseTopics}</p>
-                                    </section>
-
-                                    <section id="content3">
-                                        <p className='text__new-line'>{courseItinerary}</p>
-                                    </section>
-                                </main>
-                            </div>
-                        )}
+                        {category === "Services" ? ( renderServicesTabs() ) : (renderCoursesTabs())}
                     </Col>
 
                 </Row>
-            </section>
+            </section> */}
         </PageWrapper>
     )
 }

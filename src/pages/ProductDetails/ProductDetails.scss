@@ -1,11 +1,11 @@
-@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
 @import '../../res/colours.scss';
+@import '../../constants/constants.scss';
 
 // div { color: #aaa; }
 strong { color: #000; }
 
 .product__details {
-    margin-top: 50px;
+    margin-top: 30px;
 
     h2 {
         font-size: 1.6rem;
@@ -20,6 +20,11 @@ strong { color: #000; }
 
         border: 5px solid rgba($pink-new-colour, 1);
         box-shadow: 0px 0px 30px 1px rgba($green-shade-colour, 0.5);
+
+
+        position: sticky;
+        top: calc($navbar-height + 60px);
+        z-index: 1;
     }
 
 
