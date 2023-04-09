@@ -6,6 +6,7 @@ export type NavType = {
     title: string;
     icon: ReactNode;
     to: string;
+    subMenu?: NavType[];
 }
 export const NAVIGATION = {
     MAIN_ROUTES: [
@@ -18,6 +19,23 @@ export const NAVIGATION = {
             id: 1,
             title: "Services",
             to: "services",
+            subMenu: [
+                {
+                    id: 0,
+                    title: "Full Set Extensions",
+                    to: "",
+                },
+                {
+                    id: 1,
+                    title: "Eyelash Extensions Infills",
+                    to: "",
+                },
+                {
+                    id: 2,
+                    title: "Eyebrows",
+                    to: "",
+                }
+            ]
         },
         {
             id: 2,
@@ -38,89 +56,89 @@ export const NAVIGATION = {
         //     title: "Shop",
         //     to: "shop",
         // }
-    ],
+    ] as NavType[],
     DASHBOARD_ROUTES: [
         {
             id: 0,
             title: "Home",
-            icon: Icon_Dash_Home,
+            icon: typeof Icon_Dash_Home,
             to: "dashboard"
         },
         {
             id: 1,
             title: "Account",
-            icon: Icon_Dash_Account,
+            icon: typeof Icon_Dash_Account,
             to: "dashboard/account"
         },
         {
             id: 2,
             title: "Planner",
-            icon: Icon_Dash_Calendar,
+            icon: typeof Icon_Dash_Calendar,
             to: "dashboard/planner"
         },
         {
             id: 3,
             title: "Messages",
-            icon: Icon_Dash_Message,
+            icon: typeof Icon_Dash_Message,
             to: "dashboard/messages"
         },
         {
             id: 4,
             title: "Settings",
-            icon: Icon_Dash_Settings,
+            icon: typeof Icon_Dash_Settings,
             to: "dashboard/settings"
         }
-    ] as unknown as NavType[],
+    ] as NavType[],
     DASHBOARD_ADMIN_ROUTES: [
         {
             id: 0,
             title: "Home",
-            icon: Icon_Dash_Home,
+            icon: typeof Icon_Dash_Home,
             to: "dashboard"
         },
         {
             id: 1,
             title: "Planner",
-            icon: Icon_Dash_Calendar,
+            icon: typeof Icon_Dash_Calendar,
             to: "dashboard/planner"
         },
         {
             id: 2,
             title: "Messages",
-            icon: Icon_Dash_Message,
+            icon: typeof Icon_Dash_Message,
             to: "dashboard/messages"
         },
         {
             id: 3,
             title: "Orders",
-            icon: Icon_Dash_Orders,
+            icon: typeof Icon_Dash_Orders,
             to: "dashboard/orders"
         },
         {
             id: 4,
             title: "Users",
-            icon: Icon_Dash_Users,
+            icon: typeof Icon_Dash_Users,
             to: "dashboard/users"
         },
         {
             id: 5,
             title: "Catalog",
-            icon: Icon_Dash_Catalog,
+            icon: typeof Icon_Dash_Catalog,
             to: "dashboard/catalog"
         },
         {
             id: 6,
             title: "Account",
-            icon: Icon_Dash_Account,
+            icon: typeof Icon_Dash_Account,
             to: "dashboard/account"
         },
         {
             id: 7,
             title: "Settings",
-            icon: Icon_Dash_Settings,
+            icon: typeof Icon_Dash_Settings,
             to: "dashboard/settings"
         }
-    ] as unknown as NavType[],
+    ] as NavType[],
 }
 
 export const WORKING_HOURS: { [key: string]: { from: string, to: string } } = {

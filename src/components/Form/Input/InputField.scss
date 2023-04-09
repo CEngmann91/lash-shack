@@ -22,31 +22,27 @@
             padding-left: 5px;
         }
 
+        &:not(:invalid), &:focus {
+            // background: $green-shade-colour;
+            // color: white;
+            transition: 0.3s ease-out;
 
-        &:focus {
-            background: $green-shade-colour;
-            color: white;
+
+            &::placeholder {
+                opacity: 0;
+            }
 
             &+.input-label {
-                top: -20px;
+                top: -16px;
                 font-size: 12px;
                 color: $green-shade-colour;
 
                 &+.input-highlight {
-                    background: white;
+                    // background: white;
                     width: calc(100% - 4px);
                 }
             }
         }
-
-
-        // /* Change the white to any color */
-        // &:-webkit-autofill,
-        // &:-webkit-autofill:hover,
-        // &:-webkit-autofill:focus,
-        // &:-webkit-autofill:active {
-        //     -webkit-box-shadow: 0 0 0 30px white inset !important;
-        // }
     }
 
     .input-label {

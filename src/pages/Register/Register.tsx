@@ -98,11 +98,11 @@ const Register = () => {
                             <Form className='register__form' onSubmit={handleFormSubmit}>
                                 <h3 className='fw-bold fs-4 mt-2 mb-4 mt-2'>REGISTER</h3>
 
-                                <InputField placeholder="Enter First Name" type="text" />
-                                <InputField placeholder="Enter Surname" type="text" />
-                                <InputField placeholder="Enter Your Email" type="email" />
-                                <InputField placeholder="Enter Password" type="password" />
-                                <InputField placeholder="Confirm Password" type="password" />
+                                <InputField placeholder="Enter First Name" type="text" required />
+                                <InputField placeholder="Enter Surname" type="text" required />
+                                <InputField placeholder="Enter Your Email" type="email" required />
+                                <InputField placeholder="Enter Password" type="password" required />
+                                <InputField placeholder="Confirm Password" type="password" required />
 
 
 

@@ -18,7 +18,7 @@ const ForgotPassword = () => {
                             <Form className='forgot-password__form'>
                                 <h3 className='mb-4'>Forgot Password</h3>
 
-                                <InputField placeholder="Enter Your Email" type="email" />
+                                <InputField placeholder="Enter Your Email" type="email" required />
 
 
                                 {/* <FormGroup className="form__group">

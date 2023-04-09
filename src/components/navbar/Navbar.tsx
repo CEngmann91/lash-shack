@@ -116,7 +116,7 @@ const Navbar = () => {
       <ul className="navbar-nav--links">
         {NAVIGATION.MAIN_ROUTES.map(({ title, to }, key) => (
           <li className='nav--link-item' key={key}>
-            <NavbarItem to={to} activeClassName="app__border-bottom link-item-active" idleClassName='link-item'>{title}</NavbarItem>
+            <NavbarItem to={to} activeClassName="app__bottom-cirle link-item-active" idleClassName='link-item'>{title}</NavbarItem>
           </li>
         ))}
       </ul>
@@ -126,6 +126,87 @@ const Navbar = () => {
 
 
   return (
+    // <div className="header">
+    //   <motion.div className="progress-bar" style={{ scaleX }} />
+
+    //   <nav>
+    //     <div id="logo">
+    //       <Link to={"/"}>
+    //         <img src={images.LogoNoBG} alt="logo" />
+    //       </Link>
+    //     </div>
+
+    //     <ul className="menu">
+    //       {NAVIGATION.MAIN_ROUTES.map((item, key) => (
+    //         <>
+    //           <li key={key}>
+    //             <a href="#">{item.title}</a>
+    //             {item.subMenu && (
+    //               <ul>
+    //                 {item.subMenu?.map((subItem, index) => (
+    //                   <li key={index}><a href="#">{subItem.title}</a></li>
+    //                 ))}
+    //               </ul>
+    //             )}
+    //           </li>
+    //         </>
+    //       ))}
+    //     </ul>
+
+
+    //     <div id="menu-icons">
+
+    //     </div>
+    //   </nav>
+    // </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // <nav id='main__navbar'>
+
+    //   <motion.div className="progress-bar" style={{ scaleX }} />
+
+    //   <ul id="main">
+    //     {NAVIGATION.MAIN_ROUTES.map((item, key) => (
+    //       <li key={key}>{item.title}
+    //         {item.subMenu && (
+    //           <ul className="submenu-drop">
+    //             <div>
+    //               {item.subMenu.map((subItem, index) => (
+    //                 <li key={index}>{subItem.title}</li>
+    //               ))}
+    //             </div>
+    //           </ul>
+    //         )}
+    //       </li>
+    //     ))}
+    //     <div id="marker"></div>
+    //   </ul>
+    // </nav>
+
+
+
+
+
+
+
+
+
+
     <header className={`header ${scrolledDown ? "header--scroll" : ""}`}>
       <motion.div className="progress-bar" style={{ scaleX }} />
       {/* <Container>

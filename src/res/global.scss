@@ -117,6 +117,28 @@
     }
 }
 
+
+.app__bottom-cirle {
+    position: relative;
+
+    &::before {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: calc(50% - 5px);
+        height: 10px;
+        width: 10px;
+        transition: 0.3s;
+        border-radius: 25px;
+        // transform: scaleX(1);
+        background: #4070f4;
+    }
+    
+    &:hover::before {
+        transform: scaleX(1.2);
+    }
+}
+
 .app__top-gradientBlend {
     -webkit-mask-image: linear-gradient(to top, black 90%, transparent 100%);
     mask-image: linear-gradient(to top, black 90%, transparent 100%);

@@ -59,6 +59,10 @@
                 font-weight: 500;
                 text-transform: uppercase;
                 // border-radius: 0.5rem;
+
+                // position: sticky;
+                // top: calc($navbar-height + 60px);
+                // z-index: 1;
             }
 
             .tContent {
@@ -70,8 +74,6 @@
                 margin-bottom: 1.5rem;
                 padding: 0rem 1rem;
                 border-bottom: 2px solid rgba(211, 211, 211, 0.45);
-
-
 
                 .left {
 
@@ -109,10 +111,8 @@
                         color: white;
                     }
                 }
-
             }
         }
-
     }
 
 

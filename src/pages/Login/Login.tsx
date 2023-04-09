@@ -81,18 +81,18 @@ const Login = () => {
                             <Form className='login__form' onSubmit={handleFormSubmit}>
                                 <h3 className='fw-bold fs-4 mt-2 mb-4 mt-2'>LOGIN</h3>
 
-                                {/* <InputField placeholder="Enter Your Email" type="text" />
-                                <InputField placeholder="Enter Password" type="password" /> */}
+                                <InputField placeholder="Enter Your Email" type="text" required />
+                                <InputField placeholder="Enter Password" type="password" required />
 
 
 
-                                <FormGroup className="form__group">
+                                {/* <FormGroup className="form__group">
                                     <input name="email" type="email" placeholder='Enter Your Email' autoComplete='email' />
                                 </FormGroup>
 
                                 <FormGroup className="form__group">
                                     <input name="password" type="password" placeholder='Enter Password' autoComplete='password' />
-                                </FormGroup>
+                                </FormGroup> */}
 
                                 <Checkbox label='Stay Signed In' onChange={(value) => { }} />
 

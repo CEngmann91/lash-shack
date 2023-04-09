@@ -26,15 +26,12 @@ const Services = () => {
 
 
 
-    function formatTime(seconds: number) {
-        const h = Math.floor(seconds / 3600);
-        const m = Math.floor((seconds % 3600) / 60);
-        const s = Math.round(seconds % 60);
-        return [
-            h,
-            m > 9 ? m : (h ? '0' + m : m || '0'),
-            s > 9 ? s : '0' + s
-        ].filter(Boolean).join(':');
+    function formatTime(num: number) {
+        var hours = Math.floor(num / 60);
+        var minutes = num % 60;
+        if (hours > 0)
+            return `${hours}hour(s) ${minutes} minute(s)`;
+        return `${minutes} minute(s)`;
     }
 
     const renderTable = (index: number) => {
@@ -80,7 +77,6 @@ const Services = () => {
     }
 
 
-
     return (
         <PageWrapper title="Services">
             <ImageBanner title='Our Beauty Services' />
@@ -93,7 +89,12 @@ const Services = () => {
                         <h1 className='text-center fs-4'>Sorry, No Lashes Here</h1>
                         :
                         <div>
-                            <Form_RadioOptionGroup wrapperClassName='radio-group-section w-100' value={selectedTabIndex} options={tabs} onChange={setSelectedTabIndex} />
+                            <Form_RadioOptionGroup wrapperClassName='radio-group-section w-100' value={selectedTabIndex} options={tabs}
+                                onChange={value => {
+                                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                                    setSelectedTabIndex(value);
+                                }}
+                            />
 
                             <div className="pricelist">
                                 <div className="title">

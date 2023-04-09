@@ -6,7 +6,7 @@
 
 
     &:after {
-        content: '\2192';
+        content: '\279C';
         position: absolute;
         opacity: 0;
         top: 9px;
@@ -38,12 +38,14 @@
         }
 
         &:hover {
-            padding-right: 20px;
-            padding-left: 7px;
+            // padding-right: 20px;
+            // padding-left: 7px;
+            padding-right: 25px;
+            padding-left: 17px;
         }
 
         &:hover:after {
-            right: 5px;
+            right: 10px;
         }
     }
 }

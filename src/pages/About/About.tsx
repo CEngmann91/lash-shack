@@ -9,8 +9,6 @@ import { useNavigate } from 'react-router-dom';
 
 interface AboutArticle {
     id: number;
-    // title: string;
-    // message: string;
     leftContent: ReactNode;
     rightContent: ReactNode;
 }
@@ -18,7 +16,6 @@ interface AboutArticle {
 
 const About = () => {
     const navigate = useNavigate();
-
 
 
     const articles: AboutArticle[] = [
@@ -92,7 +89,6 @@ const About = () => {
             )
         }*/
     ];
-
 
 
 

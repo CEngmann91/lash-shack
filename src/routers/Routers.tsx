@@ -26,17 +26,17 @@ const Routers = () => {
             <Route path='/courses' element={<Courses />} />
             <Route path='/gallery' element={<Gallery />} />
             <Route path='/news' element={<LatestNews />} />
-            <Route path='/shop' element={<Shop />} />
-            <Route path='/shop/:id' element={<ProductDetails />} />
+            {/* <Route path='/shop' element={<Shop />} /> */}
+            {/* <Route path='/shop/:id' element={<ProductDetails />} /> */}
 
-            <Route path='/basket' element={<Basket />} />
-            <Route path='/wishlist' element={<Wishlist />} />
+            {/* <Route path='/basket' element={<Basket />} /> */}
+            {/* <Route path='/wishlist' element={<Wishlist />} /> */}
 
-            <Route path='/login' element={<Login />} />
+            {/* <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
-            <Route path='/forgot' element={<ForgotPassword />} />
+            <Route path='/forgot' element={<ForgotPassword />} /> */}
 
-            <Route path='/*' element={<AuthRoute />}>
+            {/* <Route path='/*' element={<AuthRoute />}>
                 <Route path='checkout' element={<Checkout />} />
                 <Route path='dashboard' element={<Dashboard />} />
                 <Route path='dashboard/account' element={<Dashboard_Account />} />
@@ -46,10 +46,10 @@ const Routers = () => {
                 <Route path='dashboard/messages' element={<Dashboard_Messages />} />
                 <Route path='dashboard/catalog' element={<Dashboard_Catalog />} />
                 <Route path='dashboard/settings' element={<Dashboard_Settings />} />
-            </Route>
+            </Route> */}
 
-            <Route path='/privacy' element={<Privacy />} />
-            <Route path='/terms' element={<TermsConditions />} />
+            {/* <Route path='/privacy' element={<Privacy />} /> */}
+            {/* <Route path='/terms' element={<TermsConditions />} /> */}
         </Routes>
     )
 }
