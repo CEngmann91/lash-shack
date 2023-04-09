@@ -62,6 +62,17 @@ const Navbar = () => {
 
 
 
+  function getBody() {
+    return document.querySelector('body');
+  }
+
+
+  const toggleMenu = () => {
+      getBody()?.classList.toggle("open");
+      toggle();
+  }
+
+
   const renderMenuIcons = () => (
     <div className="navbar-nav--icons">
       <MotionSpan className="wishlist_icon">
@@ -106,7 +117,7 @@ const Navbar = () => {
       </div>
 
 
-      <DrawerMenuButton isOpen={isOpen} onClick={toggle} />
+      <DrawerMenuButton isOpen={isOpen} onClick={toggleMenu} />
     </div>
   )
 

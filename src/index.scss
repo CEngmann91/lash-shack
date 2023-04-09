@@ -131,6 +131,16 @@ section {
   padding: 60px 30px;
 
 
+  transition: 500ms ease-out;
+
+  .open & {
+    pointer-events: none;
+    transform: scale(0.9);
+    opacity: .2;
+    // transition: opacity 0.2s 0.41s ease-out;
+  }
+
+
   @media only screen and (max-width: 992px) {}
 
   @media only screen and (max-width: 768px) {

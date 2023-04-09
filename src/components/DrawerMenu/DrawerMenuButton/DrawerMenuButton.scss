@@ -95,7 +95,20 @@
                 &::after {
                     background: $pink-new-colour;
                 }
+
+
+
+                .open & {
+                    background: transparent;
+
+                    &::before,
+                    &::after {
+                        background: white;
+                    }
+                }
             }
+
+
         }
 
     }

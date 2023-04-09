@@ -460,6 +460,9 @@
     }
 
 
+    .open & {
+        background: rgba(white, 0);
+    }
 
 
     .app_navbar__wrapper {
@@ -678,6 +681,11 @@
         background: rgba($green-shade-colour, 0.95);
 
         box-shadow: 0 0 30px rgba(black, 0.85);
+
+
+        .open & {
+            background: rgba($green-shade-colour, 0);
+        }
 
 
 
