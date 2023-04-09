@@ -101,8 +101,8 @@ const Landing = () => {
           <Row>
             <Col lg='6' md='6'>
               <div className="landing__content">
-                <p className="landing__subTitle">Beauty Salon</p>
-                <h2>New Beginnings Start Here</h2>
+                <p className="landing__subject">Beauty Salon</p>
+                <h2 className="landing__title">New Beginnings Start Here</h2>
                 <p>Lash Shack was founded in 2019 by Emma who has years of experience working within the lash industry providing an impeccable service to clients and delivering 5 star training to students.</p>
                 {/* <ArrowMotionButton className='landing__cta-button' onClick={() => navigate("/shop")}> */}
                 <ArrowMotionButton className='landing__cta-button' onClick={launchTreatwell}>

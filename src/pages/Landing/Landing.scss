@@ -21,14 +21,7 @@
         padding-top: 80px;
 
 
-        h2 {
-            color: black;
-            font-size: 2.5rem;
-            font-weight: 600;
-            margin: 20px 0px;
-
-            animation: slideFromRight 1.1s forwards;
-        }
+        
 
         p {
             color: black;
@@ -39,10 +32,21 @@
         }
 
 
-        .landing__subTitle {
+        .landing__subject {
+            letter-spacing: 2px;
+            // font-size: 14px;
+            // color: #717282;
             color: $green-shade-colour;
             opacity: 0;
             animation: slideFromRight 0.5s forwards;
+        }
+
+        .landing__title {
+            color: black;
+            font-size: 2.5rem;
+            font-weight: 600;
+            line-height: 2;
+            animation: slideFromRight 1.1s forwards;
         }
 
         .landing__cta-button {
@@ -75,7 +79,7 @@
         .landing__content {
             padding-top: 45px;
 
-            h2 {
+            .landing__title {
                 font-size: 2rem;
             }
         }
@@ -92,7 +96,7 @@
         .landing__content {
             padding-top: 45px;
 
-            h2 {
+            .landing__title {
                 font-size: 1.6rem;
             }
 

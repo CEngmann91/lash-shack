@@ -108,27 +108,27 @@ const ProductCard = ({ item }: ProductCardProps) => {
 
             <div className="product_card-bottom d-flex align-items-center justify-content-center p-2 gap-3">
                 {exists && (
-                    count === 1 ?
+                    count === 1 ? (
                         <MotionSpan onClick={() => removeFromBasket(id, title, imgUrl, price)}>
                             <Icon_Trash />
                         </MotionSpan>
-                        :
+                    ) : (
                         <MotionSpan onClick={() => removeFromBasket(id, title, imgUrl, price)}>
                             <Icon_Minus />
                         </MotionSpan>
+                    )
                 )}
 
-                {!isOnSale ?
+                {!isOnSale ? (
                     <span className="price">{formatCurrency(price)}</span>
-                    :
+                ) : (
                     <div className=''>
+                        {salePrice && (
+                            <span className="price">{formatCurrency(salePrice)}&nbsp;/&nbsp;</span>
+                        )}
                         <span className="sale-price">{formatCurrency(price)}</span>
-                        <span>&nbsp;/&nbsp;</span>
-                        {salePrice &&
-                            <span className="price">{formatCurrency(salePrice)}</span>
-                        }
                     </div>
-                }
+                )}
 
                 {existsInBasket(id) && (
                     <MotionSpan onClick={() => addToBasket(id, title, imgUrl, price)}>
@@ -136,6 +136,14 @@ const ProductCard = ({ item }: ProductCardProps) => {
                     </MotionSpan>
                 )}
             </div>
+
+
+            {isOnSale && (
+                <div className="ribbon">
+                    <span>{`-${ ((1 - (salePrice / price)) * 100).toFixed()}%`}</span>
+                </div>
+            )}
+
         </motion.div>
     )
 }

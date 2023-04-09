@@ -2,8 +2,7 @@
 @import '../../../../res/colours.scss';
 
 
-$button-colours: 
-    // #0072b1,
+$button-colours: // #0072b1,
     // red,
     $green-shade-colour,
 ;
@@ -127,24 +126,9 @@ $button-colours:
             color: gray;
         }
 
-        // h3 {
-        //     font-size: 1.2rem;
-        //     font-weight: 600;
-        //     margin-top: 15px;
-        // }
-
         span {
             font-size: 0.85rem;
         }
-
-        // svg {
-        //     width: 20px;
-        //     height: 20px;
-        //     // padding: 5px;
-        //     background: $green-shade-colour;
-        //     color: white;
-        //     border-radius: 50%;
-        // }
 
         a {
 
@@ -155,17 +139,30 @@ $button-colours:
     }
 
     .product_card-bottom {
+        position: relative;
 
         .price {
-            font-size: 1.13rem;
+            font-size: 1.2rem;
             font-weight: 500;
+            font-weight: bold;
         }
 
         .sale-price {
-            font-size: 1.13rem;
-            font-weight: 500;
+            position: relative;
+            font-size: 1rem;
+            // font-weight: 300;
             color: lightgray;
-            text-decoration-line: line-through;
+
+            &::after {
+                content: "";
+                position: absolute;
+                top: 50%;
+                left: 0;
+                right: 0;
+                border-top: 3px solid red;
+                border-radius: 20px;
+                transform: rotate(-20deg);
+            }
         }
 
         .add-to-basket-button {
@@ -184,6 +181,38 @@ $button-colours:
                 color: white;
                 border-radius: 50%;
             }
+        }
+    }
+
+
+    .ribbon {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 110px;
+        height: 110px;
+        display: block;
+        overflow: hidden;
+        z-index: 10;
+
+        span {
+            $height: 34px;
+
+            width: 150px;
+            height: $height;
+            top: 20px;
+            right: -40px;
+            position: absolute;
+            display: block;
+            background: #FF0000;
+            color: #333;
+            font-size: 18px;
+            color: white;
+            text-align: center;
+            line-height: $height;
+            transform: rotate(45deg);
+            -webkit-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
         }
     }
 

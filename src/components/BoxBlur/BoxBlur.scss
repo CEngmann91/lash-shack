@@ -1,0 +1,17 @@
+.box-blur {
+    // position: fixed;
+    // top: 30%;
+    // left: 40%;
+    // color: #333;
+    // font-weight: bolder;
+    // width: 20%;
+    // padding: 1rem;
+    // border-radius: 5px;
+    // background-color: rgba(255, 255, 255, 0.5);
+
+
+    -webkit-backdrop-filter: blur(4px);
+    -o-backdrop-filter: blur(4px);
+    -moz-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+}

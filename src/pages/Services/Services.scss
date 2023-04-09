@@ -4,23 +4,12 @@
 .services__section {
     background: white;
 
-    .category-header {
-        font-weight: 700;
-        margin-left: 10px;
-        margin-bottom: 20px;
-        text-decoration: underline;
-    }
-
-
-
-
-
 
 
     .radio-group-section {
         position: sticky;
         top: calc($navbar-height + 10px);
-        z-index: 1;
+        z-index: 2;
     }
 
 
@@ -60,10 +49,17 @@
                 text-transform: uppercase;
                 // border-radius: 0.5rem;
 
-                // position: sticky;
-                // top: calc($navbar-height + 60px);
-                // z-index: 1;
+                position: sticky;
+                top: calc($navbar-height + 60px);
+                z-index: 1;
             }
+
+            // @for $i from 0 to 15 {
+            //     &:nth-child(#{$i}) > .tContent {
+            //         position: sticky;
+            //         top: calc($navbar-height + 60px + ($i * 60px));
+            //     }
+            // }
 
             .tContent {
                 display: flex;
@@ -74,6 +70,7 @@
                 margin-bottom: 1.5rem;
                 padding: 0rem 1rem;
                 border-bottom: 2px solid rgba(211, 211, 211, 0.45);
+
 
                 .left {
 

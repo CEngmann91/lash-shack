@@ -23,6 +23,8 @@ const useGetCourses = () => {
         // Sort by price.
         const sorted = filtered?.sort((a, b) => b.price - a.price);
 
+        // sorted?.map(item => { item.isOnSale = true; item.salePrice = 20; } );
+
         sorted?.map(item =>
             item.upcomingDates = item.upcomingDates?.filter(date => {
                 const days = calculateDaysFromTodayString(date);

@@ -11,72 +11,6 @@
     $color-lite: lighten($color, 5%);
 
 
-    // p {
-    //     font-size: 20px;
-    //     line-height: 28px;
-    //     margin: 0 0 18px;
-
-    //     span {
-    //         position: relative;
-    //         display: block;
-    //         font-size: 16px;
-    //         line-height: 20px;
-    //         padding: 12px 20px;
-    //         margin-bottom: 24px;
-    //         background-color: white;
-    //         box-shadow: rgba(black, 0.05) 0px 2px 4px;
-
-    //         &:before {
-    //             content: '';
-    //             position: absolute;
-    //             top: 0;
-    //             bottom: 0;
-    //             left: -12px;
-    //             margin: auto;
-    //             background-color: $color;
-    //             width: 24px;
-    //             height: 24px;
-    //             border-radius: 100%;
-    //             box-shadow: rgba(black, 0.1) 0 0 0 3px;
-    //         }
-
-    //         &:after {
-    //             content: '';
-    //             pointer-events: none;
-    //             position: absolute;
-    //             top: -2px;
-    //             bottom: 0;
-    //             left: -6px;
-    //             margin: auto;
-    //             width: 0;
-    //             height: 0;
-    //             border-style: solid;
-    //             border-width: 0 6px 8px 6px;
-    //             border-color: transparent transparent white transparent;
-    //         }
-    //     }
-    // }
-
-    // h1 {
-    //     font-size: 40px;
-    //     font-weight: normal;
-    //     line-height: 44px;
-    //     text-align: center;
-    //     margin-bottom: 18px;
-
-    //     @media (min-width: $bp-small) {
-    //         font-size: 60px;
-    //         line-height: 64px;
-    //     }
-    // }
-
-    // h3 {
-    //     font-size: 24px;
-    //     font-weight: normal;
-    //     text-align: center;
-    //     margin-bottom: 60px;
-    // }
-
     ul {
         list-style: none;
         margin: 0;
@@ -191,19 +125,6 @@
             }
         }
     }
-
-    // article {
-    //     padding: 24px;
-    //     width: 90%;
-    //     margin: 60px auto;
-    //     transition: 0.2s ease-out;
-
-    //     .open & {
-    //         pointer-events: none;
-    //         transform: scale(0.7);
-    //         transition: transform 0.2s 0.41s ease-out;
-    //     }
-    // }
 
     @keyframes menu-animation {
         0% {

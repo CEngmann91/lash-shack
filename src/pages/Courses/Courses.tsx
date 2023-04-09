@@ -1,7 +1,6 @@
 import './Courses.scss';
 import { Container, Row, Col } from 'reactstrap'
-import { LimitedTimeOffer, LoadingSpinner, PageWrapper, ProductList } from '../../components'
-import images from '../../res/images'
+import { LoadingSpinner, PageWrapper, ProductList } from '../../components'
 import ImageBanner from '../../components/UI/ImageBanner/ImageBanner';
 import useGetCourses from '../../hooks/useGetCourses';
 
@@ -12,16 +11,6 @@ const Courses = () => {
     return (
         <PageWrapper title="Courses">
             <ImageBanner title={'Become A Lash Expert'} />
-
-            {/* <LimitedTimeOffer
-                title="Classic Lash Course"
-                subtitle='Limited Offer'
-                background='rgb(232, 222, 209)'
-                textColour="black"
-                imageUrl={images.Lash}
-                endDate="Mar 31, 2023"
-                onTimerCompleted={() => { }}
-            /> */}
 
             <section className='courses__section'>
                 <Container>
@@ -38,8 +27,6 @@ const Courses = () => {
                     </Row>
                 </Container>
             </section>
-
-
         </PageWrapper>
     )
 }
