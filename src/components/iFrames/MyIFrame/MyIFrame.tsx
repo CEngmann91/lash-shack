@@ -1,6 +1,6 @@
 import './MyIFrame.scss';
 import React, { useEffect, useState } from 'react'
-import LoadingSpinner from '../../LoadingSpinner/LoadingSpinner';
+import { LoadingSpinner } from '../..';
 
 type MyIFrameProps = {
     className?: string;

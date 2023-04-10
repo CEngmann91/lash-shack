@@ -6,7 +6,7 @@
         // top | right | bottom | left
         // padding: $navbar-height/2 5px 20px 5px;
     }
-    min-height: 100vh;
+    min-height: calc(100vh - $navbar-height);
     background: white;
     padding: 0 2rem;
     background: linear-gradient(to bottom, white, $pink-new-colour);

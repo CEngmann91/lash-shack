@@ -112,7 +112,16 @@ const Landing = () => {
             </Col>
 
             <Col lg='6' md='6' className='d-flex justify-content-center'>
-              {renderLandingSwiper()}
+              {/* {renderLandingSwiper()} */}
+
+              <figure className="td-figure">
+                <img src=
+                // "https://images.unsplash.com/photo-1603695454344-12df53ab0c11?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ"
+                {images.Landing0}
+                alt="Image description" />
+              </figure>
+
+
             </Col>
           </Row>
         </Container>

@@ -21,7 +21,7 @@
         padding-top: 80px;
 
 
-        
+
 
         p {
             color: black;
@@ -72,6 +72,32 @@
 
         }
     }
+
+
+    .td-figure {
+        perspective: 1500px;
+        width: 42rem;
+        height: 32rem;
+
+        &:hover {
+            img {
+                box-shadow: 0px 0px 30px 1px rgba(black, 1);
+                transform: rotate(0);
+            }
+        }
+
+        img {
+            border-radius: 0.375em;
+            box-shadow: 0px 0px 20px 1px rgba(black, 0.5);
+            transition: 300ms;
+            transform: rotateX(10deg) rotateY(-18deg) rotateZ(3deg);
+        }
+    }
+
+
+
+
+
 }
 
 @media only screen and (max-width: 992px) {

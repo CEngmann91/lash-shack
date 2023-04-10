@@ -1,5 +1,5 @@
 import './LoadingScreen.scss';
-import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
+import LoadingSpinner from '../UI/LoadingSpinner/LoadingSpinner';
 import { useScrollLock } from '../../hooks/useScrollLock';
 
 

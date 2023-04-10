@@ -3,7 +3,7 @@
 import './CircleProgressBar.scss';
 import { ReactNode, HTMLAttributes } from 'react';
 import { useLayoutEffect } from 'react'
-import { clamp } from '../../res/funcs';
+import { clamp } from '../../../res/funcs';
 
 interface CircleProgressBarProps extends HTMLAttributes<HTMLElement> {
     id: string;

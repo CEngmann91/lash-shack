@@ -552,9 +552,9 @@
 
 
             .profile {
+                position: relative;
                 pointer-events: none;
                 visibility: hidden;
-                position: relative;
 
                 img {
                     width: 30px;
@@ -629,9 +629,9 @@
 
             .basket_icon,
             .wishlist_icon,
-            .avatar_icon // .menu_icon
-
-                {
+            .avatar_icon
+            // .menu_icon
+            {
                 pointer-events: none;
                 visibility: hidden;
 

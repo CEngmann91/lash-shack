@@ -5,7 +5,7 @@ export { default as Footer } from './Footer/Footer';
 
 // UI
 export { default as LoadingScreen } from './LoadingScreen/LoadingScreen';
-export { default as LoadingSpinner } from './LoadingSpinner/LoadingSpinner';
+export { default as LoadingSpinner } from './UI/LoadingSpinner/LoadingSpinner';
 export { default as MotionButton } from './Motion/MotionButton/MotionButton';
 export { default as ArrowMotionButton } from './Motion/ArrowMotionButton/ArrowMotionButton';
 export { default as MotionSpan } from './Motion/MotionSpan/MotionSpan';
@@ -19,7 +19,8 @@ export { default as ProductList } from './UI/Product/ProductList/ProductList';
 export { default as FeatureRow } from './UI/FeatureRow/FeatureRow';
 export { default as ImageBanner } from './UI/ImageBanner/ImageBanner';
 export { default as SkeletonImage } from './UI/SkeletonImage/SkeletonImage';
-export { default as CircleProgressBar } from './CircleProgressBar/CircleProgressBar';
+export { default as CircleProgressBar } from './UI/CircleProgressBar/CircleProgressBar';
+export { default as Ribbon } from './UI/Ribbon/Ribbon';
 
 // Form
 export { default as Checkbox } from './Form/Checkbox/Checkbox';

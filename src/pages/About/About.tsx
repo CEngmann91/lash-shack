@@ -1,10 +1,8 @@
 import './About.scss';
 import { ReactNode } from 'react'
-import { Container, Row, Col } from 'reactstrap'
+import { Container, Row } from 'reactstrap'
 import { ArrowMotionButton, FeatureRow } from '../../components';
 import images from '../../res/images';
-import MapViewFrame from '../../components/iFrames/MapViewFrame/MapViewFrame';
-import { CONTACT } from '../../constants/constants';
 import { useNavigate } from 'react-router-dom';
 
 interface AboutArticle {
@@ -12,8 +10,6 @@ interface AboutArticle {
     leftContent: ReactNode;
     rightContent: ReactNode;
 }
-
-
 const About = () => {
     const navigate = useNavigate();
 
@@ -49,48 +45,7 @@ const About = () => {
                 <img src={images.Training0} alt="" />
             )
         },
-        /*{
-            id: 2,
-            leftContent: (
-                <div className='d-flex w-100 flex-column'>
-                    <div className='d-flex w-90 mx-auto my-auto flex-row p-3 gap-5'>
-                        <div>
-                            <h1 className='text-center'>Get In Touch</h1>
-
-                            <div className='text-center' style={{ alignItems: 'center' }}>
-                                <hr />
-                                <p className='text__new-line'>{CONTACT.LOCATIONS.at(0)?.ADDRESS}</p>
-
-                                <a href={CONTACT.EMAIL}>{CONTACT.EMAIL}</a>
-                            </div>
-                        </div>
-                        <div>
-                            <h1 className='text-center'>Hours</h1>
-                            <div className='text-center'>
-                                <hr />
-                                <p><strong>Mon - Thu:</strong></p>
-                                <p>9:30am - 5.30pm</p>
-                                <p><strong>Fri:</strong></p>
-                                <p>9:30am - 6.30pm</p>
-                                <p><strong>Sat:</strong></p>
-                                <p>10am - 2pm</p>
-                            </div>
-                        </div>
-                    </div>
-                    <ArrowMotionButton className='w-20 mx-auto feature-btn'>
-                        Join Us
-                    </ArrowMotionButton>
-                </div>
-            ),
-            rightContent: (
-                <div className='d-flex'>
-                    <MapViewFrame source={"https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d679.5204988947316!2d0.15733319970601195!3d51.59129798954456!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8a49a4b2a8bd5%3A0x8b08e8d25374186a!2s49%20White%20Hart%20Ln%2C%20Romford%20RM7%208JB!5e1!3m2!1sen!2suk!4v1678780540278!5m2!1sen!2suk"} />
-                </div>
-            )
-        }*/
     ];
-
-
 
     return (
         <section className="about__section">

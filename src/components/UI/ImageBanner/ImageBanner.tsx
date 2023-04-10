@@ -1,15 +1,15 @@
 import './ImageBanner.scss';
-import { Container } from 'reactstrap';
 
 type ImageBannerProps = {
     title: string;
 }
 const ImageBanner = ({ title }: ImageBannerProps) => {
+    
     return (
         <section className="image__banner">
-            <Container className='text-center'>
+            <div className='w-100 text-center'>
                 <h1>{title}</h1>
-            </Container>
+            </div>
         </section>
     )
 }

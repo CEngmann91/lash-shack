@@ -5,7 +5,7 @@ import { FaHeart, FaFileInvoiceDollar, FaQuoteRight, FaChessPawn, FaPaperPlane, 
 import { FiHeart } from 'react-icons/fi';
 import { GiQueenCrown, GiShare } from 'react-icons/gi';
 import { IoIosArrowUp } from 'react-icons/io';
-import { ImLocation, ImPhone, ImHome, ImUsers, ImExit } from 'react-icons/im';
+import { ImLocation, ImPhone, ImHome, ImUsers, ImExit, ImCross } from 'react-icons/im';
 import { MdOutlineAccountCircle, MdEmail } from 'react-icons/md';
 import { RiInformationFill, RiSettings3Fill, RiMessage2Fill, RiAccountPinCircleFill } from 'react-icons/ri';
 import { SiBookstack } from 'react-icons/si';
@@ -23,6 +23,7 @@ export {
     ImExit as Icon_Dash_Exit,
 
     AiFillCloseCircle as Icon_Close,
+    ImCross as Icon_Cross,
     FaQuoteRight as Icon_QuoteRight,
 
     AiOutlineArrowUp as Icon_ArrowUp,

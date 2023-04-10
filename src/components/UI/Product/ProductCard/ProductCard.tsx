@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom';
 import { formatCurrency, launchTreatwell } from '../../../../res/funcs';
 import { ProductItem } from '../../../../types/ProductItem';
-import { MotionButton, MotionSpan, SkeletonImage } from '../../..';
+import { MotionButton, MotionSpan, Ribbon, SkeletonImage } from '../../..';
 import { useBasketActions } from '../../../../redux/hooks/useBasketActions';
 import { useWishListActions } from '../../../../redux/hooks/useWishListActions';
 import { useEffect } from 'react';
@@ -81,9 +81,9 @@ const ProductCard = ({ item }: ProductCardProps) => {
 
                     <MotionButton onClick={() => toggleWishList(id)}>
                         {!existsInWishList(id) ? <Icon_WishList /> : <Icon_WishListFilled />}
-                    </MotionButton> */}
+                    </MotionButton>
 
-                    {/* <MotionButton className='app__icon-with-badge' onClick={() => addToBasket(id, title, imgUrl, price)}>
+                    <MotionButton className='app__icon-with-badge' onClick={() => addToBasket(id, title, imgUrl, price)}>
                         <Icon_ShoppingBasket />
                         <span className="badge" data-quantity={count > 0}>{count}</span>
                     </MotionButton> */}
@@ -137,13 +137,11 @@ const ProductCard = ({ item }: ProductCardProps) => {
                 )}
             </div>
 
-
             {isOnSale && (
-                <div className="ribbon">
-                    <span>{`-${ ((1 - (salePrice / price)) * 100).toFixed()}%`}</span>
-                </div>
+                <Ribbon title={`-${ ((1 - (salePrice / price)) * 100).toFixed()}%`} />
             )}
 
+            {/* <Ribbon title="Popular" /> */}
         </motion.div>
     )
 }
