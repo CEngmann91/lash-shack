@@ -81,8 +81,8 @@ const Login = () => {
                             <Form className='login__form' onSubmit={handleFormSubmit}>
                                 <h3 className='fw-bold fs-4 mt-2 mb-4 mt-2'>LOGIN</h3>
 
-                                <InputField placeholder="Enter Your Email" type="text" required />
-                                <InputField placeholder="Enter Password" type="password" required />
+                                <InputField placeholder="Enter Your Email" type="text" required autoComplete='email' />
+                                <InputField placeholder="Enter Password" type="password" required autoComplete='password' />
 
 
 

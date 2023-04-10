@@ -3,6 +3,7 @@
 @import '../../../res/colours.scss';
 
 $icon: 45px;
+
 .gallery-container {
     // font-family: FontAwesome;
     width: 100vw;
@@ -36,63 +37,93 @@ $icon: 45px;
 
     .next,
     .prev {
-        top: calc(50% - 20px);
+        // top: calc(50% - 20px);
+        // position: absolute;
+        // padding: 7px;
+
+        cursor: pointer;
         position: absolute;
-        padding: 7px;
+        top: 0;
+        top: 50%;
+        width: auto;
+        margin-top: -22px;
+        padding: 16px 20px;
+        color: white;
+        font-weight: bold;
+        font-size: 32px;
+        transition: 0.6s ease;
+        z-index: 2;
+        // box-shadow: 0px 0px 5px rgba($green-shade-colour, 0.5);
     }
 
-    .next,
-    .prev,
-    .close
-    {
+    .prev {
+        left: 0;
+        border-radius: 0 10px 10px 0;
+    }
+
+    .next {
+        right: 0;
+        border-radius: 10px 0 0 10px;
+    }
+
+    .prev:hover,
+    .next:hover {
+        background: rgba($pink-new-colour, 0.8);
+        // box-shadow: 0px 0px 30px 1px rgba($green-shade-colour, 0.5);
+        transform: scale(1.1);
+    }
+
+    // .next,
+    // .prev,
+    .close {
         background: white;
         border-radius: 30px;
         width: $icon;
         height: $icon;
         user-select: none;
-        box-shadow: 0px 0px 5px rgba($green-shade-colour, 0.5);
+        // box-shadow: 0px 0px 5px rgba($green-shade-colour, 0.5);
         z-index: 2;
         transition: 0.3s ease-out;
-        color: black;
+        // color: black;
 
 
-        svg {
-            width: 100%;
-            height: 100%;
+        // svg {
+        //     width: 100%;
+        //     height: 100%;
 
-            transition: 0.3s ease-out;
-        }
+        //     transition: 0.3s ease-out;
+        // }
 
-        &:active {
-            transform: scale(0.85);
-        }
+        // &:active {
+        //     transform: scale(0.85);
+        // }
 
         &:hover {
             cursor: pointer;
-            box-shadow: 0px 0px 30px 1px rgba($green-shade-colour, 0.5);
+            // box-shadow: 0px 0px 30px 1px rgba($green-shade-colour, 0.5);
             transform: scale(1.1);
 
-            svg {
-                color: $pink-new-colour;
-            }
+        //     svg {
+        //         color: $pink-new-colour;
+        //     }
         }
     }
 
-    .next {
-        right: 10px;
+    // .next {
+    //     right: 10px;
 
-        svg {
-            transform: rotate(90deg);
-        }
-    }
+    //     svg {
+    //         transform: rotate(90deg);
+    //     }
+    // }
 
-    .prev {
-        left: 10px;
+    // .prev {
+    //     left: 10px;
 
-        svg {
-            transform: rotate(90deg);
-        }
-    }
+    //     svg {
+    //         transform: rotate(90deg);
+    //     }
+    // }
 
     .close {
         position: absolute;
@@ -116,7 +147,7 @@ $icon: 45px;
         display: flex;
         flex-direction: row;
         gap: 5px;
-        background: $green-shade-colour;
+        background: grey;
         padding: 8px;
         border-radius: 5px;
 

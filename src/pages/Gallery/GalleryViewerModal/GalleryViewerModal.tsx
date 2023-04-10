@@ -112,12 +112,16 @@ const GalleryViewerModal: React.FC<GalleryViewerModalProps> = ({ visible, imageP
                 ))}
             </div>
 
-            <div className="next" onClick={() => paginate(1)}>
+            {/* <div className="next" onClick={() => paginate(1)}>
                 <Icon_ArrowUp />
             </div>
             <div className="prev" onClick={() => paginate(-1)}>
                 <Icon_ArrowDown />
-            </div>
+            </div> */}
+
+
+            <button className="prev" onClick={() => paginate(-1)}>&#10094;</button>
+            <button className="next" onClick={() => paginate(1)}>&#10095;</button>
 
             <button className="close" onClick={onClose}>
                 <Icon_Cross />

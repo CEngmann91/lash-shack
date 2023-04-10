@@ -20,6 +20,7 @@ import { getAllDownloadURLRef } from '../../helpers/firebase/firebaseHelper';
 import useGetMiscellaneous from "../../hooks/useMiscellaneous";
 import { About, MeetExperts, Testimonials, FindUs } from "..";
 import { launchTreatwell } from "../../res/funcs";
+import AuthModal from "../../components/AuthModal/AuthModal";
 
 const Landing = () => {
   const navigate = useNavigate();
@@ -93,6 +94,10 @@ const Landing = () => {
   }
 
 
+
+
+  // return <AuthModal />;
+  
 
   return (
     <PageWrapper title="Home">
