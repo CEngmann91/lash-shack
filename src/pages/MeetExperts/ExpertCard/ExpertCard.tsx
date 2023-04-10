@@ -24,7 +24,23 @@ type ExpertCardProps = {
 const ExpertCard = ({ id, firstName, position, photoURL, message }: ExpertCardProps) => {
 
     return (
-        <div className="expert-card" style={{ backgroundImage: `url(${photoURL})` }}>
+        <motion.div
+            className='expert-card' id={`expert-card${id}`}
+            style={{ backgroundImage: `url(${photoURL})` }}
+            variants={variants}
+            initial="hidden"
+            viewport={{ once: true }}
+            whileInView={{
+                opacity: 1,
+                y: 0,
+                transition: {
+                    duration: 0.5,
+                    delay: 1 + id * 0.2,
+                    ease: 'easeIn'
+                }
+            }}
+        >
+        {/* <div className="expert-card" style={{ backgroundImage: `url(${photoURL})` }}> */}
             <div className="gradient">
                 <div className="content">
                     <h2>{firstName}</h2>
@@ -39,53 +55,7 @@ const ExpertCard = ({ id, firstName, position, photoURL, message }: ExpertCardPr
                     </div> */}
                 </div>
             </div>
-        </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        // <motion.div
-        //     className='expert-card' id={`expert-card${id}`}
-        //     variants={variants}
-        //     initial="hidden"
-        //     viewport={{ once: true }}
-        //     whileInView={{
-        //         opacity: 1,
-        //         y: 0,
-        //         transition: {
-        //             duration: 0.5,
-        //             delay: 1 + id * 0.2,
-        //             ease: 'easeIn'
-        //         }
-        //     }}
-        // >
-        //     <div className="imgBx">
-        //         <img src={photoURL} alt="" />
-        //     </div>
-        //     <div className="content">
-        //         <div className="contentBx">
-        //             <h2>{firstName}
-        //                 <br />
-        //                 <span>{position}</span>
-        //                 <br />
-        //                 <span>{message}</span>
-        //             </h2>
-        //         </div>
-        //     </div>
-        // </motion.div>
+        </motion.div>
     )
 }
 

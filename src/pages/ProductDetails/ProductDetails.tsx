@@ -146,9 +146,9 @@ const ProductDetails = () => {
                                 <h2>{title}</h2>
 
                                 {category === "Services" ? (
-                                    <p className='mb-3'>{category} - {subServiceCategory}</p>
+                                    <p className='mb-3 font-italic'>{category} - {subServiceCategory}</p>
                                 ) : (
-                                    <p className='mb-3'>{category}</p>
+                                    <p className='mb-3 font-italic'>{category}</p>
                                 )}
                                 {avgRatings() === 0 ?
                                     <p className='mb-4'>No Reviews</p>

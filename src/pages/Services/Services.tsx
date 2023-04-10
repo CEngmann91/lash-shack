@@ -5,6 +5,7 @@ import useGetServices from '../../hooks/useGetServices'
 import { useState } from 'react'
 import { formatCurrency, launchTreatwell } from '../../res/funcs'
 import { ProductItem } from '../../types/ProductItem'
+import { Icon_Plane } from '../../res/icons'
 
 const Services = () => {
     const {
@@ -65,6 +66,7 @@ const Services = () => {
                             )}
                             <ArrowMotionButton className='cta-button' onClick={launchTreatwell}>
                                 View
+                                {/* <Icon_Plane /> */}
                             </ArrowMotionButton>
                         </div>
                     </div>

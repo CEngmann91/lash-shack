@@ -5,6 +5,8 @@
 @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 
 
+
+// https://codepen.io/muhammadfarhan999/pen/GRoxgeO
 // $social-colours:
 //     #3b5998,
 //     #00acee,
@@ -110,7 +112,8 @@
 
     @media only screen and (max-width: 768px) {
         .gradient {
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(253, 252, 252, 0.11));
+            // background: linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(253, 252, 252, 0.11));
+            background: transparent;
         }    
     }
 

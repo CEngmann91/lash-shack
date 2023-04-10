@@ -105,7 +105,13 @@
 
                     .cta-button {
                         background: $green-shade-colour;
-                        color: white;
+                        // padding: 8px 15px;
+
+                        svg {
+                            width: 20px;
+                            height: 20px;
+                            color: white;
+                        }
                     }
                 }
             }

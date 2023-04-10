@@ -1,18 +1,15 @@
-import { BsFillBasketFill, BsStarFill, BsTrash, BsBellFill, BsCalendarCheck, BsPencilFill, BsCalendarFill } from 'react-icons/bs';
-import { BiSearchAlt } from 'react-icons/bi';
-import { FiHeart } from 'react-icons/fi';
-import { IoIosArrowUp } from 'react-icons/io';
-import { FaHeart, FaFileInvoiceDollar, FaQuoteRight } from 'react-icons/fa';
 import { AiOutlineUpload, AiFillCloseCircle, AiOutlineArrowUp, AiOutlineArrowDown } from 'react-icons/ai';
+import { BiSearchAlt } from 'react-icons/bi';
+import { BsFillBasketFill, BsStarFill, BsTrash, BsBellFill, BsCalendarCheck, BsPencilFill, BsCalendarFill } from 'react-icons/bs';
+import { FaHeart, FaFileInvoiceDollar, FaQuoteRight, FaChessPawn, FaPaperPlane, FaPlus, FaMinus } from 'react-icons/fa';
+import { FiHeart } from 'react-icons/fi';
 import { GiQueenCrown, GiShare } from 'react-icons/gi';
-import { FaChessPawn } from 'react-icons/fa';
-import { FaPlus, FaMinus } from 'react-icons/fa';
+import { IoIosArrowUp } from 'react-icons/io';
+import { ImLocation, ImPhone, ImHome, ImUsers, ImExit } from 'react-icons/im';
 import { MdOutlineAccountCircle, MdEmail } from 'react-icons/md';
 import { RiInformationFill, RiSettings3Fill, RiMessage2Fill, RiAccountPinCircleFill } from 'react-icons/ri';
-import { ImLocation, ImPhone, ImHome } from 'react-icons/im';
-import { TbCheckupList } from 'react-icons/tb';
 import { SiBookstack } from 'react-icons/si';
-import { ImUsers, ImExit } from 'react-icons/im';
+import { TbCheckupList } from 'react-icons/tb';
 
 export {
     ImHome as Icon_Dash_Home,
@@ -57,4 +54,5 @@ export {
     BsStarFill as Icon_Star,
     BsTrash as Icon_Trash,
     GiShare as Icon_Share,
+    FaPaperPlane as Icon_Plane,
 }

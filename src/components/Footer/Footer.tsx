@@ -26,7 +26,7 @@ const Footer = () => {
   const renderCategoryLinks = () => (
     <Col lg="3" md='3' className='mb-4'>
       <div className="footer__quick-links">
-        <h4 className="quick__links-title">Categories</h4>
+        <h4 className="quick__links-title"><strong>Categories</strong></h4>
         <ListGroup className='mb-3'>
           <ListGroupItem className='ps-0 border-0'>
             <Link to={"/courses"}>Courses</Link>
