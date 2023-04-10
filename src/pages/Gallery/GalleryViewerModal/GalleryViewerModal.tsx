@@ -1,8 +1,9 @@
 import './GalleryViewerModal.scss';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Icon_ArrowDown, Icon_ArrowUp, Icon_Cross } from '../../../res/icons';
+import { Icon_Cross } from '../../../res/icons';
 import { useScrollLock } from '../../../hooks/useScrollLock';
 import { clamp, joinClasses } from "../../../res/funcs";
+import { useEffect } from 'react';
 
 
 const variants = {
@@ -47,7 +48,18 @@ type GalleryViewerModalProps = {
     onClose?: () => void;
 }
 const GalleryViewerModal: React.FC<GalleryViewerModalProps> = ({ visible, imagePaths, page, direction, setPage, onClose }: GalleryViewerModalProps) => {
+    const { lockScroll, unlockScroll } = useScrollLock();
     // const [[page, direction], setPage] = useState([0, 0]);
+
+
+    useEffect(() => {
+        if (!visible)
+            unlockScroll();
+        else
+            lockScroll();
+    }, [visible])
+    
+
 
     // We only have 3 images, but we paginate them absolutely (ie 1, 2, 3, 4, 5...) and
     // then wrap that within 0-2 to find our image ID in the array below. By passing an
