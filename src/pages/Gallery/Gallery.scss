@@ -1,6 +1,8 @@
 @import '../../res/colours.scss';
 
 .gallery__section {
+    display: flex;
+    justify-content: center;
 
     .loading-container {
         display: flex;

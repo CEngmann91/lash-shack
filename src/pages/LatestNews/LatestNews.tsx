@@ -1,16 +1,19 @@
 import './LatestNews.scss';
 import { ImageBanner, PageWrapper } from '../../components'
+import AuthModal from '../../components/AuthModal/AuthModal';
 
 const LatestNews = () => {
 
     return (
-        <PageWrapper title="Latest News">
-            <ImageBanner title={'Latest News'} />
+        <AuthModal />
 
-            <section className='news__container'>
-                Latest News
-            </section>
-        </PageWrapper>
+        // <PageWrapper title="Latest News">
+        //     <ImageBanner title={'Latest News'} />
+
+        //     <section className='news__container'>
+        //         Latest News
+        //     </section>
+        // </PageWrapper>
     )
 }
 

@@ -40,8 +40,8 @@ const Gallery = () => {
 
     return (
         <PageWrapper title="Gallery">
-            <div className="gallery__section">
-                {imagePaths === null ? (
+            <section className="gallery__section">
+                {imagePaths.length == 0 ? (
                     <div className="loading-container">
                         <LoadingSpinner title="Loading..." />
                     </div>
@@ -73,7 +73,7 @@ const Gallery = () => {
                         )}
                     </>
                 )}
-            </div>
+            </section>
         </PageWrapper>
     )
 

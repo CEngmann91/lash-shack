@@ -4,8 +4,8 @@ export function launchTreatwell() {
 
 
 export function joinClasses(...args: any[]) {
-    if (args.length == 1)
-        return args[0];
+    // if (args.length == 1)
+    //     return args[0];
     if (args.every(x => typeof x === "string"))
         return args.join();
     return "";

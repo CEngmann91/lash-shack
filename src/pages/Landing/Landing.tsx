@@ -91,13 +91,7 @@ const Landing = () => {
       textColour={textColour}
     // onTimerCompleted={() => { }}
     />
-  }
-
-
-
-
-  // return <AuthModal />;
-  
+  }  
 
   return (
     <PageWrapper title="Home">
