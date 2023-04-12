@@ -48,7 +48,7 @@ const About = () => {
     ];
 
     return (
-        <section className="about__section">
+        <section id="about" className="about__section">
             <Container>
                 <Row className='featureRow-Articles'>
                     {articles.map(({ id, leftContent, rightContent }) =>

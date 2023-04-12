@@ -67,6 +67,10 @@
             flex-direction: column;
             justify-content: center;
 
+            h2 {
+                margin-top: 20px;
+            }
+
 
             .auth-tabs {
                 margin: 40px 8px 10px 8px;
@@ -82,10 +86,10 @@
                         &:nth-child(#{$i}) {
                             $delay: 0.4s+($i * 0.2s);
 
-                            opacity: 0;
-                            -webkit-animation: fadeIn ease-in 1s $delay forwards;
-                            -moz-animation: fadeIn ease-in 1s $delay forwards;
-                            animation: fadeIn ease-in 1s $delay forwards;
+                            // opacity: 0;
+                            // -webkit-animation: fadeIn ease-in 1s $delay forwards;
+                            // -moz-animation: fadeIn ease-in 1s $delay forwards;
+                            // animation: fadeIn ease-in 1s $delay forwards;
 
                             // -webkit-animation-duration: 1s;
                             // -moz-animation-duration: 1s;
@@ -95,6 +99,23 @@
                             // -moz-animation-delay: 0.4s + ($i * 0.2s);
                             // animation-delay: 0.4s + ($i * 0.2s);
                         }
+                    }
+
+                    .submitButton {
+                        background: $pink-new-colour;
+                        // border: none;
+                        color: black;
+                        padding: 15px 80px;
+                        // text-align: center;
+                        // text-decoration: none;
+                        display: inline-block;
+                        text-transform: uppercase;
+                        // font-size: 13px;
+                        -webkit-box-shadow: 0 10px 30px 0 rgba(95, 186, 233, 0.4);
+                        box-shadow: 0 10px 30px 0 rgba(95, 186, 233, 0.4);
+                        // -webkit-border-radius: 5px 5px 5px 5px;
+                        // border-radius: 5px 5px 5px 5px;
+                        margin: 5px 20px 20px 20px;
                     }
                 }
 
@@ -130,45 +151,45 @@
 
 
     /* FORM TYPOGRAPHY*/
-    input[type=button],
-    input[type=submit],
-    input[type=reset] {
-        background: $pink-new-colour;
-        border: none;
-        color: black;
-        padding: 15px 80px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        text-transform: uppercase;
-        font-size: 13px;
-        -webkit-box-shadow: 0 10px 30px 0 rgba(95, 186, 233, 0.4);
-        box-shadow: 0 10px 30px 0 rgba(95, 186, 233, 0.4);
-        -webkit-border-radius: 5px 5px 5px 5px;
-        border-radius: 5px 5px 5px 5px;
-        margin: 5px 20px 40px 20px;
-        -webkit-transition: all 0.3s ease-in-out;
-        -moz-transition: all 0.3s ease-in-out;
-        -ms-transition: all 0.3s ease-in-out;
-        -o-transition: all 0.3s ease-in-out;
-        transition: all 0.3s ease-in-out;
-    }
+    // input[type=button],
+    // input[type=submit],
+    // input[type=reset] {
+    //     background: $pink-new-colour;
+    //     border: none;
+    //     color: black;
+    //     padding: 15px 80px;
+    //     text-align: center;
+    //     text-decoration: none;
+    //     display: inline-block;
+    //     text-transform: uppercase;
+    //     font-size: 13px;
+    //     -webkit-box-shadow: 0 10px 30px 0 rgba(95, 186, 233, 0.4);
+    //     box-shadow: 0 10px 30px 0 rgba(95, 186, 233, 0.4);
+    //     -webkit-border-radius: 5px 5px 5px 5px;
+    //     border-radius: 5px 5px 5px 5px;
+    //     margin: 5px 20px 40px 20px;
+    //     -webkit-transition: all 0.3s ease-in-out;
+    //     -moz-transition: all 0.3s ease-in-out;
+    //     -ms-transition: all 0.3s ease-in-out;
+    //     -o-transition: all 0.3s ease-in-out;
+    //     transition: all 0.3s ease-in-out;
+    // }
 
-    input[type=button]:hover,
-    input[type=submit]:hover,
-    input[type=reset]:hover {
-        background: darken($pink-new-colour, 5%);
-    }
+    // input[type=button]:hover,
+    // input[type=submit]:hover,
+    // input[type=reset]:hover {
+    //     background: darken($pink-new-colour, 5%);
+    // }
 
-    input[type=button]:active,
-    input[type=submit]:active,
-    input[type=reset]:active {
-        -moz-transform: scale(0.95);
-        -webkit-transform: scale(0.95);
-        -o-transform: scale(0.95);
-        -ms-transform: scale(0.95);
-        transform: scale(0.95);
-    }
+    // input[type=button]:active,
+    // input[type=submit]:active,
+    // input[type=reset]:active {
+    //     -moz-transform: scale(0.95);
+    //     -webkit-transform: scale(0.95);
+    //     -o-transform: scale(0.95);
+    //     -ms-transform: scale(0.95);
+    //     transform: scale(0.95);
+    // }
 
     /* ANIMATIONS */
     /* Simple CSS3 Fade-in-down Animation */
@@ -266,13 +287,13 @@
         bottom: -10px;
         width: 0;
         height: 2px;
-        background-color: #56baed;
+        background-color: darken($pink-new-colour, 10%);
         content: "";
         transition: width 0.2s;
     }
 
     .underlineHover:hover {
-        color: #0d0d0d;
+        color: $green-shade-colour;
     }
 
     .underlineHover:hover:after {

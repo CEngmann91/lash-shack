@@ -1,4 +1,5 @@
 @import '../../res/colours.scss';
+@import '../../res/mixin.scss';
 
 .location__banner {
     // background: linear-gradient(rgba(0, 0, 0, 0.562), rgba(0, 0, 0, 0.562)),
@@ -15,7 +16,7 @@
     &:hover {
 
         .map-content {
-            filter: blur(0px) brightness(100%);
+            filter: brightness(100%);
         }
 
         .module-border-wrap {
@@ -28,7 +29,7 @@
         inset: 0;
         display: flex;
         transition: .5s ease-out;
-        filter: blur(2px) brightness(50%);
+        filter: brightness(50%);
     }
 
     .module-border-wrap {
@@ -42,8 +43,7 @@
 
         background: rgba(255, 255, 255, 0.45);
         box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-        backdrop-filter: blur( 13px );
-        -webkit-backdrop-filter: blur( 13px );
+        @include backdropBlur(13px);
         // border-radius: 10px;
 
 

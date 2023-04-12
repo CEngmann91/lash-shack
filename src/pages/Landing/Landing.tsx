@@ -91,7 +91,7 @@ const Landing = () => {
       textColour={textColour}
     // onTimerCompleted={() => { }}
     />
-  }  
+  }
 
   return (
     <PageWrapper title="Home">
@@ -124,6 +124,10 @@ const Landing = () => {
             </Col>
           </Row>
         </Container>
+
+        <div id="scrollArrow">
+          <a href="#about"><span></span>Scroll</a>
+        </div>
       </section>
 
 

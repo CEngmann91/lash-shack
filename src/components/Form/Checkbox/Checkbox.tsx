@@ -1,11 +1,13 @@
+import './Checkbox.scss';
 import { ChangeEvent, useState } from "react";
 
 type CheckboxProps = {
+    className?: string;
     label: string;
     isSelected?: boolean;
     onChange: (value: boolean) => void;
 }
-const Checkbox = ({ label, isSelected, onChange }: CheckboxProps) => {
+const Checkbox = ({ className, label, isSelected, onChange }: CheckboxProps) => {
     const [remembered, setRemembered] = useState(isSelected);
 
     
@@ -16,7 +18,7 @@ const Checkbox = ({ label, isSelected, onChange }: CheckboxProps) => {
     }
     
     return (
-        <div>
+        <div className={`checkbox ${className}`}>
             <label>
                 <input
                     type="checkbox"

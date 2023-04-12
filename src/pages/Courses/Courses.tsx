@@ -14,7 +14,7 @@ const Courses = () => {
 
             <section className='courses__section'>
                 <Container>
-                    <Row>
+                    <Row className=''>
                         {loadingCourses ? (
                             <LoadingSpinner title="Loading..." />
                         ) : (

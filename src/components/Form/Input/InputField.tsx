@@ -1,16 +1,21 @@
 import './InputField.scss';
-import React from 'react'
+import { InputHTMLAttributes, useId } from 'react'
 
-interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
+type InputProps = React.DetailedHTMLProps<
+  InputHTMLAttributes<HTMLInputElement>,
+  HTMLInputElement
+>;
+interface Props extends InputProps {
     className?: string;
     placeholder: string;
 }
 const InputField = ({ className, placeholder = 'Enter Text', ...props }: Props) => {
+    const id = useId();
 
     return (
         <div className={`input-container ${className}`}>
-            <input {...props} placeholder={placeholder} className="input-field" />
-            <label htmlFor="input-field" className="input-label">{placeholder}</label>
+            <input {...props} id={id} placeholder={placeholder} className="input-field" />
+            <label htmlFor={id} className="input-label">{placeholder}</label>
             <span className="input-highlight"></span>
         </div>
     )
