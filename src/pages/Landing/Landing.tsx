@@ -125,9 +125,9 @@ const Landing = () => {
           </Row>
         </Container>
 
-        <div id="scrollArrow">
+        {/* <div id="scrollArrow">
           <a href="#about"><span></span>Scroll</a>
-        </div>
+        </div> */}
       </section>
 
 
