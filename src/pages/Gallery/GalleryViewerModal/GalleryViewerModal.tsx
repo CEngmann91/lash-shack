@@ -118,6 +118,9 @@ const GalleryViewerModal: React.FC<GalleryViewerModalProps> = ({ visible, imageP
                 />
             </AnimatePresence>
 
+            <div className="gradient" />
+
+
             <div className="pagination">
                 {imagePaths.map((img, key) => (
                     <div key={key} className={`dot ${(key == imageIndex) && 'active'}`} onClick={() => setPage([key, 1])} />

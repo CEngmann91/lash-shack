@@ -25,6 +25,20 @@ $icon: 45px;
     //     visibility: hidden;
     // }
 
+
+
+    .gradient {
+        height: 100%;
+        width: 100%;
+        top: 0;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+        color: white;
+        z-index: 1;
+        pointer-events: none;
+        // display: none;
+    }
+
+
     img {
         position: absolute;
         width: 100%;
@@ -103,9 +117,9 @@ $icon: 45px;
             // box-shadow: 0px 0px 30px 1px rgba($green-shade-colour, 0.5);
             transform: scale(1.1);
 
-        //     svg {
-        //         color: $pink-new-colour;
-        //     }
+            //     svg {
+            //         color: $pink-new-colour;
+            //     }
         }
     }
 
@@ -147,7 +161,7 @@ $icon: 45px;
         display: flex;
         flex-direction: row;
         gap: 5px;
-        background: grey;
+        // background: grey;
         padding: 8px;
         border-radius: 5px;
 
