@@ -32,8 +32,8 @@ const TestimonialCard = (item: Testimonial) => {
                 {Array(starRating).fill(1).map((el, i) => <Icon_Star key={i} />)}
             </div>
             <p className="card__exit">※</p>
-            <div className="text fw-bold">{title}</div>
-            <div className="text">{description}</div>
+            <div className="title fw-bold">{title}</div>
+            <div className="description">{description}</div>
             {/* <p className="card__apply">
                 <a className="card__link" href="#">Apply Now <i className="fas fa-arrow-right"></i></a>
             </p> */}
