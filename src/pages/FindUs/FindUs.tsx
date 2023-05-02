@@ -9,20 +9,36 @@ import useGetMiscellaneous from '../../hooks/useMiscellaneous';
 const FindUs = () => {
     const { openingHours, loadingMiscellaneous, miscellaneousError } = useGetMiscellaneous();
     const { dayOfWeekName } = useDate();
-    let interval: NodeJS.Timer;
-
-    let start = ""; //timeConversion(`0${'9:00am'.padStart(2, '0').slice(0, -2)}:00am`);
-    let finish = ""; //timeConversion(`0${'5:00pm'.padStart(2, '0').slice(0, -2)}:00pm`);
     const [isOpen, setIsOpen] = useState<boolean>(false);
+    let interval: NodeJS.Timer;
+    const todayHours = getTodaysWorkingHours();
+
 
 
     useEffect(() => {
-        interval = setInterval(() => setIsOpen(currentTimeIsBetweenTimes(start, finish)), 1000)
+        interval = setInterval(() => {
+
+            const { from, to } = todayHours;
+
+            const start = timeConversion(`0${from.padStart(2, '0').slice(0, -2)}:00am`);
+            const finish = timeConversion(`0${to.padStart(2, '0').slice(0, -2)}:00pm`);
+            const within = currentTimeIsBetweenTimes(start, finish);
+            setIsOpen(within)
+        }, 1000)
 
         return function cleanup() {
             clearInterval(interval);
         }
-    }, [])
+    }, [openingHours])
+
+
+    function getTodaysWorkingHours() {
+        if (loadingMiscellaneous)
+            return null;
+
+        const { days } = openingHours;
+        return days?.filter((item: any, idx: number) => item.key === dayOfWeekName)?.at(0);
+    }
 
     function renderSchedule() {
         if (loadingMiscellaneous)
@@ -33,17 +49,11 @@ const FindUs = () => {
         return (
             days?.map((item: any, idx: number) => {
                 const { from, to, key, closed } = item;
-                const day = key;
-
-                const sameDay = (day === dayOfWeekName);
-                if (sameDay) {
-                    start = timeConversion(`0${from.padStart(2, '0').slice(0, -2)}:00am`);
-                    finish = timeConversion(`0${to.padStart(2, '0').slice(0, -2)}:00pm`);
-                }
+                const sameDay = (key === dayOfWeekName);
 
                 return (
                     <div className="d-flex flex-row justify-content-between" key={idx}>
-                        <label className={`${sameDay && 'fw-bold openColour'} ${sameDay && closed && 'closedColour'}`}>{day}</label>
+                        <label className={`${sameDay && 'fw-bold openColour'} ${sameDay && closed && 'closedColour'}`}>{key}</label>
 
                         {closed ?
                             <label className={`${sameDay && 'fw-bold openColour'} ${sameDay && closed && 'closedColour'}`}>Closed</label>
