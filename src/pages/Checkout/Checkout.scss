@@ -1,5 +1,5 @@
 @import '../../res/colours.scss';
-
+@import '../../constants/constants.scss';
 
 .payment__form,
 .billing__form,
@@ -8,33 +8,35 @@
     
     .form__group {
         position: inherit;
-        margin-bottom: 30px;
+        // margin-bottom: 30px;
     
         input {
             // width: 100%;
             border: 1px solid black;
             border-radius: 5px;
-            padding: 8px 20px;
+            // padding: 8px 20px;
         }
     
-        span {
-            display: flex;
-            align-items: center;
-            column-gap: 5px;
-            color: $green-shade-colour;
-            font-weight: 600;
+        // span {
+        //     display: flex;
+        //     align-items: center;
+        //     column-gap: 5px;
+        //     color: $green-shade-colour;
+        //     font-weight: 600;
     
-            &:hover {
-                cursor: pointer;
-            }
-        }
+        //     &:hover {
+        //         cursor: pointer;
+        //     }
+        // }
     }
 }
 
 
 .checkout__basket {
+    position: sticky;
+    top: calc(25vh - $navbar-height);
     padding: 20px;
-    background: $beige-colour;
+    background: $pink-new-colour;
     color: black;
     border-radius: 5px;
 
@@ -69,7 +71,7 @@
 
     .buy-button {
         margin-top: 20px;
-        background: $green-shade-colour;
+        background: darken($pink-new-colour, 20%);
         color: white;
     }
 }

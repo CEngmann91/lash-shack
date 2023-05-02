@@ -9,86 +9,110 @@ import "swiper/scss/pagination";
 import { EffectCoverflow, Autoplay } from "swiper";
 
 import './Landing.scss';
-import { useEffect, useMemo } from 'react'
-import { ArrowMotionButton, FeatureRow, LimitedTimeOffer, LoadingSpinner, MotionButton, PageWrapper } from '../../components'
+import { ArrowMotionButton, LimitedTimeOffer, PageWrapper } from '../../components'
 import { Container, Row, Col } from 'reactstrap'
 import images from '../../res/images';
-import { useNavigate } from 'react-router-dom';
-
 import { SkeletonImage } from '../../components'
-import { getAllDownloadURLRef } from '../../helpers/firebase/firebaseHelper';
 import useGetMiscellaneous from "../../hooks/useMiscellaneous";
 import { About, MeetExperts, Testimonials, FindUs } from "..";
 import { launchTreatwell } from "../../res/funcs";
-import AuthModal from "../../components/AuthModal/AuthModal";
 
 const Landing = () => {
-  const navigate = useNavigate();
   const { landingPage_LimitedTimOffer, loadingMiscellaneous, miscellaneousError } = useGetMiscellaneous();
 
 
-  const renderLandingSwiper = () => (
+
+  const carousel = () => (
     <Swiper
-      effect={"coverflow"}
+      modules={[EffectCoverflow, Autoplay]}
       centeredSlides={true}
-      spaceBetween={20}
-      slidesPerView={"auto"}
+      loop={true}
+      effect='coverflow'
+      speed={1000}
+      slideToClickedSlide={false}
+      slidesPerView="auto"
       coverflowEffect={{
         rotate: 30,
-        stretch: 0,
-        depth: 100,
-        modifier: 1,
-        slideShadows: true,
+        slideShadows: false,
+        scale: 1,
+        depth: 150,
       }}
-      // loop={true}
       autoplay={{
         delay: 5000,
         pauseOnMouseEnter: true,
         disableOnInteraction: false,
       }}
-      slideToClickedSlide={false}
-      preventClicks={true}
-      preventClicksPropagation={true}
-      modules={[EffectCoverflow, Autoplay]}
     >
+  {/* // <Swiper
+    //   effect="coverflow"
+    //   centeredSlides={true}
+    //   spaceBetween={20}
+    //   slidesPerView="auto"
+    //   coverflowEffect={{
+    //     rotate: 0,
+    //     stretch: 0,
+    //     depth: 200,
+    //     modifier: 1,
+    //     slideShadows: false,
+    //   }}
+    //   // loop={true}
+    //   autoplay={{
+    //     delay: 5000,
+    //     pauseOnMouseEnter: true,
+    //     disableOnInteraction: false,
+    //   }}
+    //   // slideToClickedSlide={false}
+    //   // preventClicks={true}
+    //   // preventClicksPropagation={true}
+    //   modules={[EffectCoverflow, Autoplay]}
+    // > */}
 
       <SwiperSlide>
-        {/* <SkeletonImage src={images.Landing0} alt="" className="" /> */}
-        <img src={images.Landing0} alt="" />
+        <SkeletonImage src={images.Landing0} alt="" className="" />
+        {/* <img src={images.Landing0} alt="" /> */}
       </SwiperSlide>
 
       <SwiperSlide>
-        {/* <SkeletonImage src={images.Landing1} alt="" className="" /> */}
-        <img src={images.Landing1} alt="" />
+        <SkeletonImage src={images.Landing1} alt="" className="" />
+        {/* <img src={images.Landing1} alt="" /> */}
       </SwiperSlide>
 
       <SwiperSlide>
-        {/* <SkeletonImage src={images.Landing2} alt="" className="" /> */}
-        <img src={images.Landing2} alt="" />
+        <SkeletonImage src={images.Landing2} alt="" className="" />
+        {/* <img src={images.Landing2} alt="" /> */}
       </SwiperSlide>
 
       <SwiperSlide>
-        {/* <SkeletonImage src={images.Landing3} alt="" className="" /> */}
-        <img src={images.Landing3} alt="" />
+        <SkeletonImage src={images.Landing3} alt="" className="" />
+        {/* <img src={images.Landing3} alt="" /> */}
       </SwiperSlide>
-    </Swiper>
+
+      {/* <div className="swiper-gradient" /> */}
+    </Swiper >
   )
 
   const renderLimitedTimeOffer = () => {
-    const { active, content, background, textColour } = landingPage_LimitedTimOffer;
+    const { active, content, background, textColour, devMode } = landingPage_LimitedTimOffer;
     if (!active)
       return;
 
-    const { title, subtitle, imgUrl, startDate, endDate } = content;
+    const { title, subtitle, imageUrl, startDate, endDate, cta  } = content;
+
+    if (devMode && process.env.NODE_ENV !== "development")
+      return;
+
+    const { text, url } = cta
 
     return <LimitedTimeOffer
       title={title}
       subtitle={subtitle}
-      imageUrl={imgUrl}
+      imageUrl={imageUrl}
       startDate={startDate}
       endDate={endDate}
       background={background}
       textColour={textColour}
+      buttonText={text}
+      buttonURL={url}
     // onTimerCompleted={() => { }}
     />
   }
@@ -111,16 +135,7 @@ const Landing = () => {
             </Col>
 
             <Col lg='6' md='6' className='d-flex justify-content-center'>
-              {renderLandingSwiper()}
-
-              {/* <figure className="td-figure">
-                <img src=
-                // "https://images.unsplash.com/photo-1603695454344-12df53ab0c11?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ"
-                {images.Landing0}
-                alt="Image description" />
-              </figure> */}
-
-
+              {carousel()}
             </Col>
           </Row>
         </Container>
@@ -133,7 +148,6 @@ const Landing = () => {
 
 
       {renderLimitedTimeOffer()}
-
 
       <About />
 

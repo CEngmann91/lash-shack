@@ -141,16 +141,6 @@ export const NAVIGATION = {
     ] as NavType[],
 }
 
-export const WORKING_HOURS: { [key: string]: { from: string, to: string } } = {
-    Monday:     { from: "9:00am",     to: "6:00pm" },
-    Tuesday:    { from: "9:00am",     to: "6:00pm" },
-    Wednesday:  { from: "9:00am",     to: "6:00pm" },
-    Thursday:   { from: "9:00am",     to: "7:00pm" },
-    Friday:     { from: "9:00am",     to: "7:00pm" },
-    Saturday:   { from: "9:00am",     to: "4:00pm" },
-    Sunday:     { from: "Closed",     to: "Closed" },
-    
-}
 export const CONTACT = {
     FACEBOOK: '',
     TWITTER: '',
@@ -160,7 +150,7 @@ export const CONTACT = {
     LOCATIONS: [
         {
             id: 'White Hart Lane',
-            ADDRESS: "Lash Shack\n49 White Hart Lane\nCollier Row,\nRomford\nRM7 8JB",
+            ADDRESS: "Lash Shack\n49 White Hart Lane\nRomford\nRM7 8JB",
             MAP: "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d679.5204988947316!2d0.15733319970601195!3d51.59129798954456!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8a49a4b2a8bd5%3A0x8b08e8d25374186a!2s49%20White%20Hart%20Ln%2C%20Romford%20RM7%208JB!5e1!3m2!1sen!2suk!4v1678780540278!5m2!1sen!2suk",
             BOROUGH_SUB: "Romford",
         },

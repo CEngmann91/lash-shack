@@ -5,12 +5,12 @@ import { useScrollLock } from '../../../hooks/useScrollLock';
 import { clamp, joinClasses } from "../../../res/funcs";
 import { useEffect } from 'react';
 
-
 const variants = {
     enter: (direction: number) => {
         return {
             x: direction > 0 ? 1000 : -1000,
-            opacity: 0
+            scale: 0.9,
+            opacity: 0,
         };
     },
     center: {
@@ -87,61 +87,57 @@ const GalleryViewerModal: React.FC<GalleryViewerModalProps> = ({ visible, imageP
         setPage([newValue, newDirection]);
     };
 
+    // if (!visible)
+    //     return null;
+
     return (
-        // visible
-        <div className={'gallery-container'}>
-            <AnimatePresence initial={false} custom={direction}>
-                <motion.img
-                    key={page}
-                    src={imagePaths[imageIndex]}
-                    custom={direction}
-                    variants={variants}
-                    initial="enter"
-                    animate="center"
-                    exit="exit"
-                    transition={{
-                        x: { type: "spring", stiffness: 300, damping: 30 },
-                        opacity: { duration: 0.2 }
-                    }}
-                    drag="x"
-                    dragConstraints={{ left: 0, right: 0 }}
-                    dragElastic={1}
-                    onDragEnd={(e, { offset, velocity }) => {
-                        const swipe = swipePower(offset.x, velocity.x);
+        // visible && (
+            <div className={`gallery-container ${!visible && 'hide'}`}>
+                <AnimatePresence initial={true} custom={direction}>
+                    <motion.img
+                        key={page}
+                        src={imagePaths[imageIndex]}
+                        custom={direction}
+                        variants={variants}
+                        initial="enter"
+                        animate="center"
+                        exit="exit"
+                        transition={{
+                            x: { type: "spring", stiffness: 300, damping: 30 },
+                            opacity: { duration: 0.2 }
+                        }}
+                        drag="x"
+                        dragConstraints={{ left: 0, right: 0 }}
+                        dragElastic={1}
+                        onDragEnd={(e, { offset, velocity }) => {
+                            const swipe = swipePower(offset.x, velocity.x);
 
-                        if (swipe < -swipeConfidenceThreshold) {
-                            paginate(1);
-                        } else if (swipe > swipeConfidenceThreshold) {
-                            paginate(-1);
-                        }
-                    }}
-                />
-            </AnimatePresence>
+                            if (swipe < -swipeConfidenceThreshold) {
+                                paginate(1);
+                            } else if (swipe > swipeConfidenceThreshold) {
+                                paginate(-1);
+                            }
+                        }}
+                    />
+                </AnimatePresence>
 
-            <div className="gradient" />
+                <div className="gradient" />
 
 
-            <div className="pagination">
-                {imagePaths.map((img, key) => (
-                    <div key={key} className={`dot ${(key == imageIndex) && 'active'}`} onClick={() => setPage([key, 1])} />
-                ))}
+                <div className="pagination">
+                    {imagePaths.map((img, key) => (
+                        <div key={key} className={`dot ${(key == imageIndex) && 'active'}`} onClick={() => setPage([key, 1])} />
+                    ))}
+                </div>
+
+                <button className="prev" onClick={() => paginate(-1)}>&#10094;</button>
+                <button className="next" onClick={() => paginate(1)}>&#10095;</button>
+
+                <button className="close" onClick={onClose}>
+                    <Icon_Cross />
+                </button>
             </div>
-
-            {/* <div className="next" onClick={() => paginate(1)}>
-                <Icon_ArrowUp />
-            </div>
-            <div className="prev" onClick={() => paginate(-1)}>
-                <Icon_ArrowDown />
-            </div> */}
-
-
-            <button className="prev" onClick={() => paginate(-1)}>&#10094;</button>
-            <button className="next" onClick={() => paginate(1)}>&#10095;</button>
-
-            <button className="close" onClick={onClose}>
-                <Icon_Cross />
-            </button>
-        </div>
+        // )
     )
 }
 

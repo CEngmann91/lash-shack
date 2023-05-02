@@ -5,13 +5,13 @@
     padding-bottom: 20px;
     background: $pink-new-colour;
 
-    
+
     .footer__text {
         line-height: 30px;
     }
 
     .quick__links-title {
-        margin-bottom: 35px;
+        margin-bottom: 0.6rem;
         font-size: 1.1rem;
         font-weight: 600;
     }
@@ -28,7 +28,7 @@
             }
         }
     }
-
+    
     .footer__contact {
 
         ul,
@@ -56,9 +56,60 @@
     }
 
     .footer__copyright {
-        color: inherit;
-        font-size: 0.9rem;
-        margin-top: 10px;
-        // text-align: center;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        &--text {
+            color: inherit;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            // text-align: center;
+        }
+
+        .ABT {
+            width: 90px;
+            object-fit: contain;
+            object-position: center center;
+        }
+    }
+
+
+
+    /* ===========================
+   ====== Media Query's ====== 
+   =========================== */
+    @media only screen and (max-width: 992px) {
+        // .quick__links-title {
+        //     margin-bottom: 5px;
+        // }   
+        
+        .quick__links-title {
+            margin-bottom: 0;
+            margin-top: 0.6rem;
+        }
+
+        .footer__copyright {
+            flex-direction: column;
+            text-align: center;
+            align-items: center;
+
+
+            &--text {
+                font-size: 0.7rem;
+            }
+            
+            .ABT {
+                margin: 10px 0;
+            }
+    
+        }
+    }
+
+    @media only screen and (max-width: 768px) {
+        
+    }
+
+    @media only screen and (max-width: 576px) {
     }
 }

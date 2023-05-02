@@ -1,5 +1,12 @@
 @import '../../res/colours.scss';
 
+:root {
+    --columns: 4;
+    --width: calc(100vw / var(--columns));
+    --padding: 30px;
+    --top: 60px;
+}
+
 .gallery__section {
     display: flex;
     justify-content: center;
@@ -9,21 +16,182 @@
         height: 450px;
     }
 
+    @media only screen and (max-width: 768px) {}
 
-    .container {
-        margin-bottom: 30px;
+    @media only screen and (max-width: 576px) {}
 
-        .image-gallery {
+
+
+
+    
+    /* Main CSS */
+    // https://codepen.io/iamsaief/pen/jObaoKo
+    .grid-wrapper {
+        display: grid;
+        grid-gap: 10px;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        grid-auto-rows: 200px;
+        grid-auto-flow: dense;
+
+
+        img {
+            max-width: 100%;
+            height: auto;
+            vertical-align: middle;
+            display: inline-block;
+        }
+
+        & > div {
             display: flex;
-            flex-wrap: wrap;
             justify-content: center;
-            gap: 20px;
-            grid-auto-flow: dense;
+            align-items: center;
+            opacity: 0;
+            border: 2px solid $pink-new-colour;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all .5s;
+    
+            &:hover {
+                cursor: pointer;
+                border: 4px solid $pink-new-colour;
+                box-shadow: 0px 0px 30px 1px rgba($green-shade-colour, 0.90);
+                transform: scale(0.95);
+            }
+
+            & > img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+
+        .wide {
+            grid-column: span 2;
+        }
+
+        .tall {
+            grid-row: span 2;
+        }
+    
+        .big {
+            grid-column: span 2;
+            grid-row: span 2;
         }
     }
 
-    @media only screen and (max-width: 768px) {}
 
-    @media only screen and (max-width: 576px) {
-    }
+
+
+
+
+
+
+
+    // .grid-wrapper {
+    //     display: grid;
+    //     grid-gap: 10px;
+    //     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    //     grid-auto-rows: 200px;
+    //     grid-auto-flow: dense;
+
+
+    //     img {
+    //         max-width: 100%;
+    //         height: auto;
+    //         vertical-align: middle;
+    //         display: inline-block;
+    //     }
+
+    //     & > div {
+    //         display: flex;
+    //         justify-content: center;
+    //         align-items: center;
+
+
+    //         & > img {
+    //             width: 100%;
+    //             height: 100%;
+    //             object-fit: cover;
+    //             border-radius: 5px;
+    //         }
+    //     }
+
+    //     --count: 2;
+    //     .wide {
+    //         grid-column: span var(--count);
+    //     }
+
+    //     .tall {
+    //         grid-row: span var(--count);
+    //     }
+
+    //     .big {
+    //         grid-column: span var(--count);
+    //         grid-row: span var(--count);
+    //     }
+    // }
+
+
+
+
+
+
+
+
+
+
+
+    // .container {
+    //     max-width: 80vw;
+    //     margin: 0 auto;
+    //     /* grid */
+    //     display: grid;
+    //     grid-template-columns: repeat(6, 1fr);
+    //     grid-gap: 20px;
+    // }
+
+    // .tile {
+    //     border-radius: 20px;
+    // }
+
+    // .work__wrap {
+    //     grid-template-columns: repeat(auto-fill, minmax(calc(860px / 6), 1fr));
+    //     grid-gap: 20px;
+    //     grid-auto-rows: minmax(calc(860px / 6), auto);
+    //     grid-auto-flow: dense;
+    // }
+
+    // .two-by-two {
+    //     background: pink;
+    //     grid-column-end: span 2;
+    //     grid-row-end: span 2;
+    // }
+
+    // .one-by-three {
+    //     grid-column-end: span 3;
+    //     /* new */
+    //     grid-row-end: span 3;
+    //     background: mediumslateblue;
+
+    // }
+
+    // .three-by-two {
+    //     background: lightgoldenrodyellow;
+    //     grid-column-end: span 3;
+    //     grid-row-end: span 2;
+    // }
+
+    // .one-by-one {
+    //     background: salmon;
+    // }
+
+    // .one-by-two {
+    //     background: lightgreen;
+    //     grid-row-end: span 2;
+    // }
+
+    // .two-by-one {
+    //     background: lightskyblue;
+    //     grid-column-end: span 2;
+    // }
 }

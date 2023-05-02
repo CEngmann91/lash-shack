@@ -6,7 +6,7 @@ import { Col, Container, Row } from 'reactstrap';
 import ExpertCard from './ExpertCard/ExpertCard';
 
 const MeetExperts = () => {
-    const { getAllAtLashShack, loadingUsers } = useGetUsers();
+    const { getAllMembersOfLashShack, loadingUsers } = useGetUsers();
 
 
 
@@ -24,7 +24,7 @@ const MeetExperts = () => {
                 <LoadingSpinner title="Loading..." />
                 :
                 <div className="list">
-                    {getAllAtLashShack?.map(({ firstName, position, photoURL, summary }, key) => {
+                    {getAllMembersOfLashShack?.map(({ firstName, position, photoURL, summary }, key) => {
 
                         return (
                             <ExpertCard

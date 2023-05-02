@@ -3,7 +3,7 @@ import { NAVIGATION } from '../../constants/constants';
 import { NavLink } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useScrollLock } from '../../hooks/useScrollLock';
-
+import { toggleDrawerOpened } from '../../res/funcs';
 
 type DrawerMenuProps = {
     isOpen: boolean;
@@ -14,19 +14,13 @@ const DrawerMenu = ({ isOpen, onClose }: DrawerMenuProps) => {
 
 
     useEffect(() => {
-        if (!isOpen)
-            unlockScroll();
-        else
-            lockScroll();
+        if (!isOpen) unlockScroll();
+        else lockScroll();
     }, [isOpen])
-    
 
-    function getBody() {
-        return document.querySelector('body');
-    }
 
     function closeMenu() {
-        getBody()?.classList.remove("open");
+        toggleDrawerOpened();
         onClose();
     }
 

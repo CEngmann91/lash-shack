@@ -1,11 +1,11 @@
 import './ProductCard.scss';
-import { Icon_Minus, Icon_Plus, Icon_Share, Icon_ShoppingBasket, Icon_Trash, Icon_WishList, Icon_WishListFilled } from '../../../../res/icons';
+import { Icon_Email, Icon_Minus, Icon_Plus, Icon_Share, Icon_ShoppingBasket, Icon_Trash, Icon_WishList, Icon_WishListFilled } from '../../../../res/icons';
 import { Col } from 'reactstrap';
 import { motion } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom';
 import { formatCurrency, launchTreatwell } from '../../../../res/funcs';
 import { ProductItem } from '../../../../types/ProductItem';
-import { MotionButton, MotionSpan, Ribbon, SkeletonImage } from '../../..';
+import { ArrowMotionButton, MotionButton, MotionSpan, Ribbon, SkeletonImage } from '../../..';
 import { useBasketActions } from '../../../../redux/hooks/useBasketActions';
 import { useWishListActions } from '../../../../redux/hooks/useWishListActions';
 import { useEffect } from 'react';
@@ -81,12 +81,25 @@ const ProductCard = ({ item }: ProductCardProps) => {
 
                     <MotionButton onClick={() => toggleWishList(id)}>
                         {!existsInWishList(id) ? <Icon_WishList /> : <Icon_WishListFilled />}
-                    </MotionButton>
+                    </MotionButton> */}
 
-                    <MotionButton className='app__icon-with-badge' onClick={() => addToBasket(id, title, imgUrl, price)}>
+                    {/* <MotionButton className='app__icon-with-badge' onClick={() => addToBasket(id, title, imgUrl, price)}>
                         <Icon_ShoppingBasket />
                         <span className="badge" data-quantity={count > 0}>{count}</span>
                     </MotionButton> */}
+
+
+
+                    {/* {category === "Courses" ? (
+                        <MotionButton className='app__icon-with-badge p-1.5' onClick={launchTreatwell}>
+                            <Icon_Email />
+                        </MotionButton>
+                    ) : (
+                        <MotionButton className='app__icon-with-badge' onClick={launchTreatwell}>
+                            <Icon_ShoppingBasket />
+                            <span className="badge" data-quantity={count > 0}>{count}</span>
+                        </MotionButton>
+                    )} */}
 
 
                     <MotionButton className='app__icon-with-badge' onClick={launchTreatwell}>
@@ -138,7 +151,7 @@ const ProductCard = ({ item }: ProductCardProps) => {
             </div>
 
             {isOnSale && (
-                <Ribbon title={`-${ ((1 - (salePrice / price)) * 100).toFixed()}%`} />
+                <Ribbon title={`-${((1 - (salePrice / price)) * 100).toFixed()}%`} />
             )}
 
             {/* <Ribbon title="Popular" /> */}

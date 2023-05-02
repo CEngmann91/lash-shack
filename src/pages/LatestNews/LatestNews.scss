@@ -2,5 +2,69 @@
 @import '../../res/mixin.scss';
 
 .news__container {
-    
+
+    section {
+        font-size: 50px;
+        text-align: center;
+        width: 100%;
+        height: 100vh;
+    }
+
+    .sub {
+        position: relative;
+    }
+
+    .box {
+        height: 100vh;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        transition: opacity 0.7s ease-in-out;
+        z-index: 0;
+    }
+
+    .box:last-child {
+        bottom: 0;
+    }
+
+    .box:last-child.cur {
+        top: auto;
+    }
+
+    .cur {
+        z-index: 10;
+        display: block;
+        opacity: 1;
+    }
+
+    .center {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #dots {
+        display: none;
+        position: fixed;
+        right: 20px;
+        top: 50%;
+        z-index: 11;
+
+        span {
+            display: block;
+            width: 10px;
+            height: 10px;
+            background: rgba(81, 81, 81, .57);
+            margin: 15px auto;
+            border-radius: 50%;
+
+            &.active {
+                background: rgba(81, 0, 0, 1);
+            }
+        }
+    }
+
 }

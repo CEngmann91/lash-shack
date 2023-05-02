@@ -1,6 +1,6 @@
 import './Login.scss';
 import { useLocation } from 'react-router-dom'
-import { FormEvent } from 'react'
+import { FormEvent, useEffect } from 'react'
 import { Col, Container, Row, Form, FormGroup } from 'reactstrap'
 import { Checkbox, InputField, MotionButton, PageWrapper } from '../../components'
 import { Link, useNavigate } from 'react-router-dom';
@@ -14,7 +14,6 @@ const Login = () => {
     const location = useLocation();
     const { setAsLoading, setAsNotLoading } = useApplicationActions();
     const { setAsActive, setFullName, setProfile, setAccountType } = useUserActions();
-
 
 
 

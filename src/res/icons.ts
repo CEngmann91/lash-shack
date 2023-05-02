@@ -7,7 +7,7 @@ import { GiQueenCrown, GiShare } from 'react-icons/gi';
 import { IoIosArrowUp } from 'react-icons/io';
 import { ImLocation, ImPhone, ImHome, ImUsers, ImExit, ImCross } from 'react-icons/im';
 import { MdOutlineAccountCircle, MdEmail } from 'react-icons/md';
-import { RiInformationFill, RiSettings3Fill, RiMessage2Fill, RiAccountPinCircleFill } from 'react-icons/ri';
+import { RiInformationFill, RiSettings3Fill, RiMessage2Fill, RiAccountPinCircleFill, RiInstagramFill } from 'react-icons/ri';
 import { SiBookstack } from 'react-icons/si';
 import { TbCheckupList } from 'react-icons/tb';
 
@@ -28,6 +28,8 @@ export {
 
     AiOutlineArrowUp as Icon_ArrowUp,
     AiOutlineArrowDown as Icon_ArrowDown,
+
+    RiInstagramFill as Icon_Social_Instagram,
 
     BsFillBasketFill as Icon_ShoppingBasket,
     FiHeart as Icon_WishList,

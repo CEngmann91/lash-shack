@@ -21,9 +21,9 @@ $icon: 45px;
     z-index: 5;
 
 
-    // &.hide {
-    //     visibility: hidden;
-    // }
+    &.hide {
+        visibility: hidden;
+    }
 
 
 
@@ -35,7 +35,6 @@ $icon: 45px;
         color: white;
         z-index: 1;
         pointer-events: none;
-        // display: none;
     }
 
 
@@ -51,10 +50,6 @@ $icon: 45px;
 
     .next,
     .prev {
-        // top: calc(50% - 20px);
-        // position: absolute;
-        // padding: 7px;
-
         cursor: pointer;
         position: absolute;
         top: 0;
@@ -87,68 +82,23 @@ $icon: 45px;
         transform: scale(1.1);
     }
 
-    // .next,
-    // .prev,
-    .close {
-        background: white;
-        border-radius: 30px;
-        width: $icon;
-        height: $icon;
-        user-select: none;
-        // box-shadow: 0px 0px 5px rgba($green-shade-colour, 0.5);
-        z-index: 2;
-        transition: 0.3s ease-out;
-        // color: black;
-
-
-        // svg {
-        //     width: 100%;
-        //     height: 100%;
-
-        //     transition: 0.3s ease-out;
-        // }
-
-        // &:active {
-        //     transform: scale(0.85);
-        // }
-
-        &:hover {
-            cursor: pointer;
-            // box-shadow: 0px 0px 30px 1px rgba($green-shade-colour, 0.5);
-            transform: scale(1.1);
-
-            //     svg {
-            //         color: $pink-new-colour;
-            //     }
-        }
-    }
-
-    // .next {
-    //     right: 10px;
-
-    //     svg {
-    //         transform: rotate(90deg);
-    //     }
-    // }
-
-    // .prev {
-    //     left: 10px;
-
-    //     svg {
-    //         transform: rotate(90deg);
-    //     }
-    // }
-
     .close {
         position: absolute;
-        top: 10px;
-        right: 10px;
-        width: calc($icon * 0.75);
-        height: calc($icon * 0.75);
+        top: 1rem;
+        right: 1rem;
+        width: 1.5rem;
+        height: 1.5rem;
         background: transparent;
+        z-index: 2;
+        transition: 0.3s ease-out;
 
         svg {
             color: white;
+        }
+
+        &:hover {
+            cursor: pointer;
+            transform: scale(1.1);
         }
     }
 
@@ -160,6 +110,7 @@ $icon: 45px;
         z-index: 2;
         display: flex;
         flex-direction: row;
+        align-items: baseline;
         gap: 5px;
         // background: grey;
         padding: 8px;
@@ -167,8 +118,8 @@ $icon: 45px;
 
         .dot {
             cursor: pointer;
-            height: 13px;
-            width: 13px;
+            height: 10px;
+            width: 10px;
             margin: 0 2px;
             background: #bbb;
             border-radius: 50%;
@@ -177,6 +128,9 @@ $icon: 45px;
 
             &.active {
                 background: $pink-new-colour;
+
+                height: 13px;
+                width: 13px;
             }
         }
     }

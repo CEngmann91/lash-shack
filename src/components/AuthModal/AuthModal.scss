@@ -4,19 +4,26 @@
 // https://codepen.io/danzawadzki/pen/EgqKRr
 #authModal {
     position: fixed;
-    left: 0;
-    top: 0;
-    height: 100vh;
-    width: 100vw;
-    // background: red;
-    background: rgba(0, 0, 0, 0.8);
-    // @include blur(4px);
+    inset: 0;
     z-index: 5;
 
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
+
+
+    .background {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.8);
+        // @include blur(4px);
+        z-index: 1;
+
+        -webkit-animation: fadeIn ease-in 1;
+        -moz-animation: fadeIn ease-in 1;
+        animation: fadeIn ease-in 1;
+    }
 
     a {
         color: $green-shade-colour; //#92badd;
@@ -44,10 +51,14 @@
         flex-direction: column;
         justify-content: center;
         width: 100%;
-        min-height: 100%;
+        max-height: 100%;
 
         -webkit-animation: fadeInDown 1s both;
         animation: fadeInDown 1s both;
+
+        transition: max-height 0.25s ease-in;
+        z-index: 2;
+        pointer-events: none;
 
 
         #formContent {
@@ -66,6 +77,7 @@
             align-items: center;
             flex-direction: column;
             justify-content: center;
+            pointer-events: all;
 
             h2 {
                 margin-top: 20px;
@@ -76,58 +88,58 @@
                 margin: 40px 8px 10px 8px;
             }
 
-            #pageWrapper {
-                width: 100%;
-                padding: 20px 30px;
+            // #pageWrapper {
+            //     width: 100%;
+            //     padding: 20px 30px;
 
 
-                form {
-                    @for $i from 1 to 7 {
-                        &:nth-child(#{$i}) {
-                            $delay: 0.4s+($i * 0.2s);
+            //     form {
+            //         @for $i from 1 to 7 {
+            //             &:nth-child(#{$i}) {
+            //                 $delay: 0.4s+($i * 0.2s);
 
-                            // opacity: 0;
-                            // -webkit-animation: fadeIn ease-in 1s $delay forwards;
-                            // -moz-animation: fadeIn ease-in 1s $delay forwards;
-                            // animation: fadeIn ease-in 1s $delay forwards;
+            //                 // opacity: 0;
+            //                 // -webkit-animation: fadeIn ease-in 1s $delay forwards;
+            //                 // -moz-animation: fadeIn ease-in 1s $delay forwards;
+            //                 // animation: fadeIn ease-in 1s $delay forwards;
 
-                            // -webkit-animation-duration: 1s;
-                            // -moz-animation-duration: 1s;
-                            // animation-duration: 1s;
+            //                 // -webkit-animation-duration: 1s;
+            //                 // -moz-animation-duration: 1s;
+            //                 // animation-duration: 1s;
 
-                            // -webkit-animation-delay: 0.4s + ($i * 0.2s);
-                            // -moz-animation-delay: 0.4s + ($i * 0.2s);
-                            // animation-delay: 0.4s + ($i * 0.2s);
-                        }
-                    }
+            //                 // -webkit-animation-delay: 0.4s + ($i * 0.2s);
+            //                 // -moz-animation-delay: 0.4s + ($i * 0.2s);
+            //                 // animation-delay: 0.4s + ($i * 0.2s);
+            //             }
+            //         }
 
-                    .submitButton {
-                        background: $pink-new-colour;
-                        // border: none;
-                        color: black;
-                        padding: 15px 80px;
-                        // text-align: center;
-                        // text-decoration: none;
-                        display: inline-block;
-                        text-transform: uppercase;
-                        // font-size: 13px;
-                        -webkit-box-shadow: 0 10px 30px 0 rgba(95, 186, 233, 0.4);
-                        box-shadow: 0 10px 30px 0 rgba(95, 186, 233, 0.4);
-                        // -webkit-border-radius: 5px 5px 5px 5px;
-                        // border-radius: 5px 5px 5px 5px;
-                        margin: 5px 20px 20px 20px;
-                    }
-                }
+            //         .submitButton {
+            //             background: $pink-new-colour;
+            //             // border: none;
+            //             color: black;
+            //             padding: 15px 80px;
+            //             // text-align: center;
+            //             // text-decoration: none;
+            //             display: inline-block;
+            //             text-transform: uppercase;
+            //             // font-size: 13px;
+            //             -webkit-box-shadow: 0 10px 30px 0 rgba(95, 186, 233, 0.4);
+            //             box-shadow: 0 10px 30px 0 rgba(95, 186, 233, 0.4);
+            //             // -webkit-border-radius: 5px 5px 5px 5px;
+            //             // border-radius: 5px 5px 5px 5px;
+            //             margin: 5px 20px 20px 20px;
+            //         }
+            //     }
 
-                #formFooter {
-                    background-color: #f6f6f6;
-                    border-top: 1px solid #dce8f1;
-                    padding: 20px;
-                    text-align: center;
-                    -webkit-border-radius: 0 0 10px 10px;
-                    border-radius: 0 0 10px 10px;
-                }
-            }
+            //     #formFooter {
+            //         background-color: #f6f6f6;
+            //         border-top: 1px solid #dce8f1;
+            //         padding: 20px;
+            //         text-align: center;
+            //         -webkit-border-radius: 0 0 10px 10px;
+            //         border-radius: 0 0 10px 10px;
+            //     }
+            // }
         }
     }
 
@@ -265,40 +277,22 @@
         }
     }
 
-    // .fadeIn {
-    //     opacity: 0;
-    //     -webkit-animation: fadeIn ease-in 1;
-    //     -moz-animation: fadeIn ease-in 1;
-    //     animation: fadeIn ease-in 1;
+    .fadeIn {
+        opacity: 0;
+        -webkit-animation: fadeIn ease-in 1;
+        -moz-animation: fadeIn ease-in 1;
+        animation: fadeIn ease-in 1;
 
-    //     -webkit-animation-fill-mode: forwards;
-    //     -moz-animation-fill-mode: forwards;
-    //     animation-fill-mode: forwards;
+        -webkit-animation-fill-mode: forwards;
+        -moz-animation-fill-mode: forwards;
+        animation-fill-mode: forwards;
 
-    //     -webkit-animation-duration: 1s;
-    //     -moz-animation-duration: 1s;
-    //     animation-duration: 1s;
-    // }
-
-    /* Simple CSS3 Fade-in Animation */
-    .underlineHover:after {
-        display: block;
-        left: 0;
-        bottom: -10px;
-        width: 0;
-        height: 2px;
-        background-color: darken($pink-new-colour, 10%);
-        content: "";
-        transition: width 0.2s;
+        -webkit-animation-duration: 1s;
+        -moz-animation-duration: 1s;
+        animation-duration: 1s;
     }
 
-    .underlineHover:hover {
-        color: $green-shade-colour;
-    }
-
-    .underlineHover:hover:after {
-        width: 100%;
-    }
+    
 
 
 

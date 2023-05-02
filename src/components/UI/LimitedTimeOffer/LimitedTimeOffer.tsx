@@ -4,7 +4,7 @@ import { Col, Container, Row } from 'reactstrap';
 import Clock from '../Clock/Clock';
 import { ArrowMotionButton } from '../..';
 import images from '../../../res/images';
-import { launchTreatwell } from '../../../res/funcs';
+import { launchTreatwell, openWindow } from '../../../res/funcs';
 
 type LimitedTimeOfferProps = {
     title: string;
@@ -15,8 +15,10 @@ type LimitedTimeOfferProps = {
     onTimerCompleted?: () => void;
     background?: string;
     textColour?: string;
+    buttonText?: string;
+    buttonURL?: string;
 }
-const LimitedTimeOffer = ({ title = "Groupon Deals", subtitle = "Limited Offer", startDate, endDate, imageUrl, onTimerCompleted, background, textColour = "white" }: LimitedTimeOfferProps) => {
+const LimitedTimeOffer = ({ title = "Groupon Deals", subtitle = "Limited Offer", startDate, endDate, imageUrl, onTimerCompleted, background, textColour = "white", buttonText, buttonURL }: LimitedTimeOfferProps) => {
     const navigate = useNavigate();
 
 
@@ -46,8 +48,10 @@ const LimitedTimeOffer = ({ title = "Groupon Deals", subtitle = "Limited Offer",
                         <Clock destinationDate={endDate} textColour={textColour} onTimerCompleted={onTimerCompleted} />
 
                         {/* <ArrowMotionButton className='store__button' onClick={() => navigate("/shop")}> */}
-                        <ArrowMotionButton className='store__button' onClick={launchTreatwell}>
-                            Visit Store
+                        <ArrowMotionButton className='store__button' onClick={() => {
+                            buttonURL ? openWindow(buttonURL) : launchTreatwell()
+                        }}>
+                            {buttonText}
                         </ArrowMotionButton>
                     </Col>
 

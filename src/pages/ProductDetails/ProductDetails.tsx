@@ -132,25 +132,25 @@ const ProductDetails = () => {
         <PageWrapper title={title}>
             {/* <ImageBanner title={title} /> */}
 
-            <section className='pt-0'>
+            <section className='productDetails__section pt-0'>
                 <Container>
                     <Row>
-                        <Col lg='6'>
-                            <div className='product__details-image'>
-                                <img src={imgUrl} alt="" />
-                            </div>
+                        <Col lg='6' md='6' className='product__details d-flex justify-content-center'>
+                            <figure className="td-figure">
+                                <img src={imgUrl} alt="Image description" />
+                            </figure>
                         </Col>
 
                         <Col lg='6'>
                             <div className="product__details">
                                 <h2>{title}</h2>
 
-                                {category === "Services" ? (
+                                {/* {category === "Services" ? (
                                     <p className='mb-3 font-italic'>{category} - {subServiceCategory}</p>
                                 ) : (
                                     <p className='mb-3 font-italic'>{category}</p>
-                                )}
-                                {avgRatings() === 0 ?
+                                )} */}
+                                {/* {avgRatings() === 0 ?
                                     <p className='mb-4'>No Reviews</p>
                                     :
                                     <div className='product__rating d-flex align-items-center gap-1 mb-4'>
@@ -164,7 +164,7 @@ const ProductDetails = () => {
                                             ({<span>{avgRatings()}</span>} out of 5)
                                         </p>
                                     </div>
-                                }
+                                } */}
 
                                 <span className='product__price'>{formatCurrency(price)}</span>
                                 {/* <p className='mt-3'>{shortDesc}</p> */}
@@ -186,9 +186,15 @@ const ProductDetails = () => {
                                     Add To Basket
                                 </ArrowMotionButton> */}
 
-                                <ArrowMotionButton className='buy__button w-100' onClick={launchTreatwell}>
-                                    View {category.slice(0, -1)}
-                                </ArrowMotionButton>
+                                {category === "Courses" ? (
+                                    <ArrowMotionButton className='buy__button w-100' onClick={launchTreatwell}>
+                                        Book Now
+                                    </ArrowMotionButton>
+                                ) : (
+                                    <ArrowMotionButton className='buy__button w-100' onClick={launchTreatwell}>
+                                        View Service
+                                    </ArrowMotionButton>
+                                )}
 
 
                                 <div className='mt-3'>

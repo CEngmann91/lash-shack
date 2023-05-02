@@ -19,6 +19,8 @@ import { signUserOut } from '../../helpers/firebase/firebaseHelper';
 import { useUserActions } from '../../redux/hooks/useUserActions';
 import { UserProfile } from '../../types/UserProfile';
 import MotionSpan from '../Motion/MotionSpan/MotionSpan';
+import { toggleBodyZoomOut, toggleDrawerOpened } from '../../res/funcs';
+import { useApplicationActions } from '../../redux/hooks/useApplicationActions';
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -38,13 +40,15 @@ const Navbar = () => {
   // const profileActionsRef = useRef<HTMLDivElement>(null);
   const [showingProfileActions, setShowingProfileActions] = useState<boolean>(false);
   const { isOpen, toggle } = useToggle(false);
+  const { toggleAuthModal } = useApplicationActions();
 
 
 
 
   const toggleProfileActions = () => {
     if (!authenticated) {
-      navigate('/login')
+      // navigate('/login')
+      toggleAuthModal();
       return;
     }
 
@@ -61,15 +65,9 @@ const Navbar = () => {
   }
 
 
-
-  function getBody() {
-    return document.querySelector('body');
-  }
-
-
   const toggleMenu = () => {
-      getBody()?.classList.toggle("open");
-      toggle();
+    toggleDrawerOpened();
+    toggle();
   }
 
 
@@ -137,91 +135,8 @@ const Navbar = () => {
 
 
   return (
-    // <div className="header">
-    //   <motion.div className="progress-bar" style={{ scaleX }} />
-
-    //   <nav>
-    //     <div id="logo">
-    //       <Link to={"/"}>
-    //         <img src={images.LogoNoBG} alt="logo" />
-    //       </Link>
-    //     </div>
-
-    //     <ul className="menu">
-    //       {NAVIGATION.MAIN_ROUTES.map((item, key) => (
-    //         <>
-    //           <li key={key}>
-    //             <a href="#">{item.title}</a>
-    //             {item.subMenu && (
-    //               <ul>
-    //                 {item.subMenu?.map((subItem, index) => (
-    //                   <li key={index}><a href="#">{subItem.title}</a></li>
-    //                 ))}
-    //               </ul>
-    //             )}
-    //           </li>
-    //         </>
-    //       ))}
-    //     </ul>
-
-
-    //     <div id="menu-icons">
-
-    //     </div>
-    //   </nav>
-    // </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // <nav id='main__navbar'>
-
-    //   <motion.div className="progress-bar" style={{ scaleX }} />
-
-    //   <ul id="main">
-    //     {NAVIGATION.MAIN_ROUTES.map((item, key) => (
-    //       <li key={key}>{item.title}
-    //         {item.subMenu && (
-    //           <ul className="submenu-drop">
-    //             <div>
-    //               {item.subMenu.map((subItem, index) => (
-    //                 <li key={index}>{subItem.title}</li>
-    //               ))}
-    //             </div>
-    //           </ul>
-    //         )}
-    //       </li>
-    //     ))}
-    //     <div id="marker"></div>
-    //   </ul>
-    // </nav>
-
-
-
-
-
-
-
-
-
-
     <header className={`header ${scrolledDown ? "header--scroll" : ""}`}>
       <motion.div className="progress-bar" style={{ scaleX }} />
-      {/* <Container>
-        <Row> */}
       <div className="app_navbar__wrapper">
         <div className="logo">
           <Link to={"/"}>
@@ -233,9 +148,6 @@ const Navbar = () => {
 
         {renderMenuIcons()}
       </div>
-      {/* </Row>
-      </Container> */}
-
       <DrawerMenu isOpen={isOpen} onClose={toggle} />
     </header>
   )

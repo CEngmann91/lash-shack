@@ -1,7 +1,7 @@
 import './About.scss';
 import { ReactNode } from 'react'
 import { Container, Row } from 'reactstrap'
-import { ArrowMotionButton, FeatureRow } from '../../components';
+import { ArrowMotionButton, FeatureRow, SkeletonImage } from '../../components';
 import images from '../../res/images';
 import { useNavigate } from 'react-router-dom';
 
@@ -27,7 +27,8 @@ const About = () => {
                 </div>
             ),
             rightContent: (
-                <img src={images.Training5} alt="" />
+                <SkeletonImage src={images.Training5} alt="" className="" />
+                // <img src={images.Training5} alt="" />
             )
         },
         {
@@ -42,7 +43,8 @@ const About = () => {
                 </div>
             ),
             rightContent: (
-                <img src={images.Training0} alt="" />
+                <SkeletonImage src={images.Training0} alt="" className="" />
+                // <img src={images.Training0} alt="" />
             )
         },
     ];

@@ -5,7 +5,6 @@ import {
     getDoc,
     updateDoc,
     deleteDoc,
-    deleteField,
     collection,
     addDoc,
 } from 'firebase/firestore';

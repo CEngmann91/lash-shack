@@ -1,0 +1,1 @@
+export type GalleryCardClass = "" | "tall" | "wide" | "big";

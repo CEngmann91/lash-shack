@@ -1,6 +1,7 @@
 import './FeatureRow.scss';
 import { ReactNode } from 'react'
 import { motion } from 'framer-motion';
+import { DivObserver } from '../..';
 
 const variants = {
     // visible: {
@@ -51,6 +52,25 @@ const FeatureRow = ({ id, className, leftChildren, rightChildren }: FeatureRowPr
                 </div>
             </div>
         </motion.div>
+
+
+
+        // <DivObserver
+        //     className={`container row-card w-100" ${className}`}
+        //     onViewChanged={(inView, entry) => console.log('Inview:', inView)}
+        //     triggerOnce={true}
+        // >
+        //     <div className="row bg-gray-950 d-flex">
+        //         <div className={`col-lg-6 ${id % 2 === 0 ? "pink" : null}`}>
+        //             {leftChildren}
+        //         </div>
+        //         <div className={`col-lg-6 ${id % 2 !== 0 ? "pink" : null}`}>
+        //             <div className="card-block">
+        //                 {rightChildren}
+        //             </div>
+        //         </div>
+        //     </div>
+        // </DivObserver>
     );
 }
 

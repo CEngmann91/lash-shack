@@ -5,10 +5,12 @@ import Navbar from '../navbar/Navbar'
 import Footer from '../Footer/Footer'
 import { useApplicationActions } from '../../redux/hooks/useApplicationActions'
 import { DashboardNavbar, DashboardWrapper } from '../Dashboard'
+import AuthModal from '../AuthModal/AuthModal'
 
 const Layout = () => {
     const location = useLocation();
-    const { isLoading } = useApplicationActions();
+    const { isLoading, isShowingAuthModal } = useApplicationActions();
+    
 
 
     return (
@@ -30,6 +32,7 @@ const Layout = () => {
                 <Routers />
                 <Footer />
 
+                <AuthModal visible={isShowingAuthModal()} />
                 <LoadingScreen visible={isLoading()} />
             </>
     )

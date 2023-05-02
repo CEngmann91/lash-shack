@@ -4,263 +4,278 @@
 // div { color: #aaa; }
 strong { color: #000; }
 
-.product__details {
-    margin-top: 30px;
+.productDetails__section {
 
-    h2 {
-        font-size: 1.6rem;
-        margin-bottom: 10px;
-    }
+    .product__details {
+        margin-top: 30px;
 
-    &-image {
-        height: 30rem;
-        border-bottom-left-radius: 20px;
-        border-bottom-right-radius: 20px;
-        overflow: hidden;
+        h2 {
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+        }
 
-        border: 5px solid rgba($pink-new-colour, 1);
-        box-shadow: 0px 0px 30px 1px rgba($green-shade-colour, 0.5);
+        .td-figure {
+            perspective: 1500px;
+            position: sticky;
+            top: calc($navbar-height + 60px);
+            width: 38rem;
+            height: 32rem;
+            z-index: 1;
 
+            &:hover {
+                img {
+                    box-shadow: 0px 0px 30px 1px rgba(black, 1);
+                    transform: rotate(0);
+                }
+            }
 
-        position: sticky;
-        top: calc($navbar-height + 60px);
-        z-index: 1;
-    }
-
-
-    .product__rating {
-
-        span {
-
-            svg {
-                color: red;
+            img {
+                border: 5px solid rgba($pink-new-colour, 1);
+                // border-radius: 0.375em;
+                border-radius: 20px;
+                box-shadow: 0px 0px 20px 1px rgba(black, 0.5);
+                transition: 300ms;
+                transform: rotateX(10deg) rotateY(-18deg) rotateZ(3deg);
             }
         }
 
-        p {
+
+        .product__rating {
 
             span {
-                color: $green-shade-colour;
+
+                svg {
+                    color: red;
+                }
+            }
+
+            p {
+
+                span {
+                    color: $green-shade-colour;
+                    font-weight: 500;
+                }
+            }
+        }
+
+        .product__price {
+            font-size: 1.3rem;
+            font-weight: 500;
+        }
+
+        .product__upcoming-dates {
+
+            &-title {
+                font-size: 1.1rem;
                 font-weight: 500;
             }
         }
     }
 
-    .product__price {
-        font-size: 1.3rem;
-        font-weight: 500;
-    }
-
-    .product__upcoming-dates {
-
-        &-title {
-            font-size: 1.1rem;
-            font-weight: 500;
-        }
-    }
-}
-
-.buy__button {
-    color: white;
-    text-transform: uppercase;
-    padding: 8px 20px;
-    border-radius: 5px;
-    background: $green-shade-colour;
-    // font-size: 1rem;
-    font-weight: 600;
-    margin-top: 20px;
-    // width: fit-content;
-
-    a {
-        color: inherit;
-
-        &hover {}
-    }
-}
-
-// https://astronautweb.co/snippet/font-awesome/
-// https://codepen.io/schalkjoubert/pen/MeLZYe
-#services-tabs,
-#course-tabs {
-
-    h1 {
-        padding: 50px 0;
-        font-weight: 400;
-        text-align: center;
-    }
-
-    p {
-        margin: 0 0 20px;
-        line-height: 1.5;
-    }
-
-    main {
-        min-width: 320px;
-        // max-width: 800px;
-        // padding: 50px;
-        margin: 0 auto;
-        background: #fff;
-    }
-
-    section {
-        display: none;
-        padding: 20px 0 0;
-        border-top: 1px solid #ddd;
-    }
-
-    input {
-        display: none;
-    }
-
-    label {
-        display: inline-block;
-        margin: 0 0 -1px;
-        padding: 15px 25px;
+    .buy__button {
+        color: white;
+        text-transform: uppercase;
+        padding: 8px 20px;
+        border-radius: 5px;
+        background: $green-shade-colour;
+        // font-size: 1rem;
         font-weight: 600;
-        text-align: center;
-        color: #bbb;
-        border: 1px solid transparent;
+        margin-top: 20px;
+        // width: fit-content;
 
-        &::before {
-            font-family: fontawesome;
-            font-weight: normal;
-            margin-right: 10px;
-        }
-
-        &:hover {
-            color: #888;
-            cursor: pointer;
+        a {
+            color: inherit;
         }
     }
 
-    label[for*='1']:before {
-        content: '\f05a';
-    }
+    // https://astronautweb.co/snippet/font-awesome/
+    // https://codepen.io/schalkjoubert/pen/MeLZYe
+    #services-tabs,
+    #course-tabs {
 
-    label[for*='2']:before {
-        content: '\f0cb';
-    }
+        h1 {
+            padding: 50px 0;
+            font-weight: 400;
+            text-align: center;
+        }
 
-    label[for*='3']:before {
-        content: '\f073';
-    }
+        p {
+            margin: 0 0 20px;
+            line-height: 1.5;
+        }
 
-    // label[for*='4']:before {
-    //     content: '\f1a9';
-    // }
+        main {
+            min-width: 320px;
+            // max-width: 800px;
+            // padding: 50px;
+            margin: 0 auto;
+            background: #fff;
+        }
 
+        section {
+            display: none;
+            padding: 20px 0 0;
+            border-top: 1px solid #ddd;
+        }
 
+        input {
+            display: none;
+        }
 
-    input:checked+label {
-        color: #555;
-        border: 1px solid #ddd;
-        border-top: 2px solid $pink-new-colour;
-        border-bottom: 1px solid #fff;
-    }
-
-    #tab1:checked~#content1,
-    #tab2:checked~#content2,
-    #tab3:checked~#content3,
-    #tab4:checked~#content4 {
-        display: block;
-    }
-
-    @media screen and (max-width: 650px) {
         label {
-            font-size: 0;
-        }
-
-        label:before {
-            margin: 0;
-            font-size: 18px;
-        }
-    }
-
-    @media screen and (max-width: 400px) {
-        label {
-            padding: 15px;
-        }
-    }
-}
-
-.product__review {
-    position: relative;
-
-    .review__wrapper {
-        position: inherit;
-
-        ul li span {
-            color: $green-shade-colour;
+            display: inline-block;
+            margin: 0 0 -1px;
+            padding: 15px 25px;
             font-weight: 600;
+            text-align: center;
+            color: #bbb;
+            border: 1px solid transparent;
 
+            &::before {
+                font-family: fontawesome;
+                font-weight: normal;
+                margin-right: 10px;
+            }
+
+            &:hover {
+                color: #888;
+                cursor: pointer;
+            }
         }
 
-        ul li p {}
+        label[for*='1']:before {
+            content: '\f05a';
+        }
+
+        label[for*='2']:before {
+            content: '\f0cb';
+        }
+
+        label[for*='3']:before {
+            content: '\f073';
+        }
+
+        // label[for*='4']:before {
+        //     content: '\f1a9';
+        // }
 
 
 
+        input:checked+label {
+            color: #555;
+            border: 1px solid #ddd;
+            border-top: 2px solid $pink-new-colour;
+            border-bottom: 1px solid #fff;
+        }
 
-        .review__compose-form {
+        #tab1:checked~#content1,
+        #tab2:checked~#content2,
+        #tab3:checked~#content3,
+        #tab4:checked~#content4 {
+            display: block;
+        }
+
+        @media screen and (max-width: 650px) {
+            label {
+                font-size: 0;
+            }
+
+            label:before {
+                margin: 0;
+                font-size: 18px;
+            }
+        }
+
+        @media screen and (max-width: 400px) {
+            label {
+                padding: 15px;
+            }
+        }
+    }
+
+    .product__review {
+        position: relative;
+
+        .review__wrapper {
             position: inherit;
-            width: 70%;
-            margin: auto;
-            margin-top: 50px;
 
-            h4 {
-                font-size: 1.2rem;
+            ul li span {
+                color: $green-shade-colour;
                 font-weight: 600;
-                margin-bottom: 30px;
+
             }
 
-            span {
+            ul li p {}
 
-                svg {
-                    width: 15px;
-                    height: 15px;
-                    color: $green-shade-colour;
-                }
-            }
 
-            .form__group {
+
+
+            .review__compose-form {
                 position: inherit;
-                margin-bottom: 30px;
+                width: 70%;
+                margin: auto;
+                margin-top: 50px;
 
-                input,
-                textarea {
-                    width: 100%;
-                    border: 1px solid black;
-                    border-radius: 5px;
-                    padding: 8px 20px;
-
-                    &:focus {}
+                h4 {
+                    font-size: 1.2rem;
+                    font-weight: 600;
+                    margin-bottom: 30px;
                 }
 
                 span {
-                    display: flex;
-                    align-items: center;
-                    column-gap: 5px;
-                    color: $green-shade-colour;
-                    font-weight: 600;
 
-                    &:hover {
-                        cursor: pointer;
+                    svg {
+                        width: 15px;
+                        height: 15px;
+                        color: $green-shade-colour;
+                    }
+                }
+
+                .form__group {
+                    position: inherit;
+                    margin-bottom: 30px;
+
+                    input,
+                    textarea {
+                        width: 100%;
+                        border: 1px solid black;
+                        border-radius: 5px;
+                        padding: 8px 20px;
+
+                        &:focus {}
+                    }
+
+                    span {
+                        display: flex;
+                        align-items: center;
+                        column-gap: 5px;
+                        color: $green-shade-colour;
+                        font-weight: 600;
+
+                        &:hover {
+                            cursor: pointer;
+                        }
                     }
                 }
             }
         }
     }
-}
 
-@media only screen and (max-width: 768px) {
-    .product__details {
+    @media only screen and (max-width: 768px) {
+        .product__details {
+    
+            .td-figure {
+                height: 20rem;
 
-        &-image {
-            height: 20rem;
-        }
-
-        h2 {
-            font-size: 1.3rem;
+                img {
+                    border-bottom-left-radius: 20px;
+                    border-bottom-right-radius: 20px;
+                }
+            }
+    
+            h2 {
+                font-size: 1.3rem;
+            }
         }
     }
-
 }

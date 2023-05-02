@@ -35,7 +35,7 @@ const ExpertCard = ({ id, firstName, position, photoURL, message }: ExpertCardPr
                 y: 0,
                 transition: {
                     duration: 0.5,
-                    delay: 1 + id * 0.2,
+                    delay: 0.2 + (id % 2 === 0 ? 0.2 : 0), //1 + id * 0.2,
                     ease: 'easeIn'
                 }
             }}

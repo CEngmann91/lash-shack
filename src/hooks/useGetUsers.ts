@@ -47,7 +47,7 @@ const useGetUsers = (removeCurrentUser: boolean = true) => {
 
     const getAllStaff = useMemo(() => activeUsers?.filter(item => item.account === "Staff"), [users]);
 
-    const getAllAtLashShack = useMemo(() => {
+    const getAllMembersOfLashShack = useMemo(() => {
         if (getManagers && getAllStaff)
             return [...getManagers, ...getAllStaff]
         return [];
@@ -56,7 +56,7 @@ const useGetUsers = (removeCurrentUser: boolean = true) => {
     const getAllAtLashShackBirthdays = useMemo(() =>
     {
         let dates = [] as string[];
-        getAllAtLashShack.forEach(staff => dates.push(staff.dob));
+        getAllMembersOfLashShack.forEach(staff => dates.push(staff.dob));
         return dates;
     }, [users]);
 
@@ -120,7 +120,7 @@ const useGetUsers = (removeCurrentUser: boolean = true) => {
         usersError,
         // getUserByID,
         getAllUsersInMonth,
-        getAllAtLashShack, getManagers, getAllStaff,
+        getAllMembersOfLashShack, getManagers, getAllStaff,
         getAllAtLashShackBirthdays,
         // getActiveUsersToday,
         // getActiveUsersTodayCount,

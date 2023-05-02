@@ -1,6 +1,6 @@
 import './Checkout.scss';
 import { FormEvent, useState } from 'react'
-import { ImageBanner, MotionButton, PageWrapper } from '../../components'
+import { ImageBanner, InputField, MotionButton, PageWrapper } from '../../components'
 import { Col, Container, Row, Form, FormGroup } from 'reactstrap';
 import { useSelector as useReduxSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
@@ -135,61 +135,53 @@ const Checkout = () => {
                 <h3 className='mb-3 fw-bold'>Payment Info</h3>
 
                 <Form className='payment__form mt-3'>
-                  <FormGroup className="form__group d-flex flex-column">
-                    <label className='fw-bold'>Name on Card</label>
-                    <input className='' name="nameOnCard" type="text" placeholder='Enter Name' //onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    />
+                  <FormGroup className="form__group">
+                    {/* <label className='fw-bold'>Name on Card</label> */}
+                    <InputField name="nameOnCard" placeholder="Enter Name" type="text" required autoComplete='cc-name' />
+                    {/* <input className='' name="nameOnCard" type="text" placeholder='Enter Name' //onChange={(e) => setForm({ ...form, name: e.target.value })}
+                    /> */}
                   </FormGroup>
 
-                  <h6 className='fw-bold'>Card Information</h6>
-                  <FormGroup className="form__group d-flex flex-column">
-                    <input className='' name="cardNumber" type="text" placeholder='1234 1234 1234 1234' //onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    />
+                  {/* <h6 className='fw-bold'>Card Information</h6> */}
+                  <FormGroup className="form__group">
+                    <InputField name="cardNumber" placeholder="Card Number" type="number" required autoComplete='cc-number' />
+                    {/* <input className='' name="cardNumber" type="text" placeholder='1234 1234 1234 1234' //onChange={(e) => setForm({ ...form, name: e.target.value })}
+                    /> */}
                   </FormGroup>
 
-                  <FormGroup className="form__group d-flex flex-row gap-1">
-                    <input className='w-100' name="expiry" type="text" placeholder='MM / YY' //onChange={(e) => setForm({ ...form, name: e.target.value })}
+                  <FormGroup className="form__group d-flex flex-row gap-3">
+                    {/* <input className='w-100' name="expiry" type="text" placeholder='MM / YY' //onChange={(e) => setForm({ ...form, name: e.target.value })}
                     />
                     <input className='w-100' name="cvv" type="text" placeholder='CVV' //onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    />
+                    /> */}
+
+                    <InputField className='w-50' name="expiry" placeholder="Expiry" type="text" required autoComplete='cc-exp' />
+                    <InputField className='w-50' name="cvv" placeholder="CVV" type="number" required autoComplete='cc-csc' />
                   </FormGroup>
                 </Form>
               </div>
 
               <div className='d-flex flex-column'>
-                <h3 className='mb-3 fw-bold'>Billing Address</h3>
-
-                <Form className='billing__form mt-3'>
+                <h3 className='fw-bold'>Billing Address</h3>
+                <Form className='billing__form'>
                   <FormGroup className="form__group">
-                    <input className='w-100' name="name" type="text" placeholder='Enter Your Name' onChange={(e) => setForm({ ...form, name: e.target.value })} />
-                  </FormGroup>
-
-                  {/* <FormGroup className="form__group">
-                    <input name="email" type="email" placeholder='Enter Your Email' onChange={(e) => setForm({...form, email:e.target.value})} />
+                    <InputField className='w-100' name="name" placeholder="Enter Your Name" type="text" required onChange={(e) => setForm({ ...form, name: e.target.value })} />
                   </FormGroup>
 
                   <FormGroup className="form__group">
-                    <input name="number" type="string" placeholder='Enter Contact Number' autoComplete="mobile tel" onChange={(e) => setForm({...form, number:e.target.value})} />
-                  </FormGroup> */}
-
-                  <FormGroup className="form__group">
-                    <input className='w-100' name="oneLine" type="text" placeholder='Enter First Line of Address'
-                      // value={user.billingAddress?.line1 as string ? user.billingAddress?.line1 as string : ""}
-                      // onChange={(e) => setBillingAddress(e.target.value)}
-                      onChange={(e) => setForm({ ...form, firstLine: e.target.value })}
-                    />
+                    <InputField className='w-100' name="oneLine" placeholder="Enter First Line of Address" type="text" required autoComplete='address-line1' onChange={(e) => setForm({ ...form, firstLine: e.target.value })} />
                   </FormGroup>
 
                   <FormGroup className="form__group">
-                    <input className='w-100' name="city" type="text" placeholder='City' onChange={(e) => setForm({ ...form, city: e.target.value })} />
+                    <InputField className='w-100' name="city" placeholder="City" type="text" required autoComplete='address-line2' onChange={(e) => setForm({ ...form, city: e.target.value })} />
                   </FormGroup>
 
                   <FormGroup className="form__group">
-                    <input className='w-100' name="postCode" type="text" placeholder='Post Code' onChange={(e) => setForm({ ...form, postcode: e.target.value })} />
+                    <InputField className='w-100' name="postCode" placeholder="Post Code" type="text" required autoComplete='address-level1' onChange={(e) => setForm({ ...form, postcode: e.target.value })} />
                   </FormGroup>
 
                   <FormGroup className="form__group">
-                    <input className='w-100' name="country" type="text" placeholder='Country' onChange={(e) => setForm({ ...form, country: e.target.value })} />
+                    <InputField className='w-100' name="country" placeholder="Country" type="text" required autoComplete='country-name' onChange={(e) => setForm({ ...form, country: e.target.value })} />
                   </FormGroup>
                 </Form>
               </div>
@@ -215,9 +207,10 @@ const Checkout = () => {
 
 
                 <div className='discount__code d-flex flex-row gap-2 mb-2'>
+                  {/* <InputField className='w-100 mt-3' name="discountCode" placeholder="Enter Code" type="text" /> */}
                   <input className='w-100 mt-3' name="discountCode" type="text" placeholder='Enter Code' //onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    />
-                  <MotionButton className='buy-button w-25' onClick={() => {}}>
+                  />
+                  <MotionButton className='buy-button w-25' onClick={() => { }}>
                     Apply
                   </MotionButton>
                 </div>

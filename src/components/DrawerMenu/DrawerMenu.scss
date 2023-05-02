@@ -48,7 +48,7 @@
             overflow: hidden;
         }
 
-        .open & {
+        .opened & {
             top: 0;
 
             &:before {
@@ -72,27 +72,27 @@
                 text-align: center;
                 transform: translate(0, 36px);
     
-                &:before {
-                    content: '';
-                    // @include position-center;
-                    left: auto;
-                    background-color: white;
-                    height: 100%;
-                    width: 0;
-                    overflow: hidden;
-                    transition: width 0.14s ease-out;
-                }
+                // &:before {
+                //     content: '';
+                //     // @include position-center;
+                //     left: auto;
+                //     background-color: white;
+                //     height: 100%;
+                //     width: 0;
+                //     overflow: hidden;
+                //     transition: width 0.14s ease-out;
+                // }
     
-                &:after {
-                    opacity: 0;
-                    content: attr(data-text);
-                    // @include position-center;
-                    color: $color;
-                    overflow: hidden;
-                    transform: translate(-24px, 6px);
-                    transition: transform 0.1s ease-out,
-                        opacity 0.1s ease-out;
-                }
+                // &:after {
+                //     opacity: 0;
+                //     content: attr(data-text);
+                //     // @include position-center;
+                //     color: $color;
+                //     overflow: hidden;
+                //     transform: translate(-24px, 6px);
+                //     transition: transform 0.1s ease-out,
+                //         opacity 0.1s ease-out;
+                // }
     
                 // &:hover {
                 //     &:before {
@@ -109,8 +109,16 @@
                 //             opacity 0.2s 0.14s ease-out;
                 //     }
                 // }
+
+                a {
+                    transition: 0.14s ease-out;
+                    
+                    &:hover {
+                        color: $green-shade-colour;
+                    }
+                }
     
-                .open & {
+                .opened & {
                     opacity: 1;
                     transform: translate(0, 0);
                     transition: transform 0.2s ease-out,

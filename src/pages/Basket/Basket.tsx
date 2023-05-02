@@ -12,7 +12,7 @@ import useGetUsers from '../../hooks/useGetUsers';
 const Basket = () => {
   const navigate = useNavigate();
   const { addToBasket, removeFromBasket, deleteItemFromBasket, emptyBasket } = useBasketActions();
-  const { getAllStaff } = useGetUsers();
+  const { getAllStaff, getAllMembersOfLashShack } = useGetUsers();
   const firstName = useReduxSelector((state: RootState) => state.userAccount.user.firstName);
   const basketItems = useReduxSelector((state: RootState) => state.basket.basketItems);
   const totalAmount = useReduxSelector((state: RootState) => state.basket.totalAmount);
@@ -93,7 +93,8 @@ const Basket = () => {
                         Select Staff
                         <select name="technicians">
                           <option value="select">Please Select</option>
-                          {getAllStaff?.map(({ uid, firstName, lastName }, key) =>
+                          {getAllMembersOfLashShack?.map(({ uid, firstName, lastName }, key) =>
+                          // {getAllStaff?.map(({ uid, firstName, lastName }, key) =>
                             <option key={key} value={uid}>{firstName} {lastName}</option>
                           )}
                         </select>

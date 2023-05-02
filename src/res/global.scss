@@ -58,7 +58,6 @@
     white-space: pre-wrap;
 }
 
-
 .app__hover-with-shadow {
     transition: 0.3s ease-out;
 
@@ -113,6 +112,28 @@
 
     &:hover::before {
         transform: scaleX(1.2);
+    }
+}
+
+/* Simple CSS3 Fade-in Animation */
+.app__underlineHover {
+    &::after {
+        display: block;
+        left: 0;
+        bottom: -10px;
+        width: 0;
+        height: 2px;
+        background-color: darken($pink-new-colour, 10%);
+        content: "";
+        transition: width 0.2s;
+    }
+
+    &:hover {
+        color: $green-shade-colour;
+    
+        &::after {
+            width: 100%;
+        }
     }
 }
 

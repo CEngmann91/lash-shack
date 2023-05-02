@@ -2,7 +2,7 @@ import './Footer.scss';
 import { Container, Row, Col, ListGroup, ListGroupItem } from 'reactstrap'
 import images from '../../res/images';
 import { Link } from 'react-router-dom';
-import { Icon_Email, Icon_Location, Icon_Phone } from '../../res/icons';
+import { Icon_Email, Icon_Location, Icon_Phone, Icon_Social_Instagram } from '../../res/icons';
 import { CONTACT } from '../../constants/constants';
 import { motion } from 'framer-motion';
 import MotionSpan from '../Motion/MotionSpan/MotionSpan';
@@ -17,8 +17,8 @@ const Footer = () => {
         </div>
       </div>
 
-      <p className="footer__text mt-4">
-      Lash Shack was founded in 2019 by Emma who has years of experience working within the lash industry providing an impeccable service to clients and delivering 5 star training to students.
+      <p className="footer__text">
+        Lash Shack was founded in 2019 by Emma who has years of experience working within the lash industry providing an impeccable service to clients and delivering 5 star training to students.
       </p>
     </Col>
   )
@@ -84,6 +84,16 @@ const Footer = () => {
       <div className="footer__quick-links">
         <h4 className="quick__links-title">Get In Touch</h4>
         <ListGroup className='footer__contact'>
+          <ListGroupItem className='ps-0 border-0 d-flex align-items-center gap-2'>
+            <a target="_blank"
+              className=' d-flex align-items-center gap-2'
+              rel="noopener noreferrer"
+              href={CONTACT.INSTAGRAM}>
+              <MotionSpan hoverScale={1.1}><Icon_Social_Instagram /></MotionSpan>
+              {/* <p>{CONTACT.INSTAGRAM}</p> */}
+              <p>Follow Us</p>
+            </a>
+          </ListGroupItem>
 
           {CONTACT.LOCATIONS.map(({ ADDRESS, MAP }, key) => (
             <ListGroupItem key={key} className='ps-0 border-0'>
@@ -99,7 +109,7 @@ const Footer = () => {
               className=' d-flex align-items-center gap-2'
               rel="noopener noreferrer"
               href={`tel:${CONTACT.PHONE}`}>
-              <span><Icon_Phone /></span>
+              <MotionSpan hoverScale={1.1}><Icon_Phone /></MotionSpan>
               <p>{CONTACT.PHONE}</p>
             </a>
           </ListGroupItem>
@@ -108,45 +118,48 @@ const Footer = () => {
               className=' d-flex align-items-center gap-2'
               rel="noopener noreferrer"
               href={`mailto:${CONTACT.EMAIL}`}>
-              <span><Icon_Email /></span>
+              <MotionSpan hoverScale={1.1}><Icon_Email /></MotionSpan>
               <p>{CONTACT.EMAIL}</p>
             </a>
           </ListGroupItem>
         </ListGroup>
-      </div>
-    </Col>
+    </div>
+    </Col >
   )
 
-  const renderCopyright = () => {
-    const year = new Date().getFullYear();
-
-    return (
-      <Col lg="12">
-        <p className="footer__copyright">
-          Copyright &copy; LashShack {year}. All Rights Reserved. Developed By
-          <a href="https://www.christianjengmann.com" target="_blank" rel="noopener noreferrer" className='fw-bold'> Christian Engmann</a>
-        </p>
-      </Col>
-    )
-  }
+const renderCopyright = () => {
+  const year = new Date().getFullYear();
 
   return (
-    <footer className='footer'>
-      <Container>
-        <Row>
-          {renderLogoInformation()}
+    <Col lg="12" className='footer__copyright'>
+      <img className='ABT' src={images.ABT} alt="" />
 
-          {renderCategoryLinks()}
+      <p className="footer__copyright--text">
+        Copyright &copy; LashShack {year}. All Rights Reserved. Developed By
+        <a href="https://www.christianjengmann.com" target="_blank" rel="noopener noreferrer" className='fw-bold'> Christian Engmann</a>
+      </p>
 
-          {renderQuickLinks()}
-
-          {renderContactInformation()}
-
-          {renderCopyright()}
-        </Row>
-      </Container>
-    </footer>
+    </Col>
   )
+}
+
+return (
+  <footer className='footer'>
+    <Container>
+      <Row>
+        {renderLogoInformation()}
+
+        {renderCategoryLinks()}
+
+        {renderQuickLinks()}
+
+        {renderContactInformation()}
+
+        {renderCopyright()}
+      </Row>
+    </Container>
+  </footer>
+)
 }
 
 export default Footer

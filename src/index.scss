@@ -23,8 +23,9 @@ body {
   // font-family: 'Noto Serif Display', serif;
 }
 
+*,
 * *::before,
-*::after {
+* *::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -135,14 +136,12 @@ img {
 
 section {
   padding: 60px 30px;
-
-
   transition: 500ms ease-out;
 
-  .open & {
+  .zoomOut & {
     pointer-events: none;
     transform: scale(0.9);
-    opacity: .2;
+    opacity: 0.2;
     // transition: opacity 0.2s 0.41s ease-out;
   }
 

@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
-import { Basket, Checkout, Courses, Dashboard, ForgotPassword, Gallery, Landing, LatestNews, Login, NotFound, Privacy, ProductDetails, Register, Services, Shop, TermsConditions, Wishlist } from '../pages';
+import { Basket, Checkout, Courses, Dashboard, Gallery, Landing, LatestNews, NotFound, Privacy, ProductDetails, Services, Shop, TermsConditions, Wishlist } from '../pages';
 import { Dashboard_Account, Dashboard_Catalog, Dashboard_Messages, Dashboard_Orders, Dashboard_Schedule, Dashboard_Settings, Dashboard_Users } from '../pages/Dashboard';
 import AuthRoute from './AuthRoute';
 
@@ -29,6 +29,8 @@ const Routers = () => {
             {/* <Route path='/shop' element={<Shop />} /> */}
             <Route path='/shop/:id' element={<ProductDetails />} />
 
+            {/* <Route path='/checkout' element={<Checkout />} /> */}
+
             {/* <Route path='/basket' element={<Basket />} /> */}
             {/* <Route path='/wishlist' element={<Wishlist />} /> */}
 
@@ -46,7 +48,7 @@ const Routers = () => {
                 <Route path='dashboard/messages' element={<Dashboard_Messages />} />
                 <Route path='dashboard/catalog' element={<Dashboard_Catalog />} />
                 <Route path='dashboard/settings' element={<Dashboard_Settings />} />
-            </Route> */}
+            </Route>
 
             {/* <Route path='/privacy' element={<Privacy />} /> */}
             {/* <Route path='/terms' element={<TermsConditions />} /> */}

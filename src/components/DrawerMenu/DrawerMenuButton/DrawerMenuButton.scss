@@ -51,6 +51,13 @@
 
                 transition: .2s ease-out;
             }
+
+            .opened & {
+                &::before,
+                &::after {
+                    background: white;
+                }
+            }
         }
 
         &[data-menuvisible="true"] {
@@ -80,6 +87,14 @@
 
         &:hover {
             cursor: pointer;
+
+            // i {
+
+            //     &::before,
+            //     &::after {
+            //         // background: $green-shade-colour;
+            //     }
+            // }
         }
     }
 
@@ -97,8 +112,8 @@
                 }
 
 
-                .open & {
-                    background: transparent;
+                .opened & {
+                    // background: transparent;
 
                     &::before,
                     &::after {
@@ -106,8 +121,6 @@
                     }
                 }
             }
-
-
         }
 
     }
