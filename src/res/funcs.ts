@@ -103,6 +103,9 @@ export function timeConversion(s: string) {
 }
 
 
+export const processStringData = (input: string) => {
+    return input.replaceAll("\\n", "\n");
+}
 
 
 

@@ -11,29 +11,28 @@ import {
 
 
 
-export const addDocument = async (collection_name: string, document_name: string, data: unknown) => {
+export const addDocument = async (collection_name: string, document_name: string | null, data: unknown) => {
     try {
         if (!document_name)
         {
-            const docRef = collection(firestore, collection_name);
-            await addDoc(docRef, data)
+            const dbRef = collection(firestore, collection_name);
+            await addDoc(dbRef, data)
                 .then(result => {
-                    // console.log("result", result)
-                    return result;
+                    return new Promise<any>((res, reject) => res(result));
                 })
                 .catch(error => {
-                    console.error(error)
+                    return new Promise<any>((res, reject) => reject(error));
                 })
         }
         else
         {
-            const docRef = doc(firestore, collection_name, document_name)
-            await setDoc(docRef, data)
+            const dbRef = doc(firestore, collection_name, document_name)
+            await setDoc(dbRef, data)
                 .then(result => {
-                    return result;
+                    return new Promise<any>((res, reject) => res(result));
                 })
                 .catch(error => {
-                    console.error(error)
+                    return new Promise<any>((res, reject) => reject(error));
                 })
         }
     } catch (error) {
@@ -44,13 +43,15 @@ export const addDocument = async (collection_name: string, document_name: string
 
 export const deleteDocument = async (collection_name: string, document_name: string) => {
     try {
-        const docRef = doc(firestore, collection_name, document_name)
+        const dbRef = doc(firestore, collection_name, document_name)
         // const deleteReq = 
-        await deleteDoc(docRef)
+        await deleteDoc(dbRef)
             .then(result => {
-                return result;
+                return new Promise<any>((res, reject) => res(result));
             })
-        // .catch((error) => onError(error.code) );
+            .catch(error => {
+                return new Promise<any>((res, reject) => reject(error));
+            })
     } catch (error) {
         // onError(error);
         return new Promise<any>((res, reject) => reject(error));
@@ -59,9 +60,14 @@ export const deleteDocument = async (collection_name: string, document_name: str
 
 export const updateDocument = async (collection_name: string, document_name: string, data: any) => {
     try {
-        const docRef = doc(firestore, collection_name, document_name)
-        const update = await updateDoc(docRef, data)
-        return update;
+        const dbRef = doc(firestore, collection_name, document_name)
+        await updateDoc(dbRef, data)
+            .then(result => {
+                return new Promise<any>((res, reject) => res(result));
+            })
+            .catch(error => {
+                return new Promise<any>((res, reject) => reject(error));
+            })
     } catch (error) {
         // onError(error, error);
         return new Promise<any>((res, reject) => reject(error));
@@ -70,8 +76,8 @@ export const updateDocument = async (collection_name: string, document_name: str
 
 export const getDocument = async (collection_name: string, document_name: string): Promise<any> => {
     try {
-        const docRef = doc(firestore, collection_name, document_name);
-        const docSnap = await getDoc(docRef);
+        const dbRef = doc(firestore, collection_name, document_name);
+        const docSnap = await getDoc(dbRef);
         if (docSnap.exists()) {
             // console.log("Document data:", docSnap.data());
             return new Promise<any>(res => res(docSnap.data()));

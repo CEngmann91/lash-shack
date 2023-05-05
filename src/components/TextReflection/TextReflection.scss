@@ -1,0 +1,13 @@
+.reflection {
+    p {
+        color: #581845;
+        font-size: 2.5rem;
+    }
+
+    div> :last-child {
+        transform: rotatex(180deg) translateY(25px);
+        -webkit-mask-image: linear-gradient(transparent 40%, white 90%);
+        mask-image: linear-gradient(transparent 50%, white 90%);
+        opacity: 0.7;
+    }
+}

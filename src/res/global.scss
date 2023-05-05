@@ -123,7 +123,7 @@
         bottom: -10px;
         width: 0;
         height: 2px;
-        background-color: darken($pink-new-colour, 10%);
+        background-color: $pink-dark-colour;
         content: "";
         transition: width 0.2s;
     }

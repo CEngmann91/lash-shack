@@ -1,4 +1,4 @@
-import { auth } from "../../firebase/firebase";
+import { auth, firestore } from "../../firebase/firebase";
 import {
     User as firebaseUser,
     signInWithEmailAndPassword as firebaseSignInWithEmailAndPassword,
@@ -14,6 +14,7 @@ import { addDocument, deleteDocument, getDocument, updateDocument } from "../../
 import { uploadImage } from "../../firebase/fireStorage";
 import { ProductItem } from "../../types/ProductItem";
 import { PurchaseOrder } from "../../types/PurchaseOrder";
+import { addDoc, collection } from "firebase/firestore";
 
 
 
@@ -26,7 +27,7 @@ import { PurchaseOrder } from "../../types/PurchaseOrder";
  * @param {string} email The email used for the user profile.
  * @param {string} password The password used for the user profile.
  */
-export const signIntoUserAccount = async (email: string, password: string)  => {
+export const signIntoUserAccount = async (email: string, password: string) => {
     let userProfile: UserProfile = {
         uid: "",
         account: "Client",
@@ -78,7 +79,7 @@ export const signIntoUserAccount = async (email: string, password: string)  => {
         userProfile.position = docData.position;
         userProfile.summary = docData.summary;
         userProfile.startDate = docData.startDate;
-        
+
 
 
         // updateUserDisplayName(userProfile, userProfile.displayName);
@@ -112,10 +113,9 @@ export const createAUser = async (firstName: string, lastName: string, email: st
     try {
         // console.log("Creating a user.");
         const userCredentials = await firebaseCreateUserWithEmailAndPassword(auth, email, password);
-        if (userCredentials)
-        {
+        if (userCredentials) {
             const userData = userCredentials.user;
-    
+
             userProfile.uid = userData.uid;
             userProfile.active = true;
             userProfile.account = "Client";
@@ -127,9 +127,9 @@ export const createAUser = async (firstName: string, lastName: string, email: st
                 userProfile.memberSince = userData.metadata.creationTime;
             if (userData.metadata.lastSignInTime)
                 userProfile.lastLoggedIn = userData.metadata.lastSignInTime;
-    
+
             await addDocument("users", userProfile.uid, userProfile);
-    
+
             // const updateDisplayName = 
             await updateUserDisplayName(userProfile, userProfile.displayName);
         }
@@ -180,7 +180,7 @@ export const updateUserPhotoURL = async (user: UserProfile, photo_url: string) =
     }
 }
 
-export const updateUserActiveStatus = async (user: UserProfile, active:boolean) => {
+export const updateUserActiveStatus = async (user: UserProfile, active: boolean) => {
     try {
         user.active = active;
         // const updateDoc = 
@@ -196,7 +196,7 @@ export const signUserOut = async (user: UserProfile) => {
     try {
         // const updateDoc = 
         await updateDocument("users", user.uid, user);
-        
+
         const signOutReq = await firebaseSignOut(auth);
         return signOutReq;
     } catch (error) {
@@ -230,7 +230,7 @@ export const getCurrentUser = (): firebaseUser => {
 
 
 // ================== PRODUCTS ==================//
-export const addProduct = async(folder:string, product: ProductItem) => {
+export const addProduct = async (folder: string, product: ProductItem) => {
     try {
         await addDocument(folder, product.id, product);
     } catch (error) {
@@ -241,7 +241,7 @@ export const addProduct = async(folder:string, product: ProductItem) => {
     }
 }
 
-export const deleteProduct = async(folder:string, id: string) => {
+export const deleteProduct = async (folder: string, id: string) => {
     try {
         await deleteDocument(folder, id);
     } catch (error) {
@@ -252,7 +252,7 @@ export const deleteProduct = async(folder:string, id: string) => {
     }
 }
 
-export const updateProduct = async (folder:string, product:ProductItem) => {
+export const updateProduct = async (folder: string, product: ProductItem) => {
     try {
         // const updateDoc = 
         await updateDocument(folder, product.id, product);
@@ -263,7 +263,7 @@ export const updateProduct = async (folder:string, product:ProductItem) => {
     }
 }
 
-export const updateProductActiveStatus = async (folder:string, product:ProductItem, active:boolean) => {
+export const updateProductActiveStatus = async (folder: string, product: ProductItem, active: boolean) => {
     try {
         product.active = active;
         // const updateDoc = 
@@ -280,7 +280,7 @@ export const updateProductActiveStatus = async (folder:string, product:ProductIt
 
 
 // =================== ORDERS ===================//
-export const addOrder = async(user: UserProfile, newOrder: PurchaseOrder) => {
+export const addOrder = async (user: UserProfile, newOrder: PurchaseOrder) => {
     try {
         // Update user.
         // await updateUser(user);
@@ -294,7 +294,7 @@ export const addOrder = async(user: UserProfile, newOrder: PurchaseOrder) => {
     }
 }
 
-export const deleteOrder = async(folder:string, id: string) => {
+export const deleteOrder = async (folder: string, id: string) => {
     try {
         await deleteDocument("orders", id);
     } catch (error) {
@@ -310,6 +310,7 @@ export const deleteOrder = async(folder:string, id: string) => {
 
 
 
+
 // =================== PHOTO ===================//
 export const uploadPhoto = async (
     photoFile: Blob | Uint8Array | ArrayBuffer, folder: string, id: string,
@@ -319,6 +320,41 @@ export const uploadPhoto = async (
     await uploadImage(folder, id, photoFile, onProgress, onSuccess);
 }
 // ==============================================//
+
+
+export const addANewSubscriber = async (email: string) => {
+    type Subscriber = {
+        emailAddress: string;
+    }
+    let sub: Subscriber = {
+        emailAddress: email
+    }
+
+    try {
+        await addDocument("subscribers", email, { email: email })
+            .then(result => {
+                return new Promise<any>((res, reject) => res(result));
+            })
+            .catch(error => {
+                return new Promise<any>((res, reject) => reject(error.message));
+            })
+            
+            
+            // .then(res => {
+            //     alert("done")
+            // })
+            // .catch(error => {
+            //     alert(error)
+            // });
+    } catch (error) {
+        // const errorCode = error;//.code;
+        // const errorMessage = error;//.message;
+        // // onError(errorCode, errorMessage);
+        // console.error(errorCode)
+        return new Promise<any>((res, reject) => reject(error));
+    }
+}
+
 
 const getPathRef = (dir: string) => {
     const storage = getStorage()
@@ -348,12 +384,3 @@ export const getAllDownloadURLRef = async (dir: string) => {
         paths.push(result);
     return paths;
 }
-
-
-
-
-
-
-export const processStringData = (input: string) => {
-    return input.replaceAll("\\n", "\n");
-} 

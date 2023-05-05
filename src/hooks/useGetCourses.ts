@@ -1,6 +1,5 @@
 import { useMemo } from 'react'
-import { processStringData } from '../helpers/firebase/firebaseHelper';
-import { calculateDaysFromTodayString } from '../res/funcs';
+import { calculateDaysFromTodayString, processStringData } from '../res/funcs';
 import { ProductItem } from '../types/ProductItem';
 import useFirestoreData from './useFirestoreData';
 

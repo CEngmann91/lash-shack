@@ -6,6 +6,8 @@ import Footer from '../Footer/Footer'
 import { useApplicationActions } from '../../redux/hooks/useApplicationActions'
 import { DashboardNavbar, DashboardWrapper } from '../Dashboard'
 import AuthModal from '../AuthModal/AuthModal'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Layout = () => {
     const location = useLocation();
@@ -23,7 +25,7 @@ const Layout = () => {
                     <Footer />
                 </DashboardWrapper>
 
-
+                <ToastContainer />
                 <LoadingScreen visible={isLoading()} />
             </>
             :
@@ -33,6 +35,7 @@ const Layout = () => {
                 <Footer />
 
                 <AuthModal visible={isShowingAuthModal()} />
+                <ToastContainer />
                 <LoadingScreen visible={isLoading()} />
             </>
     )

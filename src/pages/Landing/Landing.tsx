@@ -9,7 +9,7 @@ import "swiper/scss/pagination";
 import { EffectCoverflow, Autoplay } from "swiper";
 
 import './Landing.scss';
-import { ArrowMotionButton, LimitedTimeOffer, PageWrapper } from '../../components'
+import { ArrowMotionButton, LimitedTimeOffer, PageWrapper, TextReflection } from '../../components'
 import { Container, Row, Col } from 'reactstrap'
 import images from '../../res/images';
 import { SkeletonImage } from '../../components'
@@ -43,7 +43,7 @@ const Landing = () => {
         disableOnInteraction: false,
       }}
     >
-  {/* // <Swiper
+      {/* // <Swiper
     //   effect="coverflow"
     //   centeredSlides={true}
     //   spaceBetween={20}
@@ -96,7 +96,7 @@ const Landing = () => {
     if (!active)
       return;
 
-    const { title, subtitle, imageUrl, startDate, endDate, cta  } = content;
+    const { title, subtitle, imageUrl, startDate, endDate, cta } = content;
 
     if (devMode && process.env.NODE_ENV !== "development")
       return;

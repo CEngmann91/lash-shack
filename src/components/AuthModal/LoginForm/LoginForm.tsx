@@ -1,16 +1,13 @@
 import './LoginForm.scss';
-import { Checkbox, InputField, MotionButton } from '../..'
 import { FormEvent, useState } from 'react';
+import { Checkbox, InputField, MotionButton } from '../..'
 import ForgotPasswordForm from '../ForgotPasswordForm/ForgotPasswordForm';
 
 import { signIntoUserAccount, signUserOut, updateUserDisplayName } from '../../../helpers/firebase/firebaseHelper';
 import { useUserActions } from '../../../redux/hooks/useUserActions';
 import { useApplicationActions } from '../../../redux/hooks/useApplicationActions';
-import { useLocation, useNavigate } from 'react-router-dom';
 
 const LoginForm = () => {
-    const navigate = useNavigate();
-    const location = useLocation();
     const { setAsLoading, setAsNotLoading, toggleAuthModal } = useApplicationActions();
     const { setAsActive, setFullName, setProfile, setAccountType } = useUserActions();
     const [forgotPassword, setForgotPassword] = useState(false);
@@ -18,7 +15,7 @@ const LoginForm = () => {
 
 
 
-    const handleFormSubmit = async (e: FormEvent<EventTarget | HTMLFormElement>) => {
+    const handleFormSubmit = async(e: FormEvent<EventTarget | HTMLFormElement>) => {
         e.preventDefault();
 
         setAsLoading();

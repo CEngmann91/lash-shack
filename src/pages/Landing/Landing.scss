@@ -6,6 +6,9 @@
     min-height: calc(100vh - $navbar-height);
 
 
+    
+
+
     .swiper-slide {
         pointer-events: none;
         width: 20rem !important;
@@ -27,19 +30,13 @@
 
 
     .landing__content {
-        // display: flex;
-        // flex-direction: column;
-        // align-items: flex-start;
         padding-top: 80px;
-
-
 
 
         p {
             color: black;
             line-height: 28px;
             // text-align: right;
-
             animation: slideFromRight 0.8s forwards;
         }
 

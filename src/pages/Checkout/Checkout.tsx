@@ -123,6 +123,11 @@ const Checkout = () => {
     await createOrder();
   };
 
+
+  function handleDiscountFormSubmit(e: FormEvent<EventTarget | HTMLFormElement>) {
+    e.preventDefault();
+  }
+
   return (
     <PageWrapper title="Checkout">
       <ImageBanner title={'Checkout'} />
@@ -192,27 +197,12 @@ const Checkout = () => {
                 <h6>Total Qty: <span>{totalQuantity} items</span></h6>
                 {/* <h6>SubTotal: <span>{formatCurrency(totalAmount)}</span></h6> */}
                 <h4 className="line"></h4>
-                {/* <h5 className='text-center'><span>Discount Code</span></h5> */}
-
-                {/* <Form className='discountCode__form '>
-                  <FormGroup className="form__group d-flex flex-row gap-2">
-                    <input className='w-100 mt-3' name="discountCode" type="text" placeholder='Enter Code' //onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    />
-
-                    <MotionButton className='buy-button w-25' onClick={() => {}}>
-                      Apply
-                    </MotionButton>
-                  </FormGroup>
-                </Form> */}
-
-
+                <h5 className='text-center'><span>Discount Code</span></h5>
                 <div className='discount__code d-flex flex-row gap-2 mb-2'>
-                  {/* <InputField className='w-100 mt-3' name="discountCode" placeholder="Enter Code" type="text" /> */}
-                  <input className='w-100 mt-3' name="discountCode" type="text" placeholder='Enter Code' //onChange={(e) => setForm({ ...form, name: e.target.value })}
-                  />
-                  <MotionButton className='buy-button w-25' onClick={() => { }}>
-                    Apply
-                  </MotionButton>
+                  <form id="discountForm" onSubmit={handleDiscountFormSubmit}>
+                    <input type="email" id="discount-field" placeholder="Enter Code" />
+                    <input type="submit" value="Apply" id="btn-apply" />
+                  </form>
                 </div>
                 <h4 className="line"></h4>
                 <h4>Total: <span>{formatCurrency(totalAmount)}</span></h4>
