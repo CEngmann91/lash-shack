@@ -1,4 +1,4 @@
-import { auth, firestore } from "../../firebase/firebase";
+import { auth } from "./firebase";
 import {
     User as firebaseUser,
     signInWithEmailAndPassword as firebaseSignInWithEmailAndPassword,
@@ -9,12 +9,11 @@ import {
 } from "@firebase/auth";
 
 import { getDownloadURL, getStorage, listAll, ref, TaskState } from "firebase/storage";
-import { UserProfile } from "../../types/UserProfile";
-import { addDocument, deleteDocument, getDocument, updateDocument } from "../../firebase/firestore";
-import { uploadImage } from "../../firebase/fireStorage";
-import { ProductItem } from "../../types/ProductItem";
-import { PurchaseOrder } from "../../types/PurchaseOrder";
-import { addDoc, collection } from "firebase/firestore";
+import { UserProfile } from "../types/UserProfile";
+import { addDocument, deleteDocument, getDocument, updateDocument } from "./firestore";
+import { uploadImage } from "./fireStorage";
+import { ProductItem } from "../types/ProductItem";
+import { PurchaseOrder } from "../types/PurchaseOrder";
 
 
 

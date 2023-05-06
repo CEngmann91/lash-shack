@@ -11,7 +11,7 @@ import { EffectCoverflow, Pagination } from "swiper";
 import './Gallery.scss';
 import { useEffect, useState } from 'react'
 import { LoadingSpinner, PageWrapper, SkeletonImage } from '../../components'
-import { getAllDownloadURLRef } from '../../helpers/firebase/firebaseHelper';
+import { getAllDownloadURLRef } from '../../firebase/firebaseHelper';
 import GalleryCard from "./GalleryCard/GalleryCard";
 import GalleryViewerModal from "./GalleryViewerModal/GalleryViewerModal";
 import { useScrollLock } from "../../hooks/useScrollLock";

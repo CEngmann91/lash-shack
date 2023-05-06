@@ -1,6 +1,6 @@
 import './DashboardAccount.scss';
 import { ChangeEvent } from 'react'
-import { updateUserPhotoURL, uploadPhoto } from '../../../helpers/firebase/firebaseHelper';
+import { updateUserPhotoURL, uploadPhoto } from '../../../firebase/firebaseHelper';
 import { UserProfile } from '../../../types/UserProfile';
 import { useSelector as useReduxSelector } from 'react-redux';
 import { RootState } from '../../../redux/store';

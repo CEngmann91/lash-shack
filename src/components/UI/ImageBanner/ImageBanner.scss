@@ -1,6 +1,6 @@
 .image__banner {
     background: 
-        linear-gradient(rgba(white, 0.462), rgba(black, 0.562), rgba(white, 0.462)),
+        linear-gradient(rgba(white, 0.462) 0%, rgba(black, 0.562) 50%, rgba(white, 0.462) 100%),
         url("../../../assets/images/BannerImage.png") no-repeat center center;
     background-size: 100% 100%;
     padding: 90px 0px;

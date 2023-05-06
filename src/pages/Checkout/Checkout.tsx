@@ -7,7 +7,7 @@ import { RootState } from '../../redux/store';
 import { clearFormFields, formatCurrency } from '../../res/funcs';
 import { useNavigate } from 'react-router-dom';
 import { useUserActions } from '../../redux/hooks/useUserActions';
-import { addOrder } from '../../helpers/firebase/firebaseHelper';
+import { addOrder } from '../../firebase/firebaseHelper';
 import { PurchaseOrder } from '../../types/PurchaseOrder';
 import { PurchaseOrderItem } from '../../types/PurchaseOrderItem';
 import { useBasketActions } from '../../redux/hooks/useBasketActions';

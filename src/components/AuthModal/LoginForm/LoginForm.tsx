@@ -3,7 +3,7 @@ import { FormEvent, useState } from 'react';
 import { Checkbox, InputField, MotionButton } from '../..'
 import ForgotPasswordForm from '../ForgotPasswordForm/ForgotPasswordForm';
 
-import { signIntoUserAccount, signUserOut, updateUserDisplayName } from '../../../helpers/firebase/firebaseHelper';
+import { signIntoUserAccount, signUserOut, updateUserDisplayName } from '../../../firebase/firebaseHelper';
 import { useUserActions } from '../../../redux/hooks/useUserActions';
 import { useApplicationActions } from '../../../redux/hooks/useApplicationActions';
 

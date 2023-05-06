@@ -4,7 +4,7 @@ import { Col, Container, Row } from 'reactstrap';
 import Clock from '../Clock/Clock';
 import { ArrowMotionButton } from '../..';
 import images from '../../../res/images';
-import { launchTreatwell, openWindow } from '../../../res/funcs';
+import { launchTreatwell, openWindow } from '../../../util/util';
 
 type LimitedTimeOfferProps = {
     title: string;

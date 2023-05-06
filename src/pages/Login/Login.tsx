@@ -8,7 +8,7 @@ import { Col, Container, Row, Form, FormGroup } from 'reactstrap'
 import { Checkbox, InputField, MotionButton, PageWrapper } from '../../components'
 import { Link, useNavigate } from 'react-router-dom';
 
-import { signIntoUserAccount, signUserOut, updateUserDisplayName } from '../../helpers/firebase/firebaseHelper';
+import { signIntoUserAccount, signUserOut, updateUserDisplayName } from '../../firebase/firebaseHelper';
 import { useUserActions } from '../../redux/hooks/useUserActions';
 import { useApplicationActions } from '../../redux/hooks/useApplicationActions';
 

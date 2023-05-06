@@ -8,7 +8,7 @@ import { UserProfile } from '../../../types/UserProfile';
 import { useAuth } from '../../../hooks/useAuth';
 import { NAVIGATION } from '../../../constants/constants';
 import { useScroller } from '../../../hooks/useScroller';
-import { signUserOut } from '../../../helpers/firebase/firebaseHelper';
+import { signUserOut } from '../../../firebase/firebaseHelper';
 import { useUserActions } from '../../../redux/hooks/useUserActions';
 import { useApplicationActions } from '../../../redux/hooks/useApplicationActions';
 import { useMyLocation } from '../../../hooks/useMyLocation';

@@ -1,6 +1,6 @@
 import { collection, query, where, getDocs, Timestamp, DocumentData } from "firebase/firestore";
 import { useMemo, useState } from 'react'
-import { getCurrentUser } from "../helpers/firebase/firebaseHelper";
+import { getCurrentUser } from "../firebase/firebaseHelper";
 import { UserProfile } from '../types/UserProfile';
 import useFirestoreData from './useFirestoreData';
 

@@ -31,7 +31,7 @@ $icon: 45px;
         height: 100%;
         width: 100%;
         top: 0;
-        background: linear-gradient(to top, rgba(black, 0.9), transparent, transparent, transparent);
+        background: linear-gradient(to top, rgba(black, 0.9) 0%, transparent 50%, transparent 100%);
         color: white;
         z-index: 1;
         pointer-events: none;

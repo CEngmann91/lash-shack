@@ -3,9 +3,10 @@ import { ArrowMotionButton, Form_RadioOptionGroup, ImageBanner, LoadingSpinner, 
 import { Container, Row } from 'reactstrap'
 import useGetServices from '../../hooks/useGetServices'
 import { useState } from 'react'
-import { formatCurrency, launchTreatwell } from '../../res/funcs'
+import { formatCurrency } from '../../res/funcs'
 import { ProductItem } from '../../types/ProductItem'
 import { Icon_Plane } from '../../res/icons'
+import { launchTreatwell } from '../../util/util'
 
 const Services = () => {
     const {

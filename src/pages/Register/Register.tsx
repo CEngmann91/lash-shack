@@ -7,7 +7,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { Col, Container, Row, Form, FormGroup } from 'reactstrap'
 import { InputField, MotionButton, PageWrapper } from '../../components'
 
-import { createAUser } from '../../helpers/firebase/firebaseHelper';
+import { createAUser } from '../../firebase/firebaseHelper';
 import { useUserActions } from '../../redux/hooks/useUserActions';
 import { useApplicationActions } from '../../redux/hooks/useApplicationActions';
 

@@ -4,7 +4,7 @@ import { RootState } from '../../../redux/store';
 import { Col } from 'reactstrap';
 import { Avatar, Checkbox, LoadingSpinner, MotionButton } from '../../../components';
 import { UserProfile } from '../../../types/UserProfile';
-import { updateUserActiveStatus } from '../../../helpers/firebase/firebaseHelper';
+import { updateUserActiveStatus } from '../../../firebase/firebaseHelper';
 import { Icon_ArrowHeadUp, Icon_Bell, Icon_Calendar, Icon_Chess_Pawn, Icon_Chess_QueenCrown, Icon_Email, Icon_Trash } from '../../../res/icons';
 import SectionContainerWrapper from '../../../components/SectionContainerWrapper/SectionContainerWrapper';
 import useGetUsers from '../../../hooks/useGetUsers';

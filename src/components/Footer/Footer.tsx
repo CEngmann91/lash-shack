@@ -2,15 +2,14 @@ import './Footer.scss';
 import { Container, Row, Col, ListGroup, ListGroupItem } from 'reactstrap'
 import images from '../../res/images';
 import { Link } from 'react-router-dom';
-import { Icon_Email, Icon_Location, Icon_Phone, Icon_Social_Instagram } from '../../res/icons';
+import { Icon_Location } from '../../res/icons';
 import { CONTACT } from '../../constants/constants';
-import { motion } from 'framer-motion';
 import MotionSpan from '../Motion/MotionSpan/MotionSpan';
 import { FormEvent } from 'react';
-import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { showError, showSubscription } from '../../util/toasts';
-import { addANewSubscriber } from '../../helpers/firebase/firebaseHelper';
+import { addANewSubscriber } from '../../firebase/firebaseHelper';
+import { openWindow } from '../../util/util';
 
 const Footer = () => {
 
@@ -157,60 +156,18 @@ const Footer = () => {
 
               {CONTACT.LOCATIONS.map(({ ADDRESS, MAP }, key) => (
                 <ListGroupItem key={key} className='ps-0 border-0'>
-                  <a target="_blank" className='d-flex align-items-center gap-2' href={MAP} rel="noopener noreferrer">
+                  <a
+                    target="_blank"
+                    className='d-flex align-items-center gap-2'
+                    onClick={() => openWindow(MAP)}
+                    // href={MAP} rel="noopener noreferrer"
+                  >
                     <MotionSpan hoverScale={1.1}><Icon_Location /></MotionSpan>
                     <p className='text__new-line'>{ADDRESS}</p>
                   </a>
                 </ListGroupItem>
               ))}
-
-
-
-              {/* <ListGroup className='footer__contact'> */}
-                {/* <ListGroupItem className='ps-0 border-0 d-flex align-items-center gap-2'>
-                  <a target="_blank"
-                    className=' d-flex align-items-center gap-2'
-                    rel="noopener noreferrer"
-                    href={CONTACT.INSTAGRAM}>
-                    <MotionSpan hoverScale={1.1}><Icon_Social_Instagram /></MotionSpan>
-                    <p>Follow Us</p>
-                  </a>
-                </ListGroupItem> */}
-
-                {/* {CONTACT.LOCATIONS.map(({ ADDRESS, MAP }, key) => (
-                  <ListGroupItem key={key} className='ps-0 border-0'>
-                    <a target="_blank" className='d-flex align-items-center gap-2' href={MAP} rel="noopener noreferrer">
-                      <MotionSpan hoverScale={1.1}><Icon_Location /></MotionSpan>
-                      <p className='text__new-line'>{ADDRESS}</p>
-                    </a>
-                  </ListGroupItem>
-                ))} */}
-
-                {/* <ListGroupItem className='ps-0 border-0 d-flex align-items-center gap-2'>
-                  <a target="_blank"
-                    className=' d-flex align-items-center gap-2'
-                    rel="noopener noreferrer"
-                    href={`tel:${CONTACT.PHONE}`}>
-                    <MotionSpan hoverScale={1.1}><Icon_Phone /></MotionSpan>
-                    <p>{CONTACT.PHONE}</p>
-                  </a>
-                </ListGroupItem> */}
-                {/* <ListGroupItem className='ps-0 border-0'>
-                  <a target="_blank"
-                    className=' d-flex align-items-center gap-2'
-                    rel="noopener noreferrer"
-                    href={`mailto:${CONTACT.EMAIL}`}>
-                    <MotionSpan hoverScale={1.1}><Icon_Email /></MotionSpan>
-                    <p>{CONTACT.EMAIL}</p>
-                  </a>
-                </ListGroupItem> */}
-              {/* </ListGroup> */}
             </div>
-          </Col >
-
-
-          <Col lg="3" md='3'>
-
           </Col >
 
 

@@ -15,7 +15,7 @@ import { useSelector as useReduxSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
 import { useToggle } from '../../hooks/useToggle';
 import { useAuth } from '../../hooks/useAuth';
-import { signUserOut } from '../../helpers/firebase/firebaseHelper';
+import { signUserOut } from '../../firebase/firebaseHelper';
 import { useUserActions } from '../../redux/hooks/useUserActions';
 import { UserProfile } from '../../types/UserProfile';
 import MotionSpan from '../Motion/MotionSpan/MotionSpan';

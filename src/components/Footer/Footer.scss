@@ -7,6 +7,10 @@
     background: $pink-new-colour;
 
 
+    a:hover,
+    a:focus {
+        cursor: pointer;
+    }
 
     .footer__text {
         padding-top: 0.8rem;
@@ -30,6 +34,7 @@
             border: 1px solid #000;
             border-radius: 50%;
             padding: 3px;
+
 
             -webkit-transition: all .2s ease-in;
             transition: all .2s ease-in;
@@ -123,7 +128,7 @@
         #subscribe {
             margin: 0;
             font-size: 12px;
-            
+
             input#subscriber-email {
                 outline: none;
                 padding: 8px;
@@ -133,32 +138,32 @@
                 border-radius: 4px 0px 0px 4px;
                 width: 70%;
                 transition: 0.3s ease-out;
-                
+
                 &::-webkit-input-placeholder {
                     color: $green-shade-colour;
                 }
-    
+
                 &:-ms-input-placeholder {
                     color: $green-shade-colour;
                 }
-    
+
                 &::-ms-input-placeholder {
                     color: $green-shade-colour;
                 }
-    
+
                 &::placeholder {
                     color: $green-shade-colour;
                 }
-                
+
                 // &:not(:invalid), &:focus {
                 //     transition: 0.3s ease-out;
-    
+
                 //     #btn-scribe {
                 //         opacity: 0.5;
                 //     }
                 // }
             }
-    
+
             #btn-scribe {
                 margin-left: -4px;
                 border: 1px solid $pink-dark-colour;
@@ -175,7 +180,7 @@
                 input#subscriber-email {
                     border: 1px solid darken($pink-dark-colour, 20%);
                 }
-                
+
                 #btn-scribe {
                     background: darken($pink-dark-colour, 20%);
                 }
@@ -258,7 +263,5 @@
         }
     }
 
-    @media only screen and (max-width: 576px) {
-        
-    }
+    @media only screen and (max-width: 576px) {}
 }

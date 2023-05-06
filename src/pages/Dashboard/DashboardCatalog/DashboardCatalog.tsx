@@ -4,7 +4,7 @@ import { Col, Form, FormGroup } from 'reactstrap';
 import { useSelector as useReduxSelector } from 'react-redux';
 import { RootState } from '../../../redux/store';
 import { ProductItem } from '../../../types/ProductItem';
-import { addProduct, deleteProduct, updateProduct, updateProductActiveStatus, uploadPhoto } from '../../../helpers/firebase/firebaseHelper';
+import { addProduct, deleteProduct, updateProduct, updateProductActiveStatus, uploadPhoto } from '../../../firebase/firebaseHelper';
 import { ArrowMotionButton, Avatar, Checkbox, Form_RadioOptionGroup, LoadingSpinner, MotionButton, ProductList } from '../../../components';
 import useFirestoreData from '../../../hooks/useFirestoreData';
 import UploadInput from '../../../components/Form/UploadInput/UploadInput';

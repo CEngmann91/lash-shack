@@ -8,7 +8,7 @@ import { UserProfile } from '../../../types/UserProfile';
 import { motion } from 'framer-motion';
 import { useUserActions } from '../../../redux/hooks/useUserActions';
 import { useApplicationActions } from '../../../redux/hooks/useApplicationActions';
-import { signUserOut } from '../../../helpers/firebase/firebaseHelper';
+import { signUserOut } from '../../../firebase/firebaseHelper';
 import { useNavigate } from 'react-router-dom';
 import { Avatar, MotionSpan } from '../..';
 import NavbarItem from '../../navbar/NavbarItem/NavbarItem';

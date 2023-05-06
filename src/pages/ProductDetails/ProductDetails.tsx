@@ -4,13 +4,14 @@ import { ArrowMotionButton, LoadingSpinner, MotionButton, PageWrapper } from '..
 import { Container, Col, Row } from 'reactstrap';
 import { useParams } from 'react-router-dom';
 import ImageBanner from '../../components/UI/ImageBanner/ImageBanner';
-import { clearFormFields, formatCurrency, launchTreatwell } from '../../res/funcs';
+import { clearFormFields, formatCurrency } from '../../res/funcs';
 import { useDispatch } from 'react-redux';
 import { basketActions } from '../../redux/slices/basketSlice';
 import { ProductItem } from '../../types/ProductItem';
 import StarRating from '../../components/StarRating/StarRating';
 import useGetCatalog from '../../hooks/useGetCatalog';
 import { Icon_Star } from '../../res/icons';
+import { launchTreatwell } from '../../util/util';
 
 const ProductDetails = () => {
     const { id } = useParams();

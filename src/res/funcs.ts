@@ -1,12 +1,3 @@
-
-export function launchTreatwell() {
-    openWindow("https://www.treatwell.co.uk/place/lash-shack/?utm_source=&utm_medium=performancemax&utm_campaign_id=14041377065&utm_campaign=&utm_source_platform=googleads&utm_marketing_tactic=pro&utm_click_id=Cj0KCQjw_r6hBhDdARIsAMIDhV_A_g7jMSMIQJX0a2weoVKvWH-c-p1mJn-wMFT8DJgjzc-g-lqFHYoaAhjPEALw_wcB&gclid=Cj0KCQjw_r6hBhDdARIsAMIDhV_A_g7jMSMIQJX0a2weoVKvWH-c-p1mJn-wMFT8DJgjzc-g-lqFHYoaAhjPEALw_wcB&gclsrc=aw.ds");
-    
-}
-export function openWindow(url: string) {
-    window.open(url,'_blank')
-}
-
 export function toggleBodyZoomOut() {
     document.querySelector('body')?.classList.toggle("zoomOut");
 }
@@ -19,11 +10,28 @@ export function toggleDrawerOpened() {
 
 
 
-export function joinClasses(...args: any[]) {
-    // if (args.length == 1)
-    //     return args[0];
-    if (args.every(x => typeof x === "string"))
-        return args.join();
+
+
+// function expandClasses(classes: string[]) {
+//     if (!classes || typeof classes !== 'object' || Array.isArray(classes)) {
+//         return classes;
+//     }
+//     let mapKey = 's';
+//     let map = classes[mapKey];
+//     let hasMap = map && typeof map === "object";
+//     let list = Object.keys(classes).filter(key => (!hasMap || key !== mapKey) && classes[key]);
+//     if (hasMap) {
+//         list = list.map(e => map[e] || e);
+//     }
+//     return list.join(' ');
+// }
+
+// export function joinClasses() {
+//     return [].concat.apply([], arguments).map(expandClasses).filter(e => e).join(' ');
+// }
+export function joinClasses(classes: any[]) {
+    if (classes.every(x => typeof x === "string"))
+        return classes.join(' ');
     return "";
 }
 

@@ -3,12 +3,13 @@ import { Icon_Email, Icon_Minus, Icon_Plus, Icon_Share, Icon_ShoppingBasket, Ico
 import { Col } from 'reactstrap';
 import { motion } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom';
-import { formatCurrency, launchTreatwell } from '../../../../res/funcs';
+import { formatCurrency } from '../../../../res/funcs';
 import { ProductItem } from '../../../../types/ProductItem';
 import { ArrowMotionButton, MotionButton, MotionSpan, Ribbon, SkeletonImage } from '../../..';
 import { useBasketActions } from '../../../../redux/hooks/useBasketActions';
 import { useWishListActions } from '../../../../redux/hooks/useWishListActions';
 import { useEffect } from 'react';
+import { launchTreatwell } from '../../../../util/util';
 
 const variants = {
     hidden: {
