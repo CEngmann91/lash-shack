@@ -69,17 +69,17 @@ const Footer = () => {
         <h4 className="quick__links-title">Quick Links</h4>
         <ListGroup className='mb-3'>
           <ListGroupItem className='ps-0 border-0'>
-            <Link to={"/shop"} className='app__border-bottom'>Shop</Link>
+            <Link to={"/"} className='app__border-bottom'>Home</Link>
           </ListGroupItem>
+
+
+
           {/* <ListGroupItem className='ps-0 border-0'>
-            <Link to={"/news"}>Latest News</Link>
+            <Link to={"/shop"} className='app__border-bottom'>Shop</Link>
           </ListGroupItem> */}
           <ListGroupItem className='ps-0 border-0'>
-            <Link to={"/about"} className='app__border-bottom'>Gallery</Link>
+            <Link to={"/gallery"} className='app__border-bottom'>Gallery</Link>
           </ListGroupItem>
-          {/* <ListGroupItem className='ps-0 border-0'>
-            <Link to={"/login"}>Login</Link>
-          </ListGroupItem> */}
           {/* <ListGroupItem className='ps-0 border-0'>
             <Link to={"/privacy"}>Privacy Policy</Link>
           </ListGroupItem> */}
