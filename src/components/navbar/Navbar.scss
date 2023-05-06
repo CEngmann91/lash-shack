@@ -198,7 +198,6 @@
             .basket_icon,
             .wishlist_icon,
             .avatar_icon
-            // .menu_icon
             {
                 pointer-events: none;
                 visibility: hidden;
@@ -206,11 +205,6 @@
                 &:hover {
                     cursor: pointer;
                 }
-            }
-
-            .menu_icon {
-                pointer-events: all;
-                visibility: visible;
             }
 
 

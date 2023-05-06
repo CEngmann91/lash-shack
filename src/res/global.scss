@@ -103,7 +103,7 @@
         bottom: 0;
         left: 0;
         width: 0;
-        height: 3px;
+        height: 2px;
         border-radius: 25px;
         // transform: scaleX(1);
         background: $pink-dark-colour;
@@ -116,26 +116,26 @@
 }
 
 /* Simple CSS3 Fade-in Animation */
-.app__underlineHover {
-    &::after {
-        display: block;
-        left: 0;
-        bottom: -10px;
-        width: 0;
-        height: 2px;
-        background-color: $pink-dark-colour;
-        content: "";
-        transition: width 0.2s;
-    }
+// .app__underlineHover {
+//     &::after {
+//         display: block;
+//         left: 0;
+//         bottom: -10px;
+//         width: 0;
+//         height: 2px;
+//         background-color: $pink-dark-colour;
+//         content: "";
+//         transition: width 0.2s;
+//     }
 
-    &:hover {
-        color: $green-shade-colour;
+//     &:hover {
+//         color: $green-shade-colour;
     
-        &::after {
-            width: 100%;
-        }
-    }
-}
+//         &::after {
+//             width: 100%;
+//         }
+//     }
+// }
 
 
 .app__bottom-cirle {

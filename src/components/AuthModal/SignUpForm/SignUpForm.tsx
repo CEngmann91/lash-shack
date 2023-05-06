@@ -6,6 +6,7 @@ import { InputField, MotionButton } from '../..';
 import { createAUser } from '../../../firebase/firebaseHelper';
 import { useApplicationActions } from '../../../redux/hooks/useApplicationActions';
 import { useUserActions } from '../../../redux/hooks/useUserActions';
+import { showSignUpSuccessToast, showSignUpUnsuccessToast, showToast } from '../../../util/toasts';
 
 const SignUpForm = () => {
     const navigate = useNavigate();
@@ -57,14 +58,15 @@ const SignUpForm = () => {
             setAccountType(registerReq.account);
             setFullName(registerReq.firstName, registerReq.lastName);
             setProfile(displayName, registerReq.photoURL);
-
-    
-            // console.log("photoURL - '" + photoURL + "'.");
-            console.log("Done creating user.");
     
             setAsNotLoading();
 
+            showSignUpSuccessToast(firstName);
+
             navigate('/');
+        }
+        else {
+            showSignUpUnsuccessToast();
         }
     }
 
@@ -92,7 +94,7 @@ const SignUpForm = () => {
             </form>
 
             <div id="formFooter w-100">
-                <p>I agree to the <Link to='/terms' className='app__underlineHover fw-bold'><strong>Terms and Conditions</strong></Link></p>
+                <p>I agree to the <Link to='/terms' className='app__border-bottom fw-bold'><strong>Terms and Conditions</strong></Link></p>
             </div>
         </div>
     )

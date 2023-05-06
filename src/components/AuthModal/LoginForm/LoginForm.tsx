@@ -6,6 +6,7 @@ import ForgotPasswordForm from '../ForgotPasswordForm/ForgotPasswordForm';
 import { signIntoUserAccount, signUserOut, updateUserDisplayName } from '../../../firebase/firebaseHelper';
 import { useUserActions } from '../../../redux/hooks/useUserActions';
 import { useApplicationActions } from '../../../redux/hooks/useApplicationActions';
+import { showAccountInactiveToast, showLoggedInToast } from '../../../util/toasts';
 
 const LoginForm = () => {
     const { setAsLoading, setAsNotLoading, toggleAuthModal } = useApplicationActions();
@@ -39,7 +40,8 @@ const LoginForm = () => {
         const signInReq = await signIntoUserAccount(email, password)
         if (signInReq) {
             if (!signInReq.active) {
-                alert(signInReq.email + " is not active");
+                // alert(signInReq.email + " is not active");
+                showAccountInactiveToast();
                 await signUserOut(signInReq);
                 setAsNotLoading();
                 return;
@@ -53,14 +55,7 @@ const LoginForm = () => {
 
             setAsNotLoading();
 
-
-            // if (location.pathname.includes("login")
-            //     || location.pathname.includes("register")
-            //     || location.pathname.includes("forgot")
-            // )
-            //     navigate("/");
-            // else
-            //     navigate(-1);
+            showLoggedInToast(signInReq.firstName);
 
             toggleAuthModal();
         }
@@ -90,7 +85,7 @@ const LoginForm = () => {
 
                 {/* <!-- Remind Passowrd --> */}
                 <div id="formFooter w-100">
-                    <a className="app__underlineHover" href="#" onClick={() => setForgotPassword(prev => prev = !prev)}><strong>Forgot Password?</strong></a>
+                    <a className="app__border-bottom" href="#" onClick={() => setForgotPassword(prev => prev = !prev)}><strong>Forgot Password?</strong></a>
                 </div>
             </div>
         // )

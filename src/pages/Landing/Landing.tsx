@@ -123,7 +123,7 @@ const Landing = () => {
       <section className="landing__section">
         <Container>
           <Row>
-            <Col lg='6' md='6'>
+            <Col lg='6' md='12'>
               <div className="landing__content">
                 <p className="landing__subject">Beauty Salon</p>
                 <h1 className="landing__title">New <span>Beginnings</span> Start Here</h1>
@@ -145,7 +145,7 @@ const Landing = () => {
               </div>
             </Col>
 
-            <Col lg='6' md='6' className='d-flex justify-content-center'>
+            <Col lg='6' md='12'>
               {carousel()}
             </Col>
           </Row>

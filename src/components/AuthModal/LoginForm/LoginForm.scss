@@ -6,24 +6,24 @@
 
 
     form {
-        @for $i from 1 to 7 {
-            &:nth-child(#{$i}) {
-                $delay: 0.4s+($i * 0.2s);
+        // @for $i from 1 to 7 {
+        //     &:nth-child(#{$i}) {
+        //         $delay: 0.4s+($i * 0.2s);
 
-                // opacity: 0;
-                // -webkit-animation: fadeIn ease-in 1s $delay forwards;
-                // -moz-animation: fadeIn ease-in 1s $delay forwards;
-                // animation: fadeIn ease-in 1s $delay forwards;
+        //         // opacity: 0;
+        //         // -webkit-animation: fadeIn ease-in 1s $delay forwards;
+        //         // -moz-animation: fadeIn ease-in 1s $delay forwards;
+        //         // animation: fadeIn ease-in 1s $delay forwards;
 
-                // -webkit-animation-duration: 1s;
-                // -moz-animation-duration: 1s;
-                // animation-duration: 1s;
+        //         // -webkit-animation-duration: 1s;
+        //         // -moz-animation-duration: 1s;
+        //         // animation-duration: 1s;
 
-                // -webkit-animation-delay: 0.4s + ($i * 0.2s);
-                // -moz-animation-delay: 0.4s + ($i * 0.2s);
-                // animation-delay: 0.4s + ($i * 0.2s);
-            }
-        }
+        //         // -webkit-animation-delay: 0.4s + ($i * 0.2s);
+        //         // -moz-animation-delay: 0.4s + ($i * 0.2s);
+        //         // animation-delay: 0.4s + ($i * 0.2s);
+        //     }
+        // }
 
         .submitButton {
             background: $pink-new-colour;
