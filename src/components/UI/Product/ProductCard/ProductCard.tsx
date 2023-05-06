@@ -111,7 +111,7 @@ const ProductCard = ({ item }: ProductCardProps) => {
             </div>
 
             <div className="d-flex align-items-center justify-content-between mt-3">
-                <div className='product__info text-center w-100' onClick={() => navigate(`/shop/${id}`)}>
+                <div className='product__info text-center w-100' onClick={() => navigate(`/product/${id}`)}>
                     <h2 className="product__title">{title}</h2>
                     {category === "Courses" && <span className='product__detail'>{category}</span>}
                     {category === "Services" && <span className='product__detail'>{subServiceCategory}</span>}
