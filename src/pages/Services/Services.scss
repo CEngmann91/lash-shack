@@ -105,13 +105,17 @@
                     }
 
                     .cta-button {
-                        background: $green-shade-colour;
+                        background: $pink-dark-colour;
                         // padding: 8px 15px;
 
                         svg {
                             width: 20px;
                             height: 20px;
                             color: white;
+                        }
+
+                        &:hover {
+                            background: darken($pink-dark-colour, 20%);
                         }
                     }
                 }
