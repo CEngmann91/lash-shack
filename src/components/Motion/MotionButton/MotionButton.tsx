@@ -10,7 +10,7 @@ export interface MotionButtonProps extends HTMLAttributes<HTMLButtonElement> {
     onClick?: (e: MouseEvent<HTMLElement>) => void;
     children: ReactNode;
 }
-const MotionButton = ({ id, className, type, disabled, onClick, children, ...props }: MotionButtonProps) => {
+const MotionButton = ({ id, className, type, disabled, onClick, children, style, ...props }: MotionButtonProps) => {
     // const handleClick = useCallback(onClick, []);
 
     return (
@@ -21,6 +21,7 @@ const MotionButton = ({ id, className, type, disabled, onClick, children, ...pro
             whileHover={{ scale: (disabled ? 1 : 1.02) }} whileTap={{ scale: (disabled ? 1 : 0.98) }}
             onClick={onClick}
             disabled={disabled}
+            style={style}
             // {...props}
         >
             {children}

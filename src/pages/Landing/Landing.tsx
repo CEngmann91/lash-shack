@@ -101,7 +101,7 @@ const Landing = () => {
     if (devMode && process.env.NODE_ENV !== "development")
       return;
 
-    const { text, url } = cta
+    const { text, url, buttonBG, buttonTextColour } = cta
 
     return <LimitedTimeOffer
       title={title}
@@ -113,6 +113,8 @@ const Landing = () => {
       textColour={textColour}
       buttonText={text}
       buttonURL={url}
+      buttonBG={buttonBG}
+      buttonTextColour={buttonTextColour}
     // onTimerCompleted={() => { }}
     />
   }

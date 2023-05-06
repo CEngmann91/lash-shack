@@ -6,7 +6,7 @@ import MotionButton, { MotionButtonProps } from '../MotionButton/MotionButton'
 
 interface ArrowMotionButtonProps extends MotionButtonProps {
 }
-const ArrowMotionButton = ({ id, className, type, disabled, onClick, children }: ArrowMotionButtonProps) => {
+const ArrowMotionButton = ({ id, className, type, disabled, onClick, children, style, ...props }: ArrowMotionButtonProps) => {
     return (
         <MotionButton
             id={id}
@@ -14,6 +14,8 @@ const ArrowMotionButton = ({ id, className, type, disabled, onClick, children }:
             type={type}
             onClick={onClick}
             disabled={disabled}
+            style={style}
+            {...props}
         >
             {children}
         </MotionButton>
