@@ -64,6 +64,10 @@
             margin-top: 20px;
 
             span {
+                &::before {
+                    background: $green-shade-colour;
+                }
+            
                 color: $green-shade-colour;
                 &:first-child {
                     margin-right: 5px;
