@@ -3,11 +3,13 @@
 
 .landing__section {
     background: $pink-new-colour;
+    // background-image: linear-gradient(to left top, #facee6, #f8b7da, #f7a0cd, #f487c0, #f16db2, #ee73ba, #eb79c2, #e77fca, #e3a3e1, #e3c3f1, #ebe0f9, #fbfbfb);
+    // background-image: linear-gradient(to right bottom, #facee6, #f7d8ef, #f6e2f6, #f6ebfa, #f8f4fd, #f8f4fd, #f8f4fd, #f8f4fd, #f6ebfa, #f6e2f6, #f7d8ef, #facee6);
     min-height: calc(100vh - $navbar-height);
 
 
     
-
+    
 
     .swiper-slide {
         pointer-events: none;
@@ -16,17 +18,17 @@
         border-radius: 15px !important;
     }
 
-    .swiper-gradient {
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 100%;
-        background: linear-gradient(to right, $pink-new-colour, transparent, transparent, transparent, $pink-new-colour);
-        color: white;
-        z-index: 1;
-        pointer-events: none;
-    }
+    // .swiper-gradient {
+    //     position: absolute;
+    //     top: 0;
+    //     left: 0;
+    //     height: 100%;
+    //     width: 100%;
+    //     background: linear-gradient(to right, $pink-new-colour, transparent, transparent, transparent, $pink-new-colour);
+    //     color: white;
+    //     z-index: 1;
+    //     pointer-events: none;
+    // }
 
 
     .landing__content {
@@ -53,9 +55,31 @@
         .landing__title {
             color: black;
             font-size: 2.5rem;
-            font-weight: 600;
+            font-weight: 900;
             line-height: 2;
             animation: slideFromRight 1.1s forwards;
+        }
+
+        .landing__services {
+            margin-top: 20px;
+
+            span {
+                color: $green-shade-colour;
+                &:first-child {
+                    margin-right: 5px;
+                }
+                &:not(:first-child) {
+                    margin: 0 5px;
+                }
+                font-size: 1.3rem;
+                transition: 0.3s ease-in-out;
+
+                &:hover {
+                    object-position: center center;
+                    transform: scale(1.2);
+                    transition: 0.3s ease-in-out;
+                }
+            }
         }
 
         .landing__cta-button {
@@ -181,10 +205,15 @@
             .swiper-slide {
                 width: 18rem !important;
             }
-        
 
             .landing__title {
                 font-size: 2rem;
+            }
+
+            .landing__services {
+                span {
+                    font-size: 1.2rem;
+                }
             }
         }
     }
@@ -206,6 +235,12 @@
 
             p {
                 font-size: 0.9rem;
+            }
+
+            .landing__services {
+                span {
+                    font-size: 0.9rem;
+                }
             }
 
             .landing__buy-button {

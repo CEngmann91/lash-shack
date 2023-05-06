@@ -19,7 +19,7 @@ import { launchTreatwell } from "../../util/util";
 
 const Landing = () => {
   const { landingPage_LimitedTimOffer, loadingMiscellaneous, miscellaneousError } = useGetMiscellaneous();
-
+  const list = [ "Eyelashes", "Brows", "Aesthetics", "Training" ];
 
 
   const carousel = () => (
@@ -117,6 +117,7 @@ const Landing = () => {
     />
   }
 
+
   return (
     <PageWrapper title="Home">
       <section className="landing__section">
@@ -125,8 +126,18 @@ const Landing = () => {
             <Col lg='6' md='6'>
               <div className="landing__content">
                 <p className="landing__subject">Beauty Salon</p>
-                <h1 className="landing__title">New Beginnings Start Here</h1>
-                <p>Lash Shack was founded in 2019 by Emma who has years of experience working within the lash industry providing an impeccable service to clients and delivering 5 star training to students.</p>
+                <h1 className="landing__title">New <span>Beginnings</span> Start Here</h1>
+                <p>Experienced Technicians, Offering A World Class Service</p>
+                {/* <p>Experienced Technicians</p>
+                <p>Offering A World Class Service</p> */}
+                {/* <p>Lash Shack was founded in 2019 by Emma who has years of experience working within the lash industry providing an impeccable service to clients and delivering 5 star training to students.</p> */}
+                <div className="landing__services">
+                  {list.map((item, index) => (
+                    <>
+                      <span className="app__border-bottom">{item}</span>{index < list?.length-1 && ' | '}
+                    </>
+                  ))}
+                </div>
                 {/* <ArrowMotionButton className='landing__cta-button' onClick={() => navigate("/shop")}> */}
                 <ArrowMotionButton className='landing__cta-button' onClick={launchTreatwell}>
                   Shop Now

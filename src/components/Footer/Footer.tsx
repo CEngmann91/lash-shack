@@ -38,10 +38,10 @@ const Footer = () => {
         <h4 className="quick__links-title"><strong>Categories</strong></h4>
         <ListGroup className='mb-3'>
           <ListGroupItem className='ps-0 border-0'>
-            <Link to={"/courses"}>Courses</Link>
+            <Link to={"/courses"} className='app__border-bottom'>Courses</Link>
           </ListGroupItem>
           <ListGroupItem className='ps-0 border-0'>
-            <Link to={"/services"}>Services</Link>
+            <Link to={"/services"} className='app__border-bottom'>Services</Link>
           </ListGroupItem>
           {/* <ListGroupItem className='ps-0 border-0'>
             <Link to={"#"}>Eyelash Extensions Full Sets</Link>
@@ -69,13 +69,13 @@ const Footer = () => {
         <h4 className="quick__links-title">Quick Links</h4>
         <ListGroup className='mb-3'>
           <ListGroupItem className='ps-0 border-0'>
-            <Link to={"/shop"}>Shop</Link>
+            <Link to={"/shop"} className='app__border-bottom'>Shop</Link>
           </ListGroupItem>
           {/* <ListGroupItem className='ps-0 border-0'>
             <Link to={"/news"}>Latest News</Link>
           </ListGroupItem> */}
           <ListGroupItem className='ps-0 border-0'>
-            <Link to={"/gallery"}>Gallery</Link>
+            <Link to={"/about"} className='app__border-bottom'>Gallery</Link>
           </ListGroupItem>
           {/* <ListGroupItem className='ps-0 border-0'>
             <Link to={"/login"}>Login</Link>
