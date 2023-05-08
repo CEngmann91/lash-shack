@@ -73,6 +73,13 @@ const LatestNews = () => {
     return (
         <section className='news__container'>
             <form onSubmit={sendEmail} className='d-flex flex-column w-100'>
+
+
+                <label>REACT_APP_MEASUREMENT_ID: {process.env.REACT_APP_MEASUREMENT_ID}</label>
+                <label>REACT_APP_EMAILJS_PUBLIC_KEY: {process.env.REACT_APP_EMAILJS_PUBLIC_KEY}</label>
+                <label>REACT_APP_EMAILJS_CONTACT_FORM_ID: {process.env.REACT_APP_EMAILJS_CONTACT_FORM_ID}</label>
+
+
                 <label>Name</label>
                 <input type="text" name="client_name" />
 
