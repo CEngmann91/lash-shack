@@ -10,12 +10,12 @@ import { showToast } from '../../util/toasts';
 const Contact = () => {
     const [subject, setSubject] = useState<string>("");
     const subjects = [
-        "Feedback", "Training", "Other", 
+        "Feedback", "Training", "Other",
     ]
 
 
 
-    const onSubectChanged = (value: string) => setSubject(value);
+    const onSubjectChanged = (value: string) => setSubject(value);
 
     const handleFormSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -24,14 +24,18 @@ const Contact = () => {
         const contactID: string = (process.env.REACT_APP_EMAILJS_CONTACT_FORM_ID as string);
         const publicKey: string = (process.env.REACT_APP_EMAILJS_PUBLIC_KEY as string);
 
-        emailjs.sendForm(serviceID, contactID, e.currentTarget, publicKey)
-            .then(function () {
-                showToast("Thank you for the feedback 💋", "");
-            }, function (error) {
-                showToast("Unable to submit feedback. Try again?", "");
-            });
+        try {
+            emailjs.sendForm(serviceID, contactID, e.currentTarget, publicKey)
+                .then(function () {
+                    showToast("Thank you for the feedback 💋", "");
 
-        e.currentTarget.reset();
+                    e.currentTarget.reset();
+                }, function (error) {
+                    showToast("Unable to submit feedback. Try again?", "");
+                });
+        } catch (error) {
+            showToast("" + error, "");
+        }
     }
 
 
@@ -55,7 +59,7 @@ const Contact = () => {
                             placeholder='Subject'
                             selected={subject}
                             options={subjects}
-                            onChange={onSubectChanged}
+                            onChange={onSubjectChanged}
                         />
                     </div>
                     <TextArea name='message' placeholder='Enter Message' required />

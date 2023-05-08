@@ -3,16 +3,15 @@
 
 .payment__form,
 .billing__form,
-.discountCode__form
-{
-    
+.discountCode__form {
+
     .form__group {
         position: inherit;
         // margin-bottom: 30px;
     
         input {
             // width: 100%;
-            border: 1px solid black;
+            border: 1px solid rgb(238, 238, 238);
             border-radius: 5px;
             // padding: 8px 20px;
         }
@@ -101,6 +100,11 @@
                 // background-color: $green-shade-colour;
                 color: #fff;
                 cursor: pointer;
+                transition: .5s ease-out;
+
+                &:hover {
+                    background: darken($pink-dark-colour, 20%);
+                }
             }
         }
     }
@@ -110,5 +114,10 @@
         margin-top: 20px;
         background: $pink-dark-colour;
         color: white;
+        transition: .5s ease-out;
+
+        &:hover {
+            background: darken($pink-dark-colour, 20%);
+        }
     }
 }
