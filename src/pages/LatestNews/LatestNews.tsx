@@ -21,12 +21,16 @@ const LatestNews = () => {
         const courseRequestID: string = (process.env.REACT_APP_EMAILJS_COURSE_EMAIL_TEMPLATE_ID as string);
         const publicKey: string = (process.env.REACT_APP_EMAILJS_PUBLIC_KEY as string);
 
-        emailjs.sendForm(serviceID, courseRequestID, e.currentTarget, publicKey)
-            .then(function () {
-                showToast("SUCCESS!", "");
-            }, function (error) {
-                showToast("" + error, "");
-            });
+        try {
+            emailjs.sendForm(serviceID, courseRequestID, e.currentTarget, publicKey)
+                .then(function () {
+                    showToast("SUCCESS!", "");
+                }, function (error) {
+                    showToast("" + error, "");
+                });
+        } catch (error) {
+            showToast("" + error, "");
+        }
     };
 
     const courseSelected = (event: React.ChangeEvent<HTMLSelectElement>) => {

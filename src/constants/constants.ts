@@ -47,11 +47,11 @@ export const NAVIGATION = {
             title: "Gallery",
             to: "gallery",
         },
-        {
-            id: 4,
-            title: "Contact",
-            to: "contact",
-        },
+        // {
+        //     id: 4,
+        //     title: "Contact",
+        //     to: "contact",
+        // },
         // {
         //     title: "Latest News",
         //     to: "news",
