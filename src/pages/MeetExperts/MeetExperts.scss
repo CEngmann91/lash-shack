@@ -2,8 +2,9 @@
 @import '../../constants/constants.scss';
 
 .experts__section {
-    background: $pink-new-colour;
-
+    // background: $pink-new-colour;
+    background: #fff;
+    
     .list {
         display: flex;
         flex-wrap: wrap;

@@ -71,7 +71,7 @@ const ProductCard = ({ item }: ProductCardProps) => {
         >
 
             <div className="product__image-wrapper">
-                <div className='product__image' onClick={() => navigate(`/shop/${id}`)}>
+                <div className='product__image' onClick={() => navigate(`/product/${id}`)}>
                     <SkeletonImage className='' src={imgUrl} alt="" />
                 </div>
 

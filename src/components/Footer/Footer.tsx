@@ -26,14 +26,13 @@ const Footer = () => {
       return;
     }
 
-
     await addANewSubscriber(email.toLowerCase())
       .then(res => showSubscription())
       .catch(error => showError("You Have Already Subscribed 🥳"))
   }
 
   const renderCategoryLinks = () => (
-    <Col lg="3" md='3' className='mb-4'>
+    <Col lg="2" md='3' className='mb-4'>
       <div className="footer__quick-links">
         <h4 className="quick__links-title"><strong>Categories</strong></h4>
         <ListGroup className='mb-3'>
@@ -110,6 +109,11 @@ const Footer = () => {
         <Row>
           <Col lg="4" md='6' className='mb-4'>
             <h1>Lash Shack</h1>
+            {/* <div className="logo">
+              <Link to={"/"}>
+                <img src={images.LogoNoBG} alt="logo" />
+              </Link>
+            </div> */}
 
             <p className="footer__text">
               Lash Shack was founded in 2019 by Emma who has years of experience working within the lash industry providing an impeccable service to clients and delivering 5 star training to students.
@@ -144,7 +148,7 @@ const Footer = () => {
               <ListGroup className='footer__subscribe'>
                 <ListGroupItem className='ps-0 border-0 d-flex align-items-center gap-2'>
                   <form id="subscribe" onSubmit={handleSubscribeFormSubmit}>
-                    <input name="email" type="email" id="subscriber-email" placeholder="Enter Email Address" />
+                    <input name="email" type="email" id="subscriber-email" placeholder="Your Email" />
                     <input type="submit" value="Subscribe" id="btn-scribe" />
                   </form>
                 </ListGroupItem>
@@ -160,7 +164,7 @@ const Footer = () => {
                     target="_blank"
                     className='d-flex align-items-center gap-2'
                     onClick={() => openWindow(MAP)}
-                    // href={MAP} rel="noopener noreferrer"
+                  // href={MAP} rel="noopener noreferrer"
                   >
                     <MotionSpan hoverScale={1.1}><Icon_Location /></MotionSpan>
                     <p className='text__new-line'>{ADDRESS}</p>

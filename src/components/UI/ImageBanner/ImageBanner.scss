@@ -1,15 +1,40 @@
 .image__banner {
-    background: 
-        linear-gradient(rgba(white, 0.462) 0%, rgba(black, 0.562) 50%, rgba(white, 0.462) 100%),
+    background:
+        linear-gradient(rgba(white, 0.462) 0%, rgba(black, 0.462) 50%, rgba(white, 0.462) 100%),
+        // linear-gradient(rgba(white, 0.462) 0%, rgba(#facee6, 0.362) 50%, rgba(white, 0.462) 100%),
         url("../../../assets/images/BannerImage.png") no-repeat center center;
     background-size: 100% 100%;
     padding: 90px 0px;
-    display: flex;
-    align-items: center;
 
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+
+
+    
     h1 {
-        color: white;
+        color: #fff;
         font-weight: 600;
+    }
+
+    h6 {
+        width: fit-content;
+        color: #fff;
+        position: relative;
+
+        &::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            border-radius: 25px;
+            // transform: scaleX(1);
+            background: #fff;
+        }
     }
 }
 
@@ -25,5 +50,4 @@
     }
 }
 
-@media only screen and (max-width: 576px) {
-}
+@media only screen and (max-width: 576px) {}

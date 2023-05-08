@@ -8,12 +8,12 @@ type CheckboxProps = {
     onChange: (value: boolean) => void;
 }
 const Checkbox = ({ className, label, isSelected, onChange }: CheckboxProps) => {
-    const [remembered, setRemembered] = useState(isSelected);
+    const [checked, setChecked] = useState(isSelected)
 
     
     function handleCheckboxChange(e: ChangeEvent<HTMLInputElement>) {
         isSelected = e.target.checked;
-        setRemembered(isSelected);
+        setChecked(isSelected);
         onChange(isSelected);
     }
     
@@ -23,7 +23,7 @@ const Checkbox = ({ className, label, isSelected, onChange }: CheckboxProps) => 
                 <input
                     type="checkbox"
                     name={label}
-                    checked={remembered}
+                    checked={checked}
                     onChange={handleCheckboxChange}
                 />
                 &nbsp;{label}

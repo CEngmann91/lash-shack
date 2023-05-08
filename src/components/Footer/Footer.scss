@@ -12,6 +12,12 @@
         cursor: pointer;
     }
 
+    .logo {
+        img {
+            width: 8rem;
+        }
+    }
+
     .footer__text {
         padding-top: 0.8rem;
         line-height: 30px;
@@ -31,13 +37,11 @@
         a {
             color: $pink-dark-colour;
             font-size: 16px;
-            border: 1px solid #000;
+            border: 1px solid rgba(128, 128, 128, 0.5);
             border-radius: 50%;
             padding: 3px;
-
-
-            -webkit-transition: all .2s ease-in;
-            transition: all .2s ease-in;
+            -webkit-transition: all 300ms ease-in;
+            transition: all 300ms ease-in;
 
             &:not(:last-child) {
                 margin-right: 10px;
@@ -52,8 +56,8 @@
 
         a:hover,
         a:focus {
-            color: #fff;
-            background-color: $pink-dark-colour;
+            // color: #fff;
+            // background-color: $pink-dark-colour;
             border: 1px solid #fff;
         }
     }

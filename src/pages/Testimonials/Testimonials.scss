@@ -4,6 +4,10 @@
 .testimonials__section {
     background: white;
 
+    h1, h5 {
+        color: #fff;
+    }
+
     .list {
         display: flex;
         flex-wrap: wrap;

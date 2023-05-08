@@ -2,7 +2,8 @@
 @import '../../constants/constants.scss';
 
 .landing__section {
-    background: $pink-new-colour;
+    // background: $pink-new-colour;
+    background: #fff;
     // background-image: linear-gradient(to left top, #facee6, #f8b7da, #f7a0cd, #f487c0, #f16db2, #ee73ba, #eb79c2, #e77fca, #e3a3e1, #e3c3f1, #ebe0f9, #fbfbfb);
     // background-image: linear-gradient(to right bottom, #facee6, #f7d8ef, #f6e2f6, #f6ebfa, #f8f4fd, #f8f4fd, #f8f4fd, #f8f4fd, #f6ebfa, #f6e2f6, #f7d8ef, #facee6);
     min-height: calc(100vh - $navbar-height);

@@ -1,0 +1,70 @@
+@import '../../../res/colours.scss';
+
+.textarea-container {
+    position: relative;
+    margin: 20px 0;
+
+    .textarea {
+        display: block;
+        width: 100%;
+        min-height: 120px;
+        max-height: 150px;
+        padding: 10px;
+        font-size: 16px;
+        border: none;
+        border-bottom: 2px solid #ccc;
+        outline: none;
+        background: white;
+        color: $green-shade-colour;
+        border-radius: 5px;
+        transition: 0.3s ease-out;
+
+        &::placeholder {
+            color: $green-shade-colour;
+            padding-left: 5px;
+        }
+
+        &:not(:invalid), &:focus {
+            // background: $green-shade-colour;
+            // color: white;
+            transition: 0.3s ease-out;
+
+
+            &::placeholder {
+                opacity: 0;
+            }
+
+            &+.textarea-label {
+                top: -16px;
+                // left: 20px;
+                font-size: 12px;
+                color: $green-shade-colour;
+
+                &+.textarea-highlight {
+                    // background: white;
+                    width: calc(100% - 4px);
+                }
+            }
+        }
+    }
+
+    .textarea-label {
+        position: absolute;
+        top: 0;
+        left: 0;
+        font-size: 16px;
+        color: rgba(204, 204, 204, 0);
+        pointer-events: none;
+        transition: 0.3s ease-out;
+    }
+
+    .textarea-highlight {
+        position: absolute;
+        bottom: 2px;
+        left: 2px;
+        height: 2px;
+        width: 0;
+        background: $pink-dark-colour;
+        transition: 0.3s ease-out;
+    }
+}

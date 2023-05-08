@@ -2,7 +2,14 @@
 
 .about__section {
 
+    h2 {
+        color: #fff;
+        // font-size: 60px;
+        // margin-bottom: 100px;
+    }
+
     .featureRow-Articles {
+        text-align: left;
 
         span {
             margin: 1rem 0;
@@ -12,7 +19,7 @@
             background: $pink-dark-colour;
 
             box-shadow: 0px 0px 10px rgba($green-shade-colour, 0.5);
-            color: white;
+            color: #fff;
             // font-weight: bold;
     
             &:hover {

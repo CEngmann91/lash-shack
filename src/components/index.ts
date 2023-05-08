@@ -27,5 +27,8 @@ export { default as TextReflection } from './TextReflection/TextReflection';
 
 // Form
 export { default as Checkbox } from './Form/Checkbox/Checkbox';
+export { default as SelectDropdown } from './Form/SelectDropdown/SelectDropdown';
+export { default as Toggle } from './Form/Toggle/Toggle';
 export { default as InputField } from './Form/Input/InputField';
+export { default as TextArea } from './Form/TextArea/TextArea';
 export { default as Form_RadioOptionGroup } from './Form/RadioOptionGroup/RadioOptionGroup';

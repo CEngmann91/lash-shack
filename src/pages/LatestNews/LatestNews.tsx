@@ -18,10 +18,10 @@ const LatestNews = () => {
         e.preventDefault();
 
         const serviceID: string = (process.env.REACT_APP_EMAILJS_SERVICE_ID as string);
-        const courseRequesrID: string = (process.env.REACT_APP_EMAILJS_COURSE_EMAIL_TEMPLATE_ID as string);
+        const courseRequestID: string = (process.env.REACT_APP_EMAILJS_COURSE_EMAIL_TEMPLATE_ID as string);
         const publicKey: string = (process.env.REACT_APP_EMAILJS_PUBLIC_KEY as string);
 
-        emailjs.sendForm(serviceID, courseRequesrID, e.currentTarget, publicKey)
+        emailjs.sendForm(serviceID, courseRequestID, e.currentTarget, publicKey)
             .then(function () {
                 showToast("SUCCESS!", "");
             }, function (error) {

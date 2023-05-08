@@ -19,23 +19,23 @@ export const NAVIGATION = {
             id: 1,
             title: "Services",
             to: "services",
-            subMenu: [
-                {
-                    id: 0,
-                    title: "Full Set Extensions",
-                    to: "",
-                },
-                {
-                    id: 1,
-                    title: "Eyelash Extensions Infills",
-                    to: "",
-                },
-                {
-                    id: 2,
-                    title: "Eyebrows",
-                    to: "",
-                }
-            ]
+            // subMenu: [
+            //     {
+            //         id: 0,
+            //         title: "Full Set Extensions",
+            //         to: "",
+            //     },
+            //     {
+            //         id: 1,
+            //         title: "Eyelash Extensions Infills",
+            //         to: "",
+            //     },
+            //     {
+            //         id: 2,
+            //         title: "Eyebrows",
+            //         to: "",
+            //     }
+            // ]
         },
         {
             id: 2,
@@ -46,6 +46,11 @@ export const NAVIGATION = {
             id: 3,
             title: "Gallery",
             to: "gallery",
+        },
+        {
+            id: 4,
+            title: "Contact",
+            to: "contact",
         },
         // {
         //     title: "Latest News",

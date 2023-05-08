@@ -1,0 +1,36 @@
+@import '../../../res/colours.scss';
+
+.select-container {
+    position: relative;
+    margin: 20px 0;
+
+    .select {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border: none;
+        border-bottom: 2px solid #ccc;
+        outline: none;
+        background: white;
+        color: $green-shade-colour;
+        border-radius: 5px;
+        transition: 0.3s ease-out;
+
+
+        & > * {
+            font-size: 16px;
+            background: #fff;
+        }
+    }
+
+    // .select-highlight {
+    //     position: absolute;
+    //     bottom: 2px;
+    //     left: 2px;
+    //     height: 2px;
+    //     width: 0;
+    //     background: $pink-dark-colour;
+    //     transition: 0.3s ease-out;
+    // }
+}

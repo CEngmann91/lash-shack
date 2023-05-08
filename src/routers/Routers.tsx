@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
-import { Basket, Checkout, Courses, Dashboard, Gallery, Landing, LatestNews, NotFound, Privacy, ProductDetails, Services, Shop, TermsConditions, Wishlist } from '../pages';
+import { Basket, Checkout, Contact, Courses, Dashboard, Gallery, Landing, LatestNews, NotFound, Privacy, ProductDetails, Services, Shop, TermsConditions, Wishlist } from '../pages';
 import { Dashboard_Account, Dashboard_Catalog, Dashboard_Messages, Dashboard_Orders, Dashboard_Schedule, Dashboard_Settings, Dashboard_Users } from '../pages/Dashboard';
 import AuthRoute from './AuthRoute';
 
@@ -25,6 +25,7 @@ const Routers = () => {
             <Route path='/services' element={<Services />} />
             <Route path='/courses' element={<Courses />} />
             <Route path='/gallery' element={<Gallery />} />
+            <Route path='/contact' element={<Contact />} />
             {/* <Route path='/news' element={<LatestNews />} /> */}
             {/* <Route path='/shop' element={<Shop />} /> */}
             <Route path='/product/:id' element={<ProductDetails />} />

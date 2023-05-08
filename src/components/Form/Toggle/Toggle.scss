@@ -1,0 +1,43 @@
+.wrapper {
+    $scale: 40px;
+
+    input[type="checkbox"] {
+        position: relative;
+        width: calc($scale * 2);
+        height: $scale;
+        -webkit-appearance: none;
+        appearance: none;
+        background: lightgray;
+        outline: none;
+        border-radius: 20px;
+        box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+
+        &::before {
+            content: '';
+            position: absolute;
+            width: $scale;
+            height: $scale;
+            border-radius: 20px;
+            top: 0;
+            left: 0;
+            background: #fff;
+            transform: scale(1.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: 0.5s;
+        }
+
+        &:active {
+            &::before {
+                transform: scale(1.2);
+            }
+        }
+    }
+    input:checked[type="checkbox"] {
+        background: #ec439f;
+
+        &::before {
+            left: $scale;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+    }
+}

@@ -10,6 +10,7 @@ export { default as Expectations } from './Expectation/Expectations';
 export { default as Certificate } from './Certificate/Certificate';
 
 export { default as Gallery } from './Gallery/Gallery';
+export { default as Contact } from './Contact/Contact';
 export { default as Services } from './Services/Services';
 export { default as Shop } from './Shop/Shop';
 export { default as ProductDetails } from './ProductDetails/ProductDetails';

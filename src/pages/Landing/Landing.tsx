@@ -16,10 +16,11 @@ import { SkeletonImage } from '../../components'
 import useGetMiscellaneous from "../../hooks/useMiscellaneous";
 import { About, MeetExperts, Testimonials, FindUs } from "..";
 import { launchTreatwell } from "../../util/util";
+import Parallax from "../../components/Parallax/Parallax";
 
 const Landing = () => {
   const { landingPage_LimitedTimOffer, loadingMiscellaneous, miscellaneousError } = useGetMiscellaneous();
-  const list = [ "Eyelashes", "Brows", "Aesthetics", "Training" ];
+  const list = ["Eyelashes", "Brows", "Aesthetics", "Training"];
 
 
   const carousel = () => (
@@ -136,7 +137,7 @@ const Landing = () => {
                 <div className="landing__services">
                   {list.map((item, index) => (
                     <>
-                      <span className="app__border-bottom">{item}</span>{index < list?.length-1 && ' | '}
+                      <span className="app__border-bottom">{item}</span>{index < list?.length - 1 && ' | '}
                     </>
                   ))}
                 </div>
