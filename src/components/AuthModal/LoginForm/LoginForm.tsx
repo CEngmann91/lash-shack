@@ -1,6 +1,6 @@
 import './LoginForm.scss';
-import { FormEvent, useState } from 'react';
-import { Checkbox, InputField, MotionButton } from '../..'
+import { Dispatch, FormEvent, useState } from 'react';
+import { InputField, MotionButton } from '../..'
 import ForgotPasswordForm from '../ForgotPasswordForm/ForgotPasswordForm';
 
 import { signIntoUserAccount, signUserOut, updateUserDisplayName } from '../../../firebase/firebaseHelper';
@@ -8,10 +8,12 @@ import { useUserActions } from '../../../redux/hooks/useUserActions';
 import { useApplicationActions } from '../../../redux/hooks/useApplicationActions';
 import { showAccountInactiveToast, showLoggedInToast } from '../../../util/toasts';
 
-const LoginForm = () => {
+type LoginFormProps = {
+    onForgotPassword: () => void;
+}
+const LoginForm = ({ onForgotPassword }: LoginFormProps) => {
     const { setAsLoading, setAsNotLoading, toggleAuthModal } = useApplicationActions();
     const { setAsActive, setFullName, setProfile, setAccountType } = useUserActions();
-    const [forgotPassword, setForgotPassword] = useState(false);
 
 
 
@@ -65,30 +67,26 @@ const LoginForm = () => {
     }
 
     return (
-        // forgotPassword ? (
-        //     <ForgotPasswordForm />
-        // ) : (
-            <div id="pageWrapper" className='fadeIn'>
-                <h2>Welcome</h2>
-                <form onSubmit={handleFormSubmit}>
-                    {/* <input type="text" id="login" name="login" placeholder="login" />
-                    <input type="text" id="password" name="login" placeholder="password" /> */}
+        <div id="pageWrapper" className='fadeIn'>
+            <h2>Welcome</h2>
+            <form onSubmit={handleFormSubmit}>
+                {/* <input type="text" id="login" name="login" placeholder="login" />
+                <input type="text" id="password" name="login" placeholder="password" /> */}
 
-                    <InputField name="email" placeholder="Enter Your Email" type="text" required autoComplete='email' />
-                    <InputField name="password" placeholder="Enter Password" type="password" required autoComplete='password' />
-                    <Checkbox label='Stay Signed In' onChange={(value) => { }} />
-                    {/* <input type="submit" className="" value="Log In" /> */}
-                    <MotionButton type='submit' className='submitButton'>
-                        Log In
-                    </MotionButton>
-                </form>
+                <InputField name="email" placeholder="Enter Your Email" type="text" required autoComplete='email' />
+                <InputField name="password" placeholder="Enter Password" type="password" required autoComplete='password' />
+                {/* <Checkbox label='Stay Signed In' onChange={(value) => { }} /> */}
+                {/* <input type="submit" className="" value="Log In" /> */}
+                <MotionButton type='submit' className='submitButton'>
+                    Log In
+                </MotionButton>
+            </form>
 
-                {/* <!-- Remind Passowrd --> */}
-                <div id="formFooter w-100">
-                    <a className="app__border-bottom" href="#" onClick={() => setForgotPassword(prev => prev = !prev)}><strong>Forgot Password?</strong></a>
-                </div>
+            {/* <!-- Remind Passowrd --> */}
+            <div id="formFooter w-100">
+                <a className="app__border-bottom" href="#" onClick={onForgotPassword}><strong>Forgot Password?</strong></a>
             </div>
-        // )
+        </div>
     )
 }
 

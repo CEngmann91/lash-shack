@@ -28,14 +28,14 @@ const DashboardNavbar = () => {
 
 
     function signOut() {
-        setAsLoading();
+        // setAsLoading();
 
-        signUserOut(user)
-            .then(() => {
-                logout();
-                setAsNotLoading();
-                navigate("/");
-            });
+        // signUserOut(user)
+        //     .then(() => {
+        //         logout();
+        //         setAsNotLoading();
+        //         navigate("/");
+        //     });
     }
 
     const getRoutes = () => {
@@ -70,9 +70,9 @@ const DashboardNavbar = () => {
                         <span className="badge" data-quantity={authenticated && userNotificationCount > 0}>{userNotificationCount}</span>
                     </MotionSpan>
 
-                    <button onClick={signOut} className="signout_icon">
+                    {/* <button onClick={signOut} className="signout_icon">
                         <Icon_Dash_Exit />
-                    </button>
+                    </button> */}
                 </div>
             </div>
         </header>

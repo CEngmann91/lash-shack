@@ -10,7 +10,9 @@ const AuthRoute = () => {
     return authenticated ? (
         <Outlet />
     ) : (
-        toggleAuthModal()
+        <>
+            {toggleAuthModal()}
+        </>
     )
         {/* <Navigate to={'/login'} /> */}
 }

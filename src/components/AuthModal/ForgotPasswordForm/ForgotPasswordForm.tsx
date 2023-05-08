@@ -2,17 +2,22 @@
 
 
 import './ForgotPasswordForm.scss';
-import { FormEvent, useState } from 'react';
+import { FormEvent } from 'react';
 import { InputField, MotionButton } from '../..'
 
 import { useUserActions } from '../../../redux/hooks/useUserActions';
 import { useApplicationActions } from '../../../redux/hooks/useApplicationActions';
+import { passwordResetEmail } from '../../../firebase/firebaseHelper';
+import { showToast } from '../../../util/toasts';
+import { showError } from '../../../util/toasts';
 
-const ForgotPasswordForm = () => {
+type ForgotPasswordFormProps = {
+    onCancel: () => void;
+}
+const ForgotPasswordForm = ({ onCancel }: ForgotPasswordFormProps) => {
     const { setAsLoading, setAsNotLoading, toggleAuthModal } = useApplicationActions();
     const { setAsActive, setFullName, setProfile, setAccountType } = useUserActions();
-    
-    
+
 
     const handleFormSubmit = async (e: FormEvent<EventTarget | HTMLFormElement>) => {
         e.preventDefault();
@@ -29,9 +34,16 @@ const ForgotPasswordForm = () => {
             toggleAuthModal();
             return;
         }
-        // await login(email, password);
+        await passwordReset(email);
     };
 
+    const passwordReset = async(email: string) => {
+        await passwordResetEmail(email)
+        .then(() => showToast("Check your email", "Forgot Password"))
+        .catch(error => {
+            showError("Unable to recover email");
+        })
+    }
 
     return (
         <div id="pageWrapper" className='fadeIn'>
@@ -40,10 +52,14 @@ const ForgotPasswordForm = () => {
                 <InputField name="email" placeholder="Enter Your Email" type="text" required autoComplete='email' />
                 {/* <input type="submit" className="" value="Log In" /> */}
 
-
-                {/* <MotionButton type='submit' className='submitButton'>
-                    Confrim
-                </MotionButton> */}
+                <div className='d-flex flex-row'>
+                    <MotionButton className='submitButton' onClick={onCancel}>
+                        Cancel
+                    </MotionButton>
+                    <MotionButton type='submit' className='submitButton'>
+                        Confrim
+                    </MotionButton>
+                </div>
             </form>
         </div>
     )

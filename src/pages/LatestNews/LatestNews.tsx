@@ -2,7 +2,7 @@ import './LatestNews.scss';
 import { ImageBanner, PageWrapper } from '../../components'
 import AuthModal from '../../components/AuthModal/AuthModal';
 import emailjs from '@emailjs/browser';
-import { useEffect, FormEvent, useState } from 'react';
+import { useEffect, FormEvent, useState, useMemo } from 'react';
 import { useDate } from '../../hooks/useDate';
 import { showToast } from '../../util/toasts';
 import useGetCourses from '../../hooks/useGetCourses';
@@ -12,44 +12,59 @@ const LatestNews = () => {
     const { fullDateUK } = useDate();
     const { courses, loadingCourses, coursesError } = useGetCourses();
     const [selectedCourse, setSelectedCourse] = useState<ProductItem>();
+    const quantity = 1;
+    const deposit = 50;
+
+    const [form, setForm] = useState({
+        price: 0,
+        deposit_amt_paid: 0,
+        sub_total: 0,
+        remaining_amt: 0,
+    });
+
+    // const price = useMemo(() => {
+    //     return 
+    // }, []);
 
 
     const sendEmail = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        /*const target = e.target as typeof e.target & {
-            // name property has to match
-            name: { value: string };
-            number: { value: string };
-            course_name: { value: string };
-            course_price: { value: string };
-            course_date: { value: string };
-            message: { value: string };
-        };
-        const name = target.name.value;       // typechecks!
-        const number = target.number.value; // typechecks!
-        const course_name = target.course_name.value;       // typechecks!
-        const course_price = target.course_price.value; // typechecks!
-        const course_date = target.course_date.value; // typechecks!
-        const message = target.message.value; // typechecks!
+        // const target = e.target as typeof e.target & {
+        //     // name property has to match
+        //     name: { value: string };
+        //     contact_number: { value: string };
+        //     course_name: { value: string };
+        //     course_date: { value: string };
+        // };
+        // const name = target.name.value;       // typechecks!
+        // const contact_number = target.contact_number.value; // typechecks!
+        // const course_name = target.course_name.value;       // typechecks!
+        // const course_date = target.course_date.value; // typechecks!
 
-        const templateparams = {
-            client_name: name,
-            number: number,
-            course_name: course_name,
-            course_price: course_price,
-            course_date: course_date,
-            message: message,
-        };*/
+        // const depositPaid = (deposit * quantity);
+
+        // const templateparams = {
+        //     client_name: name,
+        //     contact_number: contact_number,
+        //     course_name: course_name,
+        //     course_price: form.price,
+        //     course_date: course_date,
+
+        //     date_today: fullDateUK,
+        //     order_number: "31031992",
+
+        //     deposit_amt_paid: depositPaid,
+        //     remaining_amt: (form.price - depositPaid)
+        // };
 
         const serviceID: string = (process.env.REACT_APP_EMAILJS_SERVICE_ID as string);
         const courseRequestID: string = (process.env.REACT_APP_EMAILJS_COURSE_EMAIL_TEMPLATE_ID as string);
         const publicKey: string = (process.env.REACT_APP_EMAILJS_PUBLIC_KEY as string);
 
         try {
-            showToast("serviceID: " + serviceID, "");
             emailjs.sendForm(serviceID, courseRequestID, e.currentTarget, publicKey)
-                // emailjs.send(serviceID, courseRequestID, templateparams, publicKey)
+            // emailjs.send(serviceID, courseRequestID, templateparams, publicKey)
                 .then(function () {
                     showToast("SUCCESS!", "");
                 }, function (error) {
@@ -65,7 +80,11 @@ const LatestNews = () => {
 
         var value: string = event.currentTarget.value;
         const item = courses?.filter(e => e.title === value);
-        setSelectedCourse(item?.at(0));
+        const course = item?.at(0);
+        if (course) {
+            setSelectedCourse(course);
+            setForm({...form, price: course?.isOnSale ? course.salePrice : course.price })
+        }
     }
 
 
@@ -73,11 +92,11 @@ const LatestNews = () => {
     return (
         <section className='news__container'>
             <form onSubmit={sendEmail} className='d-flex flex-column w-100'>
+                <label>Today</label>
+                <input type="text" name="date_today" value={fullDateUK} readOnly />
 
-
-                <label>REACT_APP_EMAILJS_PUBLIC_KEY: '{process.env.REACT_APP_EMAILJS_PUBLIC_KEY}'</label>
-                <label>REACT_APP_EMAILJS_CONTACT_FORM_ID: '{process.env.REACT_APP_EMAILJS_CONTACT_FORM_ID}'</label>
-
+                <label>Order #</label>
+                <input type="text" name="order_number" value={'31031992'} readOnly />
 
                 <label>Name</label>
                 <input type="text" name="client_name" />
@@ -93,17 +112,15 @@ const LatestNews = () => {
                     ))}
                 </select>
                 <label>Price</label>
-                <input type="text" name="course_price" value={selectedCourse?.isOnSale ? selectedCourse.salePrice : selectedCourse?.price} readOnly />
-
-                <label>Date</label>
-                <input type="text" name="course_date" value={fullDateUK} readOnly />
+                <input type="text" name="course_price" value={form.price} readOnly />
+                <label>Deposit Amount: £50</label>
+                <label>Outstanding Amount: £{form?.price - (50 * quantity)}</label>
 
                 <input type="submit" value="Send" />
 
-
-                <input type="text" name="date_today" value={fullDateUK} style={{ visibility: 'hidden' }} />
-                <input type="text" name="order_number" value={'31031992'} style={{ visibility: 'hidden' }} />
-                <input type="text" name="course_price" value={selectedCourse?.isOnSale ? selectedCourse.salePrice : selectedCourse?.price} style={{ visibility: 'hidden' }} />
+                <input type="text" name="course_date" value={fullDateUK} style={{ visibility: 'hidden' }} />
+                <input type="text" name="deposit_amt_paid" value={deposit * quantity} style={{ visibility: 'hidden' }} />
+                <input type="text" name="remaining_amt" value={form.price - (deposit * quantity)} style={{ visibility: 'hidden' }} />
 
                 <input type="text" name="billing_name" value={"John Doe"} style={{ visibility: 'hidden' }} />
                 <input type="text" name="billing_firstLine" value={"1st Line Address"} style={{ visibility: 'hidden' }} />

@@ -14,6 +14,7 @@ import { addDocument, deleteDocument, getDocument, updateDocument } from "./fire
 import { uploadImage } from "./fireStorage";
 import { ProductItem } from "../types/ProductItem";
 import { PurchaseOrder } from "../types/PurchaseOrder";
+import { sendPasswordResetEmail } from "firebase/auth";
 
 
 
@@ -79,13 +80,10 @@ export const signIntoUserAccount = async (email: string, password: string) => {
         userProfile.summary = docData.summary;
         userProfile.startDate = docData.startDate;
 
-
-
         // updateUserDisplayName(userProfile, userProfile.displayName);
-        return userProfile;
+        return new Promise<any>(res => res(userProfile));
     } catch (error) {
-        console.error(error)
-        return null;
+        return new Promise<any>((res, reject) => reject(error));
     }
 }
 
@@ -132,12 +130,20 @@ export const createAUser = async (firstName: string, lastName: string, email: st
             // const updateDisplayName = 
             await updateUserDisplayName(userProfile, userProfile.displayName);
         }
+        return new Promise<any>(res => res(userProfile));
 
     } catch (error) {
-        console.log(error);
-        return false;
+        return new Promise<any>((res, reject) => reject(error));
     }
-    return userProfile;
+    // return userProfile;
+}
+
+export const passwordResetEmail = async (email: string) => {
+    try {
+        await sendPasswordResetEmail(auth, email)
+    } catch (error) {
+        return new Promise<any>((res, reject) => reject(error));
+    }
 }
 
 export const updateUser = async (user: UserProfile) => {
@@ -145,9 +151,10 @@ export const updateUser = async (user: UserProfile) => {
         // const updateDoc = 
         await updateDocument("users", user.uid, user);
     } catch (error) {
-        const errorCode = error;//.code;
-        const errorMessage = error;//.message;
+        // const errorCode = error;//.code;
+        // const errorMessage = error;//.message;
         // onError(errorCode, errorMessage);
+        return new Promise<any>((res, reject) => reject(error));
     }
 }
 
@@ -159,9 +166,10 @@ export const updateUserDisplayName = async (user: UserProfile, display_name: str
         // const updateDoc = 
         await updateDocument("users", user.uid, user);
     } catch (error) {
-        const errorCode = error;//.code;
-        const errorMessage = error;//.message;
+        // const errorCode = error;//.code;
+        // const errorMessage = error;//.message;
         // onError(errorCode, errorMessage);
+        return new Promise<any>((res, reject) => reject(error));
     }
 }
 
@@ -173,9 +181,10 @@ export const updateUserPhotoURL = async (user: UserProfile, photo_url: string) =
         // const updateDoc = 
         await updateDocument("users", user.uid, user);
     } catch (error) {
-        const errorCode = error;//.code;
-        const errorMessage = error;//.message;
+        // const errorCode = error;//.code;
+        // const errorMessage = error;//.message;
         // onError(errorCode, errorMessage);
+        return new Promise<any>((res, reject) => reject(error));
     }
 }
 
@@ -185,9 +194,10 @@ export const updateUserActiveStatus = async (user: UserProfile, active: boolean)
         // const updateDoc = 
         await updateDocument("users", user.uid, user);
     } catch (error) {
-        const errorCode = error;//.code;
-        const errorMessage = error;//.message;
+        // const errorCode = error;//.code;
+        // const errorMessage = error;//.message;
         // onError(errorCode, errorMessage);
+        return new Promise<any>((res, reject) => reject(error));
     }
 }
 
@@ -199,9 +209,10 @@ export const signUserOut = async (user: UserProfile) => {
         const signOutReq = await firebaseSignOut(auth);
         return signOutReq;
     } catch (error) {
-        const errorCode = error;//.code;
-        const errorMessage = error;//.message;
+        // const errorCode = error;//.code;
+        // const errorMessage = error;//.message;
         // onError(errorCode, errorMessage);
+        return new Promise<any>((res, reject) => reject(error));
     }
 }
 
@@ -213,9 +224,10 @@ export const deleteUser = async () => {
         const deleteDocReq = await deleteDocument("users", currentUser.uid);
         return deleteDocReq;
     } catch (error) {
-        const errorCode = error;//.code;
-        const errorMessage = error;//.message;
+        // const errorCode = error;//.code;
+        // const errorMessage = error;//.message;
         // onError(errorCode, errorMessage);
+        return new Promise<any>((res, reject) => reject(error));
     }
 }
 
@@ -337,14 +349,14 @@ export const addANewSubscriber = async (email: string) => {
             .catch(error => {
                 return new Promise<any>((res, reject) => reject(error.message));
             })
-            
-            
-            // .then(res => {
-            //     alert("done")
-            // })
-            // .catch(error => {
-            //     alert(error)
-            // });
+
+
+        // .then(res => {
+        //     alert("done")
+        // })
+        // .catch(error => {
+        //     alert(error)
+        // });
     } catch (error) {
         // const errorCode = error;//.code;
         // const errorMessage = error;//.message;

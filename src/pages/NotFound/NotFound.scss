@@ -6,6 +6,7 @@
         // top | right | bottom | left
         // padding: $navbar-height/2 5px 20px 5px;
     }
+
     min-height: calc(100vh - $navbar-height);
     background: white;
     padding: 0 2rem;
@@ -22,17 +23,20 @@
             @media screen and (max-width: 900px) {
                 font-size: 10em;
             }
+
             font-size: 15em;
             color: gray;
 
             animation: flash-text-shadow 5s 1s infinite;
         }
+
         .not-found {
             position: absolute;
             bottom: 10px;
             font-size: 2em;
             font-weight: bolder;
             color: $green-shade-colour;
+
             @media screen and (max-width: 900px) {
                 font-size: 1.8em;
                 bottom: 0;
@@ -44,6 +48,7 @@
         @media screen and (max-width: 900px) {
             font-size: 1.3em;
         }
+
         font-size: 1.5em;
         text-align: center;
         margin-bottom: 20px;
@@ -54,8 +59,12 @@
         color: white;
         text-transform: uppercase;
         border-radius: 5px;
-        background: $green-shade-colour;
+        background: $pink-dark-colour;
         font-size: 1rem;
+
+        &:hover {
+            background: darken($pink-dark-colour, 20%);
+        }
     }
 }
 
@@ -63,9 +72,12 @@
 
 
 @keyframes flash-text-shadow {
-    0%, 100% {
+
+    0%,
+    100% {
         text-shadow: 0 2px 5px rgba($pink-new-colour, 0);
     }
+
     50% {
         text-shadow: 0 6px 10px rgba($pink-new-colour, 1);
     }

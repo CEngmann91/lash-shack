@@ -8,10 +8,8 @@ import emailjs from '@emailjs/browser';
 import { showToast } from '../../util/toasts';
 
 const Contact = () => {
+    const subjects = [ "Feedback", "Training", "Other" ]
     const [subject, setSubject] = useState<string>("");
-    const subjects = [
-        "Feedback", "Training", "Other",
-    ]
 
 
 
@@ -27,7 +25,7 @@ const Contact = () => {
         try {
             emailjs.sendForm(serviceID, contactID, e.currentTarget, publicKey)
                 .then(function () {
-                    showToast("Thank you for the feedback 💋", "");
+                    showToast("Thank you. We will be in contact 💋", "");
 
                     e.currentTarget.reset();
                 }, function (error) {

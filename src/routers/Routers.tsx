@@ -25,7 +25,7 @@ const Routers = () => {
             <Route path='/services' element={<Services />} />
             <Route path='/courses' element={<Courses />} />
             <Route path='/gallery' element={<Gallery />} />
-            {/* <Route path='/contact' element={<Contact />} /> */}
+            <Route path='/contact' element={<Contact />} />
             <Route path='/news' element={<LatestNews />} />
             {/* <Route path='/shop' element={<Shop />} /> */}
             <Route path='/product/:id' element={<ProductDetails />} />
@@ -34,10 +34,6 @@ const Routers = () => {
 
             {/* <Route path='/basket' element={<Basket />} /> */}
             {/* <Route path='/wishlist' element={<Wishlist />} /> */}
-
-            {/* <Route path='/login' element={<Login />} />
-            <Route path='/register' element={<Register />} />
-            <Route path='/forgot' element={<ForgotPassword />} /> */}
 
             {/* <Route path='/*' element={<AuthRoute />}>
                 <Route path='checkout' element={<Checkout />} />
@@ -49,9 +45,13 @@ const Routers = () => {
                 <Route path='dashboard/messages' element={<Dashboard_Messages />} />
                 <Route path='dashboard/catalog' element={<Dashboard_Catalog />} />
                 <Route path='dashboard/settings' element={<Dashboard_Settings />} />
-            </Route>
+            </Route> */}
 
-            {/* <Route path='/privacy' element={<Privacy />} /> */}
+            {/* <Route path='/login' element={<Login />} />
+            <Route path='/register' element={<Register />} />
+            <Route path='/forgot' element={<ForgotPassword />} /> */}
+
+            {/* <Route path='/privacy' element={<Privacy />} />
             {/* <Route path='/terms' element={<TermsConditions />} /> */}
         </Routes>
     )

@@ -9,7 +9,7 @@ export interface ParallaxProps {
   blurAmount?: number;
   children: ReactNode;
 }
-const Parallax = ({ className, id, backgroundUrl, blurAmount = 1, children }: ParallaxProps) => {
+const Parallax = ({ className, id, backgroundUrl, blurAmount = 0, children }: ParallaxProps) => {
 
   return (
     <div className={`parallax-container ${className}`} id={id} >

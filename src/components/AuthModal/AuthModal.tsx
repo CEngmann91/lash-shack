@@ -7,6 +7,7 @@ import { useScrollLock } from '../../hooks/useScrollLock';
 import { useApplicationActions } from '../../redux/hooks/useApplicationActions';
 import LoginForm from './LoginForm/LoginForm';
 import SignUpForm from './SignUpForm/SignUpForm';
+import ForgotPasswordForm from './ForgotPasswordForm/ForgotPasswordForm';
 
 type LoadingScreenProps = {
     visible: boolean;
@@ -25,6 +26,7 @@ const AuthModal = ({ visible }: LoadingScreenProps) => {
             unlockScroll();
         else
             lockScroll();
+        setSelectedTabIndex(0);
     }, [visible])
 
 
@@ -41,13 +43,17 @@ const AuthModal = ({ visible }: LoadingScreenProps) => {
 
             <div className="wrapper">
                 <div id="formContent">
-                    {!forgotPassword && (
-                        <Form_RadioOptionGroup wrapperClassName='auth-tabs' value={selectedTabIndex} options={["Sign In", "Sign Up"]} onChange={setSelectedTabIndex} />
-                    )}
-                    {selectedTabIndex == 0 ? (
-                        <LoginForm />
+                    {forgotPassword ? (
+                        <ForgotPasswordForm onCancel={() => setForgotPassword(false)} />
                     ) : (
-                        <SignUpForm />
+                        <>
+                            <Form_RadioOptionGroup wrapperClassName='auth-tabs' value={selectedTabIndex} options={["Sign In", "Sign Up"]} onChange={setSelectedTabIndex} />
+                            {selectedTabIndex == 0 ? (
+                                <LoginForm onForgotPassword={() => setForgotPassword(true)} />
+                            ) : (
+                                <SignUpForm />
+                            )}
+                        </>
                     )}
                 </div>
             </div>
