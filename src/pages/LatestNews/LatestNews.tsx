@@ -47,6 +47,7 @@ const LatestNews = () => {
         const publicKey: string = (process.env.REACT_APP_EMAILJS_PUBLIC_KEY as string);
 
         try {
+            showToast("Key: " + publicKey, "");
             emailjs.sendForm(serviceID, courseRequestID, e.currentTarget, publicKey)
                 // emailjs.send(serviceID, courseRequestID, templateparams, publicKey)
                 .then(function () {
@@ -71,7 +72,7 @@ const LatestNews = () => {
 
     return (
         <section className='news__container'>
-            <form onSubmit={sendEmail} className='d-flex flex-column w-25'>
+            <form onSubmit={sendEmail} className='d-flex flex-column w-100'>
                 <label>Name</label>
                 <input type="text" name="client_name" />
 
@@ -80,6 +81,7 @@ const LatestNews = () => {
 
                 <label>Course</label>
                 <select name="course_name" onChange={courseSelected}>
+                    <option disabled value="" selected hidden>Please Select</option>
                     {courses?.map(course => (
                         <option>{course?.title}</option>
                     ))}
