@@ -17,12 +17,38 @@ const LatestNews = () => {
     const sendEmail = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
+        /*const target = e.target as typeof e.target & {
+            // name property has to match
+            name: { value: string };
+            number: { value: string };
+            course_name: { value: string };
+            course_price: { value: string };
+            course_date: { value: string };
+            message: { value: string };
+        };
+        const name = target.name.value;       // typechecks!
+        const number = target.number.value; // typechecks!
+        const course_name = target.course_name.value;       // typechecks!
+        const course_price = target.course_price.value; // typechecks!
+        const course_date = target.course_date.value; // typechecks!
+        const message = target.message.value; // typechecks!
+
+        const templateparams = {
+            client_name: name,
+            number: number,
+            course_name: course_name,
+            course_price: course_price,
+            course_date: course_date,
+            message: message,
+        };*/
+
         const serviceID: string = (process.env.REACT_APP_EMAILJS_SERVICE_ID as string);
         const courseRequestID: string = (process.env.REACT_APP_EMAILJS_COURSE_EMAIL_TEMPLATE_ID as string);
         const publicKey: string = (process.env.REACT_APP_EMAILJS_PUBLIC_KEY as string);
 
         try {
-            emailjs.sendForm(serviceID, courseRequestID, e.currentTarget, publicKey)
+            emailjs.send(serviceID, courseRequestID, e.currentTarget, publicKey)
+            // emailjs.send(serviceID, courseRequestID, templateparams, publicKey)
                 .then(function () {
                     showToast("SUCCESS!", "");
                 }, function (error) {
