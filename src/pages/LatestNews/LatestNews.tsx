@@ -47,7 +47,7 @@ const LatestNews = () => {
         const publicKey: string = (process.env.REACT_APP_EMAILJS_PUBLIC_KEY as string);
 
         try {
-            showToast("Key: " + publicKey, "");
+            showToast("serviceID: " + serviceID, "");
             emailjs.sendForm(serviceID, courseRequestID, e.currentTarget, publicKey)
                 // emailjs.send(serviceID, courseRequestID, templateparams, publicKey)
                 .then(function () {
