@@ -130,7 +130,9 @@ const Footer = () => {
               <a href={CONTACT.INSTAGRAM} target="_blank" rel="noopener noreferrer">
                 <i className="fab fa-instagram" />
               </a>
-              {/* <a href=""><i className="fab fa-tiktok"></i></a> */}
+              <a href={CONTACT.TIKTOK} target="_blank" rel="noopener noreferrer">
+                <i className="fab fa-tiktok" />
+              </a>
             </div>
           </Col>
 

@@ -150,7 +150,8 @@ export const CONTACT = {
     FACEBOOK: '',
     TWITTER: '',
     INSTAGRAM: 'https://www.instagram.com/lashshack.uk/',
-    PHONE: "+447435252126",
+    TIKTOK: "https://www.tiktok.com/@lashshack.uk",
+    PHONE: "07435252126",
     EMAIL: "lashshackuk@hotmail.com",
     LOCATIONS: [
         {

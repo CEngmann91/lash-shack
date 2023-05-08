@@ -42,9 +42,9 @@ const LatestNews = () => {
             message: message,
         };*/
 
-        const serviceID: string = (process.env.REACT_APP_SERVICE_ID as string);
-        const courseRequestID: string = (process.env.REACT_APP_COURSE_EMAIL_TEMPLATE_ID as string);
-        const publicKey: string = (process.env.REACT_APP_PUBLIC_KEY as string);
+        const serviceID: string = (process.env.REACT_APP_EMAILJS_SERVICE_ID as string);
+        const courseRequestID: string = (process.env.REACT_APP_EMAILJS_COURSE_EMAIL_TEMPLATE_ID as string);
+        const publicKey: string = (process.env.REACT_APP_EMAILJS_PUBLIC_KEY as string);
 
         try {
             showToast("serviceID: " + serviceID, "");
@@ -75,9 +75,8 @@ const LatestNews = () => {
             <form onSubmit={sendEmail} className='d-flex flex-column w-100'>
 
 
-                <label>REACT_APP_MEASUREMENT_ID: {process.env.REACT_APP_MEASUREMENT_ID}</label>
-                <label>REACT_APP_EMAILJS_PUBLIC_KEY: {process.env.REACT_APP_PUBLIC_KEY}</label>
-                <label>REACT_APP_EMAILJS_CONTACT_FORM_ID: {process.env.REACT_APP_CONTACT_FORM_ID}</label>
+                <label>REACT_APP_EMAILJS_PUBLIC_KEY: '{process.env.REACT_APP_EMAILJS_PUBLIC_KEY}'</label>
+                <label>REACT_APP_EMAILJS_CONTACT_FORM_ID: '{process.env.REACT_APP_EMAILJS_CONTACT_FORM_ID}'</label>
 
 
                 <label>Name</label>
