@@ -34,7 +34,7 @@ const Contact = () => {
                     showToast("Unable to submit feedback. Try again?", "");
                 });
         } catch (error) {
-            showToast("" + error, "");
+            // showToast("" + error, "");
         }
     }
 
