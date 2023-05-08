@@ -47,8 +47,8 @@ const LatestNews = () => {
         const publicKey: string = (process.env.REACT_APP_EMAILJS_PUBLIC_KEY as string);
 
         try {
-            emailjs.send(serviceID, courseRequestID, e.currentTarget, publicKey)
-            // emailjs.send(serviceID, courseRequestID, templateparams, publicKey)
+            emailjs.sendForm(serviceID, courseRequestID, e.currentTarget, publicKey)
+                // emailjs.send(serviceID, courseRequestID, templateparams, publicKey)
                 .then(function () {
                     showToast("SUCCESS!", "");
                 }, function (error) {
@@ -70,40 +70,42 @@ const LatestNews = () => {
 
 
     return (
-        <form onSubmit={sendEmail} className='d-flex flex-column w-25'>
-            <label>Name</label>
-            <input type="text" name="client_name" />
+        <section className='news__container'>
+            <form onSubmit={sendEmail} className='d-flex flex-column w-25'>
+                <label>Name</label>
+                <input type="text" name="client_name" />
 
-            <label>Contact Number</label>
-            <input type="number" name="contact_number" />
+                <label>Contact Number</label>
+                <input type="number" name="contact_number" />
 
-            <label>Course</label>
-            <select name="course_name" onChange={courseSelected}>
-                {courses?.map(course => (
-                    <option>{course?.title}</option>
-                ))}
-            </select>
-            <label>Price</label>
-            <input type="text" name="course_price" value={selectedCourse?.isOnSale ? selectedCourse.salePrice : selectedCourse?.price} readOnly />
+                <label>Course</label>
+                <select name="course_name" onChange={courseSelected}>
+                    {courses?.map(course => (
+                        <option>{course?.title}</option>
+                    ))}
+                </select>
+                <label>Price</label>
+                <input type="text" name="course_price" value={selectedCourse?.isOnSale ? selectedCourse.salePrice : selectedCourse?.price} readOnly />
 
-            <label>Date</label>
-            <input type="text" name="course_date" value={fullDateUK} readOnly />
+                <label>Date</label>
+                <input type="text" name="course_date" value={fullDateUK} readOnly />
 
-            <input type="submit" value="Send" />
+                <input type="submit" value="Send" />
 
 
-            <input type="text" name="date_today" value={fullDateUK} style={{ visibility: 'hidden' }} />
-            <input type="text" name="order_number" value={'31031992'} style={{ visibility: 'hidden' }} />
-            <input type="text" name="course_price" value={selectedCourse?.isOnSale ? selectedCourse.salePrice : selectedCourse?.price} style={{ visibility: 'hidden' }} />
+                <input type="text" name="date_today" value={fullDateUK} style={{ visibility: 'hidden' }} />
+                <input type="text" name="order_number" value={'31031992'} style={{ visibility: 'hidden' }} />
+                <input type="text" name="course_price" value={selectedCourse?.isOnSale ? selectedCourse.salePrice : selectedCourse?.price} style={{ visibility: 'hidden' }} />
 
-            <input type="text" name="billing_name" value={"John Doe"} style={{ visibility: 'hidden' }} />
-            <input type="text" name="billing_firstLine" value={"1st Line Address"} style={{ visibility: 'hidden' }} />
-            <input type="text" name="billing_secondLine" value={"2nd Line Address"} style={{ visibility: 'hidden' }} />
-            <input type="text" name="billing_city" value={"City"} style={{ visibility: 'hidden' }} />
-            <input type="text" name="billing_postcode" value={"Post code here"} style={{ visibility: 'hidden' }} />
-            <input type="text" name="billing_coutry" value={"United Kingdom"} style={{ visibility: 'hidden' }} />
-            {/* <input type="text" name="billing_contactNumber" value={"+44 1234567890"} style={{ visibility: 'hidden' }} /> */}
-        </form>
+                <input type="text" name="billing_name" value={"John Doe"} style={{ visibility: 'hidden' }} />
+                <input type="text" name="billing_firstLine" value={"1st Line Address"} style={{ visibility: 'hidden' }} />
+                <input type="text" name="billing_secondLine" value={"2nd Line Address"} style={{ visibility: 'hidden' }} />
+                <input type="text" name="billing_city" value={"City"} style={{ visibility: 'hidden' }} />
+                <input type="text" name="billing_postcode" value={"Post code here"} style={{ visibility: 'hidden' }} />
+                <input type="text" name="billing_coutry" value={"United Kingdom"} style={{ visibility: 'hidden' }} />
+                {/* <input type="text" name="billing_contactNumber" value={"+44 1234567890"} style={{ visibility: 'hidden' }} /> */}
+            </form>
+        </section>
 
 
 
