@@ -157,7 +157,7 @@ export const CONTACT = {
             id: 'White Hart Lane',
             // ADDRESS: "Lash Shack\n49 White Hart Lane\nRomford\nRM7 8JB",
             ADDRESS: "49 White Hart Lane,\nRomford, RM7 8JB",
-            MAP: "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d679.5204988947316!2d0.15733319970601195!3d51.59129798954456!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8a49a4b2a8bd5%3A0x8b08e8d25374186a!2s49%20White%20Hart%20Ln%2C%20Romford%20RM7%208JB!5e1!3m2!1sen!2suk!4v1678780540278!5m2!1sen!2suk",
+            MAP: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d334.69771792999427!2d0.15716902444898748!3d51.591034229478765!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8a58055d67379%3A0x894bc4901f4b067e!2sLash%20Shack%20UK!5e1!3m2!1sen!2suk!4v1683534308275!5m2!1sen!2suk",
             BOROUGH_SUB: "Romford",
         },
     ]
