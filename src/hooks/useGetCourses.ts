@@ -24,12 +24,12 @@ const useGetCourses = () => {
 
         // sorted?.map(item => { item.isOnSale = true; item.salePrice = 20; } );
 
-        sorted?.map(item =>
-            item.upcomingDates = item.upcomingDates?.filter(date => {
-                const days = calculateDaysFromTodayString(date);
-                return !isNaN(days) && days >= 0;
-            })
-        );
+        // sorted?.map(item =>
+        //     item.upcomingDates = item.upcomingDates?.filter(date => {
+        //         const days = calculateDaysFromTodayString(date);
+        //         return !isNaN(days) && days >= 0;
+        //     })
+        // );
         return sorted;
     }, [data]);
 
