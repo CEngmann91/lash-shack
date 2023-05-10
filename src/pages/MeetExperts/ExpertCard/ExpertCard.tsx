@@ -43,8 +43,8 @@ const ExpertCard = ({ id, firstName, position, photoURL, message }: ExpertCardPr
         {/* <div className="expert-card" style={{ backgroundImage: `url(${photoURL})` }}> */}
             <div className="gradient">
                 <div className="content">
-                    <h2>{firstName}</h2>
-                    <p>{position}</p>
+                    <h2 className='text__neon-pink'>{firstName}</h2>
+                    <p className='text__neon-pink'>{position}</p>
                     <br />
                     {/* <p className="details">{message}</p> */}
                     {/* <div className="icons">

@@ -4,11 +4,12 @@ import { LoadingSpinner } from '../..';
 
 type MyIFrameProps = {
     className?: string;
+    id?: string;
     source: string;
     allowFullScreen?: boolean;
     ariaHidden?: boolean;
 }
-const MyIFrame = ({ className, source, allowFullScreen, ariaHidden }: MyIFrameProps) => {
+const MyIFrame = ({ className, id, source, allowFullScreen, ariaHidden }: MyIFrameProps) => {
     const [isLoading, setIsLoading] = useState(true);
 
 
@@ -22,6 +23,7 @@ const MyIFrame = ({ className, source, allowFullScreen, ariaHidden }: MyIFramePr
             {isLoading && <LoadingSpinner title="Loading..." />}
 
             <iframe
+                id={id}
                 src={source}
                 frameBorder="0"
                 style={{ display: isLoading ? "none" : "flex", border: 0 }}
