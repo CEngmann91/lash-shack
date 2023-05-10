@@ -1,6 +1,6 @@
 import './ProductDetails.scss';
-import { FormEvent, useEffect, useState } from 'react'
-import { ArrowMotionButton, LoadingSpinner, MotionButton, PageWrapper } from '../../components'
+import { FormEvent, useEffect, useMemo, useState } from 'react'
+import { ArrowMotionButton, Form_RadioOptionGroup, LoadingSpinner, MotionButton, PageWrapper, SelectDropdown } from '../../components'
 import { Container, Col, Row } from 'reactstrap';
 import { useParams } from 'react-router-dom';
 import ImageBanner from '../../components/UI/ImageBanner/ImageBanner';
@@ -12,15 +12,54 @@ import StarRating from '../../components/StarRating/StarRating';
 import useGetCatalog from '../../hooks/useGetCatalog';
 import { Icon_Star } from '../../res/icons';
 import { launchTreatwell } from '../../util/util';
+import { CONTACT } from '../../constants/constants';
+import { UpcomingDate } from '../../types/UpcomingDate';
+import useGetUsers from '../../hooks/useGetUsers';
 
 const ProductDetails = () => {
     const { id } = useParams();
     const dispatch = useDispatch();
     const { catalog, loading, error } = useGetCatalog();
+    const { getAllStaffInRomford, getAllStaffInHackney, getAllStaffInRomfordNames, getAllStaffInHackneyNames } = useGetUsers();
     const product = catalog?.find(item => item.id === id) as ProductItem;
     type Tab = "Description" | "Reviews" | "Topics Covered" | "Itinerary";
     const [selectedTab, setSelectedTab] = useState<Tab>("Description");
     const [reviewRating, setReviewRating] = useState<number>(0);
+
+    const locations = ["Romford", "Hackney"]
+    const [selectedLocation, setSelectedLocation] = useState<string>("")
+    const [selectedTabIndex, setSelectedTabIndex] = useState(-1);
+    const [selectedCourseDate, setSelectedCourseDate] = useState<UpcomingDate>({} as UpcomingDate);
+    const [selectedTechnician, setSelectedTechnician] = useState("");
+
+
+
+    const selectLocTrainingDates = useMemo(() => {
+        if (!product || !selectedLocation || !product?.upcomingDates)
+            return [] as UpcomingDate[];
+
+        const now = new Date().getTime();
+
+        const upcoming = product?.upcomingDates
+            .reduce((result, { capacity, date, location, maxCapacity }) =>
+                location?.toLowerCase() === selectedLocation?.toLowerCase()   // Compare and match
+                    && (new Date(date).getTime() - now) > 0    // Ensures only relavent dates are present.
+                    // && Number(capacity) < Number(maxCapacity)   // Make sure there is enough space left.
+                    ?
+                    result.push({ capacity, date, location, maxCapacity }) && result :
+                    result,
+                []) as UpcomingDate[];
+        return upcoming;
+    }, [selectedLocation, product?.upcomingDates]);
+
+
+    const selectLocActualDates = useMemo(() => {
+        let list: string[] = [];
+        selectLocTrainingDates.map(item => list.push(item.date));
+        return list;
+    }, [selectedLocation, product?.upcomingDates]);
+
+
 
 
 
@@ -79,6 +118,24 @@ const ProductDetails = () => {
             </div>
         );
     }
+
+    const onLocationChanged = (value: string) => {
+        setSelectedLocation(value);
+        setSelectedTabIndex(-1);
+        setSelectedCourseDate(selectLocTrainingDates[0]);
+        setSelectedTechnician("");
+    };
+
+    const onDateChanged = (value: number) => {
+        setSelectedTabIndex(value);
+        setSelectedCourseDate(selectLocTrainingDates[value]);
+        setSelectedTechnician("");
+    }
+
+    const onTechnicianChanged = (value: string) => {
+        setSelectedTechnician(value);
+    }
+
 
 
     // description = description.replace(/\*([^*]+?)\*/g, "<b>$1<\/b>");
@@ -146,11 +203,11 @@ const ProductDetails = () => {
                             <div className="product__details">
                                 <h2>{title}</h2>
 
-                                {/* {category === "Services" ? (
-                                    <p className='mb-3 font-italic'>{category} - {subServiceCategory}</p>
+                                {category === "Services" ? (
+                                    <p className='mb-3 font-italic text-muted'>{category} - {subServiceCategory}</p>
                                 ) : (
-                                    <p className='mb-3 font-italic'>{category}</p>
-                                )} */}
+                                    <p className='mb-3 font-italic text-muted'>{category}</p>
+                                )}
                                 {/* {avgRatings() === 0 ?
                                     <p className='mb-4'>No Reviews</p>
                                     :
@@ -171,31 +228,103 @@ const ProductDetails = () => {
                                 {/* <p className='mt-3'>{shortDesc}</p> */}
                                 <p />
 
-                                {/* {category === "Courses" ? (
-                                    <div className='product__upcoming-dates mt-3'>
-                                        <span className='product__upcoming-dates-title'>Upcoming Dates</span>
-                                        {upcomingDates.length > 0
-                                            ?
-                                            (upcomingDates.map((date, key) => <p key={key}>{date}</p>))
-                                            :
-                                            <p>No Upcoming dates. STAY TUNED.</p>
-                                        }
+                                {category === "Courses" ? (
+                                    <div className='product__upcoming-dates animation_slideUp'>
+                                        <span className='product__upcoming-dates-title'>
+                                            <i style={{ color: '#ec439f' }}>* </i>Location</span>
+
+                                        <SelectDropdown
+                                            className='w-100 mt-0'
+                                            name="subject"
+                                            placeholder='Please Select'
+                                            selected={selectedLocation}
+                                            options={locations}
+                                            onChange={onLocationChanged}
+                                        />
+
+                                        {selectedLocation && selectLocTrainingDates?.length > 0 ? (
+                                            <>
+                                                <span className='product__upcoming-dates-title'>
+                                                    <i style={{ color: '#ec439f' }}>* </i>Dates</span>
+                                                <Form_RadioOptionGroup
+                                                    wrapperClassName='radio-group-section w-100 animation_slideUp'
+                                                    value={selectedTabIndex} options={selectLocActualDates}
+                                                    onChange={onDateChanged}
+                                                />
+
+                                                {selectedTabIndex != -1 && (
+                                                    <div className='text-center mt-3'>
+                                                        {selectedCourseDate && selectedCourseDate?.maxCapacity - selectedCourseDate?.capacity == 0 ? (
+                                                            <h4>Sold Out!</h4>
+                                                        ) : (
+                                                            selectedCourseDate && selectedCourseDate?.maxCapacity - selectedCourseDate?.capacity == 1 ? (
+                                                                <h4 className="text-danger limited-availability">ONLY 1 AVAILABLE! BE QUICK</h4>
+                                                            ) : (
+                                                                <h4>Only {selectedCourseDate && selectedCourseDate?.maxCapacity - selectedCourseDate?.capacity} space(s) left</h4>
+                                                            )
+                                                        )}
+                                                    </div>
+                                                )}
+                                            </>
+                                        ) : (
+                                            selectedLocation && (
+                                                <h4 className='text-center'>No Training Dates Yet!</h4>
+                                            )
+                                        )}
                                     </div>
-                                ) : null} */}
+                                ) : null}
+
+
+                                {/* {selectedLocation && (
+                                    selectedLocation === CONTACT.LOCATIONS[0].BOROUGH_SUB ?
+                                        getAllStaffInRomford?.map((item) => <p>{item.firstName}</p>)
+                                        :
+                                        getAllStaffInHackney?.map((item) => <p>{item.firstName}</p>)
+                                )} */}
+
+
+                                {/* {selectedTabIndex != -1 && (
+                                    <div className='animation_slideUp'>
+                                        <span className='product__upcoming-dates-title'>
+                                            <i style={{ color: '#ec439f' }}>* </i>Technician</span>
+
+                                        <SelectDropdown
+                                            className='w-100 mt-0'
+                                            name="subject"
+                                            placeholder='Please Select'
+                                            selected={selectedTechnician}
+                                            options={(selectedLocation === "Romford" ? getAllStaffInRomfordNames : getAllStaffInHackneyNames)}
+                                            onChange={onTechnicianChanged}
+                                        />
+                                    </div>
+                                )} */}
+
+
 
                                 {/* <ArrowMotionButton className='buy__button' onClick={addToBasket}>
                                     Add To Basket
                                 </ArrowMotionButton> */}
 
-                                {category === "Courses" ? (
-                                    <ArrowMotionButton className='buy__button w-100' onClick={launchTreatwell}>
-                                        Book Now
-                                    </ArrowMotionButton>
-                                ) : (
-                                    <ArrowMotionButton className='buy__button w-100' onClick={launchTreatwell}>
+                                {/* {category === "Courses" ? ( */}
+                                <ArrowMotionButton className='buy__button w-100'
+                                    disabled={
+                                        selectLocTrainingDates?.length > 0 ? (
+                                            !selectedLocation
+                                            || selectedTabIndex == -1
+                                            || selectedCourseDate !== null && selectedCourseDate?.maxCapacity - selectedCourseDate?.capacity == 0
+                                        ) : (
+                                            !selectedLocation
+                                        )
+                                    }
+                                    onClick={() => launchTreatwell(selectedLocation)}
+                                >
+                                    Book Now
+                                </ArrowMotionButton>
+                                {/* ) : (
+                                    <ArrowMotionButton className='buy__button w-100' onClick={() => launchTreatwell('Romford')}>
                                         View Service
                                     </ArrowMotionButton>
-                                )}
+                                )} */}
 
 
                                 <div className='mt-3'>

@@ -59,6 +59,10 @@
             font-weight: 900;
             line-height: 2;
             animation: slideFromRight 1.1s forwards;
+
+            span {
+                // color: $pink-dark-colour;
+            }
         }
 
         .landing__services {
@@ -75,6 +79,12 @@
                 }
                 &:not(:first-child) {
                     margin: 0 5px;
+                }
+                &:nth-child(odd) {
+                    color: $pink-dark-colour;
+                    &::before {
+                        background: $pink-dark-colour;
+                    }
                 }
                 font-size: 1.3rem;
                 transition: 0.3s ease-in-out;

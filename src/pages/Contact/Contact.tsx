@@ -8,7 +8,7 @@ import emailjs from '@emailjs/browser';
 import { showToast } from '../../util/toasts';
 
 const Contact = () => {
-    const subjects = [ "Feedback", "Training", "Other" ]
+    const subjects = ["Feedback", "Training", "Other"]
     const [subject, setSubject] = useState<string>("");
 
 
@@ -23,14 +23,14 @@ const Contact = () => {
         const publicKey: string = (process.env.REACT_APP_EMAILJS_PUBLIC_KEY as string);
 
         try {
-            emailjs.sendForm(serviceID, contactID, e.currentTarget, publicKey)
-                .then(function () {
-                    showToast("Thank you. We will be in contact 💋", "");
+            // emailjs.sendForm(serviceID, contactID, e.currentTarget, publicKey)
+            //     .then(function () {
+            //         showToast("Thank you. We will be in contact 💋", "");
 
-                    e.currentTarget.reset();
-                }, function (error) {
-                    showToast("Unable to submit feedback. Try again?", "");
-                });
+            //         e.currentTarget.reset();
+            //     }, function (error) {
+            //         showToast("Unable to submit feedback. Try again?", "");
+            //     });
         } catch (error) {
             // showToast("" + error, "");
         }
@@ -39,18 +39,18 @@ const Contact = () => {
 
     return (
         <PageWrapper title="Courses">
-            <ImageBanner title='Contact Us' subtitle='How to find our beauty salon' />
+            <ImageBanner title='We Love Hearing From You' subtitle='How to find our beauty salon' />
 
             <section className='contact__section'>
 
                 <h3>Contact Form</h3>
                 <form onSubmit={handleFormSubmit} className='d-flex flex-column'>
                     <div className='d-flex flex-row gap-4'>
-                        <InputField name="from_name" placeholder="Enter Name" type="text" required />
+                        <InputField name="from_name" placeholder="Enter Name" type="text" autoComplete='name' required />
                         <InputField name="email" placeholder="Enter Email" type="text" required autoComplete='email' />
                     </div>
                     <div className='d-flex flex-row gap-4'>
-                        <InputField name="number" placeholder="Enter Number" type="number" required />
+                        <InputField name="number" placeholder="Enter Number" type="tel" autoComplete='tel' required />
                         <SelectDropdown
                             className='w-50'
                             name="subject"
@@ -61,6 +61,7 @@ const Contact = () => {
                         />
                     </div>
                     <TextArea name='message' placeholder='Enter Message' required />
+
                     <MotionButton type='submit' className='submitButton'>
                         Send
                     </MotionButton>

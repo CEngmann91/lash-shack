@@ -10,7 +10,7 @@ import { EffectCoverflow, Pagination } from "swiper";
 
 import './Gallery.scss';
 import { useEffect, useState } from 'react'
-import { LoadingSpinner, PageWrapper, SkeletonImage } from '../../components'
+import { ImageBanner, LoadingSpinner, PageWrapper, SkeletonImage } from '../../components'
 import { getAllDownloadURLRef } from '../../firebase/firebaseHelper';
 import GalleryCard from "./GalleryCard/GalleryCard";
 import GalleryViewerModal from "./GalleryViewerModal/GalleryViewerModal";
@@ -84,6 +84,8 @@ const Gallery = () => {
 
     return (
         <PageWrapper title="Gallery">
+            <ImageBanner title='Do You Love What You See?' subtitle='' />
+
             <section className="gallery__section">
                 {imagePaths.length == 0 ? (
                     <div className="loading-container">

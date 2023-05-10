@@ -2,6 +2,7 @@ import { useMemo } from 'react'
 import { calculateDaysFromTodayString, processStringData } from '../res/funcs';
 import { ProductItem } from '../types/ProductItem';
 import useFirestoreData from './useFirestoreData';
+import { UpcomingDate } from '../types/UpcomingDate';
 
 const useGetCourses = () => {
     const { data, loadingData, error } = useFirestoreData("courses");
@@ -24,12 +25,22 @@ const useGetCourses = () => {
 
         // sorted?.map(item => { item.isOnSale = true; item.salePrice = 20; } );
 
-        // sorted?.map(item =>
-        //     item.upcomingDates = item.upcomingDates?.filter(date => {
-        //         const days = calculateDaysFromTodayString(date);
-        //         return !isNaN(days) && days >= 0;
-        //     })
-        // );
+        // sorted?.map(item => {
+        //     if (item.upcomingDates) {
+        //         item.upcomingDates = item.upcomingDates?.filter(date => {
+        //             const days = calculateDaysFromTodayString(date.date);
+        //             return !isNaN(days) && days >= 0;
+        //         })
+        //     }
+        // });
+
+        // array.sort(function(a, b) {
+        //     var c = new Date(a.date);
+        //     var d = new Date(b.date);
+        //     return c-d;
+        // });
+
+
         return sorted;
     }, [data]);
 

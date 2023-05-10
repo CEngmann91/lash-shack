@@ -42,7 +42,7 @@ export const signIntoUserAccount = async (email: string, password: string) => {
         memberSince: "",
         lastLoggedIn: "",
         billingAddress: null,
-        preferredLocation: 'Lash Shack',
+        preferredLocation: "Romford",
         position: "NA",
         summary: "",
     };
@@ -102,7 +102,7 @@ export const createAUser = async (firstName: string, lastName: string, email: st
         memberSince: "",
         lastLoggedIn: "",
         billingAddress: null,
-        preferredLocation: 'Lash Shack',
+        preferredLocation: "Romford",
         position: "NA",
         summary: "",
     };

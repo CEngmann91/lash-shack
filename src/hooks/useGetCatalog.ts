@@ -21,7 +21,6 @@ const useGetCatalog = () => {
     const loading = useMemo(() => loadingCourses, [loadingCourses, loadingServices]);
 
     const error = useMemo(() => (!coursesError || !servicesError), [coursesError, servicesError]);
-
     
 
     return { loading, error, catalog, courses, services }

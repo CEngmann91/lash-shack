@@ -16,7 +16,6 @@
     "dotenv": "^16.0.3",
     "firebase": "^9.11.0",
     "framer-motion": "^7.10.3",
-    "rc-dropdown": "^4.0.1",
     "rc-menu": "^9.8.1",
     "react": "^18.2.0",
     "react-data-table-component": "^7.5.3",
@@ -27,11 +26,12 @@
     "react-parallax": "^3.5.1",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.4.1",
-    "react-scripts": "5.0.1",
+    "react-scripts": "^5.0.1",
     "react-toastify": "^9.1.2",
     "reactstrap": "^9.1.5",
     "sass": "^1.55.0",
     "swiper": "^9.0.5",
+    "trim-loader": "^0.5.1",
     "typescript": "^4.8.4",
     "web-vitals": "^2.1.4"
   },
@@ -58,5 +58,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/react-google-recaptcha": "^2.1.5"
   }
 }

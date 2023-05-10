@@ -20,6 +20,6 @@ export type ProductItem = {
     description: string;
     duration: number;
     reviews: Review[];
-    upcomingDates: string[];
+    upcomingDates: any[];
     dateCreated?: string;
 }

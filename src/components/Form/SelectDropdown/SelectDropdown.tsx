@@ -24,14 +24,15 @@ const SelectDropdown = ({ className, name, placeholder = "Please Select", select
             <select
                 className='select'
                 name={name}
-                defaultValue={selected}
+                value={selected}
                 onChange={handleChange}
                 required
             >
-                <option disabled value="" selected hidden>{placeholder}</option>
-                {options?.map(option => <option key={option}>{option}</option>)}
+                {!selected && <option disabled value="">{placeholder}</option>}
+                {options?.map(option => (
+                    <option key={option} value={option}>{option}</option>
+                ))}
             </select>
-            {/* <span className="select-highlight"></span> */}
         </div>
     )
 }

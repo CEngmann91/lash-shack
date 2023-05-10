@@ -148,7 +148,7 @@ const Footer = () => {
             <div className="footer__quick-links">
               <h4 className="quick__links-title">Stay Connected</h4>
               <ListGroup className='footer__subscribe'>
-                <ListGroupItem className='ps-0 border-0 d-flex align-items-center gap-2'>
+                <ListGroupItem className='ps-0 border-0'>
                   <form id="subscribe" onSubmit={handleSubscribeFormSubmit}>
                     <input name="email" type="email" id="subscriber-email" placeholder="Your Email" />
                     <input type="submit" value="Subscribe" id="btn-scribe" />
@@ -178,6 +178,20 @@ const Footer = () => {
 
 
           {renderCopyright()}
+
+
+
+          {/* <Col lg="12" md='12'>
+            <div className="hero">
+              <div className="socials-links">
+                <a href=""><i className="fab fa-facebook-f"></i></a>
+                <a href=""><i className="fab fa-instagram"></i></a>
+                <a href=""><i className="fab fa-twitter"></i></a>
+                <a href=""><i className="fab fa-github"></i></a>
+                <a href=""><i className="fab fa-linkedin-in"></i></a>
+              </div>
+            </div>
+          </Col> */}
         </Row>
       </Container>
     </footer>

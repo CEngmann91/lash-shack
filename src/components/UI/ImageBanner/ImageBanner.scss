@@ -1,9 +1,12 @@
 .image__banner {
     background:
-        linear-gradient(rgba(white, 0.462) 0%, rgba(black, 0.462) 50%, rgba(white, 0.462) 100%),
-        // linear-gradient(rgba(white, 0.462) 0%, rgba(#facee6, 0.362) 50%, rgba(white, 0.462) 100%),
-        url("../../../assets/images/BannerImage.png") no-repeat center center;
-    background-size: 100% 100%;
+        // linear-gradient(rgba(white, 0.462) 0%, rgba(black, 0.462) 50%, rgba(white, 0.462) 100%),
+        linear-gradient(rgba(white, 0.462) 0%, rgba(#facee6, 0.362) 50%, rgba(white, 0.462) 100%),
+        // url("../../../assets/images/BannerImage.png") no-repeat center center;
+        url("../../../assets/images/Shop.jpeg") no-repeat center center;
+    // background-size: 100% 100%;
+    background-size: cover;
+    background-position: 0 20%;
     padding: 90px 0px;
 
     display: flex;
@@ -17,6 +20,8 @@
     h1 {
         color: #fff;
         font-weight: 600;
+
+        animation: slideUp 0.8s ease-out forwards;
     }
 
     h6 {
@@ -42,7 +47,7 @@
 @media only screen and (max-width: 768px) {
     .image__banner {
         padding: 70px 0px;
-        background-size: contain;
+        background-position: 0 10%;
 
         h1 {
             font-size: 1.4rem;

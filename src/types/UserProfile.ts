@@ -1,6 +1,6 @@
 import { Address } from "./Address";
 import { PurchaseOrder } from "./PurchaseOrder";
-import { ShopLocations } from "./ShopLocations";
+import { ShopLocation } from "./ShopLocation";
 
 export type AccountType = "Client" | "Manager" | "Staff";
 export type UserProfile = {
@@ -20,7 +20,7 @@ export type UserProfile = {
     lastLoggedIn: string;
     // subscribed: boolean;
     billingAddress: Address | null;
-    preferredLocation: ShopLocations;
+    preferredLocation: ShopLocation;
 
 
     // Members of the team ONLY

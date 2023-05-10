@@ -92,18 +92,18 @@ const ProductCard = ({ item }: ProductCardProps) => {
 
 
                     {/* {category === "Courses" ? (
-                        <MotionButton className='app__icon-with-badge p-1.5' onClick={launchTreatwell}>
+                        <MotionButton className='app__icon-with-badge p-1.5' onClick={launchTreatwellRomford}>
                             <Icon_Email />
                         </MotionButton>
                     ) : (
-                        <MotionButton className='app__icon-with-badge' onClick={launchTreatwell}>
+                        <MotionButton className='app__icon-with-badge' onClick={launchTreatwellRomford}>
                             <Icon_ShoppingBasket />
                             <span className="badge" data-quantity={count > 0}>{count}</span>
                         </MotionButton>
                     )} */}
 
 
-                    <MotionButton className='app__icon-with-badge' onClick={launchTreatwell}>
+                    <MotionButton className='app__icon-with-badge' onClick={() => launchTreatwell('Romford')}>
                         <Icon_ShoppingBasket />
                         <span className="badge" data-quantity={count > 0}>{count}</span>
                     </MotionButton>

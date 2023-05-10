@@ -97,7 +97,7 @@ const Landing = () => {
     if (!active)
       return;
 
-    const { title, subtitle, imageUrl, startDate, endDate, cta } = content;
+    const { title, subtitle, imageUrl, startDate, endDate, location, cta } = content;
 
     if (devMode && process.env.NODE_ENV !== "development")
       return;
@@ -110,6 +110,7 @@ const Landing = () => {
       imageUrl={imageUrl}
       startDate={startDate}
       endDate={endDate}
+      location={location}
       background={background}
       textColour={textColour}
       buttonText={text}
@@ -129,7 +130,7 @@ const Landing = () => {
             <Col lg='6' md='12'>
               <div className="landing__content">
                 <p className="landing__subject">Beauty Salon</p>
-                <h1 className="landing__title">New <span>Beginnings</span> Start Here</h1>
+                <h1 className="landing__title">New <span>Beginnings</span> Start <span>Here</span></h1>
                 <p>Experienced Technicians, Offering A World Class Service</p>
                 {/* <p>Experienced Technicians</p>
                 <p>Offering A World Class Service</p> */}
@@ -142,7 +143,7 @@ const Landing = () => {
                   ))}
                 </div>
                 {/* <ArrowMotionButton className='landing__cta-button' onClick={() => navigate("/shop")}> */}
-                <ArrowMotionButton className='landing__cta-button' onClick={launchTreatwell}>
+                <ArrowMotionButton className='landing__cta-button' onClick={() => launchTreatwell('Romford')}>
                   Shop Now
                 </ArrowMotionButton>
               </div>

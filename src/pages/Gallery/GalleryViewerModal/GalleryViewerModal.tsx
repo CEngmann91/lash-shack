@@ -9,7 +9,7 @@ const variants = {
     enter: (direction: number) => {
         return {
             x: direction > 0 ? 1000 : -1000,
-            scale: 0.9,
+            scale: 1,
             opacity: 0,
         };
     },
@@ -124,11 +124,11 @@ const GalleryViewerModal: React.FC<GalleryViewerModalProps> = ({ visible, imageP
                 <div className="gradient" />
 
 
-                <div className="pagination">
+                {/* <div className="pagination">
                     {imagePaths.map((img, key) => (
                         <div key={key} className={`dot ${(key == imageIndex) && 'active'}`} onClick={() => setPage([key, 1])} />
                     ))}
-                </div>
+                </div> */}
 
                 <button className="prev" onClick={() => paginate(-1)}>&#10094;</button>
                 <button className="next" onClick={() => paginate(1)}>&#10095;</button>

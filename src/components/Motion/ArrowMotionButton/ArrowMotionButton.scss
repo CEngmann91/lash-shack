@@ -15,13 +15,13 @@
         transform: scale(1.2);
     }
 
-    &:hover {
+    &:hover:enabled {
         padding-right: 30px;
         padding-left: 12px;
         color: white;
     }
 
-    &:hover:after {
+    &:hover:enabled:after {
         opacity: 1;
         right: 10px;
     }

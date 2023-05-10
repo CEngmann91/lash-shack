@@ -1,6 +1,7 @@
 import LogoNoBG from '../assets/images/Logo (No BG).png';
 import Logo from '../assets/images/Logo.png';
 import ABT from '../assets/images/ABT.png';
+import Shop from '../assets/images/Shop.jpeg';
 
 import Landing0 from '../assets/images/landing/Landing0.jpg';
 import Landing1 from '../assets/images/landing/Landing1.jpg';
@@ -32,6 +33,7 @@ export default {
     LogoNoBG,
     Logo,
     ABT,
+    Shop,
 
     Landing0,
     Landing1,

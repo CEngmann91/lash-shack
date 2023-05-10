@@ -1,0 +1,1 @@
+export type ShopLocation = "Romford" | "Hackney" | 'ANY';

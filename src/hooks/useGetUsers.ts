@@ -10,8 +10,7 @@ const useGetUsers = (removeCurrentUser: boolean = true) => {
 
 
 
-    const users = useMemo(() =>
-    {
+    const users = useMemo(() => {
         const sortedUsers = data?.sort((a, b) => a.account.localeCompare(b.account));
         if (removeCurrentUser)
         {
@@ -53,8 +52,22 @@ const useGetUsers = (removeCurrentUser: boolean = true) => {
         return [];
     }, [users]);
 
-    const getAllAtLashShackBirthdays = useMemo(() =>
-    {
+    const getAllStaffInRomford = useMemo(() => getAllMembersOfLashShack?.filter(item => (item.preferredLocation === "Romford" || item.preferredLocation === "ANY")), [users]);
+    const getAllStaffInRomfordNames = useMemo(() => {
+        let list : string[] = [];
+        getAllStaffInRomford?.map(item => list.push(item.firstName))
+        return list;
+    }, [users]);
+
+    const getAllStaffInHackney = useMemo(() => getAllMembersOfLashShack?.filter(item => (item.preferredLocation === "Hackney" || item.preferredLocation === "ANY")), [users]);
+    const getAllStaffInHackneyNames = useMemo(() => {
+        let list : string[] = [];
+        getAllStaffInHackney?.map(item => list.push(item.firstName))
+        return list;
+    }, [users]);
+
+
+    const getAllAtLashShackBirthdays = useMemo(() => {
         let dates = [] as string[];
         getAllMembersOfLashShack.forEach(staff => dates.push(staff.dob));
         return dates;
@@ -122,6 +135,8 @@ const useGetUsers = (removeCurrentUser: boolean = true) => {
         getAllUsersInMonth,
         getAllMembersOfLashShack, getManagers, getAllStaff,
         getAllAtLashShackBirthdays,
+        getAllStaffInRomford, getAllStaffInHackney,
+        getAllStaffInRomfordNames, getAllStaffInHackneyNames
         // getActiveUsersToday,
         // getActiveUsersTodayCount,
     }

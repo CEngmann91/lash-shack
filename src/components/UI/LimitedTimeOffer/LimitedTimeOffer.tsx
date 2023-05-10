@@ -12,6 +12,7 @@ type LimitedTimeOfferProps = {
     imageUrl: string;
     startDate: string;
     endDate: string;
+    location: string;
     onTimerCompleted?: () => void;
     background?: string;
     textColour?: string;
@@ -20,7 +21,7 @@ type LimitedTimeOfferProps = {
     buttonTextColour?: string;
     buttonURL?: string;
 }
-const LimitedTimeOffer = ({ title = "Groupon Deals", subtitle = "Limited Offer", startDate, endDate, imageUrl, onTimerCompleted, background, textColour = "white", buttonBG = "#ec439f", buttonText, buttonTextColour = "#fff", buttonURL }: LimitedTimeOfferProps) => {
+const LimitedTimeOffer = ({ title = "Groupon Deals", subtitle = "Limited Offer", startDate, endDate, location, imageUrl, onTimerCompleted, background, textColour = "white", buttonBG = "#ec439f", buttonText, buttonTextColour = "#fff", buttonURL }: LimitedTimeOfferProps) => {
     const navigate = useNavigate();
 
 
@@ -51,7 +52,7 @@ const LimitedTimeOffer = ({ title = "Groupon Deals", subtitle = "Limited Offer",
 
                         {/* <ArrowMotionButton className='store__button' onClick={() => navigate("/shop")}> */}
                         <ArrowMotionButton className='store__button' style={{ background: buttonBG, color: buttonTextColour }} onClick={() => {
-                            buttonURL ? openWindow(buttonURL) : launchTreatwell()
+                            buttonURL ? openWindow(buttonURL) : launchTreatwell(location)
                         }}>
                             {buttonText}
                         </ArrowMotionButton>

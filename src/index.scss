@@ -46,6 +46,11 @@ a {
   text-decoration: none;
 }
 
+a:hover,
+a:focus {
+  cursor: pointer;
+}
+
 h1,
 h2,
 h3,

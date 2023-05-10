@@ -7,7 +7,7 @@ type LoadingSpinnerProps = {
     backgroundColour?: string;
     foregroundColour?: string;
 }
-const LoadingSpinner = ({ title = "Loading...", thickness = 4, colour = "black", backgroundColour = "grey", foregroundColour = "black" }: LoadingSpinnerProps) => {
+const LoadingSpinner = ({ title = "Loading...", thickness = 4, colour = "black", backgroundColour = "#facee6", foregroundColour = "#ec439f" }: LoadingSpinnerProps) => {
     return (
         <div className='loading-spinner' style={{ color: colour, }}>
             <div className='spinner'

@@ -1,1 +1,0 @@
-export type ShopLocations = "Lash Shack" | "Sunchasers";

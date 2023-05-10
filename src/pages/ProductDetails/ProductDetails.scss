@@ -2,7 +2,9 @@
 @import '../../constants/constants.scss';
 
 // div { color: #aaa; }
-strong { color: #000; }
+strong {
+    color: #000;
+}
 
 .productDetails__section {
 
@@ -64,10 +66,15 @@ strong { color: #000; }
         }
 
         .product__upcoming-dates {
+            margin-top: 30px;
 
             &-title {
                 font-size: 1.1rem;
                 font-weight: 500;
+            }
+
+            .limited-availability {
+                animation: blinker 1.5s linear infinite;
             }
         }
     }
@@ -270,7 +277,7 @@ strong { color: #000; }
 
     @media only screen and (max-width: 768px) {
         .product__details {
-    
+
             .td-figure {
                 height: 20rem;
 
@@ -279,10 +286,16 @@ strong { color: #000; }
                     border-bottom-right-radius: 20px;
                 }
             }
-    
+
             h2 {
                 font-size: 1.3rem;
             }
         }
+    }
+}
+
+@keyframes blinker {
+    50% {
+        opacity: 0;
     }
 }

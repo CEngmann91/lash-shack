@@ -30,12 +30,17 @@
         display: flex;
         transition: .5s ease-out;
         filter: brightness(50%);
+
+        img {
+            object-position: top;
+        }
     }
 
     .module-border-wrap {
         position: relative;
         width: 30rem;
-        border-radius: 10px 100px / 120px;
+        // border-radius: 10px 100px / 120px;
+        border-radius: 10px;
         border: 10px solid $pink-new-colour;
         overflow: hidden;
         // border: 10px solid transparent;

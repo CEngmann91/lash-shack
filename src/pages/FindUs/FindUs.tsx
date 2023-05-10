@@ -5,6 +5,7 @@ import { useDate } from '../../hooks/useDate';
 import { timeConversion, currentTimeIsBetweenTimes } from '../../res/funcs';
 import MapViewFrame from '../../components/iFrames/MapViewFrame/MapViewFrame';
 import useGetMiscellaneous from '../../hooks/useMiscellaneous';
+import images from '../../res/images';
 
 const FindUs = () => {
     const { openingHours, loadingMiscellaneous, miscellaneousError } = useGetMiscellaneous();
@@ -69,7 +70,8 @@ const FindUs = () => {
     return (
         <section className="location__banner">
             <div className='map-content'>
-                <MapViewFrame source={CONTACT.LOCATIONS[0].MAP} />
+                {/* <MapViewFrame source={CONTACT.LOCATIONS[0].MAP} /> */}
+                <img src={images.Shop} />
             </div>
 
             <div className="module-border-wrap">
