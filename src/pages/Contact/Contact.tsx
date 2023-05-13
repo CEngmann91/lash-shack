@@ -15,10 +15,13 @@ const Contact = () => {
 
 
     const onMapChanged = (index: number) => {
-        const scroller = document.querySelector('#mapScroller');
+        const isSame = mapIndex == index;
+        if (isSame)
+            return;
         const isLess = mapIndex > index;
         setMapIndex(index)
-
+        
+        const scroller = document.querySelector('#mapScroller');
         scroller?.scrollTo(isLess ? 0 : 800, 0) // ONLY 2 LOCATIONS FOR NOW!!
     };
 
