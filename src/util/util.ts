@@ -13,9 +13,12 @@ export function openWindow(url: string) {
 export function toHoursMins(num: number) {
     var hours = Math.floor(num / 60);
     var minutes = num % 60;
-    if (hours > 0)
-        return `${hours}hour(s) ${minutes} minute(s)`;
-    return `${minutes} minute(s)`;
+    if (hours > 0) {
+        if (minutes > 0)
+            return `${hours} hour${hours > 1 ? 's' : ''} ${minutes} minute${minutes > 1 ? 's' : ''}`;
+        return `${hours} hour${hours > 1 ? 's' : ''}`;
+    }
+    return `${minutes} minute${minutes > 1 ? 's' : ''}`;
 }
 
 export function scrollToTop() {

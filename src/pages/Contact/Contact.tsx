@@ -91,19 +91,6 @@ const Contact = () => {
                         <div className='item'>
                             <MapViewFrame source={CONTACT.LOCATIONS[1].MAP} />
                         </div>
-                        {/* <div className='item'></div>
-                        <div className='item'></div>
-                        <div className='item'></div> */}
-
-                        {/* <div className='item'></div>
-                        <div className='item'></div>
-                        <div className='item'></div>
-                        <div className='item'></div>
-                        <div className='item'></div>
-                        <div className='item'></div>
-                        <div className='item'></div>
-                        <div className='item'></div>
-                        <div className='item'></div> */}
                     </div>
 
                     {/* <p>{CONTACT.LOCATIONS[mapIndex].ADDRESS}</p> */}
