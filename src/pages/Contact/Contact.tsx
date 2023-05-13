@@ -32,14 +32,14 @@ const Contact = () => {
         const publicKey: string = (process.env.REACT_APP_EMAILJS_PUBLIC_KEY as string);
 
         try {
-            // emailjs.sendForm(serviceID, contactID, e.currentTarget, publicKey)
-            //     .then(function () {
-            //         showToast("Thank you. We will be in contact 💋", "");
+            emailjs.sendForm(serviceID, contactID, e.currentTarget, publicKey)
+                .then(function () {
+                    showToast("Thank you. We will be in contact 💋", "");
 
-            //         e.currentTarget.reset();
-            //     }, function (error) {
-            //         showToast("Unable to submit feedback. Try again?", "");
-            //     });
+                    e.currentTarget.reset();
+                }, function (error) {
+                    showToast("Unable to submit feedback. Try again?", "");
+                });
         } catch (error) {
             // showToast("" + error, "");
         }
