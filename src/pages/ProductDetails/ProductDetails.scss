@@ -72,10 +72,6 @@ strong {
                 font-size: 1.1rem;
                 font-weight: 500;
             }
-
-            .limited-availability {
-                animation: blinker 1.5s linear infinite;
-            }
         }
     }
 
@@ -291,11 +287,5 @@ strong {
                 font-size: 1.3rem;
             }
         }
-    }
-}
-
-@keyframes blinker {
-    50% {
-        opacity: 0;
     }
 }

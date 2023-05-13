@@ -258,7 +258,7 @@ const ProductDetails = () => {
                                                             <h4>Sold Out!</h4>
                                                         ) : (
                                                             selectedCourseDate && selectedCourseDate?.maxCapacity - selectedCourseDate?.capacity == 1 ? (
-                                                                <h4 className="text-danger limited-availability">ONLY 1 AVAILABLE! BE QUICK</h4>
+                                                                <h4 className="text-danger animation_blinker">ONLY 1 AVAILABLE! BE QUICK</h4>
                                                             ) : (
                                                                 <h4>Only {selectedCourseDate && selectedCourseDate?.maxCapacity - selectedCourseDate?.capacity} space(s) left</h4>
                                                             )

@@ -15,10 +15,10 @@ export function toHoursMins(num: number) {
     var minutes = num % 60;
     if (hours > 0) {
         if (minutes > 0)
-            return `${hours} hour${hours > 1 ? 's' : ''} ${minutes} minute${minutes > 1 ? 's' : ''}`;
+            return `${hours} hour${hours > 1 ? 's' : ''} ${minutes} minutes`;
         return `${hours} hour${hours > 1 ? 's' : ''}`;
     }
-    return `${minutes} minute${minutes > 1 ? 's' : ''}`;
+    return `${minutes} minutes`;
 }
 
 export function scrollToTop() {
