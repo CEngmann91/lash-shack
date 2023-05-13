@@ -144,7 +144,7 @@
 // }
 
 
-.app__bottom-cirle {
+.app__bottom-circle {
     position: relative;
 
     &::before {
@@ -156,12 +156,12 @@
         width: 10px;
         transition: 0.3s;
         border-radius: 25px;
-        // transform: scaleX(1);
+        // transform: scale(0);
         background: #4070f4;
     }
     
     &:hover::before {
-        transform: scaleX(1.2);
+        transform: scale(1.2);
     }
 }
 

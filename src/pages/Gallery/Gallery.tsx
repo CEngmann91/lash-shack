@@ -96,6 +96,7 @@ const Gallery = () => {
                         <div className="grid-wrapper">
                             {imagePaths.map((path, key) =>
                                 // <SkeletonImage className={classKeys[key]} src={path} />
+
                                 <motion.div
                                     className={classKeys[key]}
                                     id={`${key}`}
@@ -116,7 +117,7 @@ const Gallery = () => {
                                         setSelected({ key, image: path })
                                     }}
                                 >
-                                    <img src={path} alt="" />
+                                    <img src={path} alt="" loading="lazy" />
                                 </motion.div>
                             )}
                         </div>

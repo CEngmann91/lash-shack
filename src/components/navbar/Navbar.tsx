@@ -125,7 +125,7 @@ const Navbar = () => {
       <ul className="navbar-nav--links">
         {NAVIGATION.MAIN_ROUTES.map(({ title, to }, key) => (
           <li className='nav--link-item' key={key}>
-            <NavbarItem to={to} activeClassName="app__bottom-cirle link-item-active" idleClassName='link-item'>{title}</NavbarItem>
+            <NavbarItem to={to} activeClassName="app__bottom-circle link-item-active" idleClassName='link-item'>{title}</NavbarItem>
           </li>
         ))}
       </ul>

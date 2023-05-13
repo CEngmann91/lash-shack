@@ -1,7 +1,7 @@
 
 import './Contact.scss';
 import { ChangeEvent, FormEvent, useState } from 'react';
-import { PageWrapper, ImageBanner, InputField, MotionButton, TextArea, SelectDropdown } from '../../components'
+import { PageWrapper, ImageBanner, InputField, MotionButton, TextArea, SelectDropdown, Breadcrumbs } from '../../components'
 import MapViewFrame from '../../components/iFrames/MapViewFrame/MapViewFrame'
 import { CONTACT } from '../../constants/constants'
 import emailjs from '@emailjs/browser';
@@ -10,8 +10,17 @@ import { showToast } from '../../util/toasts';
 const Contact = () => {
     const subjects = ["Feedback", "Training", "Other"]
     const [subject, setSubject] = useState<string>("");
+    const [mapIndex, setMapIndex] = useState(0);
 
 
+
+    const onMapChanged = (index: number) => {
+        const scroller = document.querySelector('#mapScroller');
+        const isLess = mapIndex > index;
+        setMapIndex(index)
+
+        scroller?.scrollTo(isLess ? 0 : 800, 0) // ONLY 2 LOCATIONS FOR NOW!!
+    };
 
     const onSubjectChanged = (value: string) => setSubject(value);
 
@@ -67,9 +76,38 @@ const Contact = () => {
                     </MotionButton>
                 </form>
 
-                <div className='map-content'>
+                {/* <div className='map-content'>
                     <MapViewFrame source={CONTACT.LOCATIONS[0].MAP} />
+                </div> */}
+
+                <div className="maps">
+                    <div id='mapScroller' className="scroller">
+                        <div className='item'>
+                            <MapViewFrame source={CONTACT.LOCATIONS[0].MAP} />
+                        </div>
+                        <div className='item'>
+                            <MapViewFrame source={CONTACT.LOCATIONS[1].MAP} />
+                        </div>
+                        {/* <div className='item'></div>
+                        <div className='item'></div>
+                        <div className='item'></div> */}
+
+                        {/* <div className='item'></div>
+                        <div className='item'></div>
+                        <div className='item'></div>
+                        <div className='item'></div>
+                        <div className='item'></div>
+                        <div className='item'></div>
+                        <div className='item'></div>
+                        <div className='item'></div>
+                        <div className='item'></div> */}
+                    </div>
+
+                    {/* <p>{CONTACT.LOCATIONS[mapIndex].ADDRESS}</p> */}
+
+                    <Breadcrumbs array={[CONTACT.LOCATIONS[0], CONTACT.LOCATIONS[1]]} index={mapIndex} onChange={onMapChanged} />
                 </div>
+
             </section>
         </PageWrapper>
     )

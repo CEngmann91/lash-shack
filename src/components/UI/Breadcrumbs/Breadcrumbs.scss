@@ -1,0 +1,53 @@
+@import '../../../res/colours.scss';
+
+.breadcrumbs-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 2em);
+    pointer-events: all;
+    z-index: 5;
+
+
+    .breadcrumb {
+        flex: 0 0 auto;
+        height: 1em;
+        width: 1em;
+        position: relative;
+        margin: 0 2px;
+        transition: transform 0.3s;
+
+        &::after {
+            content: "";
+            display: inline-block;
+            font-size: 0.6em;
+            height: 1em;
+            width: 1em;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 100%;
+            background-color: $pink-dark-colour;
+        }
+
+        &.active {
+            opacity: 1;
+            transform: scale(1.25);
+        }
+        &.inactive {
+            opacity: 0.5;
+            transform: scale(1);
+        }
+        &:focus::after,
+        &:hover::after {
+            opacity: 1;
+        }
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}

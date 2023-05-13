@@ -6,7 +6,7 @@ import { useState } from 'react'
 import { formatCurrency } from '../../res/funcs'
 import { ProductItem } from '../../types/ProductItem'
 import { Icon_Plane } from '../../res/icons'
-import { launchTreatwell } from '../../util/util'
+import { launchTreatwell, scrollToTop, toHoursMins } from '../../util/util'
 
 const Services = () => {
     const {
@@ -25,14 +25,6 @@ const Services = () => {
 
 
 
-    function formatTime(num: number) {
-        var hours = Math.floor(num / 60);
-        var minutes = num % 60;
-        if (hours > 0)
-            return `${hours}hour(s) ${minutes} minute(s)`;
-        return `${minutes} minute(s)`;
-    }
-
     const renderTable = (index: number) => {
         let list: ProductItem[] = [];
         if (index == 0)
@@ -44,13 +36,13 @@ const Services = () => {
 
         return (
             <div className='ttable'>
-                <div className="theader">{tabs[index]}</div>
+                {/* <div className="theader">{tabs[index]}</div> */}
 
                 {list?.map(({ title, price, isOnSale, salePrice, duration }, key) => (
                     <div className='tContent' key={key} data-index={key}>
                         <div className='left'>
                             <p className="item-title">{title}</p>
-                            <p className="item-subTitle">Duration: {formatTime(duration)}</p>
+                            <p className="item-subTitle">Duration: {toHoursMins(duration)}</p>
                         </div>
 
                         <div className='right'>
@@ -91,12 +83,12 @@ const Services = () => {
                         <div>
                             <Form_RadioOptionGroup wrapperClassName='radio-group-section w-100' value={selectedTabIndex} options={tabs}
                                 onChange={value => {
-                                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                                    scrollToTop();
                                     setSelectedTabIndex(value);
                                 }}
                             />
 
-                            <div className="pricelist">
+                            <div className="pricelist" data-tab={selectedTabIndex.toString()}>
                                 <div className="title">
                                     <p>PRICE LISTS</p>
                                     <h3>Our<span> Pricing</span></h3>

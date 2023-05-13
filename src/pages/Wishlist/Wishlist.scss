@@ -1,0 +1,24 @@
+@import '../../res/colours.scss';
+
+.wishlist__section {
+
+
+    h2 {
+        animation: fadeIn 0.8s ease-out forwards;
+    }
+
+    .buy-button {
+        color: white;
+        text-transform: uppercase;
+        border-radius: 5px;
+        background: $pink-dark-colour;
+        font-size: 1rem;
+        // margin-top: 40px;
+
+
+        &:hover {
+            color: white;
+            background: darken($pink-dark-colour, 20%);
+        }
+    }
+}

@@ -15,7 +15,7 @@ const Wishlist = () => {
         <PageWrapper title="Wish List">
             <ImageBanner title={!firstName ? 'Wish List' : `${firstName}'s Wish List`} />
 
-            <section className='basket__section'>
+            <section className='wishlist__section'>
                 <Container>
                     <Row>
                         <Col>

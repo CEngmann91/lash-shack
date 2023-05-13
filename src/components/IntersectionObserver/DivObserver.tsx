@@ -8,7 +8,7 @@ interface MotionButtonProps {
     children: ReactNode;
     triggerOnce?: boolean;
 }
-const DivObserver = ({ id, className, children, onViewChanged, triggerOnce}: MotionButtonProps) => {
+const DivObserver = ({ id, className, children, onViewChanged, triggerOnce = true }: MotionButtonProps) => {
 
     return (
         <InView

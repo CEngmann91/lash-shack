@@ -4,6 +4,7 @@ import { Icon_Cross } from '../../../res/icons';
 import { useScrollLock } from '../../../hooks/useScrollLock';
 import { clamp, joinClasses } from "../../../res/funcs";
 import { useEffect } from 'react';
+import { Breadcrumbs } from '../../../components';
 
 const variants = {
     enter: (direction: number) => {
@@ -129,6 +130,9 @@ const GalleryViewerModal: React.FC<GalleryViewerModalProps> = ({ visible, imageP
                         <div key={key} className={`dot ${(key == imageIndex) && 'active'}`} onClick={() => setPage([key, 1])} />
                     ))}
                 </div> */}
+
+                {/* <Breadcrumbs array={imagePaths} index={imageIndex} onChange={value => setPage([value, 1])} /> */}
+
 
                 <button className="prev" onClick={() => paginate(-1)}>&#10094;</button>
                 <button className="next" onClick={() => paginate(1)}>&#10095;</button>

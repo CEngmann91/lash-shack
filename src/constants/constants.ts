@@ -165,7 +165,7 @@ export const CONTACT = {
         {
             id: 'Chatsworth Road',
             // ADDRESS: "Lash Shack\n49 White Hart Lane\nRomford\nRM7 8JB",
-            ADDRESS: "78 Chatsworth Road,\nLower Clapton, Hackney, E50LS",
+            ADDRESS: "78 Chatsworth Road,\nLower Clapton, Hackney, E5 0LS",
             MAP: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d228.345165883973!2d-0.04500049529118797!3d51.554004951498285!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761d01ae1fd147%3A0xc9f8c78c5651acae!2s78%20Chatsworth%20Rd%2C%20Lower%20Clapton%2C%20London%20E5%200LS!5e1!3m2!1sen!2suk!4v1683737213970!5m2!1sen!2suk",
             BOROUGH_SUB: "Hackney",
             TREATWELL: "https://www.treatwell.co.uk/place/lash-shack/?utm_source=&utm_medium=performancemax&utm_campaign_id=14041377065&utm_campaign=&utm_source_platform=googleads&utm_marketing_tactic=pro&utm_click_id=Cj0KCQjw_r6hBhDdARIsAMIDhV_A_g7jMSMIQJX0a2weoVKvWH-c-p1mJn-wMFT8DJgjzc-g-lqFHYoaAhjPEALw_wcB&gclid=Cj0KCQjw_r6hBhDdARIsAMIDhV_A_g7jMSMIQJX0a2weoVKvWH-c-p1mJn-wMFT8DJgjzc-g-lqFHYoaAhjPEALw_wcB&gclsrc=aw.ds",

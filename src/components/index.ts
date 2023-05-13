@@ -23,6 +23,7 @@ export { default as ImageBanner } from './UI/ImageBanner/ImageBanner';
 export { default as SkeletonImage } from './UI/SkeletonImage/SkeletonImage';
 export { default as CircleProgressBar } from './UI/CircleProgressBar/CircleProgressBar';
 export { default as Ribbon } from './UI/Ribbon/Ribbon';
+export { default as Breadcrumbs } from './UI/Breadcrumbs/Breadcrumbs';
 export { default as TextReflection } from './TextReflection/TextReflection';
 
 // Form

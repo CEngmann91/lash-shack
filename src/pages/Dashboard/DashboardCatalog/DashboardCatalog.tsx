@@ -14,6 +14,7 @@ import { useNavigate } from 'react-router-dom';
 import { Icon_Email, Icon_Pencil, Icon_Plus, Icon_Trash } from '../../../res/icons';
 import { formatCurrency } from '../../../res/funcs';
 import SectionContainerWrapper from '../../../components/SectionContainerWrapper/SectionContainerWrapper';
+import { toHoursMins } from '../../../util/util';
 
 const DashboardCatalog = () => {
     const navigate = useNavigate();
@@ -90,7 +91,7 @@ const DashboardCatalog = () => {
 
         return (
             listing?.map((item, key) => {
-                const { id, active, title, price, imgUrl, subServiceCategory, upcomingDates, } = item;
+                const { id, active, title, price, imgUrl, subServiceCategory, duration, upcomingDates, } = item;
 
                 return (
                     <tr key={key}>
@@ -105,7 +106,9 @@ const DashboardCatalog = () => {
                             <Avatar url={imgUrl} scale="2.5rem" borderRadius='10px' />
                         </td>
                         <td>{title}</td>
+                        {form.category === "Services" && <td>{subServiceCategory}</td>}
                         <td>{formatCurrency(price)}</td>
+                        {form.category === "Services" && <td>{toHoursMins(duration)}</td>}
                         <td className='d-flex gap-2'>
                             {isAnAdmin &&
                                 <MotionButton className='dash__action-button' onClick={() => setForm({ ...item, editingProduct: true, addingNewProduct: false, specialDates: upcomingDates?.length > 0, selectedProductIndex: key })}>
@@ -288,6 +291,7 @@ const DashboardCatalog = () => {
                                 <th>Title</th>
                                 {form.category === "Services" && <th>Category</th>}
                                 <th>Price</th>
+                                {form.category === "Services" && <th>Duration</th>}
                                 <th>Actions</th>
                             </tr>
                         </thead>

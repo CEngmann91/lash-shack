@@ -9,17 +9,22 @@
     // min-height: calc(100vh - $navbar-height);
 
 
+    h2 {
+        animation: fadeIn 0.8s ease-out forwards;
+    }
+
     .buy-button {
         color: white;
         text-transform: uppercase;
         border-radius: 5px;
-        background: $green-shade-colour;
+        background: $pink-dark-colour;
         font-size: 1rem;
         // margin-top: 40px;
 
 
         &:hover {
             color: white;
+            background: darken($pink-dark-colour, 20%);
         }
     }
 
