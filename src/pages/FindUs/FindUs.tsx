@@ -19,12 +19,16 @@ const FindUs = () => {
     useEffect(() => {
         interval = setInterval(() => {
 
-            const { from, to } = todayHours;
+            const { from, to, closed } = todayHours;
 
-            const start = timeConversion(`0${from.padStart(2, '0').slice(0, -2)}:00am`);
-            const finish = timeConversion(`0${to.padStart(2, '0').slice(0, -2)}:00pm`);
-            const within = currentTimeIsBetweenTimes(start, finish);
-            setIsOpen(within)
+            if (closed)
+                setIsOpen(false);
+            else {
+                const start = timeConversion(`0${from.padStart(2, '0').slice(0, -2)}:00am`);
+                const finish = timeConversion(`0${to.padStart(2, '0').slice(0, -2)}:00pm`);
+                const within = currentTimeIsBetweenTimes(start, finish);
+                setIsOpen(within)
+            }
         }, 1000)
 
         return function cleanup() {
