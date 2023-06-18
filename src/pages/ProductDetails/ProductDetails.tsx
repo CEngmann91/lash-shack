@@ -1,27 +1,34 @@
 import './ProductDetails.scss';
 import { FormEvent, useEffect, useMemo, useState } from 'react'
-import { ArrowMotionButton, Form_RadioOptionGroup, LoadingSpinner, MotionButton, PageWrapper, SelectDropdown } from '../../components'
-import { Container, Col, Row } from 'reactstrap';
+import { ArrowMotionButton, Form_RadioOptionGroup, GooglePayBtn, LoadingSpinner, MotionButton, PageWrapper, SelectDropdown } from '../../components'
+import {
+    Container, Col, Row,
+    UncontrolledAccordion,
+    Accordion,
+    AccordionBody,
+    AccordionHeader,
+    AccordionItem
+} from 'reactstrap';
 import { useParams } from 'react-router-dom';
-import ImageBanner from '../../components/UI/ImageBanner/ImageBanner';
-import { clearFormFields, formatCurrency } from '../../res/funcs';
+import { clearFormFields } from '../../res/funcs';
 import { useDispatch } from 'react-redux';
 import { basketActions } from '../../redux/slices/basketSlice';
 import { ProductItem } from '../../types/ProductItem';
 import StarRating from '../../components/StarRating/StarRating';
-import useGetCatalog from '../../hooks/useGetCatalog';
-import { Icon_Star } from '../../res/icons';
+import { Icon_Information, Icon_RoundCheckmark, Icon_Star } from '../../res/icons';
 import { launchTreatwell } from '../../util/util';
-import { CONTACT } from '../../constants/constants';
+import { BOOKING, CONTACT } from '../../constants/constants';
 import { UpcomingDate } from '../../types/UpcomingDate';
 import useGetUsers from '../../hooks/useGetUsers';
+import { showToast } from '../../util/toasts';
+import { formatCurrency } from '../../util/formatCurrency';
+import useGetCatalog from '../../hooks/useGetCatalog';
 
 const ProductDetails = () => {
     const { id } = useParams();
     const dispatch = useDispatch();
-    const { catalog, loading, error } = useGetCatalog();
+    const { getByID } = useGetCatalog();
     const { getAllStaffInRomford, getAllStaffInHackney, getAllStaffInRomfordNames, getAllStaffInHackneyNames } = useGetUsers();
-    const product = catalog?.find(item => item.id === id) as ProductItem;
     type Tab = "Description" | "Reviews" | "Topics Covered" | "Itinerary";
     const [selectedTab, setSelectedTab] = useState<Tab>("Description");
     const [reviewRating, setReviewRating] = useState<number>(0);
@@ -30,9 +37,13 @@ const ProductDetails = () => {
     const [selectedLocation, setSelectedLocation] = useState<string>("")
     const [selectedTabIndex, setSelectedTabIndex] = useState(-1);
     const [selectedCourseDate, setSelectedCourseDate] = useState<UpcomingDate>({} as UpcomingDate);
-    const [selectedTechnician, setSelectedTechnician] = useState("");
+    // const [selectedTechnician, setSelectedTechnician] = useState("");
+    const [termsRead, setTermsRead] = useState<boolean>(false);
 
 
+
+
+    const product = useMemo(() => getByID(id as string), []);
 
     const selectLocTrainingDates = useMemo(() => {
         if (!product || !selectedLocation || !product?.upcomingDates)
@@ -123,18 +134,18 @@ const ProductDetails = () => {
         setSelectedLocation(value);
         setSelectedTabIndex(-1);
         setSelectedCourseDate(selectLocTrainingDates[0]);
-        setSelectedTechnician("");
+        // setSelectedTechnician("");
     };
 
     const onDateChanged = (value: number) => {
         setSelectedTabIndex(value);
         setSelectedCourseDate(selectLocTrainingDates[value]);
-        setSelectedTechnician("");
+        // setSelectedTechnician("");
     }
 
-    const onTechnicianChanged = (value: string) => {
-        setSelectedTechnician(value);
-    }
+    // const onTechnicianChanged = (value: string) => {
+    //     setSelectedTechnician(value);
+    // }
 
 
 
@@ -143,53 +154,77 @@ const ProductDetails = () => {
     // description = description.replace(/\*([^*]+)\*/g , '<i>$1</i>');
     // description = description.replace(/\*\*(.+?)\*\*(?!\*)/g,'<b>$1</b>').replace(/\*([^*><]+)\*/g,'<i>$1</i>');
 
-    function handleFormSubmit(e: FormEvent<EventTarget | HTMLFormElement>) {
-        // We don't want our page to refresh
-        e.preventDefault();
+    // function handleFormSubmit(e: FormEvent<EventTarget | HTMLFormElement>) {
+    //     // We don't want our page to refresh
+    //     e.preventDefault();
 
-        const target = e.target as typeof e.target & {
-            // name property has to match
-            name: { value: string };
-            message: { value: string };
-        };
-        const name = target.name.value;       // typechecks!
-        const message = target.message.value; // typechecks!
-        if (!name || !message || reviewRating === 0) {
-            return;
-        }
+    //     const target = e.target as typeof e.target & {
+    //         // name property has to match
+    //         name: { value: string };
+    //         message: { value: string };
+    //     };
+    //     const name = target.name.value;       // typechecks!
+    //     const message = target.message.value; // typechecks!
+    //     if (!name || !message || reviewRating === 0) {
+    //         return;
+    //     }
 
-        const newReview = {
-            name,
-            rating: reviewRating,
-            message,
-            date: new Date().toLocaleDateString('en-GB')
-        };
-        reviews.unshift(newReview);
+    //     const newReview = {
+    //         name,
+    //         rating: reviewRating,
+    //         message,
+    //         date: new Date().toLocaleDateString('en-GB')
+    //     };
+    //     reviews.unshift(newReview);
 
-        setReviewRating(0);
-        clearFormFields();
-    }
+    //     setReviewRating(0);
+    //     clearFormFields();
+    // }
 
-    function addToBasket() {
-        dispatch(basketActions.addToBasket({
-            id, title, imgUrl, price
-        }));
-    }
+    // function addToBasket() {
+    //     dispatch(basketActions.addToBasket({
+    //         id, title, imgUrl, price
+    //     }));
+    // }
 
-    function avgRatings() {
-        if (reviews?.length === 0)
-            return 0;
+    // function avgRatings() {
+    //     if (reviews?.length === 0)
+    //         return 0;
 
-        let sum = reviews.reduce<number>((total, item) => {
-            return total + item.rating;
-        }, 0);
-        return Number((sum / reviews?.length).toFixed(2));
+    //     let sum = reviews.reduce<number>((total, item) => {
+    //         return total + item.rating;
+    //     }, 0);
+    //     return Number((sum / reviews?.length).toFixed(2));
+    // }
+
+    function canPay() {
+        return !(
+                !termsRead
+            ||  selectLocTrainingDates?.length > 0
+            ? (
+                !selectedLocation
+                || selectedTabIndex === -1
+                || selectedCourseDate !== null && selectedCourseDate?.maxCapacity - selectedCourseDate?.capacity === 0
+
+            ) : (
+                !selectedLocation
+            )
+        );
+
+        // return !(
+        //     termsRead && selectLocTrainingDates?.length > 0 ? (
+        //         !selectedLocation
+        //         || selectedTabIndex == -1
+        //         || selectedCourseDate !== null && selectedCourseDate?.maxCapacity - selectedCourseDate?.capacity == 0
+
+        //     ) : (
+        //         // !selectedLocation
+        //     )
+        // )
     }
 
     return (
         <PageWrapper title={title}>
-            {/* <ImageBanner title={title} /> */}
-
             <section className='productDetails__section pt-0'>
                 <Container>
                     <Row>
@@ -226,7 +261,7 @@ const ProductDetails = () => {
 
                                 <span className='product__price'>{formatCurrency(price)}</span>
                                 {/* <p className='mt-3'>{shortDesc}</p> */}
-                                <p />
+                                {/* <p /> */}
 
                                 {category === "Courses" ? (
                                     <div className='product__upcoming-dates animation_slideUp'>
@@ -252,12 +287,12 @@ const ProductDetails = () => {
                                                     onChange={onDateChanged}
                                                 />
 
-                                                {selectedTabIndex != -1 && (
-                                                    <div className='text-center mt-3'>
-                                                        {selectedCourseDate && selectedCourseDate?.maxCapacity - selectedCourseDate?.capacity == 0 ? (
-                                                            <h4>Sold Out!</h4>
+                                                {selectedTabIndex !== -1 && (
+                                                    <div className='text-center mt-3 animation_slideUp'>
+                                                        {selectedCourseDate && selectedCourseDate?.maxCapacity - selectedCourseDate?.capacity === 0 ? (
+                                                            <h4 className="text-danger">Sold Out!</h4>
                                                         ) : (
-                                                            selectedCourseDate && selectedCourseDate?.maxCapacity - selectedCourseDate?.capacity == 1 ? (
+                                                            selectedCourseDate && selectedCourseDate?.maxCapacity - selectedCourseDate?.capacity === 1 ? (
                                                                 <h4 className="text-danger animation_blinker">ONLY 1 AVAILABLE! BE QUICK</h4>
                                                             ) : (
                                                                 <h4>Only {selectedCourseDate && selectedCourseDate?.maxCapacity - selectedCourseDate?.capacity} space(s) left</h4>
@@ -305,21 +340,87 @@ const ProductDetails = () => {
                                     Add To Basket
                                 </ArrowMotionButton> */}
 
+
+                                {/* <div className='terms bg-light w-100 p-2'>
+                                    <button className='button' onClick={() => setTermsRead(true)}>
+                                        {!termsRead ?
+                                            <Icon_Information className='animation_fadeIn' style={{ color: 'red' }} />
+                                            :
+                                            <Icon_RoundCheckmark className='animation_fadeIn' style={{ color: 'green' }} />
+                                        }
+                                        <span className='animation_fadeIn'> Please Read Terms & Conditions</span>
+                                    </button>
+                                </div> */}
+
+
+                                {/* <span className='animation_fadeIn'> Please Read Terms & Conditions</span>
+                                <div className="termsWrapper bg-light"> */}
+                                {/* Please Read Terms & Conditions */}
+                                {/* <span className='bg-light animation_fadeIn'> Please Read Terms & Conditions</span> */}
+                                {/* <div>
+                                        <p className='new-line'>{BOOKING.TERMS}.</p>
+                                    </div>
+                                </div> */}
+
+
+
+
+                                {category === "Courses" ? (
+                                    !termsRead && (
+                                        <UncontrolledAccordion defaultOpen="0" className='animation_fadeIn'>
+                                            <AccordionItem>
+                                                <AccordionHeader targetId="1">
+                                                    <Icon_Information className='animation_fadeIn' style={{ color: 'red', width: '15px', height: '15px', marginRight: '5px' }} />
+                                                    <strong>Please Read Now!</strong>
+                                                </AccordionHeader>
+                                                <AccordionBody accordionId="1">
+                                                    {BOOKING.TERMS}
+
+                                                    <MotionButton className='buy__button w-100' onClick={() => setTermsRead(true)}>
+                                                        I Understand
+                                                    </MotionButton>
+                                                </AccordionBody>
+                                            </AccordionItem>
+                                        </UncontrolledAccordion>
+                                    )
+                                ) : (
+                                    <></>
+                                )}
+
+
+
                                 {/* {category === "Courses" ? ( */}
                                 <ArrowMotionButton className='buy__button w-100'
-                                    disabled={
-                                        selectLocTrainingDates?.length > 0 ? (
-                                            !selectedLocation
-                                            || selectedTabIndex == -1
-                                            || selectedCourseDate !== null && selectedCourseDate?.maxCapacity - selectedCourseDate?.capacity == 0
-                                        ) : (
-                                            !selectedLocation
-                                        )
-                                    }
+                                    disabled={!canPay()}
                                     onClick={() => launchTreatwell(selectedLocation)}
                                 >
                                     Book Now
                                 </ArrowMotionButton>
+
+                                <p className='app_text__headingWithLine mt-4 mb-4'><span className='fw-bold'>OR PAY WITH</span></p>
+
+                                <div className='d-flex flex-row gap-2 p-2 rounded bg-light'>
+                                    <GooglePayBtn
+                                        isTesting={false}
+                                        disabled={!canPay()}
+                                        amount={BOOKING.DEPOSIT_FEE}
+                                        buttonType='book'
+                                        onSuccess={(paymentRequest: google.payments.api.PaymentData) =>
+                                            // console.log('load payment data', paymentRequest)
+                                            showToast("Thanks For Purchasing 💋", "Checkout purchase")
+                                        }
+                                        onError={error => alert("onError: " + JSON.stringify(error, null, 2))}
+                                        onCancelled={error =>
+                                            // alert("onCancelled: " + JSON.stringify(error, null, 2))
+                                            showToast("Purchase Cancelled 😞", "Purchase cancelled")
+                                        }
+                                    />
+                                </div>
+
+
+                                {/* <h6 className='m-2 text-muted'>*A £50 deposit is required now. The remaining balance will be paid upon immediate arrival.</h6> */}
+
+
                                 {/* ) : (
                                     <ArrowMotionButton className='buy__button w-100' onClick={() => launchTreatwell('Romford')}>
                                         View Service

@@ -1,6 +1,6 @@
 // https://codepen.io/chriiss/pen/GRdgzdg
 import './Parallax.scss';
-import React, { ReactNode } from 'react'
+import { ReactNode } from 'react'
 
 export interface ParallaxProps {
   className?: string;
@@ -13,8 +13,12 @@ const Parallax = ({ className, id, backgroundUrl, blurAmount = 0, children }: Pa
 
   return (
     <div className={`parallax-container ${className}`} id={id} >
-      <div className="overlay" style={{ backdropFilter: `blur(${blurAmount}px)` }}/>
-      <section className="section-background" style={{ backgroundImage: `url(${backgroundUrl})` }}>
+      <div className="overlay"// style={{ backdropFilter: `blur(${blurAmount}px)` }}
+      />
+      <section
+        className="section-background"
+        style={{ backgroundImage: `url(${backgroundUrl})` }}
+      >
         {children}
       </section>
     </div>

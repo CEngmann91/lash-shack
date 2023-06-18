@@ -25,21 +25,8 @@ type FeatureRowProps = {
 const FeatureRow = ({ id, className, leftChildren, rightChildren }: FeatureRowProps) => {
 
     return (
-        <motion.div
+        <div
             className={`container row-card w-100" ${className}`}
-            variants={variants}
-            initial="hidden"
-            viewport={{ once: true }}
-            whileInView={{
-                opacity: 1,
-                y: 0,
-                transition: {
-                    duration: 0.5,
-                    delay: 0.2,
-                    // delay: 1 + id * 0.2,
-                    ease: 'easeIn'
-                }
-            }}
         >
             <div className="row bg-gray-950 d-flex">
             <div className={`col-lg-6 ${id % 2 === 0 ? "pink" : null}`}>
@@ -51,7 +38,7 @@ const FeatureRow = ({ id, className, leftChildren, rightChildren }: FeatureRowPr
                     </div>
                 </div>
             </div>
-        </motion.div>
+        </div>
 
 
 

@@ -18,16 +18,17 @@ const FindUs = () => {
 
     useEffect(() => {
         interval = setInterval(() => {
-
-            const { from, to, closed } = todayHours;
-
-            if (closed)
-                setIsOpen(false);
-            else {
-                const start = timeConversion(`0${from.padStart(2, '0').slice(0, -2)}:00am`);
-                const finish = timeConversion(`0${to.padStart(2, '0').slice(0, -2)}:00pm`);
-                const within = currentTimeIsBetweenTimes(start, finish);
-                setIsOpen(within)
+            if (todayHours) {
+                const { from, to, closed } = todayHours;
+    
+                if (closed)
+                    setIsOpen(false);
+                else {
+                    const start = timeConversion(`0${from.padStart(2, '0').slice(0, -2)}:00am`);
+                    const finish = timeConversion(`0${to.padStart(2, '0').slice(0, -2)}:00pm`);
+                    const within = currentTimeIsBetweenTimes(start, finish);
+                    setIsOpen(within)
+                }
             }
         }, 1000)
 
@@ -85,6 +86,14 @@ const FindUs = () => {
                         {renderSchedule()}
 
                         <label className={`openLabel text__neon-pink ${isOpen && 'animation_blinker'}`} data-open={`${isOpen}`}>{isOpen ? 'We Are Open!' : 'We are now CLOSED'}</label>
+
+
+                        {/* <div className="neon">
+                            <span className="text" data-text={isOpen ? 'We Are Open!' : 'We are now CLOSED'}>{isOpen ? 'We Are Open!' : 'We are now CLOSED'}</span>
+                            <span className="gradient"></span>
+                            <span className="spotlight"></span>
+                        </div> */}
+
                     </div>
                 </div>
             </div>

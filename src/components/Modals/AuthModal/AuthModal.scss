@@ -1,12 +1,11 @@
-@import '../../res/colours.scss';
-@import '../../res/mixin.scss';
+@import '../../../res/colours.scss';
+@import '../../../res/mixin.scss';
 
 // https://codepen.io/danzawadzki/pen/EgqKRr
 #authModal {
     position: fixed;
     inset: 0;
     z-index: 5;
-
     display: flex;
     align-items: center;
     flex-direction: column;

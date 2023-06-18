@@ -3,11 +3,11 @@ import { RootState } from '../../redux/store';
 import { useSelector as useReduxSelector } from 'react-redux';
 import { Col, Container, Row } from 'reactstrap';
 import { ArrowMotionButton, ImageBanner, MotionButton, PageWrapper } from '../../components'
-import { formatCurrency } from '../../res/funcs';
 import { Icon_Minus, Icon_Plus, Icon_Trash } from '../../res/icons';
 import { useNavigate } from 'react-router-dom';
 import { useBasketActions } from '../../redux/hooks/useBasketActions';
 import useGetUsers from '../../hooks/useGetUsers';
+import { formatCurrency } from '../../util/formatCurrency';
 
 const Basket = () => {
   const navigate = useNavigate();
@@ -16,6 +16,8 @@ const Basket = () => {
   const firstName = useReduxSelector((state: RootState) => state.userAccount.user.firstName);
   const basketItems = useReduxSelector((state: RootState) => state.basket.basketItems);
   const totalAmount = useReduxSelector((state: RootState) => state.basket.totalAmount);
+
+
 
 
   return (
@@ -32,7 +34,7 @@ const Basket = () => {
                 :
                 <h2 className='text-center'>No Lashes here {firstName}, add some to the basket?</h2>
               }
-              <ArrowMotionButton className='buy-button w-15 mt-4' onClick={() => navigate("/shop")}>
+              <ArrowMotionButton className='buy-button w-15 mt-4' onClick={() => navigate("/services")}>
                 Shop Now
               </ArrowMotionButton>
             </div>
@@ -94,7 +96,7 @@ const Basket = () => {
                         <select name="technicians">
                           <option value="select">Please Select</option>
                           {getAllMembersOfLashShack?.map(({ uid, firstName, lastName }, key) =>
-                          // {getAllStaff?.map(({ uid, firstName, lastName }, key) =>
+                            // {getAllStaff?.map(({ uid, firstName, lastName }, key) =>
                             <option key={key} value={uid}>{firstName} {lastName}</option>
                           )}
                         </select>
@@ -120,6 +122,7 @@ const Basket = () => {
                         Clear All
                       </MotionButton>
                     </div>
+
 
                     <MotionButton className='buy-button w-100 mt-2' disabled={true} onClick={() => navigate("/checkout")}>
                       Checkout

@@ -8,9 +8,9 @@ import { PurchaseOrder } from '../../../types/PurchaseOrder'
 import { Col, Container, Row } from 'reactstrap';
 import useGetOrders from '../../../hooks/useGetOrders';
 import { useDate } from '../../../hooks/useDate';
-import { formatCurrency } from '../../../res/funcs';
 import DataTable from 'react-data-table-component';
 import { PurchaseOrderItem } from '../../../types/PurchaseOrderItem';
+import { formatCurrency } from '../../../util/formatCurrency';
 
 
 const admin_columns = [

@@ -6,11 +6,11 @@ import useGetCourses from '../../hooks/useGetCourses';
 import useGetServices from '../../hooks/useGetServices';
 import useGetOrders from '../../hooks/useGetOrders';
 import { useSelector as useReduxSelector } from 'react-redux';
-import { formatCurrency } from '../../res/funcs';
 import { RootState } from '../../redux/store';
 import { useDate } from '../../hooks/useDate';
 import { useEffect } from 'react';
 import { Icon_ArrowDown, Icon_ArrowUp } from '../../res/icons';
+import { formatCurrency } from '../../util/formatCurrency';
 
 const Dashboard = () => {
     const { getRelativeTimeString, fullDateUK } = useDate();

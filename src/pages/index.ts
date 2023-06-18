@@ -6,8 +6,6 @@ export { default as MeetExperts } from './MeetExperts/MeetExperts';
 export { default as Testimonials } from './Testimonials/Testimonials';
 
 export { default as Courses } from './Courses/Courses';
-export { default as Expectations } from './Expectation/Expectations';
-export { default as Certificate } from './Certificate/Certificate';
 
 export { default as Gallery } from './Gallery/Gallery';
 export { default as Contact } from './Contact/Contact';

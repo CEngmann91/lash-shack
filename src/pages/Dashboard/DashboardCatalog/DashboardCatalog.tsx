@@ -12,9 +12,9 @@ import { Category } from '../../../types/Category';
 import { ServiceCategory } from '../../../types/ServiceCategory';
 import { useNavigate } from 'react-router-dom';
 import { Icon_Email, Icon_Pencil, Icon_Plus, Icon_Trash } from '../../../res/icons';
-import { formatCurrency } from '../../../res/funcs';
 import SectionContainerWrapper from '../../../components/SectionContainerWrapper/SectionContainerWrapper';
 import { toHoursMins } from '../../../util/util';
+import { formatCurrency } from '../../../util/formatCurrency';
 
 const DashboardCatalog = () => {
     const navigate = useNavigate();

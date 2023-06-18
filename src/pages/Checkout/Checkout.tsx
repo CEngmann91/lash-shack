@@ -1,16 +1,20 @@
 import './Checkout.scss';
 import { FormEvent, useState } from 'react'
-import { ImageBanner, InputField, MotionButton, PageWrapper } from '../../components'
+import { GooglePayBtn, ImageBanner, InputField, MotionButton, PageWrapper } from '../../components'
 import { Col, Container, Row, Form, FormGroup } from 'reactstrap';
 import { useSelector as useReduxSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
-import { clearFormFields, formatCurrency } from '../../res/funcs';
+import { clearFormFields } from '../../res/funcs';
 import { useNavigate } from 'react-router-dom';
 import { useUserActions } from '../../redux/hooks/useUserActions';
 import { addOrder } from '../../firebase/firebaseHelper';
 import { PurchaseOrder } from '../../types/PurchaseOrder';
 import { PurchaseOrderItem } from '../../types/PurchaseOrderItem';
 import { useBasketActions } from '../../redux/hooks/useBasketActions';
+import GooglePayButton from "@google-pay/button-react";
+import { GPayItem } from '../../components/Payments/GooglePayBtn/GooglePayBtn';
+import { showToast } from '../../util/toasts';
+import { formatCurrency } from '../../util/formatCurrency';
 
 const Checkout = () => {
   const navigate = useNavigate();
@@ -128,14 +132,54 @@ const Checkout = () => {
     e.preventDefault();
   }
 
+
+
   return (
     <PageWrapper title="Checkout">
       <ImageBanner title={'Checkout'} />
 
-      <section>
+      <section className='checkout__section'>
         <Container>
           <Row>
             <Col lg='8'>
+              <div className='fastPayment mb-4'>
+                <h3 className='mb-3 fw-bold'>Pay With</h3>
+                <GooglePayBtn
+                  isTesting={false}
+                  amount={totalAmount}
+                  items={[{
+                    label: 'Subtotal',
+                    type: 'SUBTOTAL',
+                    price: '11.00',
+                  },
+                  {
+                    label: 'Tax',
+                    type: 'TAX',
+                    price: '1.00',
+                  },
+                  {
+                    label: 'Shipping',
+                    type: 'LINE_ITEM',
+                    price: '0',
+                    status: 'PENDING',
+                  }] as GPayItem[]}
+                  onSuccess={(paymentRequest: google.payments.api.PaymentData) => 
+                    // console.log('load payment data', paymentRequest)
+                    showToast("Thanks For Purchasing 💋", "Checkout purchase")
+                  }
+                  onError={error => alert("onError: " + JSON.stringify(error, null, 2))}
+                  onCancelled={error => 
+                    // alert("onCancelled: " + JSON.stringify(error, null, 2))
+                    showToast("Purchase Cancelled 😞", "Purchase cancelled")
+                  }
+                  
+                />
+              </div>
+
+
+              <p className='app_text__headingWithLine'><span className='fw-bold'>OR</span></p>
+              {/* <h6 className='headingLine mb-3 fw-bold'>Or</h6> */}
+
               <div className='mb-4'>
                 <h3 className='mb-3 fw-bold'>Payment Info</h3>
 

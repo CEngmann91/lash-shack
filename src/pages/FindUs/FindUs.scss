@@ -2,6 +2,73 @@
 @import '../../res/mixin.scss';
 
 .location__banner {
+    // .neon {
+    //     position: relative;
+    //     overflow: hidden;
+    //     filter: brightness(200%);
+    //     mix-blend-mode: lighten;
+    //     /* here */
+    // }
+
+    // .text {
+    //     background-color: black;
+    //     color: white;
+    //     font-size: 22px;
+    //     font-weight: bold;
+    //     font-family: sans-serif;
+    //     text-transform: uppercase;
+    //     position: relative;
+    //     user-select: none;
+
+    //     &::before {
+    //         content: attr(data-text);
+    //         position: absolute;
+    //         color: white;
+    //         filter: blur(0.02em);
+    //         mix-blend-mode: difference;
+    //     }
+    // }
+
+    // .gradient {
+    //     position: absolute;
+    //     background: linear-gradient(45deg, #00f7ff, #f545d7, #0085ff, #6945f5, #005aff);
+    //     top: 0;
+    //     left: 0;
+    //     right: 0;
+    //     bottom: 0;
+    //     mix-blend-mode: multiply;
+    // }
+
+    // .spotlight {
+    //     position: absolute;
+    //     top: -100%;
+    //     left: -100%;
+    //     right: 0;
+    //     bottom: 0;
+    //     background: radial-gradient(circle, white, transparent 25%) center / 25% 25%, radial-gradient(circle, white, black 25%) center / 12.5% 12.5%;
+    //     animation: light 5s linear infinite;
+    //     mix-blend-mode: color-dodge;
+    // }
+
+    // @keyframes light {
+    //     to {
+    //         transform: translate(50%, 50%);
+    //     }
+    // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     // background: linear-gradient(rgba(0, 0, 0, 0.562), rgba(0, 0, 0, 0.562)),
     //     url("../../assets/images/BannerImage.png") no-repeat center center;
     // background-size: cover;
@@ -47,7 +114,7 @@
         transition: .5s ease-out;
 
         background: rgba(255, 255, 255, 0.45);
-        box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
         @include backdropBlur(13px);
         // border-radius: 10px;
 
@@ -69,22 +136,23 @@
                 &[data-open="true"] {
                     color: white;
                 }
-    
+
                 label {
                     font-size: 0.9rem;
                 }
-    
+
                 .openColour {
                     color: black;
                     font-weight: bolder;
                     text-decoration: underline;
                     text-transform: uppercase;
                 }
+
                 .closedColour {
                     color: red;
                     font-weight: normal;
                 }
-    
+
                 .openLabel {
                     display: flex;
                     justify-content: center;
@@ -92,7 +160,7 @@
                     text-transform: uppercase;
                     font-size: 1.5rem;
                     font-weight: bolder;
-    
+
                     &[data-open="true"] {
                         color: #000;
                     }

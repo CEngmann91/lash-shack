@@ -30,9 +30,9 @@ const Routers = () => {
             {/* <Route path='/shop' element={<Shop />} /> */}
             <Route path='/product/:id' element={<ProductDetails />} />
 
-            {/* <Route path='/checkout' element={<Checkout />} /> */}
+            <Route path='/checkout' element={<Checkout />} />
 
-            {/* <Route path='/basket' element={<Basket />} /> */}
+            <Route path='/basket' element={<Basket />} />
             {/* <Route path='/wishlist' element={<Wishlist />} /> */}
 
             {/* <Route path='/*' element={<AuthRoute />}>

@@ -1,12 +1,12 @@
 import './SignUpForm.scss';
 import { FormEvent } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
-import { InputField, MotionButton } from '../..';
+import { InputField, MotionButton } from '../../..';
 
-import { createAUser } from '../../../firebase/firebaseHelper';
-import { useApplicationActions } from '../../../redux/hooks/useApplicationActions';
-import { useUserActions } from '../../../redux/hooks/useUserActions';
-import { showSignUpSuccessToast, showSignUpUnsuccessToast, showToast } from '../../../util/toasts';
+import { createAUser } from '../../../../firebase/firebaseHelper';
+import { useApplicationActions } from '../../../../redux/hooks/useApplicationActions';
+import { useUserActions } from '../../../../redux/hooks/useUserActions';
+import { showSignUpSuccessToast, showSignUpUnsuccessToast, showToast } from '../../../../util/toasts';
 
 const SignUpForm = () => {
     const navigate = useNavigate();

@@ -5,10 +5,10 @@ import Navbar from '../navbar/Navbar'
 import Footer from '../Footer/Footer'
 import { useApplicationActions } from '../../redux/hooks/useApplicationActions'
 import { DashboardNavbar, DashboardWrapper } from '../Dashboard'
-import AuthModal from '../AuthModal/AuthModal'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { MouseEventHandler } from 'react'
+import { AuthModal, SubscribeModal } from '../Modals'
 
 const Layout = () => {
     const location = useLocation();
@@ -39,6 +39,7 @@ const Layout = () => {
                 <Routers />
                 <Footer />
 
+                {/* <SubscribeModal visible={true} onClose={() => {}} /> */}
                 <AuthModal visible={isShowingAuthModal()} />
                 <ToastContainer />
                 <LoadingScreen visible={isLoading()} />

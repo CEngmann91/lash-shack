@@ -61,7 +61,8 @@
 
 .text__neon-pink {
     color: #FFFFFF;
-    text-shadow: #FFF 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, #FF2D95 0px 0px 20px, #FF2D95 0px 0px 30px, #FF2D95 0px 0px 40px, #FF2D95 0px 0px 50px, #FF2D95 0px 0px 75px;
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+    // text-shadow: #FFF 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, #FF2D95 0px 0px 20px, #FF2D95 0px 0px 30px, #FF2D95 0px 0px 40px, #FF2D95 0px 0px 50px, #FF2D95 0px 0px 75px;
 }
 
 .app__hover-with-shadow {
@@ -70,6 +71,19 @@
     &:hover {
         box-shadow: 0 0.5em 0.5em -0.4em $green-shade-colour;
         transform: translateY(-0.25em);
+    }
+}
+
+.app_text__headingWithLine {
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid #000;
+    line-height: 0.1em;
+    margin: 10px 0 20px;
+
+    span { 
+        background:#fff; 
+        padding:0 10px; 
     }
 }
 

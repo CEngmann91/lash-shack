@@ -8,6 +8,7 @@ strong {
 
 .productDetails__section {
 
+
     .product__details {
         margin-top: 30px;
 
@@ -71,6 +72,39 @@ strong {
             &-title {
                 font-size: 1.1rem;
                 font-weight: 500;
+            }
+        }
+    }
+
+    .termsWrapper {
+        // margin: 1rem;
+        padding: 1rem;
+        // border-radius: 20px;
+        background: red;
+
+        display: grid;
+        grid-template-rows: 0fr;
+        transition: grid-template-rows 0.5s ease-out;
+
+        &:hover {
+            grid-template-rows: 1fr;
+        }
+
+        & > div {
+            overflow: hidden;
+        }
+    }
+
+    .terms {
+        display: flex;
+        justify-content: center;
+
+        .button {
+            // display: block;
+    
+            svg {
+                width: 15px;
+                height: 15px;
             }
         }
     }

@@ -1,0 +1,21 @@
+.carousel {
+    
+    .swiper-slide {
+        pointer-events: none;
+        width: 20rem !important;
+        height: 27rem !important;
+        border-radius: 15px !important;
+    }
+    
+    // .swiper-gradient {
+    //     position: absolute;
+    //     top: 0;
+    //     left: 0;
+    //     height: 100%;
+    //     width: 100%;
+    //     background: linear-gradient(to right, white, transparent, transparent, transparent, transparent, white);
+    //     color: white;
+    //     z-index: 1;
+    //     pointer-events: none;
+    // }
+}

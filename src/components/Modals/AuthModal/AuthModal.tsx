@@ -1,10 +1,10 @@
 import './AuthModal.scss';
 import { useEffect, useState } from 'react'
-import InputField from '../Form/Input/InputField';
-import { Checkbox, Form_RadioOptionGroup, MotionButton } from '..';
-import images from '../../res/images';
-import { useScrollLock } from '../../hooks/useScrollLock';
-import { useApplicationActions } from '../../redux/hooks/useApplicationActions';
+import InputField from '../../Form/Input/InputField';
+import { Checkbox, Form_RadioOptionGroup, MotionButton } from '../..';
+import images from '../../../res/images';
+import { useScrollLock } from '../../../hooks/useScrollLock';
+import { useApplicationActions } from '../../../redux/hooks/useApplicationActions';
 import LoginForm from './LoginForm/LoginForm';
 import SignUpForm from './SignUpForm/SignUpForm';
 import ForgotPasswordForm from './ForgotPasswordForm/ForgotPasswordForm';
@@ -28,7 +28,6 @@ const AuthModal = ({ visible }: LoadingScreenProps) => {
             lockScroll();
         setSelectedTabIndex(0);
     }, [visible])
-
 
 
     if (!visible) {

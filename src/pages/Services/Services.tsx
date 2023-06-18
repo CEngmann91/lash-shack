@@ -1,12 +1,10 @@
 import './Services.scss'
-import { ArrowMotionButton, Form_RadioOptionGroup, ImageBanner, LoadingSpinner, PageWrapper, ProductList } from '../../components'
-import { Container, Row } from 'reactstrap'
+import { ArrowMotionButton, Form_RadioOptionGroup, ImageBanner, LoadingSpinner, PageWrapper } from '../../components'
 import useGetServices from '../../hooks/useGetServices'
 import { useState } from 'react'
-import { formatCurrency } from '../../res/funcs'
 import { ProductItem } from '../../types/ProductItem'
-import { Icon_Plane } from '../../res/icons'
 import { launchTreatwell, scrollToTop, toHoursMins } from '../../util/util'
+import { formatCurrency } from '../../util/formatCurrency'
 
 const Services = () => {
     const {
@@ -17,7 +15,6 @@ const Services = () => {
         // getAllLips,
         // getAllSMPU,
         loadingServices,
-        servicesError
     } = useGetServices();
 
     const tabs = ['Full Set Extensions', 'Eyelash Extensions Infills', 'Eyebrows',];
@@ -27,11 +24,11 @@ const Services = () => {
 
     const renderTable = (index: number) => {
         let list: ProductItem[] = [];
-        if (index == 0)
+        if (index === 0)
             list = getAllFullSetExtensions;
-        else if (index == 1)
+        else if (index === 1)
             list = getAllExtensionInfills;
-        else if (index == 2)
+        else if (index === 2)
             list = getAllEyebrows;
 
         return (

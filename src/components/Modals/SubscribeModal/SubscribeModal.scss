@@ -1,0 +1,134 @@
+@import '../../../res/mixin.scss';
+@import '../../../res/colours.scss';
+
+.subscribe-container {
+    position: fixed;
+    inset: 0;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.6);
+    @include blur(4px);
+
+
+    #formContent {
+        border-radius: 10px 10px 10px 10px;
+        background: #fff;
+        // padding: 30px;
+        width: 100%;
+        max-width: 550px;
+        position: relative;
+        padding: 30px;
+        -webkit-box-shadow: 0 30px 60px 0 rgba($pink-new-colour, 0);
+        box-shadow: 0 30px 60px 0 rgba($pink-new-colour, 0);
+        text-align: center;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        pointer-events: all;
+
+
+        .heading {
+            margin-bottom: 20px;
+        }
+
+        .subheading {
+            font-size: 0.9rem;
+            color: gray;
+            word-wrap: pre;
+            margin-bottom: 20px;
+        }
+
+        #subscribe {
+            margin: 0;
+            font-size: 14px;
+            width: 100%;
+
+            input#subscriber-email {
+                outline: none;
+                padding: 8px;
+                background: white;
+                border: 1px solid $pink-dark-colour;
+                color: $green-shade-colour;
+                border-radius: 4px 0px 0px 4px;
+                width: 70%;
+                transition: 0.3s ease-out;
+
+                &::-webkit-input-placeholder {
+                    color: $green-shade-colour;
+                }
+
+                &:-ms-input-placeholder {
+                    color: $green-shade-colour;
+                }
+
+                &::-ms-input-placeholder {
+                    color: $green-shade-colour;
+                }
+
+                &::placeholder {
+                    color: $green-shade-colour;
+                }
+
+                // &:not(:invalid), &:focus {
+                //     transition: 0.3s ease-out;
+
+                //     #btn-scribe {
+                //         opacity: 0.5;
+                //     }
+                // }
+            }
+
+            #btn-scribe {
+                margin-left: -4px;
+                border: 1px solid $pink-dark-colour;
+                border-radius: 0px 4px 4px 0;
+                padding: 8px 5px;
+                background: $pink-dark-colour;
+                color: #fff;
+                cursor: pointer;
+                transition: 0.3s ease-out;
+            }
+
+            &:hover {
+
+                input#subscriber-email {
+                    border: 1px solid darken($pink-dark-colour, 20%);
+                }
+
+                #btn-scribe {
+                    background: darken($pink-dark-colour, 20%);
+                }
+            }
+        }
+
+
+        .close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 1.3rem;
+            height: 1.3rem;
+            background: transparent;
+            z-index: 2;
+            transition: 0.3s ease-out;
+    
+            svg {
+                color: $pink-new-colour;
+                transition: 0.3s ease-out;
+            }
+    
+            &:hover {
+                cursor: pointer;
+                transform: scale(1.1);
+
+                svg {
+                    color: $pink-dark-colour;
+                }
+            }
+        }
+    }
+}

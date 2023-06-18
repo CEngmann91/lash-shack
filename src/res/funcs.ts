@@ -37,18 +37,6 @@ export function joinClasses(classes: any[]) {
 
 
 
-
-
-const CURRENCY_FORMATTER = new Intl.NumberFormat(undefined, {
-    currency: "GBP",
-    style: "currency",
-    maximumSignificantDigits: 3
-})
-export function formatCurrency(number: number) {
-    return CURRENCY_FORMATTER.format(number)
-}
-
-
 export function calculateDaysFromTodayString(date_format: string): number {
 
     const splitDate = date_format.split('/');
@@ -98,7 +86,7 @@ export function timeConversion(s: string) {
     let hour = s.slice(0, 2)
     let toD = s.slice(-2)
 
-    if (toD.toUpperCase() === 'AM' && +hour == 12) {
+    if (toD.toUpperCase() === 'AM' && +hour === 12) {
         time = `00${s.slice(2, s.length -2)}`
     } else {
         if (toD.toUpperCase() === 'PM' && +hour < 12) {

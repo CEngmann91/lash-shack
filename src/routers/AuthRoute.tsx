@@ -1,6 +1,6 @@
 import { Navigate, Outlet } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth'
-import AuthModal from '../components/AuthModal/AuthModal';
+import AuthModal from '../components/Modals/AuthModal/AuthModal';
 import { useApplicationActions } from '../redux/hooks/useApplicationActions';
 
 const AuthRoute = () => {

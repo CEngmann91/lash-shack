@@ -1,12 +1,11 @@
 import './LoginForm.scss';
-import { Dispatch, FormEvent, useState } from 'react';
-import { InputField, MotionButton } from '../..'
-import ForgotPasswordForm from '../ForgotPasswordForm/ForgotPasswordForm';
+import { FormEvent } from 'react';
+import { InputField, MotionButton } from '../../..'
 
-import { signIntoUserAccount, signUserOut, updateUserDisplayName } from '../../../firebase/firebaseHelper';
-import { useUserActions } from '../../../redux/hooks/useUserActions';
-import { useApplicationActions } from '../../../redux/hooks/useApplicationActions';
-import { showAccountInactiveToast, showLoggedInToast } from '../../../util/toasts';
+import { signIntoUserAccount, signUserOut } from '../../../../firebase/firebaseHelper';
+import { useUserActions } from '../../../../redux/hooks/useUserActions';
+import { useApplicationActions } from '../../../../redux/hooks/useApplicationActions';
+import { showAccountInactiveToast, showLoggedInToast } from '../../../../util/toasts';
 
 type LoginFormProps = {
     onForgotPassword: () => void;
@@ -41,7 +40,8 @@ const LoginForm = ({ onForgotPassword }: LoginFormProps) => {
     const login = async (email: string, password: string) => {
         const signInReq = await signIntoUserAccount(email, password)
         if (signInReq) {
-            if (!signInReq.active) {
+            const { active, account, firstName, lastName, displayName, photoURL } = signInReq;
+            if (!active) {
                 // alert(signInReq.email + " is not active");
                 showAccountInactiveToast();
                 await signUserOut(signInReq);
@@ -51,13 +51,13 @@ const LoginForm = ({ onForgotPassword }: LoginFormProps) => {
 
             // console.log(signInReq);
             setAsActive(true);
-            setAccountType(signInReq.account);
-            setFullName(signInReq.firstName, signInReq.lastName);
-            setProfile(signInReq.displayName, signInReq.photoURL);
+            setAccountType(account);
+            setFullName(firstName, lastName);
+            setProfile(displayName, photoURL);
 
             setAsNotLoading();
 
-            showLoggedInToast(signInReq.firstName);
+            showLoggedInToast(firstName);
 
             toggleAuthModal();
         }

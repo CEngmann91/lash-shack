@@ -3,7 +3,6 @@ import { Container, Row, Col } from 'reactstrap'
 import { LoadingSpinner, PageWrapper, ProductList } from '../../components'
 import ImageBanner from '../../components/UI/ImageBanner/ImageBanner';
 import useGetCourses from '../../hooks/useGetCourses';
-import { Certificate, Expectations } from '..';
 
 const Courses = () => {
     const { courses, loadingCourses, coursesError } = useGetCourses();
@@ -25,10 +24,7 @@ const Courses = () => {
                                 <>
                                     {/* <p>Train directly with our Expert and Founder Emma and become an Expert Eyelash Technician in no time!
                                         All Courses require a £50 deposit now, the remaining balance will be requested upon arrival.</p>
-
-                                    <Expectations />
-
-                                    <Certificate /> */}
+                                    */}
 
 
                                     <ProductList items={courses} />

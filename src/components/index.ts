@@ -22,9 +22,15 @@ export { default as FeatureRow } from './UI/FeatureRow/FeatureRow';
 export { default as ImageBanner } from './UI/ImageBanner/ImageBanner';
 export { default as SkeletonImage } from './UI/SkeletonImage/SkeletonImage';
 export { default as CircleProgressBar } from './UI/CircleProgressBar/CircleProgressBar';
+export { default as SwiperCarousel } from './UI/SwiperCarousel/SwiperCarousel';
 export { default as Ribbon } from './UI/Ribbon/Ribbon';
-export { default as Breadcrumbs } from './UI/Breadcrumbs/Breadcrumbs';
+export { default as Dots } from './UI/Dots/Dots';
 export { default as TextReflection } from './TextReflection/TextReflection';
+
+
+// Pay
+export { default as GooglePayBtn } from './Payments/GooglePayBtn/GooglePayBtn';
+
 
 // Form
 export { default as Checkbox } from './Form/Checkbox/Checkbox';

@@ -28,7 +28,7 @@ const Wishlist = () => {
                                                 `${firstName}, blow ` : `Blow `}
                                             a lash and make a wish.</h2>
                                     </>
-                                    <ArrowMotionButton className='buy-button w-15 mt-4' onClick={() => navigate("/shop")}>
+                                    <ArrowMotionButton className='buy-button w-15 mt-4' onClick={() => navigate("/services")}>
                                         Shop Now
                                     </ArrowMotionButton>
                                 </div>

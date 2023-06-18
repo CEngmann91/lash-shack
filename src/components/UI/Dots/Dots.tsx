@@ -1,18 +1,18 @@
-import './Breadcrumbs.scss';
+import './Dots.scss';
 import React from 'react'
 
-type BreadcrumbsProps = {
+type DotsProps = {
     array: any[];
     index: number;
     onChange: (value : number) => void;
 }
-const Breadcrumbs = ({ array, index, onChange }: BreadcrumbsProps) => {
+const Dots = ({ array, index, onChange }: DotsProps) => {
 
     if (array && array.length < 2)
         return null;
 
     return (
-        <div className='breadcrumbs-container'>
+        <div className='dots-container'>
             {array.map((data, key) => {
                 const isActive = key === index;
 
@@ -28,4 +28,4 @@ const Breadcrumbs = ({ array, index, onChange }: BreadcrumbsProps) => {
     )
 }
 
-export default Breadcrumbs
+export default Dots

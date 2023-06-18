@@ -13,10 +13,10 @@ import { useEffect, useState } from 'react'
 import { ImageBanner, LoadingSpinner, PageWrapper, SkeletonImage } from '../../components'
 import { getAllDownloadURLRef } from '../../firebase/firebaseHelper';
 import GalleryCard from "./GalleryCard/GalleryCard";
-import GalleryViewerModal from "./GalleryViewerModal/GalleryViewerModal";
 import { useScrollLock } from "../../hooks/useScrollLock";
 import { motion } from "framer-motion";
 import { GalleryCardClass } from "../../types/GalleryCardClass";
+import { GalleryViewerModal } from "../../components/Modals";
 
 const variants = {
     // visible: {

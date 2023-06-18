@@ -1,15 +1,12 @@
-// NO LONGER NEEDED!!
-
-
 import './ForgotPasswordForm.scss';
 import { FormEvent } from 'react';
-import { InputField, MotionButton } from '../..'
+import { InputField, MotionButton } from '../../..'
 
-import { useUserActions } from '../../../redux/hooks/useUserActions';
-import { useApplicationActions } from '../../../redux/hooks/useApplicationActions';
-import { passwordResetEmail } from '../../../firebase/firebaseHelper';
-import { showToast } from '../../../util/toasts';
-import { showError } from '../../../util/toasts';
+import { useUserActions } from '../../../../redux/hooks/useUserActions';
+import { useApplicationActions } from '../../../../redux/hooks/useApplicationActions';
+import { passwordResetEmail } from '../../../../firebase/firebaseHelper';
+import { showToast } from '../../../../util/toasts';
+import { showError } from '../../../../util/toasts';
 
 type ForgotPasswordFormProps = {
     onCancel: () => void;

@@ -4,7 +4,7 @@ import { BsFillBasketFill, BsStarFill, BsTrash, BsBellFill, BsCalendarCheck, BsP
 import { FaHeart, FaFileInvoiceDollar, FaQuoteRight, FaChessPawn, FaPaperPlane, FaPlus, FaMinus } from 'react-icons/fa';
 import { FiHeart } from 'react-icons/fi';
 import { GiQueenCrown, GiShare } from 'react-icons/gi';
-import { IoIosArrowUp } from 'react-icons/io';
+import { IoIosArrowUp, IoIosCheckmarkCircle } from 'react-icons/io';
 import { ImLocation, ImPhone, ImHome, ImUsers, ImExit, ImCross } from 'react-icons/im';
 import { MdOutlineAccountCircle, MdEmail } from 'react-icons/md';
 import { RiInformationFill, RiSettings3Fill, RiMessage2Fill, RiAccountPinCircleFill, RiInstagramFill } from 'react-icons/ri';
@@ -51,6 +51,7 @@ export {
     FaPlus as Icon_Plus,
     FaMinus as Icon_Minus,
     RiInformationFill as Icon_Information,
+    IoIosCheckmarkCircle as Icon_RoundCheckmark,
     ImLocation as Icon_Location,
     ImPhone as Icon_Phone,
     MdEmail as Icon_Email,

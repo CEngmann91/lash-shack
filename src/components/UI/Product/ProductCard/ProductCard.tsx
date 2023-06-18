@@ -1,15 +1,13 @@
 import './ProductCard.scss';
-import { Icon_Email, Icon_Minus, Icon_Plus, Icon_Share, Icon_ShoppingBasket, Icon_Trash, Icon_WishList, Icon_WishListFilled } from '../../../../res/icons';
-import { Col } from 'reactstrap';
+import { Icon_Minus, Icon_Plus, Icon_Share, Icon_ShoppingBasket, Icon_Trash } from '../../../../res/icons';
 import { motion } from 'framer-motion';
-import { Link, useNavigate } from 'react-router-dom';
-import { formatCurrency } from '../../../../res/funcs';
+import { useNavigate } from 'react-router-dom';
 import { ProductItem } from '../../../../types/ProductItem';
-import { ArrowMotionButton, MotionButton, MotionSpan, Ribbon, SkeletonImage } from '../../..';
+import { MotionButton, MotionSpan, Ribbon, SkeletonImage } from '../../..';
 import { useBasketActions } from '../../../../redux/hooks/useBasketActions';
 import { useWishListActions } from '../../../../redux/hooks/useWishListActions';
-import { useEffect } from 'react';
 import { launchTreatwell } from '../../../../util/util';
+import { formatCurrency } from '../../../../util/formatCurrency';
 
 const variants = {
     hidden: {
@@ -27,7 +25,7 @@ type ProductCardProps = {
 }
 const ProductCard = ({ item }: ProductCardProps) => {
     const navigate = useNavigate();
-    const { id, imgUrl, title, price, isOnSale, salePrice, shortDesc, category, subServiceCategory } = item;
+    const { id, imgUrl, title, price, isOnSale, salePrice, category, subServiceCategory } = item;
     const { addToBasket, removeFromBasket, existsInBasket, countByID } = useBasketActions();
     const { addToWishList, removeFromWishList, existsInWishList } = useWishListActions();
 
@@ -47,13 +45,13 @@ const ProductCard = ({ item }: ProductCardProps) => {
     //   }, [])
 
 
-    function toggleWishList(id: string) {
+    /*function toggleWishList(id: string) {
         const exists = existsInWishList(id);
         if (!exists)
             addToWishList(id, title, imgUrl, price)
         else
             removeFromWishList(id, title, imgUrl, price)
-    }
+    }*/
 
 
     return (
@@ -84,10 +82,10 @@ const ProductCard = ({ item }: ProductCardProps) => {
                         {!existsInWishList(id) ? <Icon_WishList /> : <Icon_WishListFilled />}
                     </MotionButton> */}
 
-                    {/* <MotionButton className='app__icon-with-badge' onClick={() => addToBasket(id, title, imgUrl, price)}>
+                    <MotionButton className='app__icon-with-badge' onClick={() => addToBasket(id, title, imgUrl, price)}>
                         <Icon_ShoppingBasket />
                         <span className="badge" data-quantity={count > 0}>{count}</span>
-                    </MotionButton> */}
+                    </MotionButton>
 
 
 

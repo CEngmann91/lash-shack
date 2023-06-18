@@ -37,10 +37,6 @@ const useGetUsers = (removeCurrentUser: boolean = true) => {
 
         // return services.find(item => item.id === id);
     }
-    // const users = useMemo(() =>
-    // {
-
-    // }, [data]);
     
     const getManagers = useMemo(() => activeUsers?.filter(item => item.account === "Manager"), [users]);
 
@@ -52,20 +48,27 @@ const useGetUsers = (removeCurrentUser: boolean = true) => {
         return [];
     }, [users]);
 
-    const getAllStaffInRomford = useMemo(() => getAllMembersOfLashShack?.filter(item => (item.preferredLocation === "Romford" || item.preferredLocation === "ANY")), [users]);
+    const getAllStaffInRomford = useMemo(() => 
+        getAllMembersOfLashShack?.filter(item => 
+            (item.preferredLocation === "Romford" || item.preferredLocation === "ANY")
+    ), [users]);
+
     const getAllStaffInRomfordNames = useMemo(() => {
         let list : string[] = [];
         getAllStaffInRomford?.map(item => list.push(item.firstName))
         return list;
     }, [users]);
 
-    const getAllStaffInHackney = useMemo(() => getAllMembersOfLashShack?.filter(item => (item.preferredLocation === "Hackney" || item.preferredLocation === "ANY")), [users]);
+    const getAllStaffInHackney = useMemo(() => 
+        getAllMembersOfLashShack?.filter(item => 
+            (item.preferredLocation === "Hackney" || item.preferredLocation === "ANY")
+    ), [users]);
+
     const getAllStaffInHackneyNames = useMemo(() => {
         let list : string[] = [];
         getAllStaffInHackney?.map(item => list.push(item.firstName))
         return list;
     }, [users]);
-
 
     const getAllAtLashShackBirthdays = useMemo(() => {
         let dates = [] as string[];

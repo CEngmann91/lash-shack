@@ -1,7 +1,7 @@
 
 import './Contact.scss';
 import { ChangeEvent, FormEvent, useState } from 'react';
-import { PageWrapper, ImageBanner, InputField, MotionButton, TextArea, SelectDropdown, Breadcrumbs } from '../../components'
+import { PageWrapper, ImageBanner, InputField, MotionButton, TextArea, SelectDropdown, Dots } from '../../components'
 import MapViewFrame from '../../components/iFrames/MapViewFrame/MapViewFrame'
 import { CONTACT } from '../../constants/constants'
 import emailjs from '@emailjs/browser';
@@ -95,7 +95,7 @@ const Contact = () => {
 
                     {/* <p>{CONTACT.LOCATIONS[mapIndex].ADDRESS}</p> */}
 
-                    <Breadcrumbs array={[CONTACT.LOCATIONS[0], CONTACT.LOCATIONS[1]]} index={mapIndex} onChange={onMapChanged} />
+                    <Dots array={[CONTACT.LOCATIONS[0], CONTACT.LOCATIONS[1]]} index={mapIndex} onChange={onMapChanged} />
                 </div>
 
             </section>

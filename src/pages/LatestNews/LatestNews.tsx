@@ -1,6 +1,6 @@
 import './LatestNews.scss';
 import { ImageBanner, PageWrapper } from '../../components'
-import AuthModal from '../../components/AuthModal/AuthModal';
+import AuthModal from '../../components/Modals/AuthModal/AuthModal';
 import emailjs from '@emailjs/browser';
 import { useEffect, FormEvent, useState, useMemo } from 'react';
 import { useDate } from '../../hooks/useDate';

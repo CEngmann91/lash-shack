@@ -9,27 +9,14 @@
     min-height: calc(100vh - $navbar-height);
 
 
-    
-    
 
-    .swiper-slide {
+    .swiper-gradient {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to right, white, transparent, transparent, transparent, transparent, white);
+        z-index: 1;
         pointer-events: none;
-        width: 20rem !important;
-        height: 27rem !important;
-        border-radius: 15px !important;
     }
-
-    // .swiper-gradient {
-    //     position: absolute;
-    //     top: 0;
-    //     left: 0;
-    //     height: 100%;
-    //     width: 100%;
-    //     background: linear-gradient(to right, $pink-new-colour, transparent, transparent, transparent, $pink-new-colour);
-    //     color: white;
-    //     z-index: 1;
-    //     pointer-events: none;
-    // }
 
 
     .landing__content {

@@ -1,25 +1,32 @@
 import { ReactNode, useState } from 'react'
-import { InView } from 'react-intersection-observer';
+import { InView, useInView } from 'react-intersection-observer';
+import './styles.scss';
 
 interface MotionButtonProps {
-    id?: string;
-    className?: string;
-    onViewChanged: (inView: boolean, entry: IntersectionObserverEntry) => void;
+    // id?: string;
+    // className?: string;
+    // onViewChanged: (inView: boolean, entry: IntersectionObserverEntry) => void;
     children: ReactNode;
-    triggerOnce?: boolean;
+    // triggerOnce?: boolean;
 }
-const DivObserver = ({ id, className, children, onViewChanged, triggerOnce = true }: MotionButtonProps) => {
+// const DivObserver = ({ id, className, children, onViewChanged, triggerOnce = true }: MotionButtonProps) => {
+const DivObserver = ({ children }: MotionButtonProps) => {
+    const { ref, inView } = useInView();
 
     return (
-        <InView
-            as="div"
-            id={id}
-            className={className}
-            onChange={onViewChanged}
-            triggerOnce={triggerOnce}
-        >
-            {children}
-        </InView>
+        <div ref={ref} className="fade-in">
+            {inView ? children : null}
+        </div>
+
+        // <InView
+        //     as="div"
+        //     id={id}
+        //     className={className}
+        //     onChange={onViewChanged}
+        //     triggerOnce={triggerOnce}
+        // >
+        //     {children}
+        // </InView>
     )
 }
 

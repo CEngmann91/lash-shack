@@ -1,123 +1,130 @@
 @import '../../res/colours.scss';
 @import '../../constants/constants.scss';
 
-.payment__form,
-.billing__form,
-.discountCode__form {
+.checkout__section {
 
-    .form__group {
-        position: inherit;
-        // margin-bottom: 30px;
-    
-        input {
-            // width: 100%;
-            border: 1px solid rgb(238, 238, 238);
-            border-radius: 5px;
-            // padding: 8px 20px;
-        }
-    
-        // span {
-        //     display: flex;
-        //     align-items: center;
-        //     column-gap: 5px;
-        //     color: $green-shade-colour;
-        //     font-weight: 600;
-    
-        //     &:hover {
-        //         cursor: pointer;
-        //     }
-        // }
-    }
-}
+    .fastPayment {}
 
 
-.checkout__basket {
-    position: sticky;
-    top: calc(25vh - $navbar-height);
-    padding: 20px;
-    background: $pink-new-colour;
-    color: black;
-    border-radius: 5px;
+    .payment__form,
+    .billing__form,
+    .discountCode__form {
 
-    h6, h4 {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
+        .form__group {
+            position: inherit;
+            // margin-bottom: 30px;
 
-    h6 {
-        margin-bottom: 10px;
-    }
-
-    h4 {
-        padding-top: 20px;
-    }
-
-    .line {
-        border-top: 1px solid gray;
-    }
-
-
-    .discount__code {
-        
-
-        #discountForm {
-            font-size: 15px;
-            width: 100%;
-    
-            input#discount-field {
-                outline: none;
-                padding: 8px;
-                background: white;
-                border: 1px solid $pink-dark-colour;
-                color: $green-shade-colour;
-                border-radius: 4px 0px 0px 4px;
-                width: 80%;
-    
-                &::-webkit-input-placeholder {
-                    color: $green-shade-colour;
-                }
-    
-                &:-ms-input-placeholder {
-                    color: $green-shade-colour;
-                }
-    
-                &::-ms-input-placeholder {
-                    color: $green-shade-colour;
-                }
-    
-                &::placeholder {
-                    color: $green-shade-colour;
-                }
+            input {
+                // width: 100%;
+                border: 1px solid rgb(238, 238, 238);
+                border-radius: 5px;
+                // padding: 8px 20px;
             }
-    
-            #btn-apply {
-                margin-left: -4px;
-                border: 1px solid $pink-dark-colour;
-                border-radius: 0px 4px 4px 0;
-                padding: 8px 10px;
-                background: $pink-dark-colour;
-                // background-color: $green-shade-colour;
-                color: #fff;
-                cursor: pointer;
-                transition: .5s ease-out;
 
-                &:hover {
-                    background: darken($pink-dark-colour, 20%);
-                }
-            }
+            // span {
+            //     display: flex;
+            //     align-items: center;
+            //     column-gap: 5px;
+            //     color: $green-shade-colour;
+            //     font-weight: 600;
+
+            //     &:hover {
+            //         cursor: pointer;
+            //     }
+            // }
         }
     }
 
 
-    .buy-button {
-        margin-top: 20px;
-        background: $pink-dark-colour;
-        color: white;
-        transition: .5s ease-out;
+    .checkout__basket {
+        position: sticky;
+        top: calc(25vh - $navbar-height);
+        padding: 20px;
+        background: $pink-new-colour;
+        color: black;
+        border-radius: 5px;
 
-        &:hover {
-            background: darken($pink-dark-colour, 20%);
+        h6,
+        h4 {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        h6 {
+            margin-bottom: 10px;
+        }
+
+        h4 {
+            padding-top: 20px;
+        }
+
+        .line {
+            border-top: 1px solid gray;
+        }
+
+
+        .discount__code {
+
+
+            #discountForm {
+                font-size: 15px;
+                width: 100%;
+
+                input#discount-field {
+                    outline: none;
+                    padding: 8px;
+                    background: white;
+                    border: 1px solid $pink-dark-colour;
+                    color: $green-shade-colour;
+                    border-radius: 4px 0px 0px 4px;
+                    width: 80%;
+
+                    &::-webkit-input-placeholder {
+                        color: $green-shade-colour;
+                    }
+
+                    &:-ms-input-placeholder {
+                        color: $green-shade-colour;
+                    }
+
+                    &::-ms-input-placeholder {
+                        color: $green-shade-colour;
+                    }
+
+                    &::placeholder {
+                        color: $green-shade-colour;
+                    }
+                }
+
+                #btn-apply {
+                    margin-left: -4px;
+                    border: 1px solid $pink-dark-colour;
+                    border-radius: 0px 4px 4px 0;
+                    padding: 8px 10px;
+                    background: $pink-dark-colour;
+                    // background-color: $green-shade-colour;
+                    color: #fff;
+                    cursor: pointer;
+                    transition: .5s ease-out;
+
+                    &:hover {
+                        background: darken($pink-dark-colour, 20%);
+                    }
+                }
+            }
+        }
+
+
+        .buy-button {
+            margin-top: 20px;
+            background: $pink-dark-colour;
+            color: white;
+            transition: .5s ease-out;
+
+            &:hover {
+                background: darken($pink-dark-colour, 20%);
+            }
         }
     }
 }
