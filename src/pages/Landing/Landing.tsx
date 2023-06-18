@@ -19,10 +19,8 @@ import { launchTreatwell } from "../../util/util";
 import Parallax from "../../components/Parallax/Parallax";
 import { useEffect } from "react";
 import { CONTACT } from "../../constants/constants";
-import useGeolocateStore from "../../hooks/useGeolocateStore";
 
 const Landing = () => {
-  const { loading, error, closestStore } = useGeolocateStore();
   const { landingPage_LimitedTimOffer, loadingMiscellaneous, miscellaneousError } = useGetMiscellaneous();
   const list = ["Eyelashes", "Brows", "Aesthetics", "Training"];
 
