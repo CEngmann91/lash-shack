@@ -8,7 +8,8 @@ export default function useGeolocateStore() {
         error,
         data: { latitude, longitude },
     }: { loading: boolean, error: GeoError | undefined, data: GeolocationData } = useGeolocation();
-    const [closestStore, setClosestStore] = useState<string>();
+    const [sortedDistances, setSortedDistances] = useState<any[]>();
+    const [closestStore, setClosestStore] = useState<{}>();
 
 
     useEffect(() => {
@@ -22,11 +23,14 @@ export default function useGeolocateStore() {
                     const distance = CalcDistanceBetween(latitude, longitude, item.lat, item.long);
                     distances.push({ key, distance });
                 });
-                const closest = distances.reduce((acc, loc) => acc.distance < loc.distance ? acc : loc);
-                // alert("closest: " + JSON.stringify(CONTACT.LOCATIONS[closest.key].ADDRESS, null, 2));
-                // alert("closest: " + JSON.stringify(closest, null, 2));
+                const sorted = distances.sort((a, b) => (a.distance - b.distance));
+                setSortedDistances(sorted);
 
+                const closest = sorted[0]; //distances.reduce((acc, loc) => acc.distance < loc.distance ? acc : loc);
                 setClosestStore(CONTACT.LOCATIONS[closest.key].ADDRESS);
+
+
+                alert( JSON.stringify(sorted, null, 2) );
             }
         }
     }, [loading])
@@ -62,5 +66,5 @@ export default function useGeolocateStore() {
     //   return Value * Math.PI / 180;
     // }
 
-    return { loading, error, closestStore }
+    return { loading, error, sortedDistances, closestStore }
 }

@@ -3,7 +3,7 @@ import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import { Basket, Checkout, Contact, Courses, Dashboard, Gallery, Landing, LatestNews, NotFound, Privacy, ProductDetails, Services, Shop, TermsConditions, Wishlist } from '../pages';
 import { Dashboard_Account, Dashboard_Catalog, Dashboard_Messages, Dashboard_Orders, Dashboard_Schedule, Dashboard_Settings, Dashboard_Users } from '../pages/Dashboard';
 import AuthRoute from './AuthRoute';
-// import useGeolocateStore from '../hooks/useGeolocateStore';
+import useGeolocateStore from '../hooks/useGeolocateStore';
 
 const Routers = () => {
     // const { loading, error, closestStore } = useGeolocateStore();

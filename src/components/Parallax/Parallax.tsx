@@ -17,7 +17,7 @@ const Parallax = ({ className, id, backgroundUrl, blurAmount = 0, children }: Pa
       />
       <section
         className="section-background"
-        style={{ backgroundImage: `url(${backgroundUrl})` }}
+        // style={{ backgroundImage: `url(${backgroundUrl})` }}
       >
         {children}
       </section>

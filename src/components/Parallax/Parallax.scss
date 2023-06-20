@@ -1,10 +1,13 @@
+@import '../../res/colours.scss';
+
 .parallax-container {
     position: relative;
 
     .section-background {
-        background: fixed;
-        background-position: center;
-        background-size: cover;
+        // background: fixed;
+        // background-position: center;
+        // background-size: cover;
+        background-color: $pink-new-colour;
         min-height: 50vh;
         width: 100%;
         display: block;

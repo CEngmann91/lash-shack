@@ -32,6 +32,7 @@ const Landing = () => {
       images.Landing2,
       images.Landing3,
     ];
+    
     return (
       <SwiperCarousel imagePaths={paths} overlayChildren={( <div className="swiper-gradient" /> )} />
     );
@@ -127,9 +128,7 @@ const Landing = () => {
                 <p>Experienced Technicians, Offering A World Class Service</p>
                 <div className="landing__services">
                   {list.map((item, index) => (
-                    <>
-                      <span className="app__border-bottom">{item}</span>{index < list?.length - 1 && ' | '}
-                    </>
+                    <span className="app__border-bottom" key={index}>{item}</span>
                   ))}
                 </div>
                 <ArrowMotionButton className='landing__cta-button' onClick={() => launchTreatwell('Romford')}>

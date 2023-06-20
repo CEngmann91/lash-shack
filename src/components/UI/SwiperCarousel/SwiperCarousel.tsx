@@ -41,7 +41,7 @@ const SwiperCarousel = ({ imagePaths, overlayChildren }: SwiperCarouselProps) =>
                 }}
             >
                 {imagePaths?.map((path, key) =>
-                    <SwiperSlide>
+                    <SwiperSlide key={key}>
                         <SkeletonImage src={path} alt="" className="" />
                         {/* <img src={path} alt="" /> */}
                     </SwiperSlide>

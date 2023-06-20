@@ -59,6 +59,13 @@
                 &::before {
                     background: $green-shade-colour;
                 }
+
+                &:not(:last-child) {
+                    &::after {
+                        content: ' |';
+                    }
+                }
+
             
                 color: $green-shade-colour;
                 &:first-child {

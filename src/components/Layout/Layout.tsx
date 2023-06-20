@@ -8,7 +8,7 @@ import { DashboardNavbar, DashboardWrapper } from '../Dashboard'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { MouseEventHandler } from 'react'
-import { AuthModal, SubscribeModal } from '../Modals'
+import { AuthModal, GeoStoreModal, SubscribeModal } from '../Modals'
 
 const Layout = () => {
     const location = useLocation();
@@ -40,6 +40,8 @@ const Layout = () => {
                 <Footer />
 
                 {/* <SubscribeModal visible={true} onClose={() => {}} /> */}
+                {/* <GeoStoreModal visible={true} onClose={() => {}} /> */}
+
                 <AuthModal visible={isShowingAuthModal()} />
                 <ToastContainer />
                 <LoadingScreen visible={isLoading()} />

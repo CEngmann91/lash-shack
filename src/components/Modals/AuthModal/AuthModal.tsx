@@ -14,7 +14,7 @@ type LoadingScreenProps = {
 }
 const AuthModal = ({ visible }: LoadingScreenProps) => {
     const { lockScroll, unlockScroll } = useScrollLock();
-    // const tabs = ['Log In', 'Sign Up'];
+    const tabs = ['Log In', 'Sign Up'];
     const [selectedTabIndex, setSelectedTabIndex] = useState(0);
     const { toggleAuthModal } = useApplicationActions();
     const [forgotPassword, setForgotPassword] = useState(false);
@@ -46,7 +46,7 @@ const AuthModal = ({ visible }: LoadingScreenProps) => {
                         <ForgotPasswordForm onCancel={() => setForgotPassword(false)} />
                     ) : (
                         <>
-                            <Form_RadioOptionGroup wrapperClassName='auth-tabs' value={selectedTabIndex} options={["Sign In", "Sign Up"]} onChange={setSelectedTabIndex} />
+                            <Form_RadioOptionGroup wrapperClassName='auth-tabs' value={selectedTabIndex} options={tabs} onChange={setSelectedTabIndex} />
                             {selectedTabIndex == 0 ? (
                                 <LoginForm onForgotPassword={() => setForgotPassword(true)} />
                             ) : (

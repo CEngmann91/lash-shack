@@ -82,10 +82,10 @@ const ProductCard = ({ item }: ProductCardProps) => {
                         {!existsInWishList(id) ? <Icon_WishList /> : <Icon_WishListFilled />}
                     </MotionButton> */}
 
-                    <MotionButton className='app__icon-with-badge' onClick={() => addToBasket(id, title, imgUrl, price)}>
+                    {/* <MotionButton className='app__icon-with-badge' onClick={() => addToBasket(id, title, imgUrl, price)}>
                         <Icon_ShoppingBasket />
                         <span className="badge" data-quantity={count > 0}>{count}</span>
-                    </MotionButton>
+                    </MotionButton> */}
 
 
 

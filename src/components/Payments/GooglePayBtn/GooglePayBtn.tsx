@@ -64,7 +64,7 @@ const GooglePayBtn = ({ isTesting, items, amount, onSuccess, onCancelled, onErro
                             type: 'PAYMENT_GATEWAY',
                             parameters: {
                                 gateway: 'square',
-                                gatewayMerchantId: '3205-7082-6809',
+                                gatewayMerchantId: 'BCR2DN4T4T5LDX37',
                             },
                         },
                     },

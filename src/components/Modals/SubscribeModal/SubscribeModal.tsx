@@ -3,7 +3,6 @@ import useEventListener from '../../../hooks/useEventListener';
 import { useScrollLock } from '../../../hooks/useScrollLock';
 import { FormEvent, useEffect, useState } from 'react';
 import { Icon_Cross } from '../../../res/icons';
-import { ListGroup, ListGroupItem } from 'reactstrap';
 import Checkbox from '../../Form/Checkbox/Checkbox';
 
 type SubscribeModalProps = {
@@ -46,13 +45,12 @@ const SubscribeModal: React.FC<SubscribeModalProps> = ({ visible, onClose }: Sub
     const handleFormSubmit = async(e: FormEvent<EventTarget | HTMLFormElement>) => {
         e.preventDefault();
 
-
     }
 
 
     return (
         <div className={`subscribe-container ${!visible && 'hide'}`}>
-            <div id="formContent">
+            <div id="formContent" className='fadeIn'>
                 <h1 className='heading mt-3'>Subscribe To Our Newsletter</h1>
                 <p className='subheading text__new-line'>{`Life is too short to neglect those Lashes.\nSign up to get the best deals NOW!`}</p>
 

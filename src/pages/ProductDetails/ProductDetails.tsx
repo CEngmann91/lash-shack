@@ -27,7 +27,8 @@ import useGetCatalog from '../../hooks/useGetCatalog';
 const ProductDetails = () => {
     const { id } = useParams();
     const dispatch = useDispatch();
-    const { getByID } = useGetCatalog();
+    const { getByID, catalog } = useGetCatalog();
+    const product = catalog?.find(item => item.id === id) as ProductItem;
     const { getAllStaffInRomford, getAllStaffInHackney, getAllStaffInRomfordNames, getAllStaffInHackneyNames } = useGetUsers();
     type Tab = "Description" | "Reviews" | "Topics Covered" | "Itinerary";
     const [selectedTab, setSelectedTab] = useState<Tab>("Description");
@@ -43,7 +44,8 @@ const ProductDetails = () => {
 
 
 
-    const product = useMemo(() => getByID(id as string), []);
+    // const product = useMemo(() => getByID(id as string), [id]);
+    // const product = useMemo(() => catalog?.find(item => item.id === id) as ProductItem, [id]);
 
     const selectLocTrainingDates = useMemo(() => {
         if (!product || !selectedLocation || !product?.upcomingDates)
