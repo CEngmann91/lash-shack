@@ -1,6 +1,6 @@
 import './ProductDetails.scss';
 import { FormEvent, useEffect, useMemo, useState } from 'react'
-import { ArrowMotionButton, Form_RadioOptionGroup, GooglePayBtn, LoadingSpinner, MotionButton, PageWrapper, SelectDropdown } from '../../components'
+import { ArrowMotionButton, Dots, Form_RadioOptionGroup, GooglePayBtn, LoadingSpinner, MotionButton, PageWrapper, SelectDropdown } from '../../components'
 import {
     Container, Col, Row,
     UncontrolledAccordion,
@@ -233,6 +233,11 @@ const ProductDetails = () => {
                         <Col lg='6' md='6' className='product__details d-flex justify-content-center'>
                             <figure className="td-figure">
                                 <img src={imgUrl} alt="Image description" />
+
+                                {/* <Dots
+                                    array={[CONTACT.LOCATIONS[0], CONTACT.LOCATIONS[1]]}
+                                    index={0} onChange={(index: number) => {}}
+                                /> */}
                             </figure>
                         </Col>
 
@@ -399,7 +404,7 @@ const ProductDetails = () => {
                                     Book Now
                                 </ArrowMotionButton>
 
-                                <p className='app_text__headingWithLine mt-4 mb-4'><span className='fw-bold'>OR PAY WITH</span></p>
+                                {/* <p className='app_text__headingWithLine mt-4 mb-4'><span className='fw-bold'>OR PAY WITH</span></p>
 
                                 <div className='d-flex flex-row gap-2 p-2 rounded bg-light'>
                                     <GooglePayBtn
@@ -417,7 +422,7 @@ const ProductDetails = () => {
                                             showToast("Purchase Cancelled 😞", "Purchase cancelled")
                                         }
                                     />
-                                </div>
+                                </div> */}
 
 
                                 {/* <h6 className='m-2 text-muted'>*A £50 deposit is required now. The remaining balance will be paid upon immediate arrival.</h6> */}
