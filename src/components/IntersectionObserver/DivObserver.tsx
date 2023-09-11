@@ -2,10 +2,10 @@ import { ReactNode } from 'react'
 import { useInView } from 'react-intersection-observer';
 import './styles.scss';
 
-interface MotionButtonProps {
+interface DivObserverProps {
     children: ReactNode;
 }
-const DivObserver = ({ children }: MotionButtonProps) => {
+const DivObserver = ({ children }: DivObserverProps) => {
     const { ref, inView } = useInView();
 
     return (
@@ -27,14 +27,14 @@ export default DivObserver
 import { ReactNode } from 'react'
 import { InView } from 'react-intersection-observer';
 
-interface MotionButtonProps {
+interface DivObserverProps {
     id?: string;
     className?: string;
     onViewChanged: (inView: boolean, entry: IntersectionObserverEntry) => void;
     children: ReactNode;
     triggerOnce?: boolean;
 }
-const DivObserver = ({ id, className, children, onViewChanged, triggerOnce = true }: MotionButtonProps) => {
+const DivObserver = ({ id, className, children, onViewChanged, triggerOnce = true }: DivObserverProps) => {
 
     return (
         <InView

@@ -9,12 +9,10 @@ export interface ParallaxProps {
   blurAmount?: number;
   children: ReactNode;
 }
-const Parallax = ({ className, id, backgroundUrl, blurAmount = 0, children }: ParallaxProps) => {
+const Parallax = ({ className, id, backgroundUrl, blurAmount = 3, children }: ParallaxProps) => {
 
   return (
     <div className={`parallax-container ${className}`} id={id} >
-      <div className="overlay"// style={{ backdropFilter: `blur(${blurAmount}px)` }}
-      />
       <section
         className="section-background"
         // style={{ backgroundImage: `url(${backgroundUrl})` }}

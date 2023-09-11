@@ -26,4 +26,4 @@ export { default as TermsConditions } from './TermsConditions/TermsConditions';
 // export { default as Login } from './Login/Login';
 // export { default as ForgotPassword } from './ForgotPassword/ForgotPassword';
 // export { default as Register } from './Register/Register';
-export { default as Dashboard } from './Dashboard/Dashboard';
+export { default as Dashboard } from '../0DELETE/Dashboard/Dashboard/Dashboard';

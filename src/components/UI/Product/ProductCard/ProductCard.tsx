@@ -1,5 +1,5 @@
 import './ProductCard.scss';
-import { Icon_Minus, Icon_Plus, Icon_Share, Icon_ShoppingBasket, Icon_Trash } from '../../../../res/icons';
+import { Icon_Minus, Icon_Plus, Icon_Share, Icon_ShoppingBasket, Icon_Trash, Icon_WishList, Icon_WishListFilled } from '../../../../res/icons';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { ProductItem } from '../../../../types/ProductItem';
@@ -34,9 +34,6 @@ const ProductCard = ({ item }: ProductCardProps) => {
 
 
 
-
-
-
     // useEffect(() => {
     //     const color = getComputedStyle(document.documentElement).getPropertyValue('--icon_svg_size');
     //     // alert(color);
@@ -45,13 +42,13 @@ const ProductCard = ({ item }: ProductCardProps) => {
     //   }, [])
 
 
-    /*function toggleWishList(id: string) {
+    function toggleWishList(id: string) {
         const exists = existsInWishList(id);
         if (!exists)
             addToWishList(id, title, imgUrl, price)
         else
             removeFromWishList(id, title, imgUrl, price)
-    }*/
+    }
 
 
     return (
@@ -80,9 +77,9 @@ const ProductCard = ({ item }: ProductCardProps) => {
 
                     <MotionButton onClick={() => toggleWishList(id)}>
                         {!existsInWishList(id) ? <Icon_WishList /> : <Icon_WishListFilled />}
-                    </MotionButton> */}
+                    </MotionButton>
 
-                    {/* <MotionButton className='app__icon-with-badge' onClick={() => addToBasket(id, title, imgUrl, price)}>
+                    <MotionButton className='app__icon-with-badge' onClick={() => addToBasket(id, title, imgUrl, price)}>
                         <Icon_ShoppingBasket />
                         <span className="badge" data-quantity={count > 0}>{count}</span>
                     </MotionButton> */}
@@ -99,12 +96,6 @@ const ProductCard = ({ item }: ProductCardProps) => {
                             <span className="badge" data-quantity={count > 0}>{count}</span>
                         </MotionButton>
                     )} */}
-
-
-                    <MotionButton className='app__icon-with-badge' onClick={() => launchTreatwell('Romford')}>
-                        <Icon_ShoppingBasket />
-                        <span className="badge" data-quantity={count > 0}>{count}</span>
-                    </MotionButton>
                 </div>
             </div>
 

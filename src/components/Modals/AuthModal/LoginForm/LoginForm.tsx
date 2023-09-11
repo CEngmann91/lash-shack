@@ -67,7 +67,7 @@ const LoginForm = ({ onForgotPassword }: LoginFormProps) => {
     }
 
     return (
-        <div id="pageWrapper" className='fadeIn'>
+        <div id="pageWrapper" className='animation_fadeIn'>
             <h2>Welcome</h2>
             <form onSubmit={handleFormSubmit}>
                 {/* <input type="text" id="login" name="login" placeholder="login" />

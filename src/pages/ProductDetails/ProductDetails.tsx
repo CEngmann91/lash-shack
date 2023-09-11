@@ -35,7 +35,7 @@ const ProductDetails = () => {
     const [reviewRating, setReviewRating] = useState<number>(0);
 
     const locations = ["Romford", "Hackney"]
-    const [selectedLocation, setSelectedLocation] = useState<string>("")
+    const [selectedLocation, setSelectedLocation] = useState<string>("Romford")
     const [selectedTabIndex, setSelectedTabIndex] = useState(-1);
     const [selectedCourseDate, setSelectedCourseDate] = useState<UpcomingDate>({} as UpcomingDate);
     // const [selectedTechnician, setSelectedTechnician] = useState("");
@@ -201,16 +201,16 @@ const ProductDetails = () => {
 
     function canPay() {
         return !(
-                !termsRead
-            ||  selectLocTrainingDates?.length > 0
-            ? (
-                !selectedLocation
-                || selectedTabIndex === -1
-                || selectedCourseDate !== null && selectedCourseDate?.maxCapacity - selectedCourseDate?.capacity === 0
+            !termsRead
+                || selectLocTrainingDates?.length > 0
+                ? (
+                    !selectedLocation
+                    || selectedTabIndex === -1
+                    || selectedCourseDate !== null && selectedCourseDate?.maxCapacity - selectedCourseDate?.capacity === 0
 
-            ) : (
-                !selectedLocation
-            )
+                ) : (
+                    !selectedLocation
+                )
         );
 
         // return !(
@@ -272,7 +272,7 @@ const ProductDetails = () => {
 
                                 {category === "Courses" ? (
                                     <div className='product__upcoming-dates animation_slideUp'>
-                                        <span className='product__upcoming-dates-title'>
+                                        {/* <span className='product__upcoming-dates-title'>
                                             <i style={{ color: '#ec439f' }}>* </i>Location</span>
 
                                         <SelectDropdown
@@ -282,34 +282,34 @@ const ProductDetails = () => {
                                             selected={selectedLocation}
                                             options={locations}
                                             onChange={onLocationChanged}
-                                        />
+                                        /> */}
 
-                                        {selectedLocation && selectLocTrainingDates?.length > 0 ? (
-                                            <>
-                                                <span className='product__upcoming-dates-title'>
-                                                    <i style={{ color: '#ec439f' }}>* </i>Dates</span>
-                                                <Form_RadioOptionGroup
-                                                    wrapperClassName='radio-group-section w-100 animation_slideUp'
-                                                    value={selectedTabIndex} options={selectLocActualDates}
-                                                    onChange={onDateChanged}
-                                                />
+                                        {selectedLocation && (
+                                            selectLocTrainingDates?.length > 0 ? (
+                                                <>
+                                                    <span className='product__upcoming-dates-title'>
+                                                        <i style={{ color: '#ec439f' }}>* </i>Dates</span>
+                                                    <Form_RadioOptionGroup
+                                                        wrapperClassName='radio-group-section w-100 animation_slideUp'
+                                                        value={selectedTabIndex} options={selectLocActualDates}
+                                                        onChange={onDateChanged}
+                                                    />
 
-                                                {selectedTabIndex !== -1 && (
-                                                    <div className='text-center mt-3 animation_slideUp'>
-                                                        {selectedCourseDate && selectedCourseDate?.maxCapacity - selectedCourseDate?.capacity === 0 ? (
-                                                            <h4 className="text-danger">Sold Out!</h4>
-                                                        ) : (
-                                                            selectedCourseDate && selectedCourseDate?.maxCapacity - selectedCourseDate?.capacity === 1 ? (
-                                                                <h4 className="text-danger animation_blinker">ONLY 1 AVAILABLE! BE QUICK</h4>
+                                                    {selectedTabIndex !== -1 && (
+                                                        <div className='text-center mt-3 animation_slideUp'>
+                                                            {selectedCourseDate && selectedCourseDate?.maxCapacity - selectedCourseDate?.capacity === 0 ? (
+                                                                <h4 className="text-danger">Sold Out!</h4>
                                                             ) : (
-                                                                <h4>Only {selectedCourseDate && selectedCourseDate?.maxCapacity - selectedCourseDate?.capacity} space(s) left</h4>
-                                                            )
-                                                        )}
-                                                    </div>
-                                                )}
-                                            </>
-                                        ) : (
-                                            selectedLocation && (
+                                                                selectedCourseDate && selectedCourseDate?.maxCapacity - selectedCourseDate?.capacity === 1 ? (
+                                                                    <h4 className="text-danger animation_blinker">ONLY 1 AVAILABLE! BE QUICK</h4>
+                                                                ) : (
+                                                                    <h4>Only {selectedCourseDate && selectedCourseDate?.maxCapacity - selectedCourseDate?.capacity} space(s) left</h4>
+                                                                )
+                                                            )}
+                                                        </div>
+                                                    )}
+                                                </>
+                                            ) : (
                                                 <h4 className='text-center'>No Training Dates Yet!</h4>
                                             )
                                         )}
@@ -394,15 +394,32 @@ const ProductDetails = () => {
                                     <></>
                                 )}
 
-
-
-                                {/* {category === "Courses" ? ( */}
-                                <ArrowMotionButton className='buy__button w-100'
-                                    disabled={!canPay()}
-                                    onClick={() => launchTreatwell(selectedLocation)}
-                                >
-                                    Book Now
-                                </ArrowMotionButton>
+                                {category === "Courses" ? (
+                                    selectedLocation && (
+                                        selectLocTrainingDates?.length > 0 ? (
+                                            <ArrowMotionButton className='buy__button w-100'
+                                                disabled={!canPay()}
+                                                onClick={() => launchTreatwell(selectedLocation)}
+                                            >
+                                                Book Now
+                                            </ArrowMotionButton>
+                                        ) : (
+                                            <ArrowMotionButton className='buy__button w-100'
+                                                disabled={!canPay()}
+                                                onClick={() => launchTreatwell(selectedLocation)}
+                                            >
+                                                Request Now
+                                            </ArrowMotionButton>
+                                        )
+                                    )
+                                ) : (
+                                    <ArrowMotionButton className='buy__button w-100'
+                                        disabled={!canPay()}
+                                        onClick={() => launchTreatwell(selectedLocation)}
+                                    >
+                                        Book Now
+                                    </ArrowMotionButton>
+                                )}
 
                                 {/* <p className='app_text__headingWithLine mt-4 mb-4'><span className='fw-bold'>OR PAY WITH</span></p>
 
@@ -434,12 +451,10 @@ const ProductDetails = () => {
                                     </ArrowMotionButton>
                                 )} */}
 
-
                                 <div className='mt-3'>
                                     {category === "Services" ? (renderServicesTabs()) : (renderCoursesTabs())}
                                 </div>
                             </div>
-
                         </Col>
                     </Row>
                 </Container>

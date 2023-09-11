@@ -38,9 +38,9 @@ const AuthModal = ({ visible }: LoadingScreenProps) => {
 
     return (
         <div id='authModal'>
-            <div className='background' onClick={toggleAuthModal} />
+            <div className='background animation_fadeIn' onClick={toggleAuthModal} />
 
-            <div className="wrapper">
+            <div className="wrapper animation_fadeInDown">
                 <div id="formContent">
                     {forgotPassword ? (
                         <ForgotPasswordForm onCancel={() => setForgotPassword(false)} />

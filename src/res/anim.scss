@@ -19,6 +19,36 @@
     animation-duration: 1s;
 }
 
+.animation_fadeInDown {
+    opacity: 0;
+    -webkit-animation: fadeInDown ease-in 1;
+    -moz-animation: fadeInDown ease-in 1;
+    animation: fadeInDown ease-in 1;
+
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+
+    -webkit-animation-duration: 1s;
+    -moz-animation-duration: 1s;
+    animation-duration: 1s;
+}
+
+.animation_fadeInUp {
+    opacity: 0;
+    -webkit-animation: fadeInUp ease-in 1;
+    -moz-animation: fadeInUp ease-in 1;
+    animation: fadeInUp ease-in 1;
+
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+
+    -webkit-animation-duration: 1s;
+    -moz-animation-duration: 1s;
+    animation-duration: 1s;
+}
+
 .animation_blinker {
     animation: blinker 1.5s linear infinite;
 }

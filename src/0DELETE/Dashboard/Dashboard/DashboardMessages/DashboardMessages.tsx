@@ -1,5 +1,5 @@
 import './DashboardMessages.scss';
-import SectionContainerWrapper from '../../../components/SectionContainerWrapper/SectionContainerWrapper';
+import SectionContainerWrapper from '../../../SectionContainerWrapper/SectionContainerWrapper';
 
 const DashboardMessages = () => {
 

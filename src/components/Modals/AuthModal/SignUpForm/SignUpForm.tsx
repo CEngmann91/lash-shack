@@ -72,7 +72,7 @@ const SignUpForm = () => {
 
     
     return (
-        <div id="pageWrapper" className='fadeIn'>
+        <div id="pageWrapper" className='animation_fadeIn'>
             <h2>Join Us</h2>
             <form onSubmit={handleFormSubmit}>
                 {/* <input type="text" id="firstName" name="firstName" placeholder="Enter First Name" required autoComplete='name' />

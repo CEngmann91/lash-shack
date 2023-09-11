@@ -85,17 +85,16 @@ const Contact = () => {
 
                 <div className="maps">
                     <div id='mapScroller' className="scroller">
-                        <div className='item'>
-                            <MapViewFrame source={CONTACT.LOCATIONS[0].MAP} />
-                        </div>
-                        <div className='item'>
-                            <MapViewFrame source={CONTACT.LOCATIONS[1].MAP} />
-                        </div>
+                        {CONTACT.LOCATIONS.map(location => 
+                            <div className='item'>
+                                <MapViewFrame source={location.MAP} />
+                            </div>
+                        )}
                     </div>
 
                     {/* <p>{CONTACT.LOCATIONS[mapIndex].ADDRESS}</p> */}
 
-                    <Dots array={[CONTACT.LOCATIONS[0], CONTACT.LOCATIONS[1]]} index={mapIndex} onChange={onMapChanged} />
+                    {/* <Dots array={[CONTACT.LOCATIONS[0], CONTACT.LOCATIONS[1]]} index={mapIndex} onChange={onMapChanged} /> */}
                 </div>
 
             </section>

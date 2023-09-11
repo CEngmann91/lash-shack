@@ -85,7 +85,9 @@ const FindUs = () => {
                     <div className="schedule" data-open={`${isOpen}`}>
                         {renderSchedule()}
 
-                        <label className={`openLabel text__neon-pink ${isOpen && 'animation_blinker'}`} data-open={`${isOpen}`}>{isOpen ? 'We Are Open!' : 'We are now CLOSED'}</label>
+                        <label className={`openLabel text__neon-pink ${isOpen && 'animation_blinker'}`} data-open={`${isOpen}`}>
+                            {isOpen ? 'We Are Open!' : 'We are now CLOSED'}
+                        </label>
 
 
                         {/* <div className="neon">

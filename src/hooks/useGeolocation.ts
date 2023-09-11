@@ -31,8 +31,8 @@ export interface GeolocationReturnType {
     data: GeolocationData
 }
 
-export default function useGeolocation(options: Options = {}): GeolocationReturnType {
-    const [loading, setLoading] = useState(true);
+export default function useGeolocation(options: Options = {}, makeRequestImmediately = false): GeolocationReturnType {
+    const [loading, setLoading] = useState(false);
     const [error, setError] = useState<GeoError | undefined>(undefined);
     const [data, setData] = useState<GeolocationData>({
         latitude: 0,
@@ -43,8 +43,14 @@ export default function useGeolocation(options: Options = {}): GeolocationReturn
         heading: null,
         speed: null
     });
+    // const [successHandler, setSuccessHandler] = useState<any>();
 
     useEffect(() => {
+        if (!makeRequestImmediately)
+            return;
+
+        setLoading(true);
+
         const successHandler = (e: any) => {
             setLoading(false)
             setError(undefined)
@@ -73,7 +79,7 @@ export default function useGeolocation(options: Options = {}): GeolocationReturn
             options
         )
         return () => navigator.geolocation.clearWatch(id)
-    }, [options])
+    }, [options, makeRequestImmediately])
 
     return { loading, error, data }
 }

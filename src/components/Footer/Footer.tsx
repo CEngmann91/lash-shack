@@ -108,12 +108,12 @@ const Footer = () => {
       <Container>
         <Row>
           <Col lg="4" md='6' className='mb-4'>
-            <h1>Lash Shack</h1>
-            {/* <div className="logo">
+            {/* <h1>Lash Shack</h1> */}
+            <div className="logo">
               <Link to={"/"}>
                 <img src={images.LogoNoBG} alt="logo" />
               </Link>
-            </div> */}
+            </div>
 
             <p className="footer__text">
               Lash Shack was founded in 2019 by Emma who has years of experience working within the lash industry providing an impeccable service to clients and delivering 5 star training to students.

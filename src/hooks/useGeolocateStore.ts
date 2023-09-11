@@ -2,38 +2,42 @@ import { useState, useEffect } from "react"
 import useGeolocation, { GeolocationData, GeoError } from "./useGeolocation";
 import { CONTACT } from "../constants/constants";
 
-export default function useGeolocateStore() {
+export default function useGeolocateStore(makeRequestImmediately = false) {
     const {
         loading,
         error,
         data: { latitude, longitude },
-    }: { loading: boolean, error: GeoError | undefined, data: GeolocationData } = useGeolocation();
+    }: { loading: boolean, error: GeoError | undefined, data: GeolocationData } = useGeolocation({}, makeRequestImmediately);
     const [sortedDistances, setSortedDistances] = useState<any[]>();
     const [closestStore, setClosestStore] = useState<{}>();
 
 
     useEffect(() => {
+        if (!makeRequestImmediately)
+            return;
+
         if (error) {
-            alert('Error - ' + error);
+            // alert('Error - ' +JSON.stringify(error, null, 2));
         }
         else {
-            if (!loading) {
-                let distances = [] as any[];
-                CONTACT.LOCATIONS.map((item, key) => {
-                    const distance = CalcDistanceBetween(latitude, longitude, item.lat, item.long);
-                    distances.push({ key, distance });
-                });
-                const sorted = distances.sort((a, b) => (a.distance - b.distance));
-                setSortedDistances(sorted);
+            if (loading)
+                return;
 
-                const closest = sorted[0]; //distances.reduce((acc, loc) => acc.distance < loc.distance ? acc : loc);
-                setClosestStore(CONTACT.LOCATIONS[closest.key].ADDRESS);
+            let distances = [] as any[];
+            CONTACT.LOCATIONS.map((item, key) => {
+                const distance = CalcDistanceBetween(latitude, longitude, item.lat, item.long);
+                distances.push({ key, distance });
+            });
+            const sorted = distances.sort((a, b) => (a.distance - b.distance));
+            setSortedDistances(sorted);
+
+            const closest = sorted[0]; //distances.reduce((acc, loc) => acc.distance < loc.distance ? acc : loc);
+            setClosestStore(CONTACT.LOCATIONS[closest.key].ADDRESS);
 
 
-                alert( JSON.stringify(sorted, null, 2) );
-            }
+            // alert( JSON.stringify(sorted, null, 2) );
         }
-    }, [loading])
+    }, [makeRequestImmediately])
 
     // https://stackoverflow.com/questions/5260423/torad-javascript-function-throwing-error
     // https://stackoverflow.com/questions/13840516/how-to-find-my-distance-to-a-known-location-in-javascript

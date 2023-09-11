@@ -43,7 +43,7 @@ const ForgotPasswordForm = ({ onCancel }: ForgotPasswordFormProps) => {
     }
 
     return (
-        <div id="pageWrapper" className='fadeIn'>
+        <div id="pageWrapper" className='animation_fadeIn'>
             <h2>Forgot Your Password?</h2>
             <form onSubmit={handleFormSubmit}>
                 <InputField name="email" placeholder="Enter Your Email" type="text" required autoComplete='email' />

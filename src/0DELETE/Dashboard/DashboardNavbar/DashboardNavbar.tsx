@@ -1,7 +1,7 @@
 import './DashboardNavbar.scss';
 import { Link, useNavigate } from 'react-router-dom';
 import images from '../../../res/images';
-import { Avatar, Form_RadioOptionGroup, MotionSpan } from '../..';
+import { Avatar, Form_RadioOptionGroup, MotionSpan } from '../../../components';
 import { useSelector as useReduxSelector } from 'react-redux';
 import { RootState } from '../../../redux/store';
 import { UserProfile } from '../../../types/UserProfile';

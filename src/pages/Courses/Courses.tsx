@@ -3,6 +3,7 @@ import { Container, Row, Col } from 'reactstrap'
 import { LoadingSpinner, PageWrapper, ProductList } from '../../components'
 import ImageBanner from '../../components/UI/ImageBanner/ImageBanner';
 import useGetCourses from '../../hooks/useGetCourses';
+import Expectations from '../Expectation/Expectations';
 
 const Courses = () => {
     const { courses, loadingCourses, coursesError } = useGetCourses();
@@ -34,6 +35,8 @@ const Courses = () => {
                     </Row>
                 </Container>
             </section>
+
+            {/* <Expectations /> */}
         </PageWrapper>
     )
 }

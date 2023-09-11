@@ -21,10 +21,9 @@ const Wishlist = () => {
                         <Col>
                             {wishListItems?.length === 0 ?
                                 <div className='d-flex flex-column justify-content-center align-items-center'>
-
                                     <>
                                         <h2 className='text-center'>
-                                            {firstName ? 
+                                            {firstName ?
                                                 `${firstName}, blow ` : `Blow `}
                                             a lash and make a wish.</h2>
                                     </>

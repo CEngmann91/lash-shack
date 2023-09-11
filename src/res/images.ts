@@ -12,6 +12,8 @@ import Lash from '../assets/images/D-04.png';
 import Banner from '../assets/images/BannerImage.png';
 import TestProduct from '../assets/images/Test Product Image.png';
 
+import Client0 from '../assets/images/clients/Client0.jpeg';
+
 import Training0 from '../assets/images/training/Training0.jpg';
 import Training1 from '../assets/images/training/Training1.jpg';
 import Training2 from '../assets/images/training/Training2.jpg';
@@ -44,6 +46,7 @@ export default {
     Banner,
     TestProduct,
 
+    Client0,
 
     Training0,
     Training1,

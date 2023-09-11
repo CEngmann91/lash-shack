@@ -1,16 +1,16 @@
 import './Dashboard.scss';
-import { CircleProgressBar, PageWrapper } from '../../components';
+import { CircleProgressBar, PageWrapper } from '../../../components';
 import { Col, Container, Row } from 'reactstrap';
-import useGetUsers from '../../hooks/useGetUsers';
-import useGetCourses from '../../hooks/useGetCourses';
-import useGetServices from '../../hooks/useGetServices';
-import useGetOrders from '../../hooks/useGetOrders';
+import useGetUsers from '../../../hooks/useGetUsers';
+import useGetCourses from '../../../hooks/useGetCourses';
+import useGetServices from '../../../hooks/useGetServices';
+import useGetOrders from '../../../hooks/useGetOrders';
 import { useSelector as useReduxSelector } from 'react-redux';
-import { RootState } from '../../redux/store';
-import { useDate } from '../../hooks/useDate';
+import { RootState } from '../../../redux/store';
+import { useDate } from '../../../hooks/useDate';
 import { useEffect } from 'react';
-import { Icon_ArrowDown, Icon_ArrowUp } from '../../res/icons';
-import { formatCurrency } from '../../util/formatCurrency';
+import { Icon_ArrowDown, Icon_ArrowUp } from '../../../res/icons';
+import { formatCurrency } from '../../../util/formatCurrency';
 
 const Dashboard = () => {
     const { getRelativeTimeString, fullDateUK } = useDate();

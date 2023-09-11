@@ -1,14 +1,14 @@
 import './DashboardUsers.scss';
 import { useSelector as useReduxSelector } from 'react-redux';
-import { RootState } from '../../../redux/store';
+import { RootState } from '../../../../redux/store';
 import { Col } from 'reactstrap';
-import { Avatar, Checkbox, LoadingSpinner, MotionButton } from '../../../components';
-import { UserProfile } from '../../../types/UserProfile';
-import { updateUserActiveStatus } from '../../../firebase/firebaseHelper';
-import { Icon_ArrowHeadUp, Icon_Bell, Icon_Calendar, Icon_Chess_Pawn, Icon_Chess_QueenCrown, Icon_Email, Icon_Trash } from '../../../res/icons';
-import SectionContainerWrapper from '../../../components/SectionContainerWrapper/SectionContainerWrapper';
-import useGetUsers from '../../../hooks/useGetUsers';
-import { useDate } from '../../../hooks/useDate';
+import { Avatar, Checkbox, LoadingSpinner, MotionButton } from '../../../../components';
+import { UserProfile } from '../../../../types/UserProfile';
+import { updateUserActiveStatus } from '../../../../firebase/firebaseHelper';
+import { Icon_ArrowHeadUp, Icon_Bell, Icon_Calendar, Icon_Chess_Pawn, Icon_Chess_QueenCrown, Icon_Email, Icon_Trash } from '../../../../res/icons';
+import SectionContainerWrapper from '../../../SectionContainerWrapper/SectionContainerWrapper';
+import useGetUsers from '../../../../hooks/useGetUsers';
+import { useDate } from '../../../../hooks/useDate';
 
 const DashboardUsers = () => {
     const user = useReduxSelector((state: RootState) => state.userAccount.user);

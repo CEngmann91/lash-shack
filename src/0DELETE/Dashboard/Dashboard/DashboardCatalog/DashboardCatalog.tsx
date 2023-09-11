@@ -2,19 +2,19 @@ import './DashboardCatalog.scss';
 import { ChangeEvent, FormEvent, useEffect, useMemo, useState } from 'react'
 import { Col, Form, FormGroup } from 'reactstrap';
 import { useSelector as useReduxSelector } from 'react-redux';
-import { RootState } from '../../../redux/store';
-import { ProductItem } from '../../../types/ProductItem';
-import { addProduct, deleteProduct, updateProduct, updateProductActiveStatus, uploadPhoto } from '../../../firebase/firebaseHelper';
-import { ArrowMotionButton, Avatar, Checkbox, Form_RadioOptionGroup, LoadingSpinner, MotionButton, ProductList } from '../../../components';
-import useFirestoreData from '../../../hooks/useFirestoreData';
-import UploadInput from '../../../components/Form/UploadInput/UploadInput';
-import { Category } from '../../../types/Category';
-import { ServiceCategory } from '../../../types/ServiceCategory';
+import { RootState } from '../../../../redux/store';
+import { ProductItem } from '../../../../types/ProductItem';
+import { addProduct, deleteProduct, updateProduct, updateProductActiveStatus, uploadPhoto } from '../../../../firebase/firebaseHelper';
+import { ArrowMotionButton, Avatar, Checkbox, Form_RadioOptionGroup, LoadingSpinner, MotionButton, ProductList } from '../../../../components';
+import useFirestoreData from '../../../../hooks/useFirestoreData';
+import UploadInput from '../../../../components/Form/UploadInput/UploadInput';
+import { Category } from '../../../../types/Category';
+import { ServiceCategory } from '../../../../types/ServiceCategory';
 import { useNavigate } from 'react-router-dom';
-import { Icon_Email, Icon_Pencil, Icon_Plus, Icon_Trash } from '../../../res/icons';
-import SectionContainerWrapper from '../../../components/SectionContainerWrapper/SectionContainerWrapper';
-import { toHoursMins } from '../../../util/util';
-import { formatCurrency } from '../../../util/formatCurrency';
+import { Icon_Email, Icon_Pencil, Icon_Plus, Icon_Trash } from '../../../../res/icons';
+import SectionContainerWrapper from '../../../SectionContainerWrapper/SectionContainerWrapper';
+import { toHoursMins } from '../../../../util/util';
+import { formatCurrency } from '../../../../util/formatCurrency';
 
 const DashboardCatalog = () => {
     const navigate = useNavigate();

@@ -17,6 +17,7 @@ import { useScrollLock } from "../../hooks/useScrollLock";
 import { motion } from "framer-motion";
 import { GalleryCardClass } from "../../types/GalleryCardClass";
 import { GalleryViewerModal } from "../../components/Modals";
+import useGetGallery from "../../hooks/useGetGallery";
 
 const variants = {
     // visible: {
@@ -61,40 +62,24 @@ const classKeys: GalleryCardClass[] = [
 ];
 
 const Gallery = () => {
-    const [imagePaths, setImagePaths] = useState<string[]>([]);
+    const { photos } = useGetGallery();
     const [[page, direction], setPage] = useState([0, 0]);
-    const [showModal, setShowModal] = useState<boolean>(false);
-    const { lockScroll, unlockScroll } = useScrollLock();
     const [selected, setSelected] = useState({ key: -1, image: "" });
 
-
-    useEffect(() => {
-        if (imagePaths.length == 0)
-            getAllPaths();
-
-        return function cleanup() {
-            // getAllPaths();
-        }
-    }, [])
-
-    const getAllPaths = async () => {
-        const paths = await getAllDownloadURLRef('gallery')
-        setImagePaths(paths);
-    }
 
     return (
         <PageWrapper title="Gallery">
             <ImageBanner title='Do You Love What You See?' subtitle='' />
 
             <section className="gallery__section">
-                {imagePaths.length == 0 ? (
+                {!photos ? (
                     <div className="loading-container">
                         <LoadingSpinner title="Loading..." />
                     </div>
                 ) : (
                     <>
                         <div className="grid-wrapper">
-                            {imagePaths.map((path, key) =>
+                            {photos?.map((path, key) =>
                                 // <SkeletonImage className={classKeys[key]} src={path} />
 
                                 <motion.div
@@ -124,7 +109,7 @@ const Gallery = () => {
 
                         <GalleryViewerModal
                             visible={selected.key !== -1}
-                            imagePaths={imagePaths}
+                            imagePaths={photos}
                             page={page}
                             direction={direction}
                             setPage={setPage}
@@ -134,39 +119,7 @@ const Gallery = () => {
                 )}
             </section>
         </PageWrapper>
-    )
-
-
-    // return (
-    //     <PageWrapper title="Gallery">
-    //         <div className="gallery__section">
-    //             {imagePaths === null ?
-    //                 <div className="loading-container">
-    //                     <LoadingSpinner title="Loading..." />
-    //                 </div>
-    //                 :
-    //                 <>
-    //                     {/* <div className="container">
-    //                         <ul className="image-gallery">
-    //                             {imagePaths.map((path, key) =>
-    //                                 <GalleryCard key={key} id={key} imgSource={path}
-    //                                     onClick={() => setSelected({ key, image: path })}
-    //                                 />
-    //                             )}
-    //                         </ul>
-    //                     </div>
-
-
-    //                     <GalleryViewerModal visible={selected.key != -1}
-    //                         selectedPhoto={selected.image}
-    //                         onNextClick={() => {}} onPreviousClick={() => {}}
-    //                         onClose={() => setSelected({ key: -1, image: "" })}
-    //                     /> */}
-    //                 </>
-    //             }
-    //         </div>
-    //     </PageWrapper>
-    // )
+    );
 }
 
 export default Gallery

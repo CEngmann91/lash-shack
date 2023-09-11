@@ -1,15 +1,15 @@
 import './DashboardAccount.scss';
 import { ChangeEvent } from 'react'
-import { updateUserPhotoURL, uploadPhoto } from '../../../firebase/firebaseHelper';
-import { UserProfile } from '../../../types/UserProfile';
+import { updateUserPhotoURL, uploadPhoto } from '../../../../firebase/firebaseHelper';
+import { UserProfile } from '../../../../types/UserProfile';
 import { useSelector as useReduxSelector } from 'react-redux';
-import { RootState } from '../../../redux/store';
+import { RootState } from '../../../../redux/store';
 import { Col } from 'reactstrap';
-import { Avatar } from '../../../components';
-import { useUserActions } from '../../../redux/hooks/useUserActions';
-import UploadInput from '../../../components/Form/UploadInput/UploadInput';
-import { Icon_CloudUpload } from '../../../res/icons';
-import SectionContainerWrapper from '../../../components/SectionContainerWrapper/SectionContainerWrapper';
+import { Avatar } from '../../../../components';
+import { useUserActions } from '../../../../redux/hooks/useUserActions';
+import UploadInput from '../../../../components/Form/UploadInput/UploadInput';
+import { Icon_CloudUpload } from '../../../../res/icons';
+import SectionContainerWrapper from '../../../SectionContainerWrapper/SectionContainerWrapper';
 import DashboardSchedule from '../DashboardSchedule/DashboardSchedule';
 
 const DashboardAccount = () => {

@@ -3,8 +3,8 @@
 
 
 $button-colours:
-    // #0072b1,
-    // red,
+    #0072b1,
+    red,
     $green-shade-colour,
 ;
 
@@ -94,16 +94,16 @@ $button-colours:
             }
 
 
-            @for $i from 1 through length($button-colours) {
-                :nth-child(#{length($button-colours)}n+#{$i}) {
-                    background: nth($button-colours, $i);
+            // @for $i from 1 through length($button-colours) {
+            //     :nth-child(#{length($button-colours)}n+#{$i}) {
+            //         background: nth($button-colours, $i);
 
-                    svg {
-                        background: transparent;
-                        color: white;
-                    }
-                }
-            }
+            //         svg {
+            //             background: transparent;
+            //             color: white;
+            //         }
+            //     }
+            // }
         }
     }
 

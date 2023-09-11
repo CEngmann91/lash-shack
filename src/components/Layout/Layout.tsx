@@ -4,25 +4,34 @@ import LoadingScreen from '../LoadingScreen/LoadingScreen'
 import Navbar from '../navbar/Navbar'
 import Footer from '../Footer/Footer'
 import { useApplicationActions } from '../../redux/hooks/useApplicationActions'
-import { DashboardNavbar, DashboardWrapper } from '../Dashboard'
-import { ToastContainer, toast } from 'react-toastify';
+import { DashboardNavbar, DashboardWrapper } from '../../0DELETE/Dashboard'
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { MouseEventHandler } from 'react'
 import { AuthModal, GeoStoreModal, SubscribeModal } from '../Modals'
+import { useLocalStorage } from '../../hooks/useLocalStorage'
 
 const Layout = () => {
     const location = useLocation();
     const { isLoading, isShowingAuthModal } = useApplicationActions();
-    
+    // const [isFirstTime, setIsFirstTime] = useLocalStorage('isFirstTime', true)
+    // const [showSubscription, setShowSubscription] = useState(false);
 
 
-    const toastContainerCloseButton = (closeToast: MouseEventHandler<HTMLElement> | undefined) => (
-        <i className="fa fa-times" aria-hidden="true" onClick={closeToast}/>
-    );
+    // useEffect(() => {
+    //     let id: NodeJS.Timeout;
+    //     if (isFirstTime)
+    //     {
+    //         id = setTimeout(() => setShowSubscription(true), 7000);
+    //         setIsFirstTime(false);
+    //     }
+    //     return function cleanup() {
+    //         clearTimeout(id);
+    //     }
+    // }, [])
+
 
     return (
-        location.pathname.includes("dashboard")
-            ?
+        location.pathname.includes("dashboard") ? (
             <>
                 <DashboardWrapper>
                     <DashboardNavbar />
@@ -33,20 +42,21 @@ const Layout = () => {
                 <ToastContainer />
                 <LoadingScreen visible={isLoading()} />
             </>
-            :
+        ) : (
             <>
                 <Navbar />
                 <Routers />
                 <Footer />
 
-                {/* <SubscribeModal visible={true} onClose={() => {}} /> */}
+                {/* <SubscribeModal visible={showSubscription} onClose={() => setShowSubscription(false)} /> */}
                 {/* <GeoStoreModal visible={true} onClose={() => {}} /> */}
 
                 <AuthModal visible={isShowingAuthModal()} />
                 <ToastContainer />
                 <LoadingScreen visible={isLoading()} />
             </>
-    )
+        )
+    );
 }
 
 export default Layout

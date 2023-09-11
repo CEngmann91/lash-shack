@@ -56,9 +56,9 @@
             margin-top: 20px;
 
             span {
-                &::before {
-                    background: $green-shade-colour;
-                }
+                // &::before {
+                //     background: $green-shade-colour;
+                // }
 
                 &:not(:last-child) {
                     &::after {
@@ -76,9 +76,9 @@
                 }
                 &:nth-child(odd) {
                     color: $pink-dark-colour;
-                    &::before {
-                        background: $pink-dark-colour;
-                    }
+                    // &::before {
+                    //     background: blue;
+                    // }
                 }
                 font-size: 1.3rem;
                 transition: 0.3s ease-in-out;
@@ -114,6 +114,7 @@
             // background: linear-gradient(to bottom, $pink-dark-colour 0%, $green-shade-colour 100%);
             font-size: 1rem;
             margin-top: 40px;
+            transition: all .3s;
             animation: scaleUp 0.5s forwards;
 
             &:hover {

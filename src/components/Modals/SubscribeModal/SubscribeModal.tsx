@@ -4,6 +4,8 @@ import { useScrollLock } from '../../../hooks/useScrollLock';
 import { FormEvent, useEffect, useState } from 'react';
 import { Icon_Cross } from '../../../res/icons';
 import Checkbox from '../../Form/Checkbox/Checkbox';
+import { showError, showSubscription } from '../../../util/toasts';
+import { addANewSubscriber } from '../../../firebase/firebaseHelper';
 
 type SubscribeModalProps = {
     visible: boolean;
@@ -20,12 +22,6 @@ const SubscribeModal: React.FC<SubscribeModalProps> = ({ visible, onClose }: Sub
             unlockScroll();
         else
             lockScroll();
-
-
-        // const timeout = setTimeout(onClose, 5000);
-        // return function cleanup() {
-        //     clearTimeout(timeout);
-        // }
     }, [visible])
 
     useEventListener("keydown", (e: any) => {
@@ -36,21 +32,32 @@ const SubscribeModal: React.FC<SubscribeModalProps> = ({ visible, onClose }: Sub
             onClose();
     });
 
-
-    if (!visible)
-        return null;
-
-
-
-    const handleFormSubmit = async(e: FormEvent<EventTarget | HTMLFormElement>) => {
+    const handleFormSubmit = async (e: FormEvent<EventTarget | HTMLFormElement>) => {
         e.preventDefault();
 
+        const target = e.target as typeof e.target & {
+            // name property has to match
+            email: { value: string };
+        };
+        const email = target.email.value;       // typechecks!
+        if (!email) {
+            return;
+        }
+
+        await addANewSubscriber(email.toLowerCase())
+            .then(res => {
+                showSubscription();
+                onClose();
+            })
+            .catch(error => showError("You Have Already Subscribed 🥳"))
     }
 
-
     return (
-        <div className={`subscribe-container ${!visible && 'hide'}`}>
-            <div id="formContent" className='fadeIn'>
+        <div
+            className="subscribe-container animation_fadeIn"
+            style={{ display: visible ? 'flex' : 'none' }}
+        >
+            <div id="formContent" className='animation_fadeInDown'>
                 <h1 className='heading mt-3'>Subscribe To Our Newsletter</h1>
                 <p className='subheading text__new-line'>{`Life is too short to neglect those Lashes.\nSign up to get the best deals NOW!`}</p>
 
@@ -58,9 +65,8 @@ const SubscribeModal: React.FC<SubscribeModalProps> = ({ visible, onClose }: Sub
                     <input name="email" type="email" id="subscriber-email" placeholder="Enter Your Email" />
                     <input type="submit" value="Subscribe" id="btn-scribe" />
                 </form>
-                
-                <Checkbox className='mt-4' label="Don't Show Me Again" onChange={setChecked} />
 
+                {/* <Checkbox className='mt-4' label="Don't Show Me Again" onChange={setChecked} /> */}
 
                 <button className="close" onClick={onClose}>
                     <Icon_Cross />

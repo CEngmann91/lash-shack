@@ -1,6 +1,6 @@
 import './About.scss';
 import { ReactNode } from 'react'
-import { Container, Row } from 'reactstrap'
+// import { Container, Row } from 'reactstrap'
 import { ArrowMotionButton, FeatureRow, SkeletonImage, Toggle } from '../../components';
 import images from '../../res/images';
 import { useNavigate } from 'react-router-dom';
@@ -28,7 +28,7 @@ const About = () => {
                 </div>
             ),
             rightContent: (
-                <SkeletonImage src={images.Training5} alt="" className="" />
+                <SkeletonImage src={images.Training5} alt="" className="" clickable={false} />
                 // <img src={images.Training5} alt="" />
             )
         },
@@ -44,7 +44,7 @@ const About = () => {
                 </div>
             ),
             rightContent: (
-                <SkeletonImage src={images.Training0} alt="" className="" />
+                <SkeletonImage src={images.Training0} alt="" className="" clickable={false} />
                 // <img src={images.Training0} alt="" />
             )
         },
@@ -53,13 +53,22 @@ const About = () => {
     return (
         <Parallax
             // backgroundUrl='https://images.unsplash.com/photo-1558985040-ed4d5029dd50?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NjIzODkxNjg&ixlib=rb-1.2.1&q=80'
-            backgroundUrl='https://img.freepik.com/free-photo/sideview-young-girl-lying-during-lashes-enlarging_7502-9368.jpg?w=1480&t=st=1683500268~exp=1683500868~hmac=0fdaadc79f0d4a4190b332f0a025a8101d39d13d8fca411c19936a94315997e5'
+            // backgroundUrl='https://img.freepik.com/free-photo/sideview-young-girl-lying-during-lashes-enlarging_7502-9368.jpg?w=1480&t=st=1683500268~exp=1683500868~hmac=0fdaadc79f0d4a4190b332f0a025a8101d39d13d8fca411c19936a94315997e5'
+            backgroundUrl={images.Client0}
             id="about"
             className="about__section"
         >
             {/* <h2>About Us</h2> */}
             <section>
-                <Container>
+                <div className='d-flex w-100 flex-column w-100 featureRow-Articles'>
+                    {articles.map(({ id, leftContent, rightContent }) =>
+                        <FeatureRow className='mb-5' key={id} id={id}
+                            leftChildren={id % 2 === 0 ? leftContent : rightContent}
+                            rightChildren={id % 2 !== 0 ? leftContent : rightContent}
+                        />
+                    )}
+                </div>
+                {/* <Container>
                     <Row className='featureRow-Articles'>
                         {articles.map(({ id, leftContent, rightContent }) =>
                             <FeatureRow className='mb-5' key={id} id={id}
@@ -68,7 +77,7 @@ const About = () => {
                             />
                         )}
                     </Row>
-                </Container>
+                </Container> */}
             </section>
         </Parallax>
 

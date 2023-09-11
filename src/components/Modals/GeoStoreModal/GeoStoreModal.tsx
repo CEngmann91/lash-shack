@@ -1,9 +1,11 @@
 import './GeoStoreModal.scss';
 import useEventListener from '../../../hooks/useEventListener';
 import { useScrollLock } from '../../../hooks/useScrollLock';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Icon_Cross } from '../../../res/icons';
 import MotionButton from '../../Motion/MotionButton/MotionButton';
+import useGeolocateStore from '../../../hooks/useGeolocateStore';
+import LoadingSpinner from '../../UI/LoadingSpinner/LoadingSpinner';
 
 type SubscribeModalProps = {
     visible: boolean;
@@ -12,6 +14,8 @@ type SubscribeModalProps = {
 
 const GeoStoreModal: React.FC<SubscribeModalProps> = ({ visible, onClose }: SubscribeModalProps) => {
     const { lockScroll, unlockScroll } = useScrollLock();
+    const [makeLocationRequest, setMakeLocationRequest] = useState(false);
+    const { loading, error, closestStore } = useGeolocateStore(makeLocationRequest);
 
 
     useEffect(() => {
@@ -37,16 +41,28 @@ const GeoStoreModal: React.FC<SubscribeModalProps> = ({ visible, onClose }: Subs
     return (
         <div className={`geo-container ${!visible && 'hide'}`}>
             <div id="formContent" className='fadeIn'>
-                <h1 className='heading mt-3'>Find Your Nearest Store?</h1>
-                <p className='subheading text__new-line'>{`Let us, help you!\nAllow us to find the closest Lash Shack near you.`}</p>
+                {loading ? (
+                    <LoadingSpinner title="Finding Neartest Store." />
+                ) : (
+                    !closestStore ? (
+                        <>
+                            <h1 className='heading mt-3'>Find Your Nearest Store?</h1>
+                            <p className='subheading text__new-line'>{`Let us, help you!\nAllow us to find the closest Lash Shack near you.`}</p>
 
-                <MotionButton type='submit' className='submitButton'>
-                    Allow
-                </MotionButton>
+                            <MotionButton type='submit' className='submitButton' onClick={() => {
+                                setMakeLocationRequest(true);
+                            }}>
+                                Allow
+                            </MotionButton>
 
-                <button className="close" onClick={onClose}>
-                    <Icon_Cross />
-                </button>
+                            <button className="close" onClick={onClose}>
+                                <Icon_Cross />
+                            </button>
+                        </>
+                    ) : (
+                        <h1>{JSON.stringify(closestStore, null, 2)}</h1>
+                    )
+                )}
             </div>
         </div>
     );
