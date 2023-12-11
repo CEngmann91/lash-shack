@@ -310,7 +310,8 @@ const ProductDetails = () => {
                                                     )}
                                                 </>
                                             ) : (
-                                                <h4 className='text-center'>No Training Dates Yet!</h4>
+                                                // <h4 className='text-center'>No Training Dates Yet!</h4>
+                                                <h4 className='text-center'>Training Every Monday(s) and Tuesday(s)</h4>
                                             )
                                         )}
                                     </div>
@@ -406,7 +407,7 @@ const ProductDetails = () => {
                                         ) : (
                                             <ArrowMotionButton className='buy__button w-100'
                                                 disabled={!canPay()}
-                                                onClick={() => launchTreatwell(selectedLocation)}
+                                                onClick={() => window.open(`tel:${CONTACT.PHONE}`)}
                                             >
                                                 Request Now
                                             </ArrowMotionButton>
