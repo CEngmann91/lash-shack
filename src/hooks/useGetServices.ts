@@ -10,10 +10,10 @@ const useGetServices = () => {
         // Only grab active items.
         const filtered = (data as ProductItem[])?.filter(item => item.active);
         // Sort by price.
-        const sorted = 
-        // filtered?.sort((a, b) => b.price - a.price);
-        filtered?.sort((a, b) => a.subServiceCategory.localeCompare(b.subServiceCategory))
-        // filtered?.sort((a, b) => b.price - a.price)
+        const sorted =
+            // filtered?.sort((a, b) => b.price - a.price);
+            filtered?.sort((a, b) => a.subServiceCategory.localeCompare(b.subServiceCategory))
+                .sort((a, b) => a.price - b.price)
         return sorted;
     }, [data]);
 
@@ -28,7 +28,7 @@ const useGetServices = () => {
         const sorted = filtered?.sort((a, b) => b.price - a.price);
         return sorted;
     }, [data]);
-    
+
     const getAllEyebrows = useMemo(() => {
         const filtered = services?.filter(item => item.active && item.subServiceCategory === "Eyebrows")
         const sorted = filtered?.sort((a, b) => b.price - a.price);
