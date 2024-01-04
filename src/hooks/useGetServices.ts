@@ -19,19 +19,19 @@ const useGetServices = () => {
 
     const getAllFullSetExtensions = useMemo(() => {
         const filtered = services?.filter(item => item.active && item.subServiceCategory === "Eyelash Extensions Full Sets")
-        const sorted = filtered?.sort((a, b) => b.price - a.price);
+        const sorted = filtered?.sort((a, b) => a.price - b.price);
         return sorted;
     }, [data]);
 
     const getAllExtensionInfills = useMemo(() => {
         const filtered = services?.filter(item => item.active && item.subServiceCategory === "Eyelash Extensions Infills")
-        const sorted = filtered?.sort((a, b) => b.price - a.price);
+        const sorted = filtered?.sort((a, b) => a.price - b.price);
         return sorted;
     }, [data]);
     
     const getAllEyebrows = useMemo(() => {
         const filtered = services?.filter(item => item.active && item.subServiceCategory === "Eyebrows")
-        const sorted = filtered?.sort((a, b) => b.price - a.price);
+        const sorted = filtered?.sort((a, b) => a.price - b.price);
         return sorted;
     }, [data]);
 
