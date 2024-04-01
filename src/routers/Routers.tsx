@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
-import { Basket, Checkout, Contact, Courses, Dashboard, Gallery, Landing, LatestNews, NotFound, Privacy, ProductDetails, Services, Shop, TermsConditions, Wishlist } from '../pages';
+import { Basket, Checkout, Contact, Courses, Dashboard, Gallery, Landing, LatestNews, NotFound, Privacy, ProductDetails, RefundPolicy, Services, Shop, TermsConditions, Wishlist } from '../pages';
 import { Dashboard_Account, Dashboard_Catalog, Dashboard_Messages, Dashboard_Orders, Dashboard_Schedule, Dashboard_Settings, Dashboard_Users } from '../0DELETE/Dashboard/Dashboard';
 import AuthRoute from './AuthRoute';
 import useGeolocateStore from '../hooks/useGeolocateStore';
@@ -32,9 +32,9 @@ const Routers = () => {
             {/* <Route path='/shop' element={<Shop />} /> */}
             <Route path='/product/:id' element={<ProductDetails />} />
 
-            <Route path='/checkout' element={<Checkout />} />
+            {/* <Route path='/checkout' element={<Checkout />} /> */}
 
-            <Route path='/basket' element={<Basket />} />
+            {/* <Route path='/basket' element={<Basket />} /> */}
             {/* <Route path='/wishlist' element={<Wishlist />} /> */}
 
             {/* <Route path='/*' element={<AuthRoute />}>
@@ -53,6 +53,7 @@ const Routers = () => {
             <Route path='/register' element={<Register />} />
             <Route path='/forgot' element={<ForgotPassword />} /> */}
 
+            <Route path='/refund' element={<RefundPolicy />} />
             {/* <Route path='/privacy' element={<Privacy />} />
             {/* <Route path='/terms' element={<TermsConditions />} /> */}
         </Routes>

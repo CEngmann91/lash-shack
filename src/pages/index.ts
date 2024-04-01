@@ -21,6 +21,7 @@ export { default as LatestNews } from './LatestNews/LatestNews';
 
 
 export { default as Privacy } from './Privacy/Privacy';
+export { default as RefundPolicy } from './RefundPolicy/RefundPolicy';
 export { default as TermsConditions } from './TermsConditions/TermsConditions';
 
 // export { default as Login } from './Login/Login';

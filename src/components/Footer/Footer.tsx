@@ -42,6 +42,10 @@ const Footer = () => {
           <ListGroupItem className='ps-0 border-0'>
             <Link to={"/services"} className='app__border-bottom'>Services</Link>
           </ListGroupItem>
+          <ListGroupItem className='ps-0 border-0'>
+            <Link to={"/refund"} className='app__border-bottom'>Refund Policy</Link>
+          </ListGroupItem>
+
           {/* <ListGroupItem className='ps-0 border-0'>
             <Link to={"#"}>Eyelash Extensions Full Sets</Link>
           </ListGroupItem>

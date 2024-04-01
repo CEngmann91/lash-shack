@@ -51,7 +51,7 @@ const Layout = () => {
                 {/* <SubscribeModal visible={showSubscription} onClose={() => setShowSubscription(false)} /> */}
                 {/* <GeoStoreModal visible={true} onClose={() => {}} /> */}
 
-                <AuthModal visible={isShowingAuthModal()} />
+                {/* <AuthModal visible={isShowingAuthModal()} /> */}
                 <ToastContainer />
                 <LoadingScreen visible={isLoading()} />
             </>
