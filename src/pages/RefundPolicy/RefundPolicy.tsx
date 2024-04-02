@@ -15,7 +15,7 @@ const RefundPolicy = () => {
 
                 <p className="px-4 text-center">We take pride in providing excellent service to our established and future clientele, and our policies are presented and provided to reflect this commitment.</p>
                 <br/>
-                <p className="px-4 text-center mb-4"><b>Please note that we do not issue refunds on salon services.</b> However, if you have any questions or concerns about the service you received, please notify the salon within two days of receiving it. If you are not satisfied with the work performed, we require that you return to the salon so that your hair can be visually inspected. At that time, we will make every effort to make any adjustments to your satisfaction by rescheduling you with the stylist who performed the initial service. Adjustments are made available to you, but only within <b>3</b> days of the initial service.</p>
+                <p className="px-4 text-center"><b>Please note that we do not issue refunds on salon services.</b> However, if you have any questions or concerns about the service you received, please notify the salon within two days of receiving it. If you are not satisfied with the work performed, we require that you return to the salon so that your hair can be visually inspected. At that time, we will make every effort to make any adjustments to your satisfaction by rescheduling you with the stylist who performed the initial service. Adjustments are made available to you, but only within <b>3</b> days of the initial service.</p>
 
                 <div className='d-flex flex-column justify-content-center align-items-center mt-4'>
                     <h4 className='text-center'>Need More Help?</h4>
