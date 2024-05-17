@@ -1,25 +1,21 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 export const useScroller = () => {
     const [scrolledDown, setScrolledDown] = useState(false);
 
+    const onScroll = useCallback(() => {
+        const shouldScrollDown = window.pageYOffset > 300;
+        if (scrolledDown !== shouldScrollDown) {
+            setScrolledDown(shouldScrollDown);
+        }
+    }, [scrolledDown]);
 
     useEffect(() => {
-        const onScroll = () => {
-            if (!scrolledDown && window.pageYOffset > 300) {
-                setScrolledDown(true)
-            }
-            else if (scrolledDown && window.pageYOffset <= 300) {
-                setScrolledDown(false)
-            }
+        window.addEventListener('scroll', onScroll, { passive: true });
+        return () => {
+            window.removeEventListener('scroll', onScroll);
         };
-
-
-        window.addEventListener('scroll', onScroll, { passive: true })
-        return function cleanup() {
-            window.removeEventListener('scroll', onScroll)
-        }
-    })
+    }, [onScroll]);
 
     return scrolledDown;
 }

@@ -9,7 +9,6 @@ const useGetUsers = (removeCurrentUser: boolean = true) => {
     const [ activeCount, setActiveCount] = useState(0);
 
 
-
     const users = useMemo(() => {
         const sortedUsers = data?.sort((a, b) => a.account.localeCompare(b.account));
         if (removeCurrentUser)
@@ -22,21 +21,21 @@ const useGetUsers = (removeCurrentUser: boolean = true) => {
 
     const activeUsers = useMemo(() => users?.filter(item => item.active == true), [users])
 
-    function getAllUsersInMonth(month: string) {
-        if (month && month.length > 3)
-            month = month.slice(0, 3);
+    // function getAllUsersInMonth(month: string) {
+    //     if (month && month.length > 3)
+    //         month = month.slice(0, 3);
 
-        const months = getLocalMonthNames();
-        const indexof = months.findIndex(m => m.toLowerCase().startsWith(month.toLowerCase()));
-        if (indexof != -1)
-        {
-            const filtered = activeUsers?.filter(item => item.memberSince) as UserProfile[]
-        }
-        // console.log(indexof)
+    //     const months = getLocalMonthNames();
+    //     const indexof = months.findIndex(m => m.toLowerCase().startsWith(month.toLowerCase()));
+    //     if (indexof != -1)
+    //     {
+    //         // const filtered = activeUsers?.filter(item => item.memberSince) as UserProfile[]
+    //     }
+    //     // console.log(indexof)
 
 
-        // return services.find(item => item.id === id);
-    }
+    //     // return services.find(item => item.id === id);
+    // }
     
     const getManagers = useMemo(() => activeUsers?.filter(item => item.account === "Manager"), [users]);
 
@@ -48,27 +47,19 @@ const useGetUsers = (removeCurrentUser: boolean = true) => {
         return [];
     }, [users]);
 
-    const getAllStaffInRomford = useMemo(() => 
+    const getStaffInLocation = (location: string) => 
         getAllMembersOfLashShack?.filter(item => 
-            (item.preferredLocation === "Romford" || item.preferredLocation === "ANY")
-    ), [users]);
+            (item.preferredLocation === location || item.preferredLocation === "ANY")
+        );
 
-    const getAllStaffInRomfordNames = useMemo(() => {
-        let list : string[] = [];
-        getAllStaffInRomford?.map(item => list.push(item.firstName))
-        return list;
-    }, [users]);
+    const getStaffNamesInLocation = (location: string) => 
+        getStaffInLocation(location)?.map(item => item.firstName);
 
-    const getAllStaffInHackney = useMemo(() => 
-        getAllMembersOfLashShack?.filter(item => 
-            (item.preferredLocation === "Hackney" || item.preferredLocation === "ANY")
-    ), [users]);
+    const getAllStaffInRomford = useMemo(() => getStaffInLocation("Romford"), [users]);
+    const getAllStaffInHackney = useMemo(() => getStaffInLocation("Hackney"), [users]);
 
-    const getAllStaffInHackneyNames = useMemo(() => {
-        let list : string[] = [];
-        getAllStaffInHackney?.map(item => list.push(item.firstName))
-        return list;
-    }, [users]);
+    const getAllStaffInRomfordNames = useMemo(() => getStaffNamesInLocation("Romford"), [users]);
+    const getAllStaffInHackneyNames = useMemo(() => getStaffNamesInLocation("Hackney"), [users]);
 
     const getAllAtLashShackBirthdays = useMemo(() => {
         let dates = [] as string[];
@@ -135,7 +126,7 @@ const useGetUsers = (removeCurrentUser: boolean = true) => {
         loadingUsers,
         usersError,
         // getUserByID,
-        getAllUsersInMonth,
+        // getAllUsersInMonth,
         getAllMembersOfLashShack, getManagers, getAllStaff,
         getAllAtLashShackBirthdays,
         getAllStaffInRomford, getAllStaffInHackney,

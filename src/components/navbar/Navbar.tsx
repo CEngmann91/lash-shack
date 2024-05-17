@@ -1,5 +1,5 @@
 import './Navbar.scss';
-import { useRef, useState } from 'react'
+import { useCallback, useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import { Container, Row } from 'reactstrap';
 import images from '../../res/images';
@@ -42,33 +42,32 @@ const Navbar = () => {
   const { isOpen, toggle } = useToggle(false);
   const { toggleAuthModal } = useApplicationActions();
 
-
-
-
-  const toggleProfileActions = () => {
+  const toggleProfileActions = useCallback(() => {
     if (!authenticated) {
-      // navigate('/login')
       toggleAuthModal();
       return;
     }
 
-    setShowingProfileActions(p => !p)
-  }
+    setShowingProfileActions(p => !p);
+  }, [authenticated, toggleAuthModal]);
 
-  function signOut() {
+  const signOut = useCallback(() => {
     toggleProfileActions();
     signUserOut(user)
       .then(() => {
         logout();
         navigate("/");
       });
-  }
+  }, [toggleProfileActions, user, logout, navigate]);
 
-
-  const toggleMenu = () => {
+  const toggleMenu = useCallback(() => {
     toggleDrawerOpened();
     toggle();
-  }
+  }, [toggle]);
+
+  const onAvatarClick = useCallback(() => {
+    toggleProfileActions();
+  }, [toggleProfileActions]);
 
 
   const renderMenuIcons = () => (
@@ -89,7 +88,7 @@ const Navbar = () => {
       {showingProfileActions && <div className="avatar_icon-actions--overlay" onClick={() => setShowingProfileActions(false)} />}
       <div className='profile'>
         <MotionSpan className="avatar_icon">
-          <Avatar url={user.photoURL} onClick={toggleProfileActions} />
+          <Avatar url={user.photoURL} onClick={onAvatarClick} />
           {/* <span className="badge" data-quantity={totalBasketQuantity > 0}>{totalBasketQuantity}</span> */}
           <span className="badge" data-quantity={authenticated && userNotificationCount > 0}>{userNotificationCount}</span>
         </MotionSpan>

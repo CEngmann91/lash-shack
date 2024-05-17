@@ -4,24 +4,10 @@ import useFirestoreData from './useFirestoreData';
 const useGetMiscellaneous = () => {
     const { data, loadingData, error } = useFirestoreData("miscellaneous");
 
+    const miscellaneous = data;
 
-    const miscellaneous = useMemo(() => data, [data]);
-
-    const landingPage_LimitedTimOffer = useMemo(() => {
-        if (!miscellaneous)
-            return {}
-
-        const { landing_SpecialOfferBanner } = miscellaneous?.at(0) as any;
-        return landing_SpecialOfferBanner
-    }, [data]);
-
-    const openingHours = useMemo(() => {
-        if (!miscellaneous)
-            return {}
-
-        const { WorkingHours } = miscellaneous?.at(1) as any;
-        return WorkingHours
-    }, [data]);
+    const landingPage_LimitedTimOffer = miscellaneous?.[0]?.landing_SpecialOfferBanner ?? {};
+    const openingHours = miscellaneous?.[1]?.WorkingHours ?? {};
 
     const loadingMiscellaneous = useMemo(() => loadingData, [loadingData]);
 

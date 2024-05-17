@@ -1,5 +1,5 @@
 import './ProductDetails.scss';
-import { FormEvent, useEffect, useMemo, useState } from 'react'
+import { FormEvent, useCallback, useEffect, useMemo, useState } from 'react'
 import { ArrowMotionButton, Dots, Form_RadioOptionGroup, GooglePayBtn, LoadingSpinner, MotionButton, PageWrapper, SelectDropdown } from '../../components'
 import {
     Container, Col, Row,
@@ -30,11 +30,16 @@ const ProductDetails = () => {
     const { getByID, catalog } = useGetCatalog();
     const product = catalog?.find(item => item.id === id) as ProductItem;
     const { getAllStaffInRomford, getAllStaffInHackney, getAllStaffInRomfordNames, getAllStaffInHackneyNames } = useGetUsers();
-    type Tab = "Description" | "Reviews" | "Topics Covered" | "Itinerary";
-    const [selectedTab, setSelectedTab] = useState<Tab>("Description");
-    const [reviewRating, setReviewRating] = useState<number>(0);
-
-    const locations = ["Romford", "Hackney"]
+    const TABS = {
+        DESCRIPTION: "Description",
+        REVIEWS: "Reviews",
+        TOPICS_COVERED: "Topics Covered",
+        ITINERARY: "Itinerary",
+    };
+    // type Tab = "Description" | "Reviews" | "Topics Covered" | "Itinerary";
+    const [selectedTab, setSelectedTab] = useState(TABS.DESCRIPTION);
+    // const [reviewRating, setReviewRating] = useState<number>(0);
+    // const locations = ["Romford", "Hackney"]
     const [selectedLocation, setSelectedLocation] = useState<string>("Romford")
     const [selectedTabIndex, setSelectedTabIndex] = useState(-1);
     const [selectedCourseDate, setSelectedCourseDate] = useState<UpcomingDate>({} as UpcomingDate);
@@ -63,15 +68,25 @@ const ProductDetails = () => {
                     result,
                 []) as UpcomingDate[];
         return upcoming;
-    }, [selectedLocation, product?.upcomingDates]);
+    }, [product, selectedLocation]);
 
 
     const selectLocActualDates = useMemo(() => {
         let list: string[] = [];
         selectLocTrainingDates.map(item => list.push(item.date));
         return list;
-    }, [selectedLocation, product?.upcomingDates]);
+    }, [selectLocTrainingDates]);
 
+    const onLocationChanged = useCallback((value: string) => {
+        setSelectedLocation(value);
+        setSelectedTabIndex(-1);
+        setSelectedCourseDate(selectLocTrainingDates[0]);
+    }, [selectLocTrainingDates]);
+
+    const onDateChanged = useCallback((value: number) => {
+        setSelectedTabIndex(value);
+        setSelectedCourseDate(selectLocTrainingDates[value]);
+    }, [selectLocTrainingDates]);
 
 
 
@@ -91,7 +106,7 @@ const ProductDetails = () => {
         return (
             <div id="services-tabs">
                 <main>
-                    <input id="tab1" type="radio" name="tabs" checked={selectedTab === "Description"} onChange={() => setSelectedTab("Description")} />
+                    <input id="tab1" type="radio" name="tabs" checked={selectedTab === TABS.DESCRIPTION} onChange={() => setSelectedTab(TABS.DESCRIPTION)} />
                     <label htmlFor='tab1'>Decription</label>
 
                     <section id="content1">
@@ -107,13 +122,13 @@ const ProductDetails = () => {
         return (
             <div id="course-tabs">
                 <main>
-                    <input id="tab1" type="radio" name="tabs" checked={selectedTab === "Description"} onChange={() => setSelectedTab("Description")} />
+                    <input id="tab1" type="radio" name="tabs" checked={selectedTab === TABS.DESCRIPTION} onChange={() => setSelectedTab(TABS.DESCRIPTION)} />
                     <label htmlFor='tab1'>Decription</label>
 
-                    <input id="tab2" type="radio" name="tabs" checked={selectedTab === "Topics Covered"} onChange={() => setSelectedTab("Topics Covered")} />
+                    <input id="tab2" type="radio" name="tabs" checked={selectedTab === TABS.TOPICS_COVERED} onChange={() => setSelectedTab(TABS.TOPICS_COVERED)} />
                     <label htmlFor='tab2'>Topics Covered</label>
 
-                    <input id="tab3" type="radio" name="tabs" checked={selectedTab === "Itinerary"} onChange={() => setSelectedTab("Itinerary")} />
+                    <input id="tab3" type="radio" name="tabs" checked={selectedTab === TABS.ITINERARY} onChange={() => setSelectedTab(TABS.ITINERARY)} />
                     <label htmlFor='tab3'>Itinerary</label>
 
                     <section id="content1">
@@ -132,18 +147,7 @@ const ProductDetails = () => {
         );
     }
 
-    const onLocationChanged = (value: string) => {
-        setSelectedLocation(value);
-        setSelectedTabIndex(-1);
-        setSelectedCourseDate(selectLocTrainingDates[0]);
-        // setSelectedTechnician("");
-    };
-
-    const onDateChanged = (value: number) => {
-        setSelectedTabIndex(value);
-        setSelectedCourseDate(selectLocTrainingDates[value]);
-        // setSelectedTechnician("");
-    }
+    
 
     // const onTechnicianChanged = (value: string) => {
     //     setSelectedTechnician(value);

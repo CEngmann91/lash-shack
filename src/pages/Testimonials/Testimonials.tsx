@@ -7,6 +7,10 @@ import Parallax from '../../components/Parallax/Parallax';
 const Testimonials = () => {
     const { testimonials, loadingTestimonials, testimonialsError } = useGetTestimonials();
 
+    if (testimonialsError) {
+        return <div>Error loading testimonials: {testimonialsError.message}</div>;
+    }
+
     return (
         <Parallax
             // backgroundUrl='https://images.unsplash.com/photo-1610128114197-485d933885c5?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NjIzOTA2Nzc&ixlib=rb-1.2.1&q=80'

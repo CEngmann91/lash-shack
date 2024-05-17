@@ -55,11 +55,11 @@ export const useUserActions = () => {
         dispatch(userActions.setBillingAddress(address));
     }
 
-    function setLastLoggedIn(lastLoggedIn: string) {
+    function setLastLoggedIn(lastLoggedIn: string | undefined) {
         dispatch(userActions.setLastLoggedIn(lastLoggedIn));
     }
 
-    function setMemberSince(memberSince: string) {
+    function setMemberSince(memberSince: string | undefined) {
         dispatch(userActions.setMemberSince(memberSince));
     }
 

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { firestore } from '../firebase/firebase';
 import { collection, DocumentData, getDocs, onSnapshot } from 'firebase/firestore';
 
@@ -12,26 +12,24 @@ const useFirestoreData = (collectionName: string) => {
     const [error, setError] = useState<ErrorState | null>(null);
     const collectionRef = collection(firestore, collectionName);
 
-
-
-    useEffect(() => {
+    const getData = useCallback(() => {
         setLoadingData(true);
 
-        try {
-            const getData = async () => {
-                // Firebase, Firestore realtime data update.
-                onSnapshot(collectionRef, (snapshot) => {
-                    setData(snapshot.docs.map(doc => ({ ...doc.data(), id: doc.id })));
-                    setLoadingData(false);
-                })
-            };
-            getData();
-        } catch (error) {
-            const err: string = error as string;
-            setError({ code: err, message: err });
-            setLoadingData(false);
-        }
-    }, [collectionName])
+        onSnapshot(collectionRef, (snapshot) => {
+            try {
+                setData(snapshot.docs.map(doc => ({ ...doc.data(), id: doc.id })));
+            } catch (error) {
+                const err: string = error as string;
+                setError({ code: err, message: err });
+            } finally {
+                setLoadingData(false);
+            }
+        })
+    }, [collectionName]);
+
+    useEffect(() => {
+        getData();
+    }, [getData])
 
     return { data, loadingData, error, collectionRef }
 }

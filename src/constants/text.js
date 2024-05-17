@@ -1,3 +1,21 @@
+export const BASKET_TEXT = {
+    TITLE: "Basket",
+    EMPTY_BASKET: "No Lashes have been added to the basket.",
+    EMPTY_BASKET_FOR_USER: (firstName) => `No Lashes here ${firstName}, add some to the basket?`,
+    SHOP_NOW: "Shop Now",
+    IMAGE: "Image",
+    TITLE: "Title",
+    PRICE: "Price",
+    QUANTITY: "Quantity",
+    DELETE: "Delete",
+    SELECT_STAFF: "Select Staff",
+    PLEASE_SELECT: "Please Select",
+    SUBTOTAL: "Subtotal",
+    BACK: "Back",
+    CLEAR_ALL: "Clear All",
+    CHECKOUT: "Checkout"
+};
+
 export const REFUND_POLICY_TEXT = {
     TITLE: "Can I have a refund?",
     PARAGRAPH_1: "We take pride in providing excellent service to our established and future clientele, and our policies are presented and provided to reflect this commitment.",
