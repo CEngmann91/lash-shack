@@ -69,7 +69,7 @@ const Services = () => {
                             <div className='tContent' key={id} data-index={id}>
                                 <div className='left'>
                                     <p className="item-title">{title}</p>
-                                    {!aestheticChanged && (
+                                    {!isAesthetics && (
                                         <p className="item-subTitle">Duration: {toHoursMins(duration)}</p>
                                     )}
                                 </div>
