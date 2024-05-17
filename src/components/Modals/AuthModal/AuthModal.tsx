@@ -1,5 +1,5 @@
 import './AuthModal.scss';
-import { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react';
 import InputField from '../../Form/Input/InputField';
 import { Checkbox, Form_RadioOptionGroup, MotionButton } from '../..';
 import images from '../../../res/images';
@@ -12,6 +12,10 @@ import ForgotPasswordForm from './ForgotPasswordForm/ForgotPasswordForm';
 type LoadingScreenProps = {
     visible: boolean;
 }
+
+const LOGIN_TAB_INDEX = 0;
+const SIGNUP_TAB_INDEX = 1;
+
 const AuthModal = ({ visible }: LoadingScreenProps) => {
     const { lockScroll, unlockScroll } = useScrollLock();
     const tabs = ['Log In', 'Sign Up'];
@@ -19,22 +23,25 @@ const AuthModal = ({ visible }: LoadingScreenProps) => {
     const { toggleAuthModal } = useApplicationActions();
     const [forgotPassword, setForgotPassword] = useState(false);
 
+    const handleForgotPassword = useCallback(() => {
+        setForgotPassword(true);
+    }, []);
 
+    const handleCancel = useCallback(() => {
+        setForgotPassword(false);
+    }, []);
 
     useEffect(() => {
         if (!visible)
             unlockScroll();
         else
             lockScroll();
-        setSelectedTabIndex(0);
+        setSelectedTabIndex(LOGIN_TAB_INDEX);
     }, [visible])
-
 
     if (!visible) {
         return null;
     }
-
-
 
     return (
         <div id='authModal'>
@@ -60,4 +67,4 @@ const AuthModal = ({ visible }: LoadingScreenProps) => {
     );
 }
 
-export default AuthModal
+export default React.memo(AuthModal);

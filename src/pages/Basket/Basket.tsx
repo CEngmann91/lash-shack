@@ -21,7 +21,7 @@ const Basket = () => {
 
   return (
     <PageWrapper title="Basket">
-      <ImageBanner title={!firstName ? BASKET_TEXT.TITLE : `${firstName}'s ${BASKET_TEXT.TITLE}`} />
+      <ImageBanner title={!firstName ? BASKET_TEXT.BANNER_TITLE : `${firstName}'s ${BASKET_TEXT.BANNER_TITLE}`} />
 
       <section className='basket__section'>
         <Container>

@@ -1,11 +1,11 @@
 import './LoginForm.scss';
-import { FormEvent } from 'react';
+import { useCallback, FormEvent } from 'react';
 import { InputField, MotionButton } from '../../..'
 
 import { signIntoUserAccount, signUserOut } from '../../../../firebase/firebaseHelper';
 import { useUserActions } from '../../../../redux/hooks/useUserActions';
 import { useApplicationActions } from '../../../../redux/hooks/useApplicationActions';
-import { showAccountInactiveToast, showLoggedInToast } from '../../../../util/toasts';
+import { showAccountInactiveToast, showLoggedInToast, showToast } from '../../../../util/toasts';
 
 type LoginFormProps = {
     onForgotPassword: () => void;
@@ -14,57 +14,57 @@ const LoginForm = ({ onForgotPassword }: LoginFormProps) => {
     const { setAsLoading, setAsNotLoading, toggleAuthModal } = useApplicationActions();
     const { setAsActive, setFullName, setProfile, setAccountType } = useUserActions();
 
-
-
-
+    const validateForm = (email: string, password: string) => {
+        if (!email || !password) {
+            return false;
+        }
+        return true;
+    };
+    
+    const login = useCallback(async (email: string, password: string) => {
+        try {
+            const signInReq = await signIntoUserAccount(email, password);
+            if (signInReq) {
+                const { active, account, firstName, lastName, displayName, photoURL } = signInReq;
+                if (!active) {
+                    showAccountInactiveToast();
+                    await signUserOut(signInReq);
+                    setAsNotLoading();
+                    return;
+                }
+                setAsActive(true);
+                setAccountType(account);
+                setFullName(firstName, lastName);
+                setProfile(displayName, photoURL);
+                setAsNotLoading();
+                showLoggedInToast(firstName);
+                toggleAuthModal();
+            } else {
+                // Handle login failure
+                showToast('An error occurred during login.', '', null);
+            }
+        } catch (error) {
+            // Handle login error
+            showToast('An error occurred during login.', '', null);
+        }
+    }, [setAsActive, setAccountType, setFullName, setProfile, setAsNotLoading, toggleAuthModal]);
+    
     const handleFormSubmit = async(e: FormEvent<EventTarget | HTMLFormElement>) => {
         e.preventDefault();
-
         setAsLoading();
-
         const target = e.target as typeof e.target & {
-            // name property has to match
             email: { value: string };
             password: { value: string };
         };
-        const email = target.email.value;       // typechecks!
-        const password = target.password.value; // typechecks!
-        if (!email || !password) {
+        const email = target.email.value;
+        const password = target.password.value;
+        if (validateForm(email, password)) {
+            login(email, password);
+        } else {
             setAsNotLoading();
             toggleAuthModal();
-            return;
         }
-        await login(email, password);
     };
-
-    const login = async (email: string, password: string) => {
-        const signInReq = await signIntoUserAccount(email, password)
-        if (signInReq) {
-            const { active, account, firstName, lastName, displayName, photoURL } = signInReq;
-            if (!active) {
-                // alert(signInReq.email + " is not active");
-                showAccountInactiveToast();
-                await signUserOut(signInReq);
-                setAsNotLoading();
-                return;
-            }
-
-            // console.log(signInReq);
-            setAsActive(true);
-            setAccountType(account);
-            setFullName(firstName, lastName);
-            setProfile(displayName, photoURL);
-
-            setAsNotLoading();
-
-            showLoggedInToast(firstName);
-
-            toggleAuthModal();
-        }
-        else {
-
-        }
-    }
 
     return (
         <div id="pageWrapper" className='animation_fadeIn'>
@@ -83,9 +83,9 @@ const LoginForm = ({ onForgotPassword }: LoginFormProps) => {
             </form>
 
             {/* <!-- Remind Passowrd --> */}
-            <div id="formFooter w-100">
+            {/* <div id="formFooter w-100">
                 <a className="app__border-bottom" href="#" onClick={onForgotPassword}><strong>Forgot Password?</strong></a>
-            </div>
+            </div> */}
         </div>
     )
 }

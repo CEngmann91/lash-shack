@@ -1,5 +1,5 @@
 export const BASKET_TEXT = {
-    TITLE: "Basket",
+    BANNER_TITLE: "Basket",
     EMPTY_BASKET: "No Lashes have been added to the basket.",
     EMPTY_BASKET_FOR_USER: (firstName) => `No Lashes here ${firstName}, add some to the basket?`,
     SHOP_NOW: "Shop Now",

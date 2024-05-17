@@ -120,6 +120,8 @@
             display: flex;
             align-items: center;
             column-gap: 1.2rem;
+            pointer-events: none;
+            visibility: hidden;
 
 
             .profile {
@@ -200,9 +202,6 @@
             .wishlist_icon,
             .avatar_icon
             {
-                pointer-events: none;
-                visibility: hidden;
-
                 &:hover {
                     cursor: pointer;
                 }

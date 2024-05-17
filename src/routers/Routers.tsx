@@ -4,6 +4,9 @@ import { Basket, Checkout, Contact, Courses, Dashboard, Gallery, Landing, Latest
 import { Dashboard_Account, Dashboard_Catalog, Dashboard_Messages, Dashboard_Orders, Dashboard_Schedule, Dashboard_Settings, Dashboard_Users } from '../0DELETE/Dashboard/Dashboard';
 import AuthRoute from './AuthRoute';
 import useGeolocateStore from '../hooks/useGeolocateStore';
+import ForgotPassword from '../pages/ForgotPassword/ForgotPassword';
+import Login from '../pages/Login/Login';
+import Register from '../pages/Register/Register';
 
 const Routers = () => {
     // const { loading, error, closestStore } = useGeolocateStore();
@@ -34,8 +37,8 @@ const Routers = () => {
 
             {/* <Route path='/checkout' element={<Checkout />} /> */}
 
-            {/* <Route path='/basket' element={<Basket />} /> */}
-            {/* <Route path='/wishlist' element={<Wishlist />} /> */}
+            {/* <Route path='/basket' element={<Basket />} />
+            <Route path='/wishlist' element={<Wishlist />} /> */}
 
             {/* <Route path='/*' element={<AuthRoute />}>
                 <Route path='checkout' element={<Checkout />} />

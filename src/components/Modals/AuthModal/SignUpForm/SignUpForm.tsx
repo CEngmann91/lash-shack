@@ -1,5 +1,5 @@
+import { useCallback, FormEvent } from 'react';
 import './SignUpForm.scss';
-import { FormEvent } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import { InputField, MotionButton } from '../../..';
 
@@ -14,63 +14,59 @@ const SignUpForm = () => {
     const { setAsActive, setFullName, setProfile, setAccountType } = useUserActions();
     
 
+    const validateForm = (firstName: string, lastName: string, email: string, password: string, confirm: string) => {
+        if (!firstName || !lastName || !email || !password || !confirm) {
+            return false;
+        }
+        if (password !== confirm) {
+            return false;
+        }
+        return true;
+    };
 
-
+    const register = useCallback(async (firstName: string, lastName: string, email: string, password: string) => {
+        try {
+            const displayName = `${firstName} ${lastName}`;
+            const registerReq = await createAUser(firstName, lastName, email, password, displayName);
+            if (registerReq) {
+                setAsActive(registerReq.active);
+                setAccountType(registerReq.account);
+                setFullName(registerReq.firstName, registerReq.lastName);
+                setProfile(displayName, registerReq.photoURL);
+                showSignUpSuccessToast(firstName);
+                navigate('/');
+            } else {
+                showSignUpUnsuccessToast();
+            }
+        } catch (error) {
+            showToast('An error occurred during registration.', '', null);
+        } finally {
+            setAsNotLoading();
+        }
+    }, [setAsActive, setAccountType, setFullName, setProfile, navigate]);
+    
     function handleFormSubmit(e: FormEvent<EventTarget | HTMLFormElement>) {
         e.preventDefault();
-
-        setAsLoading()
-
+        setAsLoading();
         const target = e.target as typeof e.target & {
-            // name property has to match
             firstName: { value: string };
             lastName: { value: string };
             email: { value: string };
             password: { value: string };
             confirm: { value: string };
         };
-        const firstName = target.firstName.value; // typechecks!
-        const lastName = target.lastName.value; // typechecks!
-        const email = target.email.value;       // typechecks!
-        const password = target.password.value; // typechecks!
-        const confirm = target.confirm.value; // typechecks!
-        if (!firstName || !lastName || !email || !password || !confirm) {
+        const firstName = target.firstName.value;
+        const lastName = target.lastName.value;
+        const email = target.email.value;
+        const password = target.password.value;
+        const confirm = target.confirm.value;
+        if (validateForm(firstName, lastName, email, password, confirm)) {
+            register(firstName, lastName, email, password);
+        } else {
             setAsNotLoading();
-            return;
         }
-        if (password !== confirm) {
-            setAsNotLoading();
-            return;
-        }
-        register(firstName, lastName, email, password);
     };
-
-    const register = async (firstName: string, lastName: string, email: string, password: string) => {
-        // setLoading(true)
-
-        const displayName = `${firstName} ${lastName}`;
-        const registerReq = await createAUser(firstName, lastName, email, password, displayName);
-        if (registerReq)
-        {
-            // setLoading(false);
-            
-            setAsActive(registerReq.active);
-            setAccountType(registerReq.account);
-            setFullName(registerReq.firstName, registerReq.lastName);
-            setProfile(displayName, registerReq.photoURL);
-    
-            setAsNotLoading();
-
-            showSignUpSuccessToast(firstName);
-
-            navigate('/');
-        }
-        else {
-            showSignUpUnsuccessToast();
-        }
-    }
-
-    
+        
     return (
         <div id="pageWrapper" className='animation_fadeIn'>
             <h2>Join Us</h2>
