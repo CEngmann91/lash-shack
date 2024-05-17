@@ -50,7 +50,7 @@ const Contact = () => {
 
 
     return (
-        <PageWrapper title="Courses">
+        <PageWrapper title="Contact">
             <ImageBanner title='We Love Hearing From You' subtitle='How to find our beauty salon' />
 
             <section className='contact__section'>
