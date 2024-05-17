@@ -1,5 +1,6 @@
 @import '../../res/global.scss';
 @import '../../res/mixin.scss';
+@import '../../res/anim.scss';
 
 // https://codepen.io/hexagoncircle/pen/OMJeja
 #drawer {
@@ -56,6 +57,37 @@
             }
         }
 
+
+        .link-item {
+            /* Specific styles for active links */
+            &-active {
+                position: relative;
+                &::after {
+                    content: '';
+                    position: absolute;
+                    bottom: 15px;
+                    left: 50%;
+                    height: 3px;
+                    width: 100%;
+                    translate: -50% 0;
+                    border-bottom: solid 3px white;
+                    // opacity: 0;
+                    // animation: fadeIn 0.3s 5s forwards;
+                }
+            }
+        }
+    
+        .logo {
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            translate: -50% 0;
+            opacity: 0;
+            animation: fadeIn 0.3s 5s forwards;
+            img {
+                width: 15rem;
+            }
+        }
 
 
         ul.menu {

@@ -1,9 +1,10 @@
 import './DrawerMenu.scss';
 import { NAVIGATION } from '../../constants/constants';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useScrollLock } from '../../hooks/useScrollLock';
 import { toggleDrawerOpened } from '../../res/funcs';
+import images from '../../res/images';
 
 type DrawerMenuProps = {
     isOpen: boolean;
@@ -27,10 +28,19 @@ const DrawerMenu = ({ isOpen, onClose }: DrawerMenuProps) => {
     return (
         <div id="drawer">
             <nav>
+                <div className="logo">
+                    <Link to={"/"}>
+                        <img src={images.LogoNoBG} alt="logo" />
+                    </Link>
+                </div>
+
                 <ul className="menu">
                     {NAVIGATION.MAIN_ROUTES.map(({ title, to }, key) => (
                         <li key={key} data-text={title} onClick={closeMenu}>
-                            <NavLink to={to}>{title}</NavLink>
+                            <NavLink to={to} end
+                                className={({ isActive }) => (isActive ? "link-item-active" : 'link-item')}>
+                                    {title}
+                            </NavLink>
                         </li>
                     ))}
                 </ul>
