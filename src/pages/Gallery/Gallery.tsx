@@ -1,3 +1,4 @@
+import React, { useCallback, useState } from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
@@ -9,7 +10,6 @@ import "swiper/scss/pagination";
 import { EffectCoverflow, Pagination } from "swiper";
 
 import './Gallery.scss';
-import { useEffect, useState } from 'react'
 import { ImageBanner, LoadingSpinner, PageWrapper, SkeletonImage } from '../../components'
 import { getAllDownloadURLRef } from '../../firebase/firebaseHelper';
 import GalleryCard from "./GalleryCard/GalleryCard";
@@ -65,6 +65,14 @@ const Gallery = () => {
     const { photos } = useGetGallery();
     const [[page, direction], setPage] = useState([0, 0]);
     const [selected, setSelected] = useState({ key: -1, image: "" });
+    const handleImageClick = useCallback((key: number, path: string) => {
+        setPage([key, 0]);
+        setSelected({ key, image: path });
+    }, []);
+
+    const handleClose = useCallback(() => {
+        setSelected({ key: -1, image: "" });
+    }, []);
 
 
     return (
@@ -94,13 +102,10 @@ const Gallery = () => {
                                         y: 0,
                                         transition: {
                                             duration: 0.3,
-                                            delay: 0.2 + (key % 2 === 0 ? 0.2 : 0) //0.2 + (key * 0.2),
+                                            delay: 0.2 + (key % 2 === 0 ? 0.2 : 0)
                                         }
                                     }}
-                                    onClick={() => {
-                                        setPage([key, 0]);
-                                        setSelected({ key, image: path })
-                                    }}
+                                    onClick={() => handleImageClick(key, path)}
                                 >
                                     <img src={path} alt="" loading="lazy" />
                                 </motion.div>
@@ -113,7 +118,7 @@ const Gallery = () => {
                             page={page}
                             direction={direction}
                             setPage={setPage}
-                            onClose={() =>  setSelected({ key: -1, image: "" })}
+                            onClose={handleClose}
                         />
                     </>
                 )}
@@ -122,4 +127,4 @@ const Gallery = () => {
     );
 }
 
-export default Gallery
+export default React.memo(Gallery);

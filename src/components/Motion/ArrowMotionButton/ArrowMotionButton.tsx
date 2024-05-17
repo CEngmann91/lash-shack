@@ -1,11 +1,9 @@
-// NOTE!! NO PADDING IS ALLOWED IN CLASSNAME PARAMETER.
-
+import React, { ReactNode, HTMLAttributes, MouseEvent } from 'react'
 import './ArrowMotionButton.scss';
-import { ReactNode, HTMLAttributes, MouseEvent } from 'react'
 import MotionButton, { MotionButtonProps } from '../MotionButton/MotionButton'
 
-interface ArrowMotionButtonProps extends MotionButtonProps {
-}
+interface ArrowMotionButtonProps extends MotionButtonProps {}
+
 const ArrowMotionButton = ({ id, className, type, disabled, onClick, children, style, ...props }: ArrowMotionButtonProps) => {
     return (
         <MotionButton
@@ -22,4 +20,4 @@ const ArrowMotionButton = ({ id, className, type, disabled, onClick, children, s
     )
 }
 
-export default ArrowMotionButton
+export default React.memo(ArrowMotionButton);

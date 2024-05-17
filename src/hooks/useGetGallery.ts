@@ -12,15 +12,16 @@ const useGetGallery = () => {
         
         setLoadingData(true);
         
-        try {
-            getAllDownloadURLRef('gallery')
-                .then((urls: string[]) => {
-                    setPhotos(urls);
-                })
-        } catch (error) {
-            setLoadingData(false);
-        }
-    }, [])
+        getAllDownloadURLRef('gallery')
+            .then((urls: string[]) => {
+                setPhotos(urls);
+                setLoadingData(false);
+            })
+            .catch((error) => {
+                console.error(error);
+                setLoadingData(false);
+            });
+    }, [photos])
 
     return { photos, loadingData }
 

@@ -12,22 +12,27 @@ const FindUs = () => {
     const { dayOfWeekName } = useDate();
     const [isOpen, setIsOpen] = useState<boolean>(false);
     let interval: NodeJS.Timer;
-    const todayHours = getTodaysWorkingHours();
+    
+    const todayHours = useMemo(() => {
+        if (loadingMiscellaneous)
+            return null;
 
-
+        const { days } = openingHours;
+        return days?.filter((item: any, idx: number) => item.key === dayOfWeekName)?.at(0);
+    }, [loadingMiscellaneous, openingHours, dayOfWeekName]);
 
     useEffect(() => {
         interval = setInterval(() => {
             if (todayHours) {
                 const { from, to, closed } = todayHours;
     
-                if (closed)
-                    setIsOpen(false);
-                else {
+                if (closed) {
+                    if (isOpen) setIsOpen(false);
+                } else {
                     const start = timeConversion(`0${from.padStart(2, '0').slice(0, -2)}:00am`);
                     const finish = timeConversion(`0${to.padStart(2, '0').slice(0, -2)}:00pm`);
                     const within = currentTimeIsBetweenTimes(start, finish);
-                    setIsOpen(within)
+                    if (isOpen !== within) setIsOpen(within);
                 }
             }
         }, 1000)
@@ -35,18 +40,9 @@ const FindUs = () => {
         return function cleanup() {
             clearInterval(interval);
         }
-    }, [openingHours])
+    }, [openingHours, isOpen, todayHours])
 
-
-    function getTodaysWorkingHours() {
-        if (loadingMiscellaneous)
-            return null;
-
-        const { days } = openingHours;
-        return days?.filter((item: any, idx: number) => item.key === dayOfWeekName)?.at(0);
-    }
-
-    function renderSchedule() {
+    const schedule = useMemo(() => {
         if (loadingMiscellaneous)
             return;
 
@@ -70,7 +66,8 @@ const FindUs = () => {
                 );
             })
         );
-    }
+    }, [loadingMiscellaneous, openingHours, dayOfWeekName, isOpen]);
+
 
     return (
         <section className="location__banner">
@@ -83,7 +80,7 @@ const FindUs = () => {
                 <div className="module">
                     <h2 className='text-center'>Opening Hours</h2>
                     <div className="schedule" data-open={`${isOpen}`}>
-                        {renderSchedule()}
+                        {schedule}
 
                         <label className={`openLabel text__neon-pink ${isOpen && 'animation_blinker'}`} data-open={`${isOpen}`}>
                             {isOpen ? 'We Are Open!' : 'We are now CLOSED'}

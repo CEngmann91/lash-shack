@@ -1,9 +1,9 @@
+import React, { useCallback, useEffect } from 'react';
 import './GalleryViewerModal.scss';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Icon_Cross } from '../../../res/icons';
 import { useScrollLock } from '../../../hooks/useScrollLock';
 import { clamp } from "../../../res/funcs";
-import { useEffect } from 'react';
 import { Dots } from '../../../pages/../components';
 import useEventListener from '../../../hooks/useEventListener';
 
@@ -53,13 +53,16 @@ const GalleryViewerModal: React.FC<GalleryViewerModalProps> = ({ visible, imageP
     const { lockScroll, unlockScroll } = useScrollLock();
     // const [[page, direction], setPage] = useState([0, 0]);
 
-    useEventListener("keydown", (e: any) => {
+
+    const handleKeyDown = useCallback((e: any) => {
         if (!visible)
             return;
 
         if (e.key === 'Escape')
             onClose();
-    })
+    }, [visible, onClose]);
+
+    useEventListener("keydown", handleKeyDown)
 
     useEffect(() => {
         if (!visible)
@@ -82,7 +85,7 @@ const GalleryViewerModal: React.FC<GalleryViewerModalProps> = ({ visible, imageP
     // detect it as an entirely new image. So you can infinitely paginate as few as 1 images.
     // let imageIndex = clamp(page, 0, imagePaths.length - 1);
 
-    const paginate = (newDirection: number) => {
+    const paginate = useCallback((newDirection: number) => {
         let newValue = page + newDirection;
 
         // Loops gallery
@@ -92,9 +95,8 @@ const GalleryViewerModal: React.FC<GalleryViewerModalProps> = ({ visible, imageP
         if (newValue > imagePaths?.length - 1)
             newValue = 0;
 
-
         setPage([newValue, newDirection]);
-    };
+    }, [page, imagePaths, setPage]);
 
     return (
         imagePaths && (
@@ -150,4 +152,4 @@ const GalleryViewerModal: React.FC<GalleryViewerModalProps> = ({ visible, imageP
     )
 }
 
-export default GalleryViewerModal
+export default React.memo(GalleryViewerModal);

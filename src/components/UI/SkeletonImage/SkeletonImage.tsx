@@ -10,9 +10,6 @@ type SkeletonImageProps = {
 const SkeletonImage = ({ className, src, alt, clickable = true }: SkeletonImageProps) => {
     const [loaded, setLoaded] = useState(false);
 
-
-    const url = useMemo(() => src, [src]);
-
     function removePlaceholder() {
         setLoaded(true);
     };
@@ -20,7 +17,7 @@ const SkeletonImage = ({ className, src, alt, clickable = true }: SkeletonImageP
     return (
         <div className={`image-wrapper ${className}`} data-loaded={loaded} style={{ cursor: clickable ? 'pointer' : 'default' }}>
             <div className="placeholder"/>
-            <img onLoad={removePlaceholder} onError={removePlaceholder} loading="lazy" src={url} alt={alt}/>
+            <img onLoad={removePlaceholder} onError={removePlaceholder} loading="lazy" src={src} alt={alt}/>
         </div>
     )
 }

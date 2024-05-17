@@ -1,9 +1,12 @@
+import React, { memo } from 'react';
 import './Courses.scss';
 import { Container, Row, Col } from 'reactstrap'
 import { LoadingSpinner, PageWrapper, ProductList } from '../../components'
 import ImageBanner from '../../components/UI/ImageBanner/ImageBanner';
 import useGetCourses from '../../hooks/useGetCourses';
 import Expectations from '../Expectation/Expectations';
+
+const ExpectationsLazy = React.lazy(() => import('../Expectation/Expectations'));
 
 const Courses = () => {
     const { courses, loadingCourses, coursesError } = useGetCourses();
@@ -36,9 +39,11 @@ const Courses = () => {
                 </Container>
             </section>
 
-            {/* <Expectations /> */}
+            {/* <React.Suspense fallback={<div>Loading...</div>}>
+                <ExpectationsLazy />
+            </React.Suspense> */}
         </PageWrapper>
     )
 }
 
-export default Courses
+export default memo(Courses)

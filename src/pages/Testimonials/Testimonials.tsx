@@ -10,7 +10,7 @@ const Testimonials = () => {
     return (
         <Parallax
             // backgroundUrl='https://images.unsplash.com/photo-1610128114197-485d933885c5?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NjIzOTA2Nzc&ixlib=rb-1.2.1&q=80'
-            backgroundUrl='https://img.freepik.com/free-photo/woman-eye-with-curl-false-eyelashes-low-angle-view_186202-5248.jpg?w=1480&t=st=1683500660~exp=1683501260~hmac=b4bb2db4f5011b7ef1e2f650818cbd78335c862bc240a31a79093cd7d5a64e2c'
+            // backgroundUrl='https://img.freepik.com/free-photo/woman-eye-with-curl-false-eyelashes-low-angle-view_186202-5248.jpg?w=1480&t=st=1683500660~exp=1683501260~hmac=b4bb2db4f5011b7ef1e2f650818cbd78335c862bc240a31a79093cd7d5a64e2c'
             id="about"
             className="testimonials__section"
         >
