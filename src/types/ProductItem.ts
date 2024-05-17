@@ -1,6 +1,7 @@
 import { Category } from "./Category";
 import { Review } from "./Review";
 import { ServiceCategory } from "./ServiceCategory";
+import { AestheticCategory } from "./AestheticCategory";
 
 export type ProductItem = {
     id: string;
@@ -9,6 +10,7 @@ export type ProductItem = {
     title: string;
     category: Category;
     subServiceCategory: ServiceCategory;
+    aestheticCategory?: AestheticCategory | null;
 
     courseTopics?: string;
     courseItinerary?: string;

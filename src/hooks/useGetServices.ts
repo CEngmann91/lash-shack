@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import { useCallback, useMemo } from 'react'
 import { ProductItem } from '../types/ProductItem';
 import useFirestoreData from './useFirestoreData';
 
@@ -9,31 +9,35 @@ const useGetServices = () => {
     const services = useMemo(() => {
         // Only grab active items.
         const filtered = (data as ProductItem[])?.filter(item => item.active);
-        // Sort by price.
-        const sorted =
-            // filtered?.sort((a, b) => b.price - a.price);
-            filtered?.sort((a, b) => a.subServiceCategory.localeCompare(b.subServiceCategory))
-                .sort((a, b) => a.price - b.price)
+        // Sort by subServiceCategory and price.
+        const sorted = filtered?.sort((a, b) => {
+            const categoryComparison = a.subServiceCategory.localeCompare(b.subServiceCategory);
+            return categoryComparison !== 0 ? categoryComparison : a.price - b.price;
+        });
         return sorted;
     }, [data]);
+
+
+    const filterAndSortServices = useCallback((subServiceCategory: string, sortComparator: (a: ProductItem, b: ProductItem) => number) => {
+        return services?.filter(item => item.active && item.subServiceCategory === subServiceCategory)
+            ?.sort(sortComparator);
+    }, [services]);
 
     const getAllFullSetExtensions = useMemo(() => {
-        const filtered = services?.filter(item => item.active && item.subServiceCategory === "Eyelash Extensions Full Sets")
-        const sorted = filtered?.sort((a, b) => a.price - b.price);
-        return sorted;
-    }, [data]);
-
+        return filterAndSortServices("Eyelash Extensions Full Sets", (a, b) => a.price - b.price);
+    }, [filterAndSortServices]);
+    
     const getAllExtensionInfills = useMemo(() => {
-        const filtered = services?.filter(item => item.active && item.subServiceCategory === "Eyelash Extensions Infills")
-        const sorted = filtered?.sort((a, b) => a.price - b.price);
-        return sorted;
-    }, [data]);
-
+        return filterAndSortServices("Eyelash Extensions Infills", (a, b) => a.price - b.price);
+    }, [filterAndSortServices]);
+    
+    const getAllAesthetics = useMemo(() => {
+        return filterAndSortServices("Aesthetics", (a, b) => (a.aestheticCategory ?? '').localeCompare(b?.aestheticCategory ?? ''));
+    }, [filterAndSortServices]);
+    
     const getAllEyebrows = useMemo(() => {
-        const filtered = services?.filter(item => item.active && item.subServiceCategory === "Eyebrows")
-        const sorted = filtered?.sort((a, b) => a.price - b.price);
-        return sorted;
-    }, [data]);
+        return filterAndSortServices("Eyebrows", (a, b) => a.price - b.price);
+    }, [filterAndSortServices]);
 
     // const getAllLips = useMemo(() => services?.filter(item => item.subServiceCategory === "Lips"), [data]);
 
@@ -51,6 +55,7 @@ const useGetServices = () => {
         services,
         getAllFullSetExtensions,
         getAllExtensionInfills,
+        getAllAesthetics,
         getAllEyebrows,
         // getAllLips,
         // getAllSMPU,
