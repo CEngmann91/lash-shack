@@ -6,14 +6,12 @@ const useGetTestimonials = () => {
     const limit: number = 3;
     const { data, loadingData, error } = useFirestoreData("testimonials");
 
-
     const testimonials = useMemo(() => {
-        let list = [] as Testimonial[];
+        let list: Testimonial[] = [];
         data?.map(item => list = item['content'])
-        let sorted = list.slice().sort((a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()).reverse();
-        sorted = sorted.slice(0, limit)
-        return sorted;
-    }, [data,]);
+        list.sort((a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime());
+        return list.slice(0, limit);
+    }, [data]);
 
     const loadingTestimonials = useMemo(() => loadingData, [loadingData]);
 

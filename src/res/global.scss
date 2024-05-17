@@ -1,6 +1,26 @@
 @import './colours.scss';
 @import './anim.scss';
 
+$white-color: #FFFFFF;
+$neon-pink-color: #e60073;
+
+@mixin responsive($breakpoint) {
+    @if $breakpoint == desktop {
+        @media only screen and (min-width: 992px) {
+            @content;
+        }
+    }
+    @else if $breakpoint == tablet {
+        @media only screen and (max-width: 768px) {
+            @content;
+        }
+    }
+    @else if $breakpoint == mobile {
+        @media only screen and (max-width: 576px) {
+            @content;
+        }
+    }
+}
 
 .app__flex {
     display: flex;
@@ -60,9 +80,8 @@
 }
 
 .text__neon-pink {
-    color: #FFFFFF;
-    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
-    // text-shadow: #FFF 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, #FF2D95 0px 0px 20px, #FF2D95 0px 0px 30px, #FF2D95 0px 0px 40px, #FF2D95 0px 0px 50px, #FF2D95 0px 0px 75px;
+    color: $white-color;
+    text-shadow: 0 0 10px $white-color, 0 0 20px $white-color, 0 0 30px $neon-pink-color, 0 0 40px $neon-pink-color, 0 0 50px $neon-pink-color, 0 0 60px $neon-pink-color, 0 0 70px $neon-pink-color;
 }
 
 .app__hover-with-shadow {
@@ -82,7 +101,7 @@
     margin: 10px 0 20px;
 
     span { 
-        background:#fff; 
+        background: #fff; 
         padding:0 10px; 
     }
 }
@@ -203,12 +222,6 @@
     svg {
         color: inherit;
     }
-
-    @media only screen and (max-width: 992px) {}
-
-    @media only screen and (max-width: 768px) {}
-
-    @media only screen and (max-width: 576px) {}
 }
 
 
@@ -249,48 +262,16 @@
 
 .app__device {
     &-hide-desktop {
-
-        // Extra large or Desktop devices
-        @media only screen and (min-width: 992px) {
+        @include responsive(desktop) {
             display: none;
         }
-
-        // @media screen and (min-width: 768px) {
-        //     display: none;
-        // }
     }
 
     &-hide-mobile {
-        @media only screen and (max-width: 992px) {
-            display: none;
-        }
-
-        @media screen and (max-width: 768px) {
+        @include responsive(mobile) {
             display: none;
         }
     }
-
-
-
-
-    // &-hide-desktop {
-    //     // Extra large or Desktop devices
-    //     @media only screen and (max-width: 992px) {
-    //         display: none;
-    //     }
-    // }
-
-    // &-hide-tablet {
-    //     @media only screen and (max-width: 768px) {
-    //         display: none;
-    //     }
-    // }
-
-    // &-hide-mobile {
-    //     @media only screen and (max-width: 576px) {
-    //         display: none;
-    //     }
-    // }
 }
 
 

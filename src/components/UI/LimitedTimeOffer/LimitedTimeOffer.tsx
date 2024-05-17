@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from 'react';
 import './LimitedTimeOffer.scss';
 import { useNavigate } from 'react-router-dom';
 import { Col, Container, Row } from 'reactstrap';
@@ -7,12 +8,12 @@ import images from '../../../res/images';
 import { launchTreatwell, openWindow } from '../../../util/util';
 
 type LimitedTimeOfferProps = {
-    title: string;
-    subtitle: string;
-    imageUrl: string;
+    title?: string;
+    subtitle?: string;
+    imageUrl?: string;
     startDate: string;
     endDate: string;
-    location: string;
+    location?: string;
     onTimerCompleted?: () => void;
     background?: string;
     textColour?: string;
@@ -21,23 +22,45 @@ type LimitedTimeOfferProps = {
     buttonTextColour?: string;
     buttonURL?: string;
 }
-const LimitedTimeOffer = ({ title = "Groupon Deals", subtitle = "Limited Offer", startDate, endDate, location, imageUrl, onTimerCompleted, background, textColour = "white", buttonBG = "#ec439f", buttonText, buttonTextColour = "#fff", buttonURL }: LimitedTimeOfferProps) => {
+
+const LimitedTimeOffer = React.memo(({
+    title = "Groupon Deals",
+    subtitle = "Limited Offer",
+    startDate,
+    endDate,
+    location = "",
+    imageUrl,
+    onTimerCompleted,
+    background,
+    textColour = "white",
+    buttonBG = "#ec439f",
+    buttonText,
+    buttonTextColour = "#fff",
+    buttonURL
+}: LimitedTimeOfferProps) => {
     const navigate = useNavigate();
+    const [now, setNow] = useState(new Date().getTime());
 
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setNow(new Date().getTime());
+        }, 1000);
+        return () => clearInterval(interval);
+    }, []);
 
-    const now = new Date().getTime();
-    // If it has expired then don't show anything.
     const start = new Date(startDate).getTime();
     const isInFuture = start - now;
-    // If this hasn't happen yet and is in the future then do nothing.
     if (isInFuture > 0)
         return null
-    
+
     const destination = new Date(endDate).getTime();
     const dif = destination - now;
     if (dif < 0)
         return null
 
+    const handleClick = () => {
+        buttonURL ? openWindow(buttonURL) : launchTreatwell(location)
+    }
 
     return (
         <section className="timer__wrapper" style={{ background: background }}>
@@ -50,21 +73,18 @@ const LimitedTimeOffer = ({ title = "Groupon Deals", subtitle = "Limited Offer",
                         </div>
                         <Clock destinationDate={endDate} textColour={textColour} onTimerCompleted={onTimerCompleted} />
 
-                        {/* <ArrowMotionButton className='store__button' onClick={() => navigate("/shop")}> */}
-                        <ArrowMotionButton className='store__button' style={{ background: buttonBG, color: buttonTextColour }} onClick={() => {
-                            buttonURL ? openWindow(buttonURL) : launchTreatwell(location)
-                        }}>
+                        <ArrowMotionButton className='store__button' style={{ background: buttonBG, color: buttonTextColour }} onClick={handleClick}>
                             {buttonText}
                         </ArrowMotionButton>
                     </Col>
 
                     <Col lg='4' md='12' className='text-end counter__image'>
-                        <img src={imageUrl ? imageUrl : images.LogoNoBG} alt="" />
+                        <img src={imageUrl ?? images.LogoNoBG} alt="" />
                     </Col>
                 </Row>
             </Container>
         </section>
     )
-}
+})
 
 export default LimitedTimeOffer

@@ -1,19 +1,15 @@
 @import '../../../res/global.scss';
 @import '../../../res/colours.scss';
 
-// https://codepen.io/muhammadfarhan999/pen/GRoxgeO
-// $social-colours:
-//     #3b5998,
-//     #00acee,
-//     // #feda75,
-//     // red,
-// ;
+$box-shadow-color: rgb(7, 76, 79);
+$icon-color: rgb(202, 215, 226);
+$details-color: rgb(185, 206, 224);
 
 .expert-card {
     position: relative;
     width: 250px;
     height: 350px;
-    box-shadow: 0 0 10px rgb(7, 76, 79);
+    box-shadow: 0 0 10px $box-shadow-color;
     border-radius: 20px;
     overflow: hidden;
     color: white;
@@ -24,10 +20,9 @@
 
     transition: all 500ms;
 
-
-    &:hover {
-        box-shadow: 10px 10px 20px rgb(7, 76, 79);
-    }
+    // &:hover {
+    //     box-shadow: 10px 10px 20px $box-shadow-color;
+    // }
 
     .gradient {
         height: 100%;
@@ -48,17 +43,14 @@
         padding: 20px;
         width: 100%;
 
-
         h2 {
             font-size: xx-large;
             letter-spacing: -1px;
-            // transition: all 0.3s;
-            // transform: translateX(-200px);
         }
 
         .details {
             font-style: italic;
-            color: rgb(185, 206, 224);
+            color: $details-color;
             max-height: 3rem;
             overflow-y: scroll;
             padding-right: 15px;
@@ -67,7 +59,6 @@
         .icons {
             display: flex;
             flex-direction: column;
-            // top: -30px;
             bottom: 0;
             position: absolute;
             right: 5%;
@@ -75,7 +66,7 @@
             i {
                 font-size: 20px;
                 margin-bottom: 10px;
-                color: rgb(202, 215, 226);
+                color: $icon-color;
                 transition: 0.3s;
 
                 &:hover {
@@ -83,26 +74,12 @@
                     color: white;
                 }
             }
-
-            // @for $i from 1 through length($social-colours) {
-            //     :nth-child(#{length($social-colours)}n+#{$i}) {
-            //         color: nth($social-colours, $i);
-            //     }
-            // }
         }
     }
 
-    /* ===========================
-   ====== Media Query's ====== 
-   =========================== */
-    @media only screen and (max-width: 992px) {}
-
     @media only screen and (max-width: 768px) {
         .gradient {
-            // background: linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(253, 252, 252, 0.11));
             background: transparent;
         }    
     }
-
-    @media only screen and (max-width: 576px) {}
 }

@@ -1,15 +1,25 @@
 import './Footer.scss';
+import React, { FormEvent, ReactNode, memo } from 'react';
 import { Container, Row, Col, ListGroup, ListGroupItem } from 'reactstrap'
 import images from '../../res/images';
 import { Link } from 'react-router-dom';
 import { Icon_Location } from '../../res/icons';
 import { CONTACT } from '../../constants/constants';
 import MotionSpan from '../Motion/MotionSpan/MotionSpan';
-import { FormEvent } from 'react';
 import 'react-toastify/dist/ReactToastify.css';
 import { showError, showSubscription } from '../../util/toasts';
 import { addANewSubscriber } from '../../firebase/firebaseHelper';
 import { openWindow } from '../../util/util';
+
+export interface ListGroupItemLinkProps {
+  to: string;
+  children: ReactNode;
+}
+const ListGroupItemLink = memo(({ to, children }: ListGroupItemLinkProps) => (
+  <ListGroupItem className='ps-0 border-0'>
+    <Link to={to} className='app__border-bottom'>{children}</Link>
+  </ListGroupItem>
+));
 
 const Footer = () => {
 
@@ -31,58 +41,36 @@ const Footer = () => {
       .catch(error => showError("You Have Already Subscribed 🥳"))
   }
 
+  const handleLocationClick = (map: string) => () => {
+    openWindow(map);
+  };
+
   const renderCategoryLinks = () => (
     <Col lg="2" md='3' className='mb-4'>
       <div className="footer__quick-links">
         <h4 className="quick__links-title"><strong>Categories</strong></h4>
         <ListGroup className='mb-3'>
-          <ListGroupItem className='ps-0 border-0'>
-            <Link to={"/courses"} className='app__border-bottom'>Courses</Link>
-          </ListGroupItem>
-          <ListGroupItem className='ps-0 border-0'>
-            <Link to={"/services"} className='app__border-bottom'>Services</Link>
-          </ListGroupItem>
-          <ListGroupItem className='ps-0 border-0'>
-            <Link to={"/refund"} className='app__border-bottom'>Refund Policy</Link>
-          </ListGroupItem>
-
-          {/* <ListGroupItem className='ps-0 border-0'>
-            <Link to={"#"}>Eyelash Extensions Full Sets</Link>
-          </ListGroupItem>
-          <ListGroupItem className='ps-0 border-0'>
-            <Link to={"#"}>Eyelash Extensions Infills</Link>
-          </ListGroupItem>
-          <ListGroupItem className='ps-0 border-0'>
-            <Link to={"#"}>Eyebrows</Link>
-          </ListGroupItem>
-          <ListGroupItem className='ps-0 border-0'>
-            <Link to={"#"}>Lips</Link>
-          </ListGroupItem>
-          <ListGroupItem className='ps-0 border-0'>
-            <Link to={"#"}>Semi-Permanent Makeup</Link>
-          </ListGroupItem> */}
+          <ListGroupItemLink to={"/courses"}>Courses</ListGroupItemLink>
+          <ListGroupItemLink to={"/services"}>Services</ListGroupItemLink>
+          <ListGroupItemLink to={"/refund"}>Refund Policy</ListGroupItemLink>
         </ListGroup>
       </div>
     </Col>
-  )
+  );
 
   const renderQuickLinks = () => (
     <Col lg="2" md='3' className='mb-4'>
       <div className="footer__quick-links">
         <h4 className="quick__links-title">Quick Links</h4>
         <ListGroup className='mb-3'>
-          <ListGroupItem className='ps-0 border-0'>
-            <Link to={"/"} className='app__border-bottom'>Home</Link>
-          </ListGroupItem>
+          <ListGroupItemLink to={"/"}>Home</ListGroupItemLink>
 
 
 
           {/* <ListGroupItem className='ps-0 border-0'>
             <Link to={"/shop"} className='app__border-bottom'>Shop</Link>
           </ListGroupItem> */}
-          <ListGroupItem className='ps-0 border-0'>
-            <Link to={"/gallery"} className='app__border-bottom'>Gallery</Link>
-          </ListGroupItem>
+          <ListGroupItemLink to={"/gallery"}>Gallery</ListGroupItemLink>
           {/* <ListGroupItem className='ps-0 border-0'>
             <Link to={"/privacy"}>Privacy Policy</Link>
           </ListGroupItem> */}
@@ -166,12 +154,7 @@ const Footer = () => {
 
               {CONTACT.LOCATIONS.map(({ ADDRESS, MAP }, key) => (
                 <ListGroupItem key={key} className='ps-0 border-0'>
-                  <a
-                    target="_blank"
-                    className='d-flex align-items-center gap-2'
-                    onClick={() => openWindow(MAP)}
-                  // href={MAP} rel="noopener noreferrer"
-                  >
+                  <a target="_blank" className='d-flex align-items-center gap-2' onClick={handleLocationClick(MAP)}>
                     <MotionSpan hoverScale={1.1}><Icon_Location /></MotionSpan>
                     <p className='text__new-line'>{ADDRESS}</p>
                   </a>

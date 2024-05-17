@@ -1,11 +1,18 @@
+import React, { useRef } from 'react';
 import './Testimonials.scss';
 import { LoadingSpinner } from '../../components'
 import TestimonialCard from "./TestimonialCard/TestimonialCard";
 import useGetTestimonials from "../../hooks/useGetTestimonials";
 import Parallax from '../../components/Parallax/Parallax';
+import useIntersectionObserver from '../../hooks/useIntersectionObserver';
 
 const Testimonials = () => {
     const { testimonials, loadingTestimonials, testimonialsError } = useGetTestimonials();
+    const elementRef = useRef(null);
+
+    useIntersectionObserver(elementRef, () => {
+        console.log('Element is visible');
+    });
 
     if (testimonialsError) {
         return <div>Error loading testimonials: {testimonialsError.message}</div>;
@@ -24,7 +31,7 @@ const Testimonials = () => {
             {loadingTestimonials ?
                 <LoadingSpinner title="Loading..." />
                 :
-                <div className="list">
+                <div className="list" ref={elementRef}>
                     {testimonials.map(({ id, createdAt, starRating, title, description, customerName }, index) => {
 
                         return (

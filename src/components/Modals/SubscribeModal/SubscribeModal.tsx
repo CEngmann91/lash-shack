@@ -1,7 +1,7 @@
 import './SubscribeModal.scss';
 import useEventListener from '../../../hooks/useEventListener';
 import { useScrollLock } from '../../../hooks/useScrollLock';
-import { FormEvent, useEffect, useState } from 'react';
+import { FormEvent, useCallback, useEffect, useState } from 'react';
 import { Icon_Cross } from '../../../res/icons';
 import Checkbox from '../../Form/Checkbox/Checkbox';
 import { showError, showSubscription } from '../../../util/toasts';
@@ -22,7 +22,7 @@ const SubscribeModal: React.FC<SubscribeModalProps> = ({ visible, onClose }: Sub
             unlockScroll();
         else
             lockScroll();
-    }, [visible])
+    }, [visible, lockScroll, unlockScroll])
 
     useEventListener("keydown", (e: any) => {
         if (!visible)
@@ -32,7 +32,7 @@ const SubscribeModal: React.FC<SubscribeModalProps> = ({ visible, onClose }: Sub
             onClose();
     });
 
-    const handleFormSubmit = async (e: FormEvent<EventTarget | HTMLFormElement>) => {
+    const handleFormSubmit = useCallback(async (e: FormEvent<EventTarget | HTMLFormElement>) => {
         e.preventDefault();
 
         const target = e.target as typeof e.target & {
@@ -50,7 +50,7 @@ const SubscribeModal: React.FC<SubscribeModalProps> = ({ visible, onClose }: Sub
                 onClose();
             })
             .catch(error => showError("You Have Already Subscribed 🥳"))
-    }
+    }, [onClose]);
 
     return (
         <div

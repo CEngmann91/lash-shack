@@ -1,3 +1,4 @@
+import React, { useCallback, memo } from 'react';
 import './ProductCard.scss';
 import { Icon_Minus, Icon_Plus, Icon_Share, Icon_ShoppingBasket, Icon_Trash, Icon_WishList, Icon_WishListFilled } from '../../../../res/icons';
 import { motion } from 'framer-motion';
@@ -32,6 +33,9 @@ const ProductCard = ({ item }: ProductCardProps) => {
     const count = countByID(id);
     const exists = existsInBasket(id)
 
+    const handleProductNavigate = useCallback(() => {
+        navigate(`/product/${id}`);
+    }, [navigate, id]);
 
 
     // useEffect(() => {
@@ -42,13 +46,17 @@ const ProductCard = ({ item }: ProductCardProps) => {
     //   }, [])
 
 
-    function toggleWishList(id: string) {
+    const handleToggleWishList = useCallback(() => {
         const exists = existsInWishList(id);
         if (!exists)
             addToWishList(id, title, imgUrl, price)
         else
             removeFromWishList(id, title, imgUrl, price)
-    }
+    }, [existsInWishList, addToWishList, removeFromWishList, id, title, imgUrl, price]);
+
+    const handleRemoveFromBasket = useCallback(() => {
+        removeFromBasket(id, title, imgUrl, price);
+    }, [removeFromBasket, id, title, imgUrl, price]);
 
 
     return (
@@ -66,16 +74,16 @@ const ProductCard = ({ item }: ProductCardProps) => {
         >
 
             <div className="product__image-wrapper">
-                <div className='product__image' onClick={() => navigate(`/product/${id}`)}>
-                    <SkeletonImage className='' src={imgUrl} alt="" />
-                </div>
+            <div className='product__image' onClick={handleProductNavigate}>
+                <SkeletonImage className='' src={imgUrl} alt="" />
+            </div>
 
                 <div className="buttons d-flex align-items-center gap-2">
                     {/* <MotionButton onClick={() => { }}>
                         <Icon_Share />
                     </MotionButton>
 
-                    <MotionButton onClick={() => toggleWishList(id)}>
+                    <MotionButton onClick={handleToggleWishList}>
                         {!existsInWishList(id) ? <Icon_WishList /> : <Icon_WishListFilled />}
                     </MotionButton>
 
@@ -111,15 +119,9 @@ const ProductCard = ({ item }: ProductCardProps) => {
 
             <div className="product_card-bottom d-flex align-items-center justify-content-center p-2 gap-3">
                 {exists && (
-                    count === 1 ? (
-                        <MotionSpan onClick={() => removeFromBasket(id, title, imgUrl, price)}>
-                            <Icon_Trash />
-                        </MotionSpan>
-                    ) : (
-                        <MotionSpan onClick={() => removeFromBasket(id, title, imgUrl, price)}>
-                            <Icon_Minus />
-                        </MotionSpan>
-                    )
+                    <MotionSpan onClick={handleRemoveFromBasket}>
+                        (count === 1 ? <Icon_Minus /> : <Icon_Minus />)
+                    </MotionSpan>
                 )}
 
                 {!isOnSale ? (

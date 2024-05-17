@@ -1,5 +1,5 @@
 import './MyIFrame.scss';
-import React, { useEffect, useState } from 'react'
+import React, { useState, memo } from 'react'
 import { LoadingSpinner } from '../..';
 
 type MyIFrameProps = {
@@ -9,33 +9,22 @@ type MyIFrameProps = {
     allowFullScreen?: boolean;
     ariaHidden?: boolean;
 }
-const MyIFrame = ({ className, id, source, allowFullScreen, ariaHidden }: MyIFrameProps) => {
+
+const MyIFrame = memo(({ className, id, source, allowFullScreen, ariaHidden }: MyIFrameProps) => {
     const [isLoading, setIsLoading] = useState(true);
-
-
-    useEffect(() => {
-
-    }, [source])
-
 
     return (
         <div className={`frame-container ${className}`}>
             {isLoading && <LoadingSpinner title="Loading..." />}
 
-            <iframe
-                id={id}
-                src={source}
-                frameBorder="0"
-                style={{ display: isLoading ? "none" : "flex", border: 0 }}
+            <iframe id={id} src={source} className={isLoading ? "hidden" : "visible"}
                 allowFullScreen={allowFullScreen}
                 aria-hidden={ariaHidden}
-                // loading="lazy"
                 referrerPolicy='no-referrer-when-downgrade'
-                // tabIndex={0}
                 onLoad={() => setIsLoading(false)}
             />
         </div>
     )
-}
+});
 
 export default MyIFrame
