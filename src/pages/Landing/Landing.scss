@@ -76,19 +76,37 @@
                 }
                 &:nth-child(odd) {
                     color: $pink-dark-colour;
-                    // &::before {
-                    //     background: blue;
-                    // }
+                    &::before {
+                        background: $green-shade-colour;
+                    }                
+                }
+                &:nth-child(even) {
+                    &::before {
+                        background: $pink-dark-colour;
+                    }
                 }
                 font-size: 1.3rem;
                 transition: 0.3s ease-in-out;
 
-                &:hover {
-                    object-position: center center;
-                    transform: scale(1.2);
-                    transition: 0.3s ease-in-out;
-                }
-                animation: slideFromRight 0.5s forwards;
+                // &:hover {
+                //     object-position: center center;
+                //     transform: scale(1.2);
+                //     transition: 0.3s ease-in-out;
+                // }
+                
+                // animation: slideUp 0.5s forwards;
+                // &:nth-child(1) {
+                //     animation-delay: 0.2s;
+                // }
+                // &:nth-child(2) {
+                //     animation-delay: 0.4s;
+                // }
+                // &:nth-child(3) {
+                //     animation-delay: 0.6s;
+                // }
+                // &:nth-child(4) {
+                //     animation-delay: 0.8s;
+                // }
 
                 // cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg"  width="40" height="40" viewport="0 0 100 100" style="fill:black;"><circle cx="50" cy="50" r="50"/></svg>') 16 16, auto;
                 // &:hover {
