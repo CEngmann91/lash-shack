@@ -9,15 +9,17 @@
 .row-card {
     padding: 0;
     gap: 0.6rem;
-    border-radius: var(--border-radius);
-    border: 10px solid white;
-    box-shadow: 5px 5px 20px rgba($green-shade-colour, 0.5);
+    // border-radius: var(--border-radius);
+    // border: 10px solid white;
+    // box-shadow: 5px 5px 20px rgba($green-shade-colour, 0.5);
     overflow: hidden;
     z-index: 1;
     height: fit-content;
-    background: #fff;
+    // background: #fff;
 
     img {
+        border-radius: var(--border-radius);
+        overflow: hidden;
         object-fit: cover;
         object-position: center center;
         // min-height: var(--min-height);
@@ -25,6 +27,6 @@
     }
 
     .pink {
-        background: $pink-new-colour;
+        // background: $pink-new-colour;
     }
 }
