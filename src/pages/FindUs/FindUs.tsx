@@ -70,7 +70,7 @@ const FindUs = () => {
 
 
     return (
-        <section className="location__banner">
+        <section id="hours" className="location__banner">
             <div className='map-content'>
                 {/* <MapViewFrame source={CONTACT.LOCATIONS[0].MAP} /> */}
                 <img src={images.Shop} />

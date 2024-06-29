@@ -8,7 +8,7 @@ const MeetExperts = () => {
 
 
     return (
-        <section className="experts__section">
+        <section id="team" className="experts__section">
             <h5 className="text-center mb-2">Meet The Experts</h5>
             <h1 className="text-center mb-4">Our professional team</h1>
 
