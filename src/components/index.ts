@@ -10,6 +10,7 @@ export { default as ArrowMotionButton } from './Motion/ArrowMotionButton/ArrowMo
 export { default as MotionSpan } from './Motion/MotionSpan/MotionSpan';
 export { default as PageWrapper } from './PageWrapper/PageWrapper';
 export { default as Avatar } from './Avatar/Avatar';
+export { default as Accordion } from './Accordion/Accordion';
 export { default as MyIFrame } from './iFrames/MyIFrame/MyIFrame';
 export { default as Clock } from './UI/Clock/Clock';
 export { default as LimitedTimeOffer } from './UI/LimitedTimeOffer/LimitedTimeOffer';
