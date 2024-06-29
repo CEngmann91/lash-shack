@@ -1,32 +1,24 @@
 import { useEffect } from 'react'
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
-import { Basket, Checkout, Contact, Courses, Dashboard, Gallery, Landing, LatestNews, NotFound, Privacy, ProductDetails, RefundPolicy, Services, Shop, TermsConditions, Wishlist } from '../pages';
-import { Dashboard_Account, Dashboard_Catalog, Dashboard_Messages, Dashboard_Orders, Dashboard_Schedule, Dashboard_Settings, Dashboard_Users } from '../0DELETE/Dashboard/Dashboard';
-import AuthRoute from './AuthRoute';
-import useGeolocateStore from '../hooks/useGeolocateStore';
-import ForgotPassword from '../pages/ForgotPassword/ForgotPassword';
-import Login from '../pages/Login/Login';
-import Register from '../pages/Register/Register';
+import { Basket, Checkout, Contact, Courses, Dashboard, FAQs, Gallery, Landing, LatestNews, NotFound, ProductDetails, Services, Shop, SlaveryStatement, TermsOfService, Wishlist } from '../pages';
+// import { Dashboard_Account, Dashboard_Catalog, Dashboard_Messages, Dashboard_Orders, Dashboard_Schedule, Dashboard_Settings, Dashboard_Users } from '../0DELETE/Dashboard/Dashboard';
+// import AuthRoute from './AuthRoute';
+// import useGeolocateStore from '../hooks/useGeolocateStore';
+// import ForgotPassword from '../pages/ForgotPassword/ForgotPassword';
+// import Login from '../pages/Login/Login';
+// import Register from '../pages/Register/Register';
 
 const Routers = () => {
     // const { loading, error, closestStore } = useGeolocateStore();
-    const location = useLocation();
-
-
-    // Scroll to the top only when the route location changes.
-    useEffect(() => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }, [location.pathname]);
-
 
     return (
         <Routes>
             <Route path='*' element={<NotFound />} />
 
+            <Route index element={<Landing />} />
             {/* Ensures that we redirect the page back to home if this occurs. */}
-            <Route path='/' element={<Navigate to='home' />} />
-
-            <Route path='/home' element={<Landing />} />
+            {/* <Route path='/' element={<Navigate to='home' />} /> */}
+            {/* <Route path='/home' element={<Landing />} /> */}
             <Route path='/services' element={<Services />} />
             <Route path='/courses' element={<Courses />} />
             <Route path='/gallery' element={<Gallery />} />
@@ -56,9 +48,10 @@ const Routers = () => {
             <Route path='/register' element={<Register />} />
             <Route path='/forgot' element={<ForgotPassword />} /> */}
 
-            <Route path='/refund' element={<RefundPolicy />} />
-            {/* <Route path='/privacy' element={<Privacy />} />
-            {/* <Route path='/terms' element={<TermsConditions />} /> */}
+            <Route path='/terms' element={<TermsOfService />} />
+            {/* <Route path='/privacy' element={<Privacy />} /> */}
+            {/* <Route path='/slavery' element={<SlaveryStatement />} /> */}
+            {/* <Route path='/faqs' element={<FAQs />} /> */}
         </Routes>
     )
 }
