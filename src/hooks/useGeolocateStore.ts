@@ -24,8 +24,8 @@ export default function useGeolocateStore(makeRequestImmediately = false) {
                 return;
 
             let distances = [] as any[];
-            CONTACT.LOCATIONS.map((item, key) => {
-                const distance = CalcDistanceBetween(latitude, longitude, item.lat, item.long);
+            CONTACT.LOCATIONS.forEach(({lat, long}, key) => {
+                const distance = CalcDistanceBetween(latitude, longitude, lat, long);
                 distances.push({ key, distance });
             });
             const sorted = distances.sort((a, b) => (a.distance - b.distance));
