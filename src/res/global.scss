@@ -267,6 +267,12 @@ $neon-pink-color: #e60073;
         }
     }
 
+    &-hide-tablet {
+        @include responsive(tablet) {
+            display: none;
+        }
+    }
+
     &-hide-mobile {
         @include responsive(mobile) {
             display: none;
