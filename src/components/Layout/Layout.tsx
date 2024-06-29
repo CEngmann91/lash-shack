@@ -7,11 +7,34 @@ import { useApplicationActions } from '../../redux/hooks/useApplicationActions'
 import { DashboardNavbar, DashboardWrapper } from '../../0DELETE/Dashboard'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { AuthModal, GeoStoreModal, SubscribeModal } from '../Modals'
-import { useLocalStorage } from '../../hooks/useLocalStorage'
+// import { AuthModal, GeoStoreModal, SubscribeModal } from '../Modals'
+// import { useLocalStorage } from '../../hooks/useLocalStorage'
+import { useEffect } from 'react'
+
+
+const checkForHash = () => {
+    const currentLocation = window.location.href;
+    const hasHash = currentLocation.includes("/#");
+    if (!hasHash) {
+        window.scrollTo(0, 0);
+        return;
+    }
+    const timeoutId = setTimeout(function(){
+        const navbarHeight = document.getElementById('header')?.clientHeight || 0;
+        const anchorId = `${currentLocation.substring(currentLocation.indexOf("#") + 1)}`;
+        console.log(anchorId);
+        const anchorElement = document.querySelector(`#${anchorId}`) as HTMLElement | null;
+        console.log(anchorElement);
+        if (anchorElement) {
+            window.scrollTo({ top: anchorElement.offsetTop - navbarHeight, behavior: "smooth" });
+        }
+    }, 500);
+    // clearTimeout(timeoutId);
+}
 
 const Layout = () => {
     const location = useLocation();
+    const { pathname } = location;
     const { isLoading, isShowingAuthModal } = useApplicationActions();
     // const [isFirstTime, setIsFirstTime] = useLocalStorage('isFirstTime', true)
     // const [showSubscription, setShowSubscription] = useState(false);
@@ -28,6 +51,11 @@ const Layout = () => {
     //         clearTimeout(id);
     //     }
     // }, [])
+
+
+    useEffect(() => {
+        checkForHash();
+    }, [pathname, window.location.href]);
 
 
     return (
