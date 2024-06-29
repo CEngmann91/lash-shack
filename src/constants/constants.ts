@@ -13,7 +13,7 @@ export const NAVIGATION = {
         {
             id: 0,
             title: "Home",
-            to: "home",
+            to: "/",
         },
         {
             id: 1,
