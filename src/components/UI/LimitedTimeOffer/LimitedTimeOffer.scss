@@ -1,8 +1,28 @@
 @import '../../../res/colours.scss';
 
+
+.tint-background {
+    position: relative;
+
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), transparent, rgba(0, 0, 0, 1));
+        opacity: .6; 
+    }
+}
+
 .timer__wrapper {
     background: $green-shade-colour;
+    background-position: center !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
     height: 300px;
+    justify-content: flex-end;
 
     .counter__image {
 
@@ -14,6 +34,11 @@
     }
 
     .countdown-col {
+        // display: flex;
+        // flex-direction: column;
+        // justify-items: center;
+        // text-align: center;
+        // margin: 0.7rem auto 0;
 
         .store__button {
             color: $green-shade-colour;
