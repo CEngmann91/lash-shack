@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { ArrowMotionButton, PageWrapper } from '../../components'
 
 const NotFound = () => {
-    const navigate = useNavigate();
+    const navigate = useNavigate();    
 
     return (
         <PageWrapper title="NotFound">
@@ -15,12 +15,17 @@ const NotFound = () => {
 
                 <label className="information">Ooops!! No Lashes here.</label>
 
-                <ArrowMotionButton className='notfound__cta-button' onClick={() => navigate('/')}>
-                  Go Home
-                </ArrowMotionButton>
+                <div className="notfound__buttons">
+                    <ArrowMotionButton className='notfound__cta-button notfound__cta-contactButton' onClick={() => navigate('/contact')}>
+                        Contact Us
+                    </ArrowMotionButton>
+                    <ArrowMotionButton className='notfound__cta-button' onClick={() => navigate('/')}>
+                        Go Home
+                    </ArrowMotionButton>
+                </div>
             </section>
         </PageWrapper>
-    )
+    );
 }
 
 export default NotFound

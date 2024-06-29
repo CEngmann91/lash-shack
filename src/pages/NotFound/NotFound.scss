@@ -55,15 +55,31 @@
         color: black;
     }
 
+    .notfound__buttons {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+    }
+
     .notfound__cta-button {
         color: white;
         text-transform: uppercase;
         border-radius: 5px;
-        background: $pink-dark-colour;
+        background-color: $pink-dark-colour;
         font-size: 1rem;
 
         &:hover {
-            background: darken($pink-dark-colour, 20%);
+            background-color: darken($pink-dark-colour, 20%);
+        }
+    }
+    .notfound__cta-contactButton {
+        color: black;
+        background-color: white;
+        border: 1px solid $pink-dark-colour;
+
+        &:hover {
+            color: black !important;
+            background-color: darken(white, 5%);
         }
     }
 }
