@@ -20,9 +20,10 @@ export { default as FindUs } from './FindUs/FindUs';
 export { default as LatestNews } from './LatestNews/LatestNews';
 
 
-export { default as Privacy } from './Privacy/Privacy';
-export { default as RefundPolicy } from './RefundPolicy/RefundPolicy';
-export { default as TermsConditions } from './TermsConditions/TermsConditions';
+// export { default as Privacy } from './Privacy/Privacy';
+export { default as TermsOfService } from './TermsOfService/TermsOfService';
+export { default as SlaveryStatement } from './SlaveryStatement/SlaveryStatement';
+export { default as FAQs } from './FAQs/FAQs';
 
 // export { default as Login } from './Login/Login';
 // export { default as ForgotPassword } from './ForgotPassword/ForgotPassword';
