@@ -58,7 +58,7 @@ const Landing = () => {
     if (!active)
       return;
 
-    const { title, subtitle, imageUrl, startDate, endDate, location, cta } = content;
+    const { title, subtitle, imageUrl, startDate, endDate, location, cta, noCountdown } = content;
 
     if (devMode && process.env.NODE_ENV !== "development")
       return;
@@ -78,6 +78,7 @@ const Landing = () => {
       buttonURL={url}
       buttonBG={buttonBG}
       buttonTextColour={buttonTextColour}
+      noCountdown={noCountdown}
     // onTimerCompleted={() => { }}
     />
   }
