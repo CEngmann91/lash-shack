@@ -2,7 +2,7 @@ import './Footer.scss';
 import React, { FormEvent, ReactNode, memo } from 'react';
 import { Container, Row, Col, ListGroup, ListGroupItem } from 'reactstrap'
 import images from '../../res/images';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { Icon_Location } from '../../res/icons';
 import { CONTACT } from '../../constants/constants';
 import MotionSpan from '../Motion/MotionSpan/MotionSpan';
@@ -15,11 +15,11 @@ export interface ListGroupItemLinkProps {
   to: string;
   children: ReactNode;
 }
-const ListGroupItemLink = memo(({ to, children }: ListGroupItemLinkProps) => (
+const ListGroupItemLink = ({ to, children }: ListGroupItemLinkProps) => (
   <ListGroupItem className='ps-0 border-0'>
-    <Link to={to} className='app__border-bottom'>{children}</Link>
+    <NavLink to={to} className='app__border-bottom'>{children}</NavLink>
   </ListGroupItem>
-));
+);
 
 const Footer = () => {
 
@@ -45,35 +45,65 @@ const Footer = () => {
     openWindow(map);
   };
 
-  const renderCategoryLinks = () => (
+  // const renderCategoryLinks = () => (
+  //   <Col lg="2" md='3' className='mb-4'>
+  //     <div className="footer__quick-links">
+  //       <h4 className="quick__links-title"><strong>Categories</strong></h4>
+  //       <ListGroup className='mb-3'>
+  //         <ListGroupItemLink to={"/courses"}>Courses</ListGroupItemLink>
+  //         <ListGroupItemLink to={"/services"}>Services</ListGroupItemLink>
+  //         <ListGroupItemLink to={"/policies"}>Policies</ListGroupItemLink>
+  //         <ListGroupItemLink to={"/faqs"}>FAQS</ListGroupItemLink>
+  //       </ListGroup>
+  //     </div>
+  //   </Col>
+  // );
+
+  // const renderQuickLinks = () => (
+  //   <Col lg="2" md='3' className='mb-4'>
+  //     <div className="footer__quick-links">
+  //       <h4 className="quick__links-title">Quick Links</h4>
+  //       <ListGroup className='mb-3'>
+  //         <ListGroupItemLink to={"/"}>Home</ListGroupItemLink>
+
+
+
+  //         {/* <ListGroupItem className='ps-0 border-0'>
+  //           <Link to={"/shop"} className='app__border-bottom'>Shop</Link>
+  //         </ListGroupItem> */}
+  //         <ListGroupItemLink to={"/gallery"}>Gallery</ListGroupItemLink>
+  //         {/* <ListGroupItem className='ps-0 border-0'>
+  //           <Link to={"/privacy"}>Privacy Policy</Link>
+  //         </ListGroupItem> */}
+  //       </ListGroup>
+  //     </div>
+  //   </Col>
+  // )
+
+
+
+  const renderCompanyLinks = () => (
     <Col lg="2" md='3' className='mb-4'>
       <div className="footer__quick-links">
-        <h4 className="quick__links-title"><strong>Categories</strong></h4>
+        <h4 className="quick__links-title">Company</h4>
         <ListGroup className='mb-3'>
-          <ListGroupItemLink to={"/courses"}>Courses</ListGroupItemLink>
-          <ListGroupItemLink to={"/services"}>Services</ListGroupItemLink>
-          <ListGroupItemLink to={"/refund"}>Refund Policy</ListGroupItemLink>
+          <ListGroupItemLink to={"/#about"}>About Us</ListGroupItemLink>
+          <ListGroupItemLink to={"/#team"}>Meet The Experts</ListGroupItemLink>
+          <ListGroupItemLink to={"/#hours"}>Operating Hours</ListGroupItemLink>
+          <ListGroupItemLink to={"/contact"}>Get In Touch</ListGroupItemLink>
         </ListGroup>
       </div>
     </Col>
-  );
+  )
 
-  const renderQuickLinks = () => (
+  const renderLegalHelpfulLinks = () => (
     <Col lg="2" md='3' className='mb-4'>
       <div className="footer__quick-links">
-        <h4 className="quick__links-title">Quick Links</h4>
+        <h4 className="quick__links-title">Legal</h4>
         <ListGroup className='mb-3'>
-          <ListGroupItemLink to={"/"}>Home</ListGroupItemLink>
-
-
-
-          {/* <ListGroupItem className='ps-0 border-0'>
-            <Link to={"/shop"} className='app__border-bottom'>Shop</Link>
-          </ListGroupItem> */}
-          <ListGroupItemLink to={"/gallery"}>Gallery</ListGroupItemLink>
-          {/* <ListGroupItem className='ps-0 border-0'>
-            <Link to={"/privacy"}>Privacy Policy</Link>
-          </ListGroupItem> */}
+          <ListGroupItemLink to={"/terms"}>Terms of Service</ListGroupItemLink>
+          {/* <ListGroupItemLink to={"/slavery"}>Modern Slavery Statement</ListGroupItemLink> */}
+          {/* <ListGroupItemLink to={"/faqs"}>FAQs</ListGroupItemLink> */}
         </ListGroup>
       </div>
     </Col>
@@ -87,7 +117,7 @@ const Footer = () => {
         <img className='ABT' src={images.ABT} alt="" />
 
         <p className="footer__copyright--text">
-          Copyright &copy; LashShack {year}. All Rights Reserved. Developed By
+          Copyright &copy; LashShack {year}. Developed By
           <a href="https://www.christianjengmann.com" target="_blank" rel="noopener noreferrer" className='fw-bold'> Christian Engmann</a>
         </p>
 
@@ -129,11 +159,10 @@ const Footer = () => {
           </Col>
 
 
-
-          {renderCategoryLinks()}
-
-          {renderQuickLinks()}
-
+          {renderCompanyLinks()}
+          {renderLegalHelpfulLinks()}
+          {/* {renderCategoryLinks()} */}
+          {/* {renderQuickLinks()} */}
 
 
           <Col lg="3" md='4'>

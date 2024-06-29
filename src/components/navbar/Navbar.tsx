@@ -1,5 +1,5 @@
 import './Navbar.scss';
-import { useCallback, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import { Container, Row } from 'reactstrap';
 import images from '../../res/images';
@@ -41,6 +41,14 @@ const Navbar = () => {
   const [showingProfileActions, setShowingProfileActions] = useState<boolean>(false);
   const { isOpen, toggle } = useToggle(false);
   const { toggleAuthModal } = useApplicationActions();
+
+  useEffect(() => {
+    window.addEventListener('scroll', updateIndicator, { passive: true });
+    return () => {
+        window.removeEventListener('scroll', updateIndicator);
+    };
+  }, []);
+  
 
   const toggleProfileActions = useCallback(() => {
     if (!authenticated) {
@@ -96,7 +104,7 @@ const Navbar = () => {
         <div className="avatar_icon-actions" style={{ display: (showingProfileActions ? "flex" : "none") }}
         // ref={profileActionsRef}
         >
-          {authenticated ?
+          {/* {authenticated ?
             <>
               <Link to="/dashboard" onClick={toggleProfileActions}>Dashboard</Link>
               <Link to="/dashboard/account" onClick={toggleProfileActions}>My Account</Link>
@@ -109,7 +117,7 @@ const Navbar = () => {
               <Link to="/dashboard/settings" onClick={toggleProfileActions}>Settings</Link>
               <Link to="" onClick={signOut}>Logout</Link>
             </>
-            : null}
+            : null} */}
         </div>
       </div>
 
@@ -120,7 +128,7 @@ const Navbar = () => {
 
 
   const renderMenuItems = () => (
-    <div className="navigation app__device-hide-mobile">
+    <div className="navigation app__device-hide-mobile app__device-hide-tablet">
       <ul className="navbar-nav--links">
         {NAVIGATION.MAIN_ROUTES.map(({ title, to }, key) => (
           <li className='nav--link-item' key={key}>
@@ -132,10 +140,33 @@ const Navbar = () => {
   )
 
 
+  const updateIndicator = () => {
+    // 1) Get current position of the scroll in pixels
+    const winScroll = document.documentElement.scrollTop;
+  
+    // scrollHeight - The total height of our document
+    // clientHeight - The viewable height of the element (in pixels) including padding
+    // 2) Get total height of scrollable part minus visible area
+    const height =
+      document.documentElement.scrollHeight -
+      document.documentElement.clientHeight;
+  
+    // 3. Calculate progress in percentage
+    const scrolled = (winScroll / height) * 100;
+  
+    // 4. Change CSS property width of the indicator bar based on scroll
+    const indicator = document.getElementById('indicator');
+    if (indicator)
+      indicator.style.width = scrolled + '%';
+  };
 
   return (
-    <header className={`header ${scrolledDown ? "header--scroll" : ""}`}>
-      <motion.div className="progress-bar" style={{ scaleX }} />
+    <header id="header" className={`header ${scrolledDown ? "header--scroll" : ""}`}>
+      <div className="indicator__track">
+        <div className="indicator__bar" id="indicator"></div>
+      </div>
+
+      {/* <motion.div className="progress-bar" style={{ scaleX }} /> */}
       <div className="app_navbar__wrapper">
         <div className="logo">
           <Link to={"/"}>
