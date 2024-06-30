@@ -28,7 +28,7 @@ const checkForHash = () => {
         if (anchorElement) {
             window.scrollTo({ top: anchorElement.offsetTop - navbarHeight, behavior: "smooth" });
         }
-    }, 500);
+    }, 300);
     // clearTimeout(timeoutId);
 }
 
